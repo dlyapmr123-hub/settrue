@@ -386,78 +386,369 @@
         }
     }
     
-    // === ТВОЙ ОРИГИНАЛЬНЫЙ КОД ТАБЛИЦЫ (БЕЗ ИЗМЕНЕНИЙ) ===
+    // === НЕПОСРЕДСТВЕННО ТАБЛИЦА ПРОГНОЗОВ (СТРОГО ПО ВАШЕМУ КОДУ) ===
     function getPredictionsHTML() {
-        return `
-            <div class="predictions-container">
-                <div id="tennis-app">
-                    <div class="ft-header">
-                        <h2>🎾 Прогнозы</h2>
-                        <span class="ft-badge">LIVE</span>
-                    </div>
-                    <div class="ft-loading">
-                        <div class="ft-spinner"></div>
-                        <span>Загрузка...</span>
-                    </div>
-                </div>
-            </div>
-            <style>
-                #tennis-app { font-family: 'Segoe UI', system-ui, sans-serif; max-width: 100%; margin: 0 auto; color: #ffffff; background: transparent; line-height: 1.5; }
-                .ft-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: transparent; border-bottom: 2px solid #7fff00; }
-                .ft-header h2 { margin: 0; font-size: 18px; font-weight: 700; }
-                .ft-badge { background: #7fff00; color: #000000; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 12px; animation: pulse 2s infinite; }
-                @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
-                .ft-table { width: 100%; border-collapse: collapse; background: transparent; font-size: 13px; }
-                .ft-table thead { background: #111111; color: #7fff00; position: sticky; top: 0; z-index: 10; }
-                .ft-table th { padding: 10px 8px; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; border-bottom: 2px solid #7fff00; }
-                .ft-table td { padding: 10px 8px; border-bottom: 1px solid #222222; vertical-align: middle; color: #ffffff; }
-                .ft-table tbody tr:nth-child(even) { background: rgba(10, 10, 10, 0.5); }
-                .ft-table tbody tr:hover { background: #1a1a1a; }
-                .ft-table tbody tr:last-child td { border-bottom: none; }
-                .ft-tournament { font-weight: 600; color: #7fff00; text-align: left !important; max-width: 130px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-                .ft-match { text-align: left !important; font-weight: 500; min-width: 180px; }
-                .ft-match-date { display: block; font-size: 11px; color: #888888; margin-top: 3px; }
-                .ft-chances { display: flex; align-items: center; justify-content: center; gap: 6px; font-weight: 700; }
-                .ft-c-high { color: #7fff00; font-size: 14px; }
-                .ft-c-low { color: #ff4444; font-size: 13px; }
-                .ft-c-div { width: 1px; height: 16px; background: #444444; }
-                .ft-tip { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; background: #7fff00; color: #000000; font-weight: 800; border-radius: 50%; font-size: 13px; }
-                .ft-sets { font-family: monospace; font-weight: 600; font-size: 13px; color: #ffffff; background: #222222; padding: 4px 8px; border-radius: 4px; display: inline-block; }
-                .ft-games { font-family: monospace; font-size: 12px; line-height: 1.7; text-align: center; }
-                .ft-g-line { display: block; }
-                .ft-g-win { color: #7fff00; font-weight: 700; }
-                .ft-g-loss { color: #ff4444; font-weight: 700; }
-                .ft-score { font-family: monospace; font-weight: 700; font-size: 14px; padding: 5px 10px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; min-width: 44px; gap: 4px; }
-                .ft-score.ft-correct { background: #7fff00; color: #000000; }
-                .ft-score.ft-wrong { background: #330000; color: #ff4444; }
-                .ft-score.ft-neutral { background: #222222; color: #888888; }
-                .ft-loading { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px; color: #888888; gap: 12px; }
-                .ft-spinner { width: 28px; height: 28px; border: 3px solid #333333; border-top-color: #7fff00; border-radius: 50%; animation: spin 0.8s linear infinite; }
-                @keyframes spin { to { transform: rotate(360deg); } }
-                .ft-error { text-align: center; padding: 20px; color: #ff4444; background: #220000; border: 1px solid #ff4444; border-radius: 8px; margin: 16px; font-size: 13px; }
-                .ft-footer { text-align: right; font-size: 11px; color: #666666; padding: 10px 16px 14px; background: transparent; border-top: 1px solid #222222; }
-                @media (max-width: 768px) { .ft-table { font-size: 12px; } .hide-md { display: none; } .ft-tournament { max-width: 100px; } .ft-match { min-width: 150px; } .ft-table th, .ft-table td { padding: 8px 6px; } }
-                @media (max-width: 480px) { .hide-sm { display: none; } .ft-header { padding: 10px 12px; } .ft-header h2 { font-size: 16px; } }
-            </style>
-            <script>
-                (function(){
-                    if(window.__ftReady) return; window.__ftReady=true;
-                    const API = 'https://script.google.com/macros/s/AKfycbwNW_xYTM2alBQIaDgSancRYsozcAvBExTg1Zch5kVzErrCZjzlMFLSnn3dym69_t5Grw/exec';
-                    function rChances(p1, p2){ const n1 = parseInt(p1)||0, n2 = parseInt(p2)||0; const c1 = n1>n2?'ft-c-high':'ft-c-low', c2 = n2>n1?'ft-c-high':'ft-c-low'; return '<div class="ft-chances">'+'<span class="'+c1+'">'+n1+'%</span>'+'<div class="ft-c-div"></div>'+'<span class="'+c2+'">'+n2+'%</span>'+'</div>'; }
-                    function rTip(v){ return (v==='1'||v==='2') ? '<div class="ft-tip" title="Прогноз: '+v+'">'+v+'</div>' : '<span style="color:#444444">—</span>'; }
-                    function rSets(v){ if(!v) return '—'; const nums = v.match(/\\d/g); return (nums && nums.length>=2) ? '<span class="ft-sets">'+nums[0]+':'+nums[1]+'</span>' : '—'; }
-                    function parseTennisScores(v) { if (!v) return { pairs: [], s1: 0, s2: 0 }; const nums = v.match(/\\d+/g)?.map(Number) || []; if (nums.length < 2 || nums.length % 2 !== 0) return { pairs: [], s1: 0, s2: 0 }; const half = nums.length / 2; const pairs = []; for (let i = 0; i < half; i++) { pairs.push({ p1: nums[i], p2: nums[i + half] }); } let s1=0, s2=0; pairs.forEach(s => { if(s.p1>s.p2) s1++; else if(s.p2>s.p1) s2++; }); return { pairs, s1, s2 }; }
-                    function rGames(v) { const { pairs } = parseTennisScores(v); if (pairs.length === 0) return '—'; let h = '<div class="ft-games">'; pairs.forEach(s => { const cls = s.p1 > s.p2 ? 'ft-g-win' : s.p1 < s.p2 ? 'ft-g-loss' : ''; h += '<span class="ft-g-line '+cls+'">'+s.p1+'-'+s.p2+'</span>'; }); return h + '</div>'; }
-                    function rScore(gamesStr, prediction) { const { s1, s2 } = parseTennisScores(gamesStr); if (s1 === 0 && s2 === 0) return '—'; const actualWinner = s1 > s2 ? '1' : '2'; if (!prediction || prediction === '—') { return '<span class="ft-score ft-neutral">'+s1+':'+s2+'</span>'; } const cls = (prediction === actualWinner) ? 'ft-correct' : 'ft-wrong'; const icon = prediction === actualWinner ? '✓' : '✗'; return '<span class="ft-score '+cls+'" title="'+(prediction===actualWinner?'✓ Верно':'✗ Ошибка')+'">'+icon+' '+s1+':'+s2+'</span>'; }
-                    function parseDate(str){ const m = str.match(/(\\d{1,2})\\/(\\d{1,2})\\/(\\d{2,4})\\s+(\\d{1,2}):(\\d{2})/); return m ? new Date(m[3].length===2?'20'+m[3]:m[3], m[2]-1, m[1], m[4], m[5]) : new Date(0); }
-                    async function load(){ const container = document.getElementById('tennis-app'); try{ const res = await fetch(API + '?t=' + Date.now(), {cache:'no-store'}); const j = await res.json(); if(!j.success) throw new Error(j.error || 'Ошибка сервера'); if(!j.data || j.data.length===0) throw new Error('Матчи не найдены'); j.data.sort((a,b) => parseDate(b.match) - parseDate(a.match)); let h = ''; h += '<table class="ft-table"><thead><tr>'; h += '<th>Турнир</th><th>Матч</th><th>Шансы</th><th>Прогноз</th>'; h += '<th class="hide-md">Сеты</th><th class="hide-sm">Геймы</th><th>Счёт</th>'; h += '</tr></thead><tbody>'; j.data.forEach(d=>{ const mHtml = d.match.replace(/(\\d{1,2}\\/\\d{1,2}\\/\\d{2,4}\\s+\\d{1,2}:\\d{2})/, '<span class="ft-match-date">$1</span>'); h += '<tr>'+'<td class="ft-tournament" title="'+d.tournament+'">'+d.tournament+'</td>'+'<td class="ft-match">'+mHtml+'</td>'+'<td>'+rChances(d.prob1, d.prob2)+'</td>'+'<td>'+rTip(d.tip)+'</td>'+'<td class="hide-md">'+rSets(d.setsPred)+'</td>'+'<td class="hide-sm">'+rGames(d.actualGames)+'</td>'+'<td>'+rScore(d.actualGames, d.tip)+'</td>'+'</tr>'; }); h += '</tbody></table>'; const now = new Date(); const timeStr = now.toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'}); h += '<div class="ft-footer">↻ '+timeStr+'</div>'; container.innerHTML = h; } catch(e){ console.error('🎾 Error:', e); container.innerHTML = '<div class="ft-error">⚠️ '+e.message+'</div>'; } }
-                    document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', load) : load();
-                    setInterval(load, 300000);
-                })();
-            <\/script>
-        `;
-    }
+        return `<!-- 🎾 Tennis Predictions - Black & Lime (Optimized) -->
+<div id="tennis-app">
+  <div class="ft-header">
+    <h2>🎾 Прогнозы</h2>
+    <span class="ft-badge">LIVE</span>
+  </div>
+  <div class="ft-loading">
+    <div class="ft-spinner"></div>
+    <span>Загрузка...</span>
+  </div>
+</div>
 
+<style>
+  #tennis-app {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    max-width: 100%;
+    margin: 0 auto;
+    color: #ffffff;
+    background: #000000;
+    line-height: 1.5;
+  }
+
+  .ft-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #000000;
+    border-bottom: 2px solid #7fff00;
+  }
+  .ft-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .ft-badge {
+    background: #7fff00;
+    color: #000000;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 12px;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
+
+  .ft-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #000000;
+    font-size: 13px;
+  }
+  
+  .ft-table thead {
+    background: #111111;
+    color: #7fff00;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .ft-table th {
+    padding: 10px 8px;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #7fff00;
+  }
+  
+  .ft-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #222222;
+    vertical-align: middle;
+    color: #ffffff;
+  }
+  
+  .ft-table tbody tr:nth-child(even) {
+    background: #0a0a0a;
+  }
+  
+  .ft-table tbody tr:hover {
+    background: #1a1a1a;
+  }
+  
+  .ft-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .ft-tournament {
+    font-weight: 600;
+    color: #7fff00;
+    text-align: left !important;
+    max-width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .ft-match {
+    text-align: left !important;
+    font-weight: 500;
+    min-width: 180px;
+  }
+  .ft-match-date {
+    display: block;
+    font-size: 11px;
+    color: #888888;
+    margin-top: 3px;
+  }
+
+  .ft-chances {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-weight: 700;
+  }
+  .ft-c-high { color: #7fff00; font-size: 14px; }
+  .ft-c-low { color: #ff4444; font-size: 13px; }
+  .ft-c-div { width: 1px; height: 16px; background: #444444; }
+
+  .ft-tip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    background: #7fff00;
+    color: #000000;
+    font-weight: 800;
+    border-radius: 50%;
+    font-size: 13px;
+  }
+
+  .ft-sets {
+    font-family: monospace;
+    font-weight: 600;
+    font-size: 13px;
+    color: #ffffff;
+    background: #222222;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  .ft-games {
+    font-family: monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    text-align: center;
+  }
+  .ft-g-line { display: block; }
+  .ft-g-win { color: #7fff00; font-weight: 700; }
+  .ft-g-loss { color: #ff4444; font-weight: 700; }
+
+  .ft-score {
+    font-family: monospace;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    gap: 4px;
+  }
+  .ft-score.ft-correct { 
+    background: #7fff00; 
+    color: #000000;
+  }
+  .ft-score.ft-wrong { 
+    background: #330000; 
+    color: #ff4444;
+  }
+  .ft-score.ft-neutral { 
+    background: #222222; 
+    color: #888888;
+  }
+
+  .ft-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    color: #888888;
+    gap: 12px;
+  }
+  .ft-spinner {
+    width: 28px;
+    height: 28px;
+    border: 3px solid #333333;
+    border-top-color: #7fff00;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  
+  .ft-error {
+    text-align: center;
+    padding: 20px;
+    color: #ff4444;
+    background: #220000;
+    border: 1px solid #ff4444;
+    border-radius: 8px;
+    margin: 16px;
+    font-size: 13px;
+  }
+
+  .ft-footer {
+    text-align: right;
+    font-size: 11px;
+    color: #666666;
+    padding: 10px 16px 14px;
+    background: #000000;
+    border-top: 1px solid #222222;
+  }
+
+  @media (max-width: 768px) {
+    .ft-table { font-size: 12px; }
+    .hide-md { display: none; }
+    .ft-tournament { max-width: 100px; }
+    .ft-match { min-width: 150px; }
+    .ft-table th, .ft-table td { padding: 8px 6px; }
+  }
+  @media (max-width: 480px) {
+    .hide-sm { display: none; }
+    .ft-header { padding: 10px 12px; }
+    .ft-header h2 { font-size: 16px; }
+  }
+</style>
+
+<script>
+(function(){
+  if(window.__ftReady) return; window.__ftReady=true;
+  
+  const API = 'https://script.google.com/macros/s/AKfycbwNW_xYTM2alBQIaDgSancRYsozcAvBExTg1Zch5kVzErrCZjzlMFLSnn3dym69_t5Grw/exec';
+
+  function rChances(p1, p2){
+    const n1 = parseInt(p1)||0, n2 = parseInt(p2)||0;
+    const c1 = n1>n2?'ft-c-high':'ft-c-low', c2 = n2>n1?'ft-c-high':'ft-c-low';
+    return '<div class="ft-chances">'+
+      '<span class="'+c1+'">'+n1+'%</span>'+
+      '<div class="ft-c-div"></div>'+
+      '<span class="'+c2+'">'+n2+'%</span>'+
+      '</div>';
+  }
+  
+  function rTip(v){ 
+    return (v==='1'||v==='2') 
+      ? '<div class="ft-tip" title="Прогноз: '+v+'">'+v+'</div>' 
+      : '<span style="color:#444444">—</span>'; 
+  }
+  
+  function rSets(v){
+    if(!v) return '—';
+    const nums = v.match(/\\d/g);
+    return (nums && nums.length>=2) 
+      ? '<span class="ft-sets">'+nums[0]+':'+nums[1]+'</span>' 
+      : '—';
+  }
+
+  function parseTennisScores(v) {
+    if (!v) return { pairs: [], s1: 0, s2: 0 };
+    const nums = v.match(/\\d+/g)?.map(Number) || [];
+    if (nums.length < 2 || nums.length % 2 !== 0) return { pairs: [], s1: 0, s2: 0 };
+    const half = nums.length / 2;
+    const pairs = [];
+    for (let i = 0; i < half; i++) {
+      pairs.push({ p1: nums[i], p2: nums[i + half] });
+    }
+    let s1=0, s2=0;
+    pairs.forEach(s => { if(s.p1>s.p2) s1++; else if(s.p2>s.p1) s2++; });
+    return { pairs, s1, s2 };
+  }
+
+  function rGames(v) {
+    const { pairs } = parseTennisScores(v);
+    if (pairs.length === 0) return '—';
+    let h = '<div class="ft-games">';
+    pairs.forEach(s => {
+      const cls = s.p1 > s.p2 ? 'ft-g-win' : s.p1 < s.p2 ? 'ft-g-loss' : '';
+      h += '<span class="ft-g-line '+cls+'">'+s.p1+'-'+s.p2+'</span>';
+    });
+    return h + '</div>';
+  }
+
+  function rScore(gamesStr, prediction) {
+    const { s1, s2 } = parseTennisScores(gamesStr);
+    if (s1 === 0 && s2 === 0) return '—';
+    const actualWinner = s1 > s2 ? '1' : '2';
+    if (!prediction || prediction === '—') {
+      return '<span class="ft-score ft-neutral">'+s1+':'+s2+'</span>';
+    }
+    const cls = (prediction === actualWinner) ? 'ft-correct' : 'ft-wrong';
+    const icon = prediction === actualWinner ? '✓' : '✗';
+    return '<span class="ft-score '+cls+'" title="'+(prediction===actualWinner?'✓ Верно':'✗ Ошибка')+'">'+icon+' '+s1+':'+s2+'</span>';
+  }
+
+  function parseDate(str){
+    const m = str.match(/(\\d{1,2})\\/(\\d{1,2})\\/(\\d{2,4})\\s+(\\d{1,2}):(\\d{2})/);
+    return m ? new Date(m[3].length===2?'20'+m[3]:m[3], m[2]-1, m[1], m[4], m[5]) : new Date(0);
+  }
+
+  async function load(){
+    const container = document.getElementById('tennis-app');
+    try{
+      const res = await fetch(API + '?t=' + Date.now(), {cache:'no-store'});
+      const j = await res.json();
+      
+      if(!j.success) throw new Error(j.error || 'Ошибка сервера');
+      if(!j.data || j.data.length===0) throw new Error('Матчи не найдены');
+
+      j.data.sort((a,b) => parseDate(b.match) - parseDate(a.match));
+
+      let h = '';
+      h += '<table class="ft-table"><thead><tr>';
+      h += '<th>Турнир</th><th>Матч</th><th>Шансы</th><th>Прогноз</th>';
+      h += '<th class="hide-md">Сеты</th><th class="hide-sm">Геймы</th><th>Счёт</th>';
+      h += '</tr></thead><tbody>';
+      
+      j.data.forEach(d=>{
+        const mHtml = d.match.replace(/(\\d{1,2}\\/\\d{1,2}\\/\\d{2,4}\\s+\\d{1,2}:\\d{2})/, 
+          '<span class="ft-match-date">$1</span>');
+        h += '<tr>'+
+          '<td class="ft-tournament" title="'+d.tournament+'">'+d.tournament+'</td>'+
+          '<td class="ft-match">'+mHtml+'</td>'+
+          '<td>'+rChances(d.prob1, d.prob2)+'</td>'+
+          '<td>'+rTip(d.tip)+'</td>'+
+          '<td class="hide-md">'+rSets(d.setsPred)+'</td>'+
+          '<td class="hide-sm">'+rGames(d.actualGames)+'</td>'+
+          '<td>'+rScore(d.actualGames, d.tip)+'</td>'+
+          '</tr>';
+      });
+      
+      h += '</tbody></table>';
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+      h += '<div class="ft-footer">↻ '+timeStr+'</div>';
+      
+      container.innerHTML = h;
+      
+    } catch(e){
+      console.error('🎾 Error:', e);
+      container.innerHTML = '<div class="ft-error">⚠️ '+e.message+'</div>';
+    }
+  }
+  
+  document.readyState === 'loading' 
+    ? document.addEventListener('DOMContentLoaded', load) 
+    : load();
+    
+  setInterval(load, 300000);
+  
+})();
+<\/script>`;
+    }
+    
     // Заглушка для АИ модели
     function getAIPlaceholder() {
         return `
@@ -492,12 +783,10 @@
                 window.location.href = linkUrl;
                 return;
             } else if (pageId === 'matches') {
-                // Остаёмся на scanmatch.html — загружаем ТВОЮ таблицу
+                // Остаёмся на scanmatch.html — загружаем таблицу прогнозов
                 htmlContent = getPredictionsHTML();
             } else if (pageId === 'ai') {
                 htmlContent = getAIPlaceholder();
-                // window.location.href = 'aimodel.html';
-                // return;
             }
             contentDiv.innerHTML = htmlContent;
             contentDiv.style.opacity = '1';
@@ -535,9 +824,11 @@
                 }
             });
         });
-        // Загружаем ТВОЮ таблицу по умолчанию
+        // Загружаем таблицу прогнозов по умолчанию
         const contentDiv = document.getElementById('page-content');
-        contentDiv.innerHTML = getPredictionsHTML();
+        if (contentDiv) {
+            contentDiv.innerHTML = getPredictionsHTML();
+        }
         // Подсвечиваем "Оценка матчей"
         highlightActiveButton();
     }
