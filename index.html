@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #050507;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ШАПКА — надпись СВЕРХУ */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 40vh;
+            background: radial-gradient(ellipse at 50% 40%, #0a0a12 0%, #020205 100%);
+            overflow: hidden;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* ЧАСТИЦЫ СНИЗУ ВВЕРХ НА ВСЮ ШИРИНУ */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            bottom: -20px;
+            background: radial-gradient(circle, rgba(204, 255, 0, 0.7), rgba(204, 255, 0, 0));
+            border-radius: 50%;
+            animation: floatUp linear infinite;
+            will-change: transform;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-120vh) translateX(var(--shift, 40px));
+                opacity: 0;
+            }
+        }
+
+        /* летающие теннисные мячики (декор) */
+        .tennis-ball {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            background: radial-gradient(circle at 35% 35%, #e8d44d, #c9a82b);
+            border-radius: 50%;
+            filter: blur(1.5px);
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 1;
+            animation: flyBall 18s infinite ease-in-out;
+        }
+
+        @keyframes flyBall {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(60px, -40px) rotate(90deg);
+            }
+            50% {
+                transform: translate(-30px, -80px) rotate(180deg);
+            }
+            75% {
+                transform: translate(40px, -30px) rotate(270deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+
+        /* светящиеся орбы для атмосферы */
+        .glow-orb {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(204, 255, 0, 0.05), transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: orbFloat 14s infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes orbFloat {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            100% { transform: translate(40px, 30px) scale(1.2); opacity: 0.6; }
+        }
+
+        /* ОСНОВНОЙ КОНТЕНТ — ПРИЖАТ К ВЕРХУ */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* ЛОГОТИП СВЕРХУ */
+        .logo {
+            font-size: clamp(1.7rem, 5vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #FFFFFF 0%, #CCCCCC 50%, #FFFFFF 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shimmer 3s linear infinite alternate;
+            margin-bottom: 0.75rem;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #ccff00, #9eff00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(204, 255, 0, 0.5);
+            animation: pulseGlow 1.8s infinite alternate;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes pulseGlow {
+            0% { text-shadow: 0 0 5px rgba(204, 255, 0, 0.3); }
+            100% { text-shadow: 0 0 25px rgba(204, 255, 0, 0.8); }
+        }
+
+        /* МИНИМАЛЬНОЕ ОПИСАНИЕ */
+        .description {
+            font-size: 1rem;
+            color: #a0a0b8;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.5;
+            font-weight: 400;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(8px);
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            animation: fadeInUp 0.7s;
+        }
+
+        /* анимация появления */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* адаптив */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 35vh;
+                padding: 1.5rem 1.5rem 3rem;
+            }
+            .description {
+                font-size: 0.85rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <!-- ЧАСТИЦЫ СНИЗУ ВВЕРХ (60 штук) -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Летающие мячи (декор) -->
+    <div class="tennis-ball" style="top: 15%; left: 5%; width: 28px; height: 28px; animation-duration: 14s;"></div>
+    <div class="tennis-ball" style="bottom: 20%; right: 8%; width: 32px; height: 32px; animation-duration: 19s; animation-delay: -4s;"></div>
+    <div class="tennis-ball" style="top: 60%; left: 88%; width: 24px; height: 24px; animation-duration: 21s; animation-delay: -7s;"></div>
+    
+    <!-- Светящиеся орбы -->
+    <div class="glow-orb" style="top: -150px; left: -100px;"></div>
+    <div class="glow-orb" style="bottom: -150px; right: -100px; animation-duration: 16s;"></div>
+
+    <!-- КОНТЕНТ ПРИЖАТ К ВЕРХУ -->
+    <div class="hero-content">
+        <h1 class="logo">
+            True<span>Set</span>
+        </h1>
+        
+      
+    </div>
+</section>
+
+<script>
+    // ГЕНЕРАЦИЯ ЧАСТИЦ (60 штук, снизу вверх, на всю ширину)
+    const particlesContainer = document.getElementById('particles');
+    if (particlesContainer) {
+        for (let i = 0; i < 60; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // случайный размер от 2 до 8 пикселей
+            const size = Math.random() * 6 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            
+            // случайная позиция по горизонтали (вся ширина)
+            particle.style.left = Math.random() * 100 + '%';
+            
+            // случайная скорость (время анимации от 5 до 12 секунд)
+            const duration = Math.random() * 7 + 5;
+            particle.style.animationDuration = duration + 's';
+            
+            // случайная задержка старта
+            particle.style.animationDelay = Math.random() * 8 + 's';
+            
+            // случайная прозрачность
+            particle.style.opacity = Math.random() * 0.6 + 0.2;
+            
+            // цвет частицы
+            particle.style.background = `radial-gradient(circle, rgba(204, 255, 0, ${Math.random() * 0.6 + 0.3}), rgba(204, 255, 0, 0))`;
+            
+            // небольшое случайное смещение по X в анимации
+            const shiftX = (Math.random() - 0.5) * 80;
+            particle.style.setProperty('--shift', shiftX + 'px');
+            
+            particlesContainer.appendChild(particle);
+        }
+    }
+
+    // Эффект свечения за курсором
+    const cursorGlow = document.createElement('div');
+    cursorGlow.style.position = 'fixed';
+    cursorGlow.style.width = '300px';
+    cursorGlow.style.height = '300px';
+    cursorGlow.style.background = 'radial-gradient(circle, rgba(204, 255, 0, 0.04), transparent 70%)';
+    cursorGlow.style.borderRadius = '50%';
+    cursorGlow.style.pointerEvents = 'none';
+    cursorGlow.style.transform = 'translate(-50%, -50%)';
+    cursorGlow.style.zIndex = '999';
+    cursorGlow.style.opacity = '0';
+    cursorGlow.style.transition = 'opacity 0.3s';
+    document.body.appendChild(cursorGlow);
+    
+    let mouseX = 0, mouseY = 0;
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (cursorGlow.style.opacity !== '1') {
+            cursorGlow.style.opacity = '0.6';
+        }
+        cursorGlow.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+    });
+    
+    document.addEventListener('mouseleave', () => {
+        cursorGlow.style.opacity = '0';
+    });
+</script>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    ::-webkit-scrollbar {
+        width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #07070c;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #2c2c3a;
+        border-radius: 8px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #ccff00;
+    }
+    
+    .hero {
+        animation: fadeIn 0.8s ease;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+</body>
+</html>
+<!-- Новости SetTrue - простая вставка -->
+<div style="width: 100%; margin: 0; padding: 0;">
+  <iframe 
+    src="https://script.google.com/macros/s/AKfycbzOe-YN_leaGPWJDa9Kmv6KOX92J07K45OkAWVsCxI1kXn3RztmuUQMHJIJQgZnfnw-SQ/exec"
+    style="width: 100%; border: none; display: block; height: 1900px;"
+    frameborder="0"
+    scrolling="no">
+  </iframe>
+</div>
+
+<!-- ======================== -->
+<!-- Футер SetTrue - SEO панель -->
+<!-- ======================== -->
+
+<footer style="width: 100%; background: #0a0a0f; border-top: 1px solid rgba(210, 255, 64, 0.15); margin-top: 0; padding: 40px 20px 20px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+  
+  <div style="max-width: 1200px; margin: 0 auto;">
+    
+    <!-- Основная сетка футера -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 35px; margin-bottom: 40px;">
+      
+      <!-- Колонка 1: О проекте -->
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+          <span style="font-size: 28px;">🎾</span>
+          <h3 style="color: #d2ff40; font-size: 20px; font-weight: 700; margin: 0;">SETTRUE</h3>
+        </div>
+        <p style="color: #888; font-size: 13px; line-height: 1.6; margin-bottom: 15px;">
+          Математические прогнозы на основе статистики и алгоритмов машинного обучения. 
+          Только цифры, никакой воды.
+        </p>
+        <div style="display: flex; gap: 15px; margin-top: 15px;">
+          <a href="#" style="color: #888; text-decoration: none; font-size: 20px; transition: color 0.2s;">📘</a>
+          <a href="#" style="color: #888; text-decoration: none; font-size: 20px; transition: color 0.2s;">📺</a>
+          <a href="#" style="color: #888; text-decoration: none; font-size: 20px; transition: color 0.2s;">💬</a>
+        </div>
+      </div>
+      
+      <!-- Колонка 2: Контакты -->
+      <div>
+        <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">КОНТАКТЫ</h4>
+        <p style="color: #999; font-size: 13px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+          📧 <a href="mailto:SetTrueForecast@yandex.ru" style="color: #d2ff40; text-decoration: none;">SetTrueForecast@yandex.ru</a>
+        </p>
+        <p style="color: #666; font-size: 12px; margin-top: 15px;">
+          По вопросам сотрудничества и обратной связи
+        </p>
+      </div>
+      
+      <!-- Колонка 3: Статистика -->
+      <div>
+        <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">СТАТИСТИКА</h4>
+        <p style="color: #999; font-size: 13px; margin-bottom: 8px;">📈 Прогнозы: <span style="color: #d2ff40;">ежедневно</span></p>
+        <p style="color: #999; font-size: 13px; margin-bottom: 8px;">🎾 Турниры: <span style="color: #d2ff40;">ATP / WTA</span></p>
+        <p style="color: #999; font-size: 13px; margin-bottom: 8px;">📊 Точность модели: <span style="color: #d2ff40;">72%</span></p>
+      </div>
+    </div>
+    
+    <!-- SEO-текст (важно для поисковых систем) -->
+    <div style="margin: 30px 0 25px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-radius: 12px; border-left: 3px solid #d2ff40;">
+      <h4 style="color: #d2ff40; font-size: 13px; font-weight: 600; margin-bottom: 12px; letter-spacing: 1px;">📌 О ПРОЕКТЕ SETTRUE</h4>
+      <p style="color: #777; font-size: 12px; line-height: 1.6; margin-bottom: 10px;">
+        <strong>SetTrue</strong> — это уникальный проект, посвящённый <strong>прогнозам</strong> на основе математических алгоритмов. 
+        Мы анализируем статистику, форму и другие ключевые факторы.
+      </p>
+      <p style="color: #777; font-size: 12px; line-height: 1.6; margin-bottom: 10px;">
+        Наша <strong>математическая модель</strong> автоматически обрабатывает данные и выдаёт вероятности исходов. 
+        Все прогнозы обновляются ежедневно и абсолютно бесплатны.
+      </p>
+      <p style="color: #777; font-size: 12px; line-height: 1.6;">
+        📍 <strong>SetTrue</strong> — стань умнее с холодным математическим расчётом. Цифры. Точность. Результат.
+      </p>
+    </div>
+    
+    <!-- Нижняя строка с копирайтом -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.05); gap: 15px;">
+      <p style="color: #555; font-size: 11px; margin: 0;">
+        © SetTrue — Математические прогнозы. Все права защищены.
+      </p>
+      <div style="display: flex; gap: 20px;">
+        <a href="#" style="color: #555; text-decoration: none; font-size: 11px; transition: color 0.2s;">Политика конфиденциальности</a>
+        <a href="#" style="color: #555; text-decoration: none; font-size: 11px; transition: color 0.2s;">Пользовательское соглашение</a>
+      </div>
+    </div>
+    
+  </div>
+</footer>
+
+<style>
+  /* Эффекты при наведении на ссылки */
+  footer a:hover {
+    color: #d2ff40 !important;
+  }
+  
+  /* Адаптив для телефонов */
+  @media (max-width: 600px) {
+    footer {
+      padding: 30px 15px 15px !important;
+    }
+  }
+</style>
