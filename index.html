@@ -248,10 +248,6 @@
       <p style="color: #555; font-size: 11px; margin: 0;">
         © SetTrue — Математические прогнозы. Все права защищены.
       </p>
-      <div style="display: flex; gap: 20px;">
-        <a href="#" style="color: #555; text-decoration: none; font-size: 11px; transition: color 0.2s;">Политика конфиденциальности</a>
-        <a href="#" style="color: #555; text-decoration: none; font-size: 11px; transition: color 0.2s;">Пользовательское соглашение</a>
-      </div>
     </div>
   </div>
 </footer>
@@ -319,7 +315,7 @@
                 htmlContent = `
                     <div style="width: 100%; margin: 0; padding: 0;">
                         <iframe 
-                            src="https://script.google.com/macros/s/AKfycbxznDuZdlpK7t0mqiNN4g3aIyFCkd0_BFikH-4CD441C9iSkdT217Hg16in0oaTeGFHGQ/exec"
+                            src="https://script.google.com/macros/s/AKfycbyvNir0d3tnQkPe01e6Fu1wah9nyFoLLkGcYvVZ7lKbKlEZiyemTZlyB8E-QhDbHQdRfQ/exec"
                             class="news-iframe"
                             frameborder="0"
                             scrolling="no"
@@ -339,10 +335,6 @@
             } else if (pageId === 'ai') {
                 // АИ МОДЕЛЬ: Показываем заглушку
                 htmlContent = getAIDevelopmentBlock();
-                
-                // Если нужно включить переход на файл aimodel.html, раскомментируйте строки ниже:
-                // window.location.href = 'aimodel.html';
-                // return;
             }
 
             contentDiv.innerHTML = htmlContent;
