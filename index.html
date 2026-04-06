@@ -16,20 +16,19 @@
 <!-- /Yandex.Metrika counter -->
     <meta name="yandex-verification" content="0ac8a3221431959f" />
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- === SEO META TAGS === -->
     <title>SetTrue — Математические прогнозы на спорт | Футбол, Хоккей, Теннис</title>
-    <meta name="description" content="Бесплатные математические прогнозы на спорт с точностью 72%. Аналитика денежных потоков, коэффициенты и статистика для футбола, хоккея, тенниса и баскетбола. SetTrue (TrueSet).">
-    <meta name="keywords" content="прогнозы на спорт, ставки на спорт, прогнозы на футбол, прогнозы на хоккей, прогнозы на теннис, аналитика ставок, денежные потоки, SetTrue, TrueSet, коэффициенты букмекеров">
+    <meta name="description" content="Бесплатные математические прогнозы на спорт: футбол, хоккей, теннис, баскетбол. Точность 72%. Аналитика SetTrue (TrueSet), коэффициенты, статистика НХЛ, КХЛ, РПЛ, ATP, WTA.">
+    <meta name="keywords" content="прогнозы на спорт, ставки на спорт, прогнозы на футбол, прогнозы на хоккей, прогнозы на теннис, прогнозы на баскетбол, аналитика спорта, сеттру, трусет, SetTrue, TrueSet, коэффициенты">
     <meta name="author" content="SetTrue">
     <meta name="robots" content="index, follow">
+    
     <link rel="canonical" href="https://settrue.ru/">
     <meta name="theme-color" content="#050507">
-    <!-- Отключаем автоматический перевод Google -->
-    <meta name="google" content="notranslate">
     
-    <!-- === OPEN GRAPH (Для соцсетей) === -->
+    <!-- === OPEN GRAPH === -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="SetTrue — Прогнозы на спорт с точностью 72%">
     <meta property="og:description" content="Математические прогнозы на футбол, хоккей, теннис и баскетбол. Только цифры, никакой воды.">
@@ -48,39 +47,28 @@
     <link rel="dns-prefetch" href="https://script.google.com">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 
-    <!-- === STRUCTURED DATA (JSON-LD) === -->
+    <!-- === STRUCTURED DATA === -->
     <script type="application/ld+json">
-    [
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "SetTrue",
-        "alternateName": "TrueSet",
-        "url": "https://settrue.ru/",
-        "description": "Математические прогнозы на спорт с точностью 72%",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://settrue.ru/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "SetTrue",
+      "alternateName": "TrueSet",
+      "url": "https://settrue.ru/",
+      "description": "Математические прогнозы на спорт с точностью 72%",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "156",
+        "bestRating": "5",
+        "worstRating": "1"
       },
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "SetTrue",
-        "url": "https://settrue.ru",
-        "logo": "https://settrue.ru/favicon-32x32.png",
-        "sameAs": [
-          "https://vk.com/settrue",
-          "https://t.me/settrue"
-        ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "email": "SetTrueForecast@yandex.ru",
-          "contactType": "customer support"
-        }
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://settrue.ru/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
       }
-    ]
+    }
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -88,39 +76,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { background: #050507; font-family: 'Inter', sans-serif; overflow-x: hidden; min-height: 100vh; color: #fff; }
-        
-        /* Particles */
-        .global-particles { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            z-index: 9999; 
-            pointer-events: none; 
-            overflow: hidden; 
-            mask-image: radial-gradient(circle at center, transparent 0%, transparent 35%, black 70%, black 100%); 
-            -webkit-mask-image: radial-gradient(circle at center, transparent 0%, transparent 35%, black 70%, black 100%); 
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #050507; font-family: 'Inter', sans-serif; overflow-x: hidden; min-height: 100vh; }
+        html, body { background: #050507; }
+
+        .global-particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9998; pointer-events: none; overflow: hidden; mask-image: radial-gradient(circle at center, transparent 0%, transparent 35%, black 70%, black 100%); -webkit-mask-image: radial-gradient(circle at center, transparent 0%, transparent 35%, black 70%, black 100%); }
         .global-particle { position: absolute; bottom: -20px; background: radial-gradient(circle, rgba(204, 255, 0, 0.7), rgba(204, 255, 0, 0)); border-radius: 50%; animation: floatUpGlobal linear infinite; will-change: transform; }
         @keyframes floatUpGlobal { 0% { transform: translateY(0) translateX(0); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.7; } 100% { transform: translateY(-120vh) translateX(var(--shift, 40px)); opacity: 0; } }
 
-        /* Hero & Nav */
         .hero { position: relative; width: 100%; min-height: 28vh; background: transparent; padding: 1rem 1.5rem 2rem; }
         .nav-buttons { position: relative; z-index: 20; display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 1.8rem; padding-top: 0.5rem; }
-        .nav-btn { 
-            background: rgba(10, 10, 18, 0.8); backdrop-filter: blur(10px); 
-            border: 1px solid rgba(204, 255, 0, 0.25); color: #e0e0e0; 
-            font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; 
-            padding: 0.6rem 1.4rem; border-radius: 40px; cursor: pointer; 
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1); letter-spacing: 0.3px; 
-            position: relative; overflow: hidden; text-decoration: none;
-        }
+        .nav-btn { background: rgba(10, 10, 18, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(204, 255, 0, 0.25); color: #e0e0e0; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; padding: 0.6rem 1.4rem; border-radius: 40px; cursor: pointer; transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1); letter-spacing: 0.3px; position: relative; overflow: hidden; }
         .nav-btn::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; border-radius: 50%; background: rgba(204, 255, 0, 0.2); transform: translate(-50%, -50%); transition: width 0.5s, height 0.5s; }
         .nav-btn:hover::before { width: 200px; height: 200px; }
-        .nav-btn:hover, .nav-btn.active { border-color: rgba(204, 255, 0, 0.8); color: #ccff00; transform: translateY(-2px); box-shadow: 0 5px 20px rgba(204, 255, 0, 0.15); }
+        .nav-btn:hover { border-color: rgba(204, 255, 0, 0.8); color: #ccff00; transform: translateY(-2px); box-shadow: 0 5px 20px rgba(204, 255, 0, 0.15); }
         .nav-btn:active { transform: translateY(1px); }
 
         .hero-content { position: relative; z-index: 10; text-align: center; max-width: 900px; width: 100%; margin: 0 auto; }
@@ -134,33 +103,6 @@
         .description { font-size: 0.9rem; color: #a0a0b8; max-width: 650px; margin: 0 auto; line-height: 1.5; font-weight: 400; background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(8px); padding: 0.5rem 1.2rem; border-radius: 40px; border: 1px solid rgba(255, 255, 255, 0.05); animation: fadeInUp 0.7s; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Content */
-        #page-content { transition: opacity 0.2s ease; min-height: 300px; position: relative; z-index: 5; width: 100%; }
-        
-        /* Стили для iframe новостей */
-        .news-iframe { 
-            width: 100%; 
-            border: none; 
-            display: block; 
-            height: 1900px; 
-            background: transparent; 
-        }
-
-        /* Footer */
-        footer { width: 100%; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(10px); border-top: 1px solid rgba(210, 255, 64, 0.15); padding: 40px 20px 20px; font-family: 'Inter', sans-serif; position: relative; z-index: 10; }
-        footer a { color: #888; text-decoration: none; transition: color 0.2s; }
-        footer a:hover { color: #d2ff40 !important; }
-
-        /* Dev Card */
-        .development-card { max-width: 800px; margin: 3rem auto; padding: 1rem; text-align: center; }
-        .dev-inner { background: rgba(10,10,18,0.6); backdrop-filter: blur(10px); border-radius: 24px; padding: 2.5rem 1.5rem; border: 1px solid rgba(204,255,0,0.2); }
-        .dev-icon { font-size: 50px; margin-bottom: 1rem; display: inline-block; animation: subtleFloat 3s ease-in-out infinite; }
-        @keyframes subtleFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-        .dev-title { color: #ccff00; margin-bottom: 1rem; font-size: 1.8rem; font-weight: 700; }
-        .dev-text { color: #aaa; line-height: 1.6; margin-bottom: 1.5rem; }
-        .dev-divider { width: 60px; height: 2px; background: linear-gradient(90deg, transparent, #ccff00, transparent); margin: 0 auto; }
-
-        /* Scrollbar */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #07070c; }
         ::-webkit-scrollbar-thumb { background: #2c2c3a; border-radius: 8px; }
@@ -168,43 +110,57 @@
 
         .hero { animation: fadeIn 0.8s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        #page-content { transition: opacity 0.2s ease; min-height: 300px; position: relative; z-index: 5; }
+        
+        /* Стили для iframe новостей */
+        .news-iframe {
+            width: 100%;
+            border: none;
+            display: block;
+            height: 1900px;
+            background: transparent;
+        }
 
-        /* === MOBILE ADAPTATION (3 Columns for News) === */
+        /* Стили для таблички "В разработке" */
+        .development-card { max-width: 800px; margin: 3rem auto; padding: 2rem; text-align: center; }
+        .dev-inner { background: rgba(10,10,18,0.6); backdrop-filter: blur(10px); border-radius: 32px; padding: 3rem 2rem; border: 1px solid rgba(204,255,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .dev-inner:hover { transform: translateY(-5px); box-shadow: 0 20px 35px -15px rgba(0,0,0,0.5); border-color: rgba(204,255,0,0.4); }
+        .dev-icon { font-size: 64px; margin-bottom: 1rem; display: inline-block; animation: subtleFloat 3s ease-in-out infinite; }
+        @keyframes subtleFloat { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
+        .dev-title { color: #ccff00; margin-bottom: 1rem; font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; }
+        .dev-text { color: #aaa; line-height: 1.6; margin-bottom: 1.5rem; font-size: 1rem; }
+        .dev-divider { width: 80px; height: 2px; background: linear-gradient(90deg, transparent, #ccff00, transparent); margin: 0 auto; }
+        .dev-note { color: #666; margin-top: 1.5rem; font-size: 0.85rem; }
+
+        /* === МОБИЛЬНАЯ АДАПТАЦИЯ (3 КОЛОНКИ КАК НА ПК) === */
         @media (max-width: 768px) {
-            .hero { padding: 1rem 1rem 1.5rem; min-height: auto; }
-            .nav-buttons { gap: 0.6rem; margin-bottom: 1.2rem; width: 100%; }
-            .nav-btn { 
-                flex: 1 1 40%; /* Кнопки по 2 в ряд или растягиваются */
-                text-align: center; 
-                padding: 0.7rem 0.5rem; 
-                font-size: 0.85rem; 
-                min-width: 120px;
-            }
-            .description { font-size: 0.85rem; padding: 0.5rem 1rem; }
+            .hero { min-height: 32vh; padding: 0.8rem 1rem 1.5rem; }
+            .nav-btn { padding: 0.45rem 1rem; font-size: 0.8rem; }
+            .nav-buttons { gap: 0.8rem; margin-bottom: 1.2rem; }
+            .description { font-size: 0.8rem; }
             
-            /* АДАПТАЦИЯ НОВОСТЕЙ ПОД 3 КОЛОНКИ */
-            .news-iframe { 
-                height: 1200px; /* Уменьшаем высоту, так как контент будет шире */
+            /* Магия для 3 колонок на телефоне */
+            .news-iframe {
+                /* Уменьшаем масштаб в 3 раза */
+                transform: scale(0.333);
                 transform-origin: top left;
-                /* Магия для 3 колонок: уменьшаем масштаб и растягиваем */
-                transform: scale(0.33); 
-                width: 300%; 
+                /* Растягиваем ширину в 3 раза, чтобы компенсировать уменьшение */
+                width: 300%;
+                /* Высота тоже должна быть больше, так как мы уменьшили масштаб */
+                height: 600px; 
+                /* Обрезаем лишнее по ширине экрана */
+                overflow: hidden;
             }
-            
-            /* Контейнер для iframe, чтобы обрезать лишнее */
+            /* Контейнер iframe должен скрывать то, что вылезло за пределы экрана */
             #page-content > div {
                 width: 100%;
                 overflow: hidden;
             }
         }
-
-        @media (max-width: 480px) {
-            .nav-btn { flex: 1 1 100%; margin-bottom: 0.2rem; } /* На очень узких экранах кнопки в столбик */
-            .logo { font-size: 2.2rem; }
-        }
     </style>
 </head>
-<body translate="no">
+<body>
 
 <div class="global-particles" id="globalParticles"></div>
 
@@ -213,67 +169,81 @@
         <h1 class="seo-h1">SetTrue - Математические прогнозы на спорт: футбол, хоккей, теннис, баскетбол</h1>
 
         <div class="nav-buttons">
-            <button class="nav-btn active" data-page="home" data-link="/" aria-label="Главная страница">Главная</button>
-            <button class="nav-btn" data-page="predictions" data-link="/predict/" aria-label="Прогнозы на спорт">Прогнозы</button>
-            <button class="nav-btn" data-page="matches" data-link="/scanmatch/" aria-label="Оценка матчей">Оценка матчей</button>
-            <button class="nav-btn" data-page="cashflow" data-link="/cashflows/" aria-label="Денежные потоки">Денежные потоки</button>
-            <button class="nav-btn" data-page="ai" aria-label="АИ модель">АИ модель</button>
+            <button class="nav-btn" data-page="home" data-link="/">Главная</button>
+            <button class="nav-btn" data-page="predictions" data-link="/predict/">Прогнозы</button>
+            <button class="nav-btn" data-page="matches" data-link="/scanmatch/">Оценка матчей</button>
+            <button class="nav-btn" data-page="ai">АИ модель</button>
         </div>
 
         <div class="logo">True<span>Set</span></div>
         
         <div class="description">
-            Математическая точность 72% | Футбол • Хоккей • Теннис • Баскетбол
+            Математические прогнозы | Точность 72% | Футбол, Хоккей, Теннис, Баскетбол
         </div>
     </div>
 </section>
 
 <div id="page-content" role="main"></div>
 
-<footer>
+<footer style="width: 100%; background: rgba(10, 10, 15, 0.9); backdrop-filter: blur(2px); border-top: 1px solid rgba(210, 255, 64, 0.15); margin-top: 0; padding: 40px 20px 20px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
   <div style="max-width: 1200px; margin: 0 auto;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 35px; margin-bottom: 40px;">
       <div>
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
-          <span style="font-size: 24px;">🏆</span>
-          <h3 style="color: #d2ff40; font-size: 18px; font-weight: 700; margin: 0;">SETTRUE</h3>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+          <span style="font-size: 28px;">🏆</span>
+          <h3 style="color: #d2ff40; font-size: 20px; font-weight: 700; margin: 0;">SETTRUE</h3>
         </div>
-        <p style="color: #888; font-size: 13px; line-height: 1.5; margin-bottom: 15px;">
-          Профессиональная аналитика спортивных событий на основе алгоритмов машинного обучения.
+        <p style="color: #888; font-size: 13px; line-height: 1.6; margin-bottom: 15px;">
+          Математические прогнозы на основе статистики и алгоритмов машинного обучения. 
+          Только цифры, никакой воды.
         </p>
-        <div style="display: flex; gap: 15px; margin-top: 10px;">
-          <a href="#" aria-label="ВКонтакте">📘</a>
-          <a href="#" aria-label="Яндекс Дзен">📺</a>
-          <a href="#" aria-label="Телеграм">💬</a>
+        <div style="display: flex; gap: 15px; margin-top: 15px;">
+          <a href="#" style="color: #888; text-decoration: none; font-size: 20px; transition: color 0.2s;" aria-label="Наш канал в ВКонтакте">📘</a>
+          <a href="#" style="color: #888; text-decoration: none; font-size: 20px; transition: color 0.2s;" aria-label="Наш канал на Яндекс Дзен">📺</a>
+          <a href="#" style="color: #888; text-decoration: none; font-size: 20px; transition: color 0.2s;" aria-label="Наш чат в Телеграм">💬</a>
         </div>
       </div>
       
       <div>
-        <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 15px; letter-spacing: 0.5px;">КОНТАКТЫ</h4>
-        <p style="color: #999; font-size: 13px; margin-bottom: 8px;">
-          📧 <a href="mailto:SetTrueForecast@yandex.ru" style="color: #d2ff40;">SetTrueForecast@yandex.ru</a>
+        <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">КОНТАКТЫ</h4>
+        <p style="color: #999; font-size: 13px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+          📧 <a href="mailto:SetTrueForecast@yandex.ru" style="color: #d2ff40; text-decoration: none;">SetTrueForecast@yandex.ru</a>
+        </p>
+        <p style="color: #666; font-size: 12px; margin-top: 15px;">
+          По вопросам сотрудничества и обратной связи
         </p>
       </div>
       
       <div>
-        <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 15px; letter-spacing: 0.5px;">СТАТИСТИКА</h4>
-        <p style="color: #999; font-size: 13px; margin-bottom: 6px;">📈 Обновление: <span style="color: #d2ff40;">Ежедневно</span></p>
-        <p style="color: #999; font-size: 13px; margin-bottom: 6px;">⚽ Виды спорта: <span style="color: #d2ff40;">4+</span></p>
-        <p style="color: #999; font-size: 13px;">📊 Точность: <span style="color: #d2ff40;">~72%</span></p>
+        <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">СТАТИСТИКА</h4>
+        <p style="color: #999; font-size: 13px; margin-bottom: 8px;">📈 Прогнозы: <span style="color: #d2ff40;">ежедневно</span></p>
+        <p style="color: #999; font-size: 13px; margin-bottom: 8px;">⚽ Спорт: <span style="color: #d2ff40;">Футбол, Хоккей, Теннис, Баскетбол</span></p>
+        <p style="color: #999; font-size: 13px; margin-bottom: 8px;">📊 Точность модели: <span style="color: #d2ff40;">72%</span></p>
       </div>
     </div>
     
-    <div style="margin: 20px 0; padding: 15px; background: rgba(255, 255, 255, 0.02); border-radius: 8px; border-left: 2px solid #d2ff40;">
-      <p style="color: #777; font-size: 12px; line-height: 1.5;">
-        <strong>SetTrue</strong> использует математические модели для анализа вероятностей исходов в спорте. Мы предоставляем данные для принятия взвешенных решений.
+    <div style="margin: 30px 0 25px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-radius: 12px; border-left: 3px solid #d2ff40;">
+      <h4 style="color: #d2ff40; font-size: 13px; font-weight: 600; margin-bottom: 12px; letter-spacing: 1px;">📌 О ПРОЕКТЕ SETTRUE (TRUESET)</h4>
+      <p style="color: #777; font-size: 12px; line-height: 1.6; margin-bottom: 10px;">
+        <strong>SetTrue (TrueSet)</strong> — это уникальный проект, посвящённый <strong>прогнозам на спорт</strong> на основе математических алгоритмов. 
+        Мы анализируем статистику, форму и другие ключевые факторы в футболе, хоккее, теннисе и баскетболе.
+      </p>
+      <p style="color: #777; font-size: 12px; line-height: 1.6; margin-bottom: 10px;">
+        Наша <strong>математическая модель</strong> автоматически обрабатывает данные и выдаёт вероятности исходов. 
+        Все прогнозы обновляются ежедневно и абсолютно бесплатны.
+      </p>
+      <p style="color: #777; font-size: 12px; line-height: 1.6;">
+        📍 <strong>SetTrue</strong> — стань умнее с холодным математическим расчётом. Цифры. Точность. Результат.
       </p>
     </div>
     
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); gap: 10px;">
-      <p style="color: #555; font-size: 11px; margin: 0;">© 2026 SetTrue. Все права защищены.</p>
-      <div style="display: flex; gap: 15px;">
-        <a href="#" style="color: #555; font-size: 11px;">Privacy Policy</a>
-        <a href="#" style="color: #555; font-size: 11px;">Terms</a>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.05); gap: 15px;">
+      <p style="color: #555; font-size: 11px; margin: 0;">
+        © SetTrue — Математические прогнозы. Все права защищены.
+      </p>
+      <div style="display: flex; gap: 20px;">
+        <a href="#" style="color: #555; text-decoration: none; font-size: 11px; transition: color 0.2s;">Политика конфиденциальности</a>
+        <a href="#" style="color: #555; text-decoration: none; font-size: 11px; transition: color 0.2s;">Пользовательское соглашение</a>
       </div>
     </div>
   </div>
@@ -284,22 +254,20 @@
         const container = document.getElementById('globalParticles');
         if (!container) return;
         const isMobile = window.innerWidth < 768;
-        // Оптимизация: меньше частиц на мобильных
-        const particleCount = isMobile ? 40 : 120; 
-        
+        const particleCount = isMobile ? 50 : 150;
         container.innerHTML = '';
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
             particle.classList.add('global-particle');
-            const size = Math.random() * 6 + 2;
+            const size = Math.random() * 8 + 2;
             particle.style.width = size + 'px';
             particle.style.height = size + 'px';
             particle.style.left = Math.random() * 100 + '%';
-            const duration = Math.random() * 10 + 8;
+            const duration = Math.random() * 12 + 5;
             particle.style.animationDuration = duration + 's';
-            particle.style.animationDelay = Math.random() * 10 + 's';
-            particle.style.background = `radial-gradient(circle, rgba(204, 255, 0, ${Math.random() * 0.6 + 0.2}), rgba(204, 255, 0, 0))`;
-            const shiftX = (Math.random() - 0.5) * 100;
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.background = `radial-gradient(circle, rgba(204, 255, 0, ${Math.random() * 0.7 + 0.3}), rgba(204, 255, 0, 0))`;
+            const shiftX = (Math.random() - 0.5) * 150;
             particle.style.setProperty('--shift', shiftX + 'px');
             container.appendChild(particle);
         }
@@ -310,12 +278,16 @@
             <div class="development-card">
                 <div class="dev-inner">
                     <div class="dev-icon">🧠⚡</div>
-                    <h2 class="dev-title">AI Model в разработке</h2>
+                    <h2 class="dev-title">В разработке</h2>
                     <p class="dev-text">
-                        Мы обучаем нейросеть нового поколения для анализа Big Data в спорте.<br>
-                        Запуск ожидается в ближайшее время.
+                        Раздел «АИ модель» находится в стадии активной разработки.<br>
+                        Мы создаём мощную нейросеть для анализа спортивной статистики в реальном времени.
                     </p>
                     <div class="dev-divider"></div>
+                    <p class="dev-note">
+                        Скоро здесь появится детальная информация о математической модели, архитектуре и точности прогнозов.<br>
+                        Следите за обновлениями!
+                    </p>
                 </div>
             </div>
         `;
@@ -331,17 +303,15 @@
             let htmlContent = '';
             
             if (pageId === 'home') {
-                // ГЛАВНАЯ: Загружаем iframe с новостями
                 htmlContent = `
                     <div style="width: 100%; margin: 0; padding: 0; overflow: hidden;">
                         <iframe 
-                            src="https://script.google.com/macros/s/AKfycbyvNir0d3tnQkPe01e6Fu1wah9nyFoLLkGcYvVZ7lKbKlEZiyemTZlyB8E-QhDbHQdRfQ/exec"
+                            src="https://script.google.com/macros/s/AKfycbziMPJUaUfYZvgk8rneYD0uRYTMUPLcXaNDqY_gsaJQ6F68nw4IUxoc0zbZjZzwk4J4/exec"
                             class="news-iframe"
                             frameborder="0"
                             scrolling="no"
                             sandbox="allow-scripts allow-same-origin allow-forms"
-                            loading="lazy"
-                            title="Новости спорта">
+                            loading="lazy">
                         </iframe>
                     </div>
                 `;
@@ -349,9 +319,6 @@
                 window.location.href = linkUrl;
                 return;
             } else if (pageId === 'matches') {
-                window.location.href = linkUrl;
-                return;
-            } else if (pageId === 'cashflow') {
                 window.location.href = linkUrl;
                 return;
             } else if (pageId === 'ai') {
@@ -371,14 +338,16 @@
                 const link = btn.getAttribute('data-link');
                 
                 if (page) {
-                    btns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
+                    btns.forEach(b => b.style.background = 'rgba(10, 10, 18, 0.8)');
+                    btn.style.background = 'rgba(204, 255, 0, 0.15)';
                     loadPage(page, link);
                 }
             });
         });
         
         loadPage('home');
+        const defaultBtn = document.querySelector('.nav-btn[data-page="home"]');
+        if(defaultBtn) defaultBtn.style.background = 'rgba(204, 255, 0, 0.15)';
     }
     
     window.addEventListener('DOMContentLoaded', () => {
