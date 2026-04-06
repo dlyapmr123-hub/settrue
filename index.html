@@ -140,22 +140,28 @@
             .nav-buttons { gap: 0.8rem; margin-bottom: 1.2rem; }
             .description { font-size: 0.8rem; }
             
-            /* Магия для 3 колонок на телефоне */
+            /* Исправление для новостей на телефоне */
             .news-iframe {
-                /* Уменьшаем масштаб в 3 раза */
+                /* Уменьшаем масштаб в 3 раза, чтобы влезло 3 колонки */
                 transform: scale(0.333);
                 transform-origin: top left;
-                /* Растягиваем ширину в 3 раза, чтобы компенсировать уменьшение */
+                
+                /* Растягиваем ширину в 3 раза, чтобы компенсировать масштаб */
                 width: 300%;
-                /* Высота тоже должна быть больше, так как мы уменьшили масштаб */
-                height: 600px; 
-                /* Обрезаем лишнее по ширине экрана */
-                overflow: hidden;
+                
+                /* УВЕЛИЧИВАЕМ ВЫСОТУ В 3 РАЗА + ЗАПАС, чтобы влезли все новости */
+                height: 2500px; 
+                
+                /* ВАЖНО: Разрешаем скролл внутри iframe на телефоне, иначе обрежется */
+                overflow-y: auto; 
+                overflow-x: hidden;
             }
-            /* Контейнер iframe должен скрывать то, что вылезло за пределы экрана */
+            
+            /* Контейнер iframe должен скрывать горизонтальный выход за пределы */
             #page-content > div {
                 width: 100%;
-                overflow: hidden;
+                overflow-x: hidden;
+                overflow-y: visible; /* Чтобы скролл работал внутри iframe */
             }
         }
     </style>
@@ -306,7 +312,7 @@
                 htmlContent = `
                     <div style="width: 100%; margin: 0; padding: 0; overflow: hidden;">
                         <iframe 
-                            src="https://script.google.com/macros/s/AKfycbziMPJUaUfYZvgk8rneYD0uRYTMUPLcXaNDqY_gsaJQ6F68nw4IUxoc0zbZjZzwk4J4/exec"
+                            src="https://script.google.com/macros/s/AKfycbzt8WjNhj_wYqY2nCGwdGMxk1n6MA0CyQTR8IV7RhSxkpzVKpVNOUkqIQEGY2vZ5GJq/exec"
                             class="news-iframe"
                             frameborder="0"
                             scrolling="no"
