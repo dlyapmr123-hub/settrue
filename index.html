@@ -127,7 +127,7 @@
         footer a { color: #888; text-decoration: none; transition: color 0.2s; }
         footer a:hover { color: #d2ff40 !important; }
 
-        /* === МОБИЛЬНАЯ АДАПТАЦИЯ (3 КОЛОНКИ + ИСПРАВЛЕНИЕ ОТСТУПА) === */
+                /* === МОБИЛЬНАЯ АДАПТАЦИЯ (ИСПРАВЛЕНИЕ ОТСТУПА) === */
         @media (max-width: 768px) {
             .hero { min-height: 32vh; padding: 0.8rem 1rem 1.5rem; }
             .nav-btn { padding: 0.45rem 1rem; font-size: 0.8rem; }
@@ -143,19 +143,21 @@
                 /* Растягиваем ширину в 3 раза */
                 width: 300%;
                 
-                /* ОПТИМИЗИРОВАННАЯ ВЫСОТА: было 2500, стало 1800. Этого хватит на 13 новостей */
-                height: 1800px; 
+                /* Высота должна быть достаточной для контента */
+                height: 1600px; 
                 
-                /* Разрешаем скролл внутри, если новостей очень много */
+                /* Скролл внутри, если нужно */
                 overflow-y: auto; 
                 overflow-x: hidden;
             }
             
-            /* Контейнер iframe */
+            /* Контейнер iframe: ОТРИЦАТЕЛЬНЫЙ ОТСТУП убирает дыру снизу */
             #page-content > div {
                 width: 100%;
                 overflow-x: hidden;
                 overflow-y: visible;
+                /* Это подтянет футер вверх, компенсируя пустое место от масштаба */
+                margin-bottom: -500px; 
             }
         }
     </style>
