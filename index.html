@@ -202,6 +202,10 @@
     <button class="nav-btn" data-page="home" data-link="/" aria-label="Перейти на главную страницу">Главная</button>
     <button class="nav-btn" data-page="predictions" data-link="/predict/" aria-label="Перейти к прогнозам">Прогнозы</button>
     <button class="nav-btn" data-page="matches" data-link="/scanmatch/" aria-label="Перейти к оценке матчей">Оценка матчей</button>
+    
+    <!-- НОВАЯ КНОПКА -->
+    <button class="nav-btn" data-page="cashflow" data-link="/cashflows/" aria-label="Перейти к денежным потокам">Денежные потоки</button>
+    
     <button class="nav-btn" data-page="ai" aria-label="Перейти к разделу АИ модели">АИ модель</button>
 </div>
 
@@ -360,6 +364,11 @@
                 return;
             } else if (pageId === 'matches') {
                 // Переход на scanmatch.html
+                window.location.href = linkUrl;
+                return;
+                // === ДОБАВЛЕННЫЙ БЛОК ДЛЯ ДЕНЕЖНЫХ ПОТОКОВ ===
+            } else if (pageId === 'cashflow') {
+                // Переход на страницу с таблицами (файл в папке cashflows)
                 window.location.href = linkUrl;
                 return;
             } else if (pageId === 'ai') {
