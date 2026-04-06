@@ -18,10 +18,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- === SEO META TAGS (OPTIMIZED FOR MONEY FLOW) === -->
+    <!-- === SEO META TAGS === -->
     <title>SetTrue — Денежные потоки | Куда ставят деньги в спорте</title>
     <meta name="description" content="Денежные потоки на спорт в реальном времени. Узнайте, куда ставят большие деньги: футбол, теннис. Анализ ставок, объемы рынка, движение коэффициентов на SetTrue.">
-    <meta name="keywords" content="прозы на спорт, прогнозы на футбол, прогнозы на теннис, денежные потоки, куда ставят деньги, деньги спорт, ставки на спорт, объем ставок, движение денег, анализ рынка ставок, SetTrue, TrueSet, прогнозы на спорт">
+    <meta name="keywords" content="прогнозы на спорт, прогнозы на футбол, прогнозы на теннис, денежные потоки, куда ставят деньги, деньги спорт, ставки на спорт, объем ставок, движение денег, анализ рынка ставок, SetTrue, TrueSet, прогнозы на спорт">
     <meta name="author" content="SetTrue">
     <meta name="robots" content="index, follow">
     
@@ -73,13 +73,6 @@
         .description { font-size: 0.9rem; color: #a0a0b8; max-width: 650px; margin: 0 auto; line-height: 1.5; font-weight: 400; background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(8px); padding: 0.5rem 1.2rem; border-radius: 40px; border: 1px solid rgba(255, 255, 255, 0.05); animation: fadeInUp 0.7s; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        @media (max-width: 768px) {
-            .hero { min-height: 32vh; padding: 0.8rem 1rem 1.5rem; }
-            .nav-btn { padding: 0.45rem 1rem; font-size: 0.8rem; }
-            .nav-buttons { gap: 0.8rem; margin-bottom: 1.2rem; }
-            .description { font-size: 0.8rem; }
-        }
-
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #07070c; }
         ::-webkit-scrollbar-thumb { background: #2c2c3a; border-radius: 8px; }
@@ -108,24 +101,75 @@
         .tour-name { color: #fff; font-weight: 600; margin-right: 8px; }
         .total-val { color: #fff; opacity: 0.9; font-weight: 500; }
 
-        .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        /* Контейнер таблицы */
+        .table-responsive { 
+            width: 100%; 
+            /* Убираем скролл по умолчанию, чтобы работало масштабирование */
+            overflow: hidden; 
+        }
+        
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            /* Убираем фиксированную ширину, чтобы она сжималась при масштабе */
+            min-width: 100%; 
+        }
+        
         th { text-align: left; padding: 10px 15px; color: #666; font-size: 0.7rem; text-transform: uppercase; border-bottom: 1px solid #222; }
         td { padding: 12px 15px; border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: middle; white-space: nowrap; }
         tr:last-child td { border-bottom: none; }
+        
         .player, .team-name { font-weight: 600; font-size: 0.95rem; color: #fff; }
-        .team-name { min-width: 120px; display: inline-block; }
+        .team-name { min-width: 100px; display: inline-block; }
+        
         .odds { font-size: 0.9rem; font-weight: 500; font-variant-numeric: tabular-nums; display: inline-block; min-width: 40px; text-align: center; }
         .odds-fav { color: var(--neon); text-shadow: 0 0 8px rgba(57, 255, 20, 0.3); font-weight: 600; }
         .odds-reg { color: #666; }
-        .money-cell { display: flex; flex-direction: column; gap: 4px; min-width: 100px; }
+        
+        .money-cell { display: flex; flex-direction: column; gap: 4px; min-width: 80px; }
         .money-line { display: flex; justify-content: space-between; font-size: 0.8rem; }
         .money-white { color: #fff; font-weight: 600; }
+        
         .bar-track { width: 100%; height: 3px; background: #111; border-radius: 2px; overflow: hidden; margin-top: 2px; }
         .bar-fill { height: 100%; border-radius: 2px; transition: width 0.5s ease; box-shadow: 0 0 6px currentColor; }
+        
         .c-neon { color: var(--neon); }
         .c-danger { color: var(--danger); }
         .loading-mf { text-align: center; padding: 40px; color: #666; }
+
+        /* Footer */
+        footer { width: 100%; background: rgba(10, 10, 15, 0.9); backdrop-filter: blur(2px); border-top: 1px solid rgba(210, 255, 64, 0.15); margin-top: 0; padding: 40px 20px 20px; font-family: 'Inter', sans-serif; }
+        footer a { color: #888; text-decoration: none; transition: color 0.2s; }
+        footer a:hover { color: #d2ff40 !important; }
+
+        /* === MOBILE ADAPTATION (COMPACT TABLE) === */
+        @media (max-width: 768px) {
+            .hero { min-height: 32vh; padding: 0.8rem 1rem 1.5rem; }
+            .nav-btn { padding: 0.45rem 1rem; font-size: 0.8rem; }
+            .nav-buttons { gap: 0.8rem; margin-bottom: 1.2rem; }
+            .description { font-size: 0.8rem; }
+            
+            /* Компактная таблица для телефона */
+            .table-responsive {
+                /* Масштабируем таблицу до 70%, чтобы она влезла целиком */
+                transform: scale(0.70);
+                transform-origin: top center;
+                /* Компенсируем высоту, так как масштаб уменьшил и её тоже */
+                margin-bottom: -30%; 
+            }
+            
+            /* Немного уменьшаем шрифт внутри, чтобы было еще четче */
+            table { font-size: 12px; }
+            .team-name { min-width: 80px; }
+        }
+
+        @media (max-width: 480px) {
+             /* На очень маленьких экранах можно уменьшить еще сильнее */
+            .table-responsive {
+                 transform: scale(0.60);
+                 margin-bottom: -40%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -166,7 +210,7 @@
     </div>
 </div>
 
-<footer style="width: 100%; background: rgba(10, 10, 15, 0.9); backdrop-filter: blur(2px); border-top: 1px solid rgba(210, 255, 64, 0.15); margin-top: 0; padding: 40px 20px 20px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+<footer>
   <div style="max-width: 1200px; margin: 0 auto;">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 35px; margin-bottom: 40px;">
       <div>
@@ -179,39 +223,38 @@
           Только цифры, никакой воды.
         </p>
         <div style="display: flex; gap: 15px; margin-top: 15px;">
-          <a href="#" style="color: #888; text-decoration: none; font-size: 20px; transition: color 0.2s;">📘</a>
-          <a href="#" style="color: #888; text-decoration: none; font-size: 20px; transition: color 0.2s;">📺</a>
-          <a href="#" style="color: #888; text-decoration: none; font-size: 20px; transition: color 0.2s;">💬</a>
+          <a href="#" aria-label="ВКонтакте">📘</a>
+          <a href="#" aria-label="Яндекс Дзен">📺</a>
+          <a href="#" aria-label="Телеграм">💬</a>
         </div>
       </div>
       
       <div>
         <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">КОНТАКТЫ</h4>
-        <p style="color: #999; font-size: 13px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-          📧 <a href="mailto:SetTrueForecast@yandex.ru" style="color: #d2ff40; text-decoration: none;">SetTrueForecast@yandex.ru</a>
+        <p style="color: #999; font-size: 13px; margin-bottom: 10px;">
+          📧 <a href="mailto:SetTrueForecast@yandex.ru" style="color: #d2ff40;">SetTrueForecast@yandex.ru</a>
         </p>
       </div>
       
       <div>
         <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">СТАТИСТИКА</h4>
-        <p style="color: #999; font-size: 13px; margin-bottom: 8px;">📈 Прогнозы: <span style="color: #d2ff40;">ежедневно</span></p>
-        <p style="color: #999; font-size: 13px; margin-bottom: 8px;">⚽ Спорт: <span style="color: #d2ff40;">Футбол, Теннис</span></p>
-        <p style="color: #999; font-size: 13px; margin-bottom: 8px;">📊 Точность модели: <span style="color: #d2ff40;">72%</span></p>
+        <p style="color: #999; font-size: 13px; margin-bottom: 6px;">📈 Обновление: <span style="color: #d2ff40;">Ежедневно</span></p>
+        <p style="color: #999; font-size: 13px; margin-bottom: 6px;">⚽ Спорт: <span style="color: #d2ff40;">4+</span></p>
+        <p style="color: #999; font-size: 13px;">📊 Точность: <span style="color: #d2ff40;">~72%</span></p>
       </div>
     </div>
     
-    <div style="margin: 30px 0 25px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-radius: 12px; border-left: 3px solid #d2ff40;">
-      <h4 style="color: #d2ff40; font-size: 13px; font-weight: 600; margin-bottom: 12px; letter-spacing: 1px;">📌 О ПРОЕКТЕ SETTRUE</h4>
-      <p style="color: #777; font-size: 12px; line-height: 1.6;">
-        <strong>SetTrue</strong> предоставляет уникальную аналитику денежных потоков. Смотрите, куда ставят профессионалы и где находятся большие деньги в футболе и теннисе.
+    <div style="margin: 20px 0; padding: 15px; background: rgba(255, 255, 255, 0.02); border-radius: 8px; border-left: 2px solid #d2ff40;">
+      <p style="color: #777; font-size: 12px; line-height: 1.5;">
+        <strong>SetTrue</strong> использует математические модели для анализа вероятностей исходов в спорте. Мы предоставляем данные для принятия взвешенных решений.
       </p>
     </div>
     
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.05); gap: 15px;">
-      <p style="color: #555; font-size: 11px; margin: 0;">© SetTrue — Математические прогнозы. Все права защищены.</p>
-      <div style="display: flex; gap: 20px;">
-        <a href="#" style="color: #555; text-decoration: none; font-size: 11px;">Политика конфиденциальности</a>
-        <a href="#" style="color: #555; text-decoration: none; font-size: 11px;">Соглашение</a>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); gap: 10px;">
+      <p style="color: #555; font-size: 11px; margin: 0;">© 2026 SetTrue. Все права защищены.</p>
+      <div style="display: flex; gap: 15px;">
+        <a href="#" style="color: #555; font-size: 11px;">Privacy Policy</a>
+        <a href="#" style="color: #555; font-size: 11px;">Terms</a>
       </div>
     </div>
   </div>
@@ -299,7 +342,7 @@
                     let col2 = d2.pct>=d1.pct?'var(--neon)':'var(--danger)';
                     let cls1 = d1.pct>=d2.pct?'c-neon':'c-danger';
                     let cls2 = d2.pct>=d1.pct?'c-neon':'c-danger';
-                    html += `<div class="match-card"><div class="match-info"><div><span class="tour-name">${tour}</span><span>${time}</span></div><span class="total-val">Всего: ${totalFmt}</span></div><table><tr><td width="35%"><div class="player">${p1}</div></td><td width="15%"><span class="odds ${c1}">${o1}</span></td><td width="50%"><div class="money-cell"><div class="money-line"><span class="money-white">${d1.money}</span><span class="${cls1}">${d1.pctStr}</span></div><div class="bar-track"><div class="bar-fill" style="width:${d1.pct}%; background:${col1}"></div></div></div></td></tr><tr><td><div class="player">${p2}</div></td><td><span class="odds ${c2}">${o2}</span></td><td><div class="money-cell"><div class="money-line"><span class="money-white">${d2.money}</span><span class="${cls2}">${d2.pctStr}</span></div><div class="bar-track"><div class="bar-fill" style="width:${d2.pct}%; background:${col2}"></div></div></div></td></tr></table></div>`;
+                    html += `<div class="match-card"><div class="match-info"><div><span class="tour-name">${tour}</span><span>${time}</span></div><span class="total-val">Всего: ${totalFmt}</span></div><div class="table-responsive"><table><tr><td width="35%"><div class="player">${p1}</div></td><td width="15%"><span class="odds ${c1}">${o1}</span></td><td width="50%"><div class="money-cell"><div class="money-line"><span class="money-white">${d1.money}</span><span class="${cls1}">${d1.pctStr}</span></div><div class="bar-track"><div class="bar-fill" style="width:${d1.pct}%; background:${col1}"></div></div></div></td></tr><tr><td><div class="player">${p2}</div></td><td><span class="odds ${c2}">${o2}</span></td><td><div class="money-cell"><div class="money-line"><span class="money-white">${d2.money}</span><span class="${cls2}">${d2.pctStr}</span></div><div class="bar-track"><div class="bar-fill" style="width:${d2.pct}%; background:${col2}"></div></div></div></td></tr></table></div></div>`;
                 });
             }
             container.innerHTML = html;
