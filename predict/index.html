@@ -27,7 +27,7 @@
     <link rel="canonical" href="https://settrue.ru/predict/">
     <meta name="theme-color" content="#050507">
     
-    <!-- === OPEN GRAPH (Для соцсетей) === -->
+    <!-- === OPEN GRAPH === -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="SetTrue — Математические прогнозы на спорт (Футбол, Хоккей, Теннис)">
     <meta property="og:description" content="Точные прогнозы на спорт от SetTrue (TrueSet). Аналитика футбола, хоккея, тенниса и баскетбола. Точность 72%.">
@@ -46,7 +46,7 @@
     <link rel="dns-prefetch" href="https://script.google.com">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 
-    <!-- === STRUCTURED DATA (JSON-LD) === -->
+    <!-- === STRUCTURED DATA === -->
     <script type="application/ld+json">
     [
       {
@@ -95,15 +95,15 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { background: #050507; font-family: 'Inter', sans-serif; overflow-x: hidden; min-height: 100vh; color: #fff; }
         
-        /* Particles - ИСПРАВЛЕНО (z-index выше iframe) */
+        /* Particles */
         .global-particles { 
             position: fixed; 
             top: 0; 
             left: 0; 
             width: 100%; 
             height: 100%; 
-            z-index: 9999; /* Поверх всего */
-            pointer-events: none; /* Пропускает клики */
+            z-index: 9999; 
+            pointer-events: none; 
             overflow: hidden; 
             mask-image: radial-gradient(circle at center, transparent 0%, transparent 35%, black 70%, black 100%); 
             -webkit-mask-image: radial-gradient(circle at center, transparent 0%, transparent 35%, black 70%, black 100%); 
@@ -153,14 +153,26 @@
         .matches-container { background: rgba(10, 10, 18, 0.6); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); overflow: hidden; min-height: 200px; position: relative; backdrop-filter: blur(10px); }
         .loader { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #888; font-size: 14px; }
 
-        /* Table Styles (PC) */
-        .glass-wrap table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: auto; }
-        .glass-wrap th { text-align: left; padding: 15px; font-weight: 600; color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); background: rgba(0,0,0,0.2); }
-        .glass-wrap td { padding: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.03); vertical-align: middle; color: #ccc; }
+        /* Table Styles (PC Structure Preserved) */
+        .glass-wrap {
+            width: 100%;
+            overflow-x: auto; /* Горизонтальный скролл на мобильных */
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .glass-wrap table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            font-size: 13px; 
+            table-layout: auto; 
+            min-width: 600px; /* Фиксируем минимальную ширину, чтобы структура не ломалась */
+        }
+        .glass-wrap th { text-align: left; padding: 15px; font-weight: 600; color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); background: rgba(0,0,0,0.2); white-space: nowrap; }
+        .glass-wrap td { padding: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.03); vertical-align: middle; color: #ccc; white-space: nowrap; }
         .glass-wrap tr:last-child td { border-bottom: none; }
         .glass-wrap tr:hover td { background: rgba(255, 255, 255, 0.02); }
         .glass-wrap td:nth-child(1) { color: #ccff00; font-weight: 700; width: 60px; } /* Время */
-        .glass-wrap td:nth-child(2) { color: #888; font-size: 12px; max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } /* Турнир */
+        .glass-wrap td:nth-child(2) { color: #888; font-size: 12px; max-width: 150px; } /* Турнир */
         .glass-wrap td:nth-child(3) { color: #fff; font-weight: 500; } /* Команды */
         .glass-wrap td:nth-child(4), .glass-wrap td:nth-child(5) { text-align: center; font-family: monospace; color: #aaa; width: 50px; } /* Кэфы */
 
@@ -181,7 +193,7 @@
         .dev-note { color: #666; margin-top: 1.5rem; font-size: 0.85rem; }
 
         /* Scrollbar */
-        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
         ::-webkit-scrollbar-track { background: #07070c; }
         ::-webkit-scrollbar-thumb { background: #2c2c3a; border-radius: 8px; }
         ::-webkit-scrollbar-thumb:hover { background: #ccff00; }
@@ -189,32 +201,24 @@
         .hero { animation: fadeIn 0.8s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* === MOBILE ADAPTATION === */
+        /* === MOBILE ADAPTATION (PRESERVING PC STRUCTURE) === */
         @media (max-width: 768px) {
             .hero { min-height: 32vh; padding: 0.8rem 1rem 1.5rem; }
             .nav-buttons { gap: 0.8rem; margin-bottom: 1.2rem; }
             .nav-btn { padding: 0.5rem 1rem; font-size: 0.85rem; }
             .description { font-size: 0.8rem; padding: 0.4rem 1rem; }
             
-            /* Адаптация таблицы в карточки */
-            .glass-wrap thead { display: none; }
-            .glass-wrap tr { display: flex; flex-wrap: wrap; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-            .glass-wrap td { border: none; padding: 5px 0; }
-            
-            .glass-wrap td:nth-child(1) { order: 1; width: 50px; font-size: 12px; } /* Время */
-            .glass-wrap td:nth-child(3) { order: 2; flex-grow: 1; font-size: 14px; padding-left: 10px; } /* Команды */
-            .glass-wrap td:nth-child(4) { order: 3; width: 40px; text-align: right; } /* Кэф 1 */
-            .glass-wrap td:nth-child(5) { order: 4; width: 40px; text-align: right; padding-right: 0; } /* Кэф 2 */
-            .glass-wrap td:nth-child(2) { order: 5; width: 100%; font-size: 11px; margin-top: 5px; color: #666; } /* Турнир */
-            
-            .development-card { margin: 2rem 1rem; padding: 1rem; }
-            .dev-inner { padding: 2rem 1rem; }
-            .dev-title { font-size: 1.6rem; }
+            /* Таблица остается таблицей, просто со скроллом. Никаких карточек! */
+            .glass-wrap table {
+                font-size: 12px; /* Чуть меньше шрифт, чтобы влезало больше */
+            }
+            .glass-wrap th, .glass-wrap td {
+                padding: 10px 8px; /* Чуть меньше отступы */
+            }
         }
 
         @media (max-width: 480px) {
             .nav-btn { padding: 0.45rem 0.8rem; font-size: 0.8rem; }
-            .dev-inner { padding: 1.5rem 1rem; }
         }
     </style>
 </head>
