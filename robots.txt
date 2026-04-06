@@ -1,0 +1,23 @@
+# robots.txt for SetTrue (settrue.ru)
+
+User-agent: *
+# Разрешаем индексацию основных разделов
+Allow: /
+Allow: /predict/
+Allow: /scanmatch/
+Allow: /cashflows/
+
+# Запрещаем индексацию технических папок и скриптов
+Disallow: /cgi-bin/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /*?*
+Disallow: /script.google.com/
+
+# Указываем путь к карте сайта (если создашь sitemap.xml, раскомментируй строку ниже)
+# Sitemap: https://settrue.ru/sitemap.xml
+
+# Хост (главное зеркало сайта)
+Host: https://settrue.ru
