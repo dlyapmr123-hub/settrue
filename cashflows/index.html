@@ -199,7 +199,8 @@
             <button class="nav-btn" data-page="predictions" data-link="/predict/">Прогнозы</button>
             <button class="nav-btn" data-page="matches" data-link="/scanmatch/">Оценка матчей</button>
             <button class="nav-btn active" data-page="cashflow">Денежные потоки</button>
-            <button class="nav-btn" data-page="ai">АИ модель</button>
+            <!-- ИЗМЕНЕНИЕ: Кнопка CS2 вместо АИ модели -->
+            <button class="nav-btn" data-page="cs2" data-link="/cs2/">CS2</button>
         </div>
 
         <div class="logo">True<span>Set</span></div>
@@ -372,7 +373,7 @@
         btn.addEventListener('click', (e) => {
             const page = btn.getAttribute('data-page');
             const link = btn.getAttribute('data-link');
-            if(page === 'home' || page === 'predictions' || page === 'matches') {
+            if(page === 'home' || page === 'predictions' || page === 'matches' || page === 'cs2') {
                 window.location.href = link;
             } else if(page === 'ai') {
                 alert('Раздел АИ в разработке');
@@ -380,6 +381,7 @@
                 // текущая страница, ничего не делаем
             }
         });
+        
     });
     
     // Обработка вкладок
