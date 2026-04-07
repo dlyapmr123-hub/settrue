@@ -2,21 +2,25 @@
 <html lang="ru">
 <head>
     <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108400965', 'ym');
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108400965', 'ym');
 
-    ym(108400965, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+        ym(108400965, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
     <meta name="yandex-verification" content="0ac8a3221431959f" />
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- ПРИНУДИТЕЛЬНАЯ ПК-ВЕРСИЯ: отключаем мобильный viewport и масштабирование -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="HandheldFriendly" content="False">
+    <meta name="MobileOptimized" content="width">
     
     <!-- === SEO META TAGS === -->
     <title>SetTrue — Прогнозы на спорт сегодня | Футбол, Хоккей, Теннис, Баскетбол</title>
@@ -92,8 +96,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { background: #050507; font-family: 'Inter', sans-serif; overflow-x: hidden; min-height: 100vh; color: #fff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: #050507; 
+            font-family: 'Inter', sans-serif; 
+            min-height: 100vh; 
+            color: #fff;
+            /* ПРИНУДИТЕЛЬНАЯ ПК-ШИРИНА — на телефонах будет горизонтальная прокрутка */
+            min-width: 1200px;
+            width: 100%;
+            overflow-x: auto;
+        }
+        
+        /* Для очень маленьких экранов сохраняем минимальную ширину */
+        @media (max-width: 1199px) {
+            body {
+                min-width: 1200px;
+                overflow-x: auto;
+            }
+            .hero, footer, #page-content, .table-wrapper {
+                min-width: 1200px;
+            }
+        }
         
         /* Particles */
         .global-particles { 
@@ -141,22 +165,21 @@
         /* Content Area */
         #page-content { transition: opacity 0.2s ease; min-height: 300px; position: relative; z-index: 5; width: 100%; padding-bottom: 60px; }
         
-        .table-wrapper { width: 100%; max-width: 900px; margin: 0 auto; padding-top: 20px; }
+        .table-wrapper { width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px 20px 0 20px; }
         
         /* Tabs */
         .sport-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-        .tab-btn { background: rgba(10, 10, 18, 0.8); border: 1px solid rgba(204, 255, 0, 0.25); color: #e0e0e0; padding: 8px 16px; cursor: pointer; border-radius: 40px; font-size: 13px; font-weight: 500; transition: all 0.3s ease; font-family: 'Inter', sans-serif; }
+        .tab-btn { background: rgba(10, 10, 18, 0.8); border: 1px solid rgba(204, 255, 0, 0.25); color: #e0e0e0; padding: 8px 20px; cursor: pointer; border-radius: 40px; font-size: 14px; font-weight: 500; transition: all 0.3s ease; font-family: 'Inter', sans-serif; }
         .tab-btn:hover { border-color: rgba(204, 255, 0, 0.8); color: #ccff00; transform: translateY(-2px); }
         .tab-btn.active { background: rgba(204, 255, 0, 0.15); border-color: #ccff00; color: #ccff00; box-shadow: 0 0 10px rgba(204, 255, 0, 0.1); }
 
         /* Matches Container */
-        .matches-container { background: rgba(10, 10, 18, 0.6); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); overflow: hidden; min-height: 200px; position: relative; backdrop-filter: blur(10px); }
+        .matches-container { background: rgba(10, 10, 18, 0.6); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08); overflow: auto; min-height: 200px; position: relative; backdrop-filter: blur(10px); }
         .loader { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #888; font-size: 14px; }
 
-        /* Table Styles (PC Structure Preserved) */
+        /* Table Styles — ПОЛНОСТЬЮ СОХРАНЯЕМ ИСХОДНЫЙ ДИЗАЙН (как в твоем втором файле) */
         .glass-wrap {
             width: 100%;
-            /* Убираем скролл, чтобы таблица влезала полностью */
             overflow: hidden; 
         }
         
@@ -165,11 +188,27 @@
             border-collapse: collapse; 
             font-size: 13px; 
             table-layout: auto; 
-            /* Убираем фиксированную минимальную ширину, чтобы она сжималась */
             min-width: 100%; 
         }
-        .glass-wrap th { text-align: left; padding: 12px 8px; font-weight: 600; color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); background: rgba(0,0,0,0.2); white-space: nowrap; }
-        .glass-wrap td { padding: 12px 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.03); vertical-align: middle; color: #ccc; white-space: nowrap; }
+        .glass-wrap th { 
+            text-align: left; 
+            padding: 12px 8px; 
+            font-weight: 600; 
+            color: #666; 
+            font-size: 11px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+            background: rgba(0,0,0,0.2); 
+            white-space: nowrap; 
+        }
+        .glass-wrap td { 
+            padding: 12px 8px; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03); 
+            vertical-align: middle; 
+            color: #ccc; 
+            white-space: nowrap; 
+        }
         .glass-wrap tr:last-child td { border-bottom: none; }
         .glass-wrap tr:hover td { background: rgba(255, 255, 255, 0.02); }
         .glass-wrap td:nth-child(1) { color: #ccff00; font-weight: 700; width: 50px; } /* Время */
@@ -194,41 +233,31 @@
         .dev-note { color: #666; margin-top: 1.5rem; font-size: 0.85rem; }
 
         /* Scrollbar */
-        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #07070c; }
         ::-webkit-scrollbar-thumb { background: #2c2c3a; border-radius: 8px; }
         ::-webkit-scrollbar-thumb:hover { background: #ccff00; }
 
         .hero { animation: fadeIn 0.8s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* === MOBILE ADAPTATION (COMPACT TABLE) === */
+        
+        /* Убираем все мобильные трансформации — показываем ПК версию как есть */
         @media (max-width: 768px) {
-            .hero { min-height: 32vh; padding: 0.8rem 1rem 1.5rem; }
+            .hero { padding: 0.8rem 1rem 1.5rem; }
             .nav-buttons { gap: 0.8rem; margin-bottom: 1.2rem; }
             .nav-btn { padding: 0.5rem 1rem; font-size: 0.85rem; }
             .description { font-size: 0.8rem; padding: 0.4rem 1rem; }
-            
-            /* Компактная таблица для телефона */
+            /* Никаких scale или margin-bottom — сохраняем исходный дизайн */
             .glass-wrap {
-                /* Масштабируем таблицу до 75%, чтобы она влезла целиком */
-                transform: scale(0.75);
-                transform-origin: top center;
-                /* Компенсируем высоту, так как масштаб уменьшил и её тоже */
-                margin-bottom: -25%; 
+                transform: none;
+                margin-bottom: 0;
+                overflow-x: auto;
             }
-            
             .glass-wrap table {
-                font-size: 12px;
+                min-width: 800px;
             }
-        }
-
-        @media (max-width: 480px) {
-            .nav-btn { padding: 0.45rem 0.8rem; font-size: 0.8rem; }
-            /* На очень маленьких экранах можно уменьшить еще сильнее, например до 0.65 */
-            .glass-wrap {
-                 transform: scale(0.65);
-                 margin-bottom: -35%;
+            .table-wrapper {
+                padding: 20px 15px 0 15px;
             }
         }
     </style>
@@ -312,14 +341,12 @@
 </footer>
 
 <script>
-    // Создание глобальных частиц с оптимизацией для мобильных
+    // Создание глобальных частиц
     function createGlobalParticles() {
         const container = document.getElementById('globalParticles');
         if (!container) return;
         
-        // Оптимизация: меньше частиц на мобильных для производительности
-        const isMobile = window.innerWidth < 768;
-        const particleCount = isMobile ? 50 : 150;
+        const particleCount = 150;
         
         container.innerHTML = '';
         for (let i = 0; i < particleCount; i++) {
@@ -344,10 +371,10 @@
         return `
             <div class="table-wrapper">
                 <div class="sport-tabs">
-                    <button class="tab-btn active" onclick="loadMatches('tennis', this)">🎾 Теннис</button>
-                    <button class="tab-btn" onclick="loadMatches('football', this)">⚽ Футбол</button>
-                    <button class="tab-btn" onclick="loadMatches('hockey', this)">🏒 Хоккей</button>
-                    <button class="tab-btn" onclick="loadMatches('basketball', this)">🏀 Баскетбол</button>
+                    <button class="tab-btn active" data-sport="tennis">🎾 Теннис</button>
+                    <button class="tab-btn" data-sport="football">⚽ Футбол</button>
+                    <button class="tab-btn" data-sport="hockey">🏒 Хоккей</button>
+                    <button class="tab-btn" data-sport="basketball">🏀 Баскетбол</button>
                 </div>
 
                 <div id="matches-container" class="matches-container">
@@ -358,30 +385,22 @@
     }
 
     // Функция загрузки данных из Google Script
-    function loadMatches(sport, btn) {
+    function loadMatches(sport) {
         const container = document.getElementById('matches-container');
         if (!container) return;
-
-        // Переключение активной кнопки
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        if(btn) btn.classList.add('active');
         
-        // Показываем лоадер
         container.innerHTML = '<div class="loader">Обновление данных...</div>';
-
-        // ВАЖНО: Вставь сюда свой URL из Google Apps Script
+        
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxEIJhidGWfJN4aW7zeQkEE5ZSRnwgx7E8WnJqwzS8d0sCjcKgzW0qJv1wUb-NgRv3_ug/exec'; 
 
-        // Запрос к Google Script
         fetch(`${SCRIPT_URL}?sport=${sport}`)
             .then(response => response.text())
             .then(html => {
-                // Вставляем полученный HTML
                 container.innerHTML = `<div class="glass-wrap">${html}</div>`;
             })
             .catch(err => {
                 console.error(err);
-                container.innerHTML = '<div class="loader" style="color:#ff4d4d">Ошибка загрузки данных</div>';
+                container.innerHTML = '<div class="loader" style="color:#ff4d4d">Ошибка загрузки данных. Попробуйте позже.</div>';
             });
     }
     
@@ -434,11 +453,9 @@
             contentDiv.innerHTML = htmlContent;
             contentDiv.style.opacity = '1';
             
-            // Если загрузили виджет, нужно инициировать загрузку первой вкладки (Теннис)
             if (pageId === 'predictions') {
                 setTimeout(() => {
-                    const tennisBtn = document.querySelector('.tab-btn');
-                    if (tennisBtn) loadMatches('tennis', tennisBtn);
+                    loadMatches('tennis');
                 }, 100);
             }
         }, 150);
@@ -459,15 +476,22 @@
             });
         });
         
-        // Загружаем виджет прогнозов по умолчанию на этой странице
         const contentDiv = document.getElementById('page-content');
         contentDiv.innerHTML = createPredictionsWidget();
         
-        // Запускаем загрузку тенниса сразу
         setTimeout(() => {
-            const tennisBtn = document.querySelector('.tab-btn');
-            if (tennisBtn) loadMatches('tennis', tennisBtn);
+            loadMatches('tennis');
         }, 500);
+        
+        document.addEventListener('click', function(e) {
+            const tabBtn = e.target.closest('.tab-btn');
+            if (tabBtn && tabBtn.getAttribute('data-sport')) {
+                const sport = tabBtn.getAttribute('data-sport');
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                tabBtn.classList.add('active');
+                loadMatches(sport);
+            }
+        });
     }
     
     window.addEventListener('DOMContentLoaded', () => {
