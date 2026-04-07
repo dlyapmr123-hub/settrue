@@ -2,21 +2,25 @@
 <html lang="ru">
 <head>
     <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108400965', 'ym');
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108400965', 'ym');
 
-    ym(108400965, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+        ym(108400965, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
     <meta name="yandex-verification" content="0ac8a3221431959f" />
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ПРИНУДИТЕЛЬНАЯ ПК-ВЕРСИЯ НА ТЕЛЕФОНАХ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="HandheldFriendly" content="False">
+    <meta name="MobileOptimized" content="width">
     
     <!-- === SEO META TAGS === -->
     <title>SetTrue — Денежные потоки | Куда ставят деньги в спорте</title>
@@ -47,7 +51,28 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #050507; font-family: 'Inter', sans-serif; overflow-x: hidden; min-height: 100vh; }
+        body { 
+            background: #050507; 
+            font-family: 'Inter', sans-serif; 
+            min-height: 100vh;
+            color: #fff;
+            /* ПРИНУДИТЕЛЬНАЯ ПК-ШИРИНА — на телефонах будет горизонтальная прокрутка */
+            min-width: 1200px;
+            width: 100%;
+            overflow-x: auto;
+        }
+        
+        /* Для экранов меньше 1200px сохраняем минимальную ширину */
+        @media (max-width: 1199px) {
+            body {
+                min-width: 1200px;
+                overflow-x: auto;
+            }
+            .hero, footer, #page-content, .mf-container, .sport-tabs {
+                min-width: 1200px;
+            }
+        }
+        
         html, body { background: #050507; }
 
         .global-particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9998; pointer-events: none; overflow: hidden; mask-image: radial-gradient(circle at center, transparent 0%, transparent 35%, black 70%, black 100%); -webkit-mask-image: radial-gradient(circle at center, transparent 0%, transparent 35%, black 70%, black 100%); }
@@ -73,7 +98,7 @@
         .description { font-size: 0.9rem; color: #a0a0b8; max-width: 650px; margin: 0 auto; line-height: 1.5; font-weight: 400; background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(8px); padding: 0.5rem 1.2rem; border-radius: 40px; border: 1px solid rgba(255, 255, 255, 0.05); animation: fadeInUp 0.7s; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #07070c; }
         ::-webkit-scrollbar-thumb { background: #2c2c3a; border-radius: 8px; }
         ::-webkit-scrollbar-thumb:hover { background: #ccff00; }
@@ -83,7 +108,7 @@
         
         #page-content { transition: opacity 0.2s ease; min-height: 300px; position: relative; z-index: 5; }
 
-        /* === TABS & TABLE STYLES === */
+        /* === TABS & TABLE STYLES (ИСХОДНЫЙ ДИЗАЙН НЕ ИЗМЕНЁН) === */
         .sport-tabs { display: flex; justify-content: center; gap: 15px; margin: 20px 0 30px 0; }
         .tab-btn { background: transparent; border: 1px solid #333; color: #888; padding: 10px 25px; border-radius: 30px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; transition: all 0.3s; }
         .tab-btn:hover { border-color: #666; color: #fff; }
@@ -101,18 +126,17 @@
         .tour-name { color: #fff; font-weight: 600; margin-right: 8px; }
         .total-val { color: #fff; opacity: 0.9; font-weight: 500; }
 
-        /* Контейнер таблицы */
+        /* Контейнер таблицы — без масштабирования, только горизонтальный скролл при необходимости */
         .table-responsive { 
             width: 100%; 
-            /* Убираем скролл по умолчанию, чтобы работало масштабирование */
-            overflow: hidden; 
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
         
         table { 
             width: 100%; 
             border-collapse: collapse; 
-            /* Убираем фиксированную ширину, чтобы она сжималась при масштабе */
-            min-width: 100%; 
+            min-width: 500px;
         }
         
         th { text-align: left; padding: 10px 15px; color: #666; font-size: 0.7rem; text-transform: uppercase; border-bottom: 1px solid #222; }
@@ -142,32 +166,22 @@
         footer a { color: #888; text-decoration: none; transition: color 0.2s; }
         footer a:hover { color: #d2ff40 !important; }
 
-        /* === MOBILE ADAPTATION (COMPACT TABLE) === */
+        /* Мобильные стили — убираем масштабирование, оставляем только прокрутку */
         @media (max-width: 768px) {
             .hero { min-height: 32vh; padding: 0.8rem 1rem 1.5rem; }
             .nav-btn { padding: 0.45rem 1rem; font-size: 0.8rem; }
             .nav-buttons { gap: 0.8rem; margin-bottom: 1.2rem; }
             .description { font-size: 0.8rem; }
             
-            /* Компактная таблица для телефона */
+            /* Убираем transform: scale() и margin-bottom, оставляем только прокрутку */
             .table-responsive {
-                /* Масштабируем таблицу до 70%, чтобы она влезла целиком */
-                transform: scale(0.70);
-                transform-origin: top center;
-                /* Компенсируем высоту, так как масштаб уменьшил и её тоже */
-                margin-bottom: -30%; 
+                transform: none;
+                margin-bottom: 0;
+                overflow-x: auto;
             }
             
-            /* Немного уменьшаем шрифт внутри, чтобы было еще четче */
-            table { font-size: 12px; }
-            .team-name { min-width: 80px; }
-        }
-
-        @media (max-width: 480px) {
-             /* На очень маленьких экранах можно уменьшить еще сильнее */
-            .table-responsive {
-                 transform: scale(0.60);
-                 margin-bottom: -40%;
+            table {
+                min-width: 550px;
             }
         }
     </style>
@@ -198,8 +212,8 @@
 
 <div id="page-content">
     <div class="sport-tabs">
-        <button class="tab-btn active" onclick="switchTab('tennis')">Теннис</button>
-        <button class="tab-btn" onclick="switchTab('football')">Футбол</button>
+        <button class="tab-btn active" data-sport="tennis">Теннис</button>
+        <button class="tab-btn" data-sport="football">Футбол</button>
     </div>
     
     <div class="mf-container">
@@ -277,10 +291,10 @@
         return { pct: p ? parseFloat(p[1]) : 0, pctStr: p ? p[1] + "%" : "0%", money: m ? m[1] + m[2] : "£ 0", rawVal };
     }
 
-    function switchTab(sport) {
+    function switchTab(sport, targetBtn) {
         currentSport = sport;
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+        if(targetBtn) targetBtn.classList.add('active');
         document.getElementById('sport-title').innerText = sport === 'tennis' ? 'Tennis Money Flow' : 'Football Money Flow';
         loadData();
     }
@@ -321,7 +335,7 @@
                     let cls1 = (d1.pct===maxPct&&d1.pct>0)?'c-neon':'c-danger';
                     let clsX = (dX.pct===maxPct&&dX.pct>0)?'c-neon':'c-danger';
                     let cls2 = (d2.pct===maxPct&&d2.pct>0)?'c-neon':'c-danger';
-                    let cardHTML = `<div class="match-card"><div class="match-info"><div><span class="tour-name">${tour}</span><span>${time}</span></div><span class="total-val">Всего: ${totalFmt}</span></div><div class="table-responsive"><table><tr><td width="25%"><div class="team-name">${team1} (П1)</div></td><td width="10%"><span class="odds ${c1}">${o1}</span></td><td width="65%"><div class="money-cell"><div class="money-line"><span class="money-white">${d1.money}</span><span class="${cls1}">${d1.pctStr}</span></div><div class="bar-track"><div class="bar-fill" style="width:${d1.pct}%; background:${col1}"></div></div></div></td></tr><tr><td><div class="team-name" style="color:#aaa">Ничья (Х)</div></td><td><span class="odds ${cX}">${oX}</span></td><td><div class="money-cell"><div class="money-line"><span class="money-white">${dX.money}</span><span class="${clsX}">${dX.pctStr}</span></div><div class="bar-track"><div class="bar-fill" style="width:${dX.pct}%; background:${colX}"></div></div></div></td></tr><tr><td><div class="team-name">${team2} (П2)</div></td><td><span class="odds ${c2}">${o2}</span></td><td><div class="money-cell"><div class="money-line"><span class="money-white">${d2.money}</span><span class="${cls2}">${d2.pctStr}</span></div><div class="bar-track"><div class="bar-fill" style="width:${d2.pct}%; background:${col2}"></div></div></div></td></tr></table></div></div>`;
+                    let cardHTML = `<div class="match-card"><div class="match-info"><div><span class="tour-name">${tour}</span><span>${time}</span></div><span class="total-val">Всего: ${totalFmt}</span></div><div class="table-responsive"><table><th width="25%"><div class="team-name">${team1} (П1)</div></th><th width="10%"><span class="odds ${c1}">${o1}</span></th><th width="65%"><div class="money-cell"><div class="money-line"><span class="money-white">${d1.money}</span><span class="${cls1}">${d1.pctStr}</span></div><div class="bar-track"><div class="bar-fill" style="width:${d1.pct}%; background:${col1}"></div></div></div></th></tr><tr><th><div class="team-name" style="color:#aaa">Ничья (Х)</div></th><th><span class="odds ${cX}">${oX}</span></th><th><div class="money-cell"><div class="money-line"><span class="money-white">${dX.money}</span><span class="${clsX}">${dX.pctStr}</span></div><div class="bar-track"><div class="bar-fill" style="width:${dX.pct}%; background:${colX}"></div></div></div></th></tr><tr><th><div class="team-name">${team2} (П2)</div></th><th><span class="odds ${c2}">${o2}</span></th><th><div class="money-cell"><div class="money-line"><span class="money-white">${d2.money}</span><span class="${cls2}">${d2.pctStr}</span></div><div class="bar-track"><div class="bar-fill" style="width:${d2.pct}%; background:${col2}"></div></div></div></th></table></div></div>`;
                     matchesToRender.push({ html: cardHTML, total: totalSum });
                 });
                 matchesToRender.sort((a, b) => b.total - a.total);
@@ -342,7 +356,7 @@
                     let col2 = d2.pct>=d1.pct?'var(--neon)':'var(--danger)';
                     let cls1 = d1.pct>=d2.pct?'c-neon':'c-danger';
                     let cls2 = d2.pct>=d1.pct?'c-neon':'c-danger';
-                    html += `<div class="match-card"><div class="match-info"><div><span class="tour-name">${tour}</span><span>${time}</span></div><span class="total-val">Всего: ${totalFmt}</span></div><div class="table-responsive"><table><tr><td width="35%"><div class="player">${p1}</div></td><td width="15%"><span class="odds ${c1}">${o1}</span></td><td width="50%"><div class="money-cell"><div class="money-line"><span class="money-white">${d1.money}</span><span class="${cls1}">${d1.pctStr}</span></div><div class="bar-track"><div class="bar-fill" style="width:${d1.pct}%; background:${col1}"></div></div></div></td></tr><tr><td><div class="player">${p2}</div></td><td><span class="odds ${c2}">${o2}</span></td><td><div class="money-cell"><div class="money-line"><span class="money-white">${d2.money}</span><span class="${cls2}">${d2.pctStr}</span></div><div class="bar-track"><div class="bar-fill" style="width:${d2.pct}%; background:${col2}"></div></div></div></td></tr></table></div></div>`;
+                    html += `<div class="match-card"><div class="match-info"><div><span class="tour-name">${tour}</span><span>${time}</span></div><span class="total-val">Всего: ${totalFmt}</span></div><div class="table-responsive"><table><th width="35%"><div class="player">${p1}</div></th><th width="15%"><span class="odds ${c1}">${o1}</span></th><th width="50%"><div class="money-cell"><div class="money-line"><span class="money-white">${d1.money}</span><span class="${cls1}">${d1.pctStr}</span></div><div class="bar-track"><div class="bar-fill" style="width:${d1.pct}%; background:${col1}"></div></div></div></th></tr><tr><th><div class="player">${p2}</div></th><th><span class="odds ${c2}">${o2}</span></th><th><div class="money-cell"><div class="money-line"><span class="money-white">${d2.money}</span><span class="${cls2}">${d2.pctStr}</span></div><div class="bar-track"><div class="bar-fill" style="width:${d2.pct}%; background:${col2}"></div></div></div></th></tr></table></div></div>`;
                 });
             }
             container.innerHTML = html;
@@ -352,22 +366,36 @@
         }
     }
     
-    // Navigation Logic
+    // Navigation Logic (сохраняем исходную логику перехода)
     const navBtns = document.querySelectorAll('.nav-btn');
     navBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
             const page = btn.getAttribute('data-page');
             const link = btn.getAttribute('data-link');
-            if(page === 'home' || page === 'predictions' || page === 'matches') window.location.href = link;
-            else if(page === 'ai') alert('Раздел АИ в разработке');
+            if(page === 'home' || page === 'predictions' || page === 'matches') {
+                window.location.href = link;
+            } else if(page === 'ai') {
+                alert('Раздел АИ в разработке');
+            } else if(page === 'cashflow') {
+                // текущая страница, ничего не делаем
+            }
+        });
+    });
+    
+    // Обработка вкладок
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const sport = btn.getAttribute('data-sport');
+            if(sport) {
+                switchTab(sport, btn);
+            }
         });
     });
 
     function createGlobalParticles() {
         const container = document.getElementById('globalParticles');
         if (!container) return;
-        const isMobile = window.innerWidth < 768;
-        const particleCount = isMobile ? 40 : 100;
+        const particleCount = 100;
         container.innerHTML = '';
         for (let i = 0; i < particleCount; i++) {
             const p = document.createElement('div');
@@ -387,6 +415,7 @@
         createGlobalParticles();
         loadData();
     });
+    
     window.addEventListener('resize', () => {
         clearTimeout(window.resizeTimer);
         window.resizeTimer = setTimeout(createGlobalParticles, 250);
