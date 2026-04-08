@@ -24,8 +24,8 @@
     
     <!-- === SEO META TAGS === -->
     <title>SetTrue — Денежные потоки | Куда ставят деньги в спорте</title>
-    <meta name="description" content="Денежные потоки на спорт в реальном времени. Узнайте, куда ставят большие деньги: футбол, теннис. Анализ ставок, объемы рынка, движение коэффициентов на SetTrue.">
-    <meta name="keywords" content="прогнозы на спорт, прогнозы на футбол, прогнозы на теннис, денежные потоки, куда ставят деньги, деньги спорт, ставки на спорт, объем ставок, движение денег, анализ рынка ставок, SetTrue, TrueSet, прогнозы на спорт">
+    <meta name="description" content="Денежные потоки на спорт в реальном времени. Узнайте, куда ставят большие деньги: футбол, теннис, баскетбол. Анализ ставок, объемы рынка, движение коэффициентов на SetTrue.">
+    <meta name="keywords" content="прогнозы на спорт, прогнозы на футбол, прогнозы на теннис, прогнозы на баскетбол, денежные потоки, куда ставят деньги, деньги спорт, ставки на спорт, settrue, trueset, трусет, объем ставок, движение денег, анализ рынка ставок, SetTrue, TrueSet">
     <meta name="author" content="SetTrue">
     <meta name="robots" content="index, follow">
     
@@ -35,7 +35,7 @@
     <!-- === OPEN GRAPH === -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="SetTrue — Денежные потоки и объемы ставок">
-    <meta property="og:description" content="Следите за большими деньгами в спорте. Реальные объемы ставок на футбол и теннис.">
+    <meta property="og:description" content="Следите за большими деньгами в спорте. Реальные объемы ставок на футбол, теннис и баскетбол.">
     <meta property="og:image" content="https://settrue.ru/images/og-money.jpg">
     <meta property="og:url" content="https://settrue.ru/cashflows/">
     <meta property="og:site_name" content="SetTrue">
@@ -56,13 +56,11 @@
             font-family: 'Inter', sans-serif; 
             min-height: 100vh;
             color: #fff;
-            /* ПРИНУДИТЕЛЬНАЯ ПК-ШИРИНА — на телефонах будет горизонтальная прокрутка */
             min-width: 1200px;
             width: 100%;
             overflow-x: auto;
         }
         
-        /* Для экранов меньше 1200px сохраняем минимальную ширину */
         @media (max-width: 1199px) {
             body {
                 min-width: 1200px;
@@ -108,7 +106,7 @@
         
         #page-content { transition: opacity 0.2s ease; min-height: 300px; position: relative; z-index: 5; }
 
-        /* === TABS & TABLE STYLES (ИСХОДНЫЙ ДИЗАЙН НЕ ИЗМЕНЁН) === */
+        /* === TABS & TABLE STYLES === */
         .sport-tabs { display: flex; justify-content: center; gap: 15px; margin: 20px 0 30px 0; }
         .tab-btn { background: transparent; border: 1px solid #333; color: #888; padding: 10px 25px; border-radius: 30px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; transition: all 0.3s; }
         .tab-btn:hover { border-color: #666; color: #fff; }
@@ -126,7 +124,6 @@
         .tour-name { color: #fff; font-weight: 600; margin-right: 8px; }
         .total-val { color: #fff; opacity: 0.9; font-weight: 500; }
 
-        /* Контейнер таблицы — без масштабирования, только горизонтальный скролл при необходимости */
         .table-responsive { 
             width: 100%; 
             overflow-x: auto;
@@ -166,14 +163,12 @@
         footer a { color: #888; text-decoration: none; transition: color 0.2s; }
         footer a:hover { color: #d2ff40 !important; }
 
-        /* Мобильные стили — убираем масштабирование, оставляем только прокрутку */
         @media (max-width: 768px) {
             .hero { min-height: 32vh; padding: 0.8rem 1rem 1.5rem; }
             .nav-btn { padding: 0.45rem 1rem; font-size: 0.8rem; }
             .nav-buttons { gap: 0.8rem; margin-bottom: 1.2rem; }
             .description { font-size: 0.8rem; }
             
-            /* Убираем transform: scale() и margin-bottom, оставляем только прокрутку */
             .table-responsive {
                 transform: none;
                 margin-bottom: 0;
@@ -192,14 +187,13 @@
 
 <section class="hero">
     <div class="hero-content">
-        <h1 class="seo-h1">SetTrue - Денежные потоки на спорт: футбол, теннис</h1>
+        <h1 class="seo-h1">SetTrue - Денежные потоки на спорт: футбол, теннис, баскетбол</h1>
 
         <div class="nav-buttons">
             <button class="nav-btn" data-page="home" data-link="/">Главная</button>
             <button class="nav-btn" data-page="predictions" data-link="/predict/">Прогнозы</button>
             <button class="nav-btn" data-page="matches" data-link="/scanmatch/">Оценка матчей</button>
             <button class="nav-btn active" data-page="cashflow">Денежные потоки</button>
-            <!-- ИЗМЕНЕНИЕ: Кнопка CS2 вместо АИ модели -->
             <button class="nav-btn" data-page="cs2" data-link="/cs2/">CS2</button>
         </div>
 
@@ -215,6 +209,8 @@
     <div class="sport-tabs">
         <button class="tab-btn active" data-sport="tennis">Теннис</button>
         <button class="tab-btn" data-sport="football">Футбол</button>
+        <!-- ДОБАВЛЕНА КНОПКА БАСКЕТБОЛА -->
+        <button class="tab-btn" data-sport="basketball">Баскетбол</button>
     </div>
     
     <div class="mf-container">
@@ -279,6 +275,9 @@
     // === НАСТРОЙКИ ССЫЛОК ===
     const TENNIS_API = 'https://script.google.com/macros/s/AKfycbz-A3jedYI4Gq4cKpH0vwaXL9a5eVTIoV8Gz5oIxEA8Gwm68O0_T8xQzwifDwIcHx1-/exec';
     const FOOTBALL_API = 'https://script.google.com/macros/s/AKfycbz6fcoEoNF_C7CpNENGoQHEgCGry91Mi9xDPck0Xv2YUd3zW33UjMGCGgBD-ZkXte3z/exec'; 
+    
+    // ВСТАВЬТЕ СЮДА ВАШУ ССЫЛКУ НА СКРИПТ БАСКЕТБОЛА
+    const BASKETBALL_API = 'https://script.google.com/macros/s/AKfycbzVNo0nkiivzgSDBKnFHCGtkM7YmvowNLhRBvvCfOFgU_D6LvlQNMYZkG9xF7R8QaUZ/exec'; 
 
     let currentSport = 'tennis';
 
@@ -296,14 +295,25 @@
         currentSport = sport;
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
         if(targetBtn) targetBtn.classList.add('active');
-        document.getElementById('sport-title').innerText = sport === 'tennis' ? 'Tennis Money Flow' : 'Football Money Flow';
+        
+        // Меняем заголовок в зависимости от спорта
+        let titleMap = {
+            'tennis': 'Tennis Money Flow',
+            'football': 'Football Money Flow',
+            'basketball': 'Basketball Money Flow'
+        };
+        document.getElementById('sport-title').innerText = titleMap[sport] || 'Money Flow';
         loadData();
     }
 
     async function loadData() {
         const container = document.getElementById('mf-table-container');
         container.innerHTML = '<div class="loading-mf">Загрузка данных...</div>';
-        const API_URL = currentSport === 'tennis' ? TENNIS_API : FOOTBALL_API;
+        
+        let API_URL = '';
+        if (currentSport === 'tennis') API_URL = TENNIS_API;
+        else if (currentSport === 'football') API_URL = FOOTBALL_API;
+        else if (currentSport === 'basketball') API_URL = BASKETBALL_API;
 
         try {
             const res = await fetch(API_URL);
@@ -314,7 +324,86 @@
             }
 
             let html = '';
-            if (currentSport === 'football') {
+
+            // --- ЛОГИКА ДЛЯ БАСКЕТБОЛА ---
+            if (currentSport === 'basketball') {
+                let matchesToRender = [];
+                data.forEach(match => {
+                    // Данные приходят в виде объектов из нового скрипта
+                    let league = match.league || "";
+                    let time = match.time || "";
+                    let team1 = match.team1;
+                    let team2 = match.team2;
+                    
+                    // Парсим строки процентов и денег, которые приходят из скрипта
+                    let d1 = parseStr(match.percent1 + " £" + match.money1); 
+                    let d2 = parseStr(match.percent2 + " £" + match.money2);
+                    
+                    let o1 = match.odd1;
+                    let o2 = match.odd2;
+
+                    let totalSum = d1.rawVal + d2.rawVal;
+                    let totalFmt = "£ " + totalSum.toLocaleString('en-US');
+                    
+                    let c1 = (parseFloat(o1)<parseFloat(o2))?'odds-fav':'odds-reg';
+                    let c2 = (parseFloat(o2)<parseFloat(o1))?'odds-fav':'odds-reg';
+                    
+                    let col1 = d1.pct>=d2.pct?'var(--neon)':'var(--danger)';
+                    let col2 = d2.pct>=d1.pct?'var(--neon)':'var(--danger)';
+                    let cls1 = d1.pct>=d2.pct?'c-neon':'c-danger';
+                    let cls2 = d2.pct>=d1.pct?'c-neon':'c-danger';
+
+                    let cardHTML = `
+                    <div class="match-card">
+                        <div class="match-info">
+                            <div><span class="tour-name">${league}</span><span>${time}</span></div>
+                            <span class="total-val">Всего: ${totalFmt}</span>
+                        </div>
+                        <div class="table-responsive">
+                            <table>
+                                <tr>
+                                    <th width="35%"><div class="team-name">${team1}</div></th>
+                                    <th width="15%"><span class="odds ${c1}">${o1}</span></th>
+                                    <th width="50%">
+                                        <div class="money-cell">
+                                            <div class="money-line">
+                                                <span class="money-white">${d1.money}</span>
+                                                <span class="${cls1}">${d1.pctStr}</span>
+                                            </div>
+                                            <div class="bar-track">
+                                                <div class="bar-fill" style="width:${d1.pct}%; background:${col1}"></div>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th><div class="team-name">${team2}</div></th>
+                                    <th><span class="odds ${c2}">${o2}</span></th>
+                                    <th>
+                                        <div class="money-cell">
+                                            <div class="money-line">
+                                                <span class="money-white">${d2.money}</span>
+                                                <span class="${cls2}">${d2.pctStr}</span>
+                                            </div>
+                                            <div class="bar-track">
+                                                <div class="bar-fill" style="width:${d2.pct}%; background:${col2}"></div>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>`;
+                    matchesToRender.push({ html: cardHTML, total: totalSum });
+                });
+                
+                // Сортировка по объему денег (как в футболе)
+                matchesToRender.sort((a, b) => b.total - a.total);
+                matchesToRender.forEach(item => html += item.html);
+            } 
+            
+            // --- ЛОГИКА ДЛЯ ФУТБОЛА ---
+            else if (currentSport === 'football') {
                 let matchesToRender = [];
                 data.forEach(row => {
                     if (row.length < 9) return; 
@@ -341,7 +430,10 @@
                 });
                 matchesToRender.sort((a, b) => b.total - a.total);
                 matchesToRender.forEach(item => html += item.html);
-            } else {
+            } 
+            
+            // --- ЛОГИКА ДЛЯ ТЕННИСА ---
+            else {
                 data.forEach(row => {
                     if (row.length < 8) return; 
                     let tour = row[1] || ""; let time = row[2] || "";
@@ -367,7 +459,7 @@
         }
     }
     
-    // Navigation Logic (сохраняем исходную логику перехода)
+    // Navigation Logic
     const navBtns = document.querySelectorAll('.nav-btn');
     navBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -378,10 +470,9 @@
             } else if(page === 'ai') {
                 alert('Раздел АИ в разработке');
             } else if(page === 'cashflow') {
-                // текущая страница, ничего не делаем
+                // текущая страница
             }
         });
-        
     });
     
     // Обработка вкладок
