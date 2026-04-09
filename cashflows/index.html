@@ -181,7 +181,7 @@
         }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
 <div class="global-particles" id="globalParticles"></div>
 
@@ -273,8 +273,86 @@
 </footer>
 
 <script>
-    // === НАСТРОЙКИ ССЫЛОК ===
-    const TENNIS_API = 'https://script.google.com/macros/s/AKfycbz-A3jedYI4Gq4cKpH0vwaXL9a5eVTIoV8Gz5oIxEA8Gwm68O0_T8xQzwifDwIcHx1-/exec';
+    // === МАКСИМАЛЬНАЯ ЗАЩИТА ОТ КОПИРОВАНИЯ ===
+
+    // 1. Блокировка контекстного меню (ПКМ)
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    }, true); // true важно для перехвата на этапе capturing
+
+    // 2. Жесткая блокировка горячих клавиш
+    document.addEventListener('keydown', function(e) {
+        const key = e.key.toLowerCase();
+        const code = e.code;
+        const isCtrl = e.ctrlKey;
+        const isShift = e.shiftKey;
+        const isAlt = e.altKey;
+
+        // F12
+        if (e.keyCode === 123) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+
+        // Ctrl+U (View Source) - Самая важная часть
+        if (isCtrl && !isShift && !isAlt && (code === 'KeyU' || key === 'u')) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation(); // Останавливает дальнейшую обработку браузером
+            return false;
+        }
+
+        // Ctrl+Shift+I (Inspect Element)
+        if (isCtrl && isShift && (code === 'KeyI' || key === 'i')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+
+        // Ctrl+Shift+J (Console)
+        if (isCtrl && isShift && (code === 'KeyJ' || key === 'j')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+
+        // Ctrl+Shift+C (Select Element)
+        if (isCtrl && isShift && (code === 'KeyC' || key === 'c')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+
+        // Ctrl+S (Save Page)
+        if (isCtrl && (code === 'KeyS' || key === 's')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Ctrl+P (Print)
+        if (isCtrl && (code === 'KeyP' || key === 'p')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+    }, true); // Важно: true включает перехват до того, как событие дойдет до браузера
+
+    // 3. Ловушка для DevTools (Debugger Trap)
+    setInterval(function() {
+        var start = performance.now();
+        debugger; // Точка останова
+        var end = performance.now();
+        if (end - start > 100) {
+            console.clear();
+            console.log("%cStop!", "color: red; font-size: 50px; font-weight: bold;");
+        }
+    }, 1000);
+
+    // === ОСНОВНОЙ ФУНКЦИОНАЛ САЙТА ===
+    const TENNIS_API = 'https://script.google.com/macros/s/AKfycbzyUw_OlQ7xd3p3p3Xhp01lfFZFvsptcb0AGAtJUddC7y2ODmheNX6szf6BSaI-2fQZ/exec';
     const FOOTBALL_API = 'https://script.google.com/macros/s/AKfycbz6fcoEoNF_C7CpNENGoQHEgCGry91Mi9xDPck0Xv2YUd3zW33UjMGCGgBD-ZkXte3z/exec'; 
     
     // ВСТАВЬТЕ СЮДА ВАШУ ССЫЛКУ НА СКРИПТ БАСКЕТБОЛА
@@ -498,12 +576,6 @@
                 let maxPct = Math.max(d1.pct, d2.pct);
                 
                 // ФИЛЬТР: Кэф > 1.50, Сумма > 5000, Процент > 80
-                let minOdd = Math.min(o1, o2); // Обычно смотрим на кэф фаворита или того на кого грузят
-                // Но условие "коэффициент больше 1.50". Если грузят на аутсайдера с кэфом 3.0, это тоже подходит.
-                // Проверим минимальный кэф матча, чтобы исключить "верняки" с кэфом 1.10, если нужно.
-                // Или проверим кэф той стороны, на которую ставят.
-                // Давайте проверим: если хотя бы один кэф > 1.50 И сумма > 5000 И процент > 80
-                
                 let bestOdd = (d1.pct > d2.pct) ? o1 : o2; // Кэф на популярный исход
 
                 if (bestOdd > 1.50 && totalSum > 5000 && maxPct > 80) {
