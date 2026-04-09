@@ -16,7 +16,7 @@
 <!-- /Yandex.Metrika counter -->
     <meta name="yandex-verification" content="0ac8a3221431959f" />
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <!-- === SEO META TAGS === -->
     <title>SetTrue — Оценка матчей | Математический анализ Футбола, Хоккея, Тенниса</title>
@@ -87,35 +87,7 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { background: #050507; font-family: 'Inter', sans-serif; overflow-x: auto; min-height: 100vh; color: #fff; }
-        
-        /* Принудительная ПК-версия - фиксированная минимальная ширина */
-        .pc-forced {
-            min-width: 1200px;
-            width: 100%;
-        }
-        
-        /* Для контента, который должен центрироваться */
-        .pc-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Переопределяем адаптивные стили для ПК-версии - показываем все колонки */
-        .hide-md, .hide-sm {
-            display: table-cell !important;
-        }
-        
-        /* Убираем ограничения по ширине для таблиц */
-        .ft-table-container {
-            overflow-x: auto;
-            min-width: 1100px;
-        }
-        
-        .ft-table {
-            min-width: 1000px;
-        }
+        body { background: #050507; font-family: 'Inter', sans-serif; overflow-x: hidden; min-height: 100vh; color: #fff; }
         
         /* Particles - ИСПРАВЛЕНО (z-index выше iframe) */
         .global-particles { 
@@ -163,42 +135,32 @@
         /* Content Area */
         #page-content { transition: opacity 0.2s ease; min-height: 300px; position: relative; z-index: 5; width: 100%; padding-bottom: 60px; }
         
-        /* Table Styles - Увеличены для ПК */
-        .ft-table-container { 
-            font-family: 'Inter', system-ui, sans-serif; 
-            max-width: 100%; 
-            margin: 0 auto 30px auto; 
-            color: #ffffff; 
-            background: #000000; 
-            line-height: 1.5; 
-            border-radius: 12px; 
-            overflow-x: auto;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
+        /* Table Styles */
+        .ft-table-container { font-family: 'Inter', system-ui, sans-serif; max-width: 100%; margin: 0 auto 30px auto; color: #ffffff; background: #000000; line-height: 1.5; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
         .ft-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #0a0a0a; border-bottom: 2px solid #7fff00; }
         .ft-header h2 { margin: 0; font-size: 16px; font-weight: 700; color: #fff; }
         .ft-badge { background: #7fff00; color: #000000; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 12px; animation: pulse 2s infinite; }
         @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
 
-        .ft-table { width: 100%; border-collapse: collapse; background: #000000; font-size: 14px; }
+        .ft-table { width: 100%; border-collapse: collapse; background: #000000; font-size: 13px; }
         .ft-table thead { background: #111111; color: #7fff00; position: sticky; top: 0; z-index: 10; }
-        .ft-table th { padding: 12px 10px; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px; border-bottom: 2px solid #7fff00; }
-        .ft-table td { padding: 12px 10px; border-bottom: 1px solid #222222; vertical-align: middle; color: #ccc; }
+        .ft-table th { padding: 10px 8px; text-align: center; font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; border-bottom: 2px solid #7fff00; }
+        .ft-table td { padding: 10px 8px; border-bottom: 1px solid #222222; vertical-align: middle; color: #ccc; }
         .ft-table tbody tr:nth-child(even) { background: #050505; }
         .ft-table tbody tr:hover { background: #111111; }
         
-        .ft-tournament { font-weight: 600; color: #7fff00; text-align: left !important; white-space: nowrap; }
-        .ft-match { text-align: left !important; font-weight: 500; min-width: 200px; }
-        .ft-match-date { display: block; font-size: 11px; color: #666; margin-top: 4px; }
+        .ft-tournament { font-weight: 600; color: #7fff00; text-align: left !important; max-width: 120px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .ft-match { text-align: left !important; font-weight: 500; min-width: 160px; }
+        .ft-match-date { display: block; font-size: 10px; color: #666; margin-top: 2px; }
 
-        .ft-chances { display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; }
-        .ft-c-high { color: #7fff00; font-size: 14px; }
-        .ft-c-low { color: #ff4444; font-size: 14px; }
-        .ft-c-div { width: 1px; height: 16px; background: #333; }
+        .ft-chances { display: flex; align-items: center; justify-content: center; gap: 6px; font-weight: 700; }
+        .ft-c-high { color: #7fff00; font-size: 13px; }
+        .ft-c-low { color: #ff4444; font-size: 13px; }
+        .ft-c-div { width: 1px; height: 14px; background: #333; }
 
-        .ft-tip { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: #7fff00; color: #000; font-weight: 800; border-radius: 50%; font-size: 14px; }
+        .ft-tip { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: #7fff00; color: #000; font-weight: 800; border-radius: 50%; font-size: 12px; }
 
-        .ft-score { font-family: monospace; font-weight: 700; font-size: 14px; padding: 4px 10px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; min-width: 60px; gap: 6px; }
+        .ft-score { font-family: monospace; font-weight: 700; font-size: 13px; padding: 4px 8px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; min-width: 40px; gap: 4px; }
         .ft-score.ft-correct { background: rgba(127, 255, 0, 0.2); color: #7fff00; border: 1px solid #7fff00; }
         .ft-score.ft-wrong { background: rgba(255, 68, 68, 0.2); color: #ff4444; border: 1px solid #ff4444; }
         .ft-score.ft-neutral { background: #222; color: #666; }
@@ -216,7 +178,7 @@
         footer a:hover { color: #d2ff40 !important; }
 
         /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #07070c; }
         ::-webkit-scrollbar-thumb { background: #2c2c3a; border-radius: 8px; }
         ::-webkit-scrollbar-thumb:hover { background: #ccff00; }
@@ -224,71 +186,77 @@
         .hero { animation: fadeIn 0.8s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Адаптация для мобильных при ПК-режиме */
+        /* === MOBILE ADAPTATION === */
         @media (max-width: 768px) {
-            .pc-forced {
-                min-width: 1200px;
-            }
-            body {
-                overflow-x: auto;
-            }
+            .hero { min-height: 32vh; padding: 0.8rem 1rem 1.5rem; }
+            .nav-buttons { gap: 0.8rem; margin-bottom: 1.2rem; }
+            .nav-btn { padding: 0.5rem 1rem; font-size: 0.85rem; }
+            .description { font-size: 0.8rem; padding: 0.4rem 1rem; }
+            
+            /* Адаптация таблицы */
+            .ft-table { font-size: 12px; }
+            .hide-md { display: none; } /* Скрываем Сеты и Геймы */
+            .ft-tournament { max-width: 90px; }
+            .ft-match { min-width: 140px; font-size: 13px; }
+            .ft-table th, .ft-table td { padding: 8px 6px; }
+            .ft-score { font-size: 12px; padding: 3px 6px; min-width: 36px; }
+        }
+
+        @media (max-width: 480px) {
+            .nav-btn { padding: 0.45rem 0.8rem; font-size: 0.8rem; }
+            .ft-header h2 { font-size: 14px; }
         }
     </style>
 </head>
-<body oncontextmenu="return false;">
+<body>
 
 <div class="global-particles" id="globalParticles"></div>
 
-<div class="pc-forced">
-    <div class="pc-container">
-        <section class="hero">
-            <div class="hero-content">
-                <h1 class="seo-h1">Оценка спортивных матчей: футбол, хоккей, теннис, баскетбол — математический анализ SetTrue</h1>
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="seo-h1">Оценка спортивных матчей: футбол, хоккей, теннис, баскетбол — математический анализ SetTrue</h1>
 
-                <div class="nav-buttons">
-                    <button class="nav-btn" data-page="home" data-link="/">Главная</button>
-                    <button class="nav-btn" data-page="predictions" data-link="/predict/">Прогнозы</button>
-                    <button class="nav-btn active" data-page="matches">Оценка матчей</button>
-                    <button class="nav-btn" data-page="cashflow" data-link="/cashflows/">Денежные потоки</button>
-                    <!-- ИЗМЕНЕНИЕ: Кнопка CS2 вместо АИ модели -->
-                    <button class="nav-btn" data-page="cs2" data-link="/cs2/">CS2</button>
-                </div>
+        <div class="nav-buttons">
+            <button class="nav-btn" data-page="home" data-link="/">Главная</button>
+            <button class="nav-btn" data-page="predictions" data-link="/predict/">Прогнозы</button>
+            <button class="nav-btn active" data-page="matches">Оценка матчей</button>
+            <button class="nav-btn" data-page="cashflow" data-link="/cashflows/">Денежные потоки</button>
+            <button class="nav-btn" data-page="ai">АИ модель</button>
+        </div>
 
-                <div class="logo">True<span>Set</span></div>
-                
-                <div class="description">
-                    Математические прогнозы | Точность 72% | Футбол, Хоккей, Теннис, Баскетбол
-                </div>
+        <div class="logo">True<span>Set</span></div>
+        
+        <div class="description">
+            Математические прогнозы | Точность 72% | Футбол, Хоккей, Теннис, Баскетбол
+        </div>
+    </div>
+</section>
+
+<div id="page-content" role="main">
+    <!-- ТАБЛИЦА 1: ТЕКУЩИЕ ПРОГНОЗЫ -->
+    <div class="ft-table-container">
+        <div class="ft-header">
+            <h2>🎾 Текущие прогнозы</h2>
+            <span class="ft-badge">LIVE</span>
+        </div>
+        <div id="tennis-app-current">
+            <div class="ft-loading">
+                <div class="ft-spinner"></div>
+                <span>Загрузка текущих прогнозов...</span>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <div id="page-content" role="main">
-            <!-- ТАБЛИЦА 1: ТЕКУЩИЕ ПРОГНОЗЫ -->
-            <div class="ft-table-container">
-                <div class="ft-header">
-                    <h2>🎾 Текущие прогнозы</h2>
-                    <span class="ft-badge">LIVE</span>
-                </div>
-                <div id="tennis-app-current">
-                    <div class="ft-loading">
-                        <div class="ft-spinner"></div>
-                        <span>Загрузка текущих прогнозов...</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ТАБЛИЦА 2: РЕЗУЛЬТАТЫ ЗА ВЧЕРАШНИЙ ДЕНЬ -->
-            <div class="ft-table-container">
-                <div class="ft-header">
-                    <h2>📊 Результаты за вчерашний день</h2>
-                    <span class="ft-badge">ПРОШЕДШИЕ</span>
-                </div>
-                <div id="tennis-app-last">
-                    <div class="ft-loading">
-                        <div class="ft-spinner"></div>
-                        <span>Загрузка результатов...</span>
-                    </div>
-                </div>
+    <!-- ТАБЛИЦА 2: РЕЗУЛЬТАТЫ ЗА ВЧЕРАШНИЙ ДЕНЬ -->
+    <div class="ft-table-container">
+        <div class="ft-header">
+            <h2>📊 Результаты за вчерашний день</h2>
+            <span class="ft-badge">ПРОШЕДШИЕ</span>
+        </div>
+        <div id="tennis-app-last">
+            <div class="ft-loading">
+                <div class="ft-spinner"></div>
+                <span>Загрузка результатов...</span>
             </div>
         </div>
     </div>
@@ -345,89 +313,12 @@
 </footer>
 
 <script>
-    // === МАКСИМАЛЬНАЯ ЗАЩИТА ОТ КОПИРОВАНИЯ ===
-
-    // 1. Блокировка контекстного меню (ПКМ)
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        return false;
-    }, true); // true важно для перехвата на этапе capturing
-
-    // 2. Жесткая блокировка горячих клавиш
-    document.addEventListener('keydown', function(e) {
-        const key = e.key.toLowerCase();
-        const code = e.code;
-        const isCtrl = e.ctrlKey;
-        const isShift = e.shiftKey;
-        const isAlt = e.altKey;
-
-        // F12
-        if (e.keyCode === 123) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        }
-
-        // Ctrl+U (View Source) - Самая важная часть
-        if (isCtrl && !isShift && !isAlt && (code === 'KeyU' || key === 'u')) {
-            e.preventDefault();
-            e.stopPropagation();
-            e.stopImmediatePropagation(); // Останавливает дальнейшую обработку браузером
-            return false;
-        }
-
-        // Ctrl+Shift+I (Inspect Element)
-        if (isCtrl && isShift && (code === 'KeyI' || key === 'i')) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        }
-
-        // Ctrl+Shift+J (Console)
-        if (isCtrl && isShift && (code === 'KeyJ' || key === 'j')) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        }
-
-        // Ctrl+Shift+C (Select Element)
-        if (isCtrl && isShift && (code === 'KeyC' || key === 'c')) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        }
-
-        // Ctrl+S (Save Page)
-        if (isCtrl && (code === 'KeyS' || key === 's')) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        }
-        
-        // Ctrl+P (Print)
-        if (isCtrl && (code === 'KeyP' || key === 'p')) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        }
-    }, true); // Важно: true включает перехват до того, как событие дойдет до браузера
-
-    // 3. Ловушка для DevTools (Debugger Trap)
-    setInterval(function() {
-        var start = performance.now();
-        debugger; // Точка останова
-        var end = performance.now();
-        if (end - start > 100) {
-            console.clear();
-            console.log("%cStop!", "color: red; font-size: 50px; font-weight: bold;");
-        }
-    }, 1000);
-
     // ГЛОБАЛЬНЫЕ ЧАСТИЦЫ
     function createGlobalParticles() {
         const container = document.getElementById('globalParticles');
         if (!container) return;
         
+        // Оптимизация: меньше частиц на мобильных для производительности
         const isMobile = window.innerWidth < 768;
         const particleCount = isMobile ? 50 : 150;
         
@@ -511,8 +402,8 @@
 
         let h = '<table class="ft-table"><thead><tr>';
         h += '<th>Турнир</th><th>Матч</th><th>Шансы</th><th>Прогноз</th>';
-        h += '<th>Сеты</th><th>Геймы</th><th>Счёт</th>';
-        h += '<tr></thead><tbody>';
+        h += '<th class="hide-md">Сеты</th><th class="hide-sm">Геймы</th><th>Счёт</th>';
+        h += '</thead><tbody>';
         
         data.forEach(d=>{
           const mHtml = d.match.replace(/(\d{1,2}\/\d{1,2}\/\d{2,4}\s+\d{1,2}:\d{2})/, 
@@ -522,8 +413,8 @@
             <td class="ft-match">${mHtml}</td>
             <td>${rChances(d.prob1, d.prob2)}</td>
             <td>${rTip(d.tip)}</td>
-            <td>—</td>
-            <td>—</td>
+            <td class="hide-md">—</td>
+            <td class="hide-sm">—</td>
             <td>${rScore(d.actualGames, d.tip)}</td>
           </tr>`;
         });
@@ -543,7 +434,7 @@
           const j = await res.json();
           
           if(!j.success) throw new Error(j.error || 'Ошибка сервера');
-          if(!j.data || j.data.length===0) throw new Error('Матчи не найдены');
+          if(!j.data || j.data.length===0) throw new Error('Скан не расчитал на сегодня матчи');
           
           renderTable(j.data, 'tennis-app-current');
         } catch(e){
@@ -575,10 +466,7 @@
                 const page = btn.getAttribute('data-page');
                 const link = btn.getAttribute('data-link');
                 
-                if (page === 'cs2') {
-                    // ИЗМЕНЕНИЕ: Переход на страницу CS2
-                    window.location.href = link;
-                } else if (page === 'ai') {
+                if (page === 'ai') {
                     alert('Раздел АИ в разработке');
                 } else if (page === 'matches') {
                     window.location.reload();
@@ -589,23 +477,7 @@
         });
     }
     
-    // Принудительная ПК-версия на телефоне
-    function forcePCVersionOnMobile() {
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        
-        if (isMobile) {
-            // Меняем viewport для ПК-режима
-            const viewport = document.querySelector('meta[name="viewport"]');
-            if (viewport) {
-                viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes');
-            }
-            // Разрешаем горизонтальную прокрутку
-            document.body.style.overflowX = 'auto';
-        }
-    }
-    
     window.addEventListener('DOMContentLoaded', () => {
-        forcePCVersionOnMobile(); // Принудительно включаем ПК-версию на телефонах
         createGlobalParticles();
         initNavigation();
         loadCurrent();
