@@ -585,8 +585,15 @@
                 btns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 
-                if (page === 'cs2') { loadCS2Table(); }
-                else if (page === 'home') { loadPage('home'); }
+                // ИСПРАВЛЕНИЕ: Если нажата Главная, проверяем путь. Если мы не в корне, делаем редирект.
+                if (page === 'home') {
+                    if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
+                        window.location.href = 'https://settrue.ru/';
+                        return;
+                    }
+                    loadPage('home');
+                }
+                else if (page === 'cs2') { loadCS2Table(); }
                 else if (page === 'ai') { loadPage('ai'); }
                 else if (link) { loadPage(page, link); }
                 else { loadPage(page); }
