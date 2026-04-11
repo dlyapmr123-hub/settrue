@@ -208,7 +208,7 @@
         }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
 <div class="global-particles" id="globalParticles"></div>
 
@@ -221,7 +221,8 @@
             <button class="nav-btn" data-page="predictions" data-link="/predict/">Прогнозы</button>
             <button class="nav-btn active" data-page="matches">Оценка матчей</button>
             <button class="nav-btn" data-page="cashflow" data-link="/cashflows/">Денежные потоки</button>
-            <button class="nav-btn" data-page="ai">АИ модель</button>
+            <!-- ИЗМЕНЕНИЕ: Кнопка CS2 вместо АИ модели -->
+            <button class="nav-btn" data-page="cs2" data-link="/cs2/">CS2</button>
         </div>
 
         <div class="logo">True<span>Set</span></div>
@@ -313,6 +314,84 @@
 </footer>
 
 <script>
+    // === МАКСИМАЛЬНАЯ ЗАЩИТА ОТ КОПИРОВАНИЯ ===
+
+    // 1. Блокировка контекстного меню (ПКМ)
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    }, true); // true важно для перехвата на этапе capturing
+
+    // 2. Жесткая блокировка горячих клавиш
+    document.addEventListener('keydown', function(e) {
+        const key = e.key.toLowerCase();
+        const code = e.code;
+        const isCtrl = e.ctrlKey;
+        const isShift = e.shiftKey;
+        const isAlt = e.altKey;
+
+        // F12
+        if (e.keyCode === 123) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+
+        // Ctrl+U (View Source) - Самая важная часть
+        if (isCtrl && !isShift && !isAlt && (code === 'KeyU' || key === 'u')) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation(); // Останавливает дальнейшую обработку браузером
+            return false;
+        }
+
+        // Ctrl+Shift+I (Inspect Element)
+        if (isCtrl && isShift && (code === 'KeyI' || key === 'i')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+
+        // Ctrl+Shift+J (Console)
+        if (isCtrl && isShift && (code === 'KeyJ' || key === 'j')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+
+        // Ctrl+Shift+C (Select Element)
+        if (isCtrl && isShift && (code === 'KeyC' || key === 'c')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+
+        // Ctrl+S (Save Page)
+        if (isCtrl && (code === 'KeyS' || key === 's')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Ctrl+P (Print)
+        if (isCtrl && (code === 'KeyP' || key === 'p')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+    }, true); // Важно: true включает перехват до того, как событие дойдет до браузера
+
+    // 3. Ловушка для DevTools (Debugger Trap)
+    setInterval(function() {
+        var start = performance.now();
+        debugger; // Точка останова
+        var end = performance.now();
+        if (end - start > 100) {
+            console.clear();
+            console.log("%cStop!", "color: red; font-size: 50px; font-weight: bold;");
+        }
+    }, 1000);
+
     // ГЛОБАЛЬНЫЕ ЧАСТИЦЫ
     function createGlobalParticles() {
         const container = document.getElementById('globalParticles');
@@ -466,8 +545,9 @@
                 const page = btn.getAttribute('data-page');
                 const link = btn.getAttribute('data-link');
                 
-                if (page === 'ai') {
-                    alert('Раздел АИ в разработке');
+                if (page === 'cs2') {
+                    // ИЗМЕНЕНИЕ: Переход на страницу CS2
+                    window.location.href = link;
                 } else if (page === 'matches') {
                     window.location.reload();
                 } else if (link) {
