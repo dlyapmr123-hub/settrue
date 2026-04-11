@@ -17,7 +17,7 @@ Disallow: /*?*
 Disallow: /script.google.com/
 
 # Указываем путь к карте сайта (если создашь sitemap.xml, раскомментируй строку ниже)
-# Sitemap: https://settrue.ru/sitemap.xml
+Sitemap: https://settrue.ru/sitemap.xml
 
 # Хост (главное зеркало сайта)
 Host: https://settrue.ru
