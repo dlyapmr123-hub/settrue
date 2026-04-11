@@ -18,18 +18,10 @@
     <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
     <!-- === SEO META TAGS === -->
-    <title>Прогнозы на спорт сегодня бесплатно | Математика SetTrue x Pari</title>
-    <meta name="description" content="Бесплатные математические прогнозы на спорт. Партнер БК Pari. Точность 72%. Аналитика футбола, хоккея, тенниса и CS2. Поддержите развитие проекта.">
-    <meta name="keywords" content="прогнозы на спорт, ставки на спорт, pari, парибет, прогнозы на футбол, SetTrue, донат, поддержка, сбп">
+    <title>SetTrue — Алгоритмическая аналитика спорта</title>
+    <meta name="description" content="Математические прогнозы на спорт. Анализ денежных потоков и статистики. Партнер БК Pari.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://settrue.ru/">
-    
-    <!-- === OPEN GRAPH === -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="SetTrue — Прогнозы на спорт с точностью 72%">
-    <meta property="og:description" content="Математические прогнозы на футбол, хоккей, теннис и CS2. Официальный партнер БК Pari.">
-    <meta property="og:image" content="https://settrue.ru/images/og-image.jpg">
-    <meta property="og:url" content="https://settrue.ru">
     
     <!-- === FAVICON === -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -65,7 +57,6 @@
         .nav-btn:hover { border-color: rgba(204, 255, 0, 0.8); color: #ccff00; transform: translateY(-2px); box-shadow: 0 5px 20px rgba(204, 255, 0, 0.15); }
         .nav-btn.active { border-color: #ccff00; color: #ccff00; box-shadow: 0 0 15px rgba(204, 255, 0, 0.2); }
 
-        /* Кнопка поддержки (особый стиль) */
         .support-btn {
             background: linear-gradient(135deg, #d2ff40 0%, #9eff00 100%);
             color: #050507;
@@ -73,10 +64,7 @@
             font-weight: 700;
             box-shadow: 0 0 15px rgba(210, 255, 64, 0.3);
         }
-        .support-btn:hover {
-            box-shadow: 0 0 25px rgba(210, 255, 64, 0.6);
-            color: #000;
-        }
+        .support-btn:hover { box-shadow: 0 0 25px rgba(210, 255, 64, 0.6); color: #000; }
 
         .hero-content { position: relative; z-index: 10; text-align: center; max-width: 900px; width: 100%; margin: 0 auto; }
         .seo-h1 { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
@@ -86,7 +74,6 @@
         @keyframes shimmer { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
         @keyframes pulseGlow { 0% { text-shadow: 0 0 5px rgba(204, 255, 0, 0.3); } 100% { text-shadow: 0 0 25px rgba(204, 255, 0, 0.8); } }
 
-        /* === DATE & TIME BLOCK === */
         .msk-time-badge {
             display: inline-flex; align-items: center; gap: 8px; background: rgba(20, 20, 25, 0.8);
             border: 1px solid rgba(204, 255, 0, 0.15); padding: 6px 16px; border-radius: 20px;
@@ -100,123 +87,184 @@
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* === PARI BANNER === */
-        .pari-partner-banner {
-            background: linear-gradient(90deg, rgba(20,20,25,0.9) 0%, rgba(40,40,50,0.9) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-left: 4px solid #d2ff40;
-            padding: 15px 20px;
-            border-radius: 12px;
+        .pari-glass-banner-compact {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 12px 20px;
             margin: 20px auto;
             max-width: 600px;
+            width: fit-content;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            animation: fadeInUp 1s;
+            gap: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
-        .pari-logo-img { height: 30px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; transition: opacity 0.3s; }
-        .pari-partner-banner:hover .pari-logo-img { opacity: 1; filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(255,255,255,0.5)); }
-        .pari-text { text-align: left; flex-grow: 1; }
-        .pari-title { color: #fff; font-weight: 700; font-size: 14px; display: block; }
-        .pari-subtitle { color: #aaa; font-size: 12px; }
-        .pari-btn {
-            background: #d2ff40; color: #050507; font-weight: 700; font-size: 13px; padding: 8px 20px;
-            border-radius: 20px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap;
+        .pari-content-wrapper { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+        .pari-brand-neon { display: flex; align-items: center; gap: 10px; border-right: 1px solid rgba(255, 255, 255, 0.1); padding-right: 15px; white-space: nowrap; }
+        .pari-brand-neon img { height: 26px; filter: brightness(0) invert(1); opacity: 1; drop-shadow: 0 0 5px #d2ff40; }
+        .pari-brand-neon span { color: #d2ff40; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; text-shadow: 0 0 8px rgba(210, 255, 64, 0.6); }
+        .pari-actions { display: flex; gap: 20px; align-items: center; }
+        .glass-btn { color: #ccc; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; text-decoration: none; padding: 4px 0; position: relative; transition: all 0.3s ease; }
+        .glass-btn::after { content: ''; position: absolute; width: 0; height: 1px; bottom: 0; left: 0; background-color: #d2ff40; transition: width 0.3s ease; box-shadow: 0 0 8px #d2ff40; }
+        .glass-btn:hover { color: #fff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+        .glass-btn:hover::after { width: 100%; }
+        .pari-help-text { font-size: 10px; color: rgba(255, 255, 255, 0.4); font-weight: 400; }
+        @media (max-width: 650px) {
+            .pari-glass-banner-compact { flex-direction: column; padding: 15px; gap: 12px; width: 90%; }
+            .pari-brand-neon { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-right: 0; padding-bottom: 10px; width: 100%; justify-content: center; }
+            .pari-content-wrapper { width: 100%; align-items: center; }
+            .pari-actions { width: 100%; justify-content: center; flex-wrap: wrap; gap: 12px; }
+            .glass-btn { font-size: 12px; }
+            .pari-help-text { text-align: center; margin-top: 4px; }
         }
-        .pari-btn:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(210, 255, 64, 0.4); }
 
-        /* === DONATE MODAL STYLES === */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
-            z-index: 10001; display: none; justify-content: center; align-items: center;
-            opacity: 0; transition: opacity 0.3s ease;
+        /* === NEW LANDING STYLES === */
+        .landing-container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; animation: fadeInUp 0.8s ease-out; }
+        
+        .main-headline {
+            text-align: center;
+            margin-bottom: 60px;
         }
-        .modal-overlay.open { display: flex; opacity: 1; }
-        
-        .donate-card {
-            background: #0a0a0f; border: 1px solid #333; border-top: 2px solid #d2ff40;
-            border-radius: 16px; padding: 30px; max-width: 420px; width: 90%; 
-            box-shadow: 0 0 40px rgba(0,0,0,0.8);
-            transform: translateY(20px); transition: transform 0.3s ease;
-            position: relative;
-            text-align: center; /* Центрируем всё содержимое карточки */
-        }
-        .modal-overlay.open .donate-card { transform: translateY(0); }
-        
-        .donate-header { margin-bottom: 25px; }
-        .donate-title { color: #fff; font-size: 22px; font-weight: 800; margin-bottom: 8px; }
-        .donate-desc { color: #aaa; font-size: 14px; line-height: 1.4; }
-        
-        /* Стили для QR кода и кнопки банка */
-        .qr-container {
-            display: flex;
-            justify-content: center;
+        .main-headline h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
             margin-bottom: 20px;
-            background: #fff;
-            padding: 10px;
-            border-radius: 12px;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
+            letter-spacing: -1px;
         }
-        .qr-container img {
-            width: 180px;
-            height: 180px;
-            object-fit: contain;
+        .main-headline p {
+            color: #888;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
-        .sber-link-btn {
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            background: #21a038; color: #fff; font-weight: 700;
-            padding: 12px; border-radius: 8px; text-decoration: none;
-            margin-bottom: 10px; transition: transform 0.2s, background 0.2s;
-            width: 100%; /* Кнопка на всю ширину */
-            box-sizing: border-box;
+        /* Features Grid - New Design */
+        .features-grid-new {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
         }
-        .sber-link-btn:hover { transform: scale(1.02); background: #1e8e32; }
 
-        .donate-close {
-            display: block; width: 100%; margin-top: 20px; padding: 12px;
-            background: transparent; border: 1px solid #333; color: #888;
-            border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.2s;
+        .feature-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 4px; /* Более строгие углы */
+            transition: all 0.3s ease;
         }
-        .donate-close:hover { border-color: #fff; color: #fff; }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .feature-box:hover {
+            border-color: #d2ff40;
+            background: rgba(210, 255, 64, 0.02);
+        }
 
-        /* === CONTENT AREA === */
-        #page-content { transition: opacity 0.2s ease; min-height: 300px; position: relative; z-index: 5; flex-grow: 1; }
-        .iframe-container { position: relative; width: 100%; overflow: hidden; background: #050507; }
-        .news-iframe { width: 100%; border: none; display: block; height: 1900px; background: transparent; opacity: 0; transition: opacity 0.5s ease-in; }
-        .news-iframe.loaded { opacity: 1; }
-        .loader-wrapper { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; z-index: 1; }
-        .spinner { width: 40px; height: 40px; border: 3px solid rgba(204, 255, 0, 0.1); border-radius: 50%; border-top-color: #ccff00; animation: spin 1s ease-in-out infinite; margin-bottom: 10px; }
-        .loader-text { color: #ccff00; font-size: 0.8rem; letter-spacing: 1px; animation: pulse 1.5s infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
 
-        /* === FOOTER === */
-        footer { width: 100%; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(10px); border-top: 1px solid rgba(210, 255, 64, 0.15); padding: 40px 20px 20px; font-family: 'Inter', sans-serif; margin-top: auto; }
-        footer a { color: #888; text-decoration: none; transition: color 0.2s; }
-        footer a:hover { color: #d2ff40 !important; }
+        .feature-icon-box {
+            width: 40px;
+            height: 40px;
+            background: rgba(210, 255, 64, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            color: #d2ff40;
+            font-size: 20px;
+        }
 
-        /* === MOBILE ADAPTATION === */
+        .feature-title {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .feature-text {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-size: 2rem;
+            color: #d2ff40;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+        .stat-item p {
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         @media (max-width: 768px) {
             .hero { min-height: 35vh; padding: 1rem 1rem 1.5rem; }
             .nav-btn { padding: 0.45rem 1rem; font-size: 0.8rem; }
             .nav-buttons { gap: 0.6rem; margin-bottom: 1rem; }
             .logo { font-size: 2.2rem; }
-            .msk-time-badge { font-size: 0.75rem; padding: 5px 12px; }
-            
-            .pari-partner-banner { flex-direction: column; text-align: center; gap: 10px; padding: 15px; }
-            .pari-text { text-align: center; }
-            .pari-btn { width: 100%; display: block; }
-            
-            .news-iframe { transform: scale(0.333); transform-origin: top left; width: 300%; height: 1600px; overflow-y: auto; overflow-x: hidden; }
-            #page-content > div { width: 100%; overflow-x: hidden; overflow-y: visible; margin-bottom: -500px; }
+            .main-headline h2 { font-size: 1.8rem; }
+            .features-grid-new { grid-template-columns: 1fr; }
         }
+
+        /* === DONATE MODAL STYLES === */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 10001; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+        .modal-overlay.open { display: flex; opacity: 1; }
+        .donate-card { background: #0a0a0f; border: 1px solid #333; border-top: 2px solid #d2ff40; border-radius: 16px; padding: 30px; max-width: 420px; width: 90%; box-shadow: 0 0 40px rgba(0,0,0,0.8); transform: translateY(20px); transition: transform 0.3s ease; position: relative; text-align: center; }
+        .modal-overlay.open .donate-card { transform: translateY(0); }
+        .donate-header { margin-bottom: 25px; }
+        .donate-title { color: #fff; font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+        .donate-desc { color: #aaa; font-size: 14px; line-height: 1.4; }
+        .qr-container { display: flex; justify-content: center; margin-bottom: 20px; background: #fff; padding: 10px; border-radius: 12px; width: fit-content; margin-left: auto; margin-right: auto; }
+        .qr-container img { width: 180px; height: 180px; object-fit: contain; }
+        .sber-link-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: #21a038; color: #fff; font-weight: 700; padding: 12px; border-radius: 8px; text-decoration: none; margin-bottom: 10px; transition: transform 0.2s, background 0.2s; width: 100%; box-sizing: border-box; }
+        .sber-link-btn:hover { transform: scale(1.02); background: #1e8e32; }
+        .donate-close { display: block; width: 100%; margin-top: 20px; padding: 12px; background: transparent; border: 1px solid #333; color: #888; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+        .donate-close:hover { border-color: #fff; color: #fff; }
+
+        /* === FOOTER STYLES === */
+        .minimal-footer { width: 100%; background: rgba(5, 5, 7, 0.95); backdrop-filter: blur(10px); border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 40px 20px 20px; font-family: 'Inter', sans-serif; margin-top: auto; color: #888; }
+        .footer-container { max-width: 1000px; margin: 0 auto; }
+        .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 30px; }
+        .pari-footer-logo-glow img { height: 20px; filter: brightness(0) invert(1); opacity: 1; margin-bottom: 12px; drop-shadow: 0 0 6px rgba(255, 255, 255, 0.4); }
+        .footer-links-group a:hover { color: #d2ff40 !important; }
+        .footer-divider { height: 1px; background: rgba(255, 255, 255, 0.05); margin-bottom: 20px; }
+        
+        @media (max-width: 768px) {
+            .footer-top { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+            .footer-brand { display: flex; flex-direction: column; align-items: center; }
+            .footer-links-group { display: flex; flex-direction: column; align-items: center; }
+            .footer-bottom { text-align: center; }
+            .footer-bottom > div { justify-content: center; text-align: center; }
+        }
+
+        /* === CONTENT AREA === */
+        #page-content { transition: opacity 0.2s ease; min-height: 300px; position: relative; z-index: 5; flex-grow: 1; }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -233,7 +281,6 @@
             <button class="nav-btn" data-page="matches" data-link="/scanmatch/">Оценка матчей</button>
             <button class="nav-btn" data-page="cashflow" data-link="/cashflows/">Денежные потоки</button>
             <button class="nav-btn" data-page="cs2" data-link="/cs2/">CS2</button>
-            <!-- КНОПКА ПОДДЕРЖКИ -->
             <button class="nav-btn support-btn" onclick="openDonateModal()">❤️ Поддержать</button>
         </div>
 
@@ -254,90 +301,81 @@
 </section>
 
 <!-- === PARI PARTNER BANNER === -->
-<!-- ЗАМЕНИТЕ '#' НА ВАШУ РЕФЕРАЛЬНУЮ ССЫЛКУ ОТ ПАРИБЕТ -->
-<a href="#" target="_blank" rel="nofollow noopener" class="pari-partner-banner" onclick="ym(108400965, 'reachGoal', 'pari_click');">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari Logo" class="pari-logo-img">
-    <div class="pari-text">
-        <span class="pari-title">Регистрация в Pari поддерживает SetTrue</span>
-        <span class="pari-subtitle">Играйте по нашим прогнозам с бонусом до 30 000 ₽</span>
+<div class="pari-glass-banner-compact">
+    <div class="pari-brand-neon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari Logo">
+        <span>PARTNER</span>
     </div>
-    <span class="pari-btn">Играть в Pari</span>
-</a>
+    <div class="pari-content-wrapper">
+        <div class="pari-actions">
+            <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate" target="_blank" rel="nofollow noopener" class="glass-btn" onclick="ym(108400965, 'reachGoal', 'pari_reg');">Регистрация</a>
+            <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate" target="_blank" rel="nofollow noopener" class="glass-btn" onclick="ym(108400965, 'reachGoal', 'pari_bonus5k');">Бонус 5 000 ₽</a>
+            <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate" target="_blank" rel="nofollow noopener" class="glass-btn" onclick="ym(108400965, 'reachGoal', 'pari_freebets');">5 Фрибетов</a>
+        </div>
+        <div class="pari-help-text">❤️ Регистрация помогает развивать SetTrue</div>
+    </div>
+</div>
 
 <div id="page-content" role="main"></div>
 
-<!-- === DONATE MODAL (Упрощенный, без вкладок) === -->
+<!-- === DONATE MODAL === -->
 <div class="modal-overlay" id="donateModal" onclick="closeDonateModal(event)">
     <div class="donate-card" onclick="event.stopPropagation()">
         <div class="donate-header">
             <div class="donate-title">Поддержать проект</div>
             <p class="donate-desc">Ваши донаты помогают оплачивать серверы и улучшать алгоритмы.</p>
         </div>
-
-        <!-- Ваш QR код из файла qr.jpg -->
         <div class="qr-container">
             <img src="qr.jpg" alt="QR Code для перевода">
         </div>
         <p style="text-align: center; color: #ccc; font-size: 13px; margin-bottom: 15px;">
             Отсканируйте код камерой телефона или нажмите кнопку ниже
         </p>
-
-        <!-- Кнопка перехода по вашей ссылке -->
         <a href="https://www.sberbank.ru/ru/choise_bank?requisiteNumber=79870974130&bankCode=100000000111" target="_blank" class="sber-link-btn" onclick="ym(108400965, 'reachGoal', 'click_sber_link');">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/><path d="M8 12H16M12 8V16" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
             Пополнить через банк
         </a>
-
         <button class="donate-close" onclick="closeDonateModal()">Закрыть окно</button>
     </div>
 </div>
 
-<footer>
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 35px; margin-bottom: 40px;">
-      <div>
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
-          <span style="font-size: 28px;">🏆</span>
-          <h3 style="color: #d2ff40; font-size: 20px; font-weight: 700; margin: 0;">SETTRUE</h3>
+<footer class="minimal-footer">
+  <div class="footer-container">
+    <div class="footer-top">
+        <div class="footer-brand">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                <span style="font-size: 24px;">🏆</span>
+                <h3 style="color: #d2ff40; font-size: 18px; font-weight: 700; margin: 0; letter-spacing: -0.5px;">SETTRUE</h3>
+            </div>
+            <div class="pari-footer-logo-glow">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari Partner">
+            </div>
+            <p style="color: #666; font-size: 12px; line-height: 1.4; max-width: 250px;">
+                Алгоритмическая платформа для анализа спортивных событий.<br>
+                Официальный партнер БК Pari.
+            </p>
         </div>
-        <p style="color: #888; font-size: 13px; line-height: 1.6; margin-bottom: 15px;">
-          Математические прогнозы на основе статистики и алгоритмов машинного обучения. 
-          Официальный информационный партнер БК <strong style="color:#fff">Pari</strong>.
-        </p>
-        <div style="display: flex; gap: 15px; margin-top: 15px;">
-          <a href="#" aria-label="ВКонтакте">📘</a>
-          <a href="#" aria-label="Яндекс Дзен">📺</a>
-          <a href="#" aria-label="Телеграм">💬</a>
+        <div class="footer-links-group">
+            <h4 style="color: #fff; font-size: 12px; font-weight: 600; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Контакты</h4>
+            <a href="mailto:SetTrueForecast@yandex.ru" style="color: #aaa; font-size: 13px; text-decoration: none; display: block; margin-bottom: 6px; transition: color 0.2s;">SetTrueForecast@yandex.ru</a>
         </div>
-      </div>
-      
-      <div>
-        <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">КОНТАКТЫ</h4>
-        <p style="color: #999; font-size: 13px; margin-bottom: 10px;">
-          📧 <a href="mailto:SetTrueForecast@yandex.ru" style="color: #d2ff40;">SetTrueForecast@yandex.ru</a>
+        <div class="footer-links-group">
+            <h4 style="color: #fff; font-size: 12px; font-weight: 600; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Статистика</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; color: #aaa; font-size: 13px;">
+                <li style="margin-bottom: 6px;">📈 Обновление: <span style="color: #d2ff40;">Ежедневно</span></li>
+                <li style="margin-bottom: 6px;">⚽ Спорт: <span style="color: #d2ff40;">Футбол, Хоккей, CS2</span></li>
+                <li>📊 Точность: <span style="color: #d2ff40;">~72%</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+        <p style="color: #555; font-size: 11px; line-height: 1.4; margin-bottom: 10px;">
+            <strong style="color: #777;">Внимание:</strong> Ставки могут вызывать зависимость. Играйте ответственно. 18+. SetTrue предоставляет аналитические данные для принятия взвешенных решений.
         </p>
-      </div>
-      
-      <div>
-        <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">СТАТИСТИКА</h4>
-        <p style="color: #999; font-size: 13px; margin-bottom: 6px;">📈 Обновление: <span style="color: #d2ff40;">Ежедневно</span></p>
-        <p style="color: #999; font-size: 13px; margin-bottom: 6px;">⚽ Спорт: <span style="color: #d2ff40;">5+</span></p>
-        <p style="color: #999; font-size: 13px;">📊 Точность: <span style="color: #d2ff40;">~72%</span></p>
-      </div>
-    </div>
-    
-    <div style="margin: 20px 0; padding: 15px; background: rgba(255, 255, 255, 0.02); border-radius: 8px; border-left: 2px solid #d2ff40;">
-      <p style="color: #777; font-size: 12px; line-height: 1.5;">
-        <strong>SetTrue</strong> использует математические модели для анализа вероятностей исходов в спорте. Мы предоставляем данные для принятия взвешенных решений. Ставки могут вызывать зависимость. Играйте ответственно. 18+
-      </p>
-    </div>
-    
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); gap: 10px;">
-      <p style="color: #555; font-size: 11px; margin: 0;">© 2026 SetTrue. Все права защищены.</p>
-      <div style="display: flex; gap: 15px;">
-        <a href="#" style="color: #555; font-size: 11px;">Privacy Policy</a>
-        <a href="#" style="color: #555; font-size: 11px;">Terms of Use</a>
-      </div>
+        <div style="text-align: right; width: 100%;">
+            <p style="color: #444; font-size: 11px; margin: 0;">© 2026 SetTrue. All rights reserved.</p>
+        </div>
     </div>
   </div>
 </footer>
@@ -366,7 +404,6 @@
         modal.classList.add('open');
         if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'open_donate_modal');
     }
-
     function closeDonateModal(e) {
         if (!e || e.target.id === 'donateModal' || e.target.classList.contains('donate-close')) {
             document.getElementById('donateModal').classList.remove('open');
@@ -376,47 +413,13 @@
     // === ЗАЩИТА ОТ КОПИРОВАНИЯ ===
     document.addEventListener('contextmenu', e => { e.preventDefault(); return false; }, true);
     document.addEventListener('keydown', function(e) {
-        if (e.keyCode === 123 || 
-            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || 
-            (e.ctrlKey && (e.key === 'U' || e.key === 'S' || e.key === 'P'))) {
+        if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && (e.key === 'U' || e.key === 'S' || e.key === 'P'))) {
             e.preventDefault(); e.stopPropagation(); return false;
         }
     }, true);
     setInterval(() => { debugger; }, 1000);
 
     // === ЛОГИКА ЗАГРУЗКИ КОНТЕНТА ===
-    const CACHE_KEY = 'settrue_news_html_v1';
-    const CACHE_TIME_KEY = 'settrue_news_time_v1';
-    const MAX_CACHE_AGE = 3600000; 
-    const NEWS_URL = "https://script.google.com/macros/s/AKfycbxopJrr13Mn_G_DMqwr_7g4KjVSWpwclcxw_9dpdIZgsQltNjVfYsL3Y5T-uhAPkeg5ag/exec";
-
-    function createGlobalParticles() {
-        const container = document.getElementById('globalParticles');
-        if (!container) return;
-        const isMobile = window.innerWidth < 768;
-        const particleCount = isMobile ? 50 : 150;
-        container.innerHTML = '';
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('global-particle');
-            const size = Math.random() * 8 + 2;
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-            particle.style.left = Math.random() * 100 + '%';
-            const duration = Math.random() * 12 + 5;
-            particle.style.animationDuration = duration + 's';
-            particle.style.animationDelay = Math.random() * 15 + 's';
-            particle.style.background = `radial-gradient(circle, rgba(204, 255, 0, ${Math.random() * 0.7 + 0.3}), rgba(204, 255, 0, 0))`;
-            const shiftX = (Math.random() - 0.5) * 150;
-            particle.style.setProperty('--shift', shiftX + 'px');
-            container.appendChild(particle);
-        }
-    }
-
-    window.handleBackgroundUpdate = function(iframe) {
-        setTimeout(() => { if(iframe && iframe.parentNode) iframe.parentNode.removeChild(iframe); }, 1000);
-    };
-
     function loadPage(pageId, linkUrl) {
         const contentDiv = document.getElementById('page-content');
         if (!contentDiv) return;
@@ -425,28 +428,61 @@
         setTimeout(() => {
             let htmlContent = '';
             if (pageId === 'home') {
-                const cachedHtml = localStorage.getItem(CACHE_KEY);
-                const cacheTime = localStorage.getItem(CACHE_TIME_KEY);
-                const now = Date.now();
-                
-                if (cachedHtml && cacheTime && (now - parseInt(cacheTime)) < MAX_CACHE_AGE) {
-                    htmlContent = `
-                        <div class="iframe-container">
-                            <div id="cached-content-wrapper" style="width:100%; overflow:hidden; position:relative;">${cachedHtml}</div>
-                            <iframe id="updateFrame" src="${NEWS_URL}" style="display:none;" onload="handleBackgroundUpdate(this)"></iframe>
+                htmlContent = `
+                    <div class="landing-container">
+                        <div class="main-headline">
+                            <h2>Аналитика данных против случайности</h2>
+                            <p>Мы не используем интуицию. SetTrue обрабатывает массивы статистики, форму команд и движение коэффициентов в реальном времени, чтобы найти математическое преимущество над букмекером.</p>
                         </div>
-                    `;
-                } else {
-                    htmlContent = `
-                        <div class="iframe-container">
-                            <div class="loader-wrapper" id="newsLoader">
-                                <div class="spinner"></div>
-                                <div class="loader-text">ЗАГРУЗКА ДАННЫХ...</div>
+
+                        <div class="features-grid-new">
+                            <div class="feature-box">
+                                <div class="feature-header">
+                                    <div class="feature-icon-box">📊</div>
+                                    <div class="feature-title">Big Data Анализ</div>
+                                </div>
+                                <div class="feature-text">
+                                    Алгоритм анализирует более 50 параметров для каждого матча: от погоды и травм до истории личных встреч. Это исключает человеческий фактор и эмоции.
+                                </div>
                             </div>
-                            <iframe id="newsFrame" src="${NEWS_URL}" class="news-iframe" frameborder="0" scrolling="no" sandbox="allow-scripts allow-same-origin allow-forms" loading="lazy" onload="onNewsLoad(this)"></iframe>
+
+                            <div class="feature-box">
+                                <div class="feature-header">
+                                    <div class="feature-icon-box">💸</div>
+                                    <div class="feature-title">Smart Money Tracking</div>
+                                </div>
+                                <div class="feature-text">
+                                    Мы отслеживаем аномальные движения денег в линии. Если крупные игроки массово ставят на один исход, вы узнаете об этом первыми.
+                                </div>
+                            </div>
+
+                            <div class="feature-box">
+                                <div class="feature-header">
+                                    <div class="feature-icon-box">🛡️</div>
+                                    <div class="feature-title">Управление Рисками</div>
+                                </div>
+                                <div class="feature-text">
+                                    Наши прогнозы ориентированы на дистанционную прибыль. Мы используем стратегии флэта и валуйных ставок, чтобы минимизировать просадки банка.
+                                </div>
+                            </div>
                         </div>
-                    `;
-                }
+
+                        <div class="stats-bar">
+                            <div class="stat-item">
+                                <h3>72%</h3>
+                                <p>Точность модели</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3>5+</h3>
+                                <p>Видов спорта</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3>24/7</h3>
+                                <p>Работа алгоритма</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
             } else if (linkUrl) {
                 window.location.href = linkUrl;
                 return;
@@ -455,12 +491,6 @@
             contentDiv.style.opacity = '1';
         }, 150);
     }
-
-    window.onNewsLoad = function(iframe) {
-        iframe.classList.add('loaded');
-        const loader = document.getElementById('newsLoader');
-        if (loader) loader.style.display = 'none';
-    };
     
     function initNavigation() {
         const btns = document.querySelectorAll('.nav-btn:not(.support-btn)');
@@ -486,6 +516,29 @@
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => createGlobalParticles(), 300);
     });
+
+    function createGlobalParticles() {
+        const container = document.getElementById('globalParticles');
+        if (!container) return;
+        const isMobile = window.innerWidth < 768;
+        const particleCount = isMobile ? 50 : 150;
+        container.innerHTML = '';
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('global-particle');
+            const size = Math.random() * 8 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            const duration = Math.random() * 12 + 5;
+            particle.style.animationDuration = duration + 's';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.background = `radial-gradient(circle, rgba(204, 255, 0, ${Math.random() * 0.7 + 0.3}), rgba(204, 255, 0, 0))`;
+            const shiftX = (Math.random() - 0.5) * 150;
+            particle.style.setProperty('--shift', shiftX + 'px');
+            container.appendChild(particle);
+        }
+    }
 </script>
 </body>
 </html>
