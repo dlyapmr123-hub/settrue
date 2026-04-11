@@ -18,8 +18,8 @@
     <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
     <!-- === SEO META TAGS === -->
-    <title>SetTrue — Алгоритмическая аналитика спорта</title>
-    <meta name="description" content="Математические прогнозы на спорт. Анализ денежных потоков и статистики. Партнер БК Pari.">
+    <title>SetTrue — Прогнозы на спорт и Денежные потоки</title>
+    <meta name="description" content="Ежедневные прогнозы на спорт и отслеживание денежных потоков. Футбол, Хоккей, Теннис, CS2. Партнер БК Pari.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://settrue.ru/">
     
@@ -40,7 +40,7 @@
     <style>
         /* === BASIC RESET & BODY === */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-user-select: none; user-select: none; }
-        body { background: #050507; font-family: 'Inter', sans-serif; overflow-x: hidden; min-height: 100vh; color: #e0e0e0; display: flex; flex-direction: column; }
+        body { background: #050507; font-family: 'Inter', sans-serif; overflow-x: hidden; min-height: 100vh; color: #e0e0e0; display: flex; flex-direction: column; line-height: 1.6; }
         
         /* === PARTICLES === */
         .global-particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9998; pointer-events: none; overflow: hidden; mask-image: radial-gradient(circle at center, transparent 0%, transparent 35%, black 70%, black 100%); -webkit-mask-image: radial-gradient(circle at center, transparent 0%, transparent 35%, black 70%, black 100%); }
@@ -74,16 +74,41 @@
         @keyframes shimmer { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
         @keyframes pulseGlow { 0% { text-shadow: 0 0 5px rgba(204, 255, 0, 0.3); } 100% { text-shadow: 0 0 25px rgba(204, 255, 0, 0.8); } }
 
-        .msk-time-badge {
-            display: inline-flex; align-items: center; gap: 8px; background: rgba(20, 20, 25, 0.8);
-            border: 1px solid rgba(204, 255, 0, 0.15); padding: 6px 16px; border-radius: 20px;
-            font-size: 0.85rem; color: #ccc; margin-bottom: 1.2rem; backdrop-filter: blur(5px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3); animation: fadeInUp 0.8s ease-out;
+        /* ВРЕМЯ СПРАВА СВЕРХУ */
+        .msk-time-badge-corner {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(10, 10, 15, 0.8);
+            border: 1px solid rgba(204, 255, 0, 0.2);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #ccc;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
-        .msk-time-badge .time-value { color: #ccff00; font-weight: 600; font-variant-numeric: tabular-nums; }
-        .msk-time-badge .date-value { color: #fff; font-weight: 500; }
+        .msk-time-badge-corner .time-value { color: #ccff00; }
 
-        .description { font-size: 0.95rem; color: #a0a0b8; max-width: 650px; margin: 0 auto; line-height: 1.5; font-weight: 400; background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(8px); padding: 0.6rem 1.4rem; border-radius: 40px; border: 1px solid rgba(255, 255, 255, 0.05); animation: fadeInUp 0.9s; }
+        .description { 
+            font-size: 0.95rem; 
+            color: #888; /* Более строгий серый цвет */
+            max-width: 650px; 
+            margin: 0 auto; 
+            line-height: 1.5; 
+            font-weight: 400; 
+            /* Убрали фон и рамку для минимализма */
+            padding: 0; 
+            border: none;
+            animation: fadeInUp 0.9s; 
+        }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* === PARI BANNER === */
@@ -120,116 +145,198 @@
             .pari-actions { width: 100%; justify-content: center; flex-wrap: wrap; gap: 12px; }
             .glass-btn { font-size: 12px; }
             .pari-help-text { text-align: center; margin-top: 4px; }
+            
+            .msk-time-badge-corner { top: 10px; right: 10px; padding: 6px 12px; font-size: 0.7rem; }
         }
 
-        /* === NEW LANDING STYLES === */
+        /* === LANDING STYLES (NEON SLOGAN - LOGO STYLE) === */
         .landing-container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; animation: fadeInUp 0.8s ease-out; }
         
         .main-headline {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
-        .main-headline h2 {
-            font-size: 2.5rem;
+        
+        /* Слоган в стиле логотипа TrueSet */
+        .neon-slogan {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 800;
-            color: #fff;
+            letter-spacing: -0.03em;
             margin-bottom: 20px;
-            letter-spacing: -1px;
+            line-height: 1.2;
+            text-transform: uppercase;
         }
-        .main-headline p {
-            color: #888;
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.6;
+        
+        .neon-slogan .white-part {
+            background: linear-gradient(135deg, #FFFFFF 0%, #CCCCCC 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .neon-slogan .green-part {
+            background: linear-gradient(135deg, #ccff00, #9eff00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(204, 255, 0, 0.5);
         }
 
-        /* Features Grid - New Design */
+        .main-headline p {
+            color: #aaa;
+            font-size: 1.2rem;
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #d2ff40;
+            margin: 15px auto 0;
+            border-radius: 2px;
+            box-shadow: 0 0 10px #d2ff40;
+        }
+
+        /* Features Grid */
         .features-grid-new {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
 
-        .feature-box {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 4px; /* Более строгие углы */
+        .feature-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 35px;
+            border-radius: 12px;
             transition: all 0.3s ease;
-        }
-
-        .feature-box:hover {
-            border-color: #d2ff40;
-            background: rgba(210, 255, 64, 0.02);
-        }
-
-        .feature-header {
             display: flex;
-            align-items: center;
-            gap: 15px;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .feature-panel:hover {
+            border-color: #d2ff40;
+            background: rgba(210, 255, 64, 0.03);
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(210, 255, 64, 0.1);
+        }
+
+        .panel-icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #d2ff40;
+            text-shadow: 0 0 10px rgba(210, 255, 64, 0.5);
+        }
+
+        .panel-title {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 700;
             margin-bottom: 15px;
         }
 
-        .feature-icon-box {
-            width: 40px;
-            height: 40px;
-            background: rgba(210, 255, 64, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            color: #d2ff40;
-            font-size: 20px;
-        }
-
-        .feature-title {
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .feature-text {
+        .panel-text {
             color: #aaa;
             font-size: 0.95rem;
             line-height: 1.6;
+            flex-grow: 1;
         }
 
-        /* Stats Bar */
-        .stats-bar {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 30px;
+        /* Sports List Panel */
+        .sports-list-panel {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 4px;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 80px;
+        }
+        .sports-grid-inner {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .sport-item {
+            background: rgba(255,255,255,0.03);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+        .sport-item:hover {
+            border-color: #d2ff40;
+            background: rgba(210, 255, 64, 0.05);
+            box-shadow: 0 0 15px rgba(210, 255, 64, 0.1);
+        }
+        .sport-item-name {
+            color: #fff;
+            font-weight: 600;
+            margin-top: 10px;
+            display: block;
+        }
+        .sport-item-icon { font-size: 24px; }
+
+        /* Info Block */
+        .info-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+        .info-text h3 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .info-text p {
+            color: #aaa;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        .info-visual {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 30px;
             text-align: center;
         }
-        .stat-item h3 {
-            font-size: 2rem;
-            color: #d2ff40;
-            font-weight: 800;
-            margin-bottom: 5px;
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .stat-item p {
-            color: #666;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .stat-row:last-child { border-bottom: none; }
+        .stat-label { color: #888; }
+        .stat-value { color: #d2ff40; font-weight: 700; text-shadow: 0 0 5px rgba(210, 255, 64, 0.3); }
 
         @media (max-width: 768px) {
             .hero { min-height: 35vh; padding: 1rem 1rem 1.5rem; }
             .nav-btn { padding: 0.45rem 1rem; font-size: 0.8rem; }
             .nav-buttons { gap: 0.6rem; margin-bottom: 1rem; }
             .logo { font-size: 2.2rem; }
-            .main-headline h2 { font-size: 1.8rem; }
-            .features-grid-new { grid-template-columns: 1fr; }
+            .neon-slogan { font-size: 2rem; }
+            .info-block { grid-template-columns: 1fr; }
         }
 
         /* === DONATE MODAL STYLES === */
@@ -247,11 +354,19 @@
         .donate-close { display: block; width: 100%; margin-top: 20px; padding: 12px; background: transparent; border: 1px solid #333; color: #888; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
         .donate-close:hover { border-color: #fff; color: #fff; }
 
-        /* === FOOTER STYLES === */
+        /* === FOOTER STYLES (WITH PARI LOGO) === */
         .minimal-footer { width: 100%; background: rgba(5, 5, 7, 0.95); backdrop-filter: blur(10px); border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 40px 20px 20px; font-family: 'Inter', sans-serif; margin-top: auto; color: #888; }
         .footer-container { max-width: 1000px; margin: 0 auto; }
         .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 30px; }
-        .pari-footer-logo-glow img { height: 20px; filter: brightness(0) invert(1); opacity: 1; margin-bottom: 12px; drop-shadow: 0 0 6px rgba(255, 255, 255, 0.4); }
+        
+        .pari-footer-logo-glow img { 
+            height: 20px; 
+            filter: brightness(0) invert(1); 
+            opacity: 1; 
+            margin-bottom: 12px; 
+            drop-shadow: 0 0 6px rgba(255, 255, 255, 0.4); 
+        }
+        
         .footer-links-group a:hover { color: #d2ff40 !important; }
         .footer-divider { height: 1px; background: rgba(255, 255, 255, 0.05); margin-bottom: 20px; }
         
@@ -271,9 +386,16 @@
 
 <div class="global-particles" id="globalParticles"></div>
 
+<!-- ВРЕМЯ СПРАВА СВЕРХУ -->
+<div class="msk-time-badge-corner">
+    <span>🕒</span>
+    <span class="time-value" id="currentTime">--:--</span>
+    <span style="opacity:0.5; margin-left:4px;">МСК</span>
+</div>
+
 <section class="hero">
     <div class="hero-content">
-        <h1 class="seo-h1">SetTrue - Математические прогнозы на спорт: футбол, хоккей, теннис, баскетбол, CS2</h1>
+        <h1 class="seo-h1">SetTrue - Прогнозы на спорт и денежные потоки</h1>
 
         <div class="nav-buttons">
             <button class="nav-btn active" data-page="home">Главная</button>
@@ -286,16 +408,9 @@
 
         <div class="logo">True<span>Set</span></div>
         
-        <div class="msk-time-badge">
-            <span class="icon">🕒</span>
-            <span class="date-value" id="currentDate">--.--.----</span>
-            <span style="opacity: 0.5;">|</span>
-            <span class="time-value" id="currentTime">--:--</span>
-            <span style="font-size: 0.7em; opacity: 0.7; margin-left: 4px;">МСК</span>
-        </div>
-
+        <!-- Описание убрано по требованию для минимализма -->
         <div class="description">
-            Математические прогнозы | Точность 72% | Футбол, Хоккей, Теннис, Баскетбол, CS2
+            <!-- Текст удален -->
         </div>
     </div>
 </section>
@@ -323,7 +438,7 @@
     <div class="donate-card" onclick="event.stopPropagation()">
         <div class="donate-header">
             <div class="donate-title">Поддержать проект</div>
-            <p class="donate-desc">Ваши донаты помогают оплачивать серверы и улучшать алгоритмы.</p>
+            <p class="donate-desc">Ваши донаты помогают оплачивать серверы и поддерживать работу сайта.</p>
         </div>
         <div class="qr-container">
             <img src="qr.jpg" alt="QR Code для перевода">
@@ -342,40 +457,50 @@
 <footer class="minimal-footer">
   <div class="footer-container">
     <div class="footer-top">
-        <div class="footer-brand">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-                <span style="font-size: 24px;">🏆</span>
-                <h3 style="color: #d2ff40; font-size: 18px; font-weight: 700; margin: 0; letter-spacing: -0.5px;">SETTRUE</h3>
-            </div>
-            <div class="pari-footer-logo-glow">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari Partner">
-            </div>
-            <p style="color: #666; font-size: 12px; line-height: 1.4; max-width: 250px;">
-                Алгоритмическая платформа для анализа спортивных событий.<br>
-                Официальный партнер БК Pari.
-            </p>
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+          <span style="font-size: 28px;">🏆</span>
+          <h3 style="color: #d2ff40; font-size: 20px; font-weight: 700; margin: 0;">SETTRUE</h3>
         </div>
-        <div class="footer-links-group">
-            <h4 style="color: #fff; font-size: 12px; font-weight: 600; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Контакты</h4>
-            <a href="mailto:SetTrueForecast@yandex.ru" style="color: #aaa; font-size: 13px; text-decoration: none; display: block; margin-bottom: 6px; transition: color 0.2s;">SetTrueForecast@yandex.ru</a>
+        <!-- Логотип Pari в футере -->
+        <div class="pari-footer-logo-glow">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari Partner">
         </div>
-        <div class="footer-links-group">
-            <h4 style="color: #fff; font-size: 12px; font-weight: 600; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Статистика</h4>
-            <ul style="list-style: none; padding: 0; margin: 0; color: #aaa; font-size: 13px;">
-                <li style="margin-bottom: 6px;">📈 Обновление: <span style="color: #d2ff40;">Ежедневно</span></li>
-                <li style="margin-bottom: 6px;">⚽ Спорт: <span style="color: #d2ff40;">Футбол, Хоккей, CS2</span></li>
-                <li>📊 Точность: <span style="color: #d2ff40;">~72%</span></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-divider"></div>
-    <div class="footer-bottom">
-        <p style="color: #555; font-size: 11px; line-height: 1.4; margin-bottom: 10px;">
-            <strong style="color: #777;">Внимание:</strong> Ставки могут вызывать зависимость. Играйте ответственно. 18+. SetTrue предоставляет аналитические данные для принятия взвешенных решений.
+        <p style="color: #888; font-size: 13px; line-height: 1.6; margin-bottom: 15px;">
+          Ежедневные прогнозы на спорт и отслеживание денежных потоков. 
+          Официальный информационный партнер БК <strong style="color:#fff">Pari</strong>.
         </p>
-        <div style="text-align: right; width: 100%;">
-            <p style="color: #444; font-size: 11px; margin: 0;">© 2026 SetTrue. All rights reserved.</p>
+        <div style="display: flex; gap: 15px; margin-top: 15px;">
+          <a href="#" aria-label="ВКонтакте">📘</a>
+          <a href="#" aria-label="Яндекс Дзен">📺</a>
+          <a href="#" aria-label="Телеграм">💬</a>
         </div>
+      </div>
+      
+      <div>
+        <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">КОНТАКТЫ</h4>
+        <p style="color: #999; font-size: 13px; margin-bottom: 10px;">
+          📧 <a href="mailto:SetTrueForecast@yandex.ru" style="color: #d2ff40;">SetTrueForecast@yandex.ru</a>
+        </p>
+      </div>
+      
+      <div>
+        <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">СТАТИСТИКА</h4>
+        <p style="color: #999; font-size: 13px; margin-bottom: 6px;">📈 Обновление: <span style="color: #d2ff40;">Ежедневно</span></p>
+        <p style="color: #999; font-size: 13px; margin-bottom: 6px;">⚽ Спорт: <span style="color: #d2ff40;">5+</span></p>
+        <p style="color: #999; font-size: 13px;">📊 Прогнозы: <span style="color: #d2ff40;">Бесплатно</span></p>
+      </div>
+    </div>
+    
+    <div style="margin: 20px 0; padding: 15px; background: rgba(255, 255, 255, 0.02); border-radius: 8px; border-left: 2px solid #d2ff40;">
+      <p style="color: #777; font-size: 12px; line-height: 1.5;">
+        <strong>SetTrue</strong> предоставляет прогнозы и данные о движении средств в букмекерских конторах. Мы предоставляем информацию для принятия взвешенных решений. Ставки могут вызывать зависимость. Играйте ответственно. 18+
+      </p>
+    </div>
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); gap: 10px;">
+      <p style="color: #555; font-size: 11px; margin: 0;">© 2026 SetTrue. Все права защищены.</p>
+      <!-- Ссылки Privacy/Terms удалены по требованию -->
     </div>
   </div>
 </footer>
@@ -389,11 +514,7 @@
         const mskTime = new Date(utcMs + mskOffset);
         const hours = String(mskTime.getHours()).padStart(2, '0');
         const minutes = String(mskTime.getMinutes()).padStart(2, '0');
-        const day = String(mskTime.getDate()).padStart(2, '0');
-        const month = String(mskTime.getMonth() + 1).padStart(2, '0');
-        const year = mskTime.getFullYear();
         document.getElementById('currentTime').textContent = `${hours}:${minutes}`;
-        document.getElementById('currentDate').textContent = `${day}.${month}.${year}`;
     }
     setInterval(updateMSKTime, 1000);
     updateMSKTime();
@@ -431,54 +552,92 @@
                 htmlContent = `
                     <div class="landing-container">
                         <div class="main-headline">
-                            <h2>Аналитика данных против случайности</h2>
-                            <p>Мы не используем интуицию. SetTrue обрабатывает массивы статистики, форму команд и движение коэффициентов в реальном времени, чтобы найти математическое преимущество над букмекером.</p>
+                            <h2 class="neon-slogan">
+                                <span class="white-part">Ежедневные прогнозы</span><br>
+                                <span class="green-part">и денежные потоки</span>
+                            </h2>
+                            <p>SetTrue — это простой и понятный инструмент для тех, кто интересуется спортом. Мы публикуем ежедневные прогнозы и показываем, куда движутся реальные деньги в букмекерских конторах.</p>
                         </div>
 
+                        <h3 class="section-title">Что вы найдете на сайте</h3>
                         <div class="features-grid-new">
-                            <div class="feature-box">
-                                <div class="feature-header">
-                                    <div class="feature-icon-box">📊</div>
-                                    <div class="feature-title">Big Data Анализ</div>
-                                </div>
-                                <div class="feature-text">
-                                    Алгоритм анализирует более 50 параметров для каждого матча: от погоды и травм до истории личных встреч. Это исключает человеческий фактор и эмоции.
+                            <div class="feature-panel">
+                                <div class="panel-icon">📝</div>
+                                <div class="panel-title">Ежедневные Прогнозы</div>
+                                <div class="panel-text">
+                                    Каждый день мы публикуем подборку событий по футболу, хоккею, теннису и киберспорту. Четкие исходы, коэффициенты и краткое обоснование выбора. Без сложной теории — только факты.
                                 </div>
                             </div>
 
-                            <div class="feature-box">
-                                <div class="feature-header">
-                                    <div class="feature-icon-box">💸</div>
-                                    <div class="feature-title">Smart Money Tracking</div>
-                                </div>
-                                <div class="feature-text">
-                                    Мы отслеживаем аномальные движения денег в линии. Если крупные игроки массово ставят на один исход, вы узнаете об этом первыми.
+                            <div class="feature-panel">
+                                <div class="panel-icon">💸</div>
+                                <div class="panel-title">Денежные Потоки</div>
+                                <div class="panel-text">
+                                    Уникальный раздел, где мы отслеживаем аномальную активность в линии. Если на какой-то исход начинают массово ставить крупные суммы — вы увидите это первыми. Это мощный сигнал для принятия решения.
                                 </div>
                             </div>
 
-                            <div class="feature-box">
-                                <div class="feature-header">
-                                    <div class="feature-icon-box">🛡️</div>
-                                    <div class="feature-title">Управление Рисками</div>
-                                </div>
-                                <div class="feature-text">
-                                    Наши прогнозы ориентированы на дистанционную прибыль. Мы используем стратегии флэта и валуйных ставок, чтобы минимизировать просадки банка.
+                            <div class="feature-panel">
+                                <div class="panel-icon">🆓</div>
+                                <div class="panel-title">Бесплатный Доступ</div>
+                                <div class="panel-text">
+                                    Весь контент на сайте доступен бесплатно. Мы не продаем подписки или "верняки". Наша цель — создать удобное сообщество для обмена информацией о спорте.
                                 </div>
                             </div>
                         </div>
 
-                        <div class="stats-bar">
-                            <div class="stat-item">
-                                <h3>72%</h3>
-                                <p>Точность модели</p>
+                        <h3 class="section-title">Наши направления</h3>
+                        <div class="sports-list-panel">
+                            <p style="text-align: center; color: #aaa; margin-bottom: 20px;">Мы фокусируемся на самых популярных дисциплинах, где проще всего найти выгодные предложения.</p>
+                            <div class="sports-grid-inner">
+                                <div class="sport-item">
+                                    <span class="sport-item-icon">⚽</span>
+                                    <span class="sport-item-name">Футбол</span>
+                                </div>
+                                <div class="sport-item">
+                                    <span class="sport-item-icon">🏒</span>
+                                    <span class="sport-item-name">Хоккей</span>
+                                </div>
+                                <div class="sport-item">
+                                    <span class="sport-item-icon">🎾</span>
+                                    <span class="sport-item-name">Теннис</span>
+                                </div>
+                                <div class="sport-item">
+                                    <span class="sport-item-icon">🔫</span>
+                                    <span class="sport-item-name">CS2</span>
+                                </div>
+                                <div class="sport-item">
+                                    <span class="sport-item-icon">🏀</span>
+                                    <span class="sport-item-name">Баскетбол</span>
+                                </div>
                             </div>
-                            <div class="stat-item">
-                                <h3>5+</h3>
-                                <p>Видов спорта</p>
+                        </div>
+
+                        <div class="info-block">
+                            <div class="info-text">
+                                <h3>Как этим пользоваться?</h3>
+                                <p>1. <strong>Смотрите прогнозы:</strong> Перейдите в раздел "Прогнозы" и выберите интересующий вас вид спорта. Проверьте наши варианты исходов.</p>
+                                <p>2. <strong>Проверяйте деньги:</strong> Зайдите в "Денежные потоки". Посмотрите, нет ли резкого движения коэффициентов или объема ставок на выбранный вами матч.</p>
+                                <p>3. <strong>Принимайте решение:</strong> Совместите наш прогноз с данными о деньгах. Если они совпадают — это сильный сигнал.</p>
+                                <p>Мы даем вам инструменты и информацию. Как ими распорядиться — решать только вам.</p>
                             </div>
-                            <div class="stat-item">
-                                <h3>24/7</h3>
-                                <p>Работа алгоритма</p>
+                            <div class="info-visual">
+                                <div class="stat-row">
+                                    <span class="stat-label">Частота обновлений</span>
+                                    <span class="stat-value">Каждый день</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Стоимость доступа</span>
+                                    <span class="stat-value">0 ₽</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Основной фокус</span>
+                                    <span class="stat-value">Прогнозы + Деньги</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Поддержка</span>
+                                    <span class="stat-value">Telegram / Email</span>
+                                </div>
                             </div>
                         </div>
                     </div>
