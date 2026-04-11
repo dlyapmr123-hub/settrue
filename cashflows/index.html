@@ -66,7 +66,7 @@
                 min-width: 1200px;
                 overflow-x: auto;
             }
-            .hero, footer, #page-content, .mf-container, .sport-tabs {
+            .hero, footer, #page-content, .mf-container, .sport-tabs, .pari-glass-banner-compact {
                 min-width: 1200px;
             }
         }
@@ -78,12 +78,49 @@
         @keyframes floatUpGlobal { 0% { transform: translateY(0) translateX(0); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.7; } 100% { transform: translateY(-120vh) translateX(var(--shift, 40px)); opacity: 0; } }
 
         .hero { position: relative; width: 100%; min-height: 28vh; background: transparent; padding: 1rem 1.5rem 2rem; }
+        
+        /* ВРЕМЯ СПРАВА СВЕРХУ (Выше кнопок) */
+        .msk-time-badge-corner {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(10, 10, 15, 0.8);
+            border: 1px solid rgba(204, 255, 0, 0.2);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #ccc;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .msk-time-badge-corner .time-value { color: #ccff00; }
+
         .nav-buttons { position: relative; z-index: 20; display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 1.8rem; padding-top: 0.5rem; }
         .nav-btn { background: rgba(10, 10, 18, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(204, 255, 0, 0.25); color: #e0e0e0; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; padding: 0.6rem 1.4rem; border-radius: 40px; cursor: pointer; transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1); letter-spacing: 0.3px; position: relative; overflow: hidden; }
         .nav-btn::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; border-radius: 50%; background: rgba(204, 255, 0, 0.2); transform: translate(-50%, -50%); transition: width 0.5s, height 0.5s; }
         .nav-btn:hover::before { width: 200px; height: 200px; }
         .nav-btn:hover { border-color: rgba(204, 255, 0, 0.8); color: #ccff00; transform: translateY(-2px); box-shadow: 0 5px 20px rgba(204, 255, 0, 0.15); }
         .nav-btn:active { transform: translateY(1px); }
+
+        /* Кнопка Поддержать */
+        .support-btn {
+            background: linear-gradient(135deg, #d2ff40 0%, #9eff00 100%);
+            color: #050507;
+            border: none;
+            font-weight: 700;
+            box-shadow: 0 0 15px rgba(210, 255, 64, 0.3);
+        }
+        .support-btn:hover {
+            box-shadow: 0 0 25px rgba(210, 255, 64, 0.6);
+            color: #000;
+        }
 
         .hero-content { position: relative; z-index: 10; text-align: center; max-width: 900px; width: 100%; margin: 0 auto; }
         .seo-h1 { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
@@ -105,6 +142,34 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
         #page-content { transition: opacity 0.2s ease; min-height: 300px; position: relative; z-index: 5; }
+
+        /* === PARI BANNER === */
+        .pari-glass-banner-compact {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 12px 20px;
+            margin: 0 auto 30px;
+            max-width: 600px;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        .pari-content-wrapper { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+        .pari-brand-neon { display: flex; align-items: center; gap: 10px; border-right: 1px solid rgba(255, 255, 255, 0.1); padding-right: 15px; white-space: nowrap; }
+        .pari-brand-neon img { height: 26px; filter: brightness(0) invert(1); opacity: 1; drop-shadow: 0 0 5px #d2ff40; }
+        .pari-brand-neon span { color: #d2ff40; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; text-shadow: 0 0 8px rgba(210, 255, 64, 0.6); }
+        .pari-actions { display: flex; gap: 20px; align-items: center; }
+        .glass-btn { color: #ccc; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; text-decoration: none; padding: 4px 0; position: relative; transition: all 0.3s ease; }
+        .glass-btn::after { content: ''; position: absolute; width: 0; height: 1px; bottom: 0; left: 0; background-color: #d2ff40; transition: width 0.3s ease; box-shadow: 0 0 8px #d2ff40; }
+        .glass-btn:hover { color: #fff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+        .glass-btn:hover::after { width: 100%; }
+        .pari-help-text { font-size: 10px; color: rgba(255, 255, 255, 0.4); font-weight: 400; }
 
         /* === TABS & TABLE STYLES === */
         .sport-tabs { display: flex; justify-content: center; gap: 15px; margin: 20px 0 30px 0; }
@@ -163,6 +228,14 @@
         footer a { color: #888; text-decoration: none; transition: color 0.2s; }
         footer a:hover { color: #d2ff40 !important; }
 
+        .pari-footer-logo-glow img { 
+            height: 20px; 
+            filter: brightness(0) invert(1); 
+            opacity: 1; 
+            margin-bottom: 12px; 
+            drop-shadow: 0 0 6px rgba(255, 255, 255, 0.4); 
+        }
+
         @media (max-width: 768px) {
             .hero { min-height: 32vh; padding: 0.8rem 1rem 1.5rem; }
             .nav-btn { padding: 0.45rem 1rem; font-size: 0.8rem; }
@@ -178,7 +251,31 @@
             table {
                 min-width: 550px;
             }
+            
+            .pari-glass-banner-compact { flex-direction: column; padding: 15px; gap: 12px; width: 90%; }
+            .pari-brand-neon { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-right: 0; padding-bottom: 10px; width: 100%; justify-content: center; }
+            .pari-content-wrapper { width: 100%; align-items: center; }
+            .pari-actions { width: 100%; justify-content: center; flex-wrap: wrap; gap: 12px; }
+            .glass-btn { font-size: 12px; }
+            .pari-help-text { text-align: center; margin-top: 4px; }
+            
+            .msk-time-badge-corner { position: static; margin-bottom: 15px; display: flex; justify-content: center; width: 100%; }
         }
+        
+        /* === DONATE MODAL === */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 10001; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+        .modal-overlay.open { display: flex; opacity: 1; }
+        .donate-card { background: #0a0a0f; border: 1px solid #333; border-top: 2px solid #d2ff40; border-radius: 16px; padding: 30px; max-width: 420px; width: 90%; box-shadow: 0 0 40px rgba(0,0,0,0.8); transform: translateY(20px); transition: transform 0.3s ease; position: relative; text-align: center; }
+        .modal-overlay.open .donate-card { transform: translateY(0); }
+        .donate-header { margin-bottom: 25px; }
+        .donate-title { color: #fff; font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+        .donate-desc { color: #aaa; font-size: 14px; line-height: 1.4; }
+        .qr-container { display: flex; justify-content: center; margin-bottom: 20px; background: #fff; padding: 10px; border-radius: 12px; width: fit-content; margin-left: auto; margin-right: auto; }
+        .qr-container img { width: 180px; height: 180px; object-fit: contain; }
+        .sber-link-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: #21a038; color: #fff; font-weight: 700; padding: 12px; border-radius: 8px; text-decoration: none; margin-bottom: 10px; transition: transform 0.2s, background 0.2s; width: 100%; box-sizing: border-box; }
+        .sber-link-btn:hover { transform: scale(1.02); background: #1e8e32; }
+        .donate-close { display: block; width: 100%; margin-top: 20px; padding: 12px; background: transparent; border: 1px solid #333; color: #888; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+        .donate-close:hover { border-color: #fff; color: #fff; }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -186,15 +283,26 @@
 <div class="global-particles" id="globalParticles"></div>
 
 <section class="hero">
+    <!-- ВРЕМЯ СПРАВА СВЕРХУ (Выше кнопок) -->
+    <div class="msk-time-badge-corner">
+        <span>🕒</span>
+        <span class="time-value" id="currentTime">--:--</span>
+        <span style="opacity:0.5; margin-left:4px;">МСК</span>
+    </div>
+
     <div class="hero-content">
         <h1 class="seo-h1">SetTrue - Денежные потоки на спорт: футбол, теннис, баскетбол</h1>
 
         <div class="nav-buttons">
             <button class="nav-btn" data-page="home" data-link="/">Главная</button>
             <button class="nav-btn" data-page="predictions" data-link="/predict/">Прогнозы</button>
-            <button class="nav-btn" data-page="matches" data-link="/scanmatch/">Оценка матчей</button>
+            <!-- Кнопка ТОП перед оценкой -->
+            <button class="nav-btn" data-page="top" data-link="/top/">ТОП</button>
+            <!-- Переименована в Теннис АИ -->
+            <button class="nav-btn" data-page="matches" data-link="/scanmatch/">Теннис АИ</button>
             <button class="nav-btn active" data-page="cashflow">Денежные потоки</button>
             <button class="nav-btn" data-page="cs2" data-link="/cs2/">CS2</button>
+            <button class="nav-btn support-btn" onclick="openDonateModal()">❤️ Поддержать</button>
         </div>
 
         <div class="logo">True<span>Set</span></div>
@@ -204,6 +312,22 @@
         </div>
     </div>
 </section>
+
+<!-- === PARI PARTNER BANNER === -->
+<div class="pari-glass-banner-compact">
+    <div class="pari-brand-neon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari Logo">
+        <span>PARTNER</span>
+    </div>
+    <div class="pari-content-wrapper">
+        <div class="pari-actions">
+            <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate" target="_blank" rel="nofollow noopener" class="glass-btn" onclick="ym(108400965, 'reachGoal', 'pari_reg');">Регистрация</a>
+            <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate" target="_blank" rel="nofollow noopener" class="glass-btn" onclick="ym(108400965, 'reachGoal', 'pari_bonus5k');">Бонус 5 000 ₽</a>
+            <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate" target="_blank" rel="nofollow noopener" class="glass-btn" onclick="ym(108400965, 'reachGoal', 'pari_freebets');">5 Фрибетов</a>
+        </div>
+        <div class="pari-help-text">❤️ Регистрация помогает развивать SetTrue</div>
+    </div>
+</div>
 
 <div id="page-content">
     <div class="sport-tabs">
@@ -222,6 +346,27 @@
     </div>
 </div>
 
+<!-- === DONATE MODAL === -->
+<div class="modal-overlay" id="donateModal" onclick="closeDonateModal(event)">
+    <div class="donate-card" onclick="event.stopPropagation()">
+        <div class="donate-header">
+            <div class="donate-title">Поддержать проект</div>
+            <p class="donate-desc">Ваши донаты помогают оплачивать серверы и поддерживать работу сайта.</p>
+        </div>
+        <div class="qr-container">
+            <img src="../qr.jpg" alt="QR Code для перевода">
+        </div>
+        <p style="text-align: center; color: #ccc; font-size: 13px; margin-bottom: 15px;">
+            Отсканируйте код камерой телефона или нажмите кнопку ниже
+        </p>
+        <a href="https://www.sberbank.ru/ru/choise_bank?requisiteNumber=79870974130&bankCode=100000000111" target="_blank" class="sber-link-btn" onclick="ym(108400965, 'reachGoal', 'click_sber_link');">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/><path d="M8 12H16M12 8V16" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+            Пополнить через банк
+        </a>
+        <button class="donate-close" onclick="closeDonateModal()">Закрыть окно</button>
+    </div>
+</div>
+
 <footer>
   <div style="max-width: 1200px; margin: 0 auto;">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 35px; margin-bottom: 40px;">
@@ -230,9 +375,13 @@
           <span style="font-size: 28px;">🏆</span>
           <h3 style="color: #d2ff40; font-size: 20px; font-weight: 700; margin: 0;">SETTRUE</h3>
         </div>
+        <!-- Логотип Pari в футере -->
+        <div class="pari-footer-logo-glow">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari Partner">
+        </div>
         <p style="color: #888; font-size: 13px; line-height: 1.6; margin-bottom: 15px;">
           Математические прогнозы на основе статистики и алгоритмов машинного обучения. 
-          Только цифры, никакой воды.
+          Официальный информационный партнер БК <strong style="color:#fff">Pari</strong>.
         </p>
         <div style="display: flex; gap: 15px; margin-top: 15px;">
           <a href="#" aria-label="ВКонтакте">📘</a>
@@ -258,30 +407,49 @@
     
     <div style="margin: 20px 0; padding: 15px; background: rgba(255, 255, 255, 0.02); border-radius: 8px; border-left: 2px solid #d2ff40;">
       <p style="color: #777; font-size: 12px; line-height: 1.5;">
-        <strong>SetTrue</strong> использует математические модели для анализа вероятностей исходов в спорте. Мы предоставляем данные для принятия взвешенных решений.
+        <strong>SetTrue</strong> использует математические модели для анализа вероятностей исходов в спорте. Мы предоставляем данные для принятия взвешенных решений. Ставки могут вызывать зависимость. Играйте ответственно. 18+
       </p>
     </div>
     
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); gap: 10px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); gap: 10px;">
       <p style="color: #555; font-size: 11px; margin: 0;">© 2026 SetTrue. Все права защищены.</p>
-      <div style="display: flex; gap: 15px;">
-        <a href="#" style="color: #555; font-size: 11px;">Privacy Policy</a>
-        <a href="#" style="color: #555; font-size: 11px;">Terms</a>
-      </div>
+      <!-- Ссылки Privacy/Terms удалены по требованию -->
     </div>
   </div>
 </footer>
 
 <script>
-    // === МАКСИМАЛЬНАЯ ЗАЩИТА ОТ КОПИРОВАНИЯ ===
+    // === СКРИПТ ВРЕМЕНИ МСК ===
+    function updateMSKTime() {
+        const now = new Date();
+        const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
+        const mskOffset = 3 * 3600000; 
+        const mskTime = new Date(utcMs + mskOffset);
+        const hours = String(mskTime.getHours()).padStart(2, '0');
+        const minutes = String(mskTime.getMinutes()).padStart(2, '0');
+        document.getElementById('currentTime').textContent = `${hours}:${minutes}`;
+    }
+    setInterval(updateMSKTime, 1000);
+    updateMSKTime();
 
-    // 1. Блокировка контекстного меню (ПКМ)
+    // === ЛОГИКА МОДАЛЬНОГО ОКНА ===
+    function openDonateModal() {
+        const modal = document.getElementById('donateModal');
+        modal.classList.add('open');
+        if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'open_donate_modal');
+    }
+    function closeDonateModal(e) {
+        if (!e || e.target.id === 'donateModal' || e.target.classList.contains('donate-close')) {
+            document.getElementById('donateModal').classList.remove('open');
+        }
+    }
+
+    // === МАКСИМАЛЬНАЯ ЗАЩИТА ОТ КОПИРОВАНИЯ ===
     document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
         return false;
-    }, true); // true важно для перехвата на этапе capturing
+    }, true);
 
-    // 2. Жесткая блокировка горячих клавиш
     document.addEventListener('keydown', function(e) {
         const key = e.key.toLowerCase();
         const code = e.code;
@@ -289,61 +457,53 @@
         const isShift = e.shiftKey;
         const isAlt = e.altKey;
 
-        // F12
         if (e.keyCode === 123) {
             e.preventDefault();
             e.stopPropagation();
             return false;
         }
 
-        // Ctrl+U (View Source) - Самая важная часть
         if (isCtrl && !isShift && !isAlt && (code === 'KeyU' || key === 'u')) {
             e.preventDefault();
             e.stopPropagation();
-            e.stopImmediatePropagation(); // Останавливает дальнейшую обработку браузером
+            e.stopImmediatePropagation();
             return false;
         }
 
-        // Ctrl+Shift+I (Inspect Element)
         if (isCtrl && isShift && (code === 'KeyI' || key === 'i')) {
             e.preventDefault();
             e.stopPropagation();
             return false;
         }
 
-        // Ctrl+Shift+J (Console)
         if (isCtrl && isShift && (code === 'KeyJ' || key === 'j')) {
             e.preventDefault();
             e.stopPropagation();
             return false;
         }
 
-        // Ctrl+Shift+C (Select Element)
         if (isCtrl && isShift && (code === 'KeyC' || key === 'c')) {
             e.preventDefault();
             e.stopPropagation();
             return false;
         }
 
-        // Ctrl+S (Save Page)
         if (isCtrl && (code === 'KeyS' || key === 's')) {
             e.preventDefault();
             e.stopPropagation();
             return false;
         }
         
-        // Ctrl+P (Print)
         if (isCtrl && (code === 'KeyP' || key === 'p')) {
             e.preventDefault();
             e.stopPropagation();
             return false;
         }
-    }, true); // Важно: true включает перехват до того, как событие дойдет до браузера
+    }, true);
 
-    // 3. Ловушка для DevTools (Debugger Trap)
     setInterval(function() {
         var start = performance.now();
-        debugger; // Точка останова
+        debugger;
         var end = performance.now();
         if (end - start > 100) {
             console.clear();
@@ -375,7 +535,6 @@
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
         if(targetBtn) targetBtn.classList.add('active');
         
-        // Меняем заголовок в зависимости от спорта
         let titleMap = {
             'tennis': 'Tennis Money Flow',
             'football': 'Football Money Flow',
@@ -394,7 +553,6 @@
         if (currentSport === 'tennis') API_URL = TENNIS_API;
         else if (currentSport === 'football') API_URL = FOOTBALL_API;
         else if (currentSport === 'basketball') API_URL = BASKETBALL_API;
-        // Для топ потоков URL не нужен, мы берем данные из всех источников или последнего активного
         else if (currentSport === 'topflows') {
              // Логика загрузки для топ потоков будет ниже
         }
@@ -406,15 +564,11 @@
                 const res = await fetch(API_URL);
                 data = await res.json();
             } else {
-                // Загружаем все три источника для поиска топов
                 const [resT, resF, resB] = await Promise.all([
                     fetch(TENNIS_API).then(r => r.json()),
                     fetch(FOOTBALL_API).then(r => r.json()),
                     fetch(BASKETBALL_API).then(r => r.json())
                 ]);
-                // Объединяем в один массив с пометкой типа (для корректной обработки)
-                // Но так как структура разная, проще обработать их последовательно в функции рендера
-                // Для упрощения, мы вызовем специальную функцию рендера для топ потоков
                 renderTopFlows(resT, resF, resB);
                 return; 
             }
@@ -426,7 +580,6 @@
 
             let html = '';
 
-            // --- ЛОГИКА ДЛЯ БАСКЕТБОЛА ---
             if (currentSport === 'basketball') {
                 let matchesToRender = [];
                 data.forEach(match => {
@@ -500,7 +653,6 @@
                 matchesToRender.forEach(item => html += item.html);
             } 
             
-            // --- ЛОГИКА ДЛЯ ФУТБОЛА ---
             else if (currentSport === 'football') {
                 let matchesToRender = [];
                 data.forEach(row => {
@@ -530,7 +682,6 @@
                 matchesToRender.forEach(item => html += item.html);
             } 
             
-            // --- ЛОГИКА ДЛЯ ТЕННИСА ---
             else {
                 data.forEach(row => {
                     if (row.length < 8) return; 
@@ -557,12 +708,10 @@
         }
     }
 
-    // --- НОВАЯ ФУНКЦИЯ ДЛЯ ТОП ПОТОКОВ ---
     function renderTopFlows(tData, fData, bData) {
         const container = document.getElementById('mf-table-container');
         let allMatches = [];
 
-        // 1. Обработка Тенниса
         if (tData && Array.isArray(tData)) {
             tData.forEach(row => {
                 if (row.length < 8) return; 
@@ -575,11 +724,9 @@
                 let totalSum = d1.rawVal + d2.rawVal;
                 let maxPct = Math.max(d1.pct, d2.pct);
                 
-                // ФИЛЬТР: Кэф > 1.50, Сумма > 5000, Процент > 80
-                let bestOdd = (d1.pct > d2.pct) ? o1 : o2; // Кэф на популярный исход
+                let bestOdd = (d1.pct > d2.pct) ? o1 : o2;
 
                 if (bestOdd > 1.50 && totalSum > 5000 && maxPct > 80) {
-                     // Генерируем HTML для тенниса (аналогично основной логике)
                      let c1 = (o1<o2)?'odds-fav':'odds-reg';
                      let c2 = (o2<o1)?'odds-fav':'odds-reg';
                      let col1 = d1.pct>=d2.pct?'var(--neon)':'var(--danger)';
@@ -593,7 +740,6 @@
             });
         }
 
-        // 2. Обработка Футбола
         if (fData && Array.isArray(fData)) {
             fData.forEach(row => {
                 if (row.length < 9) return; 
@@ -604,7 +750,6 @@
                 let totalSum = d1.rawVal + dX.rawVal + d2.rawVal;
                 
                 let maxPct = Math.max(d1.pct, dX.pct, d2.pct);
-                // Определяем кэф на самый популярный исход
                 let popularOdd = o1;
                 if (dX.pct === maxPct) popularOdd = oX;
                 if (d2.pct === maxPct) popularOdd = o2;
@@ -628,7 +773,6 @@
             });
         }
 
-        // 3. Обработка Баскетбола
         if (bData && Array.isArray(bData)) {
             bData.forEach(match => {
                 let league = match.league || "";
@@ -660,7 +804,6 @@
             });
         }
 
-        // Сортировка по сумме ставок (от больших к меньшим)
         allMatches.sort((a, b) => b.total - a.total);
 
         if (allMatches.length === 0) {
@@ -670,13 +813,12 @@
         }
     }
     
-    // Navigation Logic
     const navBtns = document.querySelectorAll('.nav-btn');
     navBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const page = btn.getAttribute('data-page');
             const link = btn.getAttribute('data-link');
-            if(page === 'home' || page === 'predictions' || page === 'matches' || page === 'cs2') {
+            if(page === 'home' || page === 'predictions' || page === 'top' || page === 'matches' || page === 'cs2') {
                 window.location.href = link;
             } else if(page === 'ai') {
                 alert('Раздел АИ в разработке');
@@ -686,7 +828,6 @@
         });
     });
     
-    // Обработка вкладок
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const sport = btn.getAttribute('data-sport');
