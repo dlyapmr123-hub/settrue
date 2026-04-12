@@ -315,7 +315,131 @@
         #page-content { transition: opacity 0.2s ease; min-height: 300px; position: relative; z-index: 5; flex-grow: 1; }
     </style>
 </head>
-    <script>
+    
+<body oncontextmenu="return false;">
+
+<div class="global-particles" id="globalParticles"></div>
+
+<!-- ВРЕМЯ СПРАВА СВЕРХУ -->
+<div class="msk-time-badge-corner">
+    <span>🕒</span>
+    <span class="time-value" id="currentTime">--:--</span>
+    <span style="opacity:0.5; margin-left:4px;">МСК</span>
+</div>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="seo-h1">SetTrue - Прогнозы на спорт и денежные потоки</h1>
+
+        <div class="nav-buttons">
+            <button class="nav-btn active" data-page="home">Главная</button>
+            <button class="nav-btn" data-page="predictions" data-link="/predict/">Прогнозы</button>
+            <!-- Кнопка TOP -->
+            <button class="nav-btn" data-page="top" data-link="/top/">ТОП</button>
+            <!-- Кнопка Теннис АИ -->
+            <button class="nav-btn" data-page="matches" data-link="/scanmatch/">Теннис АИ</button>
+            <button class="nav-btn" data-page="cashflow" data-link="/cashflows/">Денежные потоки</button>
+            <button class="nav-btn" data-page="cs2" data-link="/cs2/">CS2</button>
+            <button class="nav-btn support-btn" onclick="openDonateModal()">❤️ Поддержать</button>
+        </div>
+
+        <div class="logo">True<span>Set</span></div>
+        <div class="description"></div>
+    </div>
+</section>
+
+<!-- === SYSTEM INFO PANEL (Protected Partner Block) === -->
+<div class="sys-wrapper">
+    <div class="sys-brand-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Icon">
+        <span class="sys-brand-text">PARTNER</span>
+    </div>
+    
+    <div style="display:flex; flex-direction:column; align-items:flex-end;">
+        <div class="sys-links-area">
+            <!-- Ссылки используют onclick для защиты, но выглядят как оригинал -->
+            <span class="sys-nav-item" onclick="openPartnerLink('reg')">Регистрация</span>
+            <span class="sys-nav-item" onclick="openPartnerLink('bonus')">Бонус 5 000 ₽</span>
+            <span class="sys-nav-item" onclick="openPartnerLink('freebets')">5 Фрибетов</span>
+        </div>
+        <span class="sys-sub-text">❤️ Регистрация помогает развивать SetTrue</span>
+    </div>
+</div>
+
+<div id="page-content" role="main"></div>
+
+<!-- === DONATE MODAL === -->
+<div class="modal-overlay" id="donateModal" onclick="closeDonateModal(event)">
+    <div class="donate-card" onclick="event.stopPropagation()">
+        <div class="donate-header">
+            <div class="donate-title">Поддержать проект</div>
+            <p class="donate-desc">Ваши донаты помогают оплачивать серверы и поддерживать работу сайта.</p>
+        </div>
+        <div class="qr-container">
+            <img src="qr.jpg" alt="QR Code для перевода">
+        </div>
+        <p style="text-align: center; color: #ccc; font-size: 13px; margin-bottom: 15px;">
+            Отсканируйте код камерой телефона или нажмите кнопку ниже
+        </p>
+        <a href="https://www.sberbank.ru/ru/choise_bank?requisiteNumber=79870974130&bankCode=100000000111" target="_blank" class="sber-link-btn" onclick="ym(108400965, 'reachGoal', 'click_sber_link');">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/><path d="M8 12H16M12 8V16" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+            Пополнить через банк
+        </a>
+        <button class="donate-close" onclick="closeDonateModal()">Закрыть окно</button>
+    </div>
+</div>
+
+<footer class="minimal-footer">
+  <div class="footer-container">
+    <div class="footer-top">
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+          <span style="font-size: 28px;">🏆</span>
+          <h3 style="color: #d2ff40; font-size: 20px; font-weight: 700; margin: 0;">SETTRUE</h3>
+        </div>
+        <div class="pari-footer-logo-glow">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari Partner">
+        </div>
+        <p style="color: #888; font-size: 13px; line-height: 1.6; margin-bottom: 15px;">
+          Ежедневные прогнозы на спорт и отслеживание денежных потоков. 
+          Официальный информационный партнер БК <strong style="color:#fff">Pari</strong>.
+        </p>
+        <div style="display: flex; gap: 15px; margin-top: 15px;">
+          <a href="#" aria-label="ВКонтакте">📘</a>
+          <a href="#" aria-label="Яндекс Дзен">📺</a>
+          <a href="#" aria-label="Телеграм">💬</a>
+        </div>
+      </div>
+      
+      <div>
+        <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">КОНТАКТЫ</h4>
+        <p style="color: #999; font-size: 13px; margin-bottom: 10px;">
+          📧 <a href="mailto:SetTrueForecast@yandex.ru" style="color: #d2ff40;">SetTrueForecast@yandex.ru</a>
+        </p>
+      </div>
+      
+      <div>
+        <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">СТАТИСТИКА</h4>
+        <p style="color: #999; font-size: 13px; margin-bottom: 6px;">📈 Обновление: <span style="color: #d2ff40;">Ежедневно</span></p>
+        <p style="color: #999; font-size: 13px; margin-bottom: 6px;">⚽ Спорт: <span style="color: #d2ff40;">5+</span></p>
+        <p style="color: #999; font-size: 13px;">📊 Прогнозы: <span style="color: #d2ff40;">Бесплатно</span></p>
+      </div>
+    </div>
+    
+    <div style="margin: 20px 0; padding: 15px; background: rgba(255, 255, 255, 0.02); border-radius: 8px; border-left: 2px solid #d2ff40;">
+      <p style="color: #777; font-size: 12px; line-height: 1.5;">
+        <strong>SetTrue</strong> предоставляет прогнозы и данные о движении средств в букмекерских конторах. Мы предоставляем информацию для принятия взвешенных решений. Ставки могут вызывать зависимость. Играйте ответственно. 18+
+      </p>
+    </div>
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); gap: 10px;">
+      <p style="color: #555; font-size: 11px; margin: 0;">© 2026 SetTrue. Все права защищены.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+    
     // === 1. ЗАЩИТА ОТ КОПИРОВАНИЯ И ПРОСМОТРА КОДА (MAXIMUM SECURITY) ===
     
     // Блокировка правой кнопки мыши
@@ -508,130 +632,7 @@
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => createGlobalParticles(), 300);
     });
-</script>
-<body oncontextmenu="return false;">
 
-<div class="global-particles" id="globalParticles"></div>
-
-<!-- ВРЕМЯ СПРАВА СВЕРХУ -->
-<div class="msk-time-badge-corner">
-    <span>🕒</span>
-    <span class="time-value" id="currentTime">--:--</span>
-    <span style="opacity:0.5; margin-left:4px;">МСК</span>
-</div>
-
-<section class="hero">
-    <div class="hero-content">
-        <h1 class="seo-h1">SetTrue - Прогнозы на спорт и денежные потоки</h1>
-
-        <div class="nav-buttons">
-            <button class="nav-btn active" data-page="home">Главная</button>
-            <button class="nav-btn" data-page="predictions" data-link="/predict/">Прогнозы</button>
-            <!-- Кнопка TOP -->
-            <button class="nav-btn" data-page="top" data-link="/top/">ТОП</button>
-            <!-- Кнопка Теннис АИ -->
-            <button class="nav-btn" data-page="matches" data-link="/scanmatch/">Теннис АИ</button>
-            <button class="nav-btn" data-page="cashflow" data-link="/cashflows/">Денежные потоки</button>
-            <button class="nav-btn" data-page="cs2" data-link="/cs2/">CS2</button>
-            <button class="nav-btn support-btn" onclick="openDonateModal()">❤️ Поддержать</button>
-        </div>
-
-        <div class="logo">True<span>Set</span></div>
-        <div class="description"></div>
-    </div>
-</section>
-
-<!-- === SYSTEM INFO PANEL (Protected Partner Block) === -->
-<div class="sys-wrapper">
-    <div class="sys-brand-box">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Icon">
-        <span class="sys-brand-text">PARTNER</span>
-    </div>
-    
-    <div style="display:flex; flex-direction:column; align-items:flex-end;">
-        <div class="sys-links-area">
-            <!-- Ссылки используют onclick для защиты, но выглядят как оригинал -->
-            <span class="sys-nav-item" onclick="openPartnerLink('reg')">Регистрация</span>
-            <span class="sys-nav-item" onclick="openPartnerLink('bonus')">Бонус 5 000 ₽</span>
-            <span class="sys-nav-item" onclick="openPartnerLink('freebets')">5 Фрибетов</span>
-        </div>
-        <span class="sys-sub-text">❤️ Регистрация помогает развивать SetTrue</span>
-    </div>
-</div>
-
-<div id="page-content" role="main"></div>
-
-<!-- === DONATE MODAL === -->
-<div class="modal-overlay" id="donateModal" onclick="closeDonateModal(event)">
-    <div class="donate-card" onclick="event.stopPropagation()">
-        <div class="donate-header">
-            <div class="donate-title">Поддержать проект</div>
-            <p class="donate-desc">Ваши донаты помогают оплачивать серверы и поддерживать работу сайта.</p>
-        </div>
-        <div class="qr-container">
-            <img src="qr.jpg" alt="QR Code для перевода">
-        </div>
-        <p style="text-align: center; color: #ccc; font-size: 13px; margin-bottom: 15px;">
-            Отсканируйте код камерой телефона или нажмите кнопку ниже
-        </p>
-        <a href="https://www.sberbank.ru/ru/choise_bank?requisiteNumber=79870974130&bankCode=100000000111" target="_blank" class="sber-link-btn" onclick="ym(108400965, 'reachGoal', 'click_sber_link');">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/><path d="M8 12H16M12 8V16" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-            Пополнить через банк
-        </a>
-        <button class="donate-close" onclick="closeDonateModal()">Закрыть окно</button>
-    </div>
-</div>
-
-<footer class="minimal-footer">
-  <div class="footer-container">
-    <div class="footer-top">
-      <div>
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
-          <span style="font-size: 28px;">🏆</span>
-          <h3 style="color: #d2ff40; font-size: 20px; font-weight: 700; margin: 0;">SETTRUE</h3>
-        </div>
-        <div class="pari-footer-logo-glow">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari Partner">
-        </div>
-        <p style="color: #888; font-size: 13px; line-height: 1.6; margin-bottom: 15px;">
-          Ежедневные прогнозы на спорт и отслеживание денежных потоков. 
-          Официальный информационный партнер БК <strong style="color:#fff">Pari</strong>.
-        </p>
-        <div style="display: flex; gap: 15px; margin-top: 15px;">
-          <a href="#" aria-label="ВКонтакте">📘</a>
-          <a href="#" aria-label="Яндекс Дзен">📺</a>
-          <a href="#" aria-label="Телеграм">💬</a>
-        </div>
-      </div>
-      
-      <div>
-        <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">КОНТАКТЫ</h4>
-        <p style="color: #999; font-size: 13px; margin-bottom: 10px;">
-          📧 <a href="mailto:SetTrueForecast@yandex.ru" style="color: #d2ff40;">SetTrueForecast@yandex.ru</a>
-        </p>
-      </div>
-      
-      <div>
-        <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">СТАТИСТИКА</h4>
-        <p style="color: #999; font-size: 13px; margin-bottom: 6px;">📈 Обновление: <span style="color: #d2ff40;">Ежедневно</span></p>
-        <p style="color: #999; font-size: 13px; margin-bottom: 6px;">⚽ Спорт: <span style="color: #d2ff40;">5+</span></p>
-        <p style="color: #999; font-size: 13px;">📊 Прогнозы: <span style="color: #d2ff40;">Бесплатно</span></p>
-      </div>
-    </div>
-    
-    <div style="margin: 20px 0; padding: 15px; background: rgba(255, 255, 255, 0.02); border-radius: 8px; border-left: 2px solid #d2ff40;">
-      <p style="color: #777; font-size: 12px; line-height: 1.5;">
-        <strong>SetTrue</strong> предоставляет прогнозы и данные о движении средств в букмекерских конторах. Мы предоставляем информацию для принятия взвешенных решений. Ставки могут вызывать зависимость. Играйте ответственно. 18+
-      </p>
-    </div>
-    
-    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); gap: 10px;">
-      <p style="color: #555; font-size: 11px; margin: 0;">© 2026 SetTrue. Все права защищены.</p>
-    </div>
-  </div>
-</footer>
-
-<script>
     // === СКРИПТ ВРЕМЕНИ МСК ===
     function updateMSKTime() {
         const now = new Date();
