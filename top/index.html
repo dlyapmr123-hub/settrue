@@ -111,184 +111,184 @@
         /* Cards Grid */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
         }
 
+        /* УЛУЧШЕННЫЙ ДИЗАЙН КАРТОЧКИ */
         .vip-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(20, 20, 25, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 20px;
-            transition: all 0.3s ease;
+            border-radius: 20px;
+            padding: 24px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
+        
         .vip-card:hover {
-            border-color: #d2ff40;
-            background: rgba(255, 255, 255, 0.04);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            border-color: rgba(210, 255, 64, 0.3);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
         }
-        
-        /* Анимация подсветки (за 3 часа) */
+
+        /* Анимации подсветки */
         @keyframes softPulse {
-            0% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0.2); border-color: rgba(210, 255, 64, 0.3); }
-            70% { box-shadow: 0 0 20px 0 rgba(210, 255, 64, 0); border-color: rgba(210, 255, 64, 0.8); }
-            100% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0); border-color: rgba(210, 255, 64, 0.3); }
+            0% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0.1); border-color: rgba(210, 255, 64, 0.3); }
+            50% { box-shadow: 0 0 25px 2px rgba(210, 255, 64, 0.15); border-color: rgba(210, 255, 64, 0.6); }
+            100% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0.1); border-color: rgba(210, 255, 64, 0.3); }
         }
-
-        /* Анимация срочности (за 1 час) */
         @keyframes urgentPulse {
-            0% { box-shadow: 0 0 5px 0 rgba(210, 255, 64, 0.4); border-color: #d2ff40; }
-            50% { box-shadow: 0 0 25px 5px rgba(210, 255, 64, 0.2); border-color: #fff; }
-            100% { box-shadow: 0 0 5px 0 rgba(210, 255, 64, 0.4); border-color: #d2ff40; }
+            0% { box-shadow: 0 0 5px 0 rgba(210, 255, 64, 0.3); border-color: #d2ff40; }
+            50% { box-shadow: 0 0 30px 5px rgba(210, 255, 64, 0.2); border-color: #fff; background: rgba(210, 255, 64, 0.08); }
+            100% { box-shadow: 0 0 5px 0 rgba(210, 255, 64, 0.3); border-color: #d2ff40; }
         }
 
-        .card-glow-3h {
-            animation: softPulse 3s infinite;
-        }
-
-        .card-glow-1h {
-            animation: urgentPulse 1.5s infinite;
-            background: rgba(210, 255, 64, 0.05);
-        }
-        
-        .urgent-badge {
-            display: none;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #d2ff40;
-            color: #000;
-            font-size: 10px;
-            font-weight: 800;
-            padding: 4px 8px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            box-shadow: 0 0 10px rgba(210, 255, 64, 0.5);
-            z-index: 2;
-        }
-        .card-glow-1h .urgent-badge {
-            display: block;
-        }
+        .card-glow-3h { animation: softPulse 4s infinite; }
+        .card-glow-1h { animation: urgentPulse 2s infinite; z-index: 2; }
 
         .card-header {
             display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .sport-tag {
-            font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-            color: #d2ff40; letter-spacing: 1px;
+            font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+            color: #888; letter-spacing: 1.5px; display: flex; align-items: center; gap: 6px;
         }
+        .sport-tag::before { content: ''; display: block; width: 6px; height: 6px; background: #d2ff40; border-radius: 50%; box-shadow: 0 0 8px #d2ff40; }
+        
         .match-time {
-            font-size: 0.8rem; color: #fff; font-family: monospace; font-weight: 600;
-            background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px;
+            font-size: 0.9rem; color: #fff; font-family: 'Inter', sans-serif; font-weight: 700;
+            background: rgba(255,255,255,0.05); padding: 6px 12px; border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
         .teams-container {
-            margin-bottom: 20px; text-align: center;
+            margin-bottom: 25px; text-align: center;
         }
         .team-name {
-            font-size: 1.1rem; font-weight: 700; color: #fff; display: block; margin-bottom: 5px;
+            font-size: 1.25rem; font-weight: 700; color: #fff; display: block; margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         .vs-divider {
-            color: #444; font-size: 0.8rem; margin: 5px 0; font-weight: 300;
+            color: #555; font-size: 0.75rem; margin: 8px 0; font-weight: 600; letter-spacing: 2px;
         }
 
         .prediction-row {
             display: flex; justify-content: space-between; align-items: center;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(210, 255, 64, 0.15);
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 15px;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
         }
         .pred-label {
-            font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 1px;
-            display: block; margin-bottom: 4px;
+            font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 1px;
+            display: block; margin-bottom: 4px; font-weight: 600;
         }
         .pred-value {
-            font-size: 1.4rem; font-weight: 800; color: #d2ff40;
+            font-size: 1.5rem; font-weight: 800; color: #d2ff40;
+            text-shadow: 0 0 15px rgba(210, 255, 64, 0.3);
         }
         .coef-value {
-            font-size: 1.1rem; font-weight: 700; color: #fff;
-            background: rgba(255,255,255,0.1);
-            padding: 6px 10px;
-            border-radius: 6px;
+            font-size: 1.2rem; font-weight: 700; color: #fff;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            padding: 8px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
+        /* КНОПКА PARI ВНИЗУ */
         .pari-cta-btn {
-            display: flex; align-items: center; justify-content: center; gap: 8px;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
             width: 100%;
             background: transparent;
             border: 1px solid #d2ff40;
             color: #d2ff40;
             text-align: center;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 14px;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 0.85rem;
+            font-weight: 800;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s;
-            margin-top: auto;
+            margin-top: auto; /* Прижимает к низу */
+            position: relative;
+            overflow: hidden;
         }
+        .pari-cta-btn::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(210, 255, 64, 0.2), transparent);
+            transition: 0.5s;
+        }
+        .pari-cta-btn:hover::before { left: 100%; }
         .pari-cta-btn:hover {
             background: #d2ff40;
             color: #000;
-            box-shadow: 0 0 20px rgba(210, 255, 64, 0.4);
+            box-shadow: 0 0 25px rgba(210, 255, 64, 0.4);
+            border-color: #d2ff40;
         }
         .pari-logo-small {
-            height: 14px; filter: brightness(0) invert(1); transition: filter 0.3s;
+            height: 16px; filter: brightness(0) invert(1); transition: filter 0.3s;
         }
         .pari-cta-btn:hover .pari-logo-small { filter: brightness(0); }
 
-        /* ИСПРАВЛЕННЫЙ LOADER - СТРОГО ПО ЦЕНТРУ */
+        /* БЕЙДЖ "ПОРА СТАВИТЬ" - ПЕРЕНЕСЕН ВНИЗ */
+        .urgent-badge {
+            display: none;
+            margin-top: 10px;
+            background: linear-gradient(90deg, #d2ff40, #9eff00);
+            color: #000;
+            font-size: 11px;
+            font-weight: 900;
+            padding: 8px;
+            border-radius: 8px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(210, 255, 64, 0.3);
+            animation: badgePulse 2s infinite;
+        }
+        @keyframes badgePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        .card-glow-1h .urgent-badge {
+            display: block;
+        }
+
         .loader-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 300px;
-            width: 100%;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 300px; width: 100%;
         }
-        .loader { 
-            text-align: center; 
-            color: #666; 
-            font-size: 1.2rem; 
-        }
+        .loader { text-align: center; color: #666; font-size: 1.2rem; }
         
-        /* Footer */
+        /* Footer & Other styles kept same as before... */
         footer { width: 100%; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(10px); border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 40px 20px 20px; font-family: 'Inter', sans-serif; margin-top: auto; color: #888; }
         .footer-container { max-width: 1000px; margin: 0 auto; }
         .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 30px; }
-        
-        .pari-footer-logo-glow img { 
-            height: 20px; 
-            filter: brightness(0) invert(1); 
-            opacity: 1; 
-            margin-bottom: 12px; 
-            drop-shadow: 0 0 6px rgba(255, 255, 255, 0.4); 
-        }
-        
+        .pari-footer-logo-glow img { height: 20px; filter: brightness(0) invert(1); opacity: 1; margin-bottom: 12px; drop-shadow: 0 0 6px rgba(255, 255, 255, 0.4); }
         .footer-links-group a:hover { color: #d2ff40 !important; }
         .footer-divider { height: 1px; background: rgba(255, 255, 255, 0.05); margin-bottom: 20px; }
-        
         @media (max-width: 768px) {
             .hero { min-height: 35vh; padding: 1rem 1rem 1.5rem; }
             .nav-btn { padding: 0.45rem 1rem; font-size: 0.8rem; }
             .nav-buttons { gap: 0.6rem; margin-bottom: 1rem; }
             .logo { font-size: 2.2rem; }
-            
             .msk-time-badge-corner { position: static; margin-bottom: 15px; display: flex; justify-content: center; width: 100%; }
-            
             .footer-top { grid-template-columns: 1fr; gap: 30px; text-align: center; }
             .cards-grid { grid-template-columns: 1fr; }
         }
 
-        /* === ЗАЩИЩЕННЫЙ БЛОК ПАРТНЕРА === */
+        /* Partner Block Styles */
         div.sys-wrapper {
             display: flex !important; visibility: visible !important; opacity: 1 !important;
             background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -314,7 +314,7 @@
             .sys-sub-text { text-align: center; }
         }
 
-        /* === DONATE MODAL === */
+        /* Modal & Access */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 10001; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
         .modal-overlay.open { display: flex; opacity: 1; }
         .donate-card { background: #0a0a0f; border: 1px solid #333; border-top: 2px solid #d2ff40; border-radius: 16px; padding: 30px; max-width: 420px; width: 90%; box-shadow: 0 0 40px rgba(0,0,0,0.8); transform: translateY(20px); transition: transform 0.3s ease; position: relative; text-align: center; }
@@ -326,56 +326,26 @@
         .donate-close { display: block; width: 100%; margin-top: 20px; padding: 12px; background: transparent; border: 1px solid #333; color: #888; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
         .donate-close:hover { border-color: #fff; color: #fff; }
 
-        /* === ACCESS DENIED SCREEN (PASSWORD PROTECTION) === */
         #access-denied {
-            display: none; /* Скрыто по умолчанию, показывается JS если нет доступа */
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #050507;
-            z-index: 20000;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            display: none; 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 5, 7, 0.98); backdrop-filter: blur(10px);
+            z-index: 99999; flex-direction: column; align-items: center; justify-content: center; text-align: center;
         }
         .access-box {
-            background: rgba(20, 20, 25, 0.95);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid #333;
-            max-width: 400px;
-            width: 90%;
-            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            background: #111; padding: 40px; border-radius: 24px; border: 1px solid #333;
+            max-width: 380px; width: 90%; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
         }
         .access-input {
-            width: 100%;
-            padding: 12px;
-            margin: 20px 0;
-            background: #000;
-            border: 1px solid #333;
-            color: #fff;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 16px;
-            outline: none;
+            width: 100%; padding: 14px; margin: 25px 0; background: #050507; border: 1px solid #333;
+            color: #fff; border-radius: 12px; text-align: center; font-size: 18px; outline: none;
         }
-        .access-input:focus {
-            border-color: #d2ff40;
-        }
+        .access-input:focus { border-color: #d2ff40; box-shadow: 0 0 15px rgba(210, 255, 64, 0.2); }
         .access-btn {
-            background: #d2ff40;
-            color: #000;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            width: 100%;
-            transition: 0.2s;
+            background: #d2ff40; color: #000; border: none; padding: 14px 30px; border-radius: 12px;
+            font-weight: 800; cursor: pointer; width: 100%; font-size: 16px; transition: 0.2s;
         }
-        .access-btn:hover {
-            background: #c2ef30;
-        }
+        .access-btn:hover { background: #c2ef30; transform: scale(1.02); }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -383,11 +353,12 @@
 <!-- ACCESS CHECK OVERLAY -->
 <div id="access-denied">
     <div class="access-box">
-        <h2 style="color:#d2ff40; margin-bottom:10px;">🔒 Доступ ограничен</h2>
-        <p style="color:#888; font-size:14px; margin-bottom:20px;">Введите пароль для просмотра TOP прогнозов</p>
-        <input type="password" id="passInput" class="access-input" placeholder="Пароль">
-        <button class="access-btn" onclick="checkPass()">Войти</button>
-        <p id="errorMsg" style="color:#ff4444; font-size:12px; margin-top:10px; display:none;">Неверный пароль</p>
+        <div style="font-size: 40px; margin-bottom: 10px;">🔒</div>
+        <h2 style="color:#fff; margin-bottom:5px;">Доступ ограничен</h2>
+        <p style="color:#666; font-size:13px;">Введите пароль для входа в TOP</p>
+        <input type="password" id="passInput" class="access-input" placeholder="••••••••">
+        <button class="access-btn" onclick="checkPass()">Открыть доступ</button>
+        <p id="errorMsg" style="color:#ff4444; font-size:12px; margin-top:15px; display:none;">Неверный пароль</p>
     </div>
 </div>
 
@@ -516,7 +487,7 @@
 </footer>
 
 <script>
-    // === 1. МАКСИМАЛЬНАЯ ЗАЩИТА ОТ КОПИРОВАНИЯ ===
+    // === 1. ЗАЩИТА ===
     document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; }, true);
     document.addEventListener('keydown', function(e) {
         const key = e.key.toLowerCase(); const code = e.code; const isCtrl = e.ctrlKey; const isShift = e.shiftKey;
@@ -527,26 +498,24 @@
     }, true);
     setInterval(function() { var start = performance.now(); debugger; var end = performance.now(); if (end - start > 100) { console.clear(); console.log("%cStop!", "color: red; font-size: 50px; font-weight: bold;"); } }, 1000);
 
-    // === 2. ПАРОЛЬ ДЛЯ ДОСТУПА ===
-    const ACCESS_PASSWORD = "settrue2026"; // <-- ИЗМЕНИТЕ ПАРОЛЬ ЗДЕСЬ
+    // === 2. ПАРОЛЬ ===
+    const ACCESS_PASSWORD = "settrue2026"; // <-- ПАРОЛЬ
 
     function checkPass() {
         const input = document.getElementById('passInput').value;
         if (input === ACCESS_PASSWORD) {
             localStorage.setItem('top_access', 'granted');
             document.getElementById('access-denied').style.display = 'none';
-            loadTopFlows(); // Загружаем данные только после успеха
+            loadTopFlows();
         } else {
             document.getElementById('errorMsg').style.display = 'block';
         }
     }
-
-    // Обработка Enter в поле пароля
     document.getElementById('passInput').addEventListener('keypress', function (e) {
         if (e.key === 'Enter') checkPass();
     });
 
-    // === 3. ВРЕМЯ МСК ===
+    // === 3. ВРЕМЯ И ЧАСТИЦЫ ===
     function updateMSKTime() {
         const now = new Date();
         const mskTime = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (3 * 3600000));
@@ -555,7 +524,6 @@
     }
     setInterval(updateMSKTime, 1000); updateMSKTime();
 
-    // === 4. ЧАСТИЦЫ ===
     function createGlobalParticles() {
         const container = document.getElementById('globalParticles');
         if (!container) return;
@@ -570,7 +538,7 @@
         }
     }
 
-    // === 5. ИНТЕРФЕЙС И ПАРТНЕР ===
+    // === 4. ИНТЕРФЕЙС ===
     function openPartnerLink(type) {
         const urls = {
             'reg': 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate',
@@ -593,7 +561,7 @@
         }
     }
 
-    // === 6. ЛОГИКА TOP СТРАНИЦЫ ===
+    // === 5. ЛОГИКА TOP ===
     const TENNIS_API = 'https://script.google.com/macros/s/AKfycbzyUw_OlQ7xd3p3p3Xhp01lfFZFvsptcb0AGAtJUddC7y2ODmheNX6szf6BSaI-2fQZ/exec';
     const FOOTBALL_API = 'https://script.google.com/macros/s/AKfycbz6fcoEoNF_C7CpNENGoQHEgCGry91Mi9xDPck0Xv2YUd3zW33UjMGCGgBD-ZkXte3z/exec'; 
     const BASKETBALL_API = 'https://script.google.com/macros/s/AKfycbzVNo0nkiivzgSDBKnFHCGtkM7YmvowNLhRBvvCfOFgU_D6LvlQNMYZkG9xF7R8QaUZ/exec'; 
@@ -621,30 +589,23 @@
 
             let allMatches = [];
 
-            // Tennis
             if (resT && Array.isArray(resT)) {
                 resT.forEach(row => {
                     if (row.length < 8) return; 
                     let tour = row[1] || ""; let time = row[2] || "";
                     let p1 = row[3]; let p2 = row[8];
                     if (!p1 || !p2 || p1.match(/\d/) || p2.match(/\d/)) return;
-                    
                     let o1 = parseFloat(row[4]); let o2 = parseFloat(row[5]);
                     let d1 = parseStr(row[6]); let d2 = parseStr(row[7]);
                     let totalSum = d1.rawVal + d2.rawVal;
                     let maxPct = Math.max(d1.pct, d2.pct);
-                    
                     if (totalSum > 5000 && maxPct > 80) {
                         let prediction = (d1.pct > d2.pct) ? 'П1' : 'П2';
                         let bestOdd = (d1.pct > d2.pct) ? o1 : o2;
-                        if(bestOdd > 1.50) {
-                            allMatches.push({ sport: 'tennis', icon: '🎾', league: tour, time: time, team1: p1, team2: p2, pred: prediction, coef: bestOdd.toFixed(2), totalSum: totalSum });
-                        }
+                        if(bestOdd > 1.50) allMatches.push({ sport: 'tennis', icon: '🎾', league: tour, time: time, team1: p1, team2: p2, pred: prediction, coef: bestOdd.toFixed(2), totalSum: totalSum });
                     }
                 });
             }
-
-            // Football
             if (resF && Array.isArray(resF)) {
                 resF.forEach(row => {
                     if (row.length < 9) return; 
@@ -654,19 +615,14 @@
                     let d1 = parseStr(row[6]); let dX = parseStr(row[7]); let d2 = parseStr(row[8]);
                     let totalSum = d1.rawVal + dX.rawVal + d2.rawVal;
                     let maxPct = Math.max(d1.pct, dX.pct, d2.pct);
-                    
                     if (totalSum > 5000 && maxPct > 80) {
                         let popularOdd = o1; let prediction = 'П1';
                         if (dX.pct === maxPct) { popularOdd = oX; prediction = 'Х'; }
                         if (d2.pct === maxPct) { popularOdd = o2; prediction = 'П2'; }
-                        if(popularOdd > 1.50) {
-                            allMatches.push({ sport: 'football', icon: '⚽', league: tour, time: time, team1: team1, team2: team2, pred: prediction, coef: popularOdd.toFixed(2), totalSum: totalSum });
-                        }
+                        if(popularOdd > 1.50) allMatches.push({ sport: 'football', icon: '⚽', league: tour, time: time, team1: team1, team2: team2, pred: prediction, coef: popularOdd.toFixed(2), totalSum: totalSum });
                     }
                 });
             }
-
-            // Basketball
             if (resB && Array.isArray(resB)) {
                 resB.forEach(match => {
                     let league = match.league || ""; let time = match.time || "";
@@ -676,13 +632,10 @@
                     let o1 = parseFloat(match.odd1); let o2 = parseFloat(match.odd2);
                     let totalSum = d1.rawVal + d2.rawVal;
                     let maxPct = Math.max(d1.pct, d2.pct);
-                    
                     if (totalSum > 5000 && maxPct > 80) {
                         let popularOdd = (d1.pct > d2.pct) ? o1 : o2;
                         let prediction = (d1.pct > d2.pct) ? 'П1' : 'П2';
-                        if(popularOdd > 1.50) {
-                            allMatches.push({ sport: 'basketball', icon: '🏀', league: league, time: time, team1: team1, team2: team2, pred: prediction, coef: popularOdd.toFixed(2), totalSum: totalSum });
-                        }
+                        if(popularOdd > 1.50) allMatches.push({ sport: 'basketball', icon: '🏀', league: league, time: time, team1: team1, team2: team2, pred: prediction, coef: popularOdd.toFixed(2), totalSum: totalSum });
                     }
                 });
             }
@@ -693,39 +646,22 @@
                 container.innerHTML = '<div class="loader-container"><div class="loader">Нет матчей, подходящих под фильтры.</div></div>';
             } else {
                 container.innerHTML = allMatches.map(m => createCard(m)).join('');
-                checkTimeHighlights(); // Запускаем проверку подсветки сразу после отрисовки
+                checkTimeHighlights();
             }
-
         } catch (e) {
             console.error(e);
             container.innerHTML = '<div class="loader-container"><div class="loader" style="color:#ff4444">Ошибка загрузки.</div></div>';
         }
     }
 
-    // Функция создания карточки с учетом +3 часов
     function createCard(m) {
         const pariLink = "https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate";
-        
-        // Рассчитываем время +3 часа
-        let displayTime = m.time;
-        let matchDateObj = null;
-        
-        // Пытаемся распарсить время из строки (формат обычно dd.MM.yy HH:mm или подобный)
-        // Для надежности просто заменим часы в строке, если она стандартная
-        // Предположим формат "12.04.26 15:00" или "15:00"
-        
-        // Создаем уникальный ID для карточки, чтобы менять её стиль потом
         const cardId = 'card-' + Math.random().toString(36).substr(2, 9);
-        
-        // Сохраняем оригинальное время в data-атрибут для проверки
-        const dataTime = m.time; 
-
         return `
-            <div class="vip-card" id="${cardId}" data-match-time="${dataTime}">
-                <div class="urgent-badge">🔥 ПОРА СТАВИТЬ!</div>
+            <div class="vip-card" id="${cardId}" data-match-time="${m.time}">
                 <div class="card-header">
-                    <span class="sport-tag">${m.icon} ${m.sport}</span>
-                    <span class="match-time" id="time-${cardId}">${displayTime}</span>
+                    <span class="sport-tag">${m.sport}</span>
+                    <span class="match-time" id="time-${cardId}">--:--</span>
                 </div>
                 <div class="teams-container">
                     <span class="team-name">${m.team1}</span>
@@ -743,51 +679,36 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" class="pari-logo-small" alt="Pari">
                     Кликай и побеждай
                 </a>
+                <div class="urgent-badge">🔥 ПОРА СТАВИТЬ!</div>
             </div>
         `;
     }
 
-    // Функция проверки времени и подсветки
     function checkTimeHighlights() {
         const cards = document.querySelectorAll('.vip-card');
         const now = new Date();
-
         cards.forEach(card => {
             const timeStr = card.getAttribute('data-match-time');
             if (!timeStr) return;
-
-            // Парсим время. Ожидаем формат "ДД.ММ.ГГ ЧЧ:ММ" или просто "ЧЧ:ММ" (сегодня)
-            // Так как API может отдавать разное, попробуем универсальный парсинг
-            // Для примера считаем, что время в будущем сегодня или завтра
-            
-            // Простая эмуляция: берем текущую дату и подставляем часы из строки
             let parts = timeStr.split(' ');
             let timePart = parts.length > 1 ? parts[1] : parts[0];
             let [hours, minutes] = timePart.split(':').map(Number);
-            
             if (isNaN(hours)) return;
 
             let matchDate = new Date();
-            matchDate.setHours(hours + 3, minutes, 0, 0); // +3 ЧАСА К ВРЕМЕНИ
+            matchDate.setHours(hours + 3, minutes, 0, 0); // +3 ЧАСА
 
-            // Если время уже прошло сегодня, возможно матч завтра? (упрощение)
-            // Но для подсветки "до матча" нам важно только будущее
-            
             const diffMs = matchDate - now;
             const diffHours = diffMs / (1000 * 60 * 60);
 
-            // Сброс классов
             card.classList.remove('card-glow-3h', 'card-glow-1h');
 
             if (diffHours > 0 && diffHours <= 1) {
-                // Менее 1 часа до матча
                 card.classList.add('card-glow-1h');
             } else if (diffHours > 1 && diffHours <= 3) {
-                // От 1 до 3 часов до матча
                 card.classList.add('card-glow-3h');
             }
             
-            // Обновляем отображаемое время на карточке (+3 часа)
             const timeDisplay = document.getElementById('time-' + card.id);
             if(timeDisplay) {
                 timeDisplay.textContent = String(matchDate.getHours()).padStart(2,'0') + ':' + String(matchDate.getMinutes()).padStart(2,'0');
@@ -805,20 +726,15 @@
         });
     }
 
-    // === 7. ЗАПУСК ПРИ ЗАГРУЗКЕ ===
     window.addEventListener('DOMContentLoaded', () => {
         createGlobalParticles();
         initNavigation();
         
-        // Проверяем, был ли введен пароль ранее
         if (localStorage.getItem('top_access') === 'granted') {
             loadTopFlows();
         } else {
-            // Если нет, показываем экран блокировки
             document.getElementById('access-denied').style.display = 'flex';
         }
-        
-        // Запускаем проверку подсветки каждую минуту
         setInterval(checkTimeHighlights, 60000);
     });
     
