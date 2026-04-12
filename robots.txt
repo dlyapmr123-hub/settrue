@@ -4,8 +4,10 @@ User-agent: *
 # Разрешаем индексацию основных разделов
 Allow: /
 Allow: /predict/
+Allow: /top/
 Allow: /scanmatch/
 Allow: /cashflows/
+Allow: /cs2/
 
 # Запрещаем индексацию технических папок и скриптов
 Disallow: /cgi-bin/
@@ -16,8 +18,8 @@ Disallow: /tmp/
 Disallow: /*?*
 Disallow: /script.google.com/
 
-# Указываем путь к карте сайта (если создашь sitemap.xml, раскомментируй строку ниже)
+# Указываем путь к карте сайта
 Sitemap: https://settrue.ru/sitemap.xml
 
-# Хост (главное зеркало сайта)
-Host: https://settrue.ru
+# Хост (главное зеркало сайта) - БЕЗ https://
+Host: settrue.ru
