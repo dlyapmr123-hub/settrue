@@ -315,6 +315,200 @@
         #page-content { transition: opacity 0.2s ease; min-height: 300px; position: relative; z-index: 5; flex-grow: 1; }
     </style>
 </head>
+    <script>
+    // === 1. ЗАЩИТА ОТ КОПИРОВАНИЯ И ПРОСМОТРА КОДА (MAXIMUM SECURITY) ===
+    
+    // Блокировка правой кнопки мыши
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    }, true); // true = перехват на этапе capture (самый надежный)
+
+    // Блокировка горячих клавиш
+    document.addEventListener('keydown', function(e) {
+        const key = e.key.toLowerCase();
+        const code = e.code;
+        const isCtrl = e.ctrlKey;
+        const isShift = e.shiftKey;
+        const isAlt = e.altKey;
+
+        // F12
+        if (e.keyCode === 123) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+
+        // Ctrl + U (View Source)
+        if (isCtrl && !isShift && !isAlt && (code === 'KeyU' || key === 'u')) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation(); // Останавливает все остальные обработчики
+            return false;
+        }
+
+        // Ctrl + Shift + I (DevTools)
+        if (isCtrl && isShift && (code === 'KeyI' || key === 'i')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+
+        // Ctrl + Shift + J (Console)
+        if (isCtrl && isShift && (code === 'KeyJ' || key === 'j')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+
+        // Ctrl + Shift + C (Inspect Element)
+        if (isCtrl && isShift && (code === 'KeyC' || key === 'c')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+
+        // Ctrl + S (Save Page)
+        if (isCtrl && (code === 'KeyS' || key === 's')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        
+        // Ctrl + P (Print)
+        if (isCtrl && (code === 'KeyP' || key === 'p')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+    }, true); // true = перехват на этапе capture
+
+    // Debugger Trap (замедляет консоль, если её откроют)
+    setInterval(function() {
+        var start = performance.now();
+        debugger; 
+        var end = performance.now();
+        if (end - start > 100) {
+            console.clear();
+            console.log("%cStop!", "color: red; font-size: 50px; font-weight: bold;");
+        }
+    }, 1000);
+
+    // === 2. ВРЕМЯ МСК ===
+    function updateMSKTime() {
+        const now = new Date();
+        const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
+        const mskOffset = 3 * 3600000; 
+        const mskTime = new Date(utcMs + mskOffset);
+        const hours = String(mskTime.getHours()).padStart(2, '0');
+        const minutes = String(mskTime.getMinutes()).padStart(2, '0');
+        const timeEl = document.getElementById('currentTime');
+        if(timeEl) timeEl.textContent = `${hours}:${minutes}`;
+    }
+    setInterval(updateMSKTime, 1000);
+    updateMSKTime();
+
+    // === 3. ЧАСТИЦЫ (PARTICLES) ===
+    function createGlobalParticles() {
+        const container = document.getElementById('globalParticles');
+        if (!container) return;
+        const isMobile = window.innerWidth < 768;
+        const particleCount = isMobile ? 50 : 150;
+        container.innerHTML = '';
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('global-particle');
+            const size = Math.random() * 8 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            const duration = Math.random() * 12 + 5;
+            particle.style.animationDuration = duration + 's';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.background = `radial-gradient(circle, rgba(204, 255, 0, ${Math.random() * 0.7 + 0.3}), rgba(204, 255, 0, 0))`;
+            const shiftX = (Math.random() - 0.5) * 150;
+            particle.style.setProperty('--shift', shiftX + 'px');
+            container.appendChild(particle);
+        }
+    }
+
+    // === 4. НАВИГАЦИЯ И ПАРТНЕРСКИЕ ССЫЛКИ ===
+    
+    // Открытие ссылок партнера (защита от AdBlock через JS)
+    function openPartnerLink(type) {
+        let url = '';
+        if (type === 'reg') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate';
+        if (type === 'bonus') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate';
+        if (type === 'freebets') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate';
+        
+        if (url) {
+            if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'pari_' + type);
+            window.open(url, '_blank');
+        }
+    }
+
+    // Модальное окно доната
+    function openDonateModal() {
+        const modal = document.getElementById('donateModal');
+        if(modal) {
+            modal.classList.add('open');
+            if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'open_donate_modal');
+        }
+    }
+    function closeDonateModal(e) {
+        const modal = document.getElementById('donateModal');
+        if (!e || e.target.id === 'donateModal' || (e.target.classList && e.target.classList.contains('donate-close'))) {
+            if(modal) modal.classList.remove('open');
+        }
+    }
+
+    // Инициализация кнопок меню
+    function initNavigation() {
+        const btns = document.querySelectorAll('.nav-btn:not(.support-btn)');
+        btns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const page = btn.getAttribute('data-page');
+                const link = btn.getAttribute('data-link');
+                
+                // Если есть ссылка для перехода (на другие страницы)
+                if (link && page !== 'predictions') { 
+                     // Для страницы прогнозов мы остаемся здесь и грузим контент, 
+                     // для остальных - переходим по ссылке
+                     if(page !== 'predictions') {
+                         window.location.href = link;
+                         return;
+                     }
+                }
+                
+                // Если это текущая страница (например, Прогнозы), просто меняем активный класс
+                btns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    }
+
+    // === 5. ЗАПУСК ПРИ ЗАГРУЗКЕ ===
+    window.addEventListener('DOMContentLoaded', () => {
+        createGlobalParticles();
+        initNavigation();
+        
+        // Здесь можно добавить специфичную логику для каждой страницы, если нужно
+        // Например, загрузка таблиц для cashflows или predict
+        if (typeof loadMatches === 'function') loadMatches('tennis'); // Для predict
+        if (typeof loadCS2Table === 'function') loadCS2Table();       // Для cs2
+        if (typeof loadTopFlows === 'function') loadTopFlows();       // Для top (если нет пароля)
+        if (typeof loadCurrent === 'function') {                      // Для scanmatch
+             loadCurrent();
+             loadLast();
+        }
+    });
+
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => createGlobalParticles(), 300);
+    });
+</script>
 <body oncontextmenu="return false;">
 
 <div class="global-particles" id="globalParticles"></div>
