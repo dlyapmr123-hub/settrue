@@ -108,7 +108,7 @@
             text-align: center; margin-bottom: 30px; color: #666; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
         }
 
-        /* Cards Grid - Твой стиль */
+        /* Cards Grid */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -204,7 +204,19 @@
         }
         .pari-cta-btn:hover .pari-logo-small { filter: brightness(0); }
 
-        .loader { text-align: center; padding: 50px; color: #666; font-size: 1.2rem; }
+        /* ИСПРАВЛЕННЫЙ LOADER - СТРОГО ПО ЦЕНТРУ */
+        .loader-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+            width: 100%;
+        }
+        .loader { 
+            text-align: center; 
+            color: #666; 
+            font-size: 1.2rem; 
+        }
         
         /* Footer */
         footer { width: 100%; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(10px); border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 40px 20px 20px; font-family: 'Inter', sans-serif; margin-top: auto; color: #888; }
@@ -234,136 +246,30 @@
             .cards-grid { grid-template-columns: 1fr; }
         }
 
-        /* === ЗАЩИЩЕННЫЙ БЛОК ПАРТНЕРА (ORIGINAL DESIGN + UNDERLINE) === */
+        /* === ЗАЩИЩЕННЫЙ БЛОК ПАРТНЕРА === */
         div.sys-wrapper {
-            display: flex !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 12px 20px;
-            margin: 0 auto 30px;
-            max-width: 600px;
-            width: fit-content;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            pointer-events: auto !important; 
+            display: flex !important; visibility: visible !important; opacity: 1 !important;
+            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px;
+            padding: 12px 20px; margin: 0 auto 30px; max-width: 600px; width: fit-content;
+            align-items: center; justify-content: space-between; gap: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); pointer-events: auto !important; 
         }
-
-        div.sys-wrapper > div {
-            display: flex !important;
-            visibility: visible !important;
-        }
-
-        .sys-brand-box { 
-            display: flex !important;
-            align-items: center; 
-            gap: 10px; 
-            border-right: 1px solid rgba(255, 255, 255, 0.1); 
-            padding-right: 15px; 
-            white-space: nowrap; 
-        }
-        
-        .sys-brand-box img { 
-            height: 26px; 
-            width: auto;
-            display: block !important;
-            filter: brightness(0) invert(1); 
-            opacity: 1 !important;
-            drop-shadow: 0 0 5px #d2ff40; 
-        }
-        
-        .sys-brand-text { 
-            color: #d2ff40; 
-            font-size: 10px; 
-            font-weight: 800; 
-            letter-spacing: 1.5px; 
-            text-transform: uppercase; 
-            text-shadow: 0 0 8px rgba(210, 255, 64, 0.6); 
-        }
-
-        .sys-links-area { 
-            display: flex !important;
-            gap: 20px; 
-            align-items: center; 
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        /* Оригинальный стиль ссылок с подчеркиванием */
-        .sys-nav-item { 
-            color: #ccc; 
-            font-family: 'Inter', sans-serif; 
-            font-size: 13px; 
-            font-weight: 500; 
-            text-decoration: none; 
-            padding: 4px 0; 
-            position: relative; 
-            transition: all 0.3s ease; 
-            cursor: pointer;
-            display: inline-block !important;
-        }
-        
-        /* Эффект подчеркивания */
-        .sys-nav-item::after { 
-            content: ''; 
-            position: absolute; 
-            width: 0; 
-            height: 1px; 
-            bottom: 0; 
-            left: 0; 
-            background-color: #d2ff40; 
-            transition: width 0.3s ease; 
-            box-shadow: 0 0 8px #d2ff40; 
-        }
-        
-        .sys-nav-item:hover { 
-            color: #fff; 
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); 
-        }
-        
-        .sys-nav-item:hover::after { 
-            width: 100%; 
-        }
-        
-        .sys-sub-text { 
-            font-size: 10px; 
-            color: rgba(255, 255, 255, 0.4); 
-            font-weight: 400; 
-            margin-top: 6px;
-            text-align: right;
-            width: 100%;
-            display: block;
-        }
-
+        div.sys-wrapper > div { display: flex !important; visibility: visible !important; }
+        .sys-brand-box { display: flex !important; align-items: center; gap: 10px; border-right: 1px solid rgba(255, 255, 255, 0.1); padding-right: 15px; white-space: nowrap; }
+        .sys-brand-box img { height: 26px; width: auto; display: block !important; filter: brightness(0) invert(1); opacity: 1 !important; drop-shadow: 0 0 5px #d2ff40; }
+        .sys-brand-text { color: #d2ff40; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; text-shadow: 0 0 8px rgba(210, 255, 64, 0.6); }
+        .sys-links-area { display: flex !important; gap: 20px; align-items: center; flex-wrap: wrap; justify-content: center; }
+        .sys-nav-item { color: #ccc; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; text-decoration: none; padding: 4px 0; position: relative; transition: all 0.3s ease; cursor: pointer; display: inline-block !important; }
+        .sys-nav-item::after { content: ''; position: absolute; width: 0; height: 1px; bottom: 0; left: 0; background-color: #d2ff40; transition: width 0.3s ease; box-shadow: 0 0 8px #d2ff40; }
+        .sys-nav-item:hover { color: #fff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+        .sys-nav-item:hover::after { width: 100%; }
+        .sys-sub-text { font-size: 10px; color: rgba(255, 255, 255, 0.4); font-weight: 400; margin-top: 6px; text-align: right; width: 100%; display: block; }
         @media (max-width: 650px) {
-            .sys-wrapper { 
-                flex-direction: column; 
-                padding: 15px; 
-                gap: 12px; 
-                width: 90%; 
-            }
-            .sys-brand-box { 
-                border-right: none; 
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
-                padding-right: 0; 
-                padding-bottom: 10px; 
-                width: 100%; 
-                justify-content: center; 
-            }
-            .sys-links-area { 
-                width: 100%; 
-                justify-content: center; 
-                gap: 20px; 
-            }
+            .sys-wrapper { flex-direction: column; padding: 15px; gap: 12px; width: 90%; }
+            .sys-brand-box { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-right: 0; padding-bottom: 10px; width: 100%; justify-content: center; }
+            .sys-links-area { width: 100%; justify-content: center; gap: 20px; }
             .sys-sub-text { text-align: center; }
-            
-            .msk-time-badge-corner { position: static; margin-bottom: 15px; display: flex; justify-content: center; width: 100%; }
         }
 
         /* === DONATE MODAL === */
@@ -371,23 +277,81 @@
         .modal-overlay.open { display: flex; opacity: 1; }
         .donate-card { background: #0a0a0f; border: 1px solid #333; border-top: 2px solid #d2ff40; border-radius: 16px; padding: 30px; max-width: 420px; width: 90%; box-shadow: 0 0 40px rgba(0,0,0,0.8); transform: translateY(20px); transition: transform 0.3s ease; position: relative; text-align: center; }
         .modal-overlay.open .donate-card { transform: translateY(0); }
-        .donate-header { margin-bottom: 25px; }
-        .donate-title { color: #fff; font-size: 22px; font-weight: 800; margin-bottom: 8px; }
-        .donate-desc { color: #aaa; font-size: 14px; line-height: 1.4; }
         .qr-container { display: flex; justify-content: center; margin-bottom: 20px; background: #fff; padding: 10px; border-radius: 12px; width: fit-content; margin-left: auto; margin-right: auto; }
         .qr-container img { width: 180px; height: 180px; object-fit: contain; }
         .sber-link-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: #21a038; color: #fff; font-weight: 700; padding: 12px; border-radius: 8px; text-decoration: none; margin-bottom: 10px; transition: transform 0.2s, background 0.2s; width: 100%; box-sizing: border-box; }
         .sber-link-btn:hover { transform: scale(1.02); background: #1e8e32; }
         .donate-close { display: block; width: 100%; margin-top: 20px; padding: 12px; background: transparent; border: 1px solid #333; color: #888; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
         .donate-close:hover { border-color: #fff; color: #fff; }
+
+        /* === ACCESS DENIED SCREEN (PASSWORD PROTECTION) === */
+        #access-denied {
+            display: none; /* Скрыто по умолчанию, показывается JS если нет доступа */
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #050507;
+            z-index: 20000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .access-box {
+            background: rgba(20, 20, 25, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+        }
+        .access-input {
+            width: 100%;
+            padding: 12px;
+            margin: 20px 0;
+            background: #000;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 16px;
+            outline: none;
+        }
+        .access-input:focus {
+            border-color: #d2ff40;
+        }
+        .access-btn {
+            background: #d2ff40;
+            color: #000;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+        }
+        .access-btn:hover {
+            background: #c2ef30;
+        }
     </style>
 </head>
 <body oncontextmenu="return false;">
 
+<!-- ACCESS CHECK OVERLAY -->
+<div id="access-denied">
+    <div class="access-box">
+        <h2 style="color:#d2ff40; margin-bottom:10px;">🔒 Доступ ограничен</h2>
+        <p style="color:#888; font-size:14px; margin-bottom:20px;">Введите пароль для просмотра TOP прогнозов</p>
+        <input type="password" id="passInput" class="access-input" placeholder="Пароль">
+        <button class="access-btn" onclick="checkPass()">Войти</button>
+        <p id="errorMsg" style="color:#ff4444; font-size:12px; margin-top:10px; display:none;">Неверный пароль</p>
+    </div>
+</div>
+
 <div class="global-particles" id="globalParticles"></div>
 
 <section class="hero">
-    <!-- ВРЕМЯ СПРАВА СВЕРХУ -->
     <div class="msk-time-badge-corner">
         <span>🕒</span>
         <span class="time-value" id="currentTime">--:--</span>
@@ -395,7 +359,6 @@
     </div>
 
     <div class="hero-content">
-
         <div class="nav-buttons">
             <button class="nav-btn" data-page="home" data-link="/">Главная</button>
             <button class="nav-btn" data-page="predictions" data-link="/predict/">Прогнозы</button>
@@ -407,23 +370,20 @@
         </div>
 
         <div class="logo">True<span>Set</span></div>
-        
         <div class="description">
             Закрытый раздел лучших прогнозов дня
         </div>
     </div>
 </section>
 
-<!-- === SYSTEM INFO PANEL (Protected Partner Block) === -->
+<!-- === SYSTEM INFO PANEL === -->
 <div class="sys-wrapper">
     <div class="sys-brand-box">
         <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Icon">
         <span class="sys-brand-text">PARTNER</span>
     </div>
-    
     <div style="display:flex; flex-direction:column; align-items:flex-end;">
         <div class="sys-links-area">
-            <!-- Ссылки используют onclick для защиты, но выглядят как оригинал -->
             <span class="sys-nav-item" onclick="openPartnerLink('reg')">Регистрация</span>
             <span class="sys-nav-item" onclick="openPartnerLink('bonus')">Бонус 5 000 ₽</span>
             <span class="sys-nav-item" onclick="openPartnerLink('freebets')">5 Фрибетов</span>
@@ -435,9 +395,10 @@
 <div id="page-content" role="main">
     <div class="container">
         <div class="filter-info">Сортировка по объему ставок</div>
-
         <div id="cards-container" class="cards-grid">
-            <div class="loader">Загрузка TOP предложений...</div>
+            <div class="loader-container">
+                <div class="loader">Загрузка TOP предложений...</div>
+            </div>
         </div>
     </div>
 </div>
@@ -471,7 +432,6 @@
           <span style="font-size: 28px;">🏆</span>
           <h3 style="color: #d2ff40; font-size: 20px; font-weight: 700; margin: 0;">SETTRUE</h3>
         </div>
-        <!-- Логотип Pari в футере -->
         <div class="pari-footer-logo-glow">
             <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari Partner">
         </div>
@@ -509,53 +469,21 @@
     
     <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); gap: 10px;">
       <p style="color: #555; font-size: 11px; margin: 0;">© 2026 SetTrue. Все права защищены.</p>
-      <!-- Ссылки Privacy/Terms удалены по требованию -->
     </div>
   </div>
 </footer>
 
 <script>
-    // === 1. ЗАЩИТА ОТ КОПИРОВАНИЯ И ПРОСМОТРА КОДА (MAXIMUM SECURITY) ===
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        return false;
-    }, true);
-
+    // === 1. МАКСИМАЛЬНАЯ ЗАЩИТА ОТ КОПИРОВАНИЯ ===
+    document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; }, true);
     document.addEventListener('keydown', function(e) {
-        const key = e.key.toLowerCase();
-        const code = e.code;
-        const isCtrl = e.ctrlKey;
-        const isShift = e.shiftKey;
-
-        // F12
+        const key = e.key.toLowerCase(); const code = e.code; const isCtrl = e.ctrlKey; const isShift = e.shiftKey;
         if (e.keyCode === 123) { e.preventDefault(); e.stopPropagation(); return false; }
-
-        // Ctrl + U
-        if (isCtrl && !isShift && (code === 'KeyU' || key === 'u')) {
-            e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); return false;
-        }
-
-        // Ctrl + Shift + I/J/C
-        if (isCtrl && isShift && (code === 'KeyI' || key === 'i' || code === 'KeyJ' || key === 'j' || code === 'KeyC' || key === 'c')) {
-            e.preventDefault(); e.stopPropagation(); return false;
-        }
-
-        // Ctrl + S/P
-        if (isCtrl && (code === 'KeyS' || key === 's' || code === 'KeyP' || key === 'p')) {
-            e.preventDefault(); e.stopPropagation(); return false;
-        }
+        if (isCtrl && !isShift && (code === 'KeyU' || key === 'u')) { e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); return false; }
+        if (isCtrl && isShift && (code === 'KeyI' || key === 'i' || code === 'KeyJ' || key === 'j' || code === 'KeyC' || key === 'c')) { e.preventDefault(); e.stopPropagation(); return false; }
+        if (isCtrl && (code === 'KeyS' || key === 's' || code === 'KeyP' || key === 'p')) { e.preventDefault(); e.stopPropagation(); return false; }
     }, true);
-
-    // Debugger Trap
-    setInterval(function() {
-        var start = performance.now();
-        debugger; 
-        var end = performance.now();
-        if (end - start > 100) {
-            console.clear();
-            console.log("%cStop!", "color: red; font-size: 50px; font-weight: bold;");
-        }
-    }, 1000);
+    setInterval(function() { var start = performance.now(); debugger; var end = performance.now(); if (end - start > 100) { console.clear(); console.log("%cStop!", "color: red; font-size: 50px; font-weight: bold;"); } }, 1000);
 
     // === 2. ПАРОЛЬ ДЛЯ ДОСТУПА ===
     const ACCESS_PASSWORD = "settrue2026"; // <-- ИЗМЕНИТЕ ПАРОЛЬ ЗДЕСЬ
@@ -565,19 +493,16 @@
         if (input === ACCESS_PASSWORD) {
             localStorage.setItem('top_access', 'granted');
             document.getElementById('access-denied').style.display = 'none';
-            loadTopFlows();
+            loadTopFlows(); // Загружаем данные только после успеха
         } else {
             document.getElementById('errorMsg').style.display = 'block';
         }
     }
 
     // Обработка Enter в поле пароля
-    const passInput = document.getElementById('passInput');
-    if(passInput) {
-        passInput.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') checkPass();
-        });
-    }
+    document.getElementById('passInput').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') checkPass();
+    });
 
     // === 3. ВРЕМЯ МСК ===
     function updateMSKTime() {
@@ -586,8 +511,7 @@
         const el = document.getElementById('currentTime');
         if(el) el.textContent = `${String(mskTime.getHours()).padStart(2, '0')}:${String(mskTime.getMinutes()).padStart(2, '0')}`;
     }
-    setInterval(updateMSKTime, 1000);
-    updateMSKTime();
+    setInterval(updateMSKTime, 1000); updateMSKTime();
 
     // === 4. ЧАСТИЦЫ ===
     function createGlobalParticles() {
@@ -597,8 +521,7 @@
         const count = isMobile ? 50 : 150;
         container.innerHTML = '';
         for (let i = 0; i < count; i++) {
-            const p = document.createElement('div');
-            p.classList.add('global-particle');
+            const p = document.createElement('div'); p.classList.add('global-particle');
             const size = Math.random() * 8 + 2;
             p.style.cssText = `width:${size}px; height:${size}px; left:${Math.random()*100}%; animation-duration:${Math.random()*12+5}s; animation-delay:${Math.random()*15}s; background:radial-gradient(circle, rgba(204,255,0,${Math.random()*0.7+0.3}), transparent); --shift:${(Math.random()-0.5)*150}px;`;
             container.appendChild(p);
@@ -617,7 +540,6 @@
             window.open(urls[type], '_blank');
         }
     }
-
     function openDonateModal() {
         const m = document.getElementById('donateModal');
         if(m) { m.classList.add('open'); if(typeof ym!=='undefined') ym(108400965,'reachGoal','open_donate_modal'); }
@@ -726,14 +648,14 @@
             allMatches.sort((a, b) => b.totalSum - a.totalSum);
 
             if (allMatches.length === 0) {
-                container.innerHTML = '<div class="loader">Нет матчей, подходящих под фильтры.</div>';
+                container.innerHTML = '<div class="loader-container"><div class="loader">Нет матчей, подходящих под фильтры.</div></div>';
             } else {
                 container.innerHTML = allMatches.map(m => createCard(m)).join('');
             }
 
         } catch (e) {
             console.error(e);
-            container.innerHTML = '<div class="loader" style="color:#ff4444">Ошибка загрузки.</div>';
+            container.innerHTML = '<div class="loader-container"><div class="loader" style="color:#ff4444">Ошибка загрузки.</div></div>';
         }
     }
 
@@ -775,14 +697,16 @@
         });
     }
 
-    // === 7. ЗАПУСК ===
+    // === 7. ЗАПУСК ПРИ ЗАГРУЗКЕ ===
     window.addEventListener('DOMContentLoaded', () => {
         createGlobalParticles();
         initNavigation();
         
+        // Проверяем, был ли введен пароль ранее
         if (localStorage.getItem('top_access') === 'granted') {
             loadTopFlows();
         } else {
+            // Если нет, показываем экран блокировки
             document.getElementById('access-denied').style.display = 'flex';
         }
     });
