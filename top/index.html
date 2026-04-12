@@ -515,55 +515,121 @@
 </footer>
 
 <script>
-    // === СКРИПТ ВРЕМЕНИ МСК ===
+    // === 1. ЗАЩИТА ОТ КОПИРОВАНИЯ И ПРОСМОТРА КОДА (MAXIMUM SECURITY) ===
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    }, true);
+
+    document.addEventListener('keydown', function(e) {
+        const key = e.key.toLowerCase();
+        const code = e.code;
+        const isCtrl = e.ctrlKey;
+        const isShift = e.shiftKey;
+
+        // F12
+        if (e.keyCode === 123) { e.preventDefault(); e.stopPropagation(); return false; }
+
+        // Ctrl + U
+        if (isCtrl && !isShift && (code === 'KeyU' || key === 'u')) {
+            e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); return false;
+        }
+
+        // Ctrl + Shift + I/J/C
+        if (isCtrl && isShift && (code === 'KeyI' || key === 'i' || code === 'KeyJ' || key === 'j' || code === 'KeyC' || key === 'c')) {
+            e.preventDefault(); e.stopPropagation(); return false;
+        }
+
+        // Ctrl + S/P
+        if (isCtrl && (code === 'KeyS' || key === 's' || code === 'KeyP' || key === 'p')) {
+            e.preventDefault(); e.stopPropagation(); return false;
+        }
+    }, true);
+
+    // Debugger Trap
+    setInterval(function() {
+        var start = performance.now();
+        debugger; 
+        var end = performance.now();
+        if (end - start > 100) {
+            console.clear();
+            console.log("%cStop!", "color: red; font-size: 50px; font-weight: bold;");
+        }
+    }, 1000);
+
+    // === 2. ПАРОЛЬ ДЛЯ ДОСТУПА ===
+    const ACCESS_PASSWORD = "settrue2026"; // <-- ИЗМЕНИТЕ ПАРОЛЬ ЗДЕСЬ
+
+    function checkPass() {
+        const input = document.getElementById('passInput').value;
+        if (input === ACCESS_PASSWORD) {
+            localStorage.setItem('top_access', 'granted');
+            document.getElementById('access-denied').style.display = 'none';
+            loadTopFlows();
+        } else {
+            document.getElementById('errorMsg').style.display = 'block';
+        }
+    }
+
+    // Обработка Enter в поле пароля
+    const passInput = document.getElementById('passInput');
+    if(passInput) {
+        passInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') checkPass();
+        });
+    }
+
+    // === 3. ВРЕМЯ МСК ===
     function updateMSKTime() {
         const now = new Date();
-        const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
-        const mskOffset = 3 * 3600000; 
-        const mskTime = new Date(utcMs + mskOffset);
-        const hours = String(mskTime.getHours()).padStart(2, '0');
-        const minutes = String(mskTime.getMinutes()).padStart(2, '0');
-        document.getElementById('currentTime').textContent = `${hours}:${minutes}`;
+        const mskTime = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (3 * 3600000));
+        const el = document.getElementById('currentTime');
+        if(el) el.textContent = `${String(mskTime.getHours()).padStart(2, '0')}:${String(mskTime.getMinutes()).padStart(2, '0')}`;
     }
     setInterval(updateMSKTime, 1000);
     updateMSKTime();
 
-    // === ЛОГИКА ОТКРЫТИЯ ССЫЛОК ПАРТНЕРА (ЗАЩИТА) ===
-    function openPartnerLink(type) {
-        let url = '';
-        // Ссылки хранятся в JS, чтобы AdBlock не скрывал кнопки при загрузке страницы
-        if (type === 'reg') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate';
-        if (type === 'bonus') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate';
-        if (type === 'freebets') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate';
-        
-        if (url) {
-            if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'pari_' + type);
-            window.open(url, '_blank');
+    // === 4. ЧАСТИЦЫ ===
+    function createGlobalParticles() {
+        const container = document.getElementById('globalParticles');
+        if (!container) return;
+        const isMobile = window.innerWidth < 768;
+        const count = isMobile ? 50 : 150;
+        container.innerHTML = '';
+        for (let i = 0; i < count; i++) {
+            const p = document.createElement('div');
+            p.classList.add('global-particle');
+            const size = Math.random() * 8 + 2;
+            p.style.cssText = `width:${size}px; height:${size}px; left:${Math.random()*100}%; animation-duration:${Math.random()*12+5}s; animation-delay:${Math.random()*15}s; background:radial-gradient(circle, rgba(204,255,0,${Math.random()*0.7+0.3}), transparent); --shift:${(Math.random()-0.5)*150}px;`;
+            container.appendChild(p);
         }
     }
 
-    // === ЛОГИКА МОДАЛЬНОГО ОКНА ===
+    // === 5. ИНТЕРФЕЙС И ПАРТНЕР ===
+    function openPartnerLink(type) {
+        const urls = {
+            'reg': 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate',
+            'bonus': 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate',
+            'freebets': 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate'
+        };
+        if (urls[type]) {
+            if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'pari_' + type);
+            window.open(urls[type], '_blank');
+        }
+    }
+
     function openDonateModal() {
-        const modal = document.getElementById('donateModal');
-        modal.classList.add('open');
-        if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'open_donate_modal');
+        const m = document.getElementById('donateModal');
+        if(m) { m.classList.add('open'); if(typeof ym!=='undefined') ym(108400965,'reachGoal','open_donate_modal'); }
     }
     function closeDonateModal(e) {
-        if (!e || e.target.id === 'donateModal' || e.target.classList.contains('donate-close')) {
-            document.getElementById('donateModal').classList.remove('open');
+        const m = document.getElementById('donateModal');
+        if (!e || e.target.id === 'donateModal' || (e.target.classList && e.target.classList.contains('donate-close'))) {
+            if(m) m.classList.remove('open');
         }
     }
 
-    // === ЗАЩИТА ОТ КОПИРОВАНИЯ ===
-    document.addEventListener('contextmenu', e => { e.preventDefault(); return false; }, true);
-    document.addEventListener('keydown', function(e) {
-        if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && (e.key === 'U' || e.key === 'S' || e.key === 'P'))) {
-            e.preventDefault(); e.stopPropagation(); return false;
-        }
-    }, true);
-    setInterval(() => { debugger; }, 1000);
-
-    // === DATA FETCHING ===
+    // === 6. ЛОГИКА TOP СТРАНИЦЫ ===
     const TENNIS_API = 'https://script.google.com/macros/s/AKfycbzyUw_OlQ7xd3p3p3Xhp01lfFZFvsptcb0AGAtJUddC7y2ODmheNX6szf6BSaI-2fQZ/exec';
     const FOOTBALL_API = 'https://script.google.com/macros/s/AKfycbz6fcoEoNF_C7CpNENGoQHEgCGry91Mi9xDPck0Xv2YUd3zW33UjMGCGgBD-ZkXte3z/exec'; 
     const BASKETBALL_API = 'https://script.google.com/macros/s/AKfycbzVNo0nkiivzgSDBKnFHCGtkM7YmvowNLhRBvvCfOFgU_D6LvlQNMYZkG9xF7R8QaUZ/exec'; 
@@ -580,6 +646,8 @@
 
     async function loadTopFlows() {
         const container = document.getElementById('cards-container');
+        if(!container) return;
+        
         try {
             const [resT, resF, resB] = await Promise.all([
                 fetch(TENNIS_API).then(r => r.json()),
@@ -589,7 +657,7 @@
 
             let allMatches = [];
 
-            // Process Tennis
+            // Tennis
             if (resT && Array.isArray(resT)) {
                 resT.forEach(row => {
                     if (row.length < 8) return; 
@@ -602,29 +670,17 @@
                     let totalSum = d1.rawVal + d2.rawVal;
                     let maxPct = Math.max(d1.pct, d2.pct);
                     
-                    // Фильтр: Кэф > 1.5, Сумма > 5000, Процент > 80
                     if (totalSum > 5000 && maxPct > 80) {
                         let prediction = (d1.pct > d2.pct) ? 'П1' : 'П2';
                         let bestOdd = (d1.pct > d2.pct) ? o1 : o2;
-                        
                         if(bestOdd > 1.50) {
-                            allMatches.push({
-                                sport: 'tennis',
-                                icon: '🎾',
-                                league: tour,
-                                time: time,
-                                team1: p1,
-                                team2: p2,
-                                pred: prediction,
-                                coef: bestOdd.toFixed(2),
-                                totalSum: totalSum
-                            });
+                            allMatches.push({ sport: 'tennis', icon: '🎾', league: tour, time: time, team1: p1, team2: p2, pred: prediction, coef: bestOdd.toFixed(2), totalSum: totalSum });
                         }
                     }
                 });
             }
 
-            // Process Football
+            // Football
             if (resF && Array.isArray(resF)) {
                 resF.forEach(row => {
                     if (row.length < 9) return; 
@@ -635,74 +691,42 @@
                     let totalSum = d1.rawVal + dX.rawVal + d2.rawVal;
                     let maxPct = Math.max(d1.pct, dX.pct, d2.pct);
                     
-                    // Фильтр: Кэф > 1.5, Сумма > 5000, Процент > 80
                     if (totalSum > 5000 && maxPct > 80) {
-                        let popularOdd = o1;
-                        let prediction = 'П1';
+                        let popularOdd = o1; let prediction = 'П1';
                         if (dX.pct === maxPct) { popularOdd = oX; prediction = 'Х'; }
                         if (d2.pct === maxPct) { popularOdd = o2; prediction = 'П2'; }
-
                         if(popularOdd > 1.50) {
-                            allMatches.push({
-                                sport: 'football',
-                                icon: '⚽',
-                                league: tour,
-                                time: time,
-                                team1: team1,
-                                team2: team2,
-                                pred: prediction,
-                                coef: popularOdd.toFixed(2),
-                                totalSum: totalSum
-                            });
+                            allMatches.push({ sport: 'football', icon: '⚽', league: tour, time: time, team1: team1, team2: team2, pred: prediction, coef: popularOdd.toFixed(2), totalSum: totalSum });
                         }
                     }
                 });
             }
 
-            // Process Basketball
+            // Basketball
             if (resB && Array.isArray(resB)) {
                 resB.forEach(match => {
-                    let league = match.league || "";
-                    let time = match.time || "";
-                    let team1 = match.team1;
-                    let team2 = match.team2;
-                    
+                    let league = match.league || ""; let time = match.time || "";
+                    let team1 = match.team1; let team2 = match.team2;
                     let d1 = parseStr(match.percent1 + " £" + match.money1); 
                     let d2 = parseStr(match.percent2 + " £" + match.money2);
-                    
-                    let o1 = parseFloat(match.odd1);
-                    let o2 = parseFloat(match.odd2);
-
+                    let o1 = parseFloat(match.odd1); let o2 = parseFloat(match.odd2);
                     let totalSum = d1.rawVal + d2.rawVal;
                     let maxPct = Math.max(d1.pct, d2.pct);
                     
-                    // Фильтр: Кэф > 1.5, Сумма > 5000, Процент > 80
                     if (totalSum > 5000 && maxPct > 80) {
                         let popularOdd = (d1.pct > d2.pct) ? o1 : o2;
                         let prediction = (d1.pct > d2.pct) ? 'П1' : 'П2';
-                        
                         if(popularOdd > 1.50) {
-                            allMatches.push({
-                                sport: 'basketball',
-                                icon: '🏀',
-                                league: league,
-                                time: time,
-                                team1: team1,
-                                team2: team2,
-                                pred: prediction,
-                                coef: popularOdd.toFixed(2),
-                                totalSum: totalSum
-                            });
+                            allMatches.push({ sport: 'basketball', icon: '🏀', league: league, time: time, team1: team1, team2: team2, pred: prediction, coef: popularOdd.toFixed(2), totalSum: totalSum });
                         }
                     }
                 });
             }
 
-            // SORT BY MONEY (Highest Sum First)
             allMatches.sort((a, b) => b.totalSum - a.totalSum);
 
             if (allMatches.length === 0) {
-                container.innerHTML = '<div class="loader">Нет матчей, подходящих под фильтры (Сумма > 5000, % > 80).</div>';
+                container.innerHTML = '<div class="loader">Нет матчей, подходящих под фильтры.</div>';
             } else {
                 container.innerHTML = allMatches.map(m => createCard(m)).join('');
             }
@@ -721,13 +745,11 @@
                     <span class="sport-tag">${m.icon} ${m.sport}</span>
                     <span class="match-time">${m.time}</span>
                 </div>
-                
                 <div class="teams-container">
                     <span class="team-name">${m.team1}</span>
                     <div class="vs-divider">VS</div>
                     <span class="team-name">${m.team2}</span>
                 </div>
-
                 <div class="prediction-row">
                     <div>
                         <span class="pred-label">Прогноз</span>
@@ -735,7 +757,6 @@
                     </div>
                     <div class="coef-value">${m.coef}</div>
                 </div>
-
                 <a href="${pariLink}" target="_blank" class="pari-cta-btn" onclick="ym(108400965, 'reachGoal', 'top_pari_click');">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" class="pari-logo-small" alt="Pari">
                     Кликай и побеждай
@@ -744,46 +765,26 @@
         `;
     }
 
-    function createGlobalParticles() {
-        const container = document.getElementById('globalParticles');
-        if (!container) return;
-        const isMobile = window.innerWidth < 768;
-        const particleCount = isMobile ? 50 : 150;
-        container.innerHTML = '';
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('global-particle');
-            const size = Math.random() * 8 + 2;
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-            particle.style.left = Math.random() * 100 + '%';
-            const duration = Math.random() * 12 + 5;
-            particle.style.animationDuration = duration + 's';
-            particle.style.animationDelay = Math.random() * 15 + 's';
-            particle.style.background = `radial-gradient(circle, rgba(204, 255, 0, ${Math.random() * 0.7 + 0.3}), rgba(204, 255, 0, 0))`;
-            const shiftX = (Math.random() - 0.5) * 150;
-            particle.style.setProperty('--shift', shiftX + 'px');
-            container.appendChild(particle);
-        }
-    }
-
     function initNavigation() {
         const btns = document.querySelectorAll('.nav-btn:not(.support-btn)');
         btns.forEach(btn => {
             btn.addEventListener('click', () => {
-                const page = btn.getAttribute('data-page');
                 const link = btn.getAttribute('data-link');
-                if (link) {
-                    window.location.href = link;
-                }
+                if (link) window.location.href = link;
             });
         });
     }
 
+    // === 7. ЗАПУСК ===
     window.addEventListener('DOMContentLoaded', () => {
         createGlobalParticles();
         initNavigation();
-        loadTopFlows();
+        
+        if (localStorage.getItem('top_access') === 'granted') {
+            loadTopFlows();
+        } else {
+            document.getElementById('access-denied').style.display = 'flex';
+        }
     });
     
     let resizeTimeout;
