@@ -36,10 +36,10 @@
     <meta property="og:site_name" content="SetTrue">
     
     <!-- === FAVICON === -->
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
-    <link rel="manifest" href="./site.webmanifest">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
 
     <!-- === PRELOAD === -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" as="style">
@@ -245,13 +245,6 @@
             .ft-table th, .ft-table td { padding: 8px 6px; }
             .ft-score { font-size: 12px; padding: 3px 6px; min-width: 36px; }
             
-            .pari-glass-banner-compact { flex-direction: column; padding: 15px; gap: 12px; width: 90%; }
-            .pari-brand-neon { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-right: 0; padding-bottom: 10px; width: 100%; justify-content: center; }
-            .pari-content-wrapper { width: 100%; align-items: center; }
-            .pari-actions { width: 100%; justify-content: center; flex-wrap: wrap; gap: 12px; }
-            .glass-btn { font-size: 12px; }
-            .pari-help-text { text-align: center; margin-top: 4px; }
-            
             .msk-time-badge-corner { position: static; margin-bottom: 15px; display: flex; justify-content: center; width: 100%; }
         }
 
@@ -260,8 +253,11 @@
             .ft-header h2 { font-size: 14px; }
         }
 
-        /* === PARI BANNER === */
-        .pari-glass-banner-compact {
+        /* === ЗАЩИЩЕННЫЙ БЛОК ПАРТНЕРА (ORIGINAL DESIGN + UNDERLINE) === */
+        div.sys-wrapper {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -271,22 +267,123 @@
             margin: 0 auto 30px;
             max-width: 600px;
             width: fit-content;
-            display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 20px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            pointer-events: auto !important; 
         }
-        .pari-content-wrapper { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
-        .pari-brand-neon { display: flex; align-items: center; gap: 10px; border-right: 1px solid rgba(255, 255, 255, 0.1); padding-right: 15px; white-space: nowrap; }
-        .pari-brand-neon img { height: 26px; filter: brightness(0) invert(1); opacity: 1; drop-shadow: 0 0 5px #d2ff40; }
-        .pari-brand-neon span { color: #d2ff40; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; text-shadow: 0 0 8px rgba(210, 255, 64, 0.6); }
-        .pari-actions { display: flex; gap: 20px; align-items: center; }
-        .glass-btn { color: #ccc; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; text-decoration: none; padding: 4px 0; position: relative; transition: all 0.3s ease; }
-        .glass-btn::after { content: ''; position: absolute; width: 0; height: 1px; bottom: 0; left: 0; background-color: #d2ff40; transition: width 0.3s ease; box-shadow: 0 0 8px #d2ff40; }
-        .glass-btn:hover { color: #fff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
-        .glass-btn:hover::after { width: 100%; }
-        .pari-help-text { font-size: 10px; color: rgba(255, 255, 255, 0.4); font-weight: 400; }
+
+        div.sys-wrapper > div {
+            display: flex !important;
+            visibility: visible !important;
+        }
+
+        .sys-brand-box { 
+            display: flex !important;
+            align-items: center; 
+            gap: 10px; 
+            border-right: 1px solid rgba(255, 255, 255, 0.1); 
+            padding-right: 15px; 
+            white-space: nowrap; 
+        }
+        
+        .sys-brand-box img { 
+            height: 26px; 
+            width: auto;
+            display: block !important;
+            filter: brightness(0) invert(1); 
+            opacity: 1 !important;
+            drop-shadow: 0 0 5px #d2ff40; 
+        }
+        
+        .sys-brand-text { 
+            color: #d2ff40; 
+            font-size: 10px; 
+            font-weight: 800; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase; 
+            text-shadow: 0 0 8px rgba(210, 255, 64, 0.6); 
+        }
+
+        .sys-links-area { 
+            display: flex !important;
+            gap: 20px; 
+            align-items: center; 
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        /* Оригинальный стиль ссылок с подчеркиванием */
+        .sys-nav-item { 
+            color: #ccc; 
+            font-family: 'Inter', sans-serif; 
+            font-size: 13px; 
+            font-weight: 500; 
+            text-decoration: none; 
+            padding: 4px 0; 
+            position: relative; 
+            transition: all 0.3s ease; 
+            cursor: pointer;
+            display: inline-block !important;
+        }
+        
+        /* Эффект подчеркивания */
+        .sys-nav-item::after { 
+            content: ''; 
+            position: absolute; 
+            width: 0; 
+            height: 1px; 
+            bottom: 0; 
+            left: 0; 
+            background-color: #d2ff40; 
+            transition: width 0.3s ease; 
+            box-shadow: 0 0 8px #d2ff40; 
+        }
+        
+        .sys-nav-item:hover { 
+            color: #fff; 
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); 
+        }
+        
+        .sys-nav-item:hover::after { 
+            width: 100%; 
+        }
+        
+        .sys-sub-text { 
+            font-size: 10px; 
+            color: rgba(255, 255, 255, 0.4); 
+            font-weight: 400; 
+            margin-top: 6px;
+            text-align: right;
+            width: 100%;
+            display: block;
+        }
+
+        @media (max-width: 650px) {
+            .sys-wrapper { 
+                flex-direction: column; 
+                padding: 15px; 
+                gap: 12px; 
+                width: 90%; 
+            }
+            .sys-brand-box { 
+                border-right: none; 
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+                padding-right: 0; 
+                padding-bottom: 10px; 
+                width: 100%; 
+                justify-content: center; 
+            }
+            .sys-links-area { 
+                width: 100%; 
+                justify-content: center; 
+                gap: 20px; 
+            }
+            .sys-sub-text { text-align: center; }
+            
+            .msk-time-badge-corner { position: static; margin-bottom: 15px; display: flex; justify-content: center; width: 100%; }
+        }
 
         /* === DONATE MODAL === */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 10001; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
@@ -340,19 +437,21 @@
     </div>
 </section>
 
-<!-- === PARI PARTNER BANNER === -->
-<div class="pari-glass-banner-compact">
-    <div class="pari-brand-neon">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari Logo">
-        <span>PARTNER</span>
+<!-- === SYSTEM INFO PANEL (Protected Partner Block) === -->
+<div class="sys-wrapper">
+    <div class="sys-brand-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Icon">
+        <span class="sys-brand-text">PARTNER</span>
     </div>
-    <div class="pari-content-wrapper">
-        <div class="pari-actions">
-            <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate" target="_blank" rel="nofollow noopener" class="glass-btn" onclick="ym(108400965, 'reachGoal', 'pari_reg');">Регистрация</a>
-            <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate" target="_blank" rel="nofollow noopener" class="glass-btn" onclick="ym(108400965, 'reachGoal', 'pari_bonus5k');">Бонус 5 000 ₽</a>
-            <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate" target="_blank" rel="nofollow noopener" class="glass-btn" onclick="ym(108400965, 'reachGoal', 'pari_freebets');">5 Фрибетов</a>
+    
+    <div style="display:flex; flex-direction:column; align-items:flex-end;">
+        <div class="sys-links-area">
+            <!-- Ссылки используют onclick для защиты, но выглядят как оригинал -->
+            <span class="sys-nav-item" onclick="openPartnerLink('reg')">Регистрация</span>
+            <span class="sys-nav-item" onclick="openPartnerLink('bonus')">Бонус 5 000 ₽</span>
+            <span class="sys-nav-item" onclick="openPartnerLink('freebets')">5 Фрибетов</span>
         </div>
-        <div class="pari-help-text">❤️ Регистрация помогает развивать SetTrue</div>
+        <span class="sys-sub-text">❤️ Регистрация помогает развивать SetTrue</span>
     </div>
 </div>
 
@@ -394,7 +493,7 @@
             <p class="donate-desc">Ваши донаты помогают оплачивать серверы и поддерживать работу сайта.</p>
         </div>
         <div class="qr-container">
-            <img src="./qr.jpg" alt="QR Code для перевода">
+            <img src="../qr.jpg" alt="QR Code для перевода">
         </div>
         <p style="text-align: center; color: #ccc; font-size: 13px; margin-bottom: 15px;">
             Отсканируйте код камерой телефона или нажмите кнопку ниже
@@ -471,6 +570,20 @@
     }
     setInterval(updateMSKTime, 1000);
     updateMSKTime();
+
+    // === ЛОГИКА ОТКРЫТИЯ ССЫЛОК ПАРТНЕРА (ЗАЩИТА) ===
+    function openPartnerLink(type) {
+        let url = '';
+        // Ссылки хранятся в JS, чтобы AdBlock не скрывал кнопки при загрузке страницы
+        if (type === 'reg') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate';
+        if (type === 'bonus') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate';
+        if (type === 'freebets') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate';
+        
+        if (url) {
+            if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'pari_' + type);
+            window.open(url, '_blank');
+        }
+    }
 
     // === ЛОГИКА МОДАЛЬНОГО ОКНА ===
     function openDonateModal() {
