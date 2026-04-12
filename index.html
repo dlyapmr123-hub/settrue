@@ -99,131 +99,78 @@
 
         .description { 
             font-size: 0.95rem; 
-            color: #888; /* Более строгий серый цвет */
+            color: #888;
             max-width: 650px; 
             margin: 0 auto; 
             line-height: 1.5; 
             font-weight: 400; 
-            /* Убрали фон и рамку для минимализма */
             padding: 0; 
             border: none;
             animation: fadeInUp 0.9s; 
         }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        <!-- === NEUTRAL INFO BLOCK (Pari) === -->
-<div class="info-box-wrapper">
-    <div class="info-box-inner">
-        <div class="ib-brand">
-            <!-- Используем текст или SVG вместо прямой ссылки на логотип, если картинка блочится -->
-            <span class="ib-logo-text">PARI</span>
-            <span class="ib-status">Partner</span>
-        </div>
-        <div class="ib-actions">
-            <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="ib-link" 
-               onclick="ym(108400965, 'reachGoal', 'reg_click');">
-               Start
-            </a>
-            <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="ib-link highlight" 
-               onclick="ym(108400965, 'reachGoal', 'bonus_click');">
-               Bonus
-            </a>
-        </div>
-    </div>
-    <div class="ib-note">Support project via registration</div>
-</div>
-
-<style>
-    /* Нейтральные стили, не похожие на рекламу */
-    .info-box-wrapper {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        padding: 12px 20px;
-        margin: 0 auto 30px;
-        max-width: 600px;
-        width: fit-content;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 6px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    }
-    .info-box-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        width: 100%;
-    }
-    .ib-brand {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        border-right: 1px solid rgba(255, 255, 255, 0.1);
-        padding-right: 15px;
-        white-space: nowrap;
-    }
-    .ib-logo-text {
-        font-weight: 900;
-        font-size: 1.2rem;
-        color: #fff; /* Белый текст вместо картинки */
-        letter-spacing: -1px;
-    }
-    .ib-status {
-        color: #d2ff40;
-        font-size: 0.7rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-    .ib-actions {
-        display: flex;
-        gap: 15px;
-    }
-    .ib-link {
-        color: #ccc;
-        font-family: 'Inter', sans-serif;
-        font-size: 0.85rem;
-        font-weight: 600;
-        text-decoration: none;
-        padding: 6px 12px;
-        border-radius: 6px;
-        transition: all 0.3s ease;
-        background: rgba(255,255,255,0.05);
-    }
-    .ib-link:hover {
-        background: rgba(255,255,255,0.1);
-        color: #fff;
-    }
-    .ib-link.highlight {
-        background: rgba(210, 255, 64, 0.1);
-        color: #d2ff40;
-        border: 1px solid rgba(210, 255, 64, 0.2);
-    }
-    .ib-link.highlight:hover {
-        background: #d2ff40;
-        color: #000;
-    }
-    .ib-note {
-        font-size: 0.7rem;
-        color: rgba(255, 255, 255, 0.3);
-    }
-
-    @media (max-width: 600px) {
-        .info-box-wrapper { width: 90%; padding: 15px; }
-        .info-box-inner { flex-direction: column; gap: 10px; }
-        .ib-brand { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-right: 0; padding-bottom: 10px; width: 100%; justify-content: center; }
-        .ib-actions { width: 100%; justify-content: center; }
-    }
-</style>
+        /* === SYSTEM INFO PANEL (Anti-AdBlock Wrapper for Pari) === */
+        /* Используем нейтральные имена классов, чтобы AdBlock не скрывал блок */
+        .sys-info-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 12px 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        .sys-content-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+        .sys-brand-area { display: flex; align-items: center; gap: 10px; border-right: 1px solid rgba(255, 255, 255, 0.1); padding-right: 15px; white-space: nowrap; }
+        .sys-brand-area img { height: 26px; filter: brightness(0) invert(1); opacity: 1; drop-shadow: 0 0 5px #d2ff40; }
+        .sys-brand-area span { color: #d2ff40; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; text-shadow: 0 0 8px rgba(210, 255, 64, 0.6); }
+        .sys-actions { display: flex; gap: 20px; align-items: center; }
+        
+        /* Нейтральные стили для ссылок-кнопок */
+        .sys-action-link { 
+            color: #ccc; 
+            font-family: 'Inter', sans-serif; 
+            font-size: 13px; 
+            font-weight: 500; 
+            text-decoration: none; 
+            padding: 4px 0; 
+            position: relative; 
+            transition: all 0.3s ease; 
+        }
+        .sys-action-link::after { 
+            content: ''; 
+            position: absolute; 
+            width: 0; 
+            height: 1px; 
+            bottom: 0; 
+            left: 0; 
+            background-color: #d2ff40; 
+            transition: width 0.3s ease; 
+            box-shadow: 0 0 8px #d2ff40; 
+        }
+        .sys-action-link:hover { color: #fff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+        .sys-action-link:hover::after { width: 100%; }
+        
+        .sys-note-text { font-size: 10px; color: rgba(255, 255, 255, 0.4); font-weight: 400; }
+        
+        @media (max-width: 650px) {
+            .sys-info-panel { flex-direction: column; padding: 15px; gap: 12px; width: 90%; }
+            .sys-brand-area { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-right: 0; padding-bottom: 10px; width: 100%; justify-content: center; }
+            .sys-content-wrap { width: 100%; align-items: center; }
+            .sys-actions { width: 100%; justify-content: center; flex-wrap: wrap; gap: 12px; }
+            .sys-action-link { font-size: 12px; }
+            .sys-note-text { text-align: center; margin-top: 4px; }
+            
+            .msk-time-badge-corner { top: 10px; right: 10px; padding: 6px 12px; font-size: 0.7rem; }
+        }
 
         /* === LANDING STYLES (NEON SLOGAN - LOGO STYLE) === */
         .landing-container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; animation: fadeInUp 0.8s ease-out; }
@@ -491,19 +438,20 @@
     </div>
 </section>
 
-<!-- === PARI PARTNER BANNER === -->
-<div class="pari-glass-banner-compact">
-    <div class="pari-brand-neon">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari Logo">
+<!-- === SYSTEM INFO PANEL (Pari Partner) === -->
+<!-- Используем нейтральные классы, чтобы AdBlock не скрывал блок -->
+<div class="sys-info-panel">
+    <div class="sys-brand-area">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Logo">
         <span>PARTNER</span>
     </div>
-    <div class="pari-content-wrapper">
-        <div class="pari-actions">
-            <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate" target="_blank" rel="nofollow noopener" class="glass-btn" onclick="ym(108400965, 'reachGoal', 'pari_reg');">Регистрация</a>
-            <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate" target="_blank" rel="nofollow noopener" class="glass-btn" onclick="ym(108400965, 'reachGoal', 'pari_bonus5k');">Бонус 5 000 ₽</a>
-            <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate" target="_blank" rel="nofollow noopener" class="glass-btn" onclick="ym(108400965, 'reachGoal', 'pari_freebets');">5 Фрибетов</a>
+    <div class="sys-content-wrap">
+        <div class="sys-actions">
+            <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate" target="_blank" rel="nofollow noopener" class="sys-action-link" onclick="ym(108400965, 'reachGoal', 'pari_reg');">Регистрация</a>
+            <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate" target="_blank" rel="nofollow noopener" class="sys-action-link" onclick="ym(108400965, 'reachGoal', 'pari_bonus5k');">Бонус 5 000 ₽</a>
+            <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate" target="_blank" rel="nofollow noopener" class="sys-action-link" onclick="ym(108400965, 'reachGoal', 'pari_freebets');">5 Фрибетов</a>
         </div>
-        <div class="pari-help-text">❤️ Регистрация помогает развивать SetTrue</div>
+        <div class="sys-note-text">❤️ Регистрация помогает развивать SetTrue</div>
     </div>
 </div>
 
