@@ -119,6 +119,8 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 16px;
+            min-height: 400px;
+            position: relative;
         }
 
         .vip-card {
@@ -142,7 +144,6 @@
             background: rgba(255, 255, 255, 0.04);
         }
 
-        /* Анимации подсветки */
         @keyframes softPulse {
             0% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0); border-color: rgba(255,255,255,0.06); }
             50% { box-shadow: 0 0 15px 0 rgba(210, 255, 64, 0.15); border-color: rgba(210, 255, 64, 0.5); }
@@ -158,29 +159,50 @@
         .card-glow-1h { animation: urgentPulse 1.5s infinite; z-index: 2; }
 
         .card-header {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
         }
         .sport-tag {
-            font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
-            color: #888; letter-spacing: 0.5px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #888;
+            letter-spacing: 0.5px;
         }
         .match-time {
-            font-size: 0.75rem; color: #ccc; font-family: monospace; font-weight: 500;
+            font-size: 0.75rem;
+            color: #ccc;
+            font-family: monospace;
+            font-weight: 500;
         }
 
         .teams-container {
-            margin-bottom: 15px; text-align: center; flex-grow: 1;
+            margin-bottom: 15px;
+            text-align: center;
+            flex-grow: 1;
         }
         .team-name {
-            font-size: 0.95rem; font-weight: 500; color: #fff; display: block; margin-bottom: 4px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #fff;
+            display: block;
+            margin-bottom: 4px;
         }
         .vs-divider {
-            color: #444; font-size: 0.7rem; margin: 4px 0; font-weight: 300;
+            color: #444;
+            font-size: 0.7rem;
+            margin: 4px 0;
+            font-weight: 300;
         }
 
         .prediction-row {
-            display: flex; justify-content: space-between; align-items: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background: rgba(0,0,0,0.2);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 8px;
@@ -188,22 +210,33 @@
             margin-bottom: 15px;
         }
         .pred-label {
-            font-size: 0.6rem; color: #666; text-transform: uppercase; letter-spacing: 0.5px;
-            display: block; margin-bottom: 2px;
+            font-size: 0.6rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 2px;
         }
         .pred-value {
-            font-size: 1.1rem; font-weight: 700; color: #d2ff40;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #d2ff40;
         }
         .coef-value {
-            font-size: 0.95rem; font-weight: 600; color: #fff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #fff;
             background: rgba(255,255,255,0.08);
             padding: 4px 8px;
             border-radius: 4px;
         }
 
-        /* КНОПКА PARI В 2 СТРОКИ */
         .pari-cta-btn {
-            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
             width: 100%;
             background: transparent;
             border: 1px solid rgba(210, 255, 64, 0.3);
@@ -226,13 +259,12 @@
             box-shadow: 0 0 15px rgba(210, 255, 64, 0.2);
         }
         .pari-logo-small {
-            height: 24px; /* Увеличенный логотип */
-            filter: brightness(0) invert(1); 
+            height: 24px;
+            filter: brightness(0) invert(1);
             transition: filter 0.3s;
         }
         .pari-cta-btn:hover .pari-logo-small { filter: brightness(0); }
 
-        /* БЕЙДЖ "ПОРА СТАВИТЬ" */
         .urgent-badge {
             display: none;
             margin-top: 8px;
@@ -250,9 +282,35 @@
             display: block;
         }
 
-        .loader { text-align: center; padding: 50px; color: #666; font-size: 1.2rem; }
+        .loader-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            z-index: 10;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            border-top-color: #d2ff40;
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 15px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .loader-text {
+            color: #888;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
         
-        /* Footer */
         footer { width: 100%; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(10px); border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 40px 20px 20px; font-family: 'Inter', sans-serif; margin-top: auto; color: #888; }
         .footer-container { max-width: 1000px; margin: 0 auto; }
         .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 30px; }
@@ -262,7 +320,6 @@
             filter: brightness(0) invert(1); 
             opacity: 1; 
             margin-bottom: 12px; 
-            drop-shadow: 0 0 6px rgba(255, 255, 255, 0.4); 
         }
         
         .footer-links-group a:hover { color: #d2ff40 !important; }
@@ -277,13 +334,10 @@
             .nav-btn { padding: 0.45rem 1rem; font-size: 0.8rem; }
             .nav-buttons { gap: 0.6rem; margin-bottom: 1rem; }
             .logo { font-size: 2.2rem; }
-            
             .msk-time-badge-corner { position: static; margin-bottom: 15px; display: flex; justify-content: center; width: 100%; }
-            
             .footer-top { grid-template-columns: 1fr; gap: 30px; text-align: center; }
         }
 
-        /* === ЗАЩИЩЕННЫЙ БЛОК ПАРТНЕРА === */
         div.sys-wrapper {
             display: flex !important; visibility: visible !important; opacity: 1 !important;
             background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -294,7 +348,7 @@
         }
         div.sys-wrapper > div { display: flex !important; visibility: visible !important; }
         .sys-brand-box { display: flex !important; align-items: center; gap: 10px; border-right: 1px solid rgba(255, 255, 255, 0.1); padding-right: 15px; white-space: nowrap; }
-        .sys-brand-box img { height: 26px; width: auto; display: block !important; filter: brightness(0) invert(1); opacity: 1 !important; drop-shadow: 0 0 5px #d2ff40; }
+        .sys-brand-box img { height: 26px; width: auto; display: block !important; filter: brightness(0) invert(1); opacity: 1 !important; }
         .sys-brand-text { color: #d2ff40; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; text-shadow: 0 0 8px rgba(210, 255, 64, 0.6); }
         .sys-links-area { display: flex !important; gap: 20px; align-items: center; flex-wrap: wrap; justify-content: center; }
         .sys-nav-item { color: #ccc; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; text-decoration: none; padding: 4px 0; position: relative; transition: all 0.3s ease; cursor: pointer; display: inline-block !important; }
@@ -309,7 +363,6 @@
             .sys-sub-text { text-align: center; }
         }
 
-        /* === DONATE MODAL === */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 10001; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
         .modal-overlay.open { display: flex; opacity: 1; }
         .donate-card { background: #0a0a0f; border: 1px solid #333; border-top: 2px solid #d2ff40; border-radius: 16px; padding: 30px; max-width: 420px; width: 90%; box-shadow: 0 0 40px rgba(0,0,0,0.8); transform: translateY(20px); transition: transform 0.3s ease; position: relative; text-align: center; }
@@ -321,7 +374,6 @@
         .donate-close { display: block; width: 100%; margin-top: 20px; padding: 12px; background: transparent; border: 1px solid #333; color: #888; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
         .donate-close:hover { border-color: #fff; color: #fff; }
         
-        /* === ACCESS DENIED SCREEN === */
         #access-denied {
             display: none; 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -346,7 +398,6 @@
 </head>
 <body oncontextmenu="return false;">
 
-<!-- ACCESS CHECK OVERLAY -->
 <div id="access-denied">
     <div class="access-box">
         <div style="font-size: 40px; margin-bottom: 10px;">🔒</div>
@@ -385,7 +436,6 @@
     </div>
 </section>
 
-<!-- === SYSTEM INFO PANEL === -->
 <div class="sys-wrapper">
     <div class="sys-brand-box">
         <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Icon">
@@ -405,12 +455,14 @@
     <div class="container">
         <div class="filter-info">Матчи которые горят <b>🔥</b> — можно ставить. Остальные — лучше подождать.</div>
         <div id="cards-container" class="cards-grid">
-            <div class="loader">Загрузка TOP предложений...</div>
+            <div class="loader-overlay">
+                <div class="spinner"></div>
+                <div class="loader-text">Загрузка...</div>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- === DONATE MODAL === -->
 <div class="modal-overlay" id="donateModal" onclick="closeDonateModal(event)">
     <div class="donate-card" onclick="event.stopPropagation()">
         <div class="donate-header">
@@ -481,8 +533,19 @@
 </footer>
 
 <script>
-    // === ПАРОЛЬ ДЛЯ ДОСТУПА ===
-    const ACCESS_PASSWORD = "settrue2026"; // <-- ИЗМЕНИТЕ ЭТОТ ПАРОЛЬ
+    // === ЗАЩИТА ОТ КОПИРОВАНИЯ ===
+    document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; }, true);
+    document.addEventListener('keydown', function(e) {
+        const key = e.key.toLowerCase(); const code = e.code; const isCtrl = e.ctrlKey; const isShift = e.shiftKey;
+        if (e.keyCode === 123) { e.preventDefault(); e.stopPropagation(); return false; }
+        if (isCtrl && !isShift && (code === 'KeyU' || key === 'u')) { e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); return false; }
+        if (isCtrl && isShift && (code === 'KeyI' || key === 'i' || code === 'KeyJ' || key === 'j' || code === 'KeyC' || key === 'c')) { e.preventDefault(); e.stopPropagation(); return false; }
+        if (isCtrl && (code === 'KeyS' || key === 's' || code === 'KeyP' || key === 'p')) { e.preventDefault(); e.stopPropagation(); return false; }
+    }, true);
+    setInterval(function() { var start = performance.now(); debugger; var end = performance.now(); if (end - start > 100) { console.clear(); console.log("%cStop!", "color: red; font-size: 50px; font-weight: bold;"); } }, 1000);
+
+    // === ПАРОЛЬ ===
+    const ACCESS_PASSWORD = "settrue2026";
 
     function checkPass() {
         const input = document.getElementById('passInput').value;
@@ -494,72 +557,57 @@
             document.getElementById('errorMsg').style.display = 'block';
         }
     }
-
-    // Проверка при загрузке
-    window.addEventListener('DOMContentLoaded', () => {
-        createGlobalParticles();
-        initNavigation();
-        
-        if (localStorage.getItem('top_access') === 'granted') {
-            loadTopFlows();
-        } else {
-            document.getElementById('access-denied').style.display = 'flex';
-        }
-    });
-
-    // Обработка Enter в поле пароля
     document.getElementById('passInput').addEventListener('keypress', function (e) {
         if (e.key === 'Enter') checkPass();
     });
 
-    // === СКРИПТ ВРЕМЕНИ МСК ===
+    // === ВРЕМЯ И ЧАСТИЦЫ ===
     function updateMSKTime() {
         const now = new Date();
-        const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
-        const mskOffset = 3 * 3600000; 
-        const mskTime = new Date(utcMs + mskOffset);
-        const hours = String(mskTime.getHours()).padStart(2, '0');
-        const minutes = String(mskTime.getMinutes()).padStart(2, '0');
-        document.getElementById('currentTime').textContent = `${hours}:${minutes}`;
+        const mskTime = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (3 * 3600000));
+        const el = document.getElementById('currentTime');
+        if(el) el.textContent = `${String(mskTime.getHours()).padStart(2, '0')}:${String(mskTime.getMinutes()).padStart(2, '0')}`;
     }
-    setInterval(updateMSKTime, 1000);
-    updateMSKTime();
+    setInterval(updateMSKTime, 1000); updateMSKTime();
 
-    // === ЛОГИКА ОТКРЫТИЯ ССЫЛОК ПАРТНЕРА ===
-    function openPartnerLink(type) {
-        let url = '';
-        if (type === 'reg') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate';
-        if (type === 'bonus') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate';
-        if (type === 'freebets') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate';
-        
-        if (url) {
-            if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'pari_' + type);
-            window.open(url, '_blank');
+    function createGlobalParticles() {
+        const container = document.getElementById('globalParticles');
+        if (!container) return;
+        const isMobile = window.innerWidth < 768;
+        const count = isMobile ? 50 : 150;
+        container.innerHTML = '';
+        for (let i = 0; i < count; i++) {
+            const p = document.createElement('div'); p.classList.add('global-particle');
+            const size = Math.random() * 8 + 2;
+            p.style.cssText = `width:${size}px; height:${size}px; left:${Math.random()*100}%; animation-duration:${Math.random()*12+5}s; animation-delay:${Math.random()*15}s; background:radial-gradient(circle, rgba(204,255,0,${Math.random()*0.7+0.3}), transparent); --shift:${(Math.random()-0.5)*150}px;`;
+            container.appendChild(p);
         }
     }
 
-    // === МОДАЛЬНОЕ ОКНО ===
+    // === ИНТЕРФЕЙС ===
+    function openPartnerLink(type) {
+        const urls = {
+            'reg': 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate',
+            'bonus': 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate',
+            'freebets': 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate'
+        };
+        if (urls[type]) {
+            if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'pari_' + type);
+            window.open(urls[type], '_blank');
+        }
+    }
     function openDonateModal() {
-        const modal = document.getElementById('donateModal');
-        modal.classList.add('open');
-        if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'open_donate_modal');
+        const m = document.getElementById('donateModal');
+        if(m) { m.classList.add('open'); if(typeof ym!=='undefined') ym(108400965,'reachGoal','open_donate_modal'); }
     }
     function closeDonateModal(e) {
-        if (!e || e.target.id === 'donateModal' || e.target.classList.contains('donate-close')) {
-            document.getElementById('donateModal').classList.remove('open');
+        const m = document.getElementById('donateModal');
+        if (!e || e.target.id === 'donateModal' || (e.target.classList && e.target.classList.contains('donate-close'))) {
+            if(m) m.classList.remove('open');
         }
     }
 
-    // === МАКСИМАЛЬНАЯ ЗАЩИТА ОТ КОПИРОВАНИЯ ===
-    document.addEventListener('contextmenu', e => { e.preventDefault(); return false; }, true);
-    document.addEventListener('keydown', function(e) {
-        if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && (e.key === 'U' || e.key === 'S' || e.key === 'P'))) {
-            e.preventDefault(); e.stopPropagation(); return false;
-        }
-    }, true);
-    setInterval(() => { debugger; }, 1000);
-
-    // === DATA FETCHING ===
+    // === ОСНОВНАЯ ЛОГИКА TOP ===
     const TENNIS_API = 'https://script.google.com/macros/s/AKfycbzyUw_OlQ7xd3p3p3Xhp01lfFZFvsptcb0AGAtJUddC7y2ODmheNX6szf6BSaI-2fQZ/exec';
     const FOOTBALL_API = 'https://script.google.com/macros/s/AKfycbz6fcoEoNF_C7CpNENGoQHEgCGry91Mi9xDPck0Xv2YUd3zW33UjMGCGgBD-ZkXte3z/exec'; 
     const BASKETBALL_API = 'https://script.google.com/macros/s/AKfycbzVNo0nkiivzgSDBKnFHCGtkM7YmvowNLhRBvvCfOFgU_D6LvlQNMYZkG9xF7R8QaUZ/exec'; 
@@ -574,8 +622,57 @@
         return { pct: p ? parseFloat(p[1]) : 0, money: m ? m[1] + m[2] : "£ 0", rawVal };
     }
 
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    // === ПРАВИЛЬНЫЙ РАСЧЕТ ВРЕМЕНИ (+3 ЧАСА) ===
+    function getMatchDateObject(timeStr) {
+        if (!timeStr) return null;
+        // Формат: "12.Apr 16:00:00"
+        // Разбиваем по пробелу
+        let parts = timeStr.split(' ');
+        if (parts.length < 2) return null;
+        
+        let datePart = parts[0]; // "12.Apr"
+        let timePart = parts[1]; // "16:00:00"
+        
+        let [dayStr, monthStr] = datePart.split('.');
+        let [hStr, mStr] = timePart.split(':');
+        
+        let day = parseInt(dayStr);
+        let h = parseInt(hStr);
+        let m = parseInt(mStr);
+        
+        // Месяцы
+        const months = {
+            "Jan": 0, "Feb": 1, "Mar": 2, "Apr": 3, "May": 4, "Jun": 5,
+            "Jul": 6, "Aug": 7, "Sep": 8, "Oct": 9, "Nov": 10, "Dec": 11
+        };
+        let month = months[monthStr];
+        if (month === undefined) return null;
+        
+        let year = new Date().getFullYear();
+        
+        // Создаем дату
+        let matchDate = new Date(year, month, day, h, m, 0);
+        
+        // ДОБАВЛЯЕМ 3 ЧАСА
+        matchDate.setHours(matchDate.getHours() + 3);
+        
+        return matchDate;
+    }
+
     async function loadTopFlows() {
         const container = document.getElementById('cards-container');
+        if(!container) return;
+        
         try {
             const [resT, resF, resB] = await Promise.all([
                 fetch(TENNIS_API).then(r => r.json()),
@@ -585,8 +682,6 @@
 
             let allMatches = [];
 
-            // Сбор данных (Tennis, Football, Basketball)
-            // ... (логика сбора та же, что и раньше, сокращена для краткости, но функциональна) ...
             if (resT && Array.isArray(resT)) {
                 resT.forEach(row => {
                     if (row.length < 8) return; 
@@ -638,55 +733,63 @@
                 });
             }
 
-            // === УМНАЯ СОРТИРОВКА ===
+            // === СОРТИРОВКА И РАСЧЕТ "ГОРЕНИЯ" ===
             const now = new Date();
             
             allMatches.forEach(m => {
-                // Расчет времени до матча (+3 часа)
-                let parts = m.time.split(' ');
-                let timePart = parts.length > 1 ? parts[1] : parts[0];
-                let [hours, minutes] = timePart.split(':').map(Number);
-                let matchDate = new Date();
-                matchDate.setHours(hours + 3, minutes, 0, 0);
-                
-                const diffHours = (matchDate - now) / (1000 * 60 * 60);
-                
-                // Флаг "Горит" (менее 2 часов)
-                m.isHot = (diffHours > 0 && diffHours <= 2);
+                let matchDate = getMatchDateObject(m.time);
+                if (matchDate) {
+                    const diffMs = matchDate - now;
+                    const diffHours = diffMs / (1000 * 60 * 60);
+                    
+                    // Горит, если до начала от 0 до 2 часов
+                    m.isHot = (diffHours > 0 && diffHours <= 2);
+                    m.diffHours = diffHours;
+                    
+                    // Сохраняем отображаемое время (уже +3 часа внутри matchDate)
+                    m.displayHours = matchDate.getHours();
+                    m.displayMinutes = matchDate.getMinutes();
+                } else {
+                    m.isHot = false;
+                    m.diffHours = Infinity;
+                    m.displayHours = null;
+                }
             });
 
-            // Сортировка: Сначала горячие, потом по сумме
             allMatches.sort((a, b) => {
-                if (a.isHot && !b.isHot) return -1; // A горит, B нет -> A выше
-                if (!a.isHot && b.isHot) return 1;  // B горит, A нет -> B выше
-                return b.totalSum - a.totalSum;     // Оба горят или оба нет -> кто богаче, тот выше
+                if (a.isHot && !b.isHot) return -1;
+                if (!a.isHot && b.isHot) return 1;
+                return b.totalSum - a.totalSum;
             });
 
             if (allMatches.length === 0) {
-                container.innerHTML = '<div class="loader">Нет матчей, подходящих под фильтры.</div>';
+                container.innerHTML = '<div class="loader-overlay"><div class="loader-text">Нет матчей</div></div>';
             } else {
                 container.innerHTML = allMatches.map(m => createCard(m)).join('');
                 checkTimeHighlights();
             }
-
         } catch (e) {
             console.error(e);
-            container.innerHTML = '<div class="loader" style="color:#ff4444">Ошибка загрузки.</div>';
+            container.innerHTML = '<div class="loader-overlay"><div class="loader-text" style="color:#ff4444">Ошибка загрузки</div></div>';
         }
     }
 
     function createCard(m) {
         const cardId = 'card-' + Math.random().toString(36).substr(2, 9);
+        const displayTime = (m.displayHours !== null) 
+            ? `${String(m.displayHours).padStart(2, '0')}:${String(m.displayMinutes).padStart(2, '0')}`
+            : m.time;
+        
         return `
             <div class="vip-card" id="${cardId}" data-match-time="${m.time}">
                 <div class="card-header">
                     <span class="sport-tag">${m.icon} ${m.sport}</span>
-                    <span class="match-time" id="time-${cardId}">--:--</span>
+                    <span class="match-time" id="time-${cardId}">${displayTime}</span>
                 </div>
                 <div class="teams-container">
-                    <span class="team-name">${m.team1}</span>
+                    <span class="team-name">${escapeHtml(m.team1)}</span>
                     <div class="vs-divider">VS</div>
-                    <span class="team-name">${m.team2}</span>
+                    <span class="team-name">${escapeHtml(m.team2)}</span>
                 </div>
                 <div class="prediction-row">
                     <div>
@@ -707,16 +810,13 @@
     function checkTimeHighlights() {
         const cards = document.querySelectorAll('.vip-card');
         const now = new Date();
+        
         cards.forEach(card => {
             const timeStr = card.getAttribute('data-match-time');
             if (!timeStr) return;
-            let parts = timeStr.split(' ');
-            let timePart = parts.length > 1 ? parts[1] : parts[0];
-            let [hours, minutes] = timePart.split(':').map(Number);
-            if (isNaN(hours)) return;
-
-            let matchDate = new Date();
-            matchDate.setHours(hours + 3, minutes, 0, 0); // +3 ЧАСА
+            
+            let matchDate = getMatchDateObject(timeStr);
+            if (!matchDate) return;
 
             const diffMs = matchDate - now;
             const diffHours = diffMs / (1000 * 60 * 60);
@@ -724,53 +824,43 @@
             card.classList.remove('card-glow-2h', 'card-glow-1h');
 
             if (diffHours > 0 && diffHours <= 1) {
-                // Менее 1 часа - сильное мигание
+                // Менее 1 часа до начала - сильное мигание + кнопка "ПОРА СТАВИТЬ"
                 card.classList.add('card-glow-1h');
             } else if (diffHours > 1 && diffHours <= 2) {
                 // От 1 до 2 часов - мягкое мигание
                 card.classList.add('card-glow-2h');
             }
             
-            const timeDisplay = document.getElementById('time-' + card.id);
+            // Обновляем отображаемое время на карточке (на случай если дата сменилась)
+            const timeDisplay = card.querySelector('.match-time');
             if(timeDisplay) {
                 timeDisplay.textContent = String(matchDate.getHours()).padStart(2,'0') + ':' + String(matchDate.getMinutes()).padStart(2,'0');
             }
         });
     }
 
-    function createGlobalParticles() {
-        const container = document.getElementById('globalParticles');
-        if (!container) return;
-        const isMobile = window.innerWidth < 768;
-        const particleCount = isMobile ? 50 : 150;
-        container.innerHTML = '';
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('global-particle');
-            const size = Math.random() * 8 + 2;
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-            particle.style.left = Math.random() * 100 + '%';
-            const duration = Math.random() * 12 + 5;
-            particle.style.animationDuration = duration + 's';
-            particle.style.animationDelay = Math.random() * 15 + 's';
-            particle.style.background = `radial-gradient(circle, rgba(204, 255, 0, ${Math.random() * 0.7 + 0.3}), rgba(204, 255, 0, 0))`;
-            const shiftX = (Math.random() - 0.5) * 150;
-            particle.style.setProperty('--shift', shiftX + 'px');
-            container.appendChild(particle);
-        }
-    }
-
     function initNavigation() {
         const btns = document.querySelectorAll('.nav-btn:not(.support-btn)');
         btns.forEach(btn => {
             btn.addEventListener('click', () => {
-                const page = btn.getAttribute('data-page');
                 const link = btn.getAttribute('data-link');
                 if (link) window.location.href = link;
             });
         });
     }
+
+    // === ЗАПУСК ===
+    window.addEventListener('DOMContentLoaded', () => {
+        createGlobalParticles();
+        initNavigation();
+        
+        if (localStorage.getItem('top_access') === 'granted') {
+            loadTopFlows();
+        } else {
+            document.getElementById('access-denied').style.display = 'flex';
+        }
+        setInterval(checkTimeHighlights, 60000);
+    });
     
     let resizeTimeout;
     window.addEventListener('resize', () => {
