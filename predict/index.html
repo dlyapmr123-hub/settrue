@@ -678,11 +678,13 @@
         setTimeout(() => {
             let htmlContent = '';
             if (pageId === 'home') { window.location.href = linkUrl; return; }
+            else if (pageId === 'top') { window.location.href = linkUrl; return; } // <--- ЭТУ СТРОКУ НУЖНО ДОБАВИТЬ
             else if (pageId === 'predictions') { htmlContent = createPredictionsWidget(); }
             else if (pageId === 'matches') { window.location.href = linkUrl; return; }
             else if (pageId === 'cashflow') { window.location.href = linkUrl; return; }
             else if (pageId === 'cs2') { window.location.href = linkUrl; return; }
             else if (pageId === 'ai') { htmlContent = getAIPlaceholder(); }
+            
             contentDiv.innerHTML = htmlContent;
             contentDiv.style.opacity = '1';
             if (pageId === 'predictions') { setTimeout(() => { loadMatches('tennis'); }, 100); }
