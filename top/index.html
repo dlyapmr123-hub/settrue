@@ -102,193 +102,188 @@
         /* Content Area */
         #page-content { transition: opacity 0.2s ease; min-height: 300px; position: relative; z-index: 5; width: 100%; padding-bottom: 60px; }
         
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
         .filter-info {
-            text-align: center; margin-bottom: 30px; color: #666; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
+            text-align: center; margin-bottom: 30px; color: #888; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;
+            background: rgba(255,255,255,0.03);
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-block;
+            width: 100%;
         }
+        .filter-info b { color: #d2ff40; }
 
-        /* Cards Grid */
+        /* === КАРТОЧКИ GLACIUS (3 В РЯД) === */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
         }
 
-        /* УЛУЧШЕННЫЙ ДИЗАЙН КАРТОЧКИ */
         .vip-card {
-            background: rgba(20, 20, 25, 0.6);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 24px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 16px;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            height: 100%;
         }
         
         .vip-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             border-color: rgba(210, 255, 64, 0.3);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            background: rgba(255, 255, 255, 0.04);
         }
 
         /* Анимации подсветки */
         @keyframes softPulse {
-            0% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0.1); border-color: rgba(210, 255, 64, 0.3); }
-            50% { box-shadow: 0 0 25px 2px rgba(210, 255, 64, 0.15); border-color: rgba(210, 255, 64, 0.6); }
-            100% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0.1); border-color: rgba(210, 255, 64, 0.3); }
+            0% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0); border-color: rgba(255,255,255,0.06); }
+            50% { box-shadow: 0 0 15px 0 rgba(210, 255, 64, 0.15); border-color: rgba(210, 255, 64, 0.5); }
+            100% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0); border-color: rgba(255,255,255,0.06); }
         }
         @keyframes urgentPulse {
-            0% { box-shadow: 0 0 5px 0 rgba(210, 255, 64, 0.3); border-color: #d2ff40; }
-            50% { box-shadow: 0 0 30px 5px rgba(210, 255, 64, 0.2); border-color: #fff; background: rgba(210, 255, 64, 0.08); }
-            100% { box-shadow: 0 0 5px 0 rgba(210, 255, 64, 0.3); border-color: #d2ff40; }
+            0% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0.2); border-color: #d2ff40; }
+            50% { box-shadow: 0 0 20px 5px rgba(210, 255, 64, 0.2); border-color: #fff; background: rgba(210, 255, 64, 0.05); }
+            100% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0.2); border-color: #d2ff40; }
         }
 
-        .card-glow-3h { animation: softPulse 4s infinite; }
-        .card-glow-1h { animation: urgentPulse 2s infinite; z-index: 2; }
+        .card-glow-2h { animation: softPulse 3s infinite; }
+        .card-glow-1h { animation: urgentPulse 1.5s infinite; z-index: 2; }
 
         .card-header {
             display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.04);
         }
         .sport-tag {
-            font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
-            color: #888; letter-spacing: 1.5px; display: flex; align-items: center; gap: 6px;
+            font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+            color: #888; letter-spacing: 0.5px;
         }
-        .sport-tag::before { content: ''; display: block; width: 6px; height: 6px; background: #d2ff40; border-radius: 50%; box-shadow: 0 0 8px #d2ff40; }
-        
         .match-time {
-            font-size: 0.9rem; color: #fff; font-family: 'Inter', sans-serif; font-weight: 700;
-            background: rgba(255,255,255,0.05); padding: 6px 12px; border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.75rem; color: #ccc; font-family: monospace; font-weight: 500;
         }
 
         .teams-container {
-            margin-bottom: 25px; text-align: center;
+            margin-bottom: 15px; text-align: center; flex-grow: 1;
         }
         .team-name {
-            font-size: 1.25rem; font-weight: 700; color: #fff; display: block; margin-bottom: 8px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            font-size: 0.95rem; font-weight: 500; color: #fff; display: block; margin-bottom: 4px;
         }
         .vs-divider {
-            color: #555; font-size: 0.75rem; margin: 8px 0; font-weight: 600; letter-spacing: 2px;
+            color: #444; font-size: 0.7rem; margin: 4px 0; font-weight: 300;
         }
 
         .prediction-row {
             display: flex; justify-content: space-between; align-items: center;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.2);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 20px;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 15px;
         }
         .pred-label {
-            font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 1px;
-            display: block; margin-bottom: 4px; font-weight: 600;
+            font-size: 0.6rem; color: #666; text-transform: uppercase; letter-spacing: 0.5px;
+            display: block; margin-bottom: 2px;
         }
         .pred-value {
-            font-size: 1.5rem; font-weight: 800; color: #d2ff40;
-            text-shadow: 0 0 15px rgba(210, 255, 64, 0.3);
+            font-size: 1.1rem; font-weight: 700; color: #d2ff40;
         }
         .coef-value {
-            font-size: 1.2rem; font-weight: 700; color: #fff;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-            padding: 8px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.95rem; font-weight: 600; color: #fff;
+            background: rgba(255,255,255,0.08);
+            padding: 4px 8px;
+            border-radius: 4px;
         }
 
-        /* КНОПКА PARI ВНИЗУ */
+        /* КНОПКА PARI В 2 СТРОКИ */
         .pari-cta-btn {
-            display: flex; align-items: center; justify-content: center; gap: 10px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
             width: 100%;
             background: transparent;
-            border: 1px solid #d2ff40;
+            border: 1px solid rgba(210, 255, 64, 0.3);
             color: #d2ff40;
             text-align: center;
-            padding: 14px;
-            border-radius: 12px;
+            padding: 10px;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: 800;
-            font-size: 0.9rem;
+            font-weight: 600;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             transition: all 0.3s;
-            margin-top: auto; /* Прижимает к низу */
-            position: relative;
-            overflow: hidden;
+            margin-top: auto;
+            cursor: pointer;
         }
-        .pari-cta-btn::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(210, 255, 64, 0.2), transparent);
-            transition: 0.5s;
-        }
-        .pari-cta-btn:hover::before { left: 100%; }
         .pari-cta-btn:hover {
-            background: #d2ff40;
-            color: #000;
-            box-shadow: 0 0 25px rgba(210, 255, 64, 0.4);
+            background: rgba(210, 255, 64, 0.1);
             border-color: #d2ff40;
+            box-shadow: 0 0 15px rgba(210, 255, 64, 0.2);
         }
         .pari-logo-small {
-            height: 16px; filter: brightness(0) invert(1); transition: filter 0.3s;
+            height: 24px; /* Увеличенный логотип */
+            filter: brightness(0) invert(1); 
+            transition: filter 0.3s;
         }
         .pari-cta-btn:hover .pari-logo-small { filter: brightness(0); }
 
-        /* БЕЙДЖ "ПОРА СТАВИТЬ" - ПЕРЕНЕСЕН ВНИЗ */
+        /* БЕЙДЖ "ПОРА СТАВИТЬ" */
         .urgent-badge {
             display: none;
-            margin-top: 10px;
-            background: linear-gradient(90deg, #d2ff40, #9eff00);
+            margin-top: 8px;
+            background: #d2ff40;
             color: #000;
-            font-size: 11px;
-            font-weight: 900;
-            padding: 8px;
-            border-radius: 8px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 4px;
+            border-radius: 4px;
             text-align: center;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(210, 255, 64, 0.3);
-            animation: badgePulse 2s infinite;
-        }
-        @keyframes badgePulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
+            letter-spacing: 0.5px;
         }
         .card-glow-1h .urgent-badge {
             display: block;
         }
 
-        .loader-container {
-            display: flex; justify-content: center; align-items: center;
-            min-height: 300px; width: 100%;
-        }
-        .loader { text-align: center; color: #666; font-size: 1.2rem; }
+        .loader { text-align: center; padding: 50px; color: #666; font-size: 1.2rem; }
         
-        /* Footer & Other styles kept same as before... */
+        /* Footer */
         footer { width: 100%; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(10px); border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 40px 20px 20px; font-family: 'Inter', sans-serif; margin-top: auto; color: #888; }
         .footer-container { max-width: 1000px; margin: 0 auto; }
         .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 30px; }
-        .pari-footer-logo-glow img { height: 20px; filter: brightness(0) invert(1); opacity: 1; margin-bottom: 12px; drop-shadow: 0 0 6px rgba(255, 255, 255, 0.4); }
+        
+        .pari-footer-logo-glow img { 
+            height: 20px; 
+            filter: brightness(0) invert(1); 
+            opacity: 1; 
+            margin-bottom: 12px; 
+            drop-shadow: 0 0 6px rgba(255, 255, 255, 0.4); 
+        }
+        
         .footer-links-group a:hover { color: #d2ff40 !important; }
         .footer-divider { height: 1px; background: rgba(255, 255, 255, 0.05); margin-bottom: 20px; }
+        
+        @media (max-width: 1024px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 768px) {
+            .cards-grid { grid-template-columns: 1fr; }
             .hero { min-height: 35vh; padding: 1rem 1rem 1.5rem; }
             .nav-btn { padding: 0.45rem 1rem; font-size: 0.8rem; }
             .nav-buttons { gap: 0.6rem; margin-bottom: 1rem; }
             .logo { font-size: 2.2rem; }
+            
             .msk-time-badge-corner { position: static; margin-bottom: 15px; display: flex; justify-content: center; width: 100%; }
+            
             .footer-top { grid-template-columns: 1fr; gap: 30px; text-align: center; }
-            .cards-grid { grid-template-columns: 1fr; }
         }
 
-        /* Partner Block Styles */
+        /* === ЗАЩИЩЕННЫЙ БЛОК ПАРТНЕРА === */
         div.sys-wrapper {
             display: flex !important; visibility: visible !important; opacity: 1 !important;
             background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -314,7 +309,7 @@
             .sys-sub-text { text-align: center; }
         }
 
-        /* Modal & Access */
+        /* === DONATE MODAL === */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 10001; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
         .modal-overlay.open { display: flex; opacity: 1; }
         .donate-card { background: #0a0a0f; border: 1px solid #333; border-top: 2px solid #d2ff40; border-radius: 16px; padding: 30px; max-width: 420px; width: 90%; box-shadow: 0 0 40px rgba(0,0,0,0.8); transform: translateY(20px); transition: transform 0.3s ease; position: relative; text-align: center; }
@@ -325,7 +320,8 @@
         .sber-link-btn:hover { transform: scale(1.02); background: #1e8e32; }
         .donate-close { display: block; width: 100%; margin-top: 20px; padding: 12px; background: transparent; border: 1px solid #333; color: #888; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
         .donate-close:hover { border-color: #fff; color: #fff; }
-
+        
+        /* === ACCESS DENIED SCREEN === */
         #access-denied {
             display: none; 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -407,11 +403,9 @@
 
 <div id="page-content" role="main">
     <div class="container">
-        <div class="filter-info">Сортировка по объему ставок</div>
+        <div class="filter-info">Матчи которые горят <b>🔥</b> — можно ставить. Остальные — лучше подождать.</div>
         <div id="cards-container" class="cards-grid">
-            <div class="loader-container">
-                <div class="loader">Загрузка TOP предложений...</div>
-            </div>
+            <div class="loader">Загрузка TOP предложений...</div>
         </div>
     </div>
 </div>
@@ -487,19 +481,8 @@
 </footer>
 
 <script>
-    // === 1. ЗАЩИТА ===
-    document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; }, true);
-    document.addEventListener('keydown', function(e) {
-        const key = e.key.toLowerCase(); const code = e.code; const isCtrl = e.ctrlKey; const isShift = e.shiftKey;
-        if (e.keyCode === 123) { e.preventDefault(); e.stopPropagation(); return false; }
-        if (isCtrl && !isShift && (code === 'KeyU' || key === 'u')) { e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); return false; }
-        if (isCtrl && isShift && (code === 'KeyI' || key === 'i' || code === 'KeyJ' || key === 'j' || code === 'KeyC' || key === 'c')) { e.preventDefault(); e.stopPropagation(); return false; }
-        if (isCtrl && (code === 'KeyS' || key === 's' || code === 'KeyP' || key === 'p')) { e.preventDefault(); e.stopPropagation(); return false; }
-    }, true);
-    setInterval(function() { var start = performance.now(); debugger; var end = performance.now(); if (end - start > 100) { console.clear(); console.log("%cStop!", "color: red; font-size: 50px; font-weight: bold;"); } }, 1000);
-
-    // === 2. ПАРОЛЬ ===
-    const ACCESS_PASSWORD = "settrue2026"; // <-- ПАРОЛЬ
+    // === ПАРОЛЬ ДЛЯ ДОСТУПА ===
+    const ACCESS_PASSWORD = "settrue2026"; // <-- ИЗМЕНИТЕ ЭТОТ ПАРОЛЬ
 
     function checkPass() {
         const input = document.getElementById('passInput').value;
@@ -511,57 +494,72 @@
             document.getElementById('errorMsg').style.display = 'block';
         }
     }
+
+    // Проверка при загрузке
+    window.addEventListener('DOMContentLoaded', () => {
+        createGlobalParticles();
+        initNavigation();
+        
+        if (localStorage.getItem('top_access') === 'granted') {
+            loadTopFlows();
+        } else {
+            document.getElementById('access-denied').style.display = 'flex';
+        }
+    });
+
+    // Обработка Enter в поле пароля
     document.getElementById('passInput').addEventListener('keypress', function (e) {
         if (e.key === 'Enter') checkPass();
     });
 
-    // === 3. ВРЕМЯ И ЧАСТИЦЫ ===
+    // === СКРИПТ ВРЕМЕНИ МСК ===
     function updateMSKTime() {
         const now = new Date();
-        const mskTime = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (3 * 3600000));
-        const el = document.getElementById('currentTime');
-        if(el) el.textContent = `${String(mskTime.getHours()).padStart(2, '0')}:${String(mskTime.getMinutes()).padStart(2, '0')}`;
+        const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
+        const mskOffset = 3 * 3600000; 
+        const mskTime = new Date(utcMs + mskOffset);
+        const hours = String(mskTime.getHours()).padStart(2, '0');
+        const minutes = String(mskTime.getMinutes()).padStart(2, '0');
+        document.getElementById('currentTime').textContent = `${hours}:${minutes}`;
     }
-    setInterval(updateMSKTime, 1000); updateMSKTime();
+    setInterval(updateMSKTime, 1000);
+    updateMSKTime();
 
-    function createGlobalParticles() {
-        const container = document.getElementById('globalParticles');
-        if (!container) return;
-        const isMobile = window.innerWidth < 768;
-        const count = isMobile ? 50 : 150;
-        container.innerHTML = '';
-        for (let i = 0; i < count; i++) {
-            const p = document.createElement('div'); p.classList.add('global-particle');
-            const size = Math.random() * 8 + 2;
-            p.style.cssText = `width:${size}px; height:${size}px; left:${Math.random()*100}%; animation-duration:${Math.random()*12+5}s; animation-delay:${Math.random()*15}s; background:radial-gradient(circle, rgba(204,255,0,${Math.random()*0.7+0.3}), transparent); --shift:${(Math.random()-0.5)*150}px;`;
-            container.appendChild(p);
-        }
-    }
-
-    // === 4. ИНТЕРФЕЙС ===
+    // === ЛОГИКА ОТКРЫТИЯ ССЫЛОК ПАРТНЕРА ===
     function openPartnerLink(type) {
-        const urls = {
-            'reg': 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate',
-            'bonus': 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate',
-            'freebets': 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate'
-        };
-        if (urls[type]) {
+        let url = '';
+        if (type === 'reg') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate';
+        if (type === 'bonus') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate';
+        if (type === 'freebets') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate';
+        
+        if (url) {
             if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'pari_' + type);
-            window.open(urls[type], '_blank');
+            window.open(url, '_blank');
         }
     }
+
+    // === МОДАЛЬНОЕ ОКНО ===
     function openDonateModal() {
-        const m = document.getElementById('donateModal');
-        if(m) { m.classList.add('open'); if(typeof ym!=='undefined') ym(108400965,'reachGoal','open_donate_modal'); }
+        const modal = document.getElementById('donateModal');
+        modal.classList.add('open');
+        if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'open_donate_modal');
     }
     function closeDonateModal(e) {
-        const m = document.getElementById('donateModal');
-        if (!e || e.target.id === 'donateModal' || (e.target.classList && e.target.classList.contains('donate-close'))) {
-            if(m) m.classList.remove('open');
+        if (!e || e.target.id === 'donateModal' || e.target.classList.contains('donate-close')) {
+            document.getElementById('donateModal').classList.remove('open');
         }
     }
 
-    // === 5. ЛОГИКА TOP ===
+    // === МАКСИМАЛЬНАЯ ЗАЩИТА ОТ КОПИРОВАНИЯ ===
+    document.addEventListener('contextmenu', e => { e.preventDefault(); return false; }, true);
+    document.addEventListener('keydown', function(e) {
+        if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && (e.key === 'U' || e.key === 'S' || e.key === 'P'))) {
+            e.preventDefault(); e.stopPropagation(); return false;
+        }
+    }, true);
+    setInterval(() => { debugger; }, 1000);
+
+    // === DATA FETCHING ===
     const TENNIS_API = 'https://script.google.com/macros/s/AKfycbzyUw_OlQ7xd3p3p3Xhp01lfFZFvsptcb0AGAtJUddC7y2ODmheNX6szf6BSaI-2fQZ/exec';
     const FOOTBALL_API = 'https://script.google.com/macros/s/AKfycbz6fcoEoNF_C7CpNENGoQHEgCGry91Mi9xDPck0Xv2YUd3zW33UjMGCGgBD-ZkXte3z/exec'; 
     const BASKETBALL_API = 'https://script.google.com/macros/s/AKfycbzVNo0nkiivzgSDBKnFHCGtkM7YmvowNLhRBvvCfOFgU_D6LvlQNMYZkG9xF7R8QaUZ/exec'; 
@@ -578,8 +576,6 @@
 
     async function loadTopFlows() {
         const container = document.getElementById('cards-container');
-        if(!container) return;
-        
         try {
             const [resT, resF, resB] = await Promise.all([
                 fetch(TENNIS_API).then(r => r.json()),
@@ -589,6 +585,8 @@
 
             let allMatches = [];
 
+            // Сбор данных (Tennis, Football, Basketball)
+            // ... (логика сбора та же, что и раньше, сокращена для краткости, но функциональна) ...
             if (resT && Array.isArray(resT)) {
                 resT.forEach(row => {
                     if (row.length < 8) return; 
@@ -640,27 +638,49 @@
                 });
             }
 
-            allMatches.sort((a, b) => b.totalSum - a.totalSum);
+            // === УМНАЯ СОРТИРОВКА ===
+            const now = new Date();
+            
+            allMatches.forEach(m => {
+                // Расчет времени до матча (+3 часа)
+                let parts = m.time.split(' ');
+                let timePart = parts.length > 1 ? parts[1] : parts[0];
+                let [hours, minutes] = timePart.split(':').map(Number);
+                let matchDate = new Date();
+                matchDate.setHours(hours + 3, minutes, 0, 0);
+                
+                const diffHours = (matchDate - now) / (1000 * 60 * 60);
+                
+                // Флаг "Горит" (менее 2 часов)
+                m.isHot = (diffHours > 0 && diffHours <= 2);
+            });
+
+            // Сортировка: Сначала горячие, потом по сумме
+            allMatches.sort((a, b) => {
+                if (a.isHot && !b.isHot) return -1; // A горит, B нет -> A выше
+                if (!a.isHot && b.isHot) return 1;  // B горит, A нет -> B выше
+                return b.totalSum - a.totalSum;     // Оба горят или оба нет -> кто богаче, тот выше
+            });
 
             if (allMatches.length === 0) {
-                container.innerHTML = '<div class="loader-container"><div class="loader">Нет матчей, подходящих под фильтры.</div></div>';
+                container.innerHTML = '<div class="loader">Нет матчей, подходящих под фильтры.</div>';
             } else {
                 container.innerHTML = allMatches.map(m => createCard(m)).join('');
                 checkTimeHighlights();
             }
+
         } catch (e) {
             console.error(e);
-            container.innerHTML = '<div class="loader-container"><div class="loader" style="color:#ff4444">Ошибка загрузки.</div></div>';
+            container.innerHTML = '<div class="loader" style="color:#ff4444">Ошибка загрузки.</div>';
         }
     }
 
     function createCard(m) {
-        const pariLink = "https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate";
         const cardId = 'card-' + Math.random().toString(36).substr(2, 9);
         return `
             <div class="vip-card" id="${cardId}" data-match-time="${m.time}">
                 <div class="card-header">
-                    <span class="sport-tag">${m.sport}</span>
+                    <span class="sport-tag">${m.icon} ${m.sport}</span>
                     <span class="match-time" id="time-${cardId}">--:--</span>
                 </div>
                 <div class="teams-container">
@@ -675,10 +695,10 @@
                     </div>
                     <div class="coef-value">${m.coef}</div>
                 </div>
-                <a href="${pariLink}" target="_blank" class="pari-cta-btn" onclick="ym(108400965, 'reachGoal', 'top_pari_click');">
+                <div class="pari-cta-btn" onclick="openPartnerLink('reg')">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" class="pari-logo-small" alt="Pari">
                     Кликай и побеждай
-                </a>
+                </div>
                 <div class="urgent-badge">🔥 ПОРА СТАВИТЬ!</div>
             </div>
         `;
@@ -701,12 +721,14 @@
             const diffMs = matchDate - now;
             const diffHours = diffMs / (1000 * 60 * 60);
 
-            card.classList.remove('card-glow-3h', 'card-glow-1h');
+            card.classList.remove('card-glow-2h', 'card-glow-1h');
 
             if (diffHours > 0 && diffHours <= 1) {
+                // Менее 1 часа - сильное мигание
                 card.classList.add('card-glow-1h');
-            } else if (diffHours > 1 && diffHours <= 3) {
-                card.classList.add('card-glow-3h');
+            } else if (diffHours > 1 && diffHours <= 2) {
+                // От 1 до 2 часов - мягкое мигание
+                card.classList.add('card-glow-2h');
             }
             
             const timeDisplay = document.getElementById('time-' + card.id);
@@ -716,27 +738,39 @@
         });
     }
 
+    function createGlobalParticles() {
+        const container = document.getElementById('globalParticles');
+        if (!container) return;
+        const isMobile = window.innerWidth < 768;
+        const particleCount = isMobile ? 50 : 150;
+        container.innerHTML = '';
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('global-particle');
+            const size = Math.random() * 8 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            const duration = Math.random() * 12 + 5;
+            particle.style.animationDuration = duration + 's';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.background = `radial-gradient(circle, rgba(204, 255, 0, ${Math.random() * 0.7 + 0.3}), rgba(204, 255, 0, 0))`;
+            const shiftX = (Math.random() - 0.5) * 150;
+            particle.style.setProperty('--shift', shiftX + 'px');
+            container.appendChild(particle);
+        }
+    }
+
     function initNavigation() {
         const btns = document.querySelectorAll('.nav-btn:not(.support-btn)');
         btns.forEach(btn => {
             btn.addEventListener('click', () => {
+                const page = btn.getAttribute('data-page');
                 const link = btn.getAttribute('data-link');
                 if (link) window.location.href = link;
             });
         });
     }
-
-    window.addEventListener('DOMContentLoaded', () => {
-        createGlobalParticles();
-        initNavigation();
-        
-        if (localStorage.getItem('top_access') === 'granted') {
-            loadTopFlows();
-        } else {
-            document.getElementById('access-denied').style.display = 'flex';
-        }
-        setInterval(checkTimeHighlights, 60000);
-    });
     
     let resizeTimeout;
     window.addEventListener('resize', () => {
