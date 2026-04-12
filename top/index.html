@@ -132,6 +132,48 @@
             transform: translateY(-3px);
         }
         
+        /* Анимация подсветки (за 3 часа) */
+        @keyframes softPulse {
+            0% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0.2); border-color: rgba(210, 255, 64, 0.3); }
+            70% { box-shadow: 0 0 20px 0 rgba(210, 255, 64, 0); border-color: rgba(210, 255, 64, 0.8); }
+            100% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0); border-color: rgba(210, 255, 64, 0.3); }
+        }
+
+        /* Анимация срочности (за 1 час) */
+        @keyframes urgentPulse {
+            0% { box-shadow: 0 0 5px 0 rgba(210, 255, 64, 0.4); border-color: #d2ff40; }
+            50% { box-shadow: 0 0 25px 5px rgba(210, 255, 64, 0.2); border-color: #fff; }
+            100% { box-shadow: 0 0 5px 0 rgba(210, 255, 64, 0.4); border-color: #d2ff40; }
+        }
+
+        .card-glow-3h {
+            animation: softPulse 3s infinite;
+        }
+
+        .card-glow-1h {
+            animation: urgentPulse 1.5s infinite;
+            background: rgba(210, 255, 64, 0.05);
+        }
+        
+        .urgent-badge {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #d2ff40;
+            color: #000;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 4px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(210, 255, 64, 0.5);
+            z-index: 2;
+        }
+        .card-glow-1h .urgent-badge {
+            display: block;
+        }
+
         .card-header {
             display: flex; justify-content: space-between; align-items: center;
             margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -651,6 +693,7 @@
                 container.innerHTML = '<div class="loader-container"><div class="loader">Нет матчей, подходящих под фильтры.</div></div>';
             } else {
                 container.innerHTML = allMatches.map(m => createCard(m)).join('');
+                checkTimeHighlights(); // Запускаем проверку подсветки сразу после отрисовки
             }
 
         } catch (e) {
@@ -659,13 +702,30 @@
         }
     }
 
+    // Функция создания карточки с учетом +3 часов
     function createCard(m) {
         const pariLink = "https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate";
+        
+        // Рассчитываем время +3 часа
+        let displayTime = m.time;
+        let matchDateObj = null;
+        
+        // Пытаемся распарсить время из строки (формат обычно dd.MM.yy HH:mm или подобный)
+        // Для надежности просто заменим часы в строке, если она стандартная
+        // Предположим формат "12.04.26 15:00" или "15:00"
+        
+        // Создаем уникальный ID для карточки, чтобы менять её стиль потом
+        const cardId = 'card-' + Math.random().toString(36).substr(2, 9);
+        
+        // Сохраняем оригинальное время в data-атрибут для проверки
+        const dataTime = m.time; 
+
         return `
-            <div class="vip-card">
+            <div class="vip-card" id="${cardId}" data-match-time="${dataTime}">
+                <div class="urgent-badge">🔥 ПОРА СТАВИТЬ!</div>
                 <div class="card-header">
                     <span class="sport-tag">${m.icon} ${m.sport}</span>
-                    <span class="match-time">${m.time}</span>
+                    <span class="match-time" id="time-${cardId}">${displayTime}</span>
                 </div>
                 <div class="teams-container">
                     <span class="team-name">${m.team1}</span>
@@ -685,6 +745,54 @@
                 </a>
             </div>
         `;
+    }
+
+    // Функция проверки времени и подсветки
+    function checkTimeHighlights() {
+        const cards = document.querySelectorAll('.vip-card');
+        const now = new Date();
+
+        cards.forEach(card => {
+            const timeStr = card.getAttribute('data-match-time');
+            if (!timeStr) return;
+
+            // Парсим время. Ожидаем формат "ДД.ММ.ГГ ЧЧ:ММ" или просто "ЧЧ:ММ" (сегодня)
+            // Так как API может отдавать разное, попробуем универсальный парсинг
+            // Для примера считаем, что время в будущем сегодня или завтра
+            
+            // Простая эмуляция: берем текущую дату и подставляем часы из строки
+            let parts = timeStr.split(' ');
+            let timePart = parts.length > 1 ? parts[1] : parts[0];
+            let [hours, minutes] = timePart.split(':').map(Number);
+            
+            if (isNaN(hours)) return;
+
+            let matchDate = new Date();
+            matchDate.setHours(hours + 3, minutes, 0, 0); // +3 ЧАСА К ВРЕМЕНИ
+
+            // Если время уже прошло сегодня, возможно матч завтра? (упрощение)
+            // Но для подсветки "до матча" нам важно только будущее
+            
+            const diffMs = matchDate - now;
+            const diffHours = diffMs / (1000 * 60 * 60);
+
+            // Сброс классов
+            card.classList.remove('card-glow-3h', 'card-glow-1h');
+
+            if (diffHours > 0 && diffHours <= 1) {
+                // Менее 1 часа до матча
+                card.classList.add('card-glow-1h');
+            } else if (diffHours > 1 && diffHours <= 3) {
+                // От 1 до 3 часов до матча
+                card.classList.add('card-glow-3h');
+            }
+            
+            // Обновляем отображаемое время на карточке (+3 часа)
+            const timeDisplay = document.getElementById('time-' + card.id);
+            if(timeDisplay) {
+                timeDisplay.textContent = String(matchDate.getHours()).padStart(2,'0') + ':' + String(matchDate.getMinutes()).padStart(2,'0');
+            }
+        });
     }
 
     function initNavigation() {
@@ -709,6 +817,9 @@
             // Если нет, показываем экран блокировки
             document.getElementById('access-denied').style.display = 'flex';
         }
+        
+        // Запускаем проверку подсветки каждую минуту
+        setInterval(checkTimeHighlights, 60000);
     });
     
     let resizeTimeout;
