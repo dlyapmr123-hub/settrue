@@ -118,40 +118,42 @@
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
+            gap: 20px;
             min-height: 400px;
             position: relative;
         }
 
         .vip-card {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            padding: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 20px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             height: 100%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
         
         .vip-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(210, 255, 64, 0.3);
-            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-5px);
+            border-color: rgba(210, 255, 64, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         @keyframes softPulse {
-            0% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0); border-color: rgba(255,255,255,0.06); }
-            50% { box-shadow: 0 0 15px 0 rgba(210, 255, 64, 0.15); border-color: rgba(210, 255, 64, 0.5); }
-            100% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0); border-color: rgba(255,255,255,0.06); }
+            0% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0); border-color: rgba(255,255,255,0.08); }
+            50% { box-shadow: 0 0 20px 0 rgba(210, 255, 64, 0.15); border-color: rgba(210, 255, 64, 0.6); }
+            100% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0); border-color: rgba(255,255,255,0.08); }
         }
         @keyframes urgentPulse {
             0% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0.2); border-color: #d2ff40; }
-            50% { box-shadow: 0 0 20px 5px rgba(210, 255, 64, 0.2); border-color: #fff; background: rgba(210, 255, 64, 0.05); }
+            50% { box-shadow: 0 0 25px 5px rgba(210, 255, 64, 0.2); border-color: #fff; background: rgba(210, 255, 64, 0.08); }
             100% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0.2); border-color: #d2ff40; }
         }
 
@@ -162,73 +164,109 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
         .sport-tag {
-            font-size: 0.65rem;
-            font-weight: 600;
+            font-size: 0.7rem;
+            font-weight: 700;
             text-transform: uppercase;
             color: #888;
             letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .sport-tag::before {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 6px;
+            background: #d2ff40;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #d2ff40;
+        }
+        
+        /* НОВЫЙ СТИЛЬ ВРЕМЕНИ И ДАТЫ */
+        .match-datetime {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2px;
+        }
+        .match-date {
+            font-size: 0.7rem;
+            color: #666;
+            font-weight: 500;
+            text-transform: uppercase;
         }
         .match-time {
-            font-size: 0.75rem;
-            color: #ccc;
-            font-family: monospace;
-            font-weight: 500;
+            font-size: 0.9rem;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            background: rgba(255,255,255,0.05);
+            padding: 2px 8px;
+            border-radius: 4px;
         }
 
         .teams-container {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-align: center;
             flex-grow: 1;
         }
         .team-name {
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-size: 1.05rem;
+            font-weight: 600;
             color: #fff;
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
+            line-height: 1.3;
         }
         .vs-divider {
             color: #444;
-            font-size: 0.7rem;
-            margin: 4px 0;
-            font-weight: 300;
+            font-size: 0.75rem;
+            margin: 6px 0;
+            font-weight: 400;
+            letter-spacing: 2px;
         }
 
         .prediction-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0,0,0,0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 10px;
+            background: rgba(0,0,0,0.25);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 12px;
             margin-bottom: 15px;
         }
         .pred-label {
-            font-size: 0.6rem;
+            font-size: 0.65rem;
             color: #666;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             display: block;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
         }
         .pred-value {
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-size: 1.2rem;
+            font-weight: 800;
             color: #d2ff40;
+            text-shadow: 0 0 10px rgba(210, 255, 64, 0.2);
         }
         .coef-value {
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-size: 1rem;
+            font-weight: 700;
             color: #fff;
-            background: rgba(255,255,255,0.08);
-            padding: 4px 8px;
-            border-radius: 4px;
+            background: rgba(255,255,255,0.1);
+            padding: 6px 10px;
+            border-radius: 8px;
+            min-width: 50px;
+            text-align: center;
         }
 
         .pari-cta-btn {
@@ -236,19 +274,19 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 4px;
+            gap: 5px;
             width: 100%;
             background: transparent;
             border: 1px solid rgba(210, 255, 64, 0.3);
             color: #d2ff40;
             text-align: center;
-            padding: 10px;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.75rem;
+            font-weight: 700;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             transition: all 0.3s;
             margin-top: auto;
             cursor: pointer;
@@ -256,10 +294,10 @@
         .pari-cta-btn:hover {
             background: rgba(210, 255, 64, 0.1);
             border-color: #d2ff40;
-            box-shadow: 0 0 15px rgba(210, 255, 64, 0.2);
+            box-shadow: 0 0 20px rgba(210, 255, 64, 0.15);
         }
         .pari-logo-small {
-            height: 24px;
+            height: 20px;
             filter: brightness(0) invert(1);
             transition: filter 0.3s;
         }
@@ -267,16 +305,17 @@
 
         .urgent-badge {
             display: none;
-            margin-top: 8px;
+            margin-top: 10px;
             background: #d2ff40;
             color: #000;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             font-weight: 800;
-            padding: 4px;
-            border-radius: 4px;
+            padding: 6px;
+            border-radius: 6px;
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            box-shadow: 0 0 10px rgba(210, 255, 64, 0.3);
         }
         .card-glow-1h .urgent-badge {
             display: block;
@@ -453,7 +492,7 @@
 
 <div id="page-content" role="main">
     <div class="container">
-        <div class="filter-info">Матчи которые горят <b>🔥</b> — можно ставить. Остальные — лучше подождать.</div>
+        <div class="filter-info">Прогнозы генерируются автоматически. Если карточка горит <b>🔥</b> — модель видит ценность, можно ставить</div>
         <div id="cards-container" class="cards-grid">
             <div class="loader-overlay">
                 <div class="spinner"></div>
@@ -636,7 +675,6 @@
     function getMatchDateObject(timeStr) {
         if (!timeStr) return null;
         // Формат: "12.Apr 16:00:00"
-        // Разбиваем по пробелу
         let parts = timeStr.split(' ');
         if (parts.length < 2) return null;
         
@@ -650,7 +688,6 @@
         let h = parseInt(hStr);
         let m = parseInt(mStr);
         
-        // Месяцы
         const months = {
             "Jan": 0, "Feb": 1, "Mar": 2, "Apr": 3, "May": 4, "Jun": 5,
             "Jul": 6, "Aug": 7, "Sep": 8, "Oct": 9, "Nov": 10, "Dec": 11
@@ -733,39 +770,45 @@
                 });
             }
 
-            // === СОРТИРОВКА И РАСЧЕТ "ГОРЕНИЯ" ===
+            // === ФИЛЬТРАЦИЯ И СОРТИРОВКА ===
             const now = new Date();
             
-            allMatches.forEach(m => {
+            // Фильтруем: оставляем только будущие матчи (или те, что начались менее 15 мин назад)
+            let validMatches = allMatches.filter(m => {
                 let matchDate = getMatchDateObject(m.time);
-                if (matchDate) {
-                    const diffMs = matchDate - now;
-                    const diffHours = diffMs / (1000 * 60 * 60);
-                    
-                    // Горит, если до начала от 0 до 2 часов
-                    m.isHot = (diffHours > 0 && diffHours <= 2);
-                    m.diffHours = diffHours;
-                    
-                    // Сохраняем отображаемое время (уже +3 часа внутри matchDate)
-                    m.displayHours = matchDate.getHours();
-                    m.displayMinutes = matchDate.getMinutes();
-                } else {
-                    m.isHot = false;
-                    m.diffHours = Infinity;
-                    m.displayHours = null;
-                }
+                if (!matchDate) return false;
+                
+                const diffMs = matchDate - now;
+                const diffMinutes = diffMs / (1000 * 60);
+                
+                // Показываем, если до начала больше -15 минут (то есть матч еще не начался или идет первые 15 мин)
+                return diffMinutes > -15; 
             });
 
-            allMatches.sort((a, b) => {
+            // Расчет статуса "горения" для оставшихся
+            validMatches.forEach(m => {
+                let matchDate = getMatchDateObject(m.time);
+                const diffMs = matchDate - now;
+                const diffHours = diffMs / (1000 * 60 * 60);
+                
+                m.isHot = (diffHours > 0 && diffHours <= 2); // Горит за 2 часа до начала
+                m.diffHours = diffHours;
+                m.displayHours = matchDate.getHours();
+                m.displayMinutes = matchDate.getMinutes();
+                m.displayDay = matchDate.getDate();
+                m.displayMonth = matchDate.toLocaleString('en-US', { month: 'short' });
+            });
+
+            validMatches.sort((a, b) => {
                 if (a.isHot && !b.isHot) return -1;
                 if (!a.isHot && b.isHot) return 1;
                 return b.totalSum - a.totalSum;
             });
 
-            if (allMatches.length === 0) {
-                container.innerHTML = '<div class="loader-overlay"><div class="loader-text">Нет матчей</div></div>';
+            if (validMatches.length === 0) {
+                container.innerHTML = '<div class="loader-overlay"><div class="loader-text">Нет актуальных матчей</div></div>';
             } else {
-                container.innerHTML = allMatches.map(m => createCard(m)).join('');
+                container.innerHTML = validMatches.map(m => createCard(m)).join('');
                 checkTimeHighlights();
             }
         } catch (e) {
@@ -778,13 +821,20 @@
         const cardId = 'card-' + Math.random().toString(36).substr(2, 9);
         const displayTime = (m.displayHours !== null) 
             ? `${String(m.displayHours).padStart(2, '0')}:${String(m.displayMinutes).padStart(2, '0')}`
-            : m.time;
+            : '--:--';
         
+        const displayDate = (m.displayDay && m.displayMonth)
+            ? `${m.displayDay} ${m.displayMonth}`
+            : '';
+
         return `
             <div class="vip-card" id="${cardId}" data-match-time="${m.time}">
                 <div class="card-header">
                     <span class="sport-tag">${m.icon} ${m.sport}</span>
-                    <span class="match-time" id="time-${cardId}">${displayTime}</span>
+                    <div class="match-datetime">
+                        <span class="match-date">${displayDate}</span>
+                        <span class="match-time" id="time-${cardId}">${displayTime}</span>
+                    </div>
                 </div>
                 <div class="teams-container">
                     <span class="team-name">${escapeHtml(m.team1)}</span>
@@ -831,10 +881,15 @@
                 card.classList.add('card-glow-2h');
             }
             
-            // Обновляем отображаемое время на карточке (на случай если дата сменилась)
+            // Обновляем отображаемое время на карточке
             const timeDisplay = card.querySelector('.match-time');
+            const dateDisplay = card.querySelector('.match-date');
+            
             if(timeDisplay) {
                 timeDisplay.textContent = String(matchDate.getHours()).padStart(2,'0') + ':' + String(matchDate.getMinutes()).padStart(2,'0');
+            }
+            if(dateDisplay) {
+                dateDisplay.textContent = matchDate.getDate() + ' ' + matchDate.toLocaleString('en-US', { month: 'short' });
             }
         });
     }
