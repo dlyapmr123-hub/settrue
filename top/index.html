@@ -413,38 +413,59 @@
         .donate-close { display: block; width: 100%; margin-top: 20px; padding: 12px; background: transparent; border: 1px solid #333; color: #888; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
         .donate-close:hover { border-color: #fff; color: #fff; }
         
+        /* === ACCESS DENIED SCREEN (ОБНОВЛЕННЫЙ) === */
         #access-denied {
             display: none; 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(5, 5, 7, 0.98); backdrop-filter: blur(10px);
+            background: rgba(5, 5, 7, 0.95); backdrop-filter: blur(15px);
             z-index: 99999; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+            padding: 20px;
         }
         .access-box {
-            background: #111; padding: 40px; border-radius: 24px; border: 1px solid #333;
-            max-width: 380px; width: 90%; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            background: #111; padding: 30px; border-radius: 24px; border: 1px solid #333;
+            max-width: 450px; width: 100%; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
         }
+        .access-title {
+            color: #fff; font-size: 1.2rem; font-weight: 700; margin-bottom: 15px;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .access-info {
+            color: #aaa; font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;
+            background: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px;
+            text-align: left;
+        }
+        .access-info b { color: #d2ff40; }
+        .access-info a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+        .access-info a:hover { color: #d2ff40; }
+        
         .access-input {
-            width: 100%; padding: 14px; margin: 25px 0; background: #050507; border: 1px solid #333;
+            width: 100%; padding: 14px; margin: 10px 0; background: #050507; border: 1px solid #333;
             color: #fff; border-radius: 12px; text-align: center; font-size: 18px; outline: none;
         }
         .access-input:focus { border-color: #d2ff40; box-shadow: 0 0 15px rgba(210, 255, 64, 0.2); }
         .access-btn {
             background: #d2ff40; color: #000; border: none; padding: 14px 30px; border-radius: 12px;
-            font-weight: 800; cursor: pointer; width: 100%; font-size: 16px; transition: 0.2s;
+            font-weight: 800; cursor: pointer; width: 100%; font-size: 16px; transition: 0.2s; margin-top: 10px;
         }
         .access-btn:hover { background: #c2ef30; transform: scale(1.02); }
+        #errorMsg { color:#ff4444; font-size:12px; margin-top:10px; display:none; }
     </style>
 </head>
 <body oncontextmenu="return false;">
 
 <div id="access-denied">
     <div class="access-box">
-        <div style="font-size: 40px; margin-bottom: 10px;">🔒</div>
-        <h2 style="color:#fff; margin-bottom:5px;">Доступ ограничен</h2>
-        <p style="color:#666; font-size:13px;">Введите пароль для входа в TOP</p>
-        <input type="password" id="passInput" class="access-input" placeholder="••••••••">
+        <div class="access-title">🔒 Доступ ограничен</div>
+        
+        <div class="access-info">
+            Чтобы получить пароль от раздела <b>TOP</b>, вам необходимо:<br><br>
+            1. Зарегистрироваться и пополнить баланс в БК Pari по <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate" target="_blank">этой ссылке</a>.<br>
+            2. Или написать администратору канала <a href="https://t.me/SetTrueForecast" target="_blank">@SetTrueForecast</a>.
+        </div>
+
+        <input type="password" id="passInput" class="access-input" placeholder="Введите пароль">
         <button class="access-btn" onclick="checkPass()">Открыть доступ</button>
-        <p id="errorMsg" style="color:#ff4444; font-size:12px; margin-top:15px; display:none;">Неверный пароль</p>
+        <p id="errorMsg">Неверный пароль</p>
     </div>
 </div>
 
@@ -492,7 +513,7 @@
 
 <div id="page-content" role="main">
     <div class="container">
-        <div class="filter-info">Прогнозы генерируются автоматически. Если карточка горит <b>🔥</b> — модель видит ценность, можно ставить</div>
+        <div class="filter-info">Прогнозы генерируются автоматически. Если карточка горит <b>🔥</b> — модель видит ценность, можно ставить.</div>
         <div id="cards-container" class="cards-grid">
             <div class="loader-overlay">
                 <div class="spinner"></div>
