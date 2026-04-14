@@ -35,356 +35,70 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: #050507; font-family: 'Inter', sans-serif; min-height: 100vh; color: #e0e0e0; overflow-x: hidden; }
-        
-        /* Particles */
         .global-particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9998; pointer-events: none; overflow: hidden; mask-image: radial-gradient(circle at center, transparent 0%, transparent 35%, black 70%, black 100%); -webkit-mask-image: radial-gradient(circle at center, transparent 0%, transparent 35%, black 70%, black 100%); }
         .global-particle { position: absolute; bottom: -20px; background: radial-gradient(circle, rgba(204, 255, 0, 0.7), rgba(204, 255, 0, 0)); border-radius: 50%; animation: floatUpGlobal linear infinite; will-change: transform; }
         @keyframes floatUpGlobal { 0% { transform: translateY(0) translateX(0); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.7; } 100% { transform: translateY(-120vh) translateX(var(--shift, 40px)); opacity: 0; } }
-
-        /* Header & Nav */
         .hero { position: relative; width: 100%; min-height: 28vh; background: transparent; padding: 1rem 1.5rem 2rem; }
-        
-        .msk-time-badge-corner {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(10, 10, 15, 0.8);
-            border: 1px solid rgba(204, 255, 0, 0.2);
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            color: #ccc;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
+        .msk-time-badge-corner { position: absolute; top: 20px; right: 20px; z-index: 100; display: inline-flex; align-items: center; gap: 8px; background: rgba(10, 10, 15, 0.8); border: 1px solid rgba(204, 255, 0, 0.2); padding: 8px 16px; border-radius: 30px; font-size: 0.8rem; color: #ccc; backdrop-filter: blur(5px); box-shadow: 0 4px 15px rgba(0,0,0,0.5); font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 0.5px; }
         .msk-time-badge-corner .time-value { color: #ccff00; }
-
         .nav-buttons { position: relative; z-index: 20; display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 1.8rem; padding-top: 0.5rem; }
-        .nav-btn { 
-            background: rgba(10, 10, 18, 0.8); backdrop-filter: blur(10px); 
-            border: 1px solid rgba(204, 255, 0, 0.25); color: #e0e0e0; 
-            font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; 
-            padding: 0.6rem 1.4rem; border-radius: 40px; cursor: pointer; 
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1); letter-spacing: 0.3px; 
-            position: relative; overflow: hidden; text-decoration: none;
-        }
+        .nav-btn { background: rgba(10, 10, 18, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(204, 255, 0, 0.25); color: #e0e0e0; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; padding: 0.6rem 1.4rem; border-radius: 40px; cursor: pointer; transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1); letter-spacing: 0.3px; position: relative; overflow: hidden; text-decoration: none; }
         .nav-btn::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; border-radius: 50%; background: rgba(204, 255, 0, 0.2); transform: translate(-50%, -50%); transition: width 0.5s, height 0.5s; }
         .nav-btn:hover::before { width: 200px; height: 200px; }
         .nav-btn:hover, .nav-btn.active { border-color: rgba(204, 255, 0, 0.8); color: #ccff00; transform: translateY(-2px); box-shadow: 0 5px 20px rgba(204, 255, 0, 0.15); }
         .nav-btn:active { transform: translateY(1px); }
-
-        .support-btn {
-            background: linear-gradient(135deg, #d2ff40 0%, #9eff00 100%);
-            color: #050507;
-            border: none;
-            font-weight: 700;
-            box-shadow: 0 0 15px rgba(210, 255, 64, 0.3);
-        }
+        .support-btn { background: linear-gradient(135deg, #d2ff40 0%, #9eff00 100%); color: #050507; border: none; font-weight: 700; box-shadow: 0 0 15px rgba(210, 255, 64, 0.3); }
         .support-btn:hover { box-shadow: 0 0 25px rgba(210, 255, 64, 0.6); color: #000; }
-
         .hero-content { position: relative; z-index: 10; text-align: center; max-width: 900px; width: 100%; margin: 0 auto; }
-        
         .logo { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; background: linear-gradient(135deg, #FFFFFF 0%, #CCCCCC 50%, #FFFFFF 100%); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 3s linear infinite alternate; margin-bottom: 0.5rem; margin-top: 0; }
         .logo span { background: linear-gradient(135deg, #ccff00, #9eff00); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 20px rgba(204, 255, 0, 0.5); animation: pulseGlow 1.8s infinite alternate; }
         @keyframes shimmer { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
         @keyframes pulseGlow { 0% { text-shadow: 0 0 5px rgba(204, 255, 0, 0.3); } 100% { text-shadow: 0 0 25px rgba(204, 255, 0, 0.8); } }
-
         .description { font-size: 0.9rem; color: #a0a0b8; max-width: 650px; margin: 0 auto; line-height: 1.5; font-weight: 400; background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(8px); padding: 0.5rem 1.2rem; border-radius: 40px; border: 1px solid rgba(255, 255, 255, 0.05); animation: fadeInUp 0.7s; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Content Area */
         #page-content { transition: opacity 0.2s ease; min-height: 300px; position: relative; z-index: 5; width: 100%; padding-bottom: 60px; }
-        
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        
-        .filter-info {
-            text-align: center; margin-bottom: 30px; color: #888; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;
-            background: rgba(255,255,255,0.03);
-            padding: 10px;
-            border-radius: 8px;
-            display: inline-block;
-            width: 100%;
-        }
+        .filter-info { text-align: center; margin-bottom: 30px; color: #888; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(255,255,255,0.03); padding: 10px; border-radius: 8px; display: inline-block; width: 100%; }
         .filter-info b { color: #d2ff40; }
-
-        /* === КАРТОЧКИ GLACIUS (3 В РЯД) === */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            min-height: 400px;
-            position: relative;
-        }
-
-        .vip-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 20px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-        
-        .vip-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(210, 255, 64, 0.4);
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        @keyframes softPulse {
-            0% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0); border-color: rgba(255,255,255,0.08); }
-            50% { box-shadow: 0 0 20px 0 rgba(210, 255, 64, 0.15); border-color: rgba(210, 255, 64, 0.6); }
-            100% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0); border-color: rgba(255,255,255,0.08); }
-        }
-        @keyframes urgentPulse {
-            0% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0.2); border-color: #d2ff40; }
-            50% { box-shadow: 0 0 25px 5px rgba(210, 255, 64, 0.2); border-color: #fff; background: rgba(210, 255, 64, 0.08); }
-            100% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0.2); border-color: #d2ff40; }
-        }
-
+        .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; min-height: 400px; position: relative; }
+        .vip-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 20px; transition: all 0.3s ease; position: relative; overflow: hidden; display: flex; flex-direction: column; height: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .vip-card:hover { transform: translateY(-5px); border-color: rgba(210, 255, 64, 0.4); background: rgba(255, 255, 255, 0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        @keyframes softPulse { 0% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0); border-color: rgba(255,255,255,0.08); } 50% { box-shadow: 0 0 20px 0 rgba(210, 255, 64, 0.15); border-color: rgba(210, 255, 64, 0.6); } 100% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0); border-color: rgba(255,255,255,0.08); } }
+        @keyframes urgentPulse { 0% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0.2); border-color: #d2ff40; } 50% { box-shadow: 0 0 25px 5px rgba(210, 255, 64, 0.2); border-color: #fff; background: rgba(210, 255, 64, 0.08); } 100% { box-shadow: 0 0 0 0 rgba(210, 255, 64, 0.2); border-color: #d2ff40; } }
         .card-glow-2h { animation: softPulse 3s infinite; }
         .card-glow-1h { animation: urgentPulse 1.5s infinite; z-index: 2; }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-        .sport-tag {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #888;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .sport-tag::before {
-            content: '';
-            display: block;
-            width: 6px;
-            height: 6px;
-            background: #d2ff40;
-            border-radius: 50%;
-            box-shadow: 0 0 5px #d2ff40;
-        }
-        
-        /* НОВЫЙ СТИЛЬ ВРЕМЕНИ И ДАТЫ */
-        .match-datetime {
-            text-align: right;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 2px;
-        }
-        .match-date {
-            font-size: 0.7rem;
-            color: #666;
-            font-weight: 500;
-            text-transform: uppercase;
-        }
-        .match-time {
-            font-size: 0.9rem;
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            background: rgba(255,255,255,0.05);
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-
-        .teams-container {
-            margin-bottom: 20px;
-            text-align: center;
-            flex-grow: 1;
-        }
-        .team-name {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: #fff;
-            display: block;
-            margin-bottom: 6px;
-            line-height: 1.3;
-        }
-        .vs-divider {
-            color: #444;
-            font-size: 0.75rem;
-            margin: 6px 0;
-            font-weight: 400;
-            letter-spacing: 2px;
-        }
-
-        .prediction-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0,0,0,0.25);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 15px;
-        }
-        .pred-label {
-            font-size: 0.65rem;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: block;
-            margin-bottom: 3px;
-        }
-        .pred-value {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: #d2ff40;
-            text-shadow: 0 0 10px rgba(210, 255, 64, 0.2);
-        }
-        .coef-value {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #fff;
-            background: rgba(255,255,255,0.1);
-            padding: 6px 10px;
-            border-radius: 8px;
-            min-width: 50px;
-            text-align: center;
-        }
-
-        .pari-cta-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            width: 100%;
-            background: transparent;
-            border: 1px solid rgba(210, 255, 64, 0.3);
-            color: #d2ff40;
-            text-align: center;
-            padding: 12px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-            margin-top: auto;
-            cursor: pointer;
-        }
-        .pari-cta-btn:hover {
-            background: rgba(210, 255, 64, 0.1);
-            border-color: #d2ff40;
-            box-shadow: 0 0 20px rgba(210, 255, 64, 0.15);
-        }
-        .pari-logo-small {
-            height: 20px;
-            filter: brightness(0) invert(1);
-            transition: filter 0.3s;
-        }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .sport-tag { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: #888; letter-spacing: 0.5px; display: flex; align-items: center; gap: 5px; }
+        .sport-tag::before { content: ''; display: block; width: 6px; height: 6px; background: #d2ff40; border-radius: 50%; box-shadow: 0 0 5px #d2ff40; }
+        .match-datetime { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+        .match-date { font-size: 0.7rem; color: #666; font-weight: 500; text-transform: uppercase; }
+        .match-time { font-size: 0.9rem; color: #fff; font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: 0.5px; background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 4px; }
+        .teams-container { margin-bottom: 20px; text-align: center; flex-grow: 1; }
+        .team-name { font-size: 1.05rem; font-weight: 600; color: #fff; display: block; margin-bottom: 6px; line-height: 1.3; }
+        .vs-divider { color: #444; font-size: 0.75rem; margin: 6px 0; font-weight: 400; letter-spacing: 2px; }
+        .prediction-row { display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.25); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 12px; margin-bottom: 15px; }
+        .pred-label { font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 3px; }
+        .pred-value { font-size: 1.2rem; font-weight: 800; color: #d2ff40; text-shadow: 0 0 10px rgba(210, 255, 64, 0.2); }
+        .coef-value { font-size: 1rem; font-weight: 700; color: #fff; background: rgba(255,255,255,0.1); padding: 6px 10px; border-radius: 8px; min-width: 50px; text-align: center; }
+        .pari-cta-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 100%; background: transparent; border: 1px solid rgba(210, 255, 64, 0.3); color: #d2ff40; text-align: center; padding: 12px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s; margin-top: auto; cursor: pointer; }
+        .pari-cta-btn:hover { background: rgba(210, 255, 64, 0.1); border-color: #d2ff40; box-shadow: 0 0 20px rgba(210, 255, 64, 0.15); }
+        .pari-logo-small { height: 20px; filter: brightness(0) invert(1); transition: filter 0.3s; }
         .pari-cta-btn:hover .pari-logo-small { filter: brightness(0); }
-
-        .urgent-badge {
-            display: none;
-            margin-top: 10px;
-            background: #d2ff40;
-            color: #000;
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 6px;
-            border-radius: 6px;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 0 10px rgba(210, 255, 64, 0.3);
-        }
-        .card-glow-1h .urgent-badge {
-            display: block;
-        }
-
-        .loader-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: transparent;
-            z-index: 10;
-        }
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid rgba(255,255,255,0.1);
-            border-radius: 50%;
-            border-top-color: #d2ff40;
-            animation: spin 1s ease-in-out infinite;
-            margin-bottom: 15px;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        .loader-text {
-            color: #888;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        
+        .urgent-badge { display: none; margin-top: 10px; background: #d2ff40; color: #000; font-size: 0.7rem; font-weight: 800; padding: 6px; border-radius: 6px; text-align: center; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 0 10px rgba(210, 255, 64, 0.3); }
+        .card-glow-1h .urgent-badge { display: block; }
+        .loader-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: transparent; z-index: 10; }
+        .spinner { width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.1); border-radius: 50%; border-top-color: #d2ff40; animation: spin 1s ease-in-out infinite; margin-bottom: 15px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loader-text { color: #888; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; }
         footer { width: 100%; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(10px); border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 40px 20px 20px; font-family: 'Inter', sans-serif; margin-top: auto; color: #888; }
         .footer-container { max-width: 1000px; margin: 0 auto; }
         .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 30px; }
-        
-        .pari-footer-logo-glow img { 
-            height: 20px; 
-            filter: brightness(0) invert(1); 
-            opacity: 1; 
-            margin-bottom: 12px; 
-        }
-        
+        .pari-footer-logo-glow img { height: 20px; filter: brightness(0) invert(1); opacity: 1; margin-bottom: 12px; }
         .footer-links-group a:hover { color: #d2ff40 !important; }
         .footer-divider { height: 1px; background: rgba(255, 255, 255, 0.05); margin-bottom: 20px; }
-        
-        @media (max-width: 1024px) {
-            .cards-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 768px) {
-            .cards-grid { grid-template-columns: 1fr; }
-            .hero { min-height: 35vh; padding: 1rem 1rem 1.5rem; }
-            .nav-btn { padding: 0.45rem 1rem; font-size: 0.8rem; }
-            .nav-buttons { gap: 0.6rem; margin-bottom: 1rem; }
-            .logo { font-size: 2.2rem; }
-            .msk-time-badge-corner { position: static; margin-bottom: 15px; display: flex; justify-content: center; width: 100%; }
-            .footer-top { grid-template-columns: 1fr; gap: 30px; text-align: center; }
-        }
-
-        div.sys-wrapper {
-            display: flex !important; visibility: visible !important; opacity: 1 !important;
-            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px;
-            padding: 12px 20px; margin: 0 auto 30px; max-width: 600px; width: fit-content;
-            align-items: center; justify-content: space-between; gap: 20px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); pointer-events: auto !important; 
-        }
+        @media (max-width: 1024px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .cards-grid { grid-template-columns: 1fr; } .hero { min-height: 35vh; padding: 1rem 1rem 1.5rem; } .nav-btn { padding: 0.45rem 1rem; font-size: 0.8rem; } .nav-buttons { gap: 0.6rem; margin-bottom: 1rem; } .logo { font-size: 2.2rem; } .msk-time-badge-corner { position: static; margin-bottom: 15px; display: flex; justify-content: center; width: 100%; } .footer-top { grid-template-columns: 1fr; gap: 30px; text-align: center; } }
+        div.sys-wrapper { display: flex !important; visibility: visible !important; opacity: 1 !important; background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 12px 20px; margin: 0 auto 30px; max-width: 600px; width: fit-content; align-items: center; justify-content: space-between; gap: 20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); pointer-events: auto !important; }
         div.sys-wrapper > div { display: flex !important; visibility: visible !important; }
         .sys-brand-box { display: flex !important; align-items: center; gap: 10px; border-right: 1px solid rgba(255, 255, 255, 0.1); padding-right: 15px; white-space: nowrap; }
         .sys-brand-box img { height: 26px; width: auto; display: block !important; filter: brightness(0) invert(1); opacity: 1 !important; }
@@ -395,13 +109,7 @@
         .sys-nav-item:hover { color: #fff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
         .sys-nav-item:hover::after { width: 100%; }
         .sys-sub-text { font-size: 10px; color: rgba(255, 255, 255, 0.4); font-weight: 400; margin-top: 6px; text-align: right; width: 100%; display: block; }
-        @media (max-width: 650px) {
-            .sys-wrapper { flex-direction: column; padding: 15px; gap: 12px; width: 90%; }
-            .sys-brand-box { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-right: 0; padding-bottom: 10px; width: 100%; justify-content: center; }
-            .sys-links-area { width: 100%; justify-content: center; gap: 20px; }
-            .sys-sub-text { text-align: center; }
-        }
-
+        @media (max-width: 650px) { .sys-wrapper { flex-direction: column; padding: 15px; gap: 12px; width: 90%; } .sys-brand-box { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-right: 0; padding-bottom: 10px; width: 100%; justify-content: center; } .sys-links-area { width: 100%; justify-content: center; gap: 20px; } .sys-sub-text { text-align: center; } }
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 10001; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
         .modal-overlay.open { display: flex; opacity: 1; }
         .donate-card { background: #0a0a0f; border: 1px solid #333; border-top: 2px solid #d2ff40; border-radius: 16px; padding: 30px; max-width: 420px; width: 90%; box-shadow: 0 0 40px rgba(0,0,0,0.8); transform: translateY(20px); transition: transform 0.3s ease; position: relative; text-align: center; }
@@ -412,58 +120,20 @@
         .sber-link-btn:hover { transform: scale(1.02); background: #1e8e32; }
         .donate-close { display: block; width: 100%; margin-top: 20px; padding: 12px; background: transparent; border: 1px solid #333; color: #888; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
         .donate-close:hover { border-color: #fff; color: #fff; }
-        
-        /* === ACCESS DENIED SCREEN === */
-        #access-denied {
-            display: none; 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(5, 5, 7, 0.95); backdrop-filter: blur(15px);
-            z-index: 99999; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-            padding: 20px;
-        }
-        .access-box {
-            background: #111; padding: 30px; border-radius: 24px; border: 1px solid #333;
-            max-width: 450px; width: 100%; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-        }
-        .access-title {
-            color: #fff; font-size: 1.2rem; font-weight: 700; margin-bottom: 15px;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-        }
-        .access-info {
-            color: #aaa; font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;
-            background: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px;
-            text-align: left;
-        }
+        #access-denied { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 7, 0.95); backdrop-filter: blur(15px); z-index: 99999; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+        .access-box { background: #111; padding: 30px; border-radius: 24px; border: 1px solid #333; max-width: 450px; width: 100%; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+        .access-title { color: #fff; font-size: 1.2rem; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .access-info { color: #aaa; font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px; text-align: left; }
         .access-info b { color: #d2ff40; }
         .access-info a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
         .access-info a:hover { color: #d2ff40; }
-        
-        .access-input {
-            width: 100%; padding: 14px; margin: 10px 0; background: #050507; border: 1px solid #333;
-            color: #fff; border-radius: 12px; text-align: center; font-size: 18px; outline: none;
-        }
+        .access-input { width: 100%; padding: 14px; margin: 10px 0; background: #050507; border: 1px solid #333; color: #fff; border-radius: 12px; text-align: center; font-size: 18px; outline: none; }
         .access-input:focus { border-color: #d2ff40; box-shadow: 0 0 15px rgba(210, 255, 64, 0.2); }
-        
-        .access-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .access-btn {
-            background: #d2ff40; color: #000; border: none; padding: 14px 30px; border-radius: 12px;
-            font-weight: 800; cursor: pointer; width: 100%; font-size: 16px; transition: 0.2s;
-        }
+        .access-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+        .access-btn { background: #d2ff40; color: #000; border: none; padding: 14px 30px; border-radius: 12px; font-weight: 800; cursor: pointer; width: 100%; font-size: 16px; transition: 0.2s; }
         .access-btn:hover { background: #c2ef30; transform: scale(1.02); }
-
-        .back-btn {
-            background: transparent; color: #888; border: 1px solid #333; padding: 12px 30px; border-radius: 12px;
-            font-weight: 600; cursor: pointer; width: 100%; font-size: 14px; transition: 0.2s;
-            text-decoration: none; display: inline-block;
-        }
+        .back-btn { background: transparent; color: #888; border: 1px solid #333; padding: 12px 30px; border-radius: 12px; font-weight: 600; cursor: pointer; width: 100%; font-size: 14px; transition: 0.2s; text-decoration: none; display: inline-block; }
         .back-btn:hover { background: rgba(255,255,255,0.05); color: #fff; border-color: #555; }
-
         #errorMsg { color:#ff4444; font-size:12px; margin-top:10px; display:none; }
     </style>
 </head>
@@ -472,21 +142,17 @@
 <div id="access-denied">
     <div class="access-box">
         <div class="access-title">🔒 Доступ ограничен</div>
-        
         <div class="access-info">
             Чтобы получить пароль от раздела <b>TOP</b>, вам необходимо:<br><br>
             1. Зарегистрироваться и пополнить баланс в БК Pari по <a href="https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate" target="_blank">этой ссылке</a>.<br>
-            2. Или написать администратору канала <a href="https://t.me/SetTrueForecast" target="_blank">@SetTrueForecast</a>.
-            3. Временный пароль для первых пользователей: <b>settrue2026</b>.<br>
+            2. Или написать администратору канала <a href="https://t.me/SetTrueForecast" target="_blank">@SetTrueForecast</a>.<br>
+            3. Временный пароль для первых пользователей: <b>settrue2026</b>.
         </div>
-
         <input type="password" id="passInput" class="access-input" placeholder="Введите пароль">
-        
         <div class="access-actions">
             <button class="access-btn" onclick="checkPass()">Открыть доступ</button>
             <a href="/" class="back-btn">← Вернуться на главную</a>
         </div>
-        
         <p id="errorMsg">Неверный пароль</p>
     </div>
 </div>
@@ -499,7 +165,6 @@
         <span class="time-value" id="currentTime">--:--</span>
         <span style="opacity:0.5; margin-left:4px;">МСК</span>
     </div>
-
     <div class="hero-content">
         <div class="nav-buttons">
             <button class="nav-btn" data-page="home" data-link="/">Главная</button>
@@ -510,11 +175,8 @@
             <button class="nav-btn" data-page="cs2" data-link="/cs2/">CS2</button>
             <button class="nav-btn support-btn" onclick="openDonateModal()">❤️ Поддержать</button>
         </div>
-
         <div class="logo">True<span>Set</span></div>
-        <div class="description">
-            Закрытый раздел лучших прогнозов дня
-        </div>
+        <div class="description">Закрытый раздел лучших прогнозов дня</div>
     </div>
 </section>
 
@@ -573,12 +235,9 @@
           <span style="font-size: 28px;">🏆</span>
           <h3 style="color: #d2ff40; font-size: 20px; font-weight: 700; margin: 0;">SETTRUE</h3>
         </div>
-        <div class="pari-footer-logo-glow">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari Partner">
-        </div>
+        <div class="pari-footer-logo-glow"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari Partner"></div>
         <p style="color: #888; font-size: 13px; line-height: 1.6; margin-bottom: 15px;">
-          Математические прогнозы на основе статистики и алгоритмов машинного обучения. 
-          Официальный информационный партнер БК <strong style="color:#fff">Pari</strong>.
+          Математические прогнозы на основе статистики и алгоритмов машинного обучения. Официальный информационный партнер БК <strong style="color:#fff">Pari</strong>.
         </p>
         <div style="display: flex; gap: 15px; margin-top: 15px;">
           <a href="#" aria-label="ВКонтакте">📘</a>
@@ -586,14 +245,10 @@
           <a href="#" aria-label="Телеграм">💬</a>
         </div>
       </div>
-      
       <div>
         <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">КОНТАКТЫ</h4>
-        <p style="color: #999; font-size: 13px; margin-bottom: 10px;">
-          📧 <a href="mailto:SetTrueForecast@yandex.ru" style="color: #d2ff40;">SetTrueForecast@yandex.ru</a>
-        </p>
+        <p style="color: #999; font-size: 13px; margin-bottom: 10px;">📧 <a href="mailto:SetTrueForecast@yandex.ru" style="color: #d2ff40;">SetTrueForecast@yandex.ru</a></p>
       </div>
-      
       <div>
         <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">СТАТИСТИКА</h4>
         <p style="color: #999; font-size: 13px; margin-bottom: 6px;">📈 Обновление: <span style="color: #d2ff40;">Ежедневно</span></p>
@@ -601,13 +256,11 @@
         <p style="color: #999; font-size: 13px;">📊 Прогнозы: <span style="color: #d2ff40;">Бесплатно</span></p>
       </div>
     </div>
-    
     <div style="margin: 20px 0; padding: 15px; background: rgba(255, 255, 255, 0.02); border-radius: 8px; border-left: 2px solid #d2ff40;">
       <p style="color: #777; font-size: 12px; line-height: 1.5;">
         <strong>SetTrue</strong> предоставляет прогнозы и данные о движении средств в букмекерских конторах. Мы предоставляем информацию для принятия взвешенных решений. Ставки могут вызывать зависимость. Играйте ответственно. 18+
       </p>
     </div>
-    
     <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); gap: 10px;">
       <p style="color: #555; font-size: 11px; margin: 0;">© 2026 SetTrue. Все права защищены.</p>
     </div>
@@ -615,23 +268,19 @@
 </footer>
 
 <script>
-    // === ЗАЩИТА ОТ КОПИРОВАНИЯ ===
+    // === ЗАЩИТА ===
     document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; }, true);
     document.addEventListener('keydown', function(e) {
-        const key = e.key.toLowerCase(); const code = e.code; const isCtrl = e.ctrlKey; const isShift = e.shiftKey;
-        if (e.keyCode === 123) { e.preventDefault(); e.stopPropagation(); return false; }
-        if (isCtrl && !isShift && (code === 'KeyU' || key === 'u')) { e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); return false; }
-        if (isCtrl && isShift && (code === 'KeyI' || key === 'i' || code === 'KeyJ' || key === 'j' || code === 'KeyC' || key === 'c')) { e.preventDefault(); e.stopPropagation(); return false; }
-        if (isCtrl && (code === 'KeyS' || key === 's' || code === 'KeyP' || key === 'p')) { e.preventDefault(); e.stopPropagation(); return false; }
+        if (e.keyCode === 123 || (e.ctrlKey && !e.shiftKey && e.code === 'KeyU') || (e.ctrlKey && e.shiftKey && (e.code === 'KeyI' || e.code === 'KeyJ' || e.code === 'KeyC')) || (e.ctrlKey && (e.code === 'KeyS' || e.code === 'KeyP'))) {
+            e.preventDefault(); e.stopPropagation(); return false;
+        }
     }, true);
-    setInterval(function() { var start = performance.now(); debugger; var end = performance.now(); if (end - start > 100) { console.clear(); console.log("%cStop!", "color: red; font-size: 50px; font-weight: bold;"); } }, 1000);
+    setInterval(function() { var start = performance.now(); debugger; if (performance.now() - start > 100) console.clear(); }, 1000);
 
     // === ПАРОЛЬ ===
     const ACCESS_PASSWORD = "settrue2026";
-
     function checkPass() {
-        const input = document.getElementById('passInput').value;
-        if (input === ACCESS_PASSWORD) {
+        if (document.getElementById('passInput').value === ACCESS_PASSWORD) {
             localStorage.setItem('top_access', 'granted');
             document.getElementById('access-denied').style.display = 'none';
             loadTopFlows();
@@ -639,334 +288,250 @@
             document.getElementById('errorMsg').style.display = 'block';
         }
     }
-    document.getElementById('passInput').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') checkPass();
-    });
+    document.getElementById('passInput').addEventListener('keypress', e => { if (e.key === 'Enter') checkPass(); });
 
-    // === ВРЕМЯ И ЧАСТИЦЫ ===
+    // === ЧАСЫ (МСК) ===
     function updateMSKTime() {
-        const now = new Date();
-        const mskTime = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (3 * 3600000));
         const el = document.getElementById('currentTime');
-        if(el) el.textContent = `${String(mskTime.getUTCHours()).padStart(2, '0')}:${String(mskTime.getUTCMinutes()).padStart(2, '0')}`;
+        if(el) el.textContent = new Date().toLocaleTimeString('ru-RU', { timeZone: 'Europe/Moscow', hour: '2-digit', minute: '2-digit', hour12: false });
     }
     setInterval(updateMSKTime, 1000); updateMSKTime();
 
     function createGlobalParticles() {
         const container = document.getElementById('globalParticles');
         if (!container) return;
-        const isMobile = window.innerWidth < 768;
-        const count = isMobile ? 50 : 150;
+        const count = window.innerWidth < 768 ? 50 : 150;
         container.innerHTML = '';
         for (let i = 0; i < count; i++) {
-            const p = document.createElement('div'); p.classList.add('global-particle');
-            const size = Math.random() * 8 + 2;
-            p.style.cssText = `width:${size}px; height:${size}px; left:${Math.random()*100}%; animation-duration:${Math.random()*12+5}s; animation-delay:${Math.random()*15}s; background:radial-gradient(circle, rgba(204,255,0,${Math.random()*0.7+0.3}), transparent); --shift:${(Math.random()-0.5)*150}px;`;
+            const p = document.createElement('div'); p.className = 'global-particle';
+            const s = Math.random() * 8 + 2;
+            p.style.cssText = `width:${s}px; height:${s}px; left:${Math.random()*100}%; animation-duration:${Math.random()*12+5}s; animation-delay:${Math.random()*15}s; background:radial-gradient(circle, rgba(204,255,0,${Math.random()*0.7+0.3}), transparent); --shift:${(Math.random()-0.5)*150}px;`;
             container.appendChild(p);
         }
     }
 
     // === ИНТЕРФЕЙС ===
     function openPartnerLink(type) {
-        const urls = {
-            'reg': 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate',
-            'bonus': 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate',
-            'freebets': 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate'
-        };
-        if (urls[type]) {
-            if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'pari_' + type);
-            window.open(urls[type], '_blank');
-        }
+        const urls = { reg:'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate', bonus:'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate', freebets:'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate' };
+        if (urls[type]) { if (typeof ym!=='undefined') ym(108400965,'reachGoal','pari_'+type); window.open(urls[type],'_blank'); }
     }
-    function openDonateModal() {
-        const m = document.getElementById('donateModal');
-        if(m) { m.classList.add('open'); if(typeof ym!=='undefined') ym(108400965,'reachGoal','open_donate_modal'); }
-    }
-    function closeDonateModal(e) {
-        const m = document.getElementById('donateModal');
-        if (!e || e.target.id === 'donateModal' || (e.target.classList && e.target.classList.contains('donate-close'))) {
-            if(m) m.classList.remove('open');
-        }
-    }
+    function openDonateModal() { const m=document.getElementById('donateModal'); if(m){m.classList.add('open'); if(typeof ym!=='undefined') ym(108400965,'reachGoal','open_donate_modal'); } }
+    function closeDonateModal(e) { const m=document.getElementById('donateModal'); if(!e || e.target.id==='donateModal' || e.target.classList.contains('donate-close')) if(m) m.classList.remove('open'); }
 
-    // === ОСНОВНАЯ ЛОГИКА TOP ===
-    const TENNIS_API = 'https://script.google.com/macros/s/AKfycbzyUw_OlQ7xd3p3p3Xhp01lfFZFvsptcb0AGAtJUddC7y2ODmheNX6szf6BSaI-2fQZ/exec';
-    const FOOTBALL_API = 'https://script.google.com/macros/s/AKfycbz6fcoEoNF_C7CpNENGoQHEgCGry91Mi9xDPck0Xv2YUd3zW33UjMGCGgBD-ZkXte3z/exec'; 
-    const BASKETBALL_API = 'https://script.google.com/macros/s/AKfycbzVNo0nkiivzgSDBKnFHCGtkM7YmvowNLhRBvvCfOFgU_D6LvlQNMYZkG9xF7R8QaUZ/exec'; 
+    // === ДАННЫЕ ===
+    const APIS = {
+        T: 'https://script.google.com/macros/s/AKfycbzyUw_OlQ7xd3p3p3Xhp01lfFZFvsptcb0AGAtJUddC7y2ODmheNX6szf6BSaI-2fQZ/exec',
+        F: 'https://script.google.com/macros/s/AKfycbz6fcoEoNF_C7CpNENGoQHEgCGry91Mi9xDPck0Xv2YUd3zW33UjMGCGgBD-ZkXte3z/exec',
+        B: 'https://script.google.com/macros/s/AKfycbzVNo0nkiivzgSDBKnFHCGtkM7YmvowNLhRBvvCfOFgU_D6LvlQNMYZkG9xF7R8QaUZ/exec'
+    };
 
     function parseStr(str) {
         if (!str) return { pct: 0, money: "£ 0", rawVal: 0 };
-        let clean = str.replace(/&pound;/g, '£');
-        let p = clean.match(/(\d+\.?\d*)\s*%/);
-        let m = clean.match(/([£$])\s*([\d\s,]+)/);
-        let rawVal = 0;
-        if (m) rawVal = parseFloat(m[2].replace(/\s/g, '').replace(',', '.'));
-        return { pct: p ? parseFloat(p[1]) : 0, money: m ? m[1] + m[2] : "£ 0", rawVal };
+        let c = str.replace(/&pound;/g, '£');
+        let p = c.match(/(\d+\.?\d*)\s*%/);
+        let m = c.match(/([£$])\s*([\d\s,]+)/);
+        return { pct: p ? parseFloat(p[1]) : 0, money: m ? m[1] + m[2] : "£ 0", rawVal: m ? parseFloat(m[2].replace(/[\s,]/g,'')) : 0 };
+    }
+    function escapeHtml(s) { return s ? s.replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m])) : ''; }
+
+    // === 🕐 ПАРСЕР UTC (Чистая математика) ===
+    function parseMatchUTC(timeStr) {
+        if (!timeStr || typeof timeStr !== 'string') return null;
+        try {
+            let s = timeStr.trim().replace(/[\u00A0\u200B-\u200D\uFEFF]/g, ' ');
+            const rx = /(\d{1,2})[.\s/]+([A-Za-z]{3}|\d{1,2})[.\s/]+(\d{1,2}):(\d{2})/i;
+            const m = s.match(rx);
+            if (!m) return null;
+
+            const M = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+            let d = parseInt(m[1]);
+            let monStr = m[2].toLowerCase();
+            let mon = M[monStr];
+            if (mon === undefined) mon = parseInt(monStr) - 1;
+            if (isNaN(mon) || mon < 0 || mon > 11) return null;
+
+            let h = parseInt(m[3]);
+            let min = parseInt(m[4]);
+            let y = new Date().getUTCFullYear();
+
+            if (d < 1 || d > 31 || h < 0 || h > 23 || min < 0 || min > 59) return null;
+            return Date.UTC(y, mon, d, h, min, 0);
+        } catch(e) { return null; }
     }
 
-    function escapeHtml(str) {
-        if (!str) return '';
-        return str.replace(/[&<>]/g, function(m) {
-            if (m === '&') return '&amp;';
-            if (m === '<') return '&lt;';
-            if (m === '>') return '&gt;';
-            return m;
-        });
-    }
-
-    // === 🕐 КОРРЕКТНЫЙ РАСЧЁТ ВРЕМЕНИ (МСК) ===
-    
-    // Парсит строку времени из API и возвращает UTC-таймстамп (миллисекунды)
-    function getMatchTimestampUTC(timeStr) {
-        if (!timeStr) return null;
-        // Формат: "12.Apr 16:00:00"
-        let parts = timeStr.split(' ');
-        if (parts.length < 2) return null;
-        
-        let [datePart, timePart] = parts;
-        let [dayStr, monthStr] = datePart.split('.');
-        let [hStr, mStr] = timePart.split(':');
-        
-        const months = { 
-            "Jan":0,"Feb":1,"Mar":2,"Apr":3,"May":4,"Jun":5,
-            "Jul":6,"Aug":7,"Sep":8,"Oct":9,"Nov":10,"Dec":11 
-        };
-        
-        let day = parseInt(dayStr);
-        let month = months[monthStr];
-        let h = parseInt(hStr);
-        let m = parseInt(mStr);
-        let year = new Date().getUTCFullYear();
-        
-        if (month === undefined || isNaN(day) || isNaN(h) || isNaN(m)) return null;
-        
-        // Возвращаем UTC-таймстамп
-        return Date.UTC(year, month, day, h, m, 0);
-    }
-
-    // Текущее время в МСК как таймстамп
-    function getNowMSKTimestamp() {
-        return Date.now() + (3 * 60 * 60 * 1000);
-    }
-
-    // Форматирует таймстамп для отображения в МСК
-    function formatMSKTime(utcTimestamp) {
-        let mskTimestamp = utcTimestamp + (3 * 60 * 60 * 1000);
-        let date = new Date(mskTimestamp);
+    // Форматирование для отображения: жестко +3 часа к UTC
+    function formatMSK(utcMs) {
+        let mskMs = utcMs + 10800000; // +3 часа
+        let d = new Date(mskMs);
+        let h = d.getUTCHours();
+        let m = d.getUTCMinutes();
+        let day = d.getUTCDate();
+        let mon = d.getUTCMonth();
+        const months = ['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
         return {
-            time: `${String(date.getUTCHours()).padStart(2,'0')}:${String(date.getUTCMinutes()).padStart(2,'0')}`,
-            date: `${date.getUTCDate()} ${date.toLocaleString('en-US', {month:'short', timeZone:'UTC'})}`
+            time: `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`,
+            date: `${day} ${months[mon]}`
         };
     }
 
     async function loadTopFlows() {
-        const container = document.getElementById('cards-container');
-        if(!container) return;
-        
+        const box = document.getElementById('cards-container');
+        if(!box) return;
         try {
-            const [resT, resF, resB] = await Promise.all([
-                fetch(TENNIS_API).then(r => r.json()),
-                fetch(FOOTBALL_API).then(r => r.json()),
-                fetch(BASKETBALL_API).then(r => r.json())
+            const loadAPI = async (url) => {
+                try {
+                    const res = await fetch(url);
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                    const data = await res.json();
+                    return Array.isArray(data) ? data : [];
+                } catch(e) { console.warn(`API Error [${url}]:`, e.message); return []; }
+            };
+
+            const [rT, rF, rB] = await Promise.all([
+                loadAPI(APIS.T), loadAPI(APIS.F), loadAPI(APIS.B)
             ]);
 
-            let allMatches = [];
-
-            if (resT && Array.isArray(resT)) {
-                resT.forEach(row => {
-                    if (row.length < 8) return; 
-                    let tour = row[1] || ""; let time = row[2] || "";
-                    let p1 = row[3]; let p2 = row[8];
-                    if (!p1 || !p2 || p1.match(/\d/) || p2.match(/\d/)) return;
-                    let o1 = parseFloat(row[4]); let o2 = parseFloat(row[5]);
-                    let d1 = parseStr(row[6]); let d2 = parseStr(row[7]);
-                    let totalSum = d1.rawVal + d2.rawVal;
-                    let maxPct = Math.max(d1.pct, d2.pct);
-                    if (totalSum > 5000 && maxPct > 80) {
-                        let prediction = (d1.pct > d2.pct) ? 'П1' : 'П2';
-                        let bestOdd = (d1.pct > d2.pct) ? o1 : o2;
-                        if(bestOdd > 1.50) allMatches.push({ sport: 'tennis', icon: '🎾', league: tour, time: time, team1: p1, team2: p2, pred: prediction, coef: bestOdd.toFixed(2), totalSum: totalSum });
-                    }
-                });
-            }
-            if (resF && Array.isArray(resF)) {
-                resF.forEach(row => {
-                    if (row.length < 9) return; 
-                    let tour = row[0] || ""; let time = row[1] || "";
-                    let team1 = row[2]; let team2 = row[9] || row[row.length-1]; 
-                    let o1 = parseFloat(row[3]); let oX = parseFloat(row[4]); let o2 = parseFloat(row[5]);
-                    let d1 = parseStr(row[6]); let dX = parseStr(row[7]); let d2 = parseStr(row[8]);
-                    let totalSum = d1.rawVal + dX.rawVal + d2.rawVal;
-                    let maxPct = Math.max(d1.pct, dX.pct, d2.pct);
-                    if (totalSum > 5000 && maxPct > 80) {
-                        let popularOdd = o1; let prediction = 'П1';
-                        if (dX.pct === maxPct) { popularOdd = oX; prediction = 'Х'; }
-                        if (d2.pct === maxPct) { popularOdd = o2; prediction = 'П2'; }
-                        if(popularOdd > 1.50) allMatches.push({ sport: 'football', icon: '⚽', league: tour, time: time, team1: team1, team2: team2, pred: prediction, coef: popularOdd.toFixed(2), totalSum: totalSum });
-                    }
-                });
-            }
-            if (resB && Array.isArray(resB)) {
-                resB.forEach(match => {
-                    let league = match.league || ""; let time = match.time || "";
-                    let team1 = match.team1; let team2 = match.team2;
-                    let d1 = parseStr(match.percent1 + " £" + match.money1); 
-                    let d2 = parseStr(match.percent2 + " £" + match.money2);
-                    let o1 = parseFloat(match.odd1); let o2 = parseFloat(match.odd2);
-                    let totalSum = d1.rawVal + d2.rawVal;
-                    let maxPct = Math.max(d1.pct, d2.pct);
-                    if (totalSum > 5000 && maxPct > 80) {
-                        let popularOdd = (d1.pct > d2.pct) ? o1 : o2;
-                        let prediction = (d1.pct > d2.pct) ? 'П1' : 'П2';
-                        if(popularOdd > 1.50) allMatches.push({ sport: 'basketball', icon: '🏀', league: league, time: time, team1: team1, team2: team2, pred: prediction, coef: popularOdd.toFixed(2), totalSum: totalSum });
-                    }
-                });
-            }
-
-            // === ФИЛЬТРАЦИЯ И СОРТИРОВКА ===
-            const nowMSK = getNowMSKTimestamp();
+            let all = [];
             
-            // Фильтруем: оставляем только будущие матчи (или те, что начались менее 15 мин назад)
-            let validMatches = allMatches.filter(m => {
-                let matchUTC = getMatchTimestampUTC(m.time);
-                if (!matchUTC) return false;
-                
-                let matchMSK = matchUTC + (3 * 60 * 60 * 1000);
-                const diffMinutes = (matchMSK - nowMSK) / (1000 * 60);
-                
-                // Показываем, если до начала больше -15 минут
-                return diffMinutes > -15; 
+            // === 🎾 ТЕННИС ===
+            if (rT.length) rT.forEach(row => {
+                if(row.length<8) return;
+                let tm=row[2]||"", p1=row[3], p2=row[8];
+                if(!p1||!p2||/\d/.test(p1)||/\d/.test(p2)) return; // Фильтр: имена без цифр
+                let o1=+row[4], o2=+row[5], d1=parseStr(row[6]), d2=parseStr(row[7]);
+                let sum=d1.rawVal+d2.rawVal, max=Math.max(d1.pct,d2.pct);
+                // СТРОГИЙ ФИЛЬТР: сумма > 5000, процент > 80, кэф > 1.50
+                if(sum>5000 && max>80) {
+                    let pred = (d1.pct>d2.pct?'П1':'П2');
+                    let odd = (d1.pct>d2.pct?o1:o2);
+                    if(odd > 1.50) all.push({sp:'tennis',ic:'🎾',lg:row[1]||"",tm,t1:p1,t2:p2,pred:pred,coef:odd.toFixed(2),sum});
+                }
+            });
+            
+            // === ⚽ ФУТБОЛ ===
+            if (rF.length) rF.forEach(row => {
+                if(row.length<9) return;
+                let tm=row[1]||"", t1=row[2], t2=row[9]||row[row.length-1];
+                let o1=+row[3], oX=+row[4], o2=+row[5], d1=parseStr(row[6]), dX=parseStr(row[7]), d2=parseStr(row[8]);
+                let sum=d1.rawVal+dX.rawVal+d2.rawVal, max=Math.max(d1.pct,dX.pct,d2.pct);
+                // СТРОГИЙ ФИЛЬТР: сумма > 5000, процент > 80, кэф > 1.50
+                if(sum>5000 && max>80) {
+                    let po=o1, pr='П1'; 
+                    if(dX.pct===max){po=oX;pr='Х'} 
+                    if(d2.pct===max){po=o2;pr='П2'}
+                    if(po > 1.50) all.push({sp:'football',ic:'⚽',lg:row[0]||"",tm,t1,t2,pred:pr,coef:po.toFixed(2),sum});
+                }
+            });
+            
+            // === 🏀 БАСКЕТБОЛ ===
+            if (rB.length) rB.forEach(m => {
+                let d1=parseStr(m.percent1+" £"+m.money1), d2=parseStr(m.percent2+" £"+m.money2);
+                let sum=d1.rawVal+d2.rawVal, max=Math.max(d1.pct,d2.pct);
+                // СТРОГИЙ ФИЛЬТР: сумма > 5000, процент > 80, кэф > 1.50
+                if(sum>5000 && max>80) {
+                    let pred = (d1.pct>d2.pct?'П1':'П2');
+                    let odd = (d1.pct>d2.pct?m.odd1:m.odd2);
+                    if(odd > 1.50) all.push({sp:'basketball',ic:'🏀',lg:m.league||"",tm:m.time||"",t1:m.team1,t2:m.team2,pred:pred,coef:odd.toFixed(2),sum});
+                }
             });
 
-            // Предварительный расчёт для отображения
-            validMatches.forEach(m => {
-                let matchUTC = getMatchTimestampUTC(m.time);
-                let matchMSK = matchUTC + (3 * 60 * 60 * 1000);
-                const diffHours = (matchMSK - nowMSK) / (1000 * 60 * 60);
-                
-                m.isHot = (diffHours > 0 && diffHours <= 2);
-                m.diffHours = diffHours;
-                
-                let formatted = formatMSKTime(matchUTC);
-                m.displayTime = formatted.time;
-                m.displayDate = formatted.date;
-            });
+            const now = Date.now();
+            let valid = [];
 
-            validMatches.sort((a, b) => {
-                if (a.isHot && !b.isHot) return -1;
-                if (!a.isHot && b.isHot) return 1;
-                return b.totalSum - a.totalSum;
-            });
-
-            if (validMatches.length === 0) {
-                container.innerHTML = '<div class="loader-overlay"><div class="loader-text">Нет актуальных матчей</div></div>';
-            } else {
-                container.innerHTML = validMatches.map(m => createCard(m)).join('');
-                checkTimeHighlights();
+            // Фильтрация по времени + подготовка
+            for (let m of all) {
+                let utc = parseMatchUTC(m.tm);
+                if (!utc) continue;
+                
+                let diffMs = utc - now;
+                // Оставляем: будущие или начавшиеся < 30 мин назад
+                if (diffMs > -1800000) {
+                    m.utc = utc;
+                    m.diffMs = diffMs;
+                    let fmt = formatMSK(utc);
+                    m.mskTime = fmt.time;
+                    m.mskDate = fmt.date;
+                    valid.push(m);
+                }
             }
-        } catch (e) {
-            console.error(e);
-            container.innerHTML = '<div class="loader-overlay"><div class="loader-text" style="color:#ff4444">Ошибка загрузки</div></div>';
+
+            // Сортировка: 1. Время (раньше -> выше), 2. Деньги (больше -> выше)
+            valid.sort((a, b) => {
+                if (a.utc !== b.utc) return a.utc - b.utc;
+                return b.sum - a.sum;
+            });
+
+            if (!valid.length) {
+                box.innerHTML = '<div class="loader-overlay"><div class="loader-text">Нет актуальных матчей</div></div>';
+            } else {
+                box.innerHTML = valid.map(m => `
+                    <div class="vip-card" data-match-utc="${m.utc}">
+                        <div class="card-header">
+                            <span class="sport-tag">${m.ic} ${m.sp}</span>
+                            <div class="match-datetime"><span class="match-date">${m.mskDate}</span><span class="match-time">${m.mskTime}</span></div>
+                        </div>
+                        <div class="teams-container"><span class="team-name">${escapeHtml(m.t1)}</span><div class="vs-divider">VS</div><span class="team-name">${escapeHtml(m.t2)}</span></div>
+                        <div class="prediction-row">
+                            <div><span class="pred-label">Прогноз</span><span class="pred-value">${m.pred}</span></div>
+                            <div class="coef-value">${m.coef}</div>
+                        </div>
+                        <div class="pari-cta-btn" onclick="openPartnerLink('reg')"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" class="pari-logo-small"><span>Кликай и побеждай</span></div>
+                        <div class="urgent-badge">🔥 ПОРА СТАВИТЬ!</div>
+                    </div>
+                `).join('');
+                
+                setTimeout(checkHighlights, 200);
+            }
+        } catch(e) {
+            console.error('Critical Load Error:', e);
+            box.innerHTML = `<div class="loader-overlay"><div class="loader-text" style="color:#ff4444">Ошибка: ${e.message}</div></div>`;
         }
     }
 
-    function createCard(m) {
-        const cardId = 'card-' + Math.random().toString(36).substr(2, 9);
+    // === 🔥 ПРОВЕРКА ПОДСВЕТКИ (Каждая карточка отдельно) ===
+    function checkHighlights() {
+        const now = Date.now();
+        const TWO_H = 7200000; // 2 часа в мс
+        const ONE_H = 3600000; // 1 час в мс
+        const BUFFER = 300000; // 5 мин погрешность
 
-        return `
-            <div class="vip-card" id="${cardId}" data-match-time="${m.time}">
-                <div class="card-header">
-                    <span class="sport-tag">${m.icon} ${m.sport}</span>
-                    <div class="match-datetime">
-                        <span class="match-date">${m.displayDate || ''}</span>
-                        <span class="match-time">${m.displayTime || '--:--'}</span>
-                    </div>
-                </div>
-                <div class="teams-container">
-                    <span class="team-name">${escapeHtml(m.team1)}</span>
-                    <div class="vs-divider">VS</div>
-                    <span class="team-name">${escapeHtml(m.team2)}</span>
-                </div>
-                <div class="prediction-row">
-                    <div>
-                        <span class="pred-label">Прогноз</span>
-                        <span class="pred-value">${m.pred}</span>
-                    </div>
-                    <div class="coef-value">${m.coef}</div>
-                </div>
-                <div class="pari-cta-btn" onclick="openPartnerLink('reg')">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" class="pari-logo-small" alt="Pari">
-                    Кликай и побеждай
-                </div>
-                <div class="urgent-badge">🔥 ПОРА СТАВИТЬ!</div>
-            </div>
-        `;
-    }
-
-    function checkTimeHighlights() {
         const cards = document.querySelectorAll('.vip-card');
-        const nowMSK = getNowMSKTimestamp();
-        
-        cards.forEach(card => {
-            const timeStr = card.getAttribute('data-match-time');
-            if (!timeStr) return;
+        for (let i = 0; i < cards.length; i++) {
+            const card = cards[i];
+            const utcStr = card.getAttribute('data-match-utc');
+            if (!utcStr) continue;
             
-            let matchUTC = getMatchTimestampUTC(timeStr);
-            if (!matchUTC) return;
+            const matchUTC = parseInt(utcStr);
+            if (isNaN(matchUTC)) continue;
 
-            let matchMSK = matchUTC + (3 * 60 * 60 * 1000);
-            const diffHours = (matchMSK - nowMSK) / (1000 * 60 * 60);
-
-            // Сбрасываем классы
+            const diff = matchUTC - now;
             card.classList.remove('card-glow-2h', 'card-glow-1h');
 
-            // 🔥 За 1 час или меньше — яркое мигание + надпись
-            if (diffHours > 0 && diffHours <= 1) {
-                card.classList.add('card-glow-1h');
-            } 
-            // ⚡ За 2 часа — мягкое мигание
-            else if (diffHours > 1 && diffHours <= 2) {
-                card.classList.add('card-glow-2h');
+            // Если до начала ≤ 2 часов (+ буфер)
+            if (diff > -BUFFER && diff <= (TWO_H + BUFFER)) {
+                if (diff <= (ONE_H + BUFFER)) {
+                    card.classList.add('card-glow-1h'); // 🔥 ≤ 1 часа (ярко + надпись)
+                } else {
+                    card.classList.add('card-glow-2h'); // ⚡ 1-2 часа (мягко)
+                }
             }
-            
-            // Обновляем отображаемое время
-            const formatted = formatMSKTime(matchUTC);
-            const timeDisplay = card.querySelector('.match-time');
-            const dateDisplay = card.querySelector('.match-date');
-            if(timeDisplay) timeDisplay.textContent = formatted.time;
-            if(dateDisplay) dateDisplay.textContent = formatted.date;
-        });
-    }
-
-    function initNavigation() {
-        const btns = document.querySelectorAll('.nav-btn:not(.support-btn)');
-        btns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const link = btn.getAttribute('data-link');
-                if (link) window.location.href = link;
-            });
-        });
+        }
     }
 
     // === ЗАПУСК ===
+    document.querySelectorAll('.nav-btn:not(.support-btn)').forEach(btn => {
+        btn.addEventListener('click', () => { if(btn.dataset.link) location.href=btn.dataset.link; });
+    });
+
     window.addEventListener('DOMContentLoaded', () => {
         createGlobalParticles();
-        initNavigation();
+        if (localStorage.getItem('top_access') === 'granted') loadTopFlows();
+        else document.getElementById('access-denied').style.display = 'flex';
         
-        if (localStorage.getItem('top_access') === 'granted') {
-            loadTopFlows();
-        } else {
-            document.getElementById('access-denied').style.display = 'flex';
-        }
-        // Обновляем подсветку каждую минуту
-        setInterval(checkTimeHighlights, 60000);
+        setInterval(checkHighlights, 15000);
     });
     
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => createGlobalParticles(), 300);
-    });
+    let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt=setTimeout(createGlobalParticles,300); });
 </script>
 </body>
 </html>
