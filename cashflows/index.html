@@ -654,16 +654,16 @@
     }
 
     async function loadData() {
-        const container = document.getElementById('mf-table-container');
-        container.innerHTML = '<div class="loading-mf">Загрузка данных...</div>';
-        
-        let API_URL = '';
-        if (currentSport === 'tennis') API_URL = TENNIS_API;
-        else if (currentSport === 'football') API_URL = FOOTBALL_API;
-        else if (currentSport === 'basketball') API_URL = BASKETBALL_API;
-        else if (currentSport === 'topflows') {
-             // Логика загрузки для топ потоков будет ниже
-        }
+    const container = document.getElementById('mf-table-container');
+    container.innerHTML = `
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; padding: 60px 20px;">
+            <div style="font-size: 80px; margin-bottom: 20px;">🚧</div>
+            <h2 style="color: #ccff00; font-size: 32px; margin-bottom: 15px;">В разработке</h2>
+            <p style="color: #aaa; font-size: 18px; text-align: center; max-width: 500px;">Раздел "Денежные потоки" временно недоступен. Ведутся технические работы.</p>
+            <p style="color: #666; font-size: 14px; margin-top: 20px;">Следите за обновлениями</p>
+        </div>
+    `;
+}
 
         try {
             let data = [];
