@@ -79,7 +79,7 @@
 
         .hero { position: relative; width: 100%; min-height: 28vh; background: transparent; padding: 1rem 1.5rem 2rem; }
         
-        /* ВРЕМЯ СПРАВА СВЕРХУ (Выше кнопок) */
+        /* ВРЕМЯ СПРАВА СВЕРХУ */
         .msk-time-badge-corner {
             position: absolute;
             top: 20px;
@@ -108,8 +108,8 @@
         .nav-btn:hover::before { width: 200px; height: 200px; }
         .nav-btn:hover { border-color: rgba(204, 255, 0, 0.8); color: #ccff00; transform: translateY(-2px); box-shadow: 0 5px 20px rgba(204, 255, 0, 0.15); }
         .nav-btn:active { transform: translateY(1px); }
+        .nav-btn.active { border-color: #ccff00; color: #ccff00; background: rgba(204, 255, 0, 0.1); }
 
-        /* Кнопка Поддержать */
         .support-btn {
             background: linear-gradient(135deg, #d2ff40 0%, #9eff00 100%);
             color: #050507;
@@ -143,7 +143,7 @@
         
         #page-content { transition: opacity 0.2s ease; min-height: 300px; position: relative; z-index: 5; }
 
-        /* === ЗАЩИЩЕННЫЙ БЛОК ПАРТНЕРА (ORIGINAL DESIGN + UNDERLINE) === */
+        /* === ЗАЩИЩЕННЫЙ БЛОК ПАРТНЕРА === */
         div.sys-wrapper {
             display: flex !important;
             visibility: visible !important;
@@ -204,7 +204,6 @@
             justify-content: center;
         }
         
-        /* Оригинальный стиль ссылок с подчеркиванием */
         .sys-nav-item { 
             color: #ccc; 
             font-family: 'Inter', sans-serif; 
@@ -218,7 +217,6 @@
             display: inline-block !important;
         }
         
-        /* Эффект подчеркивания */
         .sys-nav-item::after { 
             content: ''; 
             position: absolute; 
@@ -275,7 +273,7 @@
             .msk-time-badge-corner { position: static; margin-bottom: 15px; display: flex; justify-content: center; width: 100%; }
         }
 
-        /* === IFRAME CONTAINER STYLES === */
+        /* === КОНТЕЙНЕР ТАБЛИЦЫ === */
         .mf-container { 
             max-width: 1200px; 
             margin: 0 auto; 
@@ -304,17 +302,236 @@
         }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-        /* Стиль для iframe, чтобы он вписывался в дизайн */
-        .arbworld-frame {
-            width: 100%;
-            height: 1000px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            background: #fff; /* Фон для таблицы, так как она светлая */
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        /* === СТИЛИ ТАБЛИЦЫ === */
+        .data-table-wrapper {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            overflow: hidden;
+            padding: 1px;
+            backdrop-filter: blur(4px);
         }
 
-        /* Footer */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            background: transparent;
+        }
+
+        .data-table thead th {
+            background: rgba(204, 255, 0, 0.06);
+            color: #ccff00;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 12px 8px;
+            text-align: left;
+            border-bottom: 1px solid rgba(204, 255, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .data-table thead th:not(:first-child) {
+            text-align: center;
+        }
+
+        .data-table tbody tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            transition: background 0.2s ease;
+        }
+
+        .data-table tbody tr:hover {
+            background: rgba(204, 255, 0, 0.05);
+        }
+
+        .data-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .data-table tbody td {
+            padding: 10px 8px;
+            vertical-align: middle;
+        }
+
+        .data-table tbody td:not(:first-child) {
+            text-align: center;
+        }
+
+        /* Ячейка с событием */
+        .col-event {
+            min-width: 260px;
+        }
+
+        .ev-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .ev-top {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+            color: #888;
+        }
+
+        .ev-date {
+            font-weight: 600;
+            color: #aaa;
+            white-space: nowrap;
+        }
+
+        .ev-flag {
+            width: 18px;
+            height: 11px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .ev-league {
+            color: #666;
+            font-size: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .ev-match {
+            font-weight: 600;
+            font-size: 13px;
+            color: #fff;
+        }
+
+        .ev-home {
+            color: #fff;
+        }
+
+        .ev-dash {
+            color: #555;
+            margin: 0 4px;
+        }
+
+        .ev-away {
+            color: #fff;
+        }
+
+        /* Ячейки коэффициентов */
+        .odds-cell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            padding: 4px 0;
+        }
+
+        .odds-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .odds-signal {
+            font-size: 10px;
+            color: #888;
+        }
+
+        .odds-signal strong {
+            color: #ccff00;
+            font-weight: 700;
+        }
+
+        .odds-change {
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .odds-change.down {
+            color: #ff6b6b;
+        }
+
+        .odds-change.up {
+            color: #51cf66;
+        }
+
+        .odds-money {
+            font-size: 10px;
+            color: #666;
+        }
+
+        /* Объём */
+        .col-volume {
+            min-width: 80px;
+        }
+
+        .volume-value {
+            font-weight: 700;
+            font-size: 14px;
+            color: #ccff00;
+        }
+
+        .volume-label {
+            font-size: 9px;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Статус обновления (упрощённый) */
+        .update-status {
+            text-align: center;
+            font-size: 11px;
+            color: #555;
+            padding: 6px 0 10px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .update-status .live {
+            color: #39ff14;
+            font-weight: 600;
+        }
+
+        .update-status .count {
+            color: #ccff00;
+            font-weight: 600;
+        }
+
+        /* Загрузка */
+        .loading-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .loading-state .spinner {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(204, 255, 0, 0.1);
+            border-top: 3px solid #ccff00;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 16px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 40px 20px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        /* === FOOTER === */
         footer { width: 100%; background: rgba(10, 10, 15, 0.9); backdrop-filter: blur(2px); border-top: 1px solid rgba(210, 255, 64, 0.15); margin-top: 0; padding: 40px 20px 20px; font-family: 'Inter', sans-serif; }
         footer a { color: #888; text-decoration: none; transition: color 0.2s; }
         footer a:hover { color: #d2ff40 !important; }
@@ -332,10 +549,14 @@
             .nav-btn { padding: 0.45rem 1rem; font-size: 0.8rem; }
             .nav-buttons { gap: 0.8rem; margin-bottom: 1.2rem; }
             .description { font-size: 0.8rem; }
-            
             .msk-time-badge-corner { position: static; margin-bottom: 15px; display: flex; justify-content: center; width: 100%; }
+            .data-table { font-size: 11px; }
+            .data-table tbody td { padding: 6px 4px; }
+            .odds-value { font-size: 14px; }
+            .ev-match { font-size: 11px; }
+            .col-event { min-width: 180px; }
         }
-        
+
         /* === DONATE MODAL === */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 10001; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
         .modal-overlay.open { display: flex; opacity: 1; }
@@ -357,7 +578,7 @@
 <div class="global-particles" id="globalParticles"></div>
 
 <section class="hero">
-    <!-- ВРЕМЯ СПРАВА СВЕРХУ (Выше кнопок) -->
+    <!-- ВРЕМЯ СПРАВА СВЕРХУ -->
     <div class="msk-time-badge-corner">
         <span>🕒</span>
         <span class="time-value" id="currentTime">--:--</span>
@@ -384,7 +605,7 @@
     </div>
 </section>
 
-<!-- === SYSTEM INFO PANEL (Protected Partner Block) === -->
+<!-- === PARTNER BLOCK === -->
 <div class="sys-wrapper">
     <div class="sys-brand-box">
         <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Icon">
@@ -393,7 +614,6 @@
     
     <div style="display:flex; flex-direction:column; align-items:flex-end;">
         <div class="sys-links-area">
-            <!-- Ссылки используют onclick для защиты, но выглядят как оригинал -->
             <span class="sys-nav-item" onclick="openPartnerLink('reg')">Регистрация</span>
             <span class="sys-nav-item" onclick="openPartnerLink('bonus')">Бонус 5 000 ₽</span>
             <span class="sys-nav-item" onclick="openPartnerLink('freebets')">5 Фрибетов</span>
@@ -403,23 +623,27 @@
 </div>
 
 <div id="page-content">
-    <!-- Вкладки удалены -->
-    
     <div class="mf-container">
         <div class="mf-header">
             <div class="live-dot"></div> 
             <span>Money Flow (Football 1X2)</span>
         </div>
         
-        <!-- IFRAME TABLE START -->
-        <iframe 
-            src="https://arbworld.net/for-webmasters/moneyway/football-1-x-2.php" 
-            class="arbworld-frame"
-            style="border:none;"
-            sandbox="allow-same-origin allow-scripts allow-forms">
-        </iframe>
-        <!-- IFRAME TABLE END -->
-        
+        <!-- СТАТУС ОБНОВЛЕНИЯ (упрощённый) -->
+        <div class="update-status">
+            <span class="live">● LIVE</span>
+            <span>Событий: <span class="count" id="eventCount">0</span></span>
+        </div>
+
+        <!-- ТАБЛИЦА -->
+        <div class="data-table-wrapper">
+            <div id="tableContainer">
+                <div class="loading-state">
+                    <div class="spinner"></div>
+                    <div>Загрузка данных...</div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -452,7 +676,6 @@
           <span style="font-size: 28px;">🏆</span>
           <h3 style="color: #d2ff40; font-size: 20px; font-weight: 700; margin: 0;">SETTRUE</h3>
         </div>
-        <!-- Логотип Pari в футере -->
         <div class="pari-footer-logo-glow">
             <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari Partner">
         </div>
@@ -476,7 +699,7 @@
       
       <div>
         <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">СТАТИСТИКА</h4>
-        <p style="color: #999; font-size: 13px; margin-bottom: 6px;">📈 Обновление: <span style="color: #d2ff40;">Ежедневно</span></p>
+        <p style="color: #999; font-size: 13px; margin-bottom: 6px;">📈 Обновление: <span style="color: #d2ff40;">Каждые 30 мин</span></p>
         <p style="color: #999; font-size: 13px; margin-bottom: 6px;">⚽ Спорт: <span style="color: #d2ff40;">4+</span></p>
         <p style="color: #999; font-size: 13px;">📊 Точность: <span style="color: #d2ff40;">~72%</span></p>
       </div>
@@ -490,163 +713,305 @@
     
     <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); gap: 10px;">
       <p style="color: #555; font-size: 11px; margin: 0;">© 2026 SetTrue. Все права защищены.</p>
-      <!-- Ссылки Privacy/Terms удалены по требованию -->
     </div>
   </div>
 </footer>
 
 <script>
-    // === СКРИПТ ВРЕМЕНИ МСК ===
-    function updateMSKTime() {
-        const now = new Date();
-        const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
-        const mskOffset = 3 * 3600000; 
-        const mskTime = new Date(utcMs + mskOffset);
-        const hours = String(mskTime.getHours()).padStart(2, '0');
-        const minutes = String(mskTime.getMinutes()).padStart(2, '0');
-        document.getElementById('currentTime').textContent = `${hours}:${minutes}`;
+// ============================================================
+// 1. ВРЕМЯ МСК
+// ============================================================
+function updateMSKTime() {
+    const now = new Date();
+    const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const mskOffset = 3 * 3600000; 
+    const mskTime = new Date(utcMs + mskOffset);
+    const hours = String(mskTime.getHours()).padStart(2, '0');
+    const minutes = String(mskTime.getMinutes()).padStart(2, '0');
+    document.getElementById('currentTime').textContent = `${hours}:${minutes}`;
+}
+setInterval(updateMSKTime, 1000);
+updateMSKTime();
+
+// ============================================================
+// 2. ПАРТНЁРСКИЕ ССЫЛКИ
+// ============================================================
+function openPartnerLink(type) {
+    const links = {
+        reg: 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate',
+        bonus: 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate',
+        freebets: 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate'
+    };
+    const url = links[type];
+    if (url) {
+        if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'pari_' + type);
+        window.open(url, '_blank');
     }
-    setInterval(updateMSKTime, 1000);
-    updateMSKTime();
+}
 
-    // === ЛОГИКА ОТКРЫТИЯ ССЫЛОК ПАРТНЕРА (ЗАЩИТА) ===
-    function openPartnerLink(type) {
-        let url = '';
-        // Ссылки хранятся в JS, чтобы AdBlock не скрывал кнопки при загрузке страницы
-        if (type === 'reg') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate';
-        if (type === 'bonus') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate';
-        if (type === 'freebets') url = 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate';
-        
-        if (url) {
-            if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'pari_' + type);
-            window.open(url, '_blank');
-        }
+// ============================================================
+// 3. DONATE MODAL
+// ============================================================
+function openDonateModal() {
+    document.getElementById('donateModal').classList.add('open');
+    if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'open_donate_modal');
+}
+function closeDonateModal(e) {
+    if (!e || e.target.id === 'donateModal' || e.target.classList.contains('donate-close')) {
+        document.getElementById('donateModal').classList.remove('open');
     }
+}
 
-    // === ЛОГИКА МОДАЛЬНОГО ОКНА ===
-    function openDonateModal() {
-        const modal = document.getElementById('donateModal');
-        modal.classList.add('open');
-        if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'open_donate_modal');
-    }
-    function closeDonateModal(e) {
-        if (!e || e.target.id === 'donateModal' || e.target.classList.contains('donate-close')) {
-            document.getElementById('donateModal').classList.remove('open');
-        }
-    }
+// ============================================================
+// 4. ЗАГРУЗКА ДАННЫХ ИЗ GOOGLE APPS SCRIPT
+// ============================================================
+const API_URL = 'https://script.google.com/macros/s/AKfycbw7xyiIvmgKeJV3Pz8X1OaUx6Qp8-iO44Z7uE9H0JzXXbDWHfFL9OhlFsTLVrz0iNGikQ/exec';
 
-    // === МАКСИМАЛЬНАЯ ЗАЩИТА ОТ КОПИРОВАНИЯ ===
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        return false;
-    }, true);
+// Флаг, чтобы предотвратить повторные загрузки
+let isLoading = false;
+let dataLoaded = false;
 
-    document.addEventListener('keydown', function(e) {
-        const key = e.key.toLowerCase();
-        const code = e.code;
-        const isCtrl = e.ctrlKey;
-        const isShift = e.shiftKey;
-        const isAlt = e.altKey;
-
-        if (e.keyCode === 123) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        }
-
-        if (isCtrl && !isShift && !isAlt && (code === 'KeyU' || key === 'u')) {
-            e.preventDefault();
-            e.stopPropagation();
-            e.stopImmediatePropagation();
-            return false;
-        }
-
-        if (isCtrl && isShift && (code === 'KeyI' || key === 'i')) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        }
-
-        if (isCtrl && isShift && (code === 'KeyJ' || key === 'j')) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        }
-
-        if (isCtrl && isShift && (code === 'KeyC' || key === 'c')) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        }
-
-        if (isCtrl && (code === 'KeyS' || key === 's')) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        }
-        
-        if (isCtrl && (code === 'KeyP' || key === 'p')) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        }
-    }, true);
-
-    setInterval(function() {
-        var start = performance.now();
-        debugger;
-        var end = performance.now();
-        if (end - start > 100) {
-            console.clear();
-            console.log("%cStop!", "color: red; font-size: 50px; font-weight: bold;");
-        }
-    }, 1000);
-
-    // === ОСНОВНОЙ ФУНКЦИОНАЛ САЙТА ===
+function loadData() {
+    // Если данные уже загружены или идёт загрузка — не делаем ничего
+    if (isLoading || dataLoaded) return;
     
-    const navBtns = document.querySelectorAll('.nav-btn');
-    navBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const page = btn.getAttribute('data-page');
-            const link = btn.getAttribute('data-link');
-            if(page === 'home' || page === 'predictions' || page === 'top' || page === 'matches' || page === 'cs2') {
-                window.location.href = link;
-            } else if(page === 'ai') {
-                alert('Раздел АИ в разработке');
-            } else if(page === 'cashflow') {
-                // текущая страница
+    isLoading = true;
+    const container = document.getElementById('tableContainer');
+    
+    // Показываем спиннер только при первой загрузке
+    if (!dataLoaded) {
+        container.innerHTML = `
+            <div class="loading-state">
+                <div class="spinner"></div>
+                <div>Загрузка данных...</div>
+            </div>
+        `;
+    }
+
+    fetch(API_URL)
+        .then(response => {
+            if (!response.ok) throw new Error('Ошибка сети: ' + response.status);
+            return response.json();
+        })
+        .then(data => {
+            if (!data.success) throw new Error('API вернул ошибку');
+            renderTable(data);
+            dataLoaded = true;
+            isLoading = false;
+        })
+        .catch(error => {
+            console.error('Ошибка загрузки:', error);
+            if (!dataLoaded) {
+                container.innerHTML = `
+                    <div class="no-data">
+                        ❌ Не удалось загрузить данные<br>
+                        <small style="color:#555;">${error.message}</small>
+                    </div>
+                `;
             }
+            isLoading = false;
         });
-    });
+}
 
-    function createGlobalParticles() {
-        const container = document.getElementById('globalParticles');
-        if (!container) return;
-        const particleCount = 100;
-        container.innerHTML = '';
-        for (let i = 0; i < particleCount; i++) {
-            const p = document.createElement('div');
-            p.classList.add('global-particle');
-            const size = Math.random() * 6 + 2;
-            p.style.width = size + 'px'; p.style.height = size + 'px';
-            p.style.left = Math.random() * 100 + '%';
-            p.style.animationDuration = (Math.random() * 12 + 8) + 's';
-            p.style.animationDelay = (Math.random() * 10) + 's';
-            p.style.background = `radial-gradient(circle, rgba(204, 255, 0, ${Math.random() * 0.6 + 0.2}), rgba(204, 255, 0, 0))`;
-            p.style.setProperty('--shift', ((Math.random() - 0.5) * 100) + 'px');
-            container.appendChild(p);
-        }
+// ============================================================
+// 5. РЕНДЕРИНГ ТАБЛИЦЫ (с сортировкой по сигналу)
+// ============================================================
+function renderTable(data) {
+    const container = document.getElementById('tableContainer');
+    const events = data.data || [];
+    
+    // Обновляем статус
+    document.getElementById('eventCount').textContent = events.length;
+
+    if (events.length === 0) {
+        container.innerHTML = `
+            <div class="no-data">
+                📭 Нет данных для отображения
+            </div>
+        `;
+        return;
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-        createGlobalParticles();
-        // loadData больше не нужен, так как iframe загружается сам
+    // --- СОРТИРОВКА: чем больше сигнал, тем выше ---
+    // Вычисляем максимальный сигнал для каждого события
+    const sortedEvents = events.map(event => {
+        const home = event.odds.home;
+        const draw = event.odds.draw;
+        const away = event.odds.away;
+        // Берём максимальный сигнал из трёх исходов (если сигнал null — считаем 0)
+        const maxSignal = Math.max(
+            home.signal || 0,
+            draw.signal || 0,
+            away.signal || 0
+        );
+        return { ...event, maxSignal };
     });
-    
-    window.addEventListener('resize', () => {
-        clearTimeout(window.resizeTimer);
-        window.resizeTimer = setTimeout(createGlobalParticles, 250);
+
+    // Сортируем по убыванию сигнала
+    sortedEvents.sort((a, b) => b.maxSignal - a.maxSignal);
+
+    let html = `
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Дата / Матч</th>
+                    <th>1</th>
+                    <th>X</th>
+                    <th>2</th>
+                    <th class="col-volume">Объём</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
+    sortedEvents.forEach(event => {
+        const home = event.odds.home;
+        const draw = event.odds.draw;
+        const away = event.odds.away;
+        
+        const homeSignal = home.signal !== null && home.signal !== '' ? home.signal : '—';
+        const drawSignal = draw.signal !== null && draw.signal !== '' ? draw.signal : '—';
+        const awaySignal = away.signal !== null && away.signal !== '' ? away.signal : '—';
+        
+        const homeChange = home.change || '';
+        const drawChange = draw.change || '';
+        const awayChange = away.change || '';
+        
+        const homeChangeClass = homeChange.includes('▼') ? 'down' : (homeChange.includes('▲') ? 'up' : '');
+        const drawChangeClass = drawChange.includes('▼') ? 'down' : (drawChange.includes('▲') ? 'up' : '');
+        const awayChangeClass = awayChange.includes('▼') ? 'down' : (awayChange.includes('▲') ? 'up' : '');
+        
+        const volume = event.volume ? '£' + Number(event.volume).toLocaleString() : '—';
+
+        html += `
+            <tr>
+                <td class="col-event">
+                    <div class="ev-stack">
+                        <div class="ev-top">
+                            <span class="ev-date">${event.date || ''}</span>
+                            <span class="ev-league">${event.league || ''}</span>
+                        </div>
+                        <div class="ev-match">
+                            <span class="ev-home">${event.home || ''}</span>
+                            <span class="ev-dash">—</span>
+                            <span class="ev-away">${event.away || ''}</span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="odds-cell">
+                        <div class="odds-value">${home.value || ''}</div>
+                        <div class="odds-signal">сигнал <strong>${homeSignal}</strong></div>
+                        <div class="odds-change ${homeChangeClass}">${homeChange}</div>
+                        <div class="odds-money">${home.money || ''}</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="odds-cell">
+                        <div class="odds-value">${draw.value || ''}</div>
+                        <div class="odds-signal">сигнал <strong>${drawSignal}</strong></div>
+                        <div class="odds-change ${drawChangeClass}">${drawChange}</div>
+                        <div class="odds-money">${draw.money || ''}</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="odds-cell">
+                        <div class="odds-value">${away.value || ''}</div>
+                        <div class="odds-signal">сигнал <strong>${awaySignal}</strong></div>
+                        <div class="odds-change ${awayChangeClass}">${awayChange}</div>
+                        <div class="odds-money">${away.money || ''}</div>
+                    </div>
+                </td>
+                <td class="col-volume">
+                    <div class="volume-value">${volume}</div>
+                    <div class="volume-label">объём</div>
+                </td>
+            </tr>
+        `;
     });
+
+    html += `
+            </tbody>
+        </table>
+    `;
+
+    container.innerHTML = html;
+}
+
+// ============================================================
+// 6. АВТООБНОВЛЕНИЕ (каждые 30 минут, только если вкладка активна)
+// ============================================================
+let autoUpdateInterval = null;
+
+function startAutoUpdate() {
+    if (autoUpdateInterval) clearInterval(autoUpdateInterval);
+    autoUpdateInterval = setInterval(() => {
+        // Обновляем данные, только если вкладка видима
+        if (!document.hidden) {
+            // Сбрасываем флаг загрузки, чтобы можно было обновить
+            dataLoaded = false;
+            loadData();
+        }
+    }, 30 * 60 * 1000); // 30 минут
+}
+
+// ============================================================
+// 7. ЗАПУСК
+// ============================================================
+document.addEventListener('DOMContentLoaded', function() {
+    loadData();
+    startAutoUpdate();
+});
+
+// ============================================================
+// 8. ГЛОБАЛЬНЫЕ ЧАСТИЦЫ
+// ============================================================
+function createGlobalParticles() {
+    const container = document.getElementById('globalParticles');
+    if (!container) return;
+    const particleCount = 100;
+    container.innerHTML = '';
+    for (let i = 0; i < particleCount; i++) {
+        const p = document.createElement('div');
+        p.classList.add('global-particle');
+        const size = Math.random() * 6 + 2;
+        p.style.width = size + 'px'; p.style.height = size + 'px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDuration = (Math.random() * 12 + 8) + 's';
+        p.style.animationDelay = (Math.random() * 10) + 's';
+        p.style.background = `radial-gradient(circle, rgba(204, 255, 0, ${Math.random() * 0.6 + 0.2}), rgba(204, 255, 0, 0))`;
+        p.style.setProperty('--shift', ((Math.random() - 0.5) * 100) + 'px');
+        container.appendChild(p);
+    }
+}
+createGlobalParticles();
+
+// ============================================================
+// 9. ЗАЩИТА ОТ КОПИРОВАНИЯ
+// ============================================================
+document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; }, true);
+document.addEventListener('keydown', function(e) {
+    const key = e.key.toLowerCase();
+    const code = e.code;
+    const isCtrl = e.ctrlKey;
+    const isShift = e.shiftKey;
+
+    if (e.keyCode === 123) { e.preventDefault(); e.stopPropagation(); return false; }
+    if (isCtrl && !isShift && (code === 'KeyU' || key === 'u')) { e.preventDefault(); return false; }
+    if (isCtrl && isShift && (code === 'KeyI' || key === 'i' || code === 'KeyJ' || key === 'j' || code === 'KeyC' || key === 'c')) { e.preventDefault(); return false; }
+    if (isCtrl && (code === 'KeyS' || key === 's' || code === 'KeyP' || key === 'p')) { e.preventDefault(); return false; }
+}, true);
+
+// Анти-дебаггер
+setInterval(function() {
+    var start = performance.now();
+    debugger;
+    var end = performance.now();
+    if (end - start > 100) {
+        console.clear();
+        console.log("%cStop!", "color: red; font-size: 50px; font-weight: bold;");
+    }
+}, 1000);
 </script>
 </body>
 </html>
