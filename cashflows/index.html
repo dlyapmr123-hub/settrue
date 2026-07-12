@@ -17,12 +17,10 @@
     <meta name="yandex-verification" content="0ac8a3221431959f" />
     <meta charset="UTF-8">
     
-    <!-- ПРИНУДИТЕЛЬНАЯ ПК-ВЕРСИЯ НА ТЕЛЕФОНАХ -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="HandheldFriendly" content="False">
     <meta name="MobileOptimized" content="width">
     
-    <!-- === SEO META TAGS === -->
     <title>SetTrue — Денежные потоки | Куда ставят деньги в спорте</title>
     <meta name="description" content="Денежные потоки на спорт в реальном времени. Узнайте, куда ставят большие деньги: футбол, теннис, баскетбол. Анализ ставок, объемы рынка, движение коэффициентов на SetTrue.">
     <meta name="keywords" content="прогнозы на спорт, прогнозы на футбол, прогнозы на теннис, прогнозы на баскетбол, денежные потоки, куда ставят деньги, деньги спорт, ставки на спорт, settrue, trueset, трусет, объем ставок, движение денег, анализ рынка ставок, SetTrue, TrueSet">
@@ -32,7 +30,6 @@
     <link rel="canonical" href="https://settrue.ru/cashflows/">
     <meta name="theme-color" content="#050507">
     
-    <!-- === OPEN GRAPH === -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="SetTrue — Денежные потоки и объемы ставок">
     <meta property="og:description" content="Следите за большими деньгами в спорте. Реальные объемы ставок на футбол, теннис и баскетбол.">
@@ -40,7 +37,6 @@
     <meta property="og:url" content="https://settrue.ru/cashflows/">
     <meta property="og:site_name" content="SetTrue">
     
-    <!-- === FAVICON === -->
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
@@ -79,7 +75,6 @@
 
         .hero { position: relative; width: 100%; min-height: 28vh; background: transparent; padding: 1rem 1.5rem 2rem; }
         
-        /* ВРЕМЯ СПРАВА СВЕРХУ */
         .msk-time-badge-corner {
             position: absolute;
             top: 20px;
@@ -578,7 +573,6 @@
 <div class="global-particles" id="globalParticles"></div>
 
 <section class="hero">
-    <!-- ВРЕМЯ СПРАВА СВЕРХУ -->
     <div class="msk-time-badge-corner">
         <span>🕒</span>
         <span class="time-value" id="currentTime">--:--</span>
@@ -629,13 +623,11 @@
             <span>Money Flow (Football 1X2)</span>
         </div>
         
-        <!-- СТАТУС ОБНОВЛЕНИЯ (упрощённый) -->
         <div class="update-status">
             <span class="live">● LIVE</span>
             <span>Событий: <span class="count" id="eventCount">0</span></span>
         </div>
 
-        <!-- ТАБЛИЦА -->
         <div class="data-table-wrapper">
             <div id="tableContainer">
                 <div class="loading-state">
@@ -719,6 +711,35 @@
 
 <script>
 // ============================================================
+// 0. НАВИГАЦИЯ ПО СТРАНИЦАМ (добавлено)
+// ============================================================
+
+function navigateTo(page, link) {
+    if (page === 'home' || page === 'predictions' || page === 'matches' || page === 'cashflow' || page === 'cs2') {
+        window.location.href = link;
+    } else if (page === 'ai') {
+        alert('Раздел в разработке');
+    }
+}
+
+// Обработчики для кнопок навигации
+document.addEventListener('DOMContentLoaded', function() {
+    const navBtns = document.querySelectorAll('.nav-btn');
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const page = this.getAttribute('data-page');
+            const link = this.getAttribute('data-link');
+            if (page && link) {
+                navigateTo(page, link);
+            } else if (page === 'cashflow') {
+                // Мы уже на этой странице, ничего не делаем
+                return;
+            }
+        });
+    });
+});
+
+// ============================================================
 // 1. ВРЕМЯ МСК
 // ============================================================
 function updateMSKTime() {
@@ -767,18 +788,15 @@ function closeDonateModal(e) {
 // ============================================================
 const API_URL = 'https://script.google.com/macros/s/AKfycbw7xyiIvmgKeJV3Pz8X1OaUx6Qp8-iO44Z7uE9H0JzXXbDWHfFL9OhlFsTLVrz0iNGikQ/exec';
 
-// Флаг, чтобы предотвратить повторные загрузки
 let isLoading = false;
 let dataLoaded = false;
 
 function loadData() {
-    // Если данные уже загружены или идёт загрузка — не делаем ничего
     if (isLoading || dataLoaded) return;
     
     isLoading = true;
     const container = document.getElementById('tableContainer');
     
-    // Показываем спиннер только при первой загрузке
     if (!dataLoaded) {
         container.innerHTML = `
             <div class="loading-state">
@@ -820,7 +838,6 @@ function renderTable(data) {
     const container = document.getElementById('tableContainer');
     const events = data.data || [];
     
-    // Обновляем статус
     document.getElementById('eventCount').textContent = events.length;
 
     if (events.length === 0) {
@@ -832,13 +849,10 @@ function renderTable(data) {
         return;
     }
 
-    // --- СОРТИРОВКА: чем больше сигнал, тем выше ---
-    // Вычисляем максимальный сигнал для каждого события
     const sortedEvents = events.map(event => {
         const home = event.odds.home;
         const draw = event.odds.draw;
         const away = event.odds.away;
-        // Берём максимальный сигнал из трёх исходов (если сигнал null — считаем 0)
         const maxSignal = Math.max(
             home.signal || 0,
             draw.signal || 0,
@@ -847,7 +861,6 @@ function renderTable(data) {
         return { ...event, maxSignal };
     });
 
-    // Сортируем по убыванию сигнала
     sortedEvents.sort((a, b) => b.maxSignal - a.maxSignal);
 
     let html = `
@@ -939,20 +952,18 @@ function renderTable(data) {
 }
 
 // ============================================================
-// 6. АВТООБНОВЛЕНИЕ (каждые 30 минут, только если вкладка активна)
+// 6. АВТООБНОВЛЕНИЕ (каждые 30 минут)
 // ============================================================
 let autoUpdateInterval = null;
 
 function startAutoUpdate() {
     if (autoUpdateInterval) clearInterval(autoUpdateInterval);
     autoUpdateInterval = setInterval(() => {
-        // Обновляем данные, только если вкладка видима
         if (!document.hidden) {
-            // Сбрасываем флаг загрузки, чтобы можно было обновить
             dataLoaded = false;
             loadData();
         }
-    }, 30 * 60 * 1000); // 30 минут
+    }, 30 * 60 * 1000);
 }
 
 // ============================================================
@@ -1002,7 +1013,6 @@ document.addEventListener('keydown', function(e) {
     if (isCtrl && (code === 'KeyS' || key === 's' || code === 'KeyP' || key === 'p')) { e.preventDefault(); return false; }
 }, true);
 
-// Анти-дебаггер
 setInterval(function() {
     var start = performance.now();
     debugger;
