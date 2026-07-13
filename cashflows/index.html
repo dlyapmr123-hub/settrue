@@ -268,36 +268,79 @@
             .msk-time-badge-corner { position: static; margin-bottom: 15px; display: flex; justify-content: center; width: 100%; }
         }
 
-        /* === КОНТЕЙНЕР ТАБЛИЦЫ === */
+        /* === КОНТЕЙНЕР === */
         .mf-container { 
             max-width: 1200px; 
             margin: 0 auto; 
-            padding: 0 20px; 
+            padding: 0 20px 40px; 
         }
-        
-        .mf-header { 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            margin-bottom: 25px; 
-            font-size: 1.2rem; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            color: #fff; 
-            justify-content: center;
-        }
-        
-        .live-dot { 
-            width: 8px; 
-            height: 8px; 
-            background: #39ff14; 
-            border-radius: 50%; 
-            box-shadow: 0 0 10px #39ff14; 
-            animation: pulse 2s infinite; 
-        }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-        /* === СТИЛИ ТАБЛИЦЫ === */
+        /* === ВКЛАДКИ === */
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 15px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: #666;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px 28px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+            position: relative;
+        }
+
+        .tab-btn:hover {
+            color: #aaa;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .tab-btn.active {
+            color: #ccff00;
+            background: rgba(204, 255, 0, 0.08);
+        }
+
+        .tab-btn .badge {
+            display: inline-block;
+            background: rgba(204, 255, 0, 0.12);
+            color: #ccff00;
+            font-size: 10px;
+            padding: 1px 10px;
+            border-radius: 20px;
+            margin-left: 8px;
+            font-weight: 700;
+        }
+
+        .tab-btn.active .badge {
+            background: rgba(204, 255, 0, 0.2);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeInTab 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeInTab {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* === СТИЛИ ТАБЛИЦ === */
         .data-table-wrapper {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 16px;
@@ -381,13 +424,6 @@
             white-space: nowrap;
         }
 
-        .ev-flag {
-            width: 18px;
-            height: 11px;
-            object-fit: cover;
-            border-radius: 2px;
-        }
-
         .ev-league {
             color: #666;
             font-size: 10px;
@@ -441,19 +477,6 @@
             font-weight: 700;
         }
 
-        .odds-change {
-            font-size: 10px;
-            font-weight: 600;
-        }
-
-        .odds-change.down {
-            color: #ff6b6b;
-        }
-
-        .odds-change.up {
-            color: #51cf66;
-        }
-
         .odds-money {
             font-size: 10px;
             color: #666;
@@ -477,12 +500,12 @@
             letter-spacing: 0.5px;
         }
 
-        /* Статус обновления (упрощённый) */
+        /* Статус обновления */
         .update-status {
             text-align: center;
             font-size: 11px;
             color: #555;
-            padding: 6px 0 10px;
+            padding: 6px 0 12px;
             font-family: 'Inter', sans-serif;
         }
 
@@ -526,6 +549,32 @@
             font-size: 14px;
         }
 
+        .refresh-btn-sm {
+            background: rgba(204, 255, 0, 0.08);
+            border: 1px solid rgba(204, 255, 0, 0.15);
+            color: #ccff00;
+            padding: 4px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            margin-left: 12px;
+        }
+
+        .refresh-btn-sm:hover {
+            background: rgba(204, 255, 0, 0.15);
+            border-color: #ccff00;
+        }
+
+        /* === СТИЛИ ДЛЯ ПОДСВЕТКИ СИГНАЛОВ === */
+        .signal-level-1 { background: rgba(204, 255, 0, 0.05); color: #ccff00; }
+        .signal-level-2 { background: rgba(204, 255, 0, 0.12); color: #ccff00; font-weight: 600; }
+        .signal-level-3 { background: rgba(204, 255, 0, 0.20); color: #ccff00; font-weight: 700; }
+        .signal-level-4 { background: rgba(204, 255, 0, 0.30); color: #ccff00; font-weight: 800; }
+        .signal-level-5 { background: rgba(204, 255, 0, 0.45); color: #ccff00; font-weight: 900; text-shadow: 0 0 10px rgba(204, 255, 0, 0.4); }
+
         /* === FOOTER === */
         footer { width: 100%; background: rgba(10, 10, 15, 0.9); backdrop-filter: blur(2px); border-top: 1px solid rgba(210, 255, 64, 0.15); margin-top: 0; padding: 40px 20px 20px; font-family: 'Inter', sans-serif; }
         footer a { color: #888; text-decoration: none; transition: color 0.2s; }
@@ -550,6 +599,7 @@
             .odds-value { font-size: 14px; }
             .ev-match { font-size: 11px; }
             .col-event { min-width: 180px; }
+            .tab-btn { font-size: 12px; padding: 8px 16px; }
         }
 
         /* === DONATE MODAL === */
@@ -618,24 +668,53 @@
 
 <div id="page-content">
     <div class="mf-container">
-        <div class="mf-header">
-            <div class="live-dot"></div> 
-            <span>Money Flow (Football 1X2)</span>
-        </div>
         
-        <div class="update-status">
-            <span class="live">● LIVE</span>
-            <span>Событий: <span class="count" id="eventCount">0</span></span>
+        <!-- === ВКЛАДКИ === -->
+        <div class="tab-container" id="tabContainer">
+            <button class="tab-btn active" data-tab="signals" onclick="switchTab('signals')">
+                📊 Сигналы <span class="badge" id="badgeSignals">0</span>
+            </button>
+            <button class="tab-btn" data-tab="football" onclick="switchTab('football')">
+                ⚽ Футбол <span class="badge" id="badgeFootball">0</span>
+            </button>
         </div>
 
-        <div class="data-table-wrapper">
-            <div id="tableContainer">
-                <div class="loading-state">
-                    <div class="spinner"></div>
-                    <div>Загрузка данных...</div>
+        <!-- === ВКЛАДКА: СИГНАЛЫ (ВАША ОРИГИНАЛЬНАЯ ТАБЛИЦА) === -->
+        <div class="tab-content active" id="tabSignals">
+            <div class="update-status">
+                <span class="live">● LIVE</span>
+                <span>Событий: <span class="count" id="signalsCount">0</span></span>
+                <span style="margin-left:15px;">⏱️ <span id="signalsTime">--:--</span></span>
+                <button class="refresh-btn-sm" onclick="refreshSignals()">⟳ Обновить</button>
+            </div>
+            <div class="data-table-wrapper">
+                <div id="signalsContainer">
+                    <div class="loading-state">
+                        <div class="spinner"></div>
+                        <div>Загрузка сигналов...</div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- === ВКЛАДКА: ФУТБОЛ (НОВАЯ ТАБЛИЦА) === -->
+        <div class="tab-content" id="tabFootball">
+            <div class="update-status">
+                <span class="live">● LIVE</span>
+                <span>Событий: <span class="count" id="footballCount">0</span></span>
+                <span style="margin-left:15px;">⏱️ <span id="footballTime">--:--</span></span>
+                <button class="refresh-btn-sm" onclick="refreshFootball()">⟳ Обновить</button>
+            </div>
+            <div class="data-table-wrapper">
+                <div id="footballContainer">
+                    <div class="loading-state">
+                        <div class="spinner"></div>
+                        <div>Загрузка футбольных данных...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -711,18 +790,15 @@
 
 <script>
 // ============================================================
-// 0. НАВИГАЦИЯ ПО СТРАНИЦАМ (добавлено)
+// 0. НАВИГАЦИЯ ПО СТРАНИЦАМ
 // ============================================================
 
 function navigateTo(page, link) {
     if (page === 'home' || page === 'predictions' || page === 'matches' || page === 'cashflow' || page === 'cs2') {
         window.location.href = link;
-    } else if (page === 'ai') {
-        alert('Раздел в разработке');
     }
 }
 
-// Обработчики для кнопок навигации
 document.addEventListener('DOMContentLoaded', function() {
     const navBtns = document.querySelectorAll('.nav-btn');
     navBtns.forEach(btn => {
@@ -731,9 +807,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const link = this.getAttribute('data-link');
             if (page && link) {
                 navigateTo(page, link);
-            } else if (page === 'cashflow') {
-                // Мы уже на этой странице, ничего не делаем
-                return;
             }
         });
     });
@@ -784,84 +857,218 @@ function closeDonateModal(e) {
 }
 
 // ============================================================
-// 4. ЗАГРУЗКА ДАННЫХ ИЗ GOOGLE APPS SCRIPT
+// 4. ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК
 // ============================================================
-const API_URL = 'https://script.google.com/macros/s/AKfycbw7xyiIvmgKeJV3Pz8X1OaUx6Qp8-iO44Z7uE9H0JzXXbDWHfFL9OhlFsTLVrz0iNGikQ/exec';
-
-let isLoading = false;
-let dataLoaded = false;
-
-function loadData() {
-    if (isLoading || dataLoaded) return;
+function switchTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
     
-    isLoading = true;
-    const container = document.getElementById('tableContainer');
-    
-    if (!dataLoaded) {
-        container.innerHTML = `
-            <div class="loading-state">
-                <div class="spinner"></div>
-                <div>Загрузка данных...</div>
-            </div>
-        `;
-    }
+    document.getElementById('tab' + tabId.charAt(0).toUpperCase() + tabId.slice(1)).classList.add('active');
+    document.querySelector(`.tab-btn[data-tab="${tabId}"]`).classList.add('active');
+}
 
-    fetch(API_URL)
+// ============================================================
+// 5. API НАСТРОЙКИ
+// ============================================================
+// ВАШ ОРИГИНАЛЬНЫЙ API (Сигналы) - НЕ МЕНЯТЬ!
+const SIGNALS_API = 'https://script.google.com/macros/s/AKfycbw7xyiIvmgKeJV3Pz8X1OaUx6Qp8-iO44Z7uE9H0JzXXbDWHfFL9OhlFsTLVrz0iNGikQ/exec';
+
+// НОВЫЙ API (Футбол)
+const FOOTBALL_API = 'https://script.google.com/macros/s/AKfycbx3gwPpCEyxZCbc8nh1rq6bf7gPztOWRoMbgE506I0M33P4hI4fgXktKaya8jOj5zYm/exec';
+
+// ============================================================
+// 6. ФУНКЦИЯ ДЛЯ ОПРЕДЕЛЕНИЯ УРОВНЯ СИГНАЛА (цветовая градация)
+// ============================================================
+function getSignalLevel(signal) {
+    const num = parseFloat(signal);
+    if (isNaN(num) || num === 0) return '';
+    if (num >= 20) return 'signal-level-5';
+    if (num >= 15) return 'signal-level-4';
+    if (num >= 10) return 'signal-level-3';
+    if (num >= 5) return 'signal-level-2';
+    return 'signal-level-1';
+}
+
+// ============================================================
+// 7. ТАБЛИЦА "СИГНАЛЫ" - ВАША ОРИГИНАЛЬНАЯ С ЦВЕТОВОЙ ГРАДАЦИЕЙ
+// ============================================================
+function loadSignalsData() {
+    const container = document.getElementById('signalsContainer');
+    
+    container.innerHTML = `
+        <div class="loading-state">
+            <div class="spinner"></div>
+            <div>Загрузка сигналов...</div>
+        </div>
+    `;
+
+    fetch(SIGNALS_API)
         .then(response => {
             if (!response.ok) throw new Error('Ошибка сети: ' + response.status);
             return response.json();
         })
         .then(data => {
-            if (!data.success) throw new Error('API вернул ошибку');
-            renderTable(data);
-            dataLoaded = true;
-            isLoading = false;
+            if (!data.success) throw new Error(data.error || 'Ошибка API');
+            renderSignalsTable(data);
         })
         .catch(error => {
-            console.error('Ошибка загрузки:', error);
-            if (!dataLoaded) {
-                container.innerHTML = `
-                    <div class="no-data">
-                        ❌ Не удалось загрузить данные<br>
-                        <small style="color:#555;">${error.message}</small>
-                    </div>
-                `;
-            }
-            isLoading = false;
+            console.error('Ошибка загрузки сигналов:', error);
+            container.innerHTML = `
+                <div class="no-data">
+                    ❌ Не удалось загрузить данные<br>
+                    <small style="color:#555;">${error.message}</small>
+                    <br><br>
+                    <button onclick="loadSignalsData()" style="background:rgba(204,255,0,0.1);border:1px solid #ccff00;color:#ccff00;padding:8px 20px;border-radius:8px;cursor:pointer;">Повторить</button>
+                </div>
+            `;
         });
 }
 
-// ============================================================
-// 5. РЕНДЕРИНГ ТАБЛИЦЫ (с сортировкой по сигналу)
-// ============================================================
-function renderTable(data) {
-    const container = document.getElementById('tableContainer');
+function renderSignalsTable(data) {
+    const container = document.getElementById('signalsContainer');
     const events = data.data || [];
     
-    document.getElementById('eventCount').textContent = events.length;
+    document.getElementById('signalsCount').textContent = events.length;
+    document.getElementById('badgeSignals').textContent = events.length;
+    document.getElementById('signalsTime').textContent = new Date(data.timestamp).toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
 
     if (events.length === 0) {
-        container.innerHTML = `
-            <div class="no-data">
-                📭 Нет данных для отображения
-            </div>
-        `;
+        container.innerHTML = `<div class="no-data">📭 Нет сигналов для отображения</div>`;
         return;
     }
 
-    const sortedEvents = events.map(event => {
+    let html = `
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Дата / Матч</th>
+                    <th>1</th>
+                    <th>X</th>
+                    <th>2</th>
+                    <th class="col-volume">Объём</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
+    events.forEach(event => {
         const home = event.odds.home;
         const draw = event.odds.draw;
         const away = event.odds.away;
-        const maxSignal = Math.max(
-            home.signal || 0,
-            draw.signal || 0,
-            away.signal || 0
-        );
-        return { ...event, maxSignal };
+        
+        const volume = event.volume ? '£' + Number(event.volume).toLocaleString() : '—';
+        
+        // Определяем классы для подсветки
+        const homeClass = getSignalLevel(home.signal);
+        const drawClass = getSignalLevel(draw.signal);
+        const awayClass = getSignalLevel(away.signal);
+
+        html += `
+            <tr>
+                <td class="col-event">
+                    <div class="ev-stack">
+                        <div class="ev-top">
+                            <span class="ev-date">${event.date || ''}</span>
+                            <span class="ev-league">${event.league || ''}</span>
+                        </div>
+                        <div class="ev-match">
+                            <span class="ev-home">${event.home || ''}</span>
+                            <span class="ev-dash">—</span>
+                            <span class="ev-away">${event.away || ''}</span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="odds-cell">
+                        <div class="odds-value">${home.value || ''}</div>
+                        <div class="odds-signal ${homeClass}">${home.signal || '0'}</div>
+                        <div class="odds-money">${home.money || ''}</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="odds-cell">
+                        <div class="odds-value">${draw.value || ''}</div>
+                        <div class="odds-signal ${drawClass}">${draw.signal || '0'}</div>
+                        <div class="odds-money">${draw.money || ''}</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="odds-cell">
+                        <div class="odds-value">${away.value || ''}</div>
+                        <div class="odds-signal ${awayClass}">${away.signal || '0'}</div>
+                        <div class="odds-money">${away.money || ''}</div>
+                    </div>
+                </td>
+                <td class="col-volume">
+                    <div class="volume-value">${volume}</div>
+                    <div class="volume-label">объём</div>
+                </td>
+            </tr>
+        `;
     });
 
-    sortedEvents.sort((a, b) => b.maxSignal - a.maxSignal);
+    html += `</tbody></table>`;
+    container.innerHTML = html;
+}
+
+function refreshSignals() {
+    loadSignalsData();
+}
+
+// ============================================================
+// 8. ТАБЛИЦА "ФУТБОЛ" - СОРТИРОВКА ПО ОБЪЕМУ (от большего к меньшему)
+// ============================================================
+function loadFootballData() {
+    const container = document.getElementById('footballContainer');
+    
+    container.innerHTML = `
+        <div class="loading-state">
+            <div class="spinner"></div>
+            <div>Загрузка футбольных данных...</div>
+        </div>
+    `;
+
+    fetch(FOOTBALL_API)
+        .then(response => {
+            if (!response.ok) throw new Error('Ошибка сети: ' + response.status);
+            return response.json();
+        })
+        .then(data => {
+            if (!data.success) throw new Error(data.error || 'Ошибка API');
+            renderFootballTable(data);
+        })
+        .catch(error => {
+            console.error('Ошибка загрузки футбола:', error);
+            container.innerHTML = `
+                <div class="no-data">
+                    ❌ Не удалось загрузить данные<br>
+                    <small style="color:#555;">${error.message}</small>
+                    <br><br>
+                    <button onclick="loadFootballData()" style="background:rgba(204,255,0,0.1);border:1px solid #ccff00;color:#ccff00;padding:8px 20px;border-radius:8px;cursor:pointer;">Повторить</button>
+                </div>
+            `;
+        });
+}
+
+function renderFootballTable(data) {
+    const container = document.getElementById('footballContainer');
+    const events = data.data || [];
+    
+    document.getElementById('footballCount').textContent = events.length;
+    document.getElementById('badgeFootball').textContent = events.length;
+    document.getElementById('footballTime').textContent = new Date(data.timestamp).toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+
+    if (events.length === 0) {
+        container.innerHTML = `<div class="no-data">📭 Нет данных для отображения</div>`;
+        return;
+    }
+
+    // СОРТИРОВКА ПО ОБЪЕМУ (от большего к меньшему)
+    const sortedEvents = [...events].sort((a, b) => {
+        const volA = parseFloat(a.volume) || 0;
+        const volB = parseFloat(b.volume) || 0;
+        return volB - volA;
+    });
 
     let html = `
         <table class="data-table">
@@ -881,18 +1088,6 @@ function renderTable(data) {
         const home = event.odds.home;
         const draw = event.odds.draw;
         const away = event.odds.away;
-        
-        const homeSignal = home.signal !== null && home.signal !== '' ? home.signal : '—';
-        const drawSignal = draw.signal !== null && draw.signal !== '' ? draw.signal : '—';
-        const awaySignal = away.signal !== null && away.signal !== '' ? away.signal : '—';
-        
-        const homeChange = home.change || '';
-        const drawChange = draw.change || '';
-        const awayChange = away.change || '';
-        
-        const homeChangeClass = homeChange.includes('▼') ? 'down' : (homeChange.includes('▲') ? 'up' : '');
-        const drawChangeClass = drawChange.includes('▼') ? 'down' : (drawChange.includes('▲') ? 'up' : '');
-        const awayChangeClass = awayChange.includes('▼') ? 'down' : (awayChange.includes('▲') ? 'up' : '');
         
         const volume = event.volume ? '£' + Number(event.volume).toLocaleString() : '—';
 
@@ -914,25 +1109,22 @@ function renderTable(data) {
                 <td>
                     <div class="odds-cell">
                         <div class="odds-value">${home.value || ''}</div>
-                        <div class="odds-signal">сигнал <strong>${homeSignal}</strong></div>
-                        <div class="odds-change ${homeChangeClass}">${homeChange}</div>
-                        <div class="odds-money">${home.money || ''}</div>
+                        <div class="odds-signal"><strong>${home.signal || '0'}%</strong></div>
+                        <div class="odds-money">£${home.money || '0'}</div>
                     </div>
                 </td>
                 <td>
                     <div class="odds-cell">
                         <div class="odds-value">${draw.value || ''}</div>
-                        <div class="odds-signal">сигнал <strong>${drawSignal}</strong></div>
-                        <div class="odds-change ${drawChangeClass}">${drawChange}</div>
-                        <div class="odds-money">${draw.money || ''}</div>
+                        <div class="odds-signal"><strong>${draw.signal || '0'}%</strong></div>
+                        <div class="odds-money">£${draw.money || '0'}</div>
                     </div>
                 </td>
                 <td>
                     <div class="odds-cell">
                         <div class="odds-value">${away.value || ''}</div>
-                        <div class="odds-signal">сигнал <strong>${awaySignal}</strong></div>
-                        <div class="odds-change ${awayChangeClass}">${awayChange}</div>
-                        <div class="odds-money">${away.money || ''}</div>
+                        <div class="odds-signal"><strong>${away.signal || '0'}%</strong></div>
+                        <div class="odds-money">£${away.money || '0'}</div>
                     </div>
                 </td>
                 <td class="col-volume">
@@ -943,16 +1135,16 @@ function renderTable(data) {
         `;
     });
 
-    html += `
-            </tbody>
-        </table>
-    `;
-
+    html += `</tbody></table>`;
     container.innerHTML = html;
 }
 
+function refreshFootball() {
+    loadFootballData();
+}
+
 // ============================================================
-// 6. АВТООБНОВЛЕНИЕ (каждые 30 минут)
+// 9. АВТООБНОВЛЕНИЕ
 // ============================================================
 let autoUpdateInterval = null;
 
@@ -960,22 +1152,30 @@ function startAutoUpdate() {
     if (autoUpdateInterval) clearInterval(autoUpdateInterval);
     autoUpdateInterval = setInterval(() => {
         if (!document.hidden) {
-            dataLoaded = false;
-            loadData();
+            const activeTab = document.querySelector('.tab-content.active');
+            if (activeTab) {
+                const tabId = activeTab.id;
+                if (tabId === 'tabSignals') {
+                    loadSignalsData();
+                } else if (tabId === 'tabFootball') {
+                    loadFootballData();
+                }
+            }
         }
-    }, 30 * 60 * 1000);
+    }, 5 * 60 * 1000);
 }
 
 // ============================================================
-// 7. ЗАПУСК
+// 10. ЗАПУСК
 // ============================================================
 document.addEventListener('DOMContentLoaded', function() {
-    loadData();
+    loadSignalsData();
+    loadFootballData();
     startAutoUpdate();
 });
 
 // ============================================================
-// 8. ГЛОБАЛЬНЫЕ ЧАСТИЦЫ
+// 11. ГЛОБАЛЬНЫЕ ЧАСТИЦЫ
 // ============================================================
 function createGlobalParticles() {
     const container = document.getElementById('globalParticles');
@@ -998,7 +1198,7 @@ function createGlobalParticles() {
 createGlobalParticles();
 
 // ============================================================
-// 9. ЗАЩИТА ОТ КОПИРОВАНИЯ
+// 12. ЗАЩИТА ОТ КОПИРОВАНИЯ
 // ============================================================
 document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; }, true);
 document.addEventListener('keydown', function(e) {
