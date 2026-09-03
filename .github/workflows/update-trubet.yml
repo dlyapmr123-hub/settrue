@@ -2,9 +2,8 @@ name: Обновление данных Трубет
 
 on:
   schedule:
-    # Каждые 15 минут
     - cron: '*/15 * * * *'
-  workflow_dispatch: # Позволяет запустить вручную
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -16,8 +15,11 @@ jobs:
     steps:
       - name: 📥 Клонирование репозитория
         uses: actions/checkout@v4
+        with:
+          # Явно указываем использовать Node.js 24
+          node-version: '24'
       
-      - name: 📥 Загрузка данных из Google Apps Script
+      - name: 📥 Загрузка данных
         run: |
           echo "🔄 Загружаем данные..."
           curl -s "https://script.google.com/macros/s/AKfycbzPwhxFHjpaVNsMtDwWwD1EEj8Ft8n5plE1ADh0WSL5-clpgDrmFb-nmd6KIQ4UKL4/exec" > trubet_data.json
@@ -27,8 +29,6 @@ jobs:
         run: |
           if [ -s trubet_data.json ]; then
             echo "✅ Файл создан: $(wc -c < trubet_data.json) байт"
-            echo "📊 Содержимое:"
-            head -c 200 trubet_data.json
           else
             echo "❌ Файл пустой!"
             exit 1
@@ -44,5 +44,5 @@ jobs:
           else
             git commit -m "🔄 Автообновление данных Трубет $(date '+%Y-%m-%d %H:%M')"
             git push
-            echo "✅ Изменения отправлены в репозиторий"
+            echo "✅ Изменения отправлены"
           fi
