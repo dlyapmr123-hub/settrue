@@ -971,179 +971,215 @@
         });
 
         // ============================================================
-        // 8. API МАТЧЕЙ
-        // ============================================================
-        const API_URL = 'https://script.google.com/macros/s/AKfycbxL0MmOjg_gew24qRo-x7bhj-cb0PZwsH_LslT5ya71U7FH73Gs2XKQdfuKvU734WFH/exec';
-        let cachedMatches = [];
-        const matchElements = {};
+// 8. API МАТЧЕЙ — ЗАГРУЗКА ИЗ ФАЙЛА
+// ============================================================
+let cachedMatches = [];
+const matchElements = {};
 
-        function getMatchId(m) { return m.team1 + '|' + m.team2 + '|' + m.tournament; }
+function getMatchId(m) {
+    return (m.team1 || '') + '|' + (m.team2 || '') + '|' + (m.tournament || '');
+}
 
-        function matchesEqual(a, b) {
-            return a.team1 === b.team1 && a.team2 === b.team2 && 
-                   a.score1 === b.score1 && a.score2 === b.score2 &&
-                   a.status === b.status && a.isLive === b.isLive &&
-                   a.isFinished === b.isFinished &&
-                   a.tournament === b.tournament;
-        }
+function matchesEqual(a, b) {
+    return a.team1 === b.team1 && a.team2 === b.team2 && 
+           a.score1 === b.score1 && a.score2 === b.score2 &&
+           a.status === b.status && a.isLive === b.isLive &&
+           a.isFinished === b.isFinished &&
+           a.tournament === b.tournament;
+}
 
-        function createMatchHTML(match) {
-            const isLive = match.isLive;
-            const isFinished = match.isFinished || (match.status && match.status.toLowerCase().includes('завершён')) || false;
-            const s1 = match.score1 !== null ? match.score1 : '–';
-            const s2 = match.score2 !== null ? match.score2 : '–';
-            
-            let statusClass = '';
-            let scoreClass = '';
-            let badgeText = '📅';
-            let badgeClass = '';
-            let statusText = match.status || 'Не начался';
-            
-            if (isLive) {
-                statusClass = 'live';
-                scoreClass = 'live-score';
-                badgeText = 'LIVE';
-                badgeClass = 'live-badge';
-            } else if (isFinished) {
-                statusClass = 'finished';
-                badgeText = '✓';
-                badgeClass = 'finished-badge';
+function createMatchHTML(match) {
+    const isLive = match.isLive || false;
+    const isFinished = match.isFinished || false;
+    const s1 = match.score1 !== null && match.score1 !== undefined ? match.score1 : '–';
+    const s2 = match.score2 !== null && match.score2 !== undefined ? match.score2 : '–';
+    
+    let statusClass = '';
+    let scoreClass = '';
+    let badgeText = '📅';
+    let badgeClass = '';
+    let statusText = match.status || 'Не начался';
+    
+    if (isLive) {
+        statusClass = 'live';
+        scoreClass = 'live-score';
+        badgeText = 'LIVE';
+        badgeClass = 'live-badge';
+        statusText = match.status || 'LIVE';
+    } else if (isFinished) {
+        statusClass = 'finished';
+        badgeText = '✓';
+        badgeClass = 'finished-badge';
+        statusText = match.status || 'Завершен';
+    }
+    
+    const timeHtml = match.timeDisplay && !isLive && !isFinished ? 
+        '<span class="match-time-badge">🕐 ' + match.timeDisplay + '</span>' : '';
+    
+    const logo1 = match.logo1 ? 
+        '<img src="' + match.logo1 + '" alt="' + match.team1 + '" class="team-logo" loading="lazy" onerror="this.style.display=\'none\'">' : '';
+    const logo2 = match.logo2 ? 
+        '<img src="' + match.logo2 + '" alt="' + match.team2 + '" class="team-logo" loading="lazy" onerror="this.style.display=\'none\'">' : '';
+    const mid = getMatchId(match);
+    
+    return '<div class="match-card ' + statusClass + '" data-match-id="' + mid + '">' +
+        '<div class="match-tournament">' + (match.tournament || '') + 
+        ' <span class="badge ' + badgeClass + '">' + badgeText + '</span></div>' +
+        '<div class="match-teams">' +
+        '<span class="match-team">' + (match.team1 || '') + logo1 + '</span>' +
+        '<span class="match-score ' + scoreClass + '">' + s1 + ' : ' + s2 + '</span>' +
+        '<span class="match-team">' + logo2 + (match.team2 || '') + '</span>' +
+        '</div>' +
+        '<div class="match-status ' + (isLive ? 'live' : '') + '">' +
+        (isLive ? '<span class="live-dot"></span>' : '') +
+        statusText + timeHtml +
+        '</div>' +
+        '<span class="update-indicator"></span>' +
+        '</div>';
+}
+
+function updateLiveCount(matches) {
+    const liveMatches = matches.filter(m => m.isLive === true).length;
+    const heroBadge = document.getElementById('liveCountText');
+    if (heroBadge) heroBadge.textContent = liveMatches;
+}
+
+async function loadMatches() {
+    const container = document.getElementById('matchesContainer');
+    if (!container) return;
+    container.innerHTML = '<div class="loading-state"><div class="spinner"></div><div>Загрузка матчей...</div></div>';
+    
+    try {
+        const response = await fetch('/matches_data.json?t=' + Date.now());
+        if (response.ok) {
+            const data = await response.json();
+            if (data.status === 'success' && data.matches && data.matches.length > 0) {
+                cachedMatches = data.matches;
+                renderMatches(container, data.matches);
+                updateLiveCount(data.matches);
+                startUpdate();
+                return;
             }
-            
-            const timeHtml = match.timeDisplay && !isLive && !isFinished ? 
-                '<span class="match-time-badge">🕐 ' + match.timeDisplay + '</span>' : '';
-            
-            const logo1 = match.logo1 ? 
-                '<img src="' + match.logo1 + '" alt="' + match.team1 + '" class="team-logo" loading="lazy" onerror="this.style.display=\'none\'">' : '';
-            const logo2 = match.logo2 ? 
-                '<img src="' + match.logo2 + '" alt="' + match.team2 + '" class="team-logo" loading="lazy" onerror="this.style.display=\'none\'">' : '';
-            const mid = getMatchId(match);
-            
-            return '<div class="match-card ' + statusClass + '" data-match-id="' + mid + '">' +
-                '<div class="match-tournament">' + match.tournament + 
-                ' <span class="badge ' + badgeClass + '">' + badgeText + '</span></div>' +
-                '<div class="match-teams">' +
-                '<span class="match-team">' + match.team1 + logo1 + '</span>' +
-                '<span class="match-score ' + scoreClass + '">' + s1 + ' : ' + s2 + '</span>' +
-                '<span class="match-team">' + logo2 + match.team2 + '</span>' +
-                '</div>' +
-                '<div class="match-status ' + (isLive ? 'live' : '') + '">' +
-                (isLive ? '<span class="live-dot"></span>' : '') +
-                statusText + timeHtml +
-                '</div>' +
-                '<span class="update-indicator"></span>' +
-                '</div>';
         }
+        console.log('Файл не найден или пуст, загружаем через API...');
+        await loadFromAPI(container);
+    } catch (e) {
+        console.log('Ошибка загрузки файла:', e);
+        await loadFromAPI(container);
+    }
+}
 
-        function updateLiveCount(matches) {
-            const liveMatches = matches.filter(m => m.isLive).length;
-            const heroBadge = document.getElementById('liveCountText');
-            
-            if (heroBadge) heroBadge.textContent = liveMatches;
+// Запасной вариант — загрузка через API
+async function loadFromAPI(container) {
+    const API_URL = 'https://script.google.com/macros/s/AKfycbyT1wWh5n65ixFHSWMhzee5hZIYZZKpbsmea3czL5tvoxDmM4VLi5AK9iNyfyVLwRbv/exec';
+    
+    try {
+        const resp = await fetch(API_URL);
+        const data = await resp.json();
+        if (data.status === 'success' && data.matches && data.matches.length > 0) {
+            cachedMatches = data.matches;
+            renderMatches(container, data.matches);
+            updateLiveCount(data.matches);
+            startUpdate();
+        } else {
+            container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:40px 0;">⚠️ Нет доступных матчей</div>';
         }
+    } catch (e) {
+        console.error('API ошибка:', e);
+        container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:40px 0;">❌ Ошибка загрузки данных</div>';
+    }
+}
 
-        async function loadMatches() {
-            const container = document.getElementById('matchesContainer');
-            if (!container) return;
-            container.innerHTML = '<div class="loading-state"><div class="spinner"></div><div>Загрузка матчей...</div></div>';
-            try {
-                const resp = await fetch(API_URL);
-                const data = await resp.json();
+function renderMatches(container, matches) {
+    const sorted = [...matches].sort((a, b) => {
+        if (a.isLive && !b.isLive) return -1;
+        if (!a.isLive && b.isLive) return 1;
+        return 0;
+    });
+    
+    let html = '<div class="matches-grid">';
+    sorted.slice(0, 30).forEach(m => { html += createMatchHTML(m); });
+    html += '</div>';
+    container.innerHTML = html;
+    document.querySelectorAll('.match-card').forEach(el => {
+        const id = el.dataset.matchId;
+        if (id) matchElements[id] = el;
+    });
+}
+
+function startUpdate() {
+    if (window.updateInterval) clearInterval(window.updateInterval);
+    window.updateInterval = setInterval(async () => {
+        try {
+            const response = await fetch('/matches_data.json?t=' + Date.now());
+            if (response.ok) {
+                const data = await response.json();
                 if (data.status === 'success' && data.matches && data.matches.length > 0) {
-                    cachedMatches = data.matches;
-                    renderMatches(container, data.matches);
+                    updateMatches(data.matches);
                     updateLiveCount(data.matches);
-                    startUpdate();
-                } else {
-                    container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:40px 0;">⚠️ Нет доступных матчей</div>';
                 }
-            } catch (e) {
-                container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:40px 0;">❌ Ошибка загрузки</div>';
             }
+        } catch (e) {}
+    }, 60000);
+}
+
+function updateMatches(newMatches) {
+    const container = document.getElementById('matchesContainer');
+    if (!container) return;
+    const oldMap = {};
+    cachedMatches.forEach(m => { oldMap[getMatchId(m)] = m; });
+    const newMap = {};
+    newMatches.forEach(m => { newMap[getMatchId(m)] = m; });
+
+    const toUpdate = [];
+    newMatches.forEach(m => {
+        const id = getMatchId(m);
+        if (oldMap[id] && !matchesEqual(oldMap[id], m)) toUpdate.push(m);
+    });
+
+    const toRemove = [];
+    cachedMatches.forEach(m => {
+        const id = getMatchId(m);
+        if (!newMap[id]) toRemove.push(id);
+    });
+
+    toRemove.forEach(id => {
+        const el = matchElements[id];
+        if (el && el.parentNode) { el.parentNode.removeChild(el); delete matchElements[id]; }
+    });
+
+    toUpdate.forEach(m => {
+        const id = getMatchId(m);
+        const el = matchElements[id];
+        if (el) {
+            el.classList.add('updating');
+            const tmp = document.createElement('div');
+            tmp.innerHTML = createMatchHTML(m);
+            const newEl = tmp.firstElementChild;
+            el.innerHTML = newEl.innerHTML;
+            el.className = newEl.className;
+            el.dataset.matchId = newEl.dataset.matchId;
+            setTimeout(() => el.classList.remove('updating'), 500);
         }
+    });
 
-        function renderMatches(container, matches) {
-            let html = '<div class="matches-grid">';
-            matches.slice(0, 20).forEach(m => { html += createMatchHTML(m); });
-            html += '</div>';
-            container.innerHTML = html;
-            document.querySelectorAll('.match-card').forEach(el => {
-                const id = el.dataset.matchId;
-                if (id) matchElements[id] = el;
-            });
+    let grid = container.querySelector('.matches-grid');
+    if (!grid) { renderMatches(container, newMatches); cachedMatches = newMatches; return; }
+
+    newMatches.forEach(m => {
+        const id = getMatchId(m);
+        if (newMap[id] && !matchElements[id]) {
+            const tmp = document.createElement('div');
+            tmp.innerHTML = createMatchHTML(m);
+            const newEl = tmp.firstElementChild;
+            grid.appendChild(newEl);
+            const nid = newEl.dataset.matchId;
+            if (nid) matchElements[nid] = newEl;
         }
+    });
 
-        function startUpdate() {
-            if (window.updateInterval) clearInterval(window.updateInterval);
-            window.updateInterval = setInterval(async () => {
-                try {
-                    const resp = await fetch(API_URL);
-                    const data = await resp.json();
-                    if (data.status === 'success' && data.matches && data.matches.length > 0) {
-                        updateMatches(data.matches);
-                        updateLiveCount(data.matches);
-                    }
-                } catch (e) {}
-            }, 60000);
-        }
-
-        function updateMatches(newMatches) {
-            const container = document.getElementById('matchesContainer');
-            if (!container) return;
-            const oldMap = {};
-            cachedMatches.forEach(m => { oldMap[getMatchId(m)] = m; });
-            const newMap = {};
-            newMatches.forEach(m => { newMap[getMatchId(m)] = m; });
-
-            const toUpdate = [];
-            newMatches.forEach(m => {
-                const id = getMatchId(m);
-                if (oldMap[id] && !matchesEqual(oldMap[id], m)) toUpdate.push(m);
-            });
-
-            const toRemove = [];
-            cachedMatches.forEach(m => {
-                const id = getMatchId(m);
-                if (!newMap[id]) toRemove.push(id);
-            });
-
-            toRemove.forEach(id => {
-                const el = matchElements[id];
-                if (el && el.parentNode) { el.parentNode.removeChild(el); delete matchElements[id]; }
-            });
-
-            toUpdate.forEach(m => {
-                const id = getMatchId(m);
-                const el = matchElements[id];
-                if (el) {
-                    el.classList.add('updating');
-                    const tmp = document.createElement('div');
-                    tmp.innerHTML = createMatchHTML(m);
-                    const newEl = tmp.firstElementChild;
-                    el.innerHTML = newEl.innerHTML;
-                    el.className = newEl.className;
-                    el.dataset.matchId = newEl.dataset.matchId;
-                    setTimeout(() => el.classList.remove('updating'), 500);
-                }
-            });
-
-            let grid = container.querySelector('.matches-grid');
-            if (!grid) { renderMatches(container, newMatches); cachedMatches = newMatches; return; }
-
-            newMatches.forEach(m => {
-                const id = getMatchId(m);
-                if (newMap[id] && !matchElements[id]) {
-                    const tmp = document.createElement('div');
-                    tmp.innerHTML = createMatchHTML(m);
-                    const newEl = tmp.firstElementChild;
-                    grid.appendChild(newEl);
-                    const nid = newEl.dataset.matchId;
-                    if (nid) matchElements[nid] = newEl;
-                }
-            });
-
-            cachedMatches = newMatches;
-        }
+    cachedMatches = newMatches;
+}
 
         // ============================================================
         // 9. ЗАПУСК
