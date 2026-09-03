@@ -15,46 +15,52 @@ jobs:
     steps:
       - name: 📥 Клонирование репозитория
         uses: actions/checkout@v4
-        continue-on-error: false
       
-      - name: 📥 Загрузка данных
+      - name: 🔍 Проверка сети и загрузка данных
         run: |
-          echo "🔄 Загружаем данные..."
+          echo "=== ДИАГНОСТИКА НАЧАЛА ==="
+          echo "🕐 Время: $(date)"
+          echo "🌐 Проверка DNS..."
+          nslookup script.google.com || echo "❌ DNS не работает"
           
-          # Делаем запрос с таймаутом и сохраняем ответ
-          curl -s -m 30 \
+          echo "🌐 Проверка соединения..."
+          curl -I -s https://script.google.com || echo "❌ Соединение не установлено"
+          
+          echo "📡 Загрузка данных с полным выводом..."
+          curl -v -s -m 60 \
+            -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)" \
             "https://script.google.com/macros/s/AKfycbzPwhxFHjpaVNsMtDwWwD1EEj8Ft8n5plE1ADh0WSL5-clpgDrmFb-nmd6KIQ4UKL4/exec" \
-            -o trubet_data.json
+            -o trubet_data.json \
+            2>&1 | tee curl_log.txt
           
-          # Проверяем, что файл не пустой
-          if [ ! -s trubet_data.json ]; then
-            echo "❌ Файл пустой! Пробуем еще раз..."
-            sleep 3
-            curl -s -m 30 \
-              "https://script.google.com/macros/s/AKfycbzPwhxFHjpaVNsMtDwWwD1EEj8Ft8n5plE1ADh0WSL5-clpgDrmFb-nmd6KIQ4UKL4/exec" \
-              -o trubet_data.json
-          fi
-          
-          # Показываем первые 200 символов для отладки
+          echo "📊 Размер файла: $(wc -c < trubet_data.json) байт"
+          echo "📊 HTTP статус: $(head -n 1 curl_log.txt | grep -o 'HTTP/[0-9.]* [0-9]*' || echo 'не определен')"
           echo "📊 Первые 200 символов:"
           head -c 200 trubet_data.json
           echo ""
+          echo "📊 Последние 200 символов:"
+          tail -c 200 trubet_data.json
+          echo ""
       
-      - name: 📊 Проверка данных
+      - name: 📊 Проверка JSON
         run: |
+          echo "=== ПРОВЕРКА JSON ==="
           if [ -s trubet_data.json ]; then
-            # Проверяем, что это валидный JSON
-            if jq '.' trubet_data.json > /dev/null 2>&1; then
-              echo "✅ JSON валидный"
-              COUNT=$(jq '.data | length' trubet_data.json)
-              echo "📊 Найдено матчей: $COUNT"
+            echo "✅ Файл не пустой"
+            # Проверяем, что это похоже на JSON
+            if grep -q '{"success"' trubet_data.json || grep -q '\[{' trubet_data.json; then
+              echo "✅ Похоже на JSON"
+              head -c 500 trubet_data.json
             else
-              echo "❌ Невалидный JSON"
+              echo "❌ Не похоже на JSON"
+              echo "Содержимое:"
               cat trubet_data.json
               exit 1
             fi
           else
-            echo "❌ Файл пустой!"
+            echo "❌ Файл пустой"
+            echo "Лог curl:"
+            cat curl_log.txt
             exit 1
           fi
       
