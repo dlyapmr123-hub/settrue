@@ -46,14 +46,14 @@ jobs:
                   # Сохраняем
                   with open('matches_data.json', 'w', encoding='utf-8') as f:
                       f.write(data)
-                  print("✅ Данные сохранены")
+                  print("✅ Данные сохранены в matches_data.json")
                   
           except Exception as e:
               print(f"❌ Ошибка: {e}")
               # Создаем заглушку
               with open('matches_data.json', 'w', encoding='utf-8') as f:
                   json.dump({"status": "error", "error": str(e), "matches": []}, f)
-              print("⚠️ Создана заглушка")
+              print("⚠️ Создана заглушка matches_data.json")
           EOF
       
       - name: 📤 Сохранение изменений
