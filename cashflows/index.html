@@ -919,233 +919,185 @@
         }
 
         // ============================================================
-        // 8. API
-        // ============================================================
-        const FOOTBALL_API = 'https://script.google.com/macros/s/AKfycbx3gwPpCEyxZCbc8nh1rq6bf7gPztOWRoMbgE506I0M33P4hI4fgXktKaya8jOj5zYm/exec';
-        const TENNIS_API = 'https://script.google.com/macros/s/AKfycbyPfWZiu8kGFSLw6MGLCPpQf5sg2Gv9q6CFixRZVXwyBrZ0-3MTnOEFLHZOQMv_PCg1/exec';
-        const BASKETBALL_API = 'https://script.google.com/macros/s/AKfycbyCtAh2TuDbU9uDOi3Qmvpt-tofaqo1FvAQQF4dPhBl3MMdu5gcEJ0Q56lrUIIoWp09/exec';
-        const BASEBALL_API = 'https://script.google.com/macros/s/AKfycbwKbDd81v796ZrECcCC2Of7LVtCJmnbOx3d_c6DYARq_IT8Z0r_elRqWw7K7eau0Q6I/exec';
+// 8. API — ЗАГРУЗКА ИЗ ФАЙЛА
+// ============================================================
+let cachedCashflows = null;
 
-        // ============================================================
-        // 9. ФУНКЦИЯ ПРОВЕРКИ СИГНАЛА
-        // ============================================================
-        function checkSignal(event, sport) {
-            const hasDraw = sport === 'football';
-            const keys = hasDraw ? ['home', 'draw', 'away'] : ['home', 'away'];
-            
-            const totalVolume = parseFloat(event.volume) || 0;
-            if (totalVolume < 50000) return null;
-            
-            let signals = [];
-            keys.forEach(key => {
-                const odds = event.odds[key];
-                if (!odds) return;
-                const value = parseFloat(odds.value);
-                const money = parseFloat(odds.money) || 0;
-                if (value <= 1.5) return;
-                const volumePercent = (money / totalVolume) * 100;
-                if (volumePercent < 80) return;
-                signals.push({ key, odds, volumePercent, money });
-            });
-            
-            if (signals.length === 0) return null;
-            
-            return {
-                ...event,
-                hasDraw: hasDraw,
-                signals: signals,
-                _sport: sport
-            };
-        }
-
-        // ============================================================
-        // 10. ЗАГРУЗКА СИГНАЛОВ
-        // ============================================================
-        let allSignalsData = [];
-
-        function loadSignalsData() {
-            const container = document.getElementById('signalsContainer');
-            container.innerHTML = `<div class="loading-state"><div class="spinner"></div><div>Загрузка сигналов...</div></div>`;
-
-            const apis = [
-                { url: FOOTBALL_API, sport: 'football' },
-                { url: TENNIS_API, sport: 'tennis' },
-                { url: BASKETBALL_API, sport: 'basketball' },
-                { url: BASEBALL_API, sport: 'baseball' }
-            ];
-
-            Promise.all(apis.map(api => 
-                fetch(api.url)
-                    .then(res => res.json())
-                    .then(data => ({ ...data, sport: api.sport }))
-                    .catch(() => ({ success: false, sport: api.sport }))
-            ))
-            .then(results => {
-                const signalEvents = [];
-                results.forEach(result => {
-                    if (result.success && result.data && result.data.length > 0) {
-                        result.data.forEach(event => {
-                            const checked = checkSignal(event, result.sport);
-                            if (checked) {
-                                signalEvents.push(checked);
-                            }
-                        });
-                    }
-                });
-
-                allSignalsData = signalEvents;
-                renderSignalsTable(signalEvents);
-                document.getElementById('badgeSignals').textContent = signalEvents.length;
-            })
-            .catch(error => {
-                container.innerHTML = `<div class="empty-state">❌ Ошибка загрузки: ${error.message}</div>`;
-            });
-        }
-
-        function renderSignalsTable(events) {
-            const container = document.getElementById('signalsContainer');
-            if (events.length === 0) {
-                container.innerHTML = `
-                    <div class="empty-state">
-                        📭 Нет сигналов<br>
-                        <small style="color:var(--text-muted);</small>
-                    </div>
-                `;
-                return;
+async function loadCashflowsFromFile() {
+    try {
+        const response = await fetch('/cashflows_data.json?t=' + Date.now());
+        if (response.ok) {
+            const data = await response.json();
+            if (data.football && data.tennis && data.basketball && data.baseball) {
+                cachedCashflows = data;
+                return data;
             }
+        }
+        return null;
+    } catch (e) {
+        return null;
+    }
+}
 
-            const sorted = [...events].sort((a, b) => (parseFloat(b.volume)||0) - (parseFloat(a.volume)||0));
-            const sportEmojis = { football: '⚽', tennis: '🎾', basketball: '🏀', baseball: '⚾' };
+// ============================================================
+// 9. ЗАГРУЗКА СИГНАЛОВ
+// ============================================================
+async function loadSignalsData() {
+    const container = document.getElementById('signalsContainer');
+    container.innerHTML = `<div class="loading-state"><div class="spinner"></div><div>Загрузка сигналов...</div></div>`;
 
-            // ===== БЕЗ ЗАГОЛОВКОВ =====
-            let html = `<table class="data-table"><tbody>`;
-
-            sorted.forEach(event => {
-                const hasDraw = event.hasDraw || false;
-                const keys = hasDraw ? ['home', 'draw', 'away'] : ['home', 'away'];
-                const totalVolume = parseFloat(event.volume) || 0;
-                const signalKeys = event.signals.map(s => s.key);
-                const emoji = sportEmojis[event._sport] || '📊';
-
-                html += `<tr class="row-signal">
-                    <td class="col-event">
-                        <div class="ev-stack">
-                            <div class="ev-top">
-                                <span class="ev-date">${event.date || ''}</span>
-                                <span class="ev-league">${emoji} ${event.league || ''}</span>
-                                <span style="color:var(--green);font-size:9px;font-weight:700;background:var(--badge-bg);padding:1px 10px;border-radius:12px;">SIGNAL</span>
-                            </div>
-                            <div class="ev-match">
-                                <span class="ev-home">${event.home || ''}</span>
-                                <span class="ev-dash">—</span>
-                                <span class="ev-away">${event.away || ''}</span>
-                            </div>
-                        </div>
-                    </td>`;
-
-                keys.forEach(key => {
-                    const odds = event.odds[key];
-                    if (!odds) {
-                        html += `<td><div class="odds-cell"><div class="odds-value">—</div></div></td>`;
-                        return;
+    try {
+        let data = await loadCashflowsFromFile();
+        
+        // Если файл не найден — грузим через API
+        if (!data) {
+            console.log('Файл не найден, загружаем через API...');
+            data = await loadCashflowsFromAPI();
+        }
+        
+        if (!data) {
+            container.innerHTML = `<div class="empty-state">❌ Ошибка загрузки данных</div>`;
+            return;
+        }
+        
+        const signalEvents = [];
+        const sports = {
+            football: data.football,
+            tennis: data.tennis,
+            basketball: data.basketball,
+            baseball: data.baseball
+        };
+        
+        Object.keys(sports).forEach(sport => {
+            const result = sports[sport];
+            if (result.success && result.data && result.data.length > 0) {
+                result.data.forEach(event => {
+                    const checked = checkSignal(event, sport);
+                    if (checked) {
+                        signalEvents.push(checked);
                     }
-                    const value = parseFloat(odds.value) || '';
-                    const signal = parseFloat(odds.signal) || 0;
-                    const money = parseFloat(odds.money) || 0;
-                    const isSignal = signalKeys.includes(key);
-                    const percent = totalVolume > 0 ? ((money / totalVolume) * 100).toFixed(1) : 0;
-                    let cls = '';
-                    if (isSignal) {
-                        if (percent >= 90) cls = 'signal-mega';
-                        else if (percent >= 85) cls = 'signal-strong';
-                        else cls = 'signal-high';
-                    }
-                    html += `<td>
-                        <div class="odds-cell">
-                            <div class="odds-value">${value}</div>
-                            <div class="odds-signal ${cls}"><strong>${signal}%</strong> ${isSignal ? '🔥' : ''}</div>
-                            <div class="odds-money">£${money.toLocaleString()}</div>
-                        </div>
-                    </td>`;
                 });
+            }
+        });
+        
+        allSignalsData = signalEvents;
+        renderSignalsTable(signalEvents);
+        document.getElementById('badgeSignals').textContent = signalEvents.length;
+        
+    } catch (error) {
+        container.innerHTML = `<div class="empty-state">❌ Ошибка загрузки: ${error.message}</div>`;
+    }
+}
 
-                html += `<td class="col-volume">
-                    <div class="volume-value">£${totalVolume.toLocaleString()}</div>
-                    <div class="volume-label">объём</div>
-                </td></tr>`;
-            });
-
-            html += `</tbody></table>`;
-            container.innerHTML = html;
+// Запасной вариант — загрузка через API
+async function loadCashflowsFromAPI() {
+    const apis = {
+        football: 'https://script.google.com/macros/s/AKfycbx3gwPpCEyxZCbc8nh1rq6bf7gPztOWRoMbgE506I0M33P4hI4fgXktKaya8jOj5zYm/exec',
+        tennis: 'https://script.google.com/macros/s/AKfycbyPfWZiu8kGFSLw6MGLCPpQf5sg2Gv9q6CFixRZVXwyBrZ0-3MTnOEFLHZOQMv_PCg1/exec',
+        basketball: 'https://script.google.com/macros/s/AKfycbyCtAh2TuDbU9uDOi3Qmvpt-tofaqo1FvAQQF4dPhBl3MMdu5gcEJ0Q56lrUIIoWp09/exec',
+        baseball: 'https://script.google.com/macros/s/AKfycbwKbDd81v796ZrECcCC2Of7LVtCJmnbOx3d_c6DYARq_IT8Z0r_elRqWw7K7eau0Q6I/exec'
+    };
+    
+    const result = {};
+    for (const [name, url] of Object.entries(apis)) {
+        try {
+            const resp = await fetch(url);
+            const data = await resp.json();
+            result[name] = data;
+        } catch (e) {
+            result[name] = { success: false, error: e.message, data: [] };
         }
+    }
+    return result;
+}
 
-        // ============================================================
-        // 11. ЗАГРУЗКА ФУТБОЛА
-        // ============================================================
-        function loadFootballData() {
-            const container = document.getElementById('footballContainer');
-            container.innerHTML = `<div class="loading-state"><div class="spinner"></div><div>Загрузка...</div></div>`;
-            fetch(FOOTBALL_API)
-                .then(res => res.json())
-                .then(data => {
-                    if (!data.success) throw new Error(data.error);
-                    renderFootballTable(data);
-                })
-                .catch(e => { container.innerHTML = `<div class="empty-state">❌ ${e.message}</div>`; });
+// ============================================================
+// 10. ЗАГРУЗКА ФУТБОЛА
+// ============================================================
+async function loadFootballData() {
+    const container = document.getElementById('footballContainer');
+    container.innerHTML = `<div class="loading-state"><div class="spinner"></div><div>Загрузка...</div></div>`;
+    
+    try {
+        let data = await loadCashflowsFromFile();
+        if (!data) {
+            data = await loadCashflowsFromAPI();
         }
-
-        function renderFootballTable(data) {
-            const container = document.getElementById('footballContainer');
-            const events = data.data || [];
-            document.getElementById('badgeFootball').textContent = events.length;
-            if (events.length === 0) { container.innerHTML = `<div class="empty-state">📭 Нет данных</div>`; return; }
-
-            const sorted = [...events].sort((a, b) => (parseFloat(b.volume)||0) - (parseFloat(a.volume)||0));
-            let html = `<table class="data-table"><thead><tr><th>Дата / Матч</th><th>1</th><th>X</th><th>2</th><th class="col-volume">Объём</th></tr></thead><tbody>`;
-            sorted.forEach(e => {
-                const h = e.odds.home, d = e.odds.draw, a = e.odds.away;
-                const vol = e.volume ? '£' + Number(e.volume).toLocaleString() : '—';
-                html += `<tr>
-                    <td class="col-event"><div class="ev-stack"><div class="ev-top"><span class="ev-date">${e.date||''}</span><span class="ev-league">${e.league||''}</span></div><div class="ev-match"><span class="ev-home">${e.home||''}</span><span class="ev-dash">—</span><span class="ev-away">${e.away||''}</span></div></div></td>
-                    <td><div class="odds-cell"><div class="odds-value">${h.value||''}</div><div class="odds-signal"><strong>${h.signal||'0'}%</strong></div><div class="odds-money">£${h.money||'0'}</div></div></td>
-                    <td><div class="odds-cell"><div class="odds-value">${d.value||''}</div><div class="odds-signal"><strong>${d.signal||'0'}%</strong></div><div class="odds-money">£${d.money||'0'}</div></div></td>
-                    <td><div class="odds-cell"><div class="odds-value">${a.value||''}</div><div class="odds-signal"><strong>${a.signal||'0'}%</strong></div><div class="odds-money">£${a.money||'0'}</div></div></td>
-                    <td class="col-volume"><div class="volume-value">${vol}</div><div class="volume-label">объём</div></td>
-                </tr>`;
-            });
-            html += `</tbody></table>`;
-            container.innerHTML = html;
+        if (data && data.football && data.football.success) {
+            renderFootballTable(data.football);
+        } else {
+            container.innerHTML = `<div class="empty-state">❌ Нет данных</div>`;
         }
+    } catch (e) {
+        container.innerHTML = `<div class="empty-state">❌ ${e.message}</div>`;
+    }
+}
 
-        // ============================================================
-        // 12. ЗАГРУЗКА ТЕННИСА
-        // ============================================================
-        function loadTennisData() {
-            const container = document.getElementById('tennisContainer');
-            container.innerHTML = `<div class="loading-state"><div class="spinner"></div><div>Загрузка...</div></div>`;
-            fetch(TENNIS_API)
-                .then(res => res.json())
-                .then(data => {
-                    if (!data.success) throw new Error(data.error);
-                    renderTwoOutcomeTable(data, 'tennis');
-                })
-                .catch(e => { container.innerHTML = `<div class="empty-state">❌ ${e.message}</div>`; });
+// ============================================================
+// 11. ЗАГРУЗКА ТЕННИСА
+// ============================================================
+async function loadTennisData() {
+    const container = document.getElementById('tennisContainer');
+    container.innerHTML = `<div class="loading-state"><div class="spinner"></div><div>Загрузка...</div></div>`;
+    
+    try {
+        let data = await loadCashflowsFromFile();
+        if (!data) {
+            data = await loadCashflowsFromAPI();
         }
+        if (data && data.tennis && data.tennis.success) {
+            renderTwoOutcomeTable(data.tennis, 'tennis');
+        } else {
+            container.innerHTML = `<div class="empty-state">❌ Нет данных</div>`;
+        }
+    } catch (e) {
+        container.innerHTML = `<div class="empty-state">❌ ${e.message}</div>`;
+    }
+}
 
-        // ============================================================
-        // 13. ЗАГРУЗКА БАСКЕТБОЛА
-        // ============================================================
-        function loadBasketballData() {
-            const container = document.getElementById('basketballContainer');
-            container.innerHTML = `<div class="loading-state"><div class="spinner"></div><div>Загрузка...</div></div>`;
-            fetch(BASKETBALL_API)
-                .then(res => res.json())
-                .then(data => {
-                    if (!data.success) throw new Error(data.error);
-                    renderTwoOutcomeTable(data, 'basketball');
-                })
-                .catch(e => { container.innerHTML = `<div class="empty-state">❌ ${e.message}</div>`; });
+// ============================================================
+// 12. ЗАГРУЗКА БАСКЕТБОЛА
+// ============================================================
+async function loadBasketballData() {
+    const container = document.getElementById('basketballContainer');
+    container.innerHTML = `<div class="loading-state"><div class="spinner"></div><div>Загрузка...</div></div>`;
+    
+    try {
+        let data = await loadCashflowsFromFile();
+        if (!data) {
+            data = await loadCashflowsFromAPI();
         }
+        if (data && data.basketball && data.basketball.success) {
+            renderTwoOutcomeTable(data.basketball, 'basketball');
+        } else {
+            container.innerHTML = `<div class="empty-state">❌ Нет данных</div>`;
+        }
+    } catch (e) {
+        container.innerHTML = `<div class="empty-state">❌ ${e.message}</div>`;
+    }
+}
+
+// ============================================================
+// 13. ЗАГРУЗКА БЕЙСБОЛА
+// ============================================================
+async function loadBaseballData() {
+    const container = document.getElementById('baseballContainer');
+    container.innerHTML = `<div class="loading-state"><div class="spinner"></div><div>Загрузка...</div></div>`;
+    
+    try {
+        let data = await loadCashflowsFromFile();
+        if (!data) {
+            data = await loadCashflowsFromAPI();
+        }
+        if (data && data.baseball && data.baseball.success) {
+            renderTwoOutcomeTable(data.baseball, 'baseball');
+        } else {
+            container.innerHTML = `<div class="empty-state">❌ Нет данных</div>`;
+        }
+    } catch (e) {
+        container.innerHTML = `<div class="empty-state">❌ ${e.message}</div>`;
+    }
+}
 
         // ============================================================
         // 14. ЗАГРУЗКА БЕЙСБОЛА
