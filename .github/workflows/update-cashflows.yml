@@ -1,0 +1,67 @@
+name: Обновление данных Денежных потоков
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-cashflows:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Клонирование репозитория
+        uses: actions/checkout@v4
+      
+      - name: 🐍 Загрузка всех API
+        run: |
+          python3 << 'EOF'
+          import urllib.request
+          import json
+          import ssl
+          
+          context = ssl.create_default_context()
+          context.check_hostname = False
+          context.verify_mode = ssl.CERT_NONE
+          
+          apis = {
+              'football': 'https://script.google.com/macros/s/AKfycbx3gwPpCEyxZCbc8nh1rq6bf7gPztOWRoMbgE506I0M33P4hI4fgXktKaya8jOj5zYm/exec',
+              'tennis': 'https://script.google.com/macros/s/AKfycbyPfWZiu8kGFSLw6MGLCPpQf5sg2Gv9q6CFixRZVXwyBrZ0-3MTnOEFLHZOQMv_PCg1/exec',
+              'basketball': 'https://script.google.com/macros/s/AKfycbyCtAh2TuDbU9uDOi3Qmvpt-tofaqo1FvAQQF4dPhBl3MMdu5gcEJ0Q56lrUIIoWp09/exec',
+              'baseball': 'https://script.google.com/macros/s/AKfycbwKbDd81v796ZrECcCC2Of7LVtCJmnbOx3d_c6DYARq_IT8Z0r_elRqWw7K7eau0Q6I/exec'
+          }
+          
+          result = {}
+          
+          for name, url in apis.items():
+              try:
+                  req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+                  with urllib.request.urlopen(req, timeout=60) as response:
+                      data = response.read().decode('utf-8')
+                      json.loads(data)  # проверка валидности
+                      result[name] = json.loads(data)
+                      print(f"✅ {name}: получено {len(data)} байт")
+              except Exception as e:
+                  print(f"❌ {name}: ошибка - {e}")
+                  result[name] = {"success": False, "error": str(e), "data": []}
+          
+          with open('cashflows_data.json', 'w', encoding='utf-8') as f:
+              json.dump(result, f, ensure_ascii=False)
+          print("✅ Все данные сохранены в cashflows_data.json")
+          EOF
+      
+      - name: 📤 Сохранение изменений
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add cashflows_data.json
+          if git diff --staged --quiet; then
+            echo "📝 Нет изменений"
+          else
+            git commit -m "🔄 Автообновление Денежных потоков $(date '+%Y-%m-%d %H:%M')"
+            git push
+            echo "✅ Отправлено"
+          fi
