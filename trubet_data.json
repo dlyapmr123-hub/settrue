@@ -1,7 +1,7 @@
 {
   "success": true,
-  "timestamp": "2026-09-05T16:16:00.463Z",
-  "count": 77,
+  "timestamp": "2026-09-05T18:29:02.709Z",
+  "count": 83,
   "data": [
     {
       "date": "05-09",
@@ -234,8 +234,8 @@
       "coef1": "1.39",
       "coefX": "4.08",
       "coef2": "8.55",
-      "result": "",
-      "betResult": "lose"
+      "result": "5:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -252,8 +252,8 @@
       "coef1": "1.18",
       "coefX": "6.00",
       "coef2": "12.00",
-      "result": "",
-      "betResult": "lose"
+      "result": "2:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -270,8 +270,8 @@
       "coef1": "1.13",
       "coefX": "6.50",
       "coef2": "15.00",
-      "result": "",
-      "betResult": "lose"
+      "result": "3:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -288,8 +288,8 @@
       "coef1": "2.19",
       "coefX": "3.51",
       "coef2": "3.02",
-      "result": "",
-      "betResult": "lose"
+      "result": "3:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -306,7 +306,7 @@
       "coef1": "1.30",
       "coefX": "5.25",
       "coef2": "8.65",
-      "result": "",
+      "result": "4:4",
       "betResult": "lose"
     },
     {
@@ -324,7 +324,7 @@
       "coef1": "2.36",
       "coefX": "3.07",
       "coef2": "2.82",
-      "result": "",
+      "result": "2:0",
       "betResult": "lose"
     },
     {
@@ -342,8 +342,8 @@
       "coef1": "2.38",
       "coefX": "3.06",
       "coef2": "2.75",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -360,7 +360,7 @@
       "coef1": "2.16",
       "coefX": "3.71",
       "coef2": "3.24",
-      "result": "",
+      "result": "2:2",
       "betResult": "lose"
     },
     {
@@ -378,8 +378,8 @@
       "coef1": "1.95",
       "coefX": "3.60",
       "coef2": "3.58",
-      "result": "",
-      "betResult": "lose"
+      "result": "4:1",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -396,8 +396,8 @@
       "coef1": "1.75",
       "coefX": "3.66",
       "coef2": "4.35",
-      "result": "",
-      "betResult": "lose"
+      "result": "2:2",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -414,8 +414,8 @@
       "coef1": "14.00",
       "coefX": "8.70",
       "coef2": "1.10",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:3",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -432,8 +432,8 @@
       "coef1": "1.95",
       "coefX": "3.32",
       "coef2": "4.30",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:2",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -450,8 +450,8 @@
       "coef1": "1.30",
       "coefX": "5.43",
       "coef2": "8.63",
-      "result": "",
-      "betResult": "lose"
+      "result": "4:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -468,8 +468,8 @@
       "coef1": "1.25",
       "coefX": "5.25",
       "coef2": "10.41",
-      "result": "",
-      "betResult": "lose"
+      "result": "6:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -486,8 +486,8 @@
       "coef1": "8.70",
       "coefX": "5.30",
       "coef2": "1.27",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:2",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -504,8 +504,8 @@
       "coef1": "1.15",
       "coefX": "6.65",
       "coef2": "14.00",
-      "result": "",
-      "betResult": "lose"
+      "result": "3:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -522,8 +522,8 @@
       "coef1": "1.10",
       "coefX": "8.05",
       "coef2": "14.00",
-      "result": "",
-      "betResult": "lose"
+      "result": "2:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -540,7 +540,7 @@
       "coef1": "2.92",
       "coefX": "3.87",
       "coef2": "2.24",
-      "result": "",
+      "result": "2:3",
       "betResult": "lose"
     },
     {
@@ -558,8 +558,8 @@
       "coef1": "1.46",
       "coefX": "4.88",
       "coef2": "6.14",
-      "result": "",
-      "betResult": "lose"
+      "result": "4:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -576,7 +576,7 @@
       "coef1": "4.23",
       "coefX": "4.23",
       "coef2": "1.76",
-      "result": "",
+      "result": "3:1",
       "betResult": "lose"
     },
     {
@@ -594,8 +594,8 @@
       "coef1": "3.60",
       "coefX": "3.75",
       "coef2": "2.01",
-      "result": "",
-      "betResult": "lose"
+      "result": "0:1",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -612,8 +612,8 @@
       "coef1": "23.50",
       "coefX": "10.25",
       "coef2": "1.05",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:6",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -630,8 +630,8 @@
       "coef1": "1.27",
       "coefX": "6.15",
       "coef2": "8.03",
-      "result": "",
-      "betResult": "lose"
+      "result": "2:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -648,8 +648,8 @@
       "coef1": "1.22",
       "coefX": "6.30",
       "coef2": "9.95",
-      "result": "",
-      "betResult": "lose"
+      "result": "9:1",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -666,7 +666,7 @@
       "coef1": "6.48",
       "coefX": "5.83",
       "coef2": "1.30",
-      "result": "",
+      "result": "1:1",
       "betResult": "lose"
     },
     {
@@ -684,8 +684,8 @@
       "coef1": "2.42",
       "coefX": "3.92",
       "coef2": "2.28",
-      "result": "",
-      "betResult": "lose"
+      "result": "0:2",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -702,7 +702,7 @@
       "coef1": "2.69",
       "coefX": "3.58",
       "coef2": "2.20",
-      "result": "",
+      "result": "0:2",
       "betResult": "lose"
     },
     {
@@ -720,8 +720,8 @@
       "coef1": "1.44",
       "coefX": "4.45",
       "coef2": "6.54",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -738,7 +738,7 @@
       "coef1": "1.66",
       "coefX": "3.99",
       "coef2": "5.33",
-      "result": "",
+      "result": "1:1",
       "betResult": "lose"
     },
     {
@@ -756,7 +756,7 @@
       "coef1": "2.01",
       "coefX": "3.55",
       "coef2": "3.84",
-      "result": "",
+      "result": "1:1",
       "betResult": "lose"
     },
     {
@@ -774,7 +774,7 @@
       "coef1": "2.33",
       "coefX": "3.33",
       "coef2": "3.22",
-      "result": "",
+      "result": "2:3",
       "betResult": "lose"
     },
     {
@@ -792,8 +792,8 @@
       "coef1": "1.15",
       "coefX": "9.05",
       "coef2": "16.85",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -810,8 +810,8 @@
       "coef1": "2.40",
       "coefX": "3.51",
       "coef2": "2.93",
-      "result": "",
-      "betResult": "lose"
+      "result": "0:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -828,8 +828,8 @@
       "coef1": "3.21",
       "coefX": "3.35",
       "coef2": "2.15",
-      "result": "",
-      "betResult": "lose"
+      "result": "2:3",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -846,8 +846,8 @@
       "coef1": "1.95",
       "coefX": "3.31",
       "coef2": "4.02",
-      "result": "",
-      "betResult": "lose"
+      "result": "4:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -864,7 +864,7 @@
       "coef1": "2.35",
       "coefX": "3.44",
       "coef2": "2.86",
-      "result": "",
+      "result": "2:0",
       "betResult": "lose"
     },
     {
@@ -882,8 +882,8 @@
       "coef1": "1.87",
       "coefX": "3.56",
       "coef2": "4.00",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -900,8 +900,8 @@
       "coef1": "1.40",
       "coefX": "4.73",
       "coef2": "7.33",
-      "result": "",
-      "betResult": "lose"
+      "result": "3:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -918,7 +918,7 @@
       "coef1": "1.65",
       "coefX": "3.91",
       "coef2": "4.88",
-      "result": "",
+      "result": "1:1",
       "betResult": "lose"
     },
     {
@@ -936,8 +936,8 @@
       "coef1": "1.04",
       "coefX": "11.00",
       "coef2": "34.50",
-      "result": "",
-      "betResult": "lose"
+      "result": "5:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -954,8 +954,8 @@
       "coef1": "2.16",
       "coefX": "2.97",
       "coef2": "3.24",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:3",
+      "betResult": ""
     },
     {
       "date": "05-09",
@@ -972,17 +972,269 @@
       "coef1": "3.12",
       "coefX": "3.41",
       "coef2": "2.32",
-      "result": "",
-      "betResult": "lose"
+      "result": "3:0",
+      "betResult": ""
     },
     {
       "date": "05-09",
-      "time": "20:30",
+      "time": "18:30",
       "match": "Riga Mariners - Rēzekne FA",
       "home": "Riga Mariners",
       "away": "Rēzekne FA",
       "countryCode": "lv",
       "leagueTitle": "Latvia 1. Liga",
+      "p1": "59%",
+      "px": "5%",
+      "p2": "35%",
+      "bet": "1",
+      "coef1": "1.05",
+      "coefX": "11.50",
+      "coef2": "27.50",
+      "result": "",
+      "betResult": "lose"
+    },
+    {
+      "date": "05-09",
+      "time": "18:30",
+      "match": "Teteks - Ohrid",
+      "home": "Teteks",
+      "away": "Ohrid",
+      "countryCode": "mk",
+      "leagueTitle": "Macedonia Second League",
+      "p1": "32%",
+      "px": "25%",
+      "p2": "43%",
+      "bet": "12",
+      "coef1": "6.13",
+      "coefX": "4.25",
+      "coef2": "1.42",
+      "result": "0:3",
+      "betResult": ""
+    },
+    {
+      "date": "05-09",
+      "time": "18:30",
+      "match": "Sabah FA - Zira",
+      "home": "Sabah FA",
+      "away": "Zira",
+      "countryCode": "az",
+      "leagueTitle": "Azerbaijan Premyer Liqa",
+      "p1": "67%",
+      "px": "19%",
+      "p2": "15%",
+      "bet": "1",
+      "coef1": "1.80",
+      "coefX": "3.25",
+      "coef2": "4.13",
+      "result": "5:0",
+      "betResult": ""
+    },
+    {
+      "date": "05-09",
+      "time": "18:30",
+      "match": "Drina Zvornik - Slavija",
+      "home": "Drina Zvornik",
+      "away": "Slavija",
+      "countryCode": "ba",
+      "leagueTitle": "Bosnia 1st League - RS",
+      "p1": "40%",
+      "px": "16%",
+      "p2": "44%",
+      "bet": "12",
+      "coef1": "1.49",
+      "coefX": "3.80",
+      "coef2": "5.50",
+      "result": "",
+      "betResult": "lose"
+    },
+    {
+      "date": "05-09",
+      "time": "18:30",
+      "match": "Zvijezda 09 - FK Majevica Lopare",
+      "home": "Zvijezda 09",
+      "away": "FK Majevica Lopare",
+      "countryCode": "ba",
+      "leagueTitle": "Bosnia 1st League - RS",
+      "p1": "37%",
+      "px": "17%",
+      "p2": "47%",
+      "bet": "12",
+      "coef1": "1.63",
+      "coefX": "3.65",
+      "coef2": "4.62",
+      "result": "",
+      "betResult": "lose"
+    },
+    {
+      "date": "05-09",
+      "time": "19:15",
+      "match": "Lens - Lorient",
+      "home": "Lens",
+      "away": "Lorient",
+      "countryCode": "fr",
+      "leagueTitle": "France Ligue 1",
+      "p1": "68%",
+      "px": "14%",
+      "p2": "18%",
+      "bet": "1",
+      "coef1": "1.47",
+      "coefX": "4.49",
+      "coef2": "6.71",
+      "result": "",
+      "betResult": "lose"
+    },
+    {
+      "date": "05-09",
+      "time": "19:30",
+      "match": "Aluminij - Bravo",
+      "home": "Aluminij",
+      "away": "Bravo",
+      "countryCode": "si",
+      "leagueTitle": "Slovenia 1. SNL",
+      "p1": "27%",
+      "px": "18%",
+      "p2": "55%",
+      "bet": "2",
+      "coef1": "2.27",
+      "coefX": "3.32",
+      "coef2": "2.77",
+      "result": "0:0",
+      "betResult": "lose"
+    },
+    {
+      "date": "05-09",
+      "time": "20:00",
+      "match": "Flora Tallinn - Kalju Nomme",
+      "home": "Flora Tallinn",
+      "away": "Kalju Nomme",
+      "countryCode": "ee",
+      "leagueTitle": "Estonia Meistriliiga",
+      "p1": "22%",
+      "px": "51%",
+      "p2": "27%",
+      "bet": "X2",
+      "coef1": "2.78",
+      "coefX": "3.44",
+      "coef2": "2.21",
+      "result": "2:1",
+      "betResult": "lose"
+    },
+    {
+      "date": "05-09",
+      "time": "20:00",
+      "match": "Inter - Napoli",
+      "home": "Inter",
+      "away": "Napoli",
+      "countryCode": "it",
+      "leagueTitle": "Italy Serie A",
+      "p1": "57%",
+      "px": "24%",
+      "p2": "19%",
+      "bet": "1",
+      "coef1": "1.65",
+      "coefX": "3.80",
+      "coef2": "5.69",
+      "result": "3:2",
+      "betResult": ""
+    },
+    {
+      "date": "05-09",
+      "time": "20:00",
+      "match": "Spartak Varna - CSKA Sofia",
+      "home": "Spartak Varna",
+      "away": "CSKA Sofia",
+      "countryCode": "bg",
+      "leagueTitle": "Bulgaria First League",
+      "p1": "45%",
+      "px": "16%",
+      "p2": "40%",
+      "bet": "12",
+      "coef1": "5.53",
+      "coefX": "3.94",
+      "coef2": "1.56",
+      "result": "1:1",
+      "betResult": "lose"
+    },
+    {
+      "date": "05-09",
+      "time": "20:00",
+      "match": "Žilina - Podbrezová",
+      "home": "Žilina",
+      "away": "Podbrezová",
+      "countryCode": "sk",
+      "leagueTitle": "Slovakia Super Liga",
+      "p1": "51%",
+      "px": "33%",
+      "p2": "16%",
+      "bet": "1X",
+      "coef1": "1.81",
+      "coefX": "3.78",
+      "coef2": "3.80",
+      "result": "3:1",
+      "betResult": ""
+    },
+    {
+      "date": "05-09",
+      "time": "20:00",
+      "match": "BSC Young Boys - FC Luzern",
+      "home": "BSC Young Boys",
+      "away": "FC Luzern",
+      "countryCode": "ch",
+      "leagueTitle": "Switzerland Super League",
+      "p1": "67%",
+      "px": "13%",
+      "p2": "20%",
+      "bet": "1",
+      "coef1": "1.48",
+      "coefX": "4.75",
+      "coef2": "5.40",
+      "result": "3:3",
+      "betResult": "lose"
+    },
+    {
+      "date": "05-09",
+      "time": "20:00",
+      "match": "Volos NFC - Olympiakos Piraeus",
+      "home": "Volos NFC",
+      "away": "Olympiakos Piraeus",
+      "countryCode": "gr",
+      "leagueTitle": "Greece Super League 1",
+      "p1": "16%",
+      "px": "11%",
+      "p2": "72%",
+      "bet": "2",
+      "coef1": "11.50",
+      "coefX": "5.65",
+      "coef2": "1.24",
+      "result": "1:1",
+      "betResult": "lose"
+    },
+    {
+      "date": "05-09",
+      "time": "20:00",
+      "match": "Dinamo Zagreb - HNK Gorica",
+      "home": "Dinamo Zagreb",
+      "away": "HNK Gorica",
+      "countryCode": "hr",
+      "leagueTitle": "Croatia HNL",
+      "p1": "76%",
+      "px": "9%",
+      "p2": "15%",
+      "bet": "1",
+      "coef1": "1.14",
+      "coefX": "7.35",
+      "coef2": "15.00",
+      "result": "1:0",
+      "betResult": ""
+    },
+    {
+      "date": "05-09",
+      "time": "20:30",
+      "match": "Hull City - Aston Villa",
+      "home": "Hull City",
+      "away": "Aston Villa",
+      "countryCode": "england",
+      "leagueTitle": "England Premier League",
       "p1": "32%",
       "px": "23%",
       "p2": "44%",
@@ -996,11 +1248,11 @@
     {
       "date": "05-09",
       "time": "20:30",
-      "match": "Teteks - Ohrid",
-      "home": "Teteks",
-      "away": "Ohrid",
-      "countryCode": "mk",
-      "leagueTitle": "Macedonia Second League",
+      "match": "Rayo Vallecano - Racing Santander",
+      "home": "Rayo Vallecano",
+      "away": "Racing Santander",
+      "countryCode": "es",
+      "leagueTitle": "Spain La Liga",
       "p1": "40%",
       "px": "19%",
       "p2": "42%",
@@ -1014,11 +1266,11 @@
     {
       "date": "05-09",
       "time": "20:30",
-      "match": "Sabah FA - Zira",
-      "home": "Sabah FA",
-      "away": "Zira",
-      "countryCode": "az",
-      "leagueTitle": "Azerbaijan Premyer Liqa",
+      "match": "FC Schalke 04 - Bayern München",
+      "home": "FC Schalke 04",
+      "away": "Bayern München",
+      "countryCode": "de",
+      "leagueTitle": "Germany Bundesliga",
       "p1": "13%",
       "px": "16%",
       "p2": "71%",
@@ -1032,11 +1284,11 @@
     {
       "date": "05-09",
       "time": "20:30",
-      "match": "Drina Zvornik - Slavija",
-      "home": "Drina Zvornik",
-      "away": "Slavija",
-      "countryCode": "ba",
-      "leagueTitle": "Bosnia 1st League - RS",
+      "match": "Boreham Wood - Carlisle",
+      "home": "Boreham Wood",
+      "away": "Carlisle",
+      "countryCode": "england",
+      "leagueTitle": "England National League",
       "p1": "70%",
       "px": "15%",
       "p2": "15%",
@@ -1049,214 +1301,16 @@
     },
     {
       "date": "05-09",
-      "time": "21:00",
-      "match": "Zvijezda 09 - FK Majevica Lopare",
-      "home": "Zvijezda 09",
-      "away": "FK Majevica Lopare",
-      "countryCode": "ba",
-      "leagueTitle": "Bosnia 1st League - RS",
-      "p1": "69%",
-      "px": "9%",
-      "p2": "22%",
-      "bet": "1",
-      "coef1": "1.16",
-      "coefX": "7.10",
-      "coef2": "11.25",
-      "result": "",
-      "betResult": "lose"
-    },
-    {
-      "date": "05-09",
-      "time": "21:00",
-      "match": "Lens - Lorient",
-      "home": "Lens",
-      "away": "Lorient",
-      "countryCode": "fr",
-      "leagueTitle": "France Ligue 1",
-      "p1": "28%",
-      "px": "11%",
-      "p2": "62%",
-      "bet": "2",
-      "coef1": "11.17",
-      "coefX": "5.85",
-      "coef2": "1.24",
-      "result": "",
-      "betResult": "lose"
-    },
-    {
-      "date": "05-09",
-      "time": "21:00",
-      "match": "Aluminij - Bravo",
-      "home": "Aluminij",
-      "away": "Bravo",
-      "countryCode": "si",
-      "leagueTitle": "Slovenia 1. SNL",
-      "p1": "51%",
-      "px": "25%",
-      "p2": "24%",
-      "bet": "1X",
-      "coef1": "1.80",
-      "coefX": "3.66",
-      "coef2": "4.07",
-      "result": "",
-      "betResult": "lose"
-    },
-    {
-      "date": "05-09",
-      "time": "21:00",
-      "match": "Flora Tallinn - Kalju Nomme",
-      "home": "Flora Tallinn",
-      "away": "Kalju Nomme",
-      "countryCode": "ee",
-      "leagueTitle": "Estonia Meistriliiga",
-      "p1": "71%",
-      "px": "8%",
-      "p2": "21%",
-      "bet": "1",
-      "coef1": "1.11",
-      "coefX": "7.40",
-      "coef2": "13.20",
-      "result": "",
-      "betResult": "lose"
-    },
-    {
-      "date": "05-09",
-      "time": "21:30",
-      "match": "Inter - Napoli",
-      "home": "Inter",
-      "away": "Napoli",
-      "countryCode": "it",
-      "leagueTitle": "Italy Serie A",
-      "p1": "53%",
-      "px": "10%",
-      "p2": "37%",
-      "bet": "",
-      "coef1": "1.13",
-      "coefX": "6.25",
-      "coef2": "17.75",
-      "result": "",
-      "betResult": "lose"
-    },
-    {
-      "date": "05-09",
-      "time": "22:00",
-      "match": "Spartak Varna - CSKA Sofia",
-      "home": "Spartak Varna",
-      "away": "CSKA Sofia",
-      "countryCode": "bg",
-      "leagueTitle": "Bulgaria First League",
-      "p1": "79%",
-      "px": "11%",
-      "p2": "9%",
-      "bet": "",
-      "coef1": "1.34",
-      "coefX": "5.53",
-      "coef2": "6.61",
-      "result": "",
-      "betResult": "lose"
-    },
-    {
-      "date": "05-09",
-      "time": "22:00",
-      "match": "Žilina - Podbrezová",
-      "home": "Žilina",
-      "away": "Podbrezová",
-      "countryCode": "sk",
-      "leagueTitle": "Slovakia Super Liga",
-      "p1": "35%",
-      "px": "27%",
-      "p2": "38%",
-      "bet": "",
-      "coef1": "2.65",
-      "coefX": "3.94",
-      "coef2": "2.33",
-      "result": "",
-      "betResult": "lose"
-    },
-    {
-      "date": "05-09",
-      "time": "22:00",
-      "match": "BSC Young Boys - FC Luzern",
-      "home": "BSC Young Boys",
-      "away": "FC Luzern",
-      "countryCode": "ch",
-      "leagueTitle": "Switzerland Super League",
-      "p1": "40%",
-      "px": "49%",
-      "p2": "11%",
-      "bet": "",
-      "coef1": "1.55",
-      "coefX": "4.15",
-      "coef2": "5.53",
-      "result": "",
-      "betResult": "lose"
-    },
-    {
-      "date": "05-09",
-      "time": "22:00",
-      "match": "Volos NFC - Olympiakos Piraeus",
-      "home": "Volos NFC",
-      "away": "Olympiakos Piraeus",
-      "countryCode": "gr",
-      "leagueTitle": "Greece Super League 1",
-      "p1": "79%",
-      "px": "13%",
-      "p2": "8%",
-      "bet": "",
-      "coef1": "1.37",
-      "coefX": "4.58",
-      "coef2": "8.03",
-      "result": "",
-      "betResult": "lose"
-    },
-    {
-      "date": "05-09",
-      "time": "22:00",
-      "match": "Dinamo Zagreb - HNK Gorica",
-      "home": "Dinamo Zagreb",
-      "away": "HNK Gorica",
-      "countryCode": "hr",
-      "leagueTitle": "Croatia HNL",
-      "p1": "36%",
-      "px": "16%",
-      "p2": "48%",
-      "bet": "",
-      "coef1": "1.67",
-      "coefX": "3.75",
-      "coef2": "4.03",
-      "result": "",
-      "betResult": "lose"
-    },
-    {
-      "date": "05-09",
-      "time": "22:15",
-      "match": "Hull City - Aston Villa",
-      "home": "Hull City",
-      "away": "Aston Villa",
-      "countryCode": "england",
-      "leagueTitle": "England Premier League",
-      "p1": "74%",
-      "px": "16%",
-      "p2": "10%",
-      "bet": "",
-      "coef1": "1.52",
-      "coefX": "3.95",
-      "coef2": "6.05",
-      "result": "",
-      "betResult": "lose"
-    },
-    {
-      "date": "05-09",
       "time": "22:45",
-      "match": "Rayo Vallecano - Racing Santander",
-      "home": "Rayo Vallecano",
-      "away": "Racing Santander",
-      "countryCode": "es",
-      "leagueTitle": "Spain La Liga",
+      "match": "Coleraine FC - Crusaders FC",
+      "home": "Coleraine FC",
+      "away": "Crusaders FC",
+      "countryCode": "northernireland",
+      "leagueTitle": "Northern-Ireland Premiership",
       "p1": "50%",
       "px": "17%",
       "p2": "33%",
-      "bet": "",
+      "bet": "12",
       "coef1": "1.74",
       "coefX": "3.82",
       "coef2": "4.78",
@@ -1266,15 +1320,33 @@
     {
       "date": "05-09",
       "time": "23:00",
-      "match": "FC Schalke 04 - Bayern München",
-      "home": "FC Schalke 04",
-      "away": "Bayern München",
-      "countryCode": "de",
-      "leagueTitle": "Germany Bundesliga",
+      "match": "Maritimo - Benfica",
+      "home": "Maritimo",
+      "away": "Benfica",
+      "countryCode": "pt",
+      "leagueTitle": "Portugal Primeira Liga",
+      "p1": "46%",
+      "px": "29%",
+      "p2": "25%",
+      "bet": "1X",
+      "coef1": "1.76",
+      "coefX": "3.34",
+      "coef2": "4.42",
+      "result": "",
+      "betResult": "lose"
+    },
+    {
+      "date": "05-09",
+      "time": "23:00",
+      "match": "Fenerbahçe - Beşiktaş",
+      "home": "Fenerbahçe",
+      "away": "Beşiktaş",
+      "countryCode": "tr",
+      "leagueTitle": "Turkey Süper Lig",
       "p1": "10%",
       "px": "13%",
       "p2": "76%",
-      "bet": "",
+      "bet": "2",
       "coef1": "6.13",
       "coefX": "4.60",
       "coef2": "1.45",
@@ -1284,15 +1356,15 @@
     {
       "date": "05-09",
       "time": "23:00",
-      "match": "Boreham Wood - Carlisle",
-      "home": "Boreham Wood",
-      "away": "Carlisle",
-      "countryCode": "england",
-      "leagueTitle": "England National League",
+      "match": "Anderlecht W - Genk W",
+      "home": "Anderlecht W",
+      "away": "Genk W",
+      "countryCode": "be",
+      "leagueTitle": "Belgium Super League Women",
       "p1": "34%",
       "px": "18%",
       "p2": "47%",
-      "bet": "",
+      "bet": "12",
       "coef1": "3.58",
       "coefX": "3.42",
       "coef2": "2.03",
@@ -1302,15 +1374,15 @@
     {
       "date": "05-09",
       "time": "23:00",
-      "match": "Coleraine FC - Crusaders FC",
-      "home": "Coleraine FC",
-      "away": "Crusaders FC",
-      "countryCode": "northernireland",
-      "leagueTitle": "Northern-Ireland Premiership",
+      "match": "Al Hussein - Al Jazeera",
+      "home": "Al Hussein",
+      "away": "Al Jazeera",
+      "countryCode": "jo",
+      "leagueTitle": "Jordan League",
       "p1": "75%",
       "px": "15%",
       "p2": "10%",
-      "bet": "",
+      "bet": "1",
       "coef1": "1.52",
       "coefX": "4.39",
       "coef2": "6.32",
@@ -1320,11 +1392,29 @@
     {
       "date": "05-09",
       "time": "23:30",
-      "match": "Maritimo - Benfica",
-      "home": "Maritimo",
-      "away": "Benfica",
-      "countryCode": "pt",
-      "leagueTitle": "Portugal Primeira Liga",
+      "match": "Témouchent - CS Constantine",
+      "home": "Témouchent",
+      "away": "CS Constantine",
+      "countryCode": "dz",
+      "leagueTitle": "Algeria Ligue 1",
+      "p1": "20%",
+      "px": "55%",
+      "p2": "25%",
+      "bet": "",
+      "coef1": "3.15",
+      "coefX": "2.98",
+      "coef2": "2.46",
+      "result": "",
+      "betResult": "lose"
+    },
+    {
+      "date": "05-09",
+      "time": "23:30",
+      "match": "Stabaek - Moss",
+      "home": "Stabaek",
+      "away": "Moss",
+      "countryCode": "no",
+      "leagueTitle": "Norway 1. Division",
       "p1": "68%",
       "px": "10%",
       "p2": "22%",
@@ -1338,11 +1428,11 @@
     {
       "date": "05-09",
       "time": "23:30",
-      "match": "Fenerbahçe - Beşiktaş",
-      "home": "Fenerbahçe",
-      "away": "Beşiktaş",
-      "countryCode": "tr",
-      "leagueTitle": "Turkey Süper Lig",
+      "match": "San Telmo - Los Andes",
+      "home": "San Telmo",
+      "away": "Los Andes",
+      "countryCode": "ar",
+      "leagueTitle": "Argentina Primera Nacional",
       "p1": "34%",
       "px": "18%",
       "p2": "48%",
@@ -1356,13 +1446,13 @@
     {
       "date": "06-09",
       "time": "00:00",
-      "match": "Anderlecht W - Genk W",
-      "home": "Anderlecht W",
-      "away": "Genk W",
-      "countryCode": "be",
-      "leagueTitle": "Belgium Super League Women",
-      "p1": "25%",
-      "px": "43%",
+      "match": "Ajax - PSV Eindhoven",
+      "home": "Ajax",
+      "away": "PSV Eindhoven",
+      "countryCode": "nl",
+      "leagueTitle": "Netherlands Eredivisie",
+      "p1": "22%",
+      "px": "46%",
       "p2": "32%",
       "bet": "",
       "coef1": "4.35",
@@ -1373,15 +1463,33 @@
     },
     {
       "date": "06-09",
+      "time": "00:00",
+      "match": "Saint Etienne - Montpellier",
+      "home": "Saint Etienne",
+      "away": "Montpellier",
+      "countryCode": "fr",
+      "leagueTitle": "France Ligue 2",
+      "p1": "53%",
+      "px": "15%",
+      "p2": "31%",
+      "bet": "",
+      "coef1": "1.65",
+      "coefX": "4.10",
+      "coef2": "4.08",
+      "result": "",
+      "betResult": "lose"
+    },
+    {
+      "date": "06-09",
       "time": "19:00",
-      "match": "Al Hussein - Al Jazeera",
-      "home": "Al Hussein",
-      "away": "Al Jazeera",
-      "countryCode": "jo",
-      "leagueTitle": "Jordan League",
-      "p1": "29%",
+      "match": "AEK Athens FC - Aris Thessalonikis",
+      "home": "AEK Athens FC",
+      "away": "Aris Thessalonikis",
+      "countryCode": "gr",
+      "leagueTitle": "Greece Super League 1",
+      "p1": "40%",
       "px": "17%",
-      "p2": "55%",
+      "p2": "44%",
       "bet": "",
       "coef1": "2.10",
       "coefX": "3.62",
