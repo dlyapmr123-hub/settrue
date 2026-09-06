@@ -66,10 +66,7 @@
         ::-webkit-scrollbar-track { background: var(--bg-primary); }
         ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 10px; }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1000px; margin: 0 auto; }
 
         .header {
             display: flex;
@@ -81,11 +78,7 @@
             flex-wrap: wrap;
             gap: 12px;
         }
-
-        .header h1 {
-            font-size: 24px;
-            font-weight: 800;
-        }
+        .header h1 { font-size: 24px; font-weight: 800; }
         .header h1 .green { color: var(--green); }
         .header h1 .light { color: var(--text-primary); }
 
@@ -116,9 +109,7 @@
             transition: transform 0.3s ease;
             box-shadow: 0 0 10px var(--green-glow);
         }
-        [data-theme="light"] .theme-toggle .toggle-dot {
-            transform: translateX(18px);
-        }
+        [data-theme="light"] .theme-toggle .toggle-dot { transform: translateX(18px); }
         .theme-toggle .toggle-icon {
             position: absolute;
             font-size: 9px;
@@ -170,10 +161,13 @@
         }
         .tip-card.premium {
             border-color: var(--premium-color);
+            position: relative;
         }
-        .tip-card.premium::before {
+        .tip-card.premium::after {
             content: '⭐ PREMIUM';
-            float: right;
+            position: absolute;
+            top: 10px;
+            right: 14px;
             font-size: 9px;
             font-weight: 700;
             color: #000;
@@ -285,9 +279,6 @@
             padding: 2px 0;
             line-height: 1.5;
         }
-        .tip-trends .trend-item strong {
-            color: var(--text-primary);
-        }
 
         .loading {
             text-align: center;
@@ -320,13 +311,13 @@
             margin-top: 20px;
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 600px) {
             body { padding: 12px; }
             .header h1 { font-size: 20px; }
             .stats { gap: 12px; padding: 12px 16px; }
             .stats .stat .value { font-size: 16px; }
             .tip-card { padding: 12px 14px; }
+            .tip-card.premium::after { top: 6px; right: 10px; font-size: 8px; }
             .tip-author { font-size: 13px; }
             .tip-teams .team { font-size: 12px; }
             .tip-teams .team img { width: 16px; height: 16px; }
@@ -338,7 +329,6 @@
 <body>
 
     <div class="container">
-        <!-- ===== HEADER ===== -->
         <div class="header">
             <h1><span class="light">Set</span><span class="green">True</span> <span style="font-size:16px;font-weight:400;color:var(--text-secondary);">— Прогнозы</span></h1>
             <div class="header-controls">
@@ -350,31 +340,14 @@
             </div>
         </div>
 
-        <!-- ===== STATS ===== -->
         <div class="stats" id="stats" style="display:none;">
-            <div class="stat">
-                <span class="value" id="totalCount">0</span>
-                <span class="label">Всего прогнозов</span>
-            </div>
-            <div class="stat">
-                <span class="value" id="premiumCount">0</span>
-                <span class="label">Premium</span>
-            </div>
-            <div class="stat">
-                <span class="value" id="trendsCount">0</span>
-                <span class="label">С трендами</span>
-            </div>
-            <div class="stat">
-                <span class="value" id="avgProfit">0%</span>
-                <span class="label">Средняя прибыль</span>
-            </div>
+            <div class="stat"><span class="value" id="totalCount">0</span><span class="label">Всего прогнозов</span></div>
+            <div class="stat"><span class="value" id="premiumCount">0</span><span class="label">Premium</span></div>
+            <div class="stat"><span class="value" id="trendsCount">0</span><span class="label">С трендами</span></div>
+            <div class="stat"><span class="value" id="avgProfit">0%</span><span class="label">Средняя прибыль</span></div>
         </div>
 
-        <!-- ===== TIPS ===== -->
-        <div id="tipsContainer">
-            <div class="loading"><div class="spinner"></div><div>Загрузка прогнозов...</div></div>
-        </div>
-
+        <div id="tipsContainer"><div class="loading"><div class="spinner"></div><div>Загрузка прогнозов...</div></div></div>
         <div class="update-time" id="updateTime"></div>
     </div>
 
@@ -382,9 +355,7 @@
         // ============================================================
         // 1. ТЕМА
         // ============================================================
-        function getTheme() {
-            return localStorage.getItem('settrue-theme') || 'dark';
-        }
+        function getTheme() { return localStorage.getItem('settrue-theme') || 'dark'; }
         function setTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('settrue-theme', theme);
@@ -399,23 +370,17 @@
         // ============================================================
         // 2. ОТОБРАЖЕНИЕ
         // ============================================================
-        const API_URL = 'https://script.google.com/macros/s/AKfycbxekTSYzSS_0PznwSPwZnPNY3M_otipXoGWBogyQj9V2YYRang6UFeS2HOoVJDjhovv/exec';
+        // 🔥 ГРУЗИМ ИЗ ФАЙЛА НА СЕРВЕРЕ (без CORS)
+        const DATA_URL = '/feed_data.json?t=' + Date.now();
 
         function formatTime(timestamp) {
             if (!timestamp) return '';
             const date = new Date(timestamp);
             const now = new Date();
             const diff = Math.floor((now - date) / 1000);
-            
             if (diff < 60) return 'только что';
-            if (diff < 3600) {
-                const m = Math.floor(diff / 60);
-                return m + ' ' + getMinutesWord(m) + ' назад';
-            }
-            if (diff < 86400) {
-                const h = Math.floor(diff / 3600);
-                return h + ' ' + getHoursWord(h) + ' назад';
-            }
+            if (diff < 3600) { const m = Math.floor(diff / 60); return m + ' ' + getMinutesWord(m) + ' назад'; }
+            if (diff < 86400) { const h = Math.floor(diff / 3600); return h + ' ' + getHoursWord(h) + ' назад'; }
             return date.toLocaleDateString('ru-RU', {day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit'});
         }
 
@@ -435,14 +400,13 @@
             const container = document.getElementById('tipsContainer');
             const statsEl = document.getElementById('stats');
             const updateTimeEl = document.getElementById('updateTime');
-            
+
             if (!data || data.length === 0) {
                 container.innerHTML = '<div class="empty"><div class="icon">📭</div><div>Нет прогнозов</div></div>';
                 statsEl.style.display = 'none';
                 return;
             }
 
-            // Статистика
             const total = data.length;
             const premium = data.filter(t => t.isPremium).length;
             const withTrends = data.filter(t => t.hasTrends).length;
@@ -454,34 +418,23 @@
             document.getElementById('avgProfit').textContent = (avgProfit > 0 ? '+' : '') + avgProfit.toFixed(1) + '%';
             statsEl.style.display = 'flex';
 
-            // Рендерим карточки
             let html = '';
-            
-            data.forEach((tip, index) => {
+            data.forEach((tip) => {
                 const profit = tip.profit || 0;
                 const profitClass = profit >= 0 ? 'positive' : 'negative';
                 const profitSign = profit >= 0 ? '+' : '';
                 const timeStr = formatTime(tip.timestamp);
                 const isPremium = tip.isPremium || false;
                 const premiumClass = isPremium ? 'premium' : '';
-                
-                // Определяем прогноз (если нет prediction, пытаемся извлечь из ссылки)
+
                 let prediction = tip.prediction || '';
                 if (!prediction && tip.link) {
-                    const parts = tip.link.split('-');
-                    if (parts.length > 3) {
-                        // Пробуем извлечь из названия ссылки
-                        const match = tip.link.match(/prognoz-na-match$/);
-                        if (!match) {
-                            // Ищем по шаблону
-                            const predMatch = tip.link.match(/-([a-zA-Z0-9\-]+)-prognoz/);
-                            if (predMatch && predMatch[1]) {
-                                prediction = predMatch[1].replace(/-/g, ' ');
-                            }
-                        }
+                    const predMatch = tip.link.match(/-([a-zA-Z0-9\-]+)-prognoz/);
+                    if (predMatch && predMatch[1]) {
+                        prediction = predMatch[1].replace(/-/g, ' ');
                     }
                 }
-                
+
                 html += `
                     <div class="tip-card ${premiumClass}">
                         <div class="tip-header">
@@ -517,7 +470,7 @@
             });
 
             container.innerHTML = html;
-            
+
             if (data.length > 0 && data[0].timestamp) {
                 updateTimeEl.textContent = 'Обновлено: ' + new Date(data[0].timestamp).toLocaleString('ru-RU');
             }
@@ -528,7 +481,9 @@
             container.innerHTML = '<div class="loading"><div class="spinner"></div><div>Загрузка прогнозов...</div></div>';
 
             try {
-                const response = await fetch(API_URL + '?t=' + Date.now());
+                const response = await fetch('/feed_data.json?t=' + Date.now());
+                if (!response.ok) throw new Error('Файл не найден');
+
                 const result = await response.json();
 
                 if (result.success && result.data && result.data.length > 0) {
@@ -539,7 +494,14 @@
                 }
             } catch (error) {
                 console.error('Ошибка загрузки:', error);
-                container.innerHTML = '<div class="empty"><div class="icon">❌</div><div>Ошибка загрузки данных</div></div>';
+                container.innerHTML = `
+                    <div class="empty">
+                        <div class="icon">❌</div>
+                        <div>Ошибка загрузки данных</div>
+                        <div style="font-size:12px;color:var(--text-muted);margin-top:8px;">Проверьте, что файл feed_data.json существует</div>
+                        <button onclick="loadTips()" style="margin-top:16px;padding:8px 24px;background:var(--green);border:none;border-radius:8px;color:#000;font-weight:700;cursor:pointer;">Повторить</button>
+                    </div>
+                `;
                 document.getElementById('stats').style.display = 'none';
             }
         }
@@ -549,8 +511,6 @@
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
             loadTips();
-            
-            // Автообновление каждые 60 секунд
             setInterval(loadTips, 60000);
         });
     </script>
