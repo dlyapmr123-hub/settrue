@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- === YANDEX METRIKA === -->
+    <!-- YANDEX METRIKA -->
     <meta name="yandex-verification" content="0ac8a3221431959f" />
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){
@@ -18,21 +18,21 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
-    <!-- === SEO META TAGS === -->
+    <!-- SEO -->
     <title>SetTrue — Расписание матчей на сегодня, LIVE результаты и прогнозы</title>
     <meta name="description" content="SetTrue — расписание матчей на сегодня и завтра, LIVE результаты, прогнозы на футбол, денежные потоки на спорт. Аналитика ставок в реальном времени.">
     <meta name="keywords" content="расписание матчей на сегодня, прогнозы на футбол, live результаты, денежные потоки, settrue, ставки на спорт, аналитика">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://settrue.ru/">
     
-    <!-- === Open Graph === -->
+    <!-- Open Graph -->
     <meta property="og:title" content="SetTrue — Расписание матчей на сегодня и прогнозы">
     <meta property="og:description" content="Расписание матчей на сегодня, LIVE результаты, прогнозы на футбол и денежные потоки на спорт.">
     <meta property="og:url" content="https://settrue.ru/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="SetTrue">
     
-    <!-- === FAVICON === -->
+    <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -41,7 +41,7 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#050507">
 
-    <!-- === FONTS === -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -243,36 +243,42 @@
         .sidebar-widget h3 svg { width: 16px; height: 16px; color: var(--green); }
 
         .sidebar-tip {
-            padding: 10px; background: rgba(255,255,255,0.02); border-radius: 8px;
-            margin-bottom: 8px; font-size: 12px; border: 1px solid var(--border-color);
-            transition: border-color 0.2s ease;
+            padding: 10px 12px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
-        .sidebar-tip:hover { border-color: var(--border-hover); }
+        .sidebar-tip:hover { border-color: var(--border-hover); background: var(--bg-card-hover); }
         .sidebar-tip:last-child { margin-bottom: 0; }
         .sidebar-tip .tip-teams {
             font-weight: 600; color: var(--text-primary); font-size: 12px;
             display: flex; align-items: center; gap: 6px;
         }
         .sidebar-tip .tip-teams img {
-            width: 16px; height: 16px; object-fit: contain; border-radius: 50%;
+            width: 18px; height: 18px; object-fit: contain; border-radius: 50%;
             flex-shrink: 0; background: var(--bg-card);
         }
         .sidebar-tip .tip-prediction {
-            color: var(--green); font-weight: 700; font-size: 11px;
-            margin-top: 3px; display: inline-block;
-            background: rgba(0,204,68,0.08); padding: 1px 10px; border-radius: 12px;
+            color: var(--green); font-weight: 600; font-size: 11px;
+            display: inline-block;
+            background: rgba(0,204,68,0.06);
+            padding: 1px 10px;
+            border-radius: 12px;
+            letter-spacing: 0.3px;
         }
-        .sidebar-tip .tip-profit {
-            font-weight: 700; font-size: 11px; margin-top: 3px;
-        }
-        .sidebar-tip .tip-profit.positive { color: var(--profit-positive); }
-        .sidebar-tip .tip-profit.premium { color: var(--premium-color); font-weight: 700; }
         .sidebar-tip .tip-badge {
             font-size: 8px; font-weight: 700; padding: 1px 8px; border-radius: 10px;
-            margin-left: 6px; text-transform: uppercase;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            margin-left: 6px;
         }
         .sidebar-tip .tip-badge.premium { background: var(--premium-color); color: #000; }
-        .sidebar-tip .tip-badge.high { background: var(--profit-positive); color: #000; }
+        .sidebar-tip .tip-badge.high { background: var(--green); color: #000; }
 
         .sidebar-item {
             padding: 10px; background: rgba(255,255,255,0.02); border-radius: 8px;
@@ -385,7 +391,7 @@
         .feature-card h4 { color: var(--text-primary); font-size: 12px; font-weight: 700; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .feature-card p { color: var(--text-secondary); font-size: 10px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-        /* ===== COMPACT FOOTER ===== */
+        /* ===== FOOTER ===== */
         .main-footer {
             position: relative; z-index: 1; background: var(--bg-secondary); border-top: 1px solid var(--border-color);
             padding: 16px 24px 10px; margin-top: auto; transition: background 0.3s ease;
@@ -442,7 +448,7 @@
 
     <div id="particles-bg"></div>
 
-    <!-- ===== HEADER ===== -->
+    <!-- HEADER -->
     <header class="main-header">
         <div class="header-left">
             <img src="logo.png" alt="SetTrue Logo" class="header-logo" onerror="this.style.display='none'">
@@ -471,7 +477,7 @@
         </div>
     </header>
 
-    <!-- ===== TICKER ===== -->
+    <!-- TICKER -->
     <section class="hero-section">
         <div class="ticker-wrapper">
             <div class="ticker-track" id="tickerTrack">
@@ -489,27 +495,11 @@
                 <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg></span>xG важнее: Ожидаемые голы точнее реального счёта</div>
                 <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></span>LIVE: Ставьте после 15-20 минут, когда ясна картина</div>
                 <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg></span>Безопасность: Никогда не ставьте последние деньги</div>
-                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>Мотивация: В конце сезона важна турнирная цель команд</div>
-                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg></span>Календарь: Учитывайте плотность графика и ротацию</div>
-                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2" /></svg></span>Home/Away: Команды играют дома и в гостях по-разному</div>
-                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg></span>Фокус: Не ставьте на всё подряд, выбирайте лучшее</div>
-                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.959-8.429a9 9 0 11-11.93 13.446 9.003 9.003 0 0111.93-13.446z" /></svg></span>Правило: Максимум 5% банка на одну ставку</div>
-                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg></span>Тренды: 5 побед подряд ≠ 6-я тоже будет победой</div>
-                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>Кэфы 1.20-1.40: Казалось бы лёгкие, но часто проигрывают</div>
-                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg></span>Анализ ошибок: Изучайте проигрыши, а не только победы</div>
-                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg></span>Составы: Изучайте стартовые за час до матча</div>
-                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg></span>Погода: Дождь и ветер часто = меньше голов</div>
-                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>Судьи: Некоторые дают больше карточек и пенальти</div>
-                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>Пауза: Не ставьте каждую минуту, делайте перерывы</div>
-                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg></span>ROI: Хороший результат — +5-10% к банку в месяц</div>
-                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></span>Экспрессы: Заманчиво, но одинары выгоднее на дистанции</div>
-                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg></span>Защита: Никогда не берите микрозаймы для ставок!</div>
-                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.959-8.429a9 9 0 11-11.93 13.446 9.003 9.003 0 0111.93-13.446z" /></svg></span>Цель: Ставки — это марафон, а не спринт</div>
             </div>
         </div>
     </section>
 
-    <!-- ===== PARTNER STRIP ===== -->
+    <!-- PARTNER STRIP -->
     <div class="partner-strip">
         <span class="label">Партнёр</span>
         <div class="brand">
@@ -523,7 +513,7 @@
         </div>
     </div>
 
-    <!-- ===== MAIN LAYOUT ===== -->
+    <!-- MAIN LAYOUT -->
     <div id="page-content">
         <div class="main-layout">
             
@@ -587,30 +577,30 @@
                 </div>
             </div>
 
-            <!-- RIGHT SIDEBAR -->
+            <!-- RIGHT SIDEBAR — ПОПУЛЯРНОЕ -->
             <aside class="sidebar">
                 <div class="sidebar-widget">
                     <h3>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                        Популярные ставки
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                        Популярное
                     </h3>
                     <div class="sidebar-item">
-                        <div class="label">Победа фаворита</div>
-                        <div class="value">68%</div>
+                        <div class="label">⚽ Победа фаворита</div>
+                        <div class="value" style="color: var(--green)">68% ставок</div>
                     </div>
                     <div class="sidebar-item">
-                        <div class="label">Тотал больше</div>
-                        <div class="value">54%</div>
+                        <div class="label">⚽ Тотал больше 2.5</div>
+                        <div class="value" style="color: var(--green)">54% ставок</div>
                     </div>
                     <div class="sidebar-item">
-                        <div class="label">Обе забьют</div>
-                        <div class="value">42%</div>
+                        <div class="label">⚽ Обе забьют</div>
+                        <div class="value" style="color: var(--green)">42% ставок</div>
                     </div>
                 </div>
                 <div class="sidebar-widget">
                     <h3>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
-                        Тренды
+                        Активность
                     </h3>
                     <div class="sidebar-item">
                         <div class="label">Футбол</div>
@@ -629,7 +619,7 @@
         </div>
     </div>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- FOOTER -->
     <footer class="main-footer">
         <div class="footer-inner">
             <div class="footer-brand">
@@ -723,7 +713,7 @@
                 if (result.success && result.data && result.data.length > 0) {
                     // Фильтруем: премиум (isPremium: true) ИЛИ profit > 500
                     const tips = result.data.filter(t => t.isPremium === true || (t.profit || 0) > 500);
-                    const topTips = tips.slice(0, 8);
+                    const topTips = tips.slice(0, 10);
                     
                     if (topTips.length === 0) {
                         container.innerHTML = '<div class="sidebar-item" style="text-align:center;color:var(--text-muted);font-size:11px;padding:20px 10px;">Нет премиум-прогнозов</div>';
@@ -734,10 +724,8 @@
                     topTips.forEach((tip, index) => {
                         const isPremium = tip.isPremium || false;
                         const profit = tip.profit || 0;
-                        const profitClass = profit > 500 ? 'positive' : 'premium';
-                        const profitLabel = profit > 500 ? '🔥 ' + profit.toFixed(1) + '%' : '⭐ Premium';
-                        const badgeClass = profit > 500 ? 'high' : 'premium';
-                        const badgeText = profit > 500 ? 'TOП' : 'PREMIUM';
+                        const badgeClass = isPremium ? 'premium' : 'high';
+                        const badgeText = isPremium ? 'PREMIUM' : 'ТОП';
                         
                         let prediction = tip.prediction || '';
                         if (!prediction && tip.link) {
@@ -756,7 +744,6 @@
                                     <span class="tip-badge ${badgeClass}">${badgeText}</span>
                                 </div>
                                 ${prediction ? `<div class="tip-prediction">${prediction}</div>` : ''}
-                                <div class="tip-profit ${profitClass}">${profitLabel}</div>
                             </div>
                         `;
                     });
@@ -836,7 +823,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             loadTopTips();
             loadMatches();
-            // Обновляем топ прогнозы каждые 2 минуты
             setInterval(loadTopTips, 120000);
         });
     </script>
