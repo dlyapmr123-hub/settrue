@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- === YANDEX METRIKA === -->
+    <!-- YANDEX METRIKA -->
     <meta name="yandex-verification" content="0ac8a3221431959f" />
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){
@@ -18,21 +18,21 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
-    <!-- === SEO === -->
+    <!-- SEO -->
     <title>SetTrue — Денежные потоки | Куда ставят деньги в спорте</title>
     <meta name="description" content="Денежные потоки на спорт в реальном времени. Узнайте, куда ставят большие деньги: футбол, теннис, баскетбол, бейсбол.">
     <meta name="keywords" content="прогнозы на спорт, денежные потоки, Денежные потоки и прогрузы 1X2 на футбол куда ставят деньги, прогрузы на футбол,прогрузы на спорт, settrue, trueset, объем ставок, движение денег">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://settrue.ru/cashflows/">
     
-    <!-- === Open Graph === -->
+    <!-- Open Graph -->
     <meta property="og:title" content="SetTrue — Денежные потоки на спорт">
     <meta property="og:description" content="Отслеживайте крупные ставки и движение денег в реальном времени.">
     <meta property="og:url" content="https://settrue.ru/cashflows/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="SetTrue">
     
-    <!-- === FAVICON === -->
+    <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -41,13 +41,12 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#050507">
 
-    <!-- === FONTS === -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* ===== CSS VARIABLES ===== */
         :root {
             --bg-primary: #080808;
             --bg-secondary: #0d0d0d;
@@ -68,6 +67,8 @@
             --signal-high: rgba(0, 204, 68, 0.12);
             --signal-strong: rgba(0, 204, 68, 0.25);
             --signal-mega: rgba(0, 204, 68, 0.40);
+            --font-mono: 'JetBrains Mono', monospace;
+            --header-height: 64px;
         }
 
         [data-theme="light"] {
@@ -89,15 +90,8 @@
             --signal-mega: rgba(0, 204, 68, 0.30);
         }
 
-        /* ===== RESET ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-
         body {
             background: var(--bg-primary);
             font-family: 'Inter', sans-serif;
@@ -110,7 +104,6 @@
             transition: background 0.3s ease, color 0.3s ease;
         }
 
-        /* ===== SCROLLBAR ===== */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: var(--bg-primary); }
         ::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 10px; }
@@ -137,8 +130,7 @@
         }
         @keyframes floatParticle {
             0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.3; }
+            10% { opacity: 0.5; } 90% { opacity: 0.3; }
             100% { transform: translateY(-10vh) scale(1); opacity: 0; }
         }
 
@@ -154,27 +146,50 @@
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-color);
             padding: 0 24px;
-            height: 56px;
+            height: var(--header-height);
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             transition: background 0.3s ease, border-color 0.3s ease;
         }
 
-        .header-nav {
+        .header-left {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 10px;
+            z-index: 10;
+        }
+        .header-logo {
+            height: 32px;
+            width: auto;
+            object-fit: contain;
+        }
+        .header-logo-text {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+        .header-logo-text span {
+            color: var(--green);
+        }
+
+        .header-nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 2px;
         }
         .header-nav a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 500;
-            padding: 8px 18px;
-            border-radius: 8px;
+            padding: 6px 12px;
+            border-radius: 6px;
             transition: all 0.25s ease;
-            letter-spacing: 0.2px;
         }
         .header-nav a:hover {
             color: var(--text-primary);
@@ -182,56 +197,51 @@
         }
         .header-nav a.active {
             color: var(--green);
-            background: var(--badge-bg);
+            background: rgba(0, 204, 68, 0.08);
         }
 
         .header-right {
-            position: absolute;
-            right: 24px;
-            top: 50%;
-            transform: translateY(-50%);
             display: flex;
             align-items: center;
             gap: 12px;
+            z-index: 10;
         }
-
         .header-time {
             color: var(--text-muted);
             font-size: 12px;
             font-weight: 600;
-            letter-spacing: 0.3px;
+            font-family: var(--font-mono);
         }
-        .header-time .time-val { color: var(--green); }
+        .header-time .time-val {
+            color: var(--green);
+        }
 
         .theme-toggle {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 30px;
-            width: 42px;
-            height: 22px;
+            width: 40px;
+            height: 20px;
             cursor: pointer;
             position: relative;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
             padding: 0 3px;
         }
         .theme-toggle .toggle-dot {
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: var(--green);
             transition: transform 0.3s ease;
-            box-shadow: 0 0 10px var(--green-glow);
         }
         [data-theme="light"] .theme-toggle .toggle-dot {
-            transform: translateX(18px);
+            transform: translateX(17px);
         }
         .theme-toggle .toggle-icon {
             position: absolute;
-            font-size: 9px;
+            font-size: 8px;
             transition: opacity 0.3s ease;
             line-height: 1;
         }
@@ -251,7 +261,7 @@
         }
         .menu-toggle span {
             display: block;
-            width: 20px;
+            width: 18px;
             height: 2px;
             background: var(--text-secondary);
             border-radius: 2px;
@@ -261,31 +271,64 @@
         .menu-toggle.open span:nth-child(2) { opacity: 0; }
         .menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
 
-        /* ===== HERO ===== */
+        /* ===== TICKER (бегущая строка) ===== */
         .hero-section {
             position: relative;
             z-index: 1;
-            min-height: 30vh;
+            padding: 80px 0 0;
+            width: 100%;
+        }
+        .ticker-wrapper {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(90deg, transparent, rgba(0, 204, 68, 0.05), transparent);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 0;
+        }
+        .ticker-track {
+            display: flex;
+            gap: 16px;
+            width: max-content;
+            animation: scrollRight 120s linear infinite;
+            padding: 0 24px;
+        }
+        .ticker-track:hover {
+            animation-play-state: paused;
+        }
+        @keyframes scrollRight {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+        .ticker-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 12px 24px;
+            white-space: nowrap;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 72px 24px 24px;
-            text-align: center;
+            gap: 8px;
+            flex-shrink: 0;
+            transition: border-color 0.3s ease;
         }
-        .hero-inner { max-width: 700px; margin: 0 auto; }
-        .hero-title {
-            font-size: clamp(2.8rem, 10vw, 4.5rem);
-            font-weight: 900;
-            line-height: 1.02;
-            letter-spacing: -0.04em;
-            margin-bottom: 6px;
+        .ticker-card:hover {
+            border-color: var(--green);
         }
-        .hero-title .green { color: var(--green); }
-        .hero-title .light { color: var(--text-primary); }
-        .hero-sub {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            font-weight: 300;
+        .ticker-card .icon {
+            color: var(--green);
+            display: flex;
+            align-items: center;
+        }
+        .ticker-card .icon svg {
+            width: 18px;
+            height: 18px;
         }
 
         /* ===== PARTNER STRIP ===== */
@@ -318,7 +361,7 @@
         }
         .partner-strip .brand img {
             height: 18px;
-            filter: var(--partner-filter, brightness(0) invert(0.7));
+            filter: brightness(0) invert(0.7);
         }
         [data-theme="light"] .partner-strip .brand img {
             filter: brightness(0) invert(0.2);
@@ -424,7 +467,6 @@
             background: transparent;
         }
         
-        /* ===== СКРЫВАЕМ ЗАГОЛОВКИ ТОЛЬКО В СИГНАЛАХ ===== */
         #tabSignals .data-table thead {
             display: none;
         }
@@ -509,7 +551,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* ===== SIGNAL HIGHLIGHTS ===== */
         .signal-high { background: var(--signal-high); }
         .signal-strong { background: var(--signal-strong); font-weight: 700; }
         .signal-mega { background: var(--signal-mega); font-weight: 800; text-shadow: 0 0 10px var(--green-glow); }
@@ -519,7 +560,6 @@
         }
         .row-signal td:first-child { padding-left: 12px; }
 
-        /* ===== LOADING / EMPTY ===== */
         .loading-state {
             text-align: center;
             padding: 50px 20px;
@@ -548,7 +588,7 @@
             z-index: 1;
             background: var(--bg-secondary);
             border-top: 1px solid var(--border-color);
-            padding: 28px 24px 18px;
+            padding: 16px 24px 10px;
             margin-top: auto;
             transition: background 0.3s ease;
         }
@@ -556,43 +596,44 @@
             max-width: 1100px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 28px;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 16px;
+            align-items: start;
         }
         .footer-brand h3 {
             color: var(--text-primary);
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 800;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
         .footer-brand h3 span { color: var(--green); }
         .footer-brand p {
             color: var(--text-secondary);
-            font-size: 13px;
-            line-height: 1.7;
-            max-width: 280px;
+            font-size: 11px;
+            line-height: 1.4;
+            max-width: 260px;
         }
         .footer-col h4 {
             color: var(--text-muted);
-            font-size: 10px;
+            font-size: 9px;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
         .footer-col a {
             display: block;
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 13px;
-            padding: 3px 0;
+            font-size: 11px;
+            padding: 2px 0;
             transition: color 0.2s;
         }
         .footer-col a:hover { color: var(--green); }
         .footer-divider {
             border: none;
             border-top: 1px solid var(--border-color);
-            margin: 20px 0 12px;
+            margin: 12px 0 8px;
         }
         .footer-bottom {
             max-width: 1100px;
@@ -600,8 +641,8 @@
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 10px;
-            font-size: 11px;
+            gap: 8px;
+            font-size: 10px;
             color: var(--text-muted);
         }
         .footer-bottom .legal strong { color: var(--green); }
@@ -612,7 +653,7 @@
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 56px;
+                top: 64px;
                 left: 0;
                 right: 0;
                 background: var(--header-bg);
@@ -620,9 +661,10 @@
                 gap: 2px;
                 border-bottom: 1px solid var(--border-color);
                 backdrop-filter: blur(16px);
+                transform: none;
             }
             .header-nav.open { display: flex; }
-            .header-nav a { padding: 10px 16px; width: 100%; text-align: center; }
+            .header-nav a { padding: 10px 16px; width: 100%; text-align: center; font-size: 13px; }
             .menu-toggle { display: flex; }
             .header-right { position: static; transform: none; }
             .main-header { justify-content: space-between; }
@@ -631,7 +673,7 @@
             .footer-brand p { max-width: 100%; }
             .partner-strip { flex-direction: column; gap: 8px; padding: 10px; }
             .partner-strip .links { justify-content: center; }
-            .hero-section { min-height: 30vh; padding: 65px 16px 20px; }
+            .hero-section { padding: 75px 0 0; }
             .data-table { font-size: 11px; }
             .data-table tbody td { padding: 6px 4px; }
             .odds-value { font-size: 14px; }
@@ -641,15 +683,17 @@
         }
 
         @media (max-width: 480px) {
-            .main-header { padding: 0 14px; height: 50px; }
+            .main-header { padding: 0 14px; height: 56px; }
+            .header-logo { height: 28px; }
+            .header-logo-text { font-size: 16px; }
             .header-nav a { font-size: 12px; padding: 8px 14px; }
             .theme-toggle { width: 36px; height: 20px; }
             .theme-toggle .toggle-dot { width: 12px; height: 12px; }
             [data-theme="light"] .theme-toggle .toggle-dot { transform: translateX(15px); }
             .landing-container { padding: 16px 14px 40px; }
-            .hero-title { font-size: 2.2rem; }
             .tab-btn { font-size: 10px; padding: 4px 10px; }
             .tab-btn .badge { font-size: 8px; padding: 0 6px; }
+            .ticker-card { font-size: 12px; padding: 10px 16px; }
         }
     </style>
 </head>
@@ -660,6 +704,10 @@
 
     <!-- ===== HEADER ===== -->
     <header class="main-header">
+        <div class="header-left">
+            <img src="logo.png" alt="SetTrue Logo" class="header-logo" onerror="this.style.display='none'">
+            <span class="header-logo-text">Set<span>True</span></span>
+        </div>
         <nav class="header-nav" id="mainNav">
             <a href="/">Главная</a>
             <a href="/predict/">Прогнозы</a>
@@ -668,7 +716,6 @@
             <a href="/cs2/">CS2</a>
             <a href="/robobet/">Робобет</a>
         </nav>
-
         <div class="header-right">
             <div class="header-time">
                 <span class="time-val" id="headerTime">--:--</span> МСК
@@ -684,13 +731,19 @@
         </div>
     </header>
 
-    <!-- ===== HERO ===== -->
+    <!-- ===== TICKER (бегущая строка) ===== -->
     <section class="hero-section">
-        <div class="hero-inner">
-            <h1 class="hero-title">
-                <span class="light">Set</span><span class="green">True</span>
-            </h1>
-            <p class="hero-sub">Денежные потоки на спорт в реальном времени</p>
+        <div class="ticker-wrapper">
+            <div class="ticker-track" id="tickerTrack">
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>Совет: Управляйте банком по системе флэт (1-3% на ставку)</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg></span>Инсайд: Смотрите на движение денег, а не только на кэф</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg></span>Стратегия: Ищите валуйные ставки в низших лигах</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg></span>Психология: Никогда не отыгрывайтесь после минуса</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>ИИ-аналитика: Доверяйте математике, а не эмоциям</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>Value bets: Ставьте когда кэф выше реальной вероятности</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.959-8.429a9 9 0 11-11.93 13.446 9.003 9.003 0 0111.93-13.446z" /></svg></span>Дисциплина: Ведите статистику всех своих ставок</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg></span>Тренд: Следите за формой команд последние 5-10 матчей</div>
+            </div>
         </div>
     </section>
 
@@ -731,7 +784,7 @@
                 </button>
             </div>
 
-            <!-- ===== TAB: SIGNALS (без заголовков) ===== -->
+            <!-- ===== TAB: SIGNALS ===== -->
             <div class="tab-content active" id="tabSignals">
                 <div class="table-wrapper">
                     <div id="signalsContainer">
@@ -821,7 +874,15 @@
 
     <script>
         // ============================================================
-        // 1. ЗАЩИТА
+        // 1. TICKER
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.getElementById('tickerTrack');
+            if (track) track.innerHTML += track.innerHTML;
+        });
+
+        // ============================================================
+        // 2. ЗАЩИТА
         // ============================================================
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', e => {
@@ -834,7 +895,7 @@
         }, true);
 
         // ============================================================
-        // 2. ТЕМА
+        // 3. ТЕМА
         // ============================================================
         function getTheme() {
             return localStorage.getItem('settrue-theme') || 'dark';
@@ -851,7 +912,7 @@
         document.getElementById('themeToggle').addEventListener('click', toggleTheme);
 
         // ============================================================
-        // 3. ВРЕМЯ
+        // 4. ВРЕМЯ
         // ============================================================
         function updateTime() {
             const now = new Date();
@@ -863,7 +924,7 @@
         updateTime();
 
         // ============================================================
-        // 4. ЧАСТИЦЫ
+        // 5. ЧАСТИЦЫ
         // ============================================================
         function createParticles() {
             const container = document.getElementById('particles-bg');
@@ -887,7 +948,7 @@
         window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(createParticles, 300); });
 
         // ============================================================
-        // 5. МЕНЮ
+        // 6. МЕНЮ
         // ============================================================
         document.getElementById('menuToggle').addEventListener('click', function() {
             document.getElementById('mainNav').classList.toggle('open');
@@ -895,7 +956,7 @@
         });
 
         // ============================================================
-        // 6. ПАРТНЁРСКИЕ ССЫЛКИ
+        // 7. ПАРТНЁРСКИЕ ССЫЛКИ
         // ============================================================
         function openPartnerLink(type) {
             const urls = {
@@ -910,7 +971,7 @@
         }
 
         // ============================================================
-        // 7. ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК
+        // 8. ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК
         // ============================================================
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
@@ -920,7 +981,7 @@
         }
 
         // ============================================================
-        // 8. ФУНКЦИЯ ПРОВЕРКИ СИГНАЛА
+        // 9. ФУНКЦИЯ ПРОВЕРКИ СИГНАЛА
         // ============================================================
         function checkSignal(event, sport) {
             const hasDraw = sport === 'football';
@@ -952,7 +1013,7 @@
         }
 
         // ============================================================
-        // 9. API — ЗАГРУЗКА ИЗ ФАЙЛА
+        // 10. API — ЗАГРУЗКА ИЗ ФАЙЛА
         // ============================================================
         let cachedCashflows = null;
         let allSignalsData = [];
@@ -996,7 +1057,7 @@
         }
 
         // ============================================================
-        // 10. ЗАГРУЗКА СИГНАЛОВ
+        // 11. ЗАГРУЗКА СИГНАЛОВ
         // ============================================================
         async function loadSignalsData() {
             const container = document.getElementById('signalsContainer');
@@ -1045,7 +1106,7 @@
         }
 
         // ============================================================
-        // 11. ЗАГРУЗКА ФУТБОЛА
+        // 12. ЗАГРУЗКА ФУТБОЛА
         // ============================================================
         async function loadFootballData() {
             const container = document.getElementById('footballContainer');
@@ -1090,7 +1151,7 @@
         }
 
         // ============================================================
-        // 12. ЗАГРУЗКА ТЕННИСА
+        // 13. ЗАГРУЗКА ТЕННИСА
         // ============================================================
         async function loadTennisData() {
             const container = document.getElementById('tennisContainer');
@@ -1112,7 +1173,7 @@
         }
 
         // ============================================================
-        // 13. ЗАГРУЗКА БАСКЕТБОЛА
+        // 14. ЗАГРУЗКА БАСКЕТБОЛА
         // ============================================================
         async function loadBasketballData() {
             const container = document.getElementById('basketballContainer');
@@ -1134,7 +1195,7 @@
         }
 
         // ============================================================
-        // 14. ЗАГРУЗКА БЕЙСБОЛА
+        // 15. ЗАГРУЗКА БЕЙСБОЛА
         // ============================================================
         async function loadBaseballData() {
             const container = document.getElementById('baseballContainer');
@@ -1156,7 +1217,7 @@
         }
 
         // ============================================================
-        // 15. ОБЩАЯ ФУНКЦИЯ ДЛЯ 2 ИСХОДОВ
+        // 16. ОБЩАЯ ФУНКЦИЯ ДЛЯ 2 ИСХОДОВ
         // ============================================================
         function renderTwoOutcomeTable(data, sport) {
             const map = { tennis: 'tennis', basketball: 'basketball', baseball: 'baseball' };
@@ -1189,7 +1250,7 @@
         }
 
         // ============================================================
-        // 16. ОТРИСОВКА СИГНАЛОВ
+        // 17. ОТРИСОВКА СИГНАЛОВ
         // ============================================================
         function renderSignalsTable(events) {
             const container = document.getElementById('signalsContainer');
@@ -1263,7 +1324,7 @@
         }
 
         // ============================================================
-        // 17. АВТООБНОВЛЕНИЕ
+        // 18. АВТООБНОВЛЕНИЕ
         // ============================================================
         let autoUpdateInterval = null;
         function startAutoUpdate() {
@@ -1284,7 +1345,7 @@
         }
 
         // ============================================================
-        // 18. ЗАПУСК
+        // 19. ЗАПУСК
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
             loadSignalsData();
