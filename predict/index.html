@@ -80,8 +80,17 @@
             transition: background 0.3s ease, border-color 0.3s ease;
         }
         .header-left { display: flex; align-items: center; gap: 10px; z-index: 10; }
-        .header-logo { height: 32px; width: auto; object-fit: contain; }
-        .header-logo-text { font-size: 18px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; }
+        .header-logo { 
+            height: 32px; 
+            width: auto; 
+            object-fit: contain; 
+        }
+        .header-logo-text { 
+            font-size: 18px; 
+            font-weight: 800; 
+            color: var(--text-primary); 
+            letter-spacing: -0.02em; 
+        }
         .header-logo-text span { color: var(--green); }
         .header-nav {
             position: absolute; left: 50%; transform: translateX(-50%);
@@ -220,7 +229,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* TIP CARDS — МИНИМАЛИЗМ */
+        /* TIP CARDS — БЕЗ ПРОЦЕНТОВ И ОВАЛОВ */
         .tip-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -248,13 +257,10 @@
             color: var(--text-secondary);
             font-weight: 500;
         }
+        /* ПРОЦЕНТЫ СКРЫТЫ */
         .tip-profit {
-            font-size: 12px;
-            font-weight: 600;
-            font-family: var(--font-mono);
+            display: none;
         }
-        .tip-profit.positive { color: #4CAF50; }
-        .tip-profit.negative { color: #f44336; }
 
         .tip-teams {
             display: flex;
@@ -282,15 +288,16 @@
             font-size: 11px;
         }
 
+        /* УБРАН ОВАЛ ВОКРУГ ПРОГНОЗА */
         .tip-prediction {
             display: inline-block;
             font-size: 12px;
-            font-weight: 500;
-            color: var(--green);
-            padding: 2px 12px;
-            border: 1px solid rgba(0, 204, 68, 0.1);
-            border-radius: 14px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            padding: 0;
+            border: none;
             margin: 4px 0;
+            background: transparent;
         }
 
         .tip-details {
@@ -408,7 +415,7 @@
             .tip-card { padding: 12px 14px; }
             .tip-teams .team { font-size: 12px; }
             .tip-teams .team img { width: 16px; height: 16px; }
-            .tip-prediction { font-size: 11px; padding: 2px 10px; }
+            .tip-prediction { font-size: 11px; }
             .tip-details { gap: 6px 12px; font-size: 10px; }
             .tip-trends { font-size: 9px; }
         }
@@ -579,6 +586,7 @@
                 return;
             }
 
+            // Сортировка по прибыли (от большего к меньшему)
             const sorted = [...data].sort((a, b) => (b.profit || 0) - (a.profit || 0));
 
             const total = data.length;
@@ -595,7 +603,6 @@
             let html = '';
             sorted.forEach((tip, index) => {
                 const isPremium = tip.isPremium || false;
-                const profit = tip.profit || 0;
                 const cardClass = isPremium ? 'premium' : '';
 
                 let prediction = tip.prediction || '';
@@ -606,14 +613,11 @@
                     }
                 }
 
-                const profitClass = profit >= 0 ? 'positive' : 'negative';
-                const profitSign = profit >= 0 ? '+' : '';
-
                 html += `
                     <div class="tip-card ${cardClass}">
                         <div class="tip-header">
                             <span class="tip-number">#${index + 1}</span>
-                            <span class="tip-profit ${profitClass}">${profitSign}${profit.toFixed(1)}%</span>
+                            <span class="tip-profit"></span>
                         </div>
                         <div class="tip-teams">
                             <span class="team">
