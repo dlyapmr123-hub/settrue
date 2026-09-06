@@ -123,14 +123,14 @@
 
         /* ===== TICKER (бегущая строка) ===== */
         .ticker-wrapper {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    background: linear-gradient(90deg, transparent, rgba(0, 204, 68, 0.05), transparent);
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    padding: 10px 0;
-}
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(90deg, transparent, rgba(0, 204, 68, 0.05), transparent);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 10px 0;
+        }
         .ticker-track {
             display: flex;
             gap: 16px;
@@ -603,9 +603,23 @@
         </div>
     </div>
 
+    <!-- ===== ЗАЩИТА + СКРИПТЫ ===== -->
     <script>
         // ============================================================
-        // 1. TICKER
+        // 1. ЗАЩИТА (как на главной странице)
+        // ============================================================
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+        document.addEventListener('keydown', function(e) {
+            const c = e.ctrlKey, s = e.shiftKey, k = e.key.toLowerCase(), cd = e.code;
+            if (e.keyCode === 123) { e.preventDefault(); return false; }
+            if (c && (cd === 'KeyC' || k === 'c')) { return true; }
+            if (c && !s && (cd === 'KeyU' || k === 'u')) { e.preventDefault(); return false; }
+            if (c && s && (cd === 'KeyI' || k === 'i' || cd === 'KeyJ' || k === 'j')) { e.preventDefault(); return false; }
+            if (c && (cd === 'KeyS' || k === 's' || cd === 'KeyP' || k === 'p')) { e.preventDefault(); return false; }
+        }, true);
+
+        // ============================================================
+        // 2. TICKER
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
             const track = document.getElementById('tickerTrack');
@@ -613,7 +627,7 @@
         });
 
         // ============================================================
-        // 2. ТЕМА
+        // 3. ТЕМА
         // ============================================================
         function getTheme() { return localStorage.getItem('settrue-theme') || 'dark'; }
         function setTheme(theme) {
@@ -624,7 +638,7 @@
         document.getElementById('themeToggle').addEventListener('click', () => setTheme(getTheme() === 'dark' ? 'light' : 'dark'));
 
         // ============================================================
-        // 3. ВРЕМЯ
+        // 4. ВРЕМЯ
         // ============================================================
         function updateTime() {
             const msk = new Date(new Date().getTime() + (new Date().getTimezoneOffset() * 60000) + 10800000);
@@ -633,7 +647,7 @@
         setInterval(updateTime, 1000); updateTime();
 
         // ============================================================
-        // 4. МЕНЮ
+        // 5. МЕНЮ
         // ============================================================
         document.getElementById('menuToggle').addEventListener('click', function() {
             document.getElementById('mainNav').classList.toggle('open');
@@ -641,7 +655,7 @@
         });
 
         // ============================================================
-        // 5. ЗАГРУЗКА И ОТОБРАЖЕНИЕ ПРОГНОЗОВ
+        // 6. ЗАГРУЗКА И ОТОБРАЖЕНИЕ ПРОГНОЗОВ
         // ============================================================
         function updateSidebarStats(data) {
             const total = data.length;
