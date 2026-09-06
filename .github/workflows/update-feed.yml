@@ -23,7 +23,7 @@ jobs:
           import json
           import ssl
           
-          url = "https://script.google.com/macros/s/AKfycbxekTSYzSS_0PznwSPwZnPNY3M_otipXoGWBogyQj9V2YYRang6UFeS2HOoVJDjhovv/exec"
+          url = "https://script.google.com/macros/s/AKfycbzTWWvKPi_TddiAJIEp_08SWfZOZY4gZX5iuTbdva3hWhev1UXbV8KqmAIJXj_hD946/exec"
           
           context = ssl.create_default_context()
           context.check_hostname = False
