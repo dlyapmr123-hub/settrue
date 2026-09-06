@@ -138,37 +138,37 @@
             transition: background 0.3s ease, border-color 0.3s ease;
         }
         .header-left { display: flex; align-items: center; gap: 10px; z-index: 10; }
-        .header-logo { height: 36px; width: auto; object-fit: contain; }
+        .header-logo { height: 32px; width: auto; object-fit: contain; }
         .header-logo-text { font-size: 18px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; }
         .header-logo-text span { color: var(--green); }
         .header-nav {
             position: absolute; left: 50%; transform: translateX(-50%);
-            display: flex; align-items: center; gap: 4px;
+            display: flex; align-items: center; gap: 2px;
         }
         .header-nav a {
             color: var(--text-secondary); text-decoration: none; font-size: 13px; font-weight: 500;
-            padding: 8px 18px; border-radius: 8px; transition: all 0.25s ease; letter-spacing: 0.2px;
+            padding: 8px 16px; border-radius: 8px; transition: all 0.25s ease;
         }
         .header-nav a:hover { color: var(--text-primary); background: var(--bg-card); }
-        .header-nav a.active { color: var(--green); background: var(--badge-bg); }
+        .header-nav a.active { color: var(--green); background: rgba(0, 204, 68, 0.08); }
         .header-right { display: flex; align-items: center; gap: 12px; z-index: 10; }
-        .header-time { color: var(--text-muted); font-size: 12px; font-weight: 600; letter-spacing: 0.3px; font-family: var(--font-mono); }
+        .header-time { color: var(--text-muted); font-size: 12px; font-weight: 600; font-family: var(--font-mono); }
         .header-time .time-val { color: var(--green); }
         .theme-toggle {
             background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 30px;
-            width: 42px; height: 22px; cursor: pointer; position: relative; transition: all 0.3s ease;
-            display: flex; align-items: center; justify-content: center; flex-shrink: 0; padding: 0 3px;
+            width: 40px; height: 20px; cursor: pointer; position: relative;
+            display: flex; align-items: center; justify-content: center; padding: 0 3px;
         }
         .theme-toggle .toggle-dot {
-            width: 14px; height: 14px; border-radius: 50%; background: var(--green);
-            transition: transform 0.3s ease; box-shadow: 0 0 10px var(--green-glow);
+            width: 12px; height: 12px; border-radius: 50%; background: var(--green);
+            transition: transform 0.3s ease;
         }
-        [data-theme="light"] .theme-toggle .toggle-dot { transform: translateX(18px); }
-        .theme-toggle .toggle-icon { position: absolute; font-size: 9px; transition: opacity 0.3s ease; line-height: 1; }
+        [data-theme="light"] .theme-toggle .toggle-dot { transform: translateX(17px); }
+        .theme-toggle .toggle-icon { position: absolute; font-size: 8px; transition: opacity 0.3s ease; line-height: 1; }
         .theme-toggle .icon-sun { opacity: 0; } .theme-toggle .icon-moon { opacity: 1; }
         [data-theme="light"] .theme-toggle .icon-sun { opacity: 1; } [data-theme="light"] .theme-toggle .icon-moon { opacity: 0; }
         .menu-toggle { display: none; flex-direction: column; gap: 4px; cursor: pointer; background: none; border: none; padding: 6px; }
-        .menu-toggle span { display: block; width: 20px; height: 2px; background: var(--text-secondary); border-radius: 2px; transition: all 0.3s ease; }
+        .menu-toggle span { display: block; width: 18px; height: 2px; background: var(--text-secondary); border-radius: 2px; transition: all 0.3s ease; }
         .menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
         .menu-toggle.open span:nth-child(2) { opacity: 0; }
         .menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
@@ -512,7 +512,6 @@
                 <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>Value bets: Ставьте когда кэф выше реальной вероятности</div>
                 <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.959-8.429a9 9 0 11-11.93 13.446 9.003 9.003 0 0111.93-13.446z" /></svg></span>Дисциплина: Ведите статистику всех своих ставок</div>
                 <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg></span>Тренд: Следите за формой команд последние 5-10 матчей</div>
-                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg></span>Анализ: Изучайте травмы и дисквалификации перед ставкой</div>
             </div>
         </div>
     </section>
