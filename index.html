@@ -44,10 +44,9 @@
     <!-- === FONTS === -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* ===== CSS VARIABLES ===== */
         :root {
             --bg-primary: #080808;
             --bg-secondary: #0d0d0d;
@@ -57,16 +56,23 @@
             --text-secondary: #999;
             --text-muted: #555;
             --border-color: rgba(255,255,255,0.06);
-            --border-hover: rgba(0, 204, 68, 0.2);
+            --border-hover: rgba(0, 204, 68, 0.3);
             --green: #00cc44;
             --green-glow: rgba(0, 204, 68, 0.15);
-            --header-bg: rgba(8,8,8,0.92);
+            --header-bg: rgba(8,8,8,0.85);
             --scrollbar: #00cc44;
             --live-bg: rgba(0, 204, 68, 0.08);
             --live-border: rgba(0, 204, 68, 0.25);
             --badge-bg: rgba(0, 204, 68, 0.10);
             --finished-bg: rgba(255,255,255,0.02);
             --finished-border: rgba(255,255,255,0.04);
+            --skeleton-base: rgba(255,255,255,0.05);
+            --skeleton-highlight: rgba(255,255,255,0.1);
+            --font-mono: 'JetBrains Mono', monospace;
+            --header-height: 64px;
+            --profit-positive: #4CAF50;
+            --profit-negative: #f44336;
+            --premium-color: #FFD700;
         }
 
         [data-theme="light"] {
@@ -79,23 +85,20 @@
             --text-muted: #aaa;
             --border-color: rgba(0,0,0,0.08);
             --border-hover: rgba(0, 204, 68, 0.3);
-            --header-bg: rgba(245,245,245,0.92);
+            --header-bg: rgba(245,245,245,0.85);
             --live-bg: rgba(0, 204, 68, 0.06);
             --live-border: rgba(0, 204, 68, 0.3);
             --badge-bg: rgba(0, 204, 68, 0.08);
             --finished-bg: rgba(0,0,0,0.02);
             --finished-border: rgba(0,0,0,0.06);
+            --skeleton-base: rgba(0,0,0,0.06);
+            --skeleton-highlight: rgba(0,0,0,0.1);
+            --profit-positive: #2E7D32;
+            --profit-negative: #C62828;
         }
 
-        /* ===== RESET ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-
         body {
             background: var(--bg-primary);
             font-family: 'Inter', sans-serif;
@@ -108,651 +111,351 @@
             transition: background 0.3s ease, color 0.3s ease;
         }
 
-        /* ===== SCROLLBAR ===== */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: var(--bg-primary); }
         ::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 10px; }
 
         /* ===== PARTICLES ===== */
-        #particles-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
+        #particles-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; overflow: hidden; }
         .particle {
-            position: absolute;
-            border-radius: 50%;
+            position: absolute; border-radius: 50%;
             background: radial-gradient(circle, rgba(0, 204, 68, 0.08), transparent 70%);
             animation: floatParticle linear infinite;
         }
-        [data-theme="light"] .particle {
-            background: radial-gradient(circle, rgba(0, 204, 68, 0.04), transparent 70%);
-        }
+        [data-theme="light"] .particle { background: radial-gradient(circle, rgba(0, 204, 68, 0.04), transparent 70%); }
         @keyframes floatParticle {
             0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.3; }
+            10% { opacity: 0.5; } 90% { opacity: 0.3; }
             100% { transform: translateY(-10vh) scale(1); opacity: 0; }
         }
 
         /* ===== HEADER ===== */
         .main-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: var(--header-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-color);
-            padding: 0 24px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: var(--header-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color); padding: 0 24px; height: var(--header-height);
+            display: flex; align-items: center; justify-content: space-between;
             transition: background 0.3s ease, border-color 0.3s ease;
         }
-
+        .header-left { display: flex; align-items: center; gap: 10px; z-index: 10; }
+        .header-logo { height: 36px; width: auto; object-fit: contain; }
+        .header-logo-text { font-size: 18px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; }
+        .header-logo-text span { color: var(--green); }
         .header-nav {
-            display: flex;
-            align-items: center;
-            gap: 4px;
+            position: absolute; left: 50%; transform: translateX(-50%);
+            display: flex; align-items: center; gap: 4px;
         }
         .header-nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
-            padding: 8px 18px;
-            border-radius: 8px;
-            transition: all 0.25s ease;
-            letter-spacing: 0.2px;
+            color: var(--text-secondary); text-decoration: none; font-size: 13px; font-weight: 500;
+            padding: 8px 18px; border-radius: 8px; transition: all 0.25s ease; letter-spacing: 0.2px;
         }
-        .header-nav a:hover {
-            color: var(--text-primary);
-            background: var(--bg-card);
-        }
-        .header-nav a.active {
-            color: var(--green);
-            background: var(--badge-bg);
-        }
-
-        .header-right {
-            position: absolute;
-            right: 24px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .header-time {
-            color: var(--text-muted);
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-        }
+        .header-nav a:hover { color: var(--text-primary); background: var(--bg-card); }
+        .header-nav a.active { color: var(--green); background: var(--badge-bg); }
+        .header-right { display: flex; align-items: center; gap: 12px; z-index: 10; }
+        .header-time { color: var(--text-muted); font-size: 12px; font-weight: 600; letter-spacing: 0.3px; font-family: var(--font-mono); }
         .header-time .time-val { color: var(--green); }
-
         .theme-toggle {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 30px;
-            width: 42px;
-            height: 22px;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            padding: 0 3px;
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 30px;
+            width: 42px; height: 22px; cursor: pointer; position: relative; transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0; padding: 0 3px;
         }
         .theme-toggle .toggle-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--green);
-            transition: transform 0.3s ease;
-            box-shadow: 0 0 10px var(--green-glow);
+            width: 14px; height: 14px; border-radius: 50%; background: var(--green);
+            transition: transform 0.3s ease; box-shadow: 0 0 10px var(--green-glow);
         }
-        [data-theme="light"] .theme-toggle .toggle-dot {
-            transform: translateX(18px);
-        }
-        .theme-toggle .toggle-icon {
-            position: absolute;
-            font-size: 9px;
-            transition: opacity 0.3s ease;
-            line-height: 1;
-        }
-        .theme-toggle .icon-sun { opacity: 0; }
-        .theme-toggle .icon-moon { opacity: 1; }
-        [data-theme="light"] .theme-toggle .icon-sun { opacity: 1; }
-        [data-theme="light"] .theme-toggle .icon-moon { opacity: 0; }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 6px;
-        }
-        .menu-toggle span {
-            display: block;
-            width: 20px;
-            height: 2px;
-            background: var(--text-secondary);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
+        [data-theme="light"] .theme-toggle .toggle-dot { transform: translateX(18px); }
+        .theme-toggle .toggle-icon { position: absolute; font-size: 9px; transition: opacity 0.3s ease; line-height: 1; }
+        .theme-toggle .icon-sun { opacity: 0; } .theme-toggle .icon-moon { opacity: 1; }
+        [data-theme="light"] .theme-toggle .icon-sun { opacity: 1; } [data-theme="light"] .theme-toggle .icon-moon { opacity: 0; }
+        .menu-toggle { display: none; flex-direction: column; gap: 4px; cursor: pointer; background: none; border: none; padding: 6px; }
+        .menu-toggle span { display: block; width: 20px; height: 2px; background: var(--text-secondary); border-radius: 2px; transition: all 0.3s ease; }
         .menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
         .menu-toggle.open span:nth-child(2) { opacity: 0; }
         .menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
 
-        /* ===== HERO ===== */
-        .hero-section {
-            position: relative;
-            z-index: 1;
-            min-height: 35vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 72px 24px 24px;
-            text-align: center;
+        /* ===== TICKER ===== */
+        .hero-section { position: relative; z-index: 1; padding: 80px 0 0; width: 100%; }
+        .ticker-wrapper {
+            width: 100%; overflow: hidden; position: relative;
+            background: linear-gradient(90deg, transparent, rgba(0, 204, 68, 0.05), transparent);
+            border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 12px 0;
         }
-        .hero-inner { max-width: 700px; margin: 0 auto; }
-        .hero-title {
-            font-size: clamp(2.8rem, 10vw, 4.5rem);
-            font-weight: 900;
-            line-height: 1.02;
-            letter-spacing: -0.04em;
-            margin-bottom: 6px;
+        .ticker-track {
+            display: flex; gap: 16px; width: max-content;
+            animation: scrollRight 120s linear infinite; padding: 0 24px;
         }
-        .hero-title .green { color: var(--green); }
-        .hero-title .light { color: var(--text-primary); }
-        .hero-sub {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            font-weight: 300;
+        .ticker-track:hover { animation-play-state: paused; }
+        @keyframes scrollRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        .ticker-card {
+            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 12px 24px;
+            white-space: nowrap; font-size: 14px; font-weight: 500; color: var(--text-primary);
+            display: flex; align-items: center; gap: 8px; flex-shrink: 0; transition: border-color 0.3s ease;
         }
-
-        .hero-live-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--live-bg);
-            border: 1px solid var(--live-border);
-            color: var(--green);
-            font-size: 13px;
-            font-weight: 700;
-            padding: 8px 22px;
-            border-radius: 40px;
-            margin-top: 16px;
-            letter-spacing: 0.3px;
-        }
-        .hero-live-badge .dot {
-            width: 7px;
-            height: 7px;
-            background: var(--green);
-            border-radius: 50%;
-            animation: dotBlink 1s infinite;
-            box-shadow: 0 0 12px var(--green-glow);
-        }
-        @keyframes dotBlink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.1; }
-        }
+        .ticker-card:hover { border-color: var(--green); }
+        .ticker-card .icon { color: var(--green); display: flex; align-items: center; }
+        .ticker-card .icon svg { width: 18px; height: 18px; }
 
         /* ===== PARTNER STRIP ===== */
         .partner-strip {
-            position: relative;
-            z-index: 1;
-            background: var(--bg-card);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            padding: 10px 24px;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 12px 28px;
+            position: relative; z-index: 1; background: var(--bg-card); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
+            padding: 10px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 28px;
         }
-        .partner-strip .label {
-            color: var(--text-muted);
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-        .partner-strip .brand {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-secondary);
-            font-size: 13px;
-        }
-        .partner-strip .brand img {
-            height: 18px;
-            filter: var(--partner-filter, brightness(0) invert(0.7));
-        }
-        [data-theme="light"] .partner-strip .brand img {
-            filter: brightness(0) invert(0.2);
-        }
-        .partner-strip .links {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-        .partner-strip .links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 500;
-            transition: color 0.2s;
-            padding: 2px 0;
-            border-bottom: 1px solid transparent;
-        }
-        .partner-strip .links a:hover {
-            color: var(--green);
-            border-bottom-color: var(--green);
+        .partner-strip .label { color: var(--text-muted); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .partner-strip .brand { display: flex; align-items: center; gap: 8px; color: var(--text-secondary); font-size: 13px; }
+        .partner-strip .brand img { height: 18px; filter: brightness(0) invert(0.7); }
+        [data-theme="light"] .partner-strip .brand img { filter: brightness(0) invert(0.2); }
+        .partner-strip .links { display: flex; gap: 14px; flex-wrap: wrap; }
+        .partner-strip .links a { color: var(--text-muted); text-decoration: none; font-size: 12px; font-weight: 500; transition: color 0.2s; padding: 2px 0; border-bottom: 1px solid transparent; }
+        .partner-strip .links a:hover { color: var(--green); border-bottom-color: var(--green); }
+
+        /* ===== MAIN LAYOUT ===== */
+        #page-content { position: relative; z-index: 1; flex: 1; }
+        .main-layout {
+            max-width: 1400px; margin: 0 auto; padding: 24px;
+            display: grid; grid-template-columns: 280px 1fr 280px; gap: 24px;
+            align-items: start;
         }
 
-        /* ===== CONTENT ===== */
-        #page-content {
-            position: relative;
-            z-index: 1;
-            flex: 1;
+        /* ===== SIDEBARS ===== */
+        .sidebar {
+            position: sticky;
+            top: calc(var(--header-height) + 24px);
+            max-height: calc(100vh - var(--header-height) - 48px);
+            overflow-y: auto;
+            display: flex; flex-direction: column; gap: 16px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-color) transparent;
         }
-        .landing-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 24px 24px 60px;
+        .sidebar::-webkit-scrollbar { width: 3px; }
+        .sidebar::-webkit-scrollbar-track { background: transparent; }
+        .sidebar::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+        .sidebar::-webkit-scrollbar-thumb:hover { background: var(--green); }
+
+        .sidebar-widget {
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 16px; flex-shrink: 0;
         }
+        .sidebar-widget h3 {
+            font-size: 13px; font-weight: 700; color: var(--text-primary);
+            margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+        }
+        .sidebar-widget h3 svg { width: 16px; height: 16px; color: var(--green); }
+
+        .sidebar-tip {
+            padding: 10px; background: rgba(255,255,255,0.02); border-radius: 8px;
+            margin-bottom: 8px; font-size: 12px; border: 1px solid var(--border-color);
+            transition: border-color 0.2s ease;
+        }
+        .sidebar-tip:hover { border-color: var(--border-hover); }
+        .sidebar-tip:last-child { margin-bottom: 0; }
+        .sidebar-tip .tip-teams {
+            font-weight: 600; color: var(--text-primary); font-size: 12px;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .sidebar-tip .tip-teams img {
+            width: 16px; height: 16px; object-fit: contain; border-radius: 50%;
+            flex-shrink: 0; background: var(--bg-card);
+        }
+        .sidebar-tip .tip-prediction {
+            color: var(--green); font-weight: 700; font-size: 11px;
+            margin-top: 3px; display: inline-block;
+            background: rgba(0,204,68,0.08); padding: 1px 10px; border-radius: 12px;
+        }
+        .sidebar-tip .tip-profit {
+            font-weight: 700; font-size: 11px; margin-top: 3px;
+        }
+        .sidebar-tip .tip-profit.positive { color: var(--profit-positive); }
+        .sidebar-tip .tip-profit.premium { color: var(--premium-color); font-weight: 700; }
+        .sidebar-tip .tip-badge {
+            font-size: 8px; font-weight: 700; padding: 1px 8px; border-radius: 10px;
+            margin-left: 6px; text-transform: uppercase;
+        }
+        .sidebar-tip .tip-badge.premium { background: var(--premium-color); color: #000; }
+        .sidebar-tip .tip-badge.high { background: var(--profit-positive); color: #000; }
+
+        .sidebar-item {
+            padding: 10px; background: rgba(255,255,255,0.02); border-radius: 8px;
+            margin-bottom: 8px; font-size: 12px; border: 1px solid var(--border-color);
+            transition: border-color 0.2s ease;
+        }
+        .sidebar-item:hover { border-color: var(--border-hover); }
+        .sidebar-item:last-child { margin-bottom: 0; }
+        .sidebar-item .label { color: var(--text-secondary); font-size: 11px; margin-bottom: 4px; }
+        .sidebar-item .value { color: var(--text-primary); font-weight: 600; font-family: var(--font-mono); }
+        .sidebar-item .trend { color: var(--green); font-size: 11px; margin-top: 4px; }
+
+        .content-area { min-width: 0; }
+
+        /* ===== SKELETON ===== */
+        .skeleton-container { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .skeleton-card {
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 18px; height: 120px; position: relative; overflow: hidden;
+        }
+        .skeleton-line { height: 12px; background: var(--skeleton-base); border-radius: 6px; margin-bottom: 12px; position: relative; overflow: hidden; }
+        .skeleton-line.short { width: 40%; } .skeleton-line.medium { width: 70%; } .skeleton-line:last-child { margin-bottom: 0; }
+        .skeleton-line::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, var(--skeleton-highlight), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+        @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 
         /* ===== MATCHES ===== */
-        .matches-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 12px;
-        }
+        .matches-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
         .match-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 18px 18px 14px;
-            transition: all 0.3s ease;
-            position: relative;
+            background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color); border-radius: 16px; padding: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;
+            animation: fadeInUp 0.5s ease forwards; opacity: 0;
+        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .match-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 204, 68, 0.5), transparent);
+            opacity: 0; transition: opacity 0.3s ease;
         }
         .match-card:hover {
-            border-color: var(--border-hover);
-            background: var(--bg-card-hover);
-            transform: translateY(-2px);
+            border-color: var(--border-hover); background: var(--bg-card-hover); transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 204, 68, 0.05);
         }
-        
-        /* ===== LIVE ===== */
-        .match-card.live {
-            border-color: var(--live-border);
-            background: var(--live-bg);
-            box-shadow: 0 0 30px var(--green-glow);
+        .match-card:hover::before { opacity: 1; }
+        .match-card.live { border-color: var(--live-border); background: var(--live-bg); box-shadow: 0 0 30px var(--green-glow); }
+        .match-card.live::after {
+            content: '● LIVE'; position: absolute; top: -1px; right: -1px; background: var(--green); color: #000;
+            font-size: 8px; font-weight: 800; padding: 4px 12px 4px 10px; border-radius: 0 16px 0 16px; letter-spacing: 0.5px;
         }
-        .match-card.live::before {
-            content: '● LIVE';
-            position: absolute;
-            top: -1px;
-            right: -1px;
-            background: var(--green);
-            color: #000;
-            font-size: 8px;
-            font-weight: 800;
-            padding: 3px 12px 3px 10px;
-            border-radius: 0 12px 0 12px;
-            letter-spacing: 0.5px;
-        }
-        .match-card.live:hover {
-            border-color: var(--green);
-            box-shadow: 0 0 40px var(--green-glow);
-        }
-        .match-card.live .match-score {
-            color: var(--green);
-            text-shadow: 0 0 20px var(--green-glow);
-        }
-
-        /* ===== FINISHED ===== */
-        .match-card.finished {
-            background: var(--finished-bg);
-            border-color: var(--finished-border);
-            opacity: 0.7;
-        }
-        .match-card.finished .match-score {
-            color: var(--text-muted);
-        }
-        .match-card.finished::before {
-            content: '✓';
-            position: absolute;
-            top: -1px;
-            right: -1px;
-            background: var(--text-muted);
-            color: #000;
-            font-size: 8px;
-            font-weight: 800;
-            padding: 3px 12px 3px 10px;
-            border-radius: 0 12px 0 12px;
-            letter-spacing: 0.5px;
-        }
-        .match-card.finished:hover {
-            opacity: 0.85;
-            border-color: var(--border-hover);
-        }
-
+        .match-card.finished { background: var(--finished-bg); border-color: var(--finished-border); opacity: 0.7; }
+        .match-card.finished:hover { opacity: 0.9; border-color: var(--border-hover); }
         .match-tournament {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
+            font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted);
+            display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;
         }
         .match-tournament .badge {
-            font-size: 7px;
-            padding: 2px 10px;
-            border-radius: 20px;
-            background: var(--badge-bg);
-            color: var(--green);
-            font-weight: 700;
+            font-size: 7px; padding: 2px 8px; border-radius: 20px; background: var(--badge-bg); color: var(--green); font-weight: 700;
         }
-        .match-tournament .badge.finished-badge {
-            background: var(--text-muted);
-            color: var(--bg-primary);
-        }
-        .match-teams {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 8px;
-        }
+        .match-teams { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 16px; }
         .match-team {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex: 1;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            font-size: 15px; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px;
+            flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
         .match-team:first-child { justify-content: flex-end; text-align: right; }
         .match-team:last-child { justify-content: flex-start; text-align: left; }
-        .team-logo {
-            width: 20px;
-            height: 20px;
-            object-fit: contain;
-            border-radius: 50%;
-            flex-shrink: 0;
-            background: var(--bg-card);
-        }
+        .team-logo { width: 32px; height: 32px; object-fit: contain; flex-shrink: 0; }
         .match-team:first-child .team-logo { order: 1; }
         .match-score {
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--text-secondary);
-            min-width: 48px;
-            text-align: center;
-            flex-shrink: 0;
-            font-variant-numeric: tabular-nums;
-            transition: color 0.3s ease;
+            font-size: 24px; font-weight: 800; color: var(--text-secondary); min-width: 50px; text-align: center; flex-shrink: 0;
+            font-family: var(--font-mono); font-variant-numeric: tabular-nums; transition: color 0.3s ease;
         }
-        .match-score.live-score {
-            color: var(--green);
-            animation: scorePulse 1.5s infinite;
-        }
-        @keyframes scorePulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(0.95); }
-        }
+        .match-score.live-score { color: var(--green); text-shadow: 0 0 20px var(--green-glow); animation: scorePulse 1.5s infinite; }
+        @keyframes scorePulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(0.95); } }
         .match-status {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-align: center;
-            padding-top: 8px;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            font-size: 11px; color: var(--text-muted); text-align: center; padding-top: 12px;
+            border-top: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; gap: 8px;
         }
-        .match-status.live {
-            color: var(--green);
-            font-weight: 600;
-        }
+        .match-status.live { color: var(--green); font-weight: 600; }
         .match-status .live-dot {
-            display: inline-block;
-            width: 5px;
-            height: 5px;
-            background: var(--green);
-            border-radius: 50%;
-            animation: dotBlink 1s infinite;
-            box-shadow: 0 0 10px var(--green-glow);
+            display: inline-block; width: 5px; height: 5px; background: var(--green); border-radius: 50%;
+            animation: dotBlink 1s infinite; box-shadow: 0 0 10px var(--green-glow);
         }
         .match-time-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 10px;
-            color: var(--text-muted);
-            background: var(--bg-card);
-            padding: 2px 10px;
-            border-radius: 20px;
+            display: inline-flex; align-items: center; gap: 4px; font-size: 10px; color: var(--text-muted);
+            background: var(--bg-card); padding: 2px 10px; border-radius: 20px;
         }
         .match-card .update-indicator {
-            display: none;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 5px;
-            height: 5px;
-            background: var(--green);
-            border-radius: 50%;
-            box-shadow: 0 0 12px var(--green-glow);
+            display: none; position: absolute; top: 10px; right: 10px; width: 5px; height: 5px;
+            background: var(--green); border-radius: 50%; box-shadow: 0 0 12px var(--green-glow);
         }
         .match-card.updating .update-indicator { display: block; animation: dotBlink 0.8s infinite; }
 
-        .loading-state {
-            text-align: center;
-            padding: 50px 0;
-            color: var(--text-muted);
-        }
-        .loading-state .spinner {
-            display: inline-block;
-            width: 26px;
-            height: 26px;
-            border: 2px solid var(--border-color);
-            border-top-color: var(--green);
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
-            margin-bottom: 10px;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
         /* ===== FEATURES ===== */
         .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-            margin: 36px 0 28px;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 24px 0 12px;
         }
         .feature-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 18px 16px;
-            transition: all 0.3s ease;
-            text-align: center;
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px;
+            padding: 12px 8px; transition: all 0.3s ease; text-align: center;
         }
-        .feature-card:hover {
-            border-color: var(--border-hover);
-            background: var(--bg-card-hover);
-            transform: translateY(-2px);
+        .feature-card:hover { border-color: var(--border-hover); background: var(--bg-card-hover); transform: translateY(-2px); }
+        .feature-card .icon {
+            display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px;
+            border-radius: 8px; background: var(--badge-bg); color: var(--green); margin-bottom: 6px;
         }
-        .feature-card .icon { font-size: 24px; display: block; margin-bottom: 6px; }
-        .feature-card h4 {
-            color: var(--text-primary);
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 3px;
-        }
-        .feature-card p {
-            color: var(--text-secondary);
-            font-size: 12px;
-            line-height: 1.5;
-        }
+        .feature-card .icon svg { width: 16px; height: 16px; }
+        .feature-card h4 { color: var(--text-primary); font-size: 12px; font-weight: 700; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .feature-card p { color: var(--text-secondary); font-size: 10px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-        /* ===== FOOTER ===== */
+        /* ===== COMPACT FOOTER ===== */
         .main-footer {
-            position: relative;
-            z-index: 1;
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-color);
-            padding: 28px 24px 18px;
-            margin-top: auto;
-            transition: background 0.3s ease;
+            position: relative; z-index: 1; background: var(--bg-secondary); border-top: 1px solid var(--border-color);
+            padding: 16px 24px 10px; margin-top: auto; transition: background 0.3s ease;
         }
-        .footer-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 28px;
-        }
-        .footer-brand h3 {
-            color: var(--text-primary);
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 4px;
-        }
+        .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 16px; align-items: start; }
+        .footer-brand h3 { color: var(--text-primary); font-size: 15px; font-weight: 800; margin-bottom: 2px; }
         .footer-brand h3 span { color: var(--green); }
-        .footer-brand p {
-            color: var(--text-secondary);
-            font-size: 13px;
-            line-height: 1.7;
-            max-width: 280px;
-        }
-        .footer-col h4 {
-            color: var(--text-muted);
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        .footer-col a {
-            display: block;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 13px;
-            padding: 3px 0;
-            transition: color 0.2s;
-        }
+        .footer-brand p { color: var(--text-secondary); font-size: 11px; line-height: 1.4; max-width: 260px; }
+        .footer-col h4 { color: var(--text-muted); font-size: 9px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 6px; }
+        .footer-col a { display: block; color: var(--text-secondary); text-decoration: none; font-size: 11px; padding: 2px 0; transition: color 0.2s; }
         .footer-col a:hover { color: var(--green); }
-        .footer-divider {
-            border: none;
-            border-top: 1px solid var(--border-color);
-            margin: 20px 0 12px;
-        }
-        .footer-bottom {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-            font-size: 11px;
-            color: var(--text-muted);
-        }
+        .footer-divider { border: none; border-top: 1px solid var(--border-color); margin: 12px 0 8px; }
+        .footer-bottom { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 10px; color: var(--text-muted); }
         .footer-bottom .legal strong { color: var(--green); }
 
         /* ===== RESPONSIVE ===== */
+        @media (max-width: 1200px) {
+            .main-layout { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 820px) {
             .header-nav {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 56px;
-                left: 0;
-                right: 0;
-                background: var(--header-bg);
-                padding: 12px 20px;
-                gap: 2px;
-                border-bottom: 1px solid var(--border-color);
-                backdrop-filter: blur(16px);
+                display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0;
+                background: var(--header-bg); padding: 12px 20px; gap: 2px; border-bottom: 1px solid var(--border-color); backdrop-filter: blur(16px);
+                transform: none;
             }
             .header-nav.open { display: flex; }
             .header-nav a { padding: 10px 16px; width: 100%; text-align: center; }
             .menu-toggle { display: flex; }
-            .header-right { position: static; transform: none; }
-            .main-header { justify-content: space-between; }
-            .header-time { display: none; }
-            .footer-inner { grid-template-columns: 1fr; gap: 18px; text-align: center; }
-            .footer-brand p { max-width: 100%; }
-            .partner-strip { flex-direction: column; gap: 8px; padding: 10px; }
-            .partner-strip .links { justify-content: center; }
-            .hero-section { min-height: 30vh; padding: 65px 16px 20px; }
-            .matches-grid { grid-template-columns: 1fr; }
-            .features-grid { grid-template-columns: 1fr 1fr; }
+            .hero-section { padding: 75px 0 0; }
+            .main-layout { padding: 16px; }
         }
-
         @media (max-width: 480px) {
-            .main-header { padding: 0 14px; height: 50px; }
+            .main-header { padding: 0 14px; height: 56px; }
+            .header-logo { height: 28px; }
+            .header-logo-text { font-size: 16px; }
             .header-nav a { font-size: 12px; padding: 8px 14px; }
             .theme-toggle { width: 36px; height: 20px; }
             .theme-toggle .toggle-dot { width: 12px; height: 12px; }
             [data-theme="light"] .theme-toggle .toggle-dot { transform: translateX(15px); }
-            .match-card { padding: 14px; }
-            .match-team { font-size: 12px; }
-            .match-score { font-size: 18px; min-width: 38px; }
-            .landing-container { padding: 16px 14px 40px; }
-            .hero-title { font-size: 2.2rem; }
-            .hero-live-badge { font-size: 11px; padding: 6px 16px; }
-            .features-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 380px) {
-            .match-team { font-size: 10px; gap: 4px; }
-            .team-logo { width: 16px; height: 16px; }
-            .match-score { font-size: 15px; min-width: 32px; }
+            .match-card { padding: 16px; }
+            .match-team { font-size: 13px; }
+            .match-score { font-size: 20px; min-width: 40px; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .feature-card { padding: 10px 6px; }
+            .feature-card h4 { font-size: 11px; }
+            .feature-card p { font-size: 9px; }
+            .ticker-card { font-size: 12px; padding: 10px 16px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== PARTICLES ===== -->
     <div id="particles-bg"></div>
 
     <!-- ===== HEADER ===== -->
     <header class="main-header">
+        <div class="header-left">
+            <img src="logo.png" alt="SetTrue Logo" class="header-logo" onerror="this.style.display='none'">
+            <span class="header-logo-text">Set<span>True</span></span>
+        </div>
         <nav class="header-nav" id="mainNav">
-            <a href="#" class="active" data-page="home">Главная</a>
-            <a href="#" data-page="predictions" data-link="/predict/">Прогнозы</a>
-            <a href="#" data-page="matches" data-link="/scanmatch/">Теннис АИ</a>
-            <a href="#" data-page="cashflow" data-link="/cashflows/">Денежные потоки</a>
-            <a href="#" data-page="cs2" data-link="/cs2/">CS2</a>
-            <a href="#" data-page="robobet" data-link="/robobet/">Робобет</a>
+            <a href="/" class="active">Главная</a>
+            <a href="/predict/">Прогнозы</a>
+            <a href="/scanmatch/">Теннис АИ</a>
+            <a href="/cashflows/">Денежные потоки</a>
+            <a href="/cs2/">CS2</a>
+            <a href="/robobet/">Робобет</a>
         </nav>
-
         <div class="header-right">
             <div class="header-time">
                 <span class="time-val" id="headerTime">--:--</span> МСК
@@ -768,16 +471,40 @@
         </div>
     </header>
 
-    <!-- ===== HERO ===== -->
+    <!-- ===== TICKER ===== -->
     <section class="hero-section">
-        <div class="hero-inner">
-            <h1 class="hero-title">
-                <span class="light">Set</span><span class="green">True</span>
-            </h1>
-            <p class="hero-sub">Расписание матчей на сегодня, LIVE результаты и прогнозы</p>
-            <div class="hero-live-badge" id="heroLiveBadge">
-                <span class="dot"></span>
-                <span id="liveCountText">0</span> матчей в прямом эфире
+        <div class="ticker-wrapper">
+            <div class="ticker-track" id="tickerTrack">
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>Совет: Управляйте банком по системе флэт (1-3% на ставку)</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg></span>Инсайд: Смотрите на движение денег, а не только на кэф</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg></span>Стратегия: Ищите валуйные ставки в низших лигах</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg></span>Психология: Никогда не отыгрывайтесь после минуса</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>ИИ-аналитика: Доверяйте математике, а не эмоциям</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>Value bets: Ставьте когда кэф выше реальной вероятности</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.959-8.429a9 9 0 11-11.93 13.446 9.003 9.003 0 0111.93-13.446z" /></svg></span>Дисциплина: Ведите статистику всех своих ставок</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg></span>Тренд: Следите за формой команд последние 5-10 матчей</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg></span>Анализ: Изучайте травмы и дисквалификации перед ставкой</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>Тайминг: Лучшие кэфы часто за 2-3 часа до матча</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>Специализация: Фокусируйтесь на 1-2 лигах для глубокого анализа</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg></span>xG важнее: Ожидаемые голы точнее реального счёта</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></span>LIVE: Ставьте после 15-20 минут, когда ясна картина</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg></span>Безопасность: Никогда не ставьте последние деньги</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>Мотивация: В конце сезона важна турнирная цель команд</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg></span>Календарь: Учитывайте плотность графика и ротацию</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2" /></svg></span>Home/Away: Команды играют дома и в гостях по-разному</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg></span>Фокус: Не ставьте на всё подряд, выбирайте лучшее</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.959-8.429a9 9 0 11-11.93 13.446 9.003 9.003 0 0111.93-13.446z" /></svg></span>Правило: Максимум 5% банка на одну ставку</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg></span>Тренды: 5 побед подряд ≠ 6-я тоже будет победой</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>Кэфы 1.20-1.40: Казалось бы лёгкие, но часто проигрывают</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg></span>Анализ ошибок: Изучайте проигрыши, а не только победы</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg></span>Составы: Изучайте стартовые за час до матча</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg></span>Погода: Дождь и ветер часто = меньше голов</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>Судьи: Некоторые дают больше карточек и пенальти</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>Пауза: Не ставьте каждую минуту, делайте перерывы</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg></span>ROI: Хороший результат — +5-10% к банку в месяц</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></span>Экспрессы: Заманчиво, но одинары выгоднее на дистанции</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg></span>Защита: Никогда не берите микрозаймы для ставок!</div>
+                <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.959-8.429a9 9 0 11-11.93 13.446 9.003 9.003 0 0111.93-13.446z" /></svg></span>Цель: Ставки — это марафон, а не спринт</div>
             </div>
         </div>
     </section>
@@ -796,41 +523,109 @@
         </div>
     </div>
 
-    <!-- ===== CONTENT ===== -->
+    <!-- ===== MAIN LAYOUT ===== -->
     <div id="page-content">
-        <div class="landing-container">
+        <div class="main-layout">
+            
+            <!-- LEFT SIDEBAR — ТОП ПРОГНОЗЫ -->
+            <aside class="sidebar">
+                <div class="sidebar-widget" id="topTipsWidget">
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+                        Топ прогнозы
+                    </h3>
+                    <div id="topTipsContainer">
+                        <div class="sidebar-item" style="text-align:center;color:var(--text-muted);font-size:11px;padding:20px 10px;">Загрузка прогнозов...</div>
+                    </div>
+                </div>
+                <div class="sidebar-widget">
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                        Статистика дня
+                    </h3>
+                    <div class="sidebar-item">
+                        <div class="label">Матчей сегодня</div>
+                        <div class="value" id="totalMatches">—</div>
+                    </div>
+                    <div class="sidebar-item">
+                        <div class="label">LIVE сейчас</div>
+                        <div class="value" id="liveMatches" style="color: var(--green)">—</div>
+                    </div>
+                    <div class="sidebar-item">
+                        <div class="label">Точность прогнозов</div>
+                        <div class="value" style="color: var(--green)">72%</div>
+                    </div>
+                </div>
+            </aside>
 
-            <!-- ===== MATCHES ===== -->
-            <div id="matchesContainer">
-                <div class="loading-state">
-                    <div class="spinner"></div>
-                    <div>Загрузка матчей...</div>
+            <!-- MAIN CONTENT -->
+            <div class="content-area">
+                <div id="matchesContainer">
+                    <div class="skeleton-container" id="skeleton-loader">
+                        <div class="skeleton-card"><div class="skeleton-line short"></div><div class="skeleton-line medium"></div><div class="skeleton-line"></div></div>
+                        <div class="skeleton-card"><div class="skeleton-line short"></div><div class="skeleton-line medium"></div><div class="skeleton-line"></div></div>
+                        <div class="skeleton-card"><div class="skeleton-line short"></div><div class="skeleton-line medium"></div><div class="skeleton-line"></div></div>
+                    </div>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg></div>
+                        <h4>Денежные потоки</h4><p>Движение средств в БК</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg></div>
+                        <h4>Теннис АИ</h4><p>ИИ-анализ матчей</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                        <h4>LIVE данные</h4><p>Обновление в реальном времени</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg></div>
+                        <h4>Аналитика</h4><p>Прогнозы на основе статистики</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- ===== FEATURES ===== -->
-            <div class="features-grid">
-                <div class="feature-card">
-                    <span class="icon">📊</span>
-                    <h4>Денежные потоки</h4>
-                    <p>Отслеживайте движение средств в букмекерских конторах</p>
+            <!-- RIGHT SIDEBAR -->
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        Популярные ставки
+                    </h3>
+                    <div class="sidebar-item">
+                        <div class="label">Победа фаворита</div>
+                        <div class="value">68%</div>
+                    </div>
+                    <div class="sidebar-item">
+                        <div class="label">Тотал больше</div>
+                        <div class="value">54%</div>
+                    </div>
+                    <div class="sidebar-item">
+                        <div class="label">Обе забьют</div>
+                        <div class="value">42%</div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <span class="icon">🤖</span>
-                    <h4>Теннис АИ</h4>
-                    <p>Искусственный интеллект анализирует матчи</p>
+                <div class="sidebar-widget">
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                        Тренды
+                    </h3>
+                    <div class="sidebar-item">
+                        <div class="label">Футбол</div>
+                        <div class="value" style="color: var(--green)">↑ Активно</div>
+                    </div>
+                    <div class="sidebar-item">
+                        <div class="label">Теннис</div>
+                        <div class="value" style="color: var(--green)">↑ Активно</div>
+                    </div>
+                    <div class="sidebar-item">
+                        <div class="label">Хоккей</div>
+                        <div class="value">Средне</div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <span class="icon">⚡</span>
-                    <h4>LIVE данные</h4>
-                    <p>Обновление в реальном времени</p>
-                </div>
-                <div class="feature-card">
-                    <span class="icon">📈</span>
-                    <h4>Аналитика</h4>
-                    <p>Прогнозы на основе статистики</p>
-                </div>
-            </div>
+            </aside>
         </div>
     </div>
 
@@ -860,9 +655,13 @@
     </footer>
 
     <script>
-        // ============================================================
-        // 1. ЗАЩИТА
-        // ============================================================
+        // TICKER
+        document.addEventListener('DOMContentLoaded', () => {
+            const track = document.getElementById('tickerTrack');
+            if (track) track.innerHTML += track.innerHTML;
+        });
+
+        // ЗАЩИТА
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', e => {
             const c = e.ctrlKey, s = e.shiftKey, k = e.key.toLowerCase(), cd = e.code;
@@ -873,283 +672,172 @@
             if (c && (cd === 'KeyS' || k === 's' || cd === 'KeyP' || k === 'p')) { e.preventDefault(); return false; }
         }, true);
 
-        // ============================================================
-        // 2. ТЕМА
-        // ============================================================
-        function getTheme() {
-            return localStorage.getItem('settrue-theme') || 'dark';
-        }
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('settrue-theme', theme);
-        }
-        function toggleTheme() {
-            const current = getTheme();
-            setTheme(current === 'dark' ? 'light' : 'dark');
-        }
+        // ТЕМА
+        function getTheme() { return localStorage.getItem('settrue-theme') || 'dark'; }
+        function setTheme(t) { document.documentElement.setAttribute('data-theme', t); localStorage.setItem('settrue-theme', t); }
         setTheme(getTheme());
-        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+        document.getElementById('themeToggle').addEventListener('click', () => setTheme(getTheme() === 'dark' ? 'light' : 'dark'));
 
-        // ============================================================
-        // 3. ВРЕМЯ
-        // ============================================================
+        // ВРЕМЯ
         function updateTime() {
-            const now = new Date();
-            const msk = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + 10800000);
-            document.getElementById('headerTime').textContent = 
-                String(msk.getHours()).padStart(2,'0') + ':' + String(msk.getMinutes()).padStart(2,'0');
+            const msk = new Date(new Date().getTime() + (new Date().getTimezoneOffset() * 60000) + 10800000);
+            document.getElementById('headerTime').textContent = String(msk.getHours()).padStart(2,'0') + ':' + String(msk.getMinutes()).padStart(2,'0');
         }
-        setInterval(updateTime, 1000);
-        updateTime();
+        setInterval(updateTime, 1000); updateTime();
 
-        // ============================================================
-        // 4. ЧАСТИЦЫ
-        // ============================================================
+        // ЧАСТИЦЫ
         function createParticles() {
-            const container = document.getElementById('particles-bg');
-            if (!container) return;
-            const count = window.innerWidth < 768 ? 20 : 50;
-            container.innerHTML = '';
-            for (let i = 0; i < count; i++) {
-                const p = document.createElement('div');
-                p.className = 'particle';
-                const size = Math.random() * 60 + 15;
-                p.style.width = size + 'px';
-                p.style.height = size + 'px';
-                p.style.left = Math.random() * 100 + '%';
-                p.style.animationDuration = (Math.random() * 18 + 10) + 's';
-                p.style.animationDelay = (Math.random() * 12) + 's';
-                container.appendChild(p);
+            const c = document.getElementById('particles-bg'); if (!c) return;
+            const n = window.innerWidth < 768 ? 20 : 50; c.innerHTML = '';
+            for (let i = 0; i < n; i++) {
+                const p = document.createElement('div'); p.className = 'particle';
+                const s = Math.random() * 60 + 15;
+                p.style.cssText = `width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*18+10}s;animation-delay:${Math.random()*12}s`;
+                c.appendChild(p);
             }
         }
         createParticles();
-        let resizeTimer;
-        window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(createParticles, 300); });
+        let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(createParticles, 300); });
 
-        // ============================================================
-        // 5. МЕНЮ
-        // ============================================================
+        // МЕНЮ
         document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('mainNav').classList.toggle('open');
-            this.classList.toggle('open');
+            document.getElementById('mainNav').classList.toggle('open'); this.classList.toggle('open');
         });
 
-        // ============================================================
-        // 6. ПАРТНЁРСКИЕ ССЫЛКИ
-        // ============================================================
+        // ПАРТНЁР
         function openPartnerLink(type) {
-            const urls = {
-                reg: 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate',
-                bonus: 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate',
-                freebets: 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate'
-            };
-            if (urls[type]) {
-                if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'pari_' + type);
-                window.open(urls[type], '_blank');
+            const u = { reg:'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate', bonus:'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate', freebets:'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate' };
+            if (u[type]) { if (typeof ym!=='undefined') ym(108400965,'reachGoal','pari_'+type); window.open(u[type],'_blank'); }
+        }
+
+        // ============================================================
+        // 1. ЗАГРУЗКА ТОП ПРОГНОЗОВ ДЛЯ САЙДБАРА
+        // ============================================================
+        async function loadTopTips() {
+            const container = document.getElementById('topTipsContainer');
+            try {
+                const response = await fetch('/feed_data.json?t=' + Date.now());
+                if (!response.ok) throw new Error('Файл не найден');
+                const result = await response.json();
+                
+                if (result.success && result.data && result.data.length > 0) {
+                    // Фильтруем: премиум (isPremium: true) ИЛИ profit > 500
+                    const tips = result.data.filter(t => t.isPremium === true || (t.profit || 0) > 500);
+                    const topTips = tips.slice(0, 8);
+                    
+                    if (topTips.length === 0) {
+                        container.innerHTML = '<div class="sidebar-item" style="text-align:center;color:var(--text-muted);font-size:11px;padding:20px 10px;">Нет премиум-прогнозов</div>';
+                        return;
+                    }
+                    
+                    let html = '';
+                    topTips.forEach((tip, index) => {
+                        const isPremium = tip.isPremium || false;
+                        const profit = tip.profit || 0;
+                        const profitClass = profit > 500 ? 'positive' : 'premium';
+                        const profitLabel = profit > 500 ? '🔥 ' + profit.toFixed(1) + '%' : '⭐ Premium';
+                        const badgeClass = profit > 500 ? 'high' : 'premium';
+                        const badgeText = profit > 500 ? 'TOП' : 'PREMIUM';
+                        
+                        let prediction = tip.prediction || '';
+                        if (!prediction && tip.link) {
+                            const predMatch = tip.link.match(/-([a-zA-Z0-9\-]+)-prognoz/);
+                            if (predMatch && predMatch[1]) prediction = predMatch[1].replace(/-/g, ' ');
+                        }
+                        
+                        html += `
+                            <div class="sidebar-tip">
+                                <div class="tip-teams">
+                                    ${tip.logo1 ? `<img src="${tip.logo1}" alt="" loading="lazy" onerror="this.style.display='none'">` : ''}
+                                    ${tip.team1 || '—'}
+                                    <span style="color:var(--text-muted);margin:0 2px;">—</span>
+                                    ${tip.logo2 ? `<img src="${tip.logo2}" alt="" loading="lazy" onerror="this.style.display='none'">` : ''}
+                                    ${tip.team2 || '—'}
+                                    <span class="tip-badge ${badgeClass}">${badgeText}</span>
+                                </div>
+                                ${prediction ? `<div class="tip-prediction">${prediction}</div>` : ''}
+                                <div class="tip-profit ${profitClass}">${profitLabel}</div>
+                            </div>
+                        `;
+                    });
+                    container.innerHTML = html;
+                } else {
+                    container.innerHTML = '<div class="sidebar-item" style="text-align:center;color:var(--text-muted);font-size:11px;padding:20px 10px;">Нет доступных прогнозов</div>';
+                }
+            } catch (error) {
+                console.error('Ошибка загрузки топ прогнозов:', error);
+                container.innerHTML = '<div class="sidebar-item" style="text-align:center;color:var(--text-muted);font-size:11px;padding:20px 10px;">❌ Ошибка загрузки</div>';
             }
         }
 
         // ============================================================
-        // 7. НАВИГАЦИЯ
-        // ============================================================
-        function loadPage(pageId, linkUrl) {
-            if (linkUrl) {
-                window.location.href = linkUrl;
-                return;
-            }
-            document.querySelectorAll('.header-nav a').forEach(a => a.classList.remove('active'));
-            document.querySelectorAll('.header-nav a[data-page="' + pageId + '"]').forEach(a => a.classList.add('active'));
-            document.getElementById('mainNav').classList.remove('open');
-            document.getElementById('menuToggle').classList.remove('open');
-        }
-
-        document.querySelectorAll('.header-nav a[data-page]').forEach(a => {
-            a.addEventListener('click', function(e) {
-                e.preventDefault();
-                loadPage(this.dataset.page, this.dataset.link);
-            });
-        });
-
-        // ============================================================
-        // 8. API МАТЧЕЙ
+        // 2. API МАТЧЕЙ
         // ============================================================
         const API_URL = 'https://script.google.com/macros/s/AKfycbxL0MmOjg_gew24qRo-x7bhj-cb0PZwsH_LslT5ya71U7FH73Gs2XKQdfuKvU734WFH/exec';
-        let cachedMatches = [];
-        const matchElements = {};
-
-        function getMatchId(m) { return m.team1 + '|' + m.team2 + '|' + m.tournament; }
-
-        function matchesEqual(a, b) {
-            return a.team1 === b.team1 && a.team2 === b.team2 && 
-                   a.score1 === b.score1 && a.score2 === b.score2 &&
-                   a.status === b.status && a.isLive === b.isLive &&
-                   a.isFinished === b.isFinished &&
-                   a.tournament === b.tournament;
-        }
+        let cachedMatches = []; const matchElements = {};
+        function getMatchId(m) { return m.team1+'|'+m.team2+'|'+m.tournament; }
+        function matchesEqual(a,b) { return a.team1===b.team1&&a.team2===b.team2&&a.score1===b.score1&&a.score2===b.score2&&a.status===b.status&&a.isLive===b.isLive&&a.isFinished===b.isFinished&&a.tournament===b.tournament; }
 
         function createMatchHTML(match) {
-            const isLive = match.isLive;
-            const isFinished = match.isFinished || (match.status && match.status.toLowerCase().includes('завершён')) || false;
-            const s1 = match.score1 !== null ? match.score1 : '–';
-            const s2 = match.score2 !== null ? match.score2 : '–';
-            
-            let statusClass = '';
-            let scoreClass = '';
-            let badgeText = '📅';
-            let badgeClass = '';
-            let statusText = match.status || 'Не начался';
-            
-            if (isLive) {
-                statusClass = 'live';
-                scoreClass = 'live-score';
-                badgeText = 'LIVE';
-                badgeClass = 'live-badge';
-            } else if (isFinished) {
-                statusClass = 'finished';
-                badgeText = '✓';
-                badgeClass = 'finished-badge';
-            }
-            
-            const timeHtml = match.timeDisplay && !isLive && !isFinished ? 
-                '<span class="match-time-badge">🕐 ' + match.timeDisplay + '</span>' : '';
-            
-            const logo1 = match.logo1 ? 
-                '<img src="' + match.logo1 + '" alt="' + match.team1 + '" class="team-logo" loading="lazy" onerror="this.style.display=\'none\'">' : '';
-            const logo2 = match.logo2 ? 
-                '<img src="' + match.logo2 + '" alt="' + match.team2 + '" class="team-logo" loading="lazy" onerror="this.style.display=\'none\'">' : '';
-            const mid = getMatchId(match);
-            
-            return '<div class="match-card ' + statusClass + '" data-match-id="' + mid + '">' +
-                '<div class="match-tournament">' + match.tournament + 
-                ' <span class="badge ' + badgeClass + '">' + badgeText + '</span></div>' +
-                '<div class="match-teams">' +
-                '<span class="match-team">' + match.team1 + logo1 + '</span>' +
-                '<span class="match-score ' + scoreClass + '">' + s1 + ' : ' + s2 + '</span>' +
-                '<span class="match-team">' + logo2 + match.team2 + '</span>' +
-                '</div>' +
-                '<div class="match-status ' + (isLive ? 'live' : '') + '">' +
-                (isLive ? '<span class="live-dot"></span>' : '') +
-                statusText + timeHtml +
-                '</div>' +
-                '<span class="update-indicator"></span>' +
-                '</div>';
-        }
-
-        function updateLiveCount(matches) {
-            const liveMatches = matches.filter(m => m.isLive).length;
-            const heroBadge = document.getElementById('liveCountText');
-            
-            if (heroBadge) heroBadge.textContent = liveMatches;
+            const isLive=match.isLive, isFin=match.isFinished||(match.status&&match.status.toLowerCase().includes('завершён'))||false;
+            const s1=match.score1!==null?match.score1:'–', s2=match.score2!==null?match.score2:'–';
+            let sc='',scc='',bt='📅',bc='',st=match.status||'Не начался';
+            if(isLive){sc='live';scc='live-score';bt='LIVE';bc='live-badge';}else if(isFin){sc='finished';bt='✓';bc='finished-badge';}
+            const th=match.timeDisplay&&!isLive&&!isFin?'<span class="match-time-badge"><svg style="width:10px;height:10px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> '+match.timeDisplay+'</span>':'';
+            const l1=match.logo1?'<img src="'+match.logo1+'" alt="" class="team-logo" loading="lazy" onerror="this.style.display=\'none\'">':'';
+            const l2=match.logo2?'<img src="'+match.logo2+'" alt="" class="team-logo" loading="lazy" onerror="this.style.display=\'none\'">':'';
+            return '<div class="match-card '+sc+'" data-match-id="'+getMatchId(match)+'"><div class="match-tournament">'+match.tournament+' <span class="badge '+bc+'">'+bt+'</span></div><div class="match-teams"><span class="match-team">'+match.team1+l1+'</span><span class="match-score '+scc+'">'+s1+' : '+s2+'</span><span class="match-team">'+l2+match.team2+'</span></div><div class="match-status '+(isLive?'live':'')+'">'+(isLive?'<span class="live-dot"></span>':'')+st+th+'</div><span class="update-indicator"></span></div>';
         }
 
         async function loadMatches() {
-            const container = document.getElementById('matchesContainer');
-            if (!container) return;
-            container.innerHTML = '<div class="loading-state"><div class="spinner"></div><div>Загрузка матчей...</div></div>';
+            const c=document.getElementById('matchesContainer'); if(!c)return;
             try {
-                const resp = await fetch(API_URL);
-                const data = await resp.json();
-                if (data.status === 'success' && data.matches && data.matches.length > 0) {
-                    cachedMatches = data.matches;
-                    renderMatches(container, data.matches);
-                    updateLiveCount(data.matches);
+                const r=await fetch(API_URL), d=await r.json();
+                if(d.status==='success'&&d.matches&&d.matches.length>0){
+                    cachedMatches=d.matches;
+                    document.getElementById('skeleton-loader').style.display='none';
+                    renderMatches(c,d.matches);
+                    document.getElementById('totalMatches').textContent=d.matches.length;
+                    document.getElementById('liveMatches').textContent=d.matches.filter(m=>m.isLive).length;
                     startUpdate();
-                } else {
-                    container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:40px 0;">⚠️ Нет доступных матчей</div>';
-                }
-            } catch (e) {
-                container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:40px 0;">❌ Ошибка загрузки</div>';
-            }
+                } else { document.getElementById('skeleton-loader').style.display='none'; c.innerHTML='<div style="text-align:center;color:var(--text-muted);padding:40px 0;">⚠️ Нет доступных матчей</div>'; }
+            } catch(e) { document.getElementById('skeleton-loader').style.display='none'; c.innerHTML='<div style="text-align:center;color:var(--text-muted);padding:40px 0;">❌ Ошибка загрузки</div>'; }
         }
 
-        function renderMatches(container, matches) {
-            let html = '<div class="matches-grid">';
-            matches.slice(0, 20).forEach(m => { html += createMatchHTML(m); });
-            html += '</div>';
-            container.innerHTML = html;
-            document.querySelectorAll('.match-card').forEach(el => {
-                const id = el.dataset.matchId;
-                if (id) matchElements[id] = el;
-            });
+        function renderMatches(c,matches) {
+            let h='<div class="matches-grid">';
+            matches.slice(0,20).forEach((m,i)=>{ h+=createMatchHTML(m).replace('<div class="match-card','<div class="match-card" style="animation-delay:'+i*0.05+'s"'); });
+            h+='</div>'; c.innerHTML=h;
+            document.querySelectorAll('.match-card').forEach(el=>{ const id=el.dataset.matchId; if(id) matchElements[id]=el; });
         }
 
         function startUpdate() {
-            if (window.updateInterval) clearInterval(window.updateInterval);
-            window.updateInterval = setInterval(async () => {
-                try {
-                    const resp = await fetch(API_URL);
-                    const data = await resp.json();
-                    if (data.status === 'success' && data.matches && data.matches.length > 0) {
-                        updateMatches(data.matches);
-                        updateLiveCount(data.matches);
-                    }
-                } catch (e) {}
-            }, 60000);
+            if(window.updateInterval) clearInterval(window.updateInterval);
+            window.updateInterval=setInterval(async()=>{
+                try { const r=await fetch(API_URL),d=await r.json(); if(d.status==='success'&&d.matches&&d.matches.length>0){updateMatches(d.matches);document.getElementById('liveMatches').textContent=d.matches.filter(m=>m.isLive).length;} } catch(e){}
+            },60000);
         }
 
-        function updateMatches(newMatches) {
-            const container = document.getElementById('matchesContainer');
-            if (!container) return;
-            const oldMap = {};
-            cachedMatches.forEach(m => { oldMap[getMatchId(m)] = m; });
-            const newMap = {};
-            newMatches.forEach(m => { newMap[getMatchId(m)] = m; });
-
-            const toUpdate = [];
-            newMatches.forEach(m => {
-                const id = getMatchId(m);
-                if (oldMap[id] && !matchesEqual(oldMap[id], m)) toUpdate.push(m);
-            });
-
-            const toRemove = [];
-            cachedMatches.forEach(m => {
-                const id = getMatchId(m);
-                if (!newMap[id]) toRemove.push(id);
-            });
-
-            toRemove.forEach(id => {
-                const el = matchElements[id];
-                if (el && el.parentNode) { el.parentNode.removeChild(el); delete matchElements[id]; }
-            });
-
-            toUpdate.forEach(m => {
-                const id = getMatchId(m);
-                const el = matchElements[id];
-                if (el) {
-                    el.classList.add('updating');
-                    const tmp = document.createElement('div');
-                    tmp.innerHTML = createMatchHTML(m);
-                    const newEl = tmp.firstElementChild;
-                    el.innerHTML = newEl.innerHTML;
-                    el.className = newEl.className;
-                    el.dataset.matchId = newEl.dataset.matchId;
-                    setTimeout(() => el.classList.remove('updating'), 500);
-                }
-            });
-
-            let grid = container.querySelector('.matches-grid');
-            if (!grid) { renderMatches(container, newMatches); cachedMatches = newMatches; return; }
-
-            newMatches.forEach(m => {
-                const id = getMatchId(m);
-                if (newMap[id] && !matchElements[id]) {
-                    const tmp = document.createElement('div');
-                    tmp.innerHTML = createMatchHTML(m);
-                    const newEl = tmp.firstElementChild;
-                    grid.appendChild(newEl);
-                    const nid = newEl.dataset.matchId;
-                    if (nid) matchElements[nid] = newEl;
-                }
-            });
-
-            cachedMatches = newMatches;
+        function updateMatches(nm) {
+            const c=document.getElementById('matchesContainer'); if(!c)return;
+            const om={},nnm={}; cachedMatches.forEach(m=>{om[getMatchId(m)]=m;}); nm.forEach(m=>{nnm[getMatchId(m)]=m;});
+            const tu=[]; nm.forEach(m=>{const id=getMatchId(m);if(om[id]&&!matchesEqual(om[id],m))tu.push(m);});
+            const tr=[]; cachedMatches.forEach(m=>{const id=getMatchId(m);if(!nnm[id])tr.push(id);});
+            tr.forEach(id=>{const el=matchElements[id];if(el&&el.parentNode){el.parentNode.removeChild(el);delete matchElements[id];}});
+            tu.forEach(m=>{const id=getMatchId(m),el=matchElements[id];if(el){el.classList.add('updating');const t=document.createElement('div');t.innerHTML=createMatchHTML(m);const ne=t.firstElementChild;el.innerHTML=ne.innerHTML;el.className=ne.className;el.dataset.matchId=ne.dataset.matchId;setTimeout(()=>el.classList.remove('updating'),500);}});
+            let g=c.querySelector('.matches-grid'); if(!g){renderMatches(c,nm);cachedMatches=nm;return;}
+            nm.forEach(m=>{const id=getMatchId(m);if(nnm[id]&&!matchElements[id]){const t=document.createElement('div');t.innerHTML=createMatchHTML(m);const ne=t.firstElementChild;g.appendChild(ne);const nid=ne.dataset.matchId;if(nid)matchElements[nid]=ne;}});
+            cachedMatches=nm;
         }
 
         // ============================================================
-        // 9. ЗАПУСК
+        // 3. ЗАПУСК
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
+            loadTopTips();
             loadMatches();
+            // Обновляем топ прогнозы каждые 2 минуты
+            setInterval(loadTopTips, 120000);
         });
     </script>
 </body>
