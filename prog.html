@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогнозы на футбол | SetTrue</title>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7841660916895595" crossorigin="anonymous"></script>
+    
+    <!-- Yandex Metrika -->
+    <meta name="yandex-verification" content="0ac8a3221431959f" />
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108400965', 'ym');
+        ym(108400965, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+    <style>
+        :root {
+            --bg-primary: #080808;
+            --bg-secondary: #0d0d0d;
+            --bg-card: rgba(255,255,255,0.03);
+            --text-primary: #f0f0f0;
+            --text-secondary: #999;
+            --text-muted: #555;
+            --border-color: rgba(255,255,255,0.06);
+            --green: #00cc44;
+            --green-glow: rgba(0, 204, 68, 0.15);
+            --badge-bg: rgba(0, 204, 68, 0.10);
+            --profit-positive: #4CAF50;
+            --profit-negative: #f44336;
+            --premium-color: #FFD700;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #ffffff;
+            --bg-card: rgba(0,0,0,0.02);
+            --text-primary: #111;
+            --text-secondary: #666;
+            --text-muted: #aaa;
+            --border-color: rgba(0,0,0,0.08);
+            --badge-bg: rgba(0, 204, 68, 0.08);
+            --profit-positive: #2E7D32;
+            --profit-negative: #C62828;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-primary);
+            transition: background 0.3s ease, color 0.3s ease;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 10px; }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 800;
+        }
+        .header h1 .green { color: var(--green); }
+        .header h1 .light { color: var(--text-primary); }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            width: 42px;
+            height: 22px;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 3px;
+        }
+        .theme-toggle .toggle-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--green);
+            transition: transform 0.3s ease;
+            box-shadow: 0 0 10px var(--green-glow);
+        }
+        [data-theme="light"] .theme-toggle .toggle-dot {
+            transform: translateX(18px);
+        }
+        .theme-toggle .toggle-icon {
+            position: absolute;
+            font-size: 9px;
+            transition: opacity 0.3s ease;
+            line-height: 1;
+        }
+        .theme-toggle .icon-sun { opacity: 0; }
+        .theme-toggle .icon-moon { opacity: 1; }
+        [data-theme="light"] .theme-toggle .icon-sun { opacity: 1; }
+        [data-theme="light"] .theme-toggle .icon-moon { opacity: 0; }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+        .stats .stat {
+            display: flex;
+            flex-direction: column;
+        }
+        .stats .stat .value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--green);
+        }
+        .stats .stat .label {
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tip-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        .tip-card:hover {
+            border-color: rgba(0, 204, 68, 0.2);
+            background: rgba(0, 204, 68, 0.03);
+        }
+        .tip-card.premium {
+            border-color: var(--premium-color);
+        }
+        .tip-card.premium::before {
+            content: '⭐ PREMIUM';
+            float: right;
+            font-size: 9px;
+            font-weight: 700;
+            color: #000;
+            background: var(--premium-color);
+            padding: 2px 10px;
+            border-radius: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .tip-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .tip-author {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--text-primary);
+        }
+        .tip-profit {
+            font-weight: 700;
+            font-size: 14px;
+            padding: 2px 12px;
+            border-radius: 20px;
+        }
+        .tip-profit.positive {
+            color: var(--profit-positive);
+            background: rgba(76, 175, 80, 0.1);
+        }
+        .tip-profit.negative {
+            color: var(--profit-negative);
+            background: rgba(244, 67, 54, 0.1);
+        }
+
+        .tip-teams {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 6px 0 8px;
+            flex-wrap: wrap;
+        }
+        .tip-teams .team {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .tip-teams .team img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: var(--bg-card);
+        }
+        .tip-teams .vs {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        .tip-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            margin-top: 8px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+        }
+        .tip-details .detail {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        .tip-details .detail .label {
+            color: var(--text-muted);
+        }
+        .tip-details .detail .value {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .tip-details .detail .value.odds {
+            color: var(--green);
+            font-size: 14px;
+        }
+
+        .tip-trends {
+            margin-top: 8px;
+            padding: 10px 14px;
+            background: rgba(0, 204, 68, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid var(--green);
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        .tip-trends .trend-label {
+            font-weight: 600;
+            color: var(--green);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .tip-trends .trend-item {
+            padding: 2px 0;
+            line-height: 1.5;
+        }
+        .tip-trends .trend-item strong {
+            color: var(--text-primary);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+        .loading .spinner {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            border: 2px solid var(--border-color);
+            border-top-color: var(--green);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            margin-bottom: 10px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+        .empty .icon { font-size: 48px; margin-bottom: 12px; }
+
+        .update-time {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            body { padding: 12px; }
+            .header h1 { font-size: 20px; }
+            .stats { gap: 12px; padding: 12px 16px; }
+            .stats .stat .value { font-size: 16px; }
+            .tip-card { padding: 12px 14px; }
+            .tip-author { font-size: 13px; }
+            .tip-teams .team { font-size: 12px; }
+            .tip-teams .team img { width: 16px; height: 16px; }
+            .tip-details { gap: 8px 16px; }
+            .tip-details .detail { font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- ===== HEADER ===== -->
+        <div class="header">
+            <h1><span class="light">Set</span><span class="green">True</span> <span style="font-size:16px;font-weight:400;color:var(--text-secondary);">— Прогнозы</span></h1>
+            <div class="header-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Сменить тему">
+                    <span class="toggle-icon icon-sun">☀️</span>
+                    <span class="toggle-icon icon-moon">🌙</span>
+                    <span class="toggle-dot"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- ===== STATS ===== -->
+        <div class="stats" id="stats" style="display:none;">
+            <div class="stat">
+                <span class="value" id="totalCount">0</span>
+                <span class="label">Всего прогнозов</span>
+            </div>
+            <div class="stat">
+                <span class="value" id="premiumCount">0</span>
+                <span class="label">Premium</span>
+            </div>
+            <div class="stat">
+                <span class="value" id="trendsCount">0</span>
+                <span class="label">С трендами</span>
+            </div>
+            <div class="stat">
+                <span class="value" id="avgProfit">0%</span>
+                <span class="label">Средняя прибыль</span>
+            </div>
+        </div>
+
+        <!-- ===== TIPS ===== -->
+        <div id="tipsContainer">
+            <div class="loading"><div class="spinner"></div><div>Загрузка прогнозов...</div></div>
+        </div>
+
+        <div class="update-time" id="updateTime"></div>
+    </div>
+
+    <script>
+        // ============================================================
+        // 1. ТЕМА
+        // ============================================================
+        function getTheme() {
+            return localStorage.getItem('settrue-theme') || 'dark';
+        }
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('settrue-theme', theme);
+        }
+        function toggleTheme() {
+            const current = getTheme();
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        }
+        setTheme(getTheme());
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+        // ============================================================
+        // 2. ОТОБРАЖЕНИЕ
+        // ============================================================
+        const API_URL = 'https://script.google.com/macros/s/AKfycbxekTSYzSS_0PznwSPwZnPNY3M_otipXoGWBogyQj9V2YYRang6UFeS2HOoVJDjhovv/exec';
+
+        function formatTime(timestamp) {
+            if (!timestamp) return '';
+            const date = new Date(timestamp);
+            const now = new Date();
+            const diff = Math.floor((now - date) / 1000);
+            
+            if (diff < 60) return 'только что';
+            if (diff < 3600) {
+                const m = Math.floor(diff / 60);
+                return m + ' ' + getMinutesWord(m) + ' назад';
+            }
+            if (diff < 86400) {
+                const h = Math.floor(diff / 3600);
+                return h + ' ' + getHoursWord(h) + ' назад';
+            }
+            return date.toLocaleDateString('ru-RU', {day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit'});
+        }
+
+        function getMinutesWord(n) {
+            if (n % 10 === 1 && n % 100 !== 11) return 'минуту';
+            if ([2,3,4].includes(n % 10) && ![12,13,14].includes(n % 100)) return 'минуты';
+            return 'минут';
+        }
+
+        function getHoursWord(n) {
+            if (n % 10 === 1 && n % 100 !== 11) return 'час';
+            if ([2,3,4].includes(n % 10) && ![12,13,14].includes(n % 100)) return 'часа';
+            return 'часов';
+        }
+
+        function renderTips(data) {
+            const container = document.getElementById('tipsContainer');
+            const statsEl = document.getElementById('stats');
+            const updateTimeEl = document.getElementById('updateTime');
+            
+            if (!data || data.length === 0) {
+                container.innerHTML = '<div class="empty"><div class="icon">📭</div><div>Нет прогнозов</div></div>';
+                statsEl.style.display = 'none';
+                return;
+            }
+
+            // Статистика
+            const total = data.length;
+            const premium = data.filter(t => t.isPremium).length;
+            const withTrends = data.filter(t => t.hasTrends).length;
+            const avgProfit = data.reduce((sum, t) => sum + (t.profit || 0), 0) / total;
+
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('premiumCount').textContent = premium;
+            document.getElementById('trendsCount').textContent = withTrends;
+            document.getElementById('avgProfit').textContent = (avgProfit > 0 ? '+' : '') + avgProfit.toFixed(1) + '%';
+            statsEl.style.display = 'flex';
+
+            // Рендерим карточки
+            let html = '';
+            
+            data.forEach((tip, index) => {
+                const profit = tip.profit || 0;
+                const profitClass = profit >= 0 ? 'positive' : 'negative';
+                const profitSign = profit >= 0 ? '+' : '';
+                const timeStr = formatTime(tip.timestamp);
+                const isPremium = tip.isPremium || false;
+                const premiumClass = isPremium ? 'premium' : '';
+                
+                // Определяем прогноз (если нет prediction, пытаемся извлечь из ссылки)
+                let prediction = tip.prediction || '';
+                if (!prediction && tip.link) {
+                    const parts = tip.link.split('-');
+                    if (parts.length > 3) {
+                        // Пробуем извлечь из названия ссылки
+                        const match = tip.link.match(/prognoz-na-match$/);
+                        if (!match) {
+                            // Ищем по шаблону
+                            const predMatch = tip.link.match(/-([a-zA-Z0-9\-]+)-prognoz/);
+                            if (predMatch && predMatch[1]) {
+                                prediction = predMatch[1].replace(/-/g, ' ');
+                            }
+                        }
+                    }
+                }
+                
+                html += `
+                    <div class="tip-card ${premiumClass}">
+                        <div class="tip-header">
+                            <span class="tip-author">${tip.author || 'Аноним'}</span>
+                            <span class="tip-profit ${profitClass}">${profitSign}${profit.toFixed(1)}%</span>
+                        </div>
+                        <div class="tip-teams">
+                            <span class="team">
+                                ${tip.logo1 ? `<img src="${tip.logo1}" alt="${tip.team1}" loading="lazy" onerror="this.style.display='none'">` : ''}
+                                ${tip.team1 || '—'}
+                            </span>
+                            <span class="vs">—</span>
+                            <span class="team">
+                                ${tip.logo2 ? `<img src="${tip.logo2}" alt="${tip.team2}" loading="lazy" onerror="this.style.display='none'">` : ''}
+                                ${tip.team2 || '—'}
+                            </span>
+                        </div>
+                        <div class="tip-details">
+                            ${prediction ? `<span class="detail"><span class="label">Прогноз:</span> <span class="value">${prediction}</span></span>` : ''}
+                            ${tip.odds ? `<span class="detail"><span class="label">Коэф:</span> <span class="value odds">${tip.odds}</span></span>` : ''}
+                            ${tip.rating ? `<span class="detail"><span class="label">Рейтинг:</span> <span class="value">${tip.rating}</span></span>` : ''}
+                            ${timeStr ? `<span class="detail"><span class="label">📅</span> <span class="value">${timeStr}</span></span>` : ''}
+                            ${isPremium ? `<span class="detail"><span class="label">⭐</span> <span class="value" style="color:var(--premium-color);">Premium</span></span>` : ''}
+                        </div>
+                        ${tip.hasTrends && tip.trends && tip.trends.length > 0 ? `
+                            <div class="tip-trends">
+                                <div class="trend-label">📊 Валуйные тренды (${tip.trends.length})</div>
+                                ${tip.trends.map(t => `<div class="trend-item">• ${t}</div>`).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            
+            if (data.length > 0 && data[0].timestamp) {
+                updateTimeEl.textContent = 'Обновлено: ' + new Date(data[0].timestamp).toLocaleString('ru-RU');
+            }
+        }
+
+        async function loadTips() {
+            const container = document.getElementById('tipsContainer');
+            container.innerHTML = '<div class="loading"><div class="spinner"></div><div>Загрузка прогнозов...</div></div>';
+
+            try {
+                const response = await fetch(API_URL + '?t=' + Date.now());
+                const result = await response.json();
+
+                if (result.success && result.data && result.data.length > 0) {
+                    renderTips(result.data);
+                } else {
+                    container.innerHTML = '<div class="empty"><div class="icon">⚠️</div><div>Нет доступных прогнозов</div></div>';
+                    document.getElementById('stats').style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Ошибка загрузки:', error);
+                container.innerHTML = '<div class="empty"><div class="icon">❌</div><div>Ошибка загрузки данных</div></div>';
+                document.getElementById('stats').style.display = 'none';
+            }
+        }
+
+        // ============================================================
+        // 3. ЗАПУСК
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTips();
+            
+            // Автообновление каждые 60 секунд
+            setInterval(loadTips, 60000);
+        });
+    </script>
+
+</body>
+</html>
