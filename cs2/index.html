@@ -140,7 +140,7 @@
             100% { transform: translateY(-10vh) scale(1); opacity: 0; }
         }
 
-        /* ===== HEADER ===== */
+        /* ===== HEADER С ЛОГОТИПОМ ===== */
         .main-header {
             position: fixed;
             top: 0;
@@ -155,11 +155,35 @@
             height: 56px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             transition: background 0.3s ease, border-color 0.3s ease;
         }
 
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 10;
+        }
+        .header-logo {
+            height: 32px;
+            width: auto;
+            object-fit: contain;
+        }
+        .header-logo-text {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+        .header-logo-text span {
+            color: var(--green);
+        }
+
         .header-nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             align-items: center;
             gap: 4px;
@@ -184,13 +208,10 @@
         }
 
         .header-right {
-            position: absolute;
-            right: 24px;
-            top: 50%;
-            transform: translateY(-50%);
             display: flex;
             align-items: center;
             gap: 12px;
+            z-index: 10;
         }
 
         .header-time {
@@ -685,6 +706,7 @@
                 gap: 2px;
                 border-bottom: 1px solid var(--border-color);
                 backdrop-filter: blur(16px);
+                transform: none;
             }
             .header-nav.open { display: flex; }
             .header-nav a { padding: 10px 16px; width: 100%; text-align: center; }
@@ -703,6 +725,8 @@
 
         @media (max-width: 480px) {
             .main-header { padding: 0 14px; height: 50px; }
+            .header-logo { height: 26px; }
+            .header-logo-text { font-size: 16px; }
             .header-nav a { font-size: 12px; padding: 8px 14px; }
             .theme-toggle { width: 36px; height: 20px; }
             .theme-toggle .toggle-dot { width: 12px; height: 12px; }
@@ -728,8 +752,12 @@
     <!-- ===== PARTICLES ===== -->
     <div id="particles-bg"></div>
 
-    <!-- ===== HEADER ===== -->
+    <!-- ===== HEADER С ЛОГОТИПОМ ===== -->
     <header class="main-header">
+        <div class="header-left">
+            <img src="logo.png" alt="SetTrue Logo" class="header-logo" onerror="this.style.display='none'">
+            <span class="header-logo-text">Set<span>True</span></span>
+        </div>
         <nav class="header-nav" id="mainNav">
             <a href="/" data-page="home">Главная</a>
             <a href="/predict/" data-page="predictions">Прогнозы</a>
@@ -738,7 +766,6 @@
             <a href="/cs2/" class="active" data-page="cs2">CS2</a>
             <a href="/robobet/">Робобет</a>
         </nav>
-
         <div class="header-right">
             <div class="header-time">
                 <span class="time-val" id="headerTime">--:--</span> МСК
@@ -757,13 +784,7 @@
     <!-- ===== HERO — КОМПАКТНЫЙ ===== -->
     <section class="hero-section">
         <div class="hero-inner">
-            <h1 class="hero-title">
-                <span class="light">Set</span><span class="green">True</span>
-            </h1>
-            <p class="hero-sub">Прогнозы на CS2 | Математическая аналитика</p>
-            <div class="hero-live-badge" id="heroLiveBadge">
-                <span class="dot"></span>
-                <span>72% точности</span>
+        
             </div>
         </div>
     </section>
