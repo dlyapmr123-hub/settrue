@@ -1,196 +1,623 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108400965', 'ym');
-
-    ym(108400965, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-    <meta name="yandex-verification" content="0ac8a3221431959f" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7841660916895595" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- === YANDEX METRIKA === -->
+    <meta name="yandex-verification" content="0ac8a3221431959f" />
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108400965', 'ym');
+        ym(108400965, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+    <!-- === SEO META TAGS === -->
     <title>SetTrue — Страница не найдена (404)</title>
-    <meta name="description" content="Запрашиваемая страница не найдена. Вернитесь на главную SetTrue для просмотра прогнозов на спорт.">
+    <meta name="description" content="Страница не найдена. Вернитесь на главную SetTrue для просмотра денежных потоков на спорт и прогнозов.">
+    <meta name="keywords" content="404, страница не найдена, settrue, ошибка">
     <meta name="robots" content="noindex, follow">
-    <meta name="theme-color" content="#050507">
     
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <!-- === FAVICON === -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#050507">
+
+    <!-- === FONTS === -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
+        :root {
+            --bg-primary: #080808;
+            --bg-secondary: #0d0d0d;
+            --bg-card: rgba(255,255,255,0.03);
+            --bg-card-hover: rgba(0, 204, 68, 0.04);
+            --text-primary: #f0f0f0;
+            --text-secondary: #999;
+            --text-muted: #555;
+            --border-color: rgba(255,255,255,0.06);
+            --border-hover: rgba(0, 204, 68, 0.3);
+            --green: #00cc44;
+            --green-glow: rgba(0, 204, 68, 0.15);
+            --header-bg: rgba(8,8,8,0.85);
+            --scrollbar: #00cc44;
+            --live-bg: rgba(0, 204, 68, 0.08);
+            --live-border: rgba(0, 204, 68, 0.25);
+            --badge-bg: rgba(0, 204, 68, 0.10);
+            --finished-bg: rgba(255,255,255,0.02);
+            --finished-border: rgba(255,255,255,0.04);
+            --skeleton-base: rgba(255,255,255,0.05);
+            --skeleton-highlight: rgba(255,255,255,0.1);
+            --font-mono: 'JetBrains Mono', monospace;
+            --header-height: 64px;
+            --profit-positive: #4CAF50;
+            --profit-negative: #f44336;
+            --premium-color: #FFD700;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #ffffff;
+            --bg-card: rgba(0,0,0,0.02);
+            --bg-card-hover: rgba(0, 204, 68, 0.04);
+            --text-primary: #111;
+            --text-secondary: #666;
+            --text-muted: #aaa;
+            --border-color: rgba(0,0,0,0.08);
+            --border-hover: rgba(0, 204, 68, 0.3);
+            --header-bg: rgba(245,245,245,0.85);
+            --live-bg: rgba(0, 204, 68, 0.06);
+            --live-border: rgba(0, 204, 68, 0.3);
+            --badge-bg: rgba(0, 204, 68, 0.08);
+            --finished-bg: rgba(0,0,0,0.02);
+            --finished-border: rgba(0,0,0,0.06);
+            --skeleton-base: rgba(0,0,0,0.06);
+            --skeleton-highlight: rgba(0,0,0,0.1);
+            --profit-positive: #2E7D32;
+            --profit-negative: #C62828;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #050507; font-family: 'Inter', sans-serif; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
-        html, body { background: #050507; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg-primary);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
 
-        .global-particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; overflow: hidden; mask-image: radial-gradient(circle at center, transparent 0%, transparent 35%, black 70%, black 100%); -webkit-mask-image: radial-gradient(circle at center, transparent 0%, transparent 35%, black 70%, black 100%); }
-        .global-particle { position: absolute; bottom: -20px; background: radial-gradient(circle, rgba(204, 255, 0, 0.7), rgba(204, 255, 0, 0)); border-radius: 50%; animation: floatUpGlobal linear infinite; will-change: transform; }
-        @keyframes floatUpGlobal { 0% { transform: translateY(0) translateX(0); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.7; } 100% { transform: translateY(-120vh) translateX(var(--shift, 40px)); opacity: 0; } }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 10px; }
 
-        .hero { position: relative; width: 100%; min-height: 40vh; background: transparent; padding: 2rem 1.5rem; display: flex; align-items: center; justify-content: center; }
-        
-        .error-content { text-align: center; z-index: 10; max-width: 600px; }
+        /* ===== PARTICLES ===== */
+        #particles-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; overflow: hidden; }
+        .particle {
+            position: absolute; border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 204, 68, 0.08), transparent 70%);
+            animation: floatParticle linear infinite;
+        }
+        [data-theme="light"] .particle { background: radial-gradient(circle, rgba(0, 204, 68, 0.04), transparent 70%); }
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.5; } 90% { opacity: 0.3; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        /* ===== HEADER ===== */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--header-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 24px;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 10;
+        }
+        .header-logo {
+            height: 32px;
+            width: auto;
+            object-fit: contain;
+        }
+        .header-logo-text {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+        .header-logo-text span {
+            color: var(--green);
+        }
+
+        .header-nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+        .header-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.25s ease;
+        }
+        .header-nav a:hover {
+            color: var(--text-primary);
+            background: var(--bg-card);
+        }
+        .header-nav a.active {
+            color: var(--green);
+            background: rgba(0, 204, 68, 0.08);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 10;
+        }
+        .header-time {
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 600;
+            font-family: var(--font-mono);
+        }
+        .header-time .time-val {
+            color: var(--green);
+        }
+
+        .theme-toggle {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            width: 40px;
+            height: 20px;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 3px;
+        }
+        .theme-toggle .toggle-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--green);
+            transition: transform 0.3s ease;
+        }
+        [data-theme="light"] .theme-toggle .toggle-dot {
+            transform: translateX(17px);
+        }
+        .theme-toggle .toggle-icon {
+            position: absolute;
+            font-size: 8px;
+            transition: opacity 0.3s ease;
+            line-height: 1;
+        }
+        .theme-toggle .icon-sun { opacity: 0; }
+        .theme-toggle .icon-moon { opacity: 1; }
+        [data-theme="light"] .theme-toggle .icon-sun { opacity: 1; }
+        [data-theme="light"] .theme-toggle .icon-moon { opacity: 0; }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 6px;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: var(--text-secondary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .menu-toggle.open span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 4px);
+        }
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(4px, -4px);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 820px) {
+            .header-nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--header-bg);
+                padding: 12px 20px;
+                gap: 2px;
+                border-bottom: 1px solid var(--border-color);
+                backdrop-filter: blur(16px);
+                transform: none;
+            }
+            .header-nav.open {
+                display: flex;
+            }
+            .header-nav a {
+                padding: 10px 16px;
+                width: 100%;
+                text-align: center;
+                font-size: 13px;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+        }
+        @media (max-width: 480px) {
+            .main-header {
+                padding: 0 14px;
+                height: 56px;
+            }
+            .header-logo {
+                height: 28px;
+            }
+            .header-logo-text {
+                font-size: 16px;
+            }
+            .theme-toggle {
+                width: 36px;
+                height: 20px;
+            }
+            .theme-toggle .toggle-dot {
+                width: 12px;
+                height: 12px;
+            }
+            [data-theme="light"] .theme-toggle .toggle-dot {
+                transform: translateX(15px);
+            }
+        }
+
+        /* ===== 404 CONTENT ===== */
+        .error-section {
+            position: relative;
+            z-index: 1;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 24px 40px;
+            text-align: center;
+        }
+        .error-inner { max-width: 600px; margin: 0 auto; }
         
         .error-code {
             font-size: clamp(6rem, 15vw, 10rem);
-            font-weight: 800;
+            font-weight: 900;
             line-height: 1;
-            background: linear-gradient(135deg, #FFFFFF 0%, #CCCCCC 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--green);
+            text-shadow: 0 0 60px var(--green-glow);
             margin-bottom: 10px;
-            text-shadow: 0 0 30px rgba(255,255,255,0.1);
+            font-family: var(--font-mono);
         }
         
         .error-title {
-            font-size: 1.5rem;
-            color: #ccff00;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
         }
         
         .error-text {
-            color: #888;
-            margin-bottom: 2.5rem;
+            color: var(--text-secondary);
             font-size: 1rem;
-            line-height: 1.6;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .home-btn {
-            display: inline-block;
-            background: rgba(204, 255, 0, 0.1);
-            border: 1px solid #ccff00;
-            color: #ccff00;
-            padding: 12px 30px;
-            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--green);
+            color: #000;
+            font-weight: 700;
+            padding: 14px 36px;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: 600;
+            font-size: 15px;
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(204, 255, 0, 0.1);
+            border: none;
+            cursor: pointer;
         }
         .home-btn:hover {
-            background: #ccff00;
-            color: #000;
-            box-shadow: 0 0 25px rgba(204, 255, 0, 0.4);
+            background: #00dd4a;
             transform: translateY(-2px);
+            box-shadow: 0 8px 30px var(--green-glow);
+        }
+        
+        .home-btn svg {
+            width: 18px;
+            height: 18px;
         }
 
-        footer { width: 100%; background: rgba(10, 10, 15, 0.9); backdrop-filter: blur(2px); border-top: 1px solid rgba(210, 255, 64, 0.15); margin-top: auto; padding: 40px 20px 20px; font-family: 'Inter', sans-serif; }
-        footer a { color: #888; text-decoration: none; }
-        footer a:hover { color: #d2ff40 !important; }
-        
-        @media (max-width: 600px) {
-            .hero { min-height: 35vh; }
+        .error-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .error-stat-item {
+            text-align: center;
+        }
+        .error-stat-item .number {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--green);
+            display: block;
+        }
+        .error-stat-item .label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== FOOTER ===== */
+        .main-footer {
+            position: relative;
+            z-index: 1;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 16px 24px 10px;
+            margin-top: auto;
+            transition: background 0.3s ease;
+        }
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+        .footer-brand h3 {
+            color: var(--text-primary);
+            font-size: 15px;
+            font-weight: 800;
+            margin-bottom: 2px;
+        }
+        .footer-brand h3 span { color: var(--green); }
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 11px;
+            line-height: 1.4;
+            max-width: 260px;
+        }
+        .footer-col h4 {
+            color: var(--text-muted);
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .footer-col a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 11px;
+            padding: 2px 0;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover { color: var(--green); }
+        .footer-divider {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 12px 0 8px;
+        }
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+        .footer-bottom .legal strong { color: var(--green); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 820px) {
+            .error-section { min-height: 60vh; padding: 70px 16px 30px; }
+            .error-stats { gap: 20px; }
+            .footer-inner { grid-template-columns: 1fr; gap: 12px; text-align: center; }
+            .footer-brand p { max-width: 100%; }
+        }
+
+        @media (max-width: 480px) {
             .error-code { font-size: 5rem; }
+            .error-title { font-size: 1.4rem; }
+            .home-btn { padding: 12px 28px; font-size: 14px; }
+            .error-stats { flex-direction: column; gap: 12px; }
         }
     </style>
 </head>
 <body>
 
-<div class="global-particles" id="globalParticles"></div>
+    <!-- ===== PARTICLES ===== -->
+    <div id="particles-bg"></div>
 
-<section class="hero">
-    <div class="error-content">
-        <div class="error-code">404</div>
-        <h1 class="error-title">Страница не найдена</h1>
-        <p class="error-text">
-            Похоже, вы забрели не туда. Запрашиваемый матч отменен или страница была удалена. 
-            Вернитесь на главную, чтобы продолжить анализ.
-        </p>
-        <a href="/" class="home-btn">Вернуться на главную</a>
-    </div>
-</section>
-
-<footer>
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 35px; margin-bottom: 40px;">
-      <div>
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
-          <span style="font-size: 28px;">🏆</span>
-          <h3 style="color: #d2ff40; font-size: 20px; font-weight: 700; margin: 0;">SETTRUE</h3>
+    <!-- ===== HEADER ===== -->
+    <header class="main-header">
+        <div class="header-left">
+            <img src="logo.png" alt="SetTrue Logo" class="header-logo" onerror="this.style.display='none'">
+            <span class="header-logo-text">Set<span>True</span></span>
         </div>
-        <p style="color: #888; font-size: 13px; line-height: 1.6; margin-bottom: 15px;">
-          Математические прогнозы на основе статистики и алгоритмов машинного обучения. 
-          Только цифры, никакой воды.
-        </p>
-      </div>
-      
-      <div>
-        <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">КОНТАКТЫ</h4>
-        <p style="color: #999; font-size: 13px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-          📧 <a href="mailto:SetTrueForecast@yandex.ru" style="color: #d2ff40; text-decoration: none;">SetTrueForecast@yandex.ru</a>
-        </p>
-      </div>
-      
-      <div>
-        <h4 style="color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 18px; letter-spacing: 1px;">СТАТИСТИКА</h4>
-        <p style="color: #999; font-size: 13px; margin-bottom: 8px;">📈 Прогнозы: <span style="color: #d2ff40;">ежедневно</span></p>
-        <p style="color: #999; font-size: 13px; margin-bottom: 8px;">⚽ Спорт: <span style="color: #d2ff40;">Футбол, Хоккей, Теннис</span></p>
-        <p style="color: #999; font-size: 13px; margin-bottom: 8px;">📊 Точность модели: <span style="color: #d2ff40;">72%</span></p>
-      </div>
-    </div>
-    
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.05); gap: 15px;">
-      <p style="color: #555; font-size: 11px; margin: 0;">
-        © SetTrue — Математические прогнозы. Все права защищены.
-      </p>
-      <div style="display: flex; gap: 20px;">
-        <a href="#" style="color: #555; text-decoration: none; font-size: 11px;">Политика конфиденциальности</a>
-        <a href="#" style="color: #555; text-decoration: none; font-size: 11px;">Пользовательское соглашение</a>
-      </div>
-    </div>
-  </div>
-</footer>
+        <nav class="header-nav" id="mainNav">
+            <a href="/">Главная</a>
+            <a href="/predict/">Прогнозы</a>
+            <a href="/scanmatch/">Теннис АИ</a>
+            <a href="/cashflows/">Денежные потоки</a>
+            <a href="/robobet/">Робобет</a>
+        </nav>
+        <div class="header-right">
+            <div class="header-time">
+                <span class="time-val" id="headerTime">--:--</span> МСК
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Сменить тему">
+                <span class="toggle-icon icon-sun">☀️</span>
+                <span class="toggle-icon icon-moon">🌙</span>
+                <span class="toggle-dot"></span>
+            </button>
+            <button class="menu-toggle" id="menuToggle" aria-label="Меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
 
-<script>
-    function createGlobalParticles() {
-        const container = document.getElementById('globalParticles');
-        if (!container) return;
-        const isMobile = window.innerWidth < 768;
-        const particleCount = isMobile ? 30 : 80; // Меньше частиц для 404
-        container.innerHTML = '';
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('global-particle');
-            const size = Math.random() * 6 + 2;
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-            particle.style.left = Math.random() * 100 + '%';
-            const duration = Math.random() * 15 + 10;
-            particle.style.animationDuration = duration + 's';
-            particle.style.animationDelay = Math.random() * 10 + 's';
-            particle.style.background = `radial-gradient(circle, rgba(204, 255, 0, ${Math.random() * 0.5 + 0.2}), rgba(204, 255, 0, 0))`;
-            const shiftX = (Math.random() - 0.5) * 100;
-            particle.style.setProperty('--shift', shiftX + 'px');
-            container.appendChild(particle);
+    <!-- ===== 404 CONTENT ===== -->
+    <section class="error-section">
+        <div class="error-inner">
+            <div class="error-code">404</div>
+            <h1 class="error-title">Страница не найдена</h1>
+            <p class="error-text">
+                Похоже, вы забрели не туда. Запрашиваемая страница была удалена или никогда не существовала.
+                Вернитесь на главную, чтобы продолжить анализ.
+            </p>
+            <a href="/" class="home-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1"/>
+                </svg>
+                Вернуться на главную
+            </a>
+            
+                    </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="main-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3>Set<span>True</span></h3>
+                <p>Денежные потоки на спорт, прогнозы на футбол и аналитика ставок в реальном времени. Информационный партнёр БК Pari.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <a href="mailto:SetTrueForecast@yandex.ru">📧 SetTrueForecast@yandex.ru</a>
+            </div>
+            <div class="footer-col">
+                <h4>Информация</h4>
+                <a href="#">📈 Обновление: ежедневно</a>
+                <a href="#">⚽ Спорт: 5+</a>
+                <a href="#">📊 Прогнозы: бесплатно</a>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <span>© 2026 SetTrue</span>
+            <span class="legal"><strong>18+</strong> Играйте ответственно</span>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================================
+        // 1. ЗАЩИТА
+        // ============================================================
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            const c = e.ctrlKey, s = e.shiftKey, k = e.key.toLowerCase(), cd = e.code;
+            if (e.keyCode === 123) { e.preventDefault(); return false; }
+            if (c && (cd === 'KeyC' || k === 'c')) { return true; }
+            if (c && !s && (cd === 'KeyU' || k === 'u')) { e.preventDefault(); return false; }
+            if (c && s && (cd === 'KeyI' || k === 'i' || cd === 'KeyJ' || k === 'j')) { e.preventDefault(); return false; }
+            if (c && (cd === 'KeyS' || k === 's' || cd === 'KeyP' || k === 'p')) { e.preventDefault(); return false; }
+        }, true);
+
+        // ============================================================
+        // 2. ТЕМА
+        // ============================================================
+        function getTheme() { return localStorage.getItem('settrue-theme') || 'dark'; }
+        function setTheme(t) { document.documentElement.setAttribute('data-theme', t); localStorage.setItem('settrue-theme', t); }
+        setTheme(getTheme());
+        document.getElementById('themeToggle').addEventListener('click', () => setTheme(getTheme() === 'dark' ? 'light' : 'dark'));
+
+        // ============================================================
+        // 3. ВРЕМЯ
+        // ============================================================
+        function updateTime() {
+            const msk = new Date(new Date().getTime() + (new Date().getTimezoneOffset() * 60000) + 10800000);
+            document.getElementById('headerTime').textContent = String(msk.getHours()).padStart(2,'0') + ':' + String(msk.getMinutes()).padStart(2,'0');
         }
-    }
-    
-    window.addEventListener('DOMContentLoaded', () => {
-        createGlobalParticles();
-    });
-    
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            createGlobalParticles();
-        }, 300);
-    });
-</script>
+        setInterval(updateTime, 1000); updateTime();
 
+        // ============================================================
+        // 4. ЧАСТИЦЫ
+        // ============================================================
+        function createParticles() {
+            const c = document.getElementById('particles-bg'); if (!c) return;
+            const n = window.innerWidth < 768 ? 20 : 40; c.innerHTML = '';
+            for (let i = 0; i < n; i++) {
+                const p = document.createElement('div'); p.className = 'particle';
+                const s = Math.random() * 60 + 15;
+                p.style.cssText = `width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*18+10}s;animation-delay:${Math.random()*12}s`;
+                c.appendChild(p);
+            }
+        }
+        createParticles();
+        let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(createParticles, 300); });
+
+        // ============================================================
+        // 5. МЕНЮ
+        // ============================================================
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('open'); this.classList.toggle('open');
+        });
+    </script>
 </body>
 </html>
