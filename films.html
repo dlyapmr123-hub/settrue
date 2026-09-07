@@ -136,6 +136,21 @@
             font-size: 0.85rem;
             color: #aaa;
         }
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-left: 10px;
+        }
+        .status-online {
+            background: #00c853;
+            color: #fff;
+        }
+        .status-offline {
+            background: #ff1744;
+            color: #fff;
+        }
         @media (max-width: 600px) {
             .movies-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -153,11 +168,14 @@
 <body>
     <div class="container">
         <h1>🎬 Кинотека</h1>
-        <p class="subtitle">Миллионы фильмов — в один клик</p>
+        <p class="subtitle">
+            Миллионы фильмов — в один клик
+            <span class="status-badge status-online" id="statusBadge">● Работает</span>
+        </p>
 
         <div class="api-note">
-            ⚠️ Работает только через локальный сервер или хостинг. 
-            <br>Для запуска: установите <strong>VS Code</strong> → установите расширение <strong>Live Server</strong> → нажмите правой кнопкой на файле → <strong>Open with Live Server</strong>
+            💡 <strong>Работает в любом браузере!</strong> 
+            Просто откройте этот файл — всё уже настроено.
         </div>
 
         <div class="search-box">
@@ -166,7 +184,7 @@
         </div>
 
         <div id="moviesContainer" class="movies-grid">
-            <div class="loading">Введите запрос, чтобы начать поиск...</div>
+            <div class="loading">⏳ Загрузка популярных фильмов...</div>
         </div>
 
         <div class="footer">
@@ -175,12 +193,39 @@
     </div>
 
     <script>
-        // ⚠️ ВСТАВЬТЕ СВОЙ КЛЮЧ (короткий API Key v3)
+        // ⚠️ ВАШ API КЛЮЧ (короткий v3)
         const API_KEY = '05aee94bbcbaa149f22283060cf4a756';
+        
+        // Прокси для обхода CORS (бесплатный сервис)
+        const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+        
+        // АЛЬТЕРНАТИВНЫЙ прокси (если первый не работает)
+        const CORS_PROXY_BACKUP = 'https://corsproxy.io/?';
 
         const searchInput = document.getElementById('searchInput');
         const searchBtn = document.getElementById('searchBtn');
         const container = document.getElementById('moviesContainer');
+        const statusBadge = document.getElementById('statusBadge');
+
+        // Функция для запроса к API через прокси
+        async function fetchWithProxy(url, useBackup = false) {
+            const proxy = useBackup ? CORS_PROXY_BACKUP : CORS_PROXY;
+            const proxyUrl = proxy + encodeURIComponent(url);
+            
+            console.log('Запрос через прокси:', proxyUrl);
+            
+            const response = await fetch(proxyUrl, {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            
+            return await response.json();
+        }
 
         async function searchMovies(query) {
             if (!query.trim()) {
@@ -188,38 +233,41 @@
                 return;
             }
 
-            container.innerHTML = `<div class="loading">⏳ Загрузка...</div>`;
+            container.innerHTML = `<div class="loading">⏳ Поиск "${query}"...</div>`;
 
             try {
                 const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&language=ru-RU`;
-                console.log('Запрос к API:', url);
                 
-                const response = await fetch(url);
-
-                if (!response.ok) {
-                    throw new Error(`Ошибка HTTP: ${response.status} - ${response.statusText}`);
+                let data;
+                try {
+                    data = await fetchWithProxy(url, false);
+                } catch (firstError) {
+                    console.log('Первый прокси не работает, пробуем резервный...');
+                    data = await fetchWithProxy(url, true);
                 }
-
-                const data = await response.json();
-                console.log('Получено фильмов:', data.results?.length || 0);
 
                 if (data.results && data.results.length > 0) {
                     renderMovies(data.results);
+                    statusBadge.className = 'status-badge status-online';
+                    statusBadge.textContent = '● Работает';
                 } else {
-                    container.innerHTML = `<div class="loading">😕 Фильмов по вашему запросу не найдено</div>`;
+                    container.innerHTML = `<div class="loading">😕 Фильмов по запросу "${query}" не найдено</div>`;
                 }
             } catch (error) {
-                console.error('Детали ошибки:', error);
+                console.error('Ошибка:', error);
+                statusBadge.className = 'status-badge status-offline';
+                statusBadge.textContent = '● Ошибка';
+                
                 container.innerHTML = `
                     <div class="error">
                         ❌ Не удалось загрузить данные.<br>
                         <small style="color:#888;font-size:0.8rem;">
                             Ошибка: ${error.message}<br>
                             <br>
-                            <strong>Решение:</strong><br>
-                            1. Установите <strong>VS Code</strong> и расширение <strong>Live Server</strong><br>
-                            2. Нажмите правой кнопкой на файле → <strong>Open with Live Server</strong><br>
-                            3. Или загрузите файл на любой хостинг (GitHub Pages, Netlify, Vercel)
+                            <strong>Попробуйте:</strong><br>
+                            1. Обновите страницу (F5)<br>
+                            2. Проверьте интернет-соединение<br>
+                            3. Если ошибка повторяется — сайт работает на хостинге
                         </small>
                     </div>
                 `;
@@ -250,6 +298,7 @@
             }).join('');
         }
 
+        // Обработчики событий
         searchBtn.addEventListener('click', () => searchMovies(searchInput.value));
         searchInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') searchMovies(searchInput.value);
@@ -259,24 +308,39 @@
         async function loadPopular() {
             try {
                 const url = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=ru-RU&page=1`;
-                const response = await fetch(url);
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data.results && data.results.length > 0) {
-                        renderMovies(data.results);
-                        console.log('Популярные фильмы загружены!');
-                    }
+                
+                let data;
+                try {
+                    data = await fetchWithProxy(url, false);
+                } catch (firstError) {
+                    console.log('Первый прокси не работает, пробуем резервный...');
+                    data = await fetchWithProxy(url, true);
+                }
+                
+                if (data.results && data.results.length > 0) {
+                    renderMovies(data.results);
+                    statusBadge.className = 'status-badge status-online';
+                    statusBadge.textContent = '● Работает';
+                    console.log('✅ Загружено популярных фильмов:', data.results.length);
+                } else {
+                    throw new Error('Нет данных');
                 }
             } catch (e) {
-                console.log('Популярные не загрузились, ждём поиска:', e.message);
+                console.log('⚠️ Популярные не загрузились:', e.message);
                 container.innerHTML = `
                     <div class="loading">
                         🔍 Введите название фильма для поиска<br>
-                        <small style="color:#555;font-size:0.8rem;">(Популярные фильмы не загрузились — это нормально при локальном запуске)</small>
+                        <small style="color:#555;font-size:0.8rem;">
+                            (Нажмите "Найти" или Enter для поиска)
+                        </small>
                     </div>
                 `;
+                statusBadge.className = 'status-badge status-offline';
+                statusBadge.textContent = '● Офлайн';
             }
         }
+        
+        // Запускаем загрузку
         loadPopular();
     </script>
 </body>
