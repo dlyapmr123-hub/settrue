@@ -676,23 +676,6 @@
         </div>
     </div>
 
-    <!-- ===== SEO ТЕКСТ ДЛЯ ПОИСКОВИКОВ ===== -->
-    <div class="container">
-        <div style="max-width:1100px;margin:40px auto 20px;padding:20px 24px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;font-size:13px;color:var(--text-secondary);line-height:1.8;">
-            <h2 style="font-size:18px;color:var(--text-primary);margin-bottom:12px;">Прогнозы на футбол сегодня — точная аналитика от SetTrue</h2>
-            <p>SetTrue — это сервис математических прогнозов на футбол, основанный на искусственном интеллекте и статистическом анализе. Мы обрабатываем тысячи данных о командах, игроках, травмах, форме и истории личных встреч, чтобы выдать максимально точный прогноз на матч.</p>
-            <p style="margin-top:8px;">Наши прогнозы на футбол сегодня доступны абсолютно бесплатно. Точность прогнозов составляет <strong style="color:var(--green);">72%</strong>, что подтверждается реальной статистикой проходимости ставок.</p>
-            <p style="margin-top:8px;">Вы получаете не просто прогноз, а детальный анализ вероятностей исходов: победа первой команды (1), ничья (X), победа второй команды (2). Все расчёты выполняются по математической модели, исключающей человеческий фактор.</p>
-            <p style="margin-top:8px;">Используйте наши прогнозы для ставок на футбол в букмекерских конторах. SetTrue — это умный выбор для тех, кто ценит математику и статистику.</p>
-            <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border-color);display:flex;flex-wrap:wrap;gap:12px;font-size:12px;">
-                <span>🏆 <strong style="color:var(--text-primary);">Лиги:</strong> АПЛ, Ла Лига, Бундеслига, Серия А, Лига 1, РПЛ</span>
-                <span>📊 <strong style="color:var(--text-primary);">Точность:</strong> 72%</span>
-                <span>🆓 <strong style="color:var(--text-primary);">Цена:</strong> Бесплатно</span>
-                <span>🤖 <strong style="color:var(--text-primary);">Метод:</strong> ИИ + Математика</span>
-            </div>
-        </div>
-    </div>
-
     <!-- ===== ЗАЩИТА + СКРИПТЫ ===== -->
     <script>
         // ============================================================
@@ -829,9 +812,7 @@
 
             container.innerHTML = html;
 
-            const updateTimeEl = document.getElementById('updateTime');
-            if (data.length > 0 && data[0].timestamp) {
-                updateTimeEl.textContent = 'Обновлено: ' + new Date(data[0].timestamp).toLocaleString('ru-RU');
+            
             }
         }
 
