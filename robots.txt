@@ -4,10 +4,9 @@ User-agent: *
 # Разрешаем индексацию основных разделов
 Allow: /
 Allow: /predict/
-Allow: /top/
-Allow: /scanmatch/
 Allow: /cashflows/
-Allow: /cs2/
+Allow: /scanmatch/
+Allow: /robobot/
 
 # Запрещаем индексацию технических папок и скриптов
 Disallow: /cgi-bin/
@@ -21,5 +20,15 @@ Disallow: /script.google.com/
 # Указываем путь к карте сайта
 Sitemap: https://settrue.ru/sitemap.xml
 
-# Хост (главное зеркало сайта) - БЕЗ https://
+# Хост (главное зеркало сайта)
+Host: settrue.ru
+
+# Для Яндекса
+User-agent: Yandex
+Allow: /
+Allow: /predict/
+Allow: /cashflows/
+Allow: /scanmatch/
+Allow: /robobot/
+Disallow: /private/
 Host: settrue.ru
