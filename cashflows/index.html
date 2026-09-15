@@ -1529,6 +1529,7 @@
         }
 
         // ============================================================
+               // ============================================================
         // 20. АВТООБНОВЛЕНИЕ
         // ============================================================
         let autoUpdateInterval = null;
@@ -1557,11 +1558,83 @@
         }
 
         // ============================================================
-        // 21. ЗАПУСК
+        // 21. ОБНОВЛЕНИЕ ВСЕХ БЕЙДЖЕЙ
+        // ============================================================
+        async function updateAllBadges() {
+            try {
+                let data = await loadAllData();
+                if (!data) {
+                    data = await loadFromAPI();
+                }
+                if (!data) return;
+
+                // Футбол 1X2
+                if (data.football && data.football.success && data.football.data) {
+                    const count = data.football.data.length;
+                    const badgeFootball = document.getElementById('badgeFootball');
+                    const subBadge1x2 = document.getElementById('subBadge1x2');
+                    if (badgeFootball) badgeFootball.textContent = count;
+                    if (subBadge1x2) subBadge1x2.textContent = count;
+                }
+
+                // Тотал 2.5
+                if (data.total25 && data.total25.success && data.total25.data) {
+                    const count = data.total25.data.length;
+                    const subBadgeTotal25 = document.getElementById('subBadgeTotal25');
+                    if (subBadgeTotal25) subBadgeTotal25.textContent = count;
+                }
+
+                // Теннис
+                if (data.tennis && data.tennis.success && data.tennis.data) {
+                    const badgeTennis = document.getElementById('badgeTennis');
+                    if (badgeTennis) badgeTennis.textContent = data.tennis.data.length;
+                }
+
+                // Баскетбол
+                if (data.basketball && data.basketball.success && data.basketball.data) {
+                    const badgeBasketball = document.getElementById('badgeBasketball');
+                    if (badgeBasketball) badgeBasketball.textContent = data.basketball.data.length;
+                }
+
+                // Бейсбол
+                if (data.baseball && data.baseball.success && data.baseball.data) {
+                    const badgeBaseball = document.getElementById('badgeBaseball');
+                    if (badgeBaseball) badgeBaseball.textContent = data.baseball.data.length;
+                }
+
+                // Сигналы — считаем по всем видам спорта
+                const signalEvents = [];
+                const sports = {
+                    football: data.football,
+                    total25: data.total25,
+                    tennis: data.tennis,
+                    basketball: data.basketball,
+                    baseball: data.baseball
+                };
+                Object.keys(sports).forEach(sport => {
+                    const result = sports[sport];
+                    if (result && result.success && result.data) {
+                        result.data.forEach(event => {
+                            const checked = checkSignal(event, sport);
+                            if (checked) signalEvents.push(checked);
+                        });
+                    }
+                });
+                const badgeSignals = document.getElementById('badgeSignals');
+                if (badgeSignals) badgeSignals.textContent = signalEvents.length;
+
+            } catch (e) {
+                console.error('Ошибка обновления бейджей:', e);
+            }
+        }
+
+        // ============================================================
+        // 22. ЗАПУСК
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
             // Загружаем стартовые данные
             loadAllData().then(() => {
+                updateAllBadges();   // ✅ обновляем ВСЕ бейджи сразу
                 loadSignalsData();
                 loadFootballData();
             });
