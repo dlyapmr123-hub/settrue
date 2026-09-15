@@ -16,7 +16,7 @@
         })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108400965', 'ym');
         ym(108400965, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="Яндекс Метрика" /></div></noscript>
 
     <!-- SEO -->
     <title>SetTrue — Денежные потоки | Куда ставят деньги в спорте</title>
@@ -768,7 +768,7 @@
     <!-- ===== HEADER ===== -->
     <header class="main-header">
         <div class="header-left">
-            <img src="logo.png" alt="SetTrue Logo" class="header-logo" onerror="this.style.display='none'">
+            <img src="logo.png" alt="Логотип SetTrue" class="header-logo" onerror="this.style.display='none'">
             <span class="header-logo-text">Set<span>True</span></span>
         </div>
         <nav class="header-nav" id="mainNav">
@@ -813,7 +813,7 @@
     <div class="partner-strip">
         <span class="label">Партнёр</span>
         <div class="brand">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Букмекерская контора Pari">
             <span>Pari</span>
         </div>
         <div class="links">
@@ -1084,6 +1084,13 @@
             
             document.getElementById('subtab' + subtabId.charAt(0).toUpperCase() + subtabId.slice(1)).classList.add('active');
             document.querySelector(`.sub-tab-btn[data-subtab="${subtabId}"]`).classList.add('active');
+            
+            // ✅ ЗАГРУЗКА ДАННЫХ ПРИ ПЕРЕКЛЮЧЕНИИ ПОДВКЛАДКИ
+            if (subtabId === '1x2') {
+                loadFootballData();
+            } else if (subtabId === 'total25') {
+                loadTotal25Data();
+            }
         }
 
         // ============================================================
@@ -1152,7 +1159,6 @@
                 
                 const signalEvents = [];
                 
-                // Проверяем все виды спорта на сигналы
                 const sports = {
                     football: data.football,
                     total25: data.total25,
@@ -1554,12 +1560,10 @@
         // 21. ЗАПУСК
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
-            // Загружаем все данные при старте
+            // Загружаем стартовые данные
             loadAllData().then(() => {
                 loadSignalsData();
                 loadFootballData();
-                loadTotal25Data();
-                // Теннис, баскетбол, бейсбол загружаются при первом открытии вкладки
             });
             startAutoUpdate();
         });
