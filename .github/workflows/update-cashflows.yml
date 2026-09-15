@@ -29,6 +29,7 @@ jobs:
           
           apis = {
               'football': 'https://script.google.com/macros/s/AKfycbx3gwPpCEyxZCbc8nh1rq6bf7gPztOWRoMbgE506I0M33P4hI4fgXktKaya8jOj5zYm/exec',
+              'total25': 'https://script.google.com/macros/s/AKfycbxNm0jgdeSlIh4Ritb_YAB2cC0YcUUPzEi8WOrrYTJGxAseMv7-AAIi35rFtOc_monHhQ/exec',
               'tennis': 'https://script.google.com/macros/s/AKfycbyPfWZiu8kGFSLw6MGLCPpQf5sg2Gv9q6CFixRZVXwyBrZ0-3MTnOEFLHZOQMv_PCg1/exec',
               'basketball': 'https://script.google.com/macros/s/AKfycbyCtAh2TuDbU9uDOi3Qmvpt-tofaqo1FvAQQF4dPhBl3MMdu5gcEJ0Q56lrUIIoWp09/exec',
               'baseball': 'https://script.google.com/macros/s/AKfycbwKbDd81v796ZrECcCC2Of7LVtCJmnbOx3d_c6DYARq_IT8Z0r_elRqWw7K7eau0Q6I/exec'
