@@ -15,19 +15,21 @@ jobs:
     steps:
       - name: 📥 Клонирование репозитория
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       
       - name: 🐍 Загрузка всех API
         run: |
-          python3 << 'EOF'
+          python3 << 'PYEOF'
           import urllib.request
           import json
           import ssl
-          
+
           context = ssl.create_default_context()
           context.check_hostname = False
           context.verify_mode = ssl.CERT_NONE
-          
-                   apis = {
+
+          apis = {
               'football': 'https://script.google.com/macros/s/AKfycbx3gwPpCEyxZCbc8nh1rq6bf7gPztOWRoMbgE506I0M33P4hI4fgXktKaya8jOj5zYm/exec',
               'total25': 'https://script.google.com/macros/s/AKfycbxNm0jgdeSlIh4Ritb_YAB2cC0YcUUPzEi8WOrrYTJGxAseMv7-AAIi35rFtOc_monHhQ/exec',
               'btts': 'https://script.google.com/macros/s/AKfycbwn2iVEnz_r6VITTAJlVrIgqSq5OffnGPzFm5ENR8V57FQ0RMugS-NQoplelIirvIY2/exec',
@@ -35,9 +37,9 @@ jobs:
               'basketball': 'https://script.google.com/macros/s/AKfycbyCtAh2TuDbU9uDOi3Qmvpt-tofaqo1FvAQQF4dPhBl3MMdu5gcEJ0Q56lrUIIoWp09/exec',
               'baseball': 'https://script.google.com/macros/s/AKfycbwKbDd81v796ZrECcCC2Of7LVtCJmnbOx3d_c6DYARq_IT8Z0r_elRqWw7K7eau0Q6I/exec'
           }
-          
+
           result = {}
-          
+
           for name, url in apis.items():
               try:
                   req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
@@ -45,15 +47,15 @@ jobs:
                       data = response.read().decode('utf-8')
                       json.loads(data)
                       result[name] = json.loads(data)
-                      print(f"✅ {name}: получено {len(data)} байт")
+                      print(f"OK {name}: {len(data)} bytes")
               except Exception as e:
-                  print(f"❌ {name}: ошибка - {e}")
+                  print(f"FAIL {name}: {e}")
                   result[name] = {"success": False, "error": str(e), "data": []}
-          
+
           with open('cashflows_data.json', 'w', encoding='utf-8') as f:
               json.dump(result, f, ensure_ascii=False)
-          print("✅ Все данные сохранены в cashflows_data.json")
-          EOF
+          print("Saved cashflows_data.json")
+          PYEOF
       
       - name: 📤 Сохранение изменений
         run: |
@@ -61,10 +63,10 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add cashflows_data.json
           if git diff --staged --quiet; then
-            echo "📝 Нет изменений"
+            echo "Нет изменений"
           else
-            git commit -m "🔄 Автообновление Денежных потоков $(date '+%Y-%m-%d %H:%M')"
+            git commit -m "Автообновление Денежных потоков $(date '+%Y-%m-%d %H:%M')"
             git pull --rebase origin main
             git push
-            echo "✅ Отправлено"
+            echo "Отправлено"
           fi
