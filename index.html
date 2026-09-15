@@ -16,7 +16,7 @@
         })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108400965', 'ym');
         ym(108400965, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="Яндекс Метрика" /></div></noscript>
 
     <!-- SEO -->
     <title>SetTrue — Расписание матчей на сегодня, LIVE результаты и прогнозы</title>
@@ -180,10 +180,10 @@
 .header-nav a {
     color: var(--text-secondary);
     text-decoration: none;
-    font-size: 12px;        /* было 13px */
+    font-size: 12px;
     font-weight: 500;
-    padding: 6px 12px;      /* было 8px 16px */
-    border-radius: 6px;     /* было 8px */
+    padding: 6px 12px;
+    border-radius: 6px;
     transition: all 0.25s ease;
 }
 .header-nav a:hover {
@@ -566,6 +566,42 @@
         .feature-card h4 { color: var(--text-primary); font-size: 12px; font-weight: 700; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .feature-card p { color: var(--text-secondary); font-size: 10px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
+        /* ===== SEO CONTENT ===== */
+        .seo-content {
+            margin: 28px 0 12px; padding: 24px;
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px;
+        }
+        .seo-content h1 {
+            font-size: 20px; font-weight: 800; color: var(--text-primary);
+            margin-bottom: 14px; letter-spacing: -0.02em; line-height: 1.3;
+        }
+        .seo-content h1 span { color: var(--green); }
+        .seo-content h2 {
+            font-size: 16px; font-weight: 800; color: var(--text-primary);
+            margin-top: 22px; margin-bottom: 10px; letter-spacing: -0.02em;
+        }
+        .seo-content h2:first-child { margin-top: 0; }
+        .seo-content p {
+            font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 10px;
+        }
+        .seo-content p:last-child { margin-bottom: 0; }
+        .seo-content strong { color: var(--text-primary); font-weight: 600; }
+        .seo-content .faq-item {
+            padding: 12px 0; border-bottom: 1px solid var(--border-color);
+        }
+        .seo-content .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .seo-content .faq-item h3 {
+            font-size: 13px; font-weight: 700; color: var(--text-primary);
+            margin-bottom: 5px; display: block;
+        }
+        .seo-content .faq-item p { font-size: 12px; margin-bottom: 0; }
+        @media (max-width: 480px) {
+            .seo-content { padding: 16px; }
+            .seo-content h1 { font-size: 17px; }
+            .seo-content h2 { font-size: 14px; }
+            .seo-content p, .seo-content .faq-item p { font-size: 12px; }
+        }
+
         /* ===== FOOTER ===== */
         .main-footer {
             position: relative; z-index: 1; background: var(--bg-secondary); border-top: 1px solid var(--border-color);
@@ -626,7 +662,7 @@
     <!-- ===== HEADER ===== -->
 <header class="main-header">
     <div class="header-left">
-        <img src="logo.png" alt="SetTrue Logo" class="header-logo" onerror="this.style.display='none'">
+        <img src="logo.png" alt="Логотип SetTrue" class="header-logo" onerror="this.style.display='none'">
         <span class="header-logo-text">Set<span>True</span></span>
     </div>
     <nav class="header-nav" id="mainNav">
@@ -671,7 +707,7 @@
     <div class="partner-strip">
         <span class="label">Партнёр</span>
         <div class="brand">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Букмекерская контора Pari">
             <span>Pari</span>
         </div>
         <div class="links">
@@ -743,6 +779,92 @@
                         <h4>Аналитика</h4><p>Прогнозы на основе статистики</p>
                     </div>
                 </div>
+
+                <!-- ===== SEO CONTENT + FAQ ===== -->
+                <section class="seo-content">
+                    <h1>SetTrue — <span>прогнозы на спорт</span>, ставки и денежные потоки в LIVE</h1>
+                    <p>
+                        <strong>SetTrue</strong> — информационный сервис для тех, кто серьёзно относится к <strong>ставкам на спорт</strong>. 
+                        Мы публикуем ежедневные <strong>прогнозы на футбол</strong>, теннис и другие виды спорта, 
+                        анализируем <strong>денежные потоки букмекерских контор</strong> и показываем движение средств 
+                        на ключевых рынках в реальном времени.
+                    </p>
+                    <p>
+                        Наши прогнозы основаны на трёх источниках: <strong>статистика</strong> команд и игроков, 
+                        <strong>движение денег</strong> в букмекерских конторах и <strong>машинные алгоритмы ИИ</strong>. 
+                        Это позволяет находить <strong>value bets</strong> — ставки с завышенным коэффициентом, 
+                        которые дают перевес над линией букмекера в долгосрочной перспективе.
+                    </p>
+
+                    <h2>Денежные потоки в букмекерских конторах</h2>
+                    <p>
+                        <strong>Денежные потоки</strong> — это движение средств, которые игроки ставят на тот или иной исход. 
+                        Мы отслеживаем, куда реально идут деньги, и показываем это в удобном виде. 
+                        Например, если коэффициент на победу команды растёт, но денег на неё ставят много — 
+                        это сигнал о возможном <strong>договорном матче</strong> или о попытке букмекера сбить ажиотаж.
+                    </p>
+                    <p>
+                        Анализ <strong>движения денежных средств</strong> — один из самых недооценённых инструментов 
+                        в ставках. Большинство игроков смотрят только на коэффициенты, но именно потоки денег 
+                        показывают реальные намерения рынка.
+                    </p>
+
+                    <h2>Стратегии ставок на спорт</h2>
+                    <p>
+                        На сайте SetTrue вы найдёте не только прогнозы, но и материалы по <strong>стратегиям ставок</strong>: 
+                        <strong>флэт</strong> — управление банком фиксированной суммой (1-3% на ставку), 
+                        <strong>value betting</strong> — ставки только на недооценённые исходы, 
+                        <strong>догон</strong> — увеличение ставки после проигрыша (опасная, но популярная стратегия), 
+                        <strong>лесенка</strong> — постепенное увеличение банка за счёт низких коэффициентов, 
+                        <strong>робобет</strong> — автоматические ставки по алгоритму.
+                    </p>
+
+                    <h2>Почему выбирают SetTrue</h2>
+                    <p>
+                        <strong>Бесплатные прогнозы</strong> — все прогнозы на сайте доступны без регистрации и оплаты. 
+                        <strong>LIVE-обновления</strong> — счёт, коэффициенты и денежные потоки обновляются каждую минуту. 
+                        <strong>ИИ-аналитика</strong> — машинные прогнозы на теннис и футбол. 
+                        <strong>Прозрачность</strong> — мы показываем точность прогнозов за последние 30 дней. 
+                        <strong>Опыт</strong> — сайт работает с 2026 года и помогает тысячам игроков.
+                    </p>
+
+                    <h2>Часто задаваемые вопросы (FAQ)</h2>
+                    
+                    <div class="faq-item">
+                        <h3>Что такое денежные потоки в ставках?</h3>
+                        <p>Денежные потоки — это движение средств, которые игроки ставят на тот или иной исход. Если коэффициент растёт, а деньги идут на этот исход — это может быть сигналом о «договорном» матче. Анализ потоков помогает находить value bets и избегать ловушек букмекера.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Насколько точны прогнозы на спорт от SetTrue?</h3>
+                        <p>Средняя точность наших прогнозов — около 72% за последние 30 дней. Это выше, чем у большинства публичных капперов. Однако любая ставка — это риск. Мы рекомендуем использовать флэт 1-3% на ставку и вести статистику.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Как делать ставки на спорт правильно?</h3>
+                        <p>Правильная стратегия ставок включает: 1) управление банком (флэт 1-3% на ставку), 2) поиск value bets (ставки с перевесом над линией), 3) дисциплина и ведение статистики, 4) отказ от догона и эмоциональных ставок. На сайте SetTrue вы найдёте материалы по каждой из этих тем.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Что такое value bets и как их находить?</h3>
+                        <p>Value bet (валуйная ставка) — это ставка, коэффициент на которую выше реальной вероятности исхода. Например, если команда выигрывает в 50% случаев, справедливый коэффициент — 2.00. Если букмекер даёт 2.20 — это value bet. Мы находим такие ситуации с помощью статистики и анализа денежных потоков.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Бесплатные ли прогнозы на SetTrue?</h3>
+                        <p>Да, все прогнозы на сайте бесплатны и доступны без регистрации. Мы зарабатываем на партнёрских программах букмекерских контор — если вы регистрируетесь по нашей ссылке, мы получаем вознаграждение. Это не влияет на качество прогнозов.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>Как часто обновляются данные на сайте?</h3>
+                        <p>Расписание матчей, счёт и статус игры обновляются каждые 60 секунд автоматически. Топ прогнозы — несколько раз в день. Денежные потоки пересчитываются каждый час на основе биржевых данных.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3>С какого возраста можно делать ставки?</h3>
+                        <p>В России ставки на спорт разрешены лицам старше 18 лет. Сайт SetTrue носит информационный характер, не пропагандирует азартные игры и призывает играть ответственно. Если вы чувствуете зависимость — обратитесь за помощью к специалисту.</p>
+                    </div>
+                </section>
             </div>
 
             <!-- RIGHT SIDEBAR — ПОПУЛЯРНЫЕ ЛИГИ -->
@@ -887,10 +1009,8 @@
                 const result = await response.json();
                 
                 if (result.success && result.data && result.data.length > 0) {
-                    // Фильтруем: премиум (isPremium: true) ИЛИ profit > 500
                     const tips = result.data.filter(t => t.isPremium === true || (t.profit || 0) > 500);
                     
-                    // Убираем повторы по team1+team2
                     const unique = [];
                     const seen = new Set();
                     tips.forEach(t => {
@@ -923,10 +1043,10 @@
                         html += `
                             <div class="sidebar-tip">
                                 <div class="tip-teams">
-                                    ${tip.logo1 ? `<img src="${tip.logo1}" alt="" loading="lazy" onerror="this.style.display='none'">` : ''}
+                                    ${tip.logo1 ? `<img src="${tip.logo1}" alt="Логотип ${tip.team1 || 'команды'}" loading="lazy" onerror="this.style.display='none'">` : ''}
                                     ${tip.team1 || '—'}
                                     <span style="color:var(--text-muted);margin:0 2px;">—</span>
-                                    ${tip.logo2 ? `<img src="${tip.logo2}" alt="" loading="lazy" onerror="this.style.display='none'">` : ''}
+                                    ${tip.logo2 ? `<img src="${tip.logo2}" alt="Логотип ${tip.team2 || 'команды'}" loading="lazy" onerror="this.style.display='none'">` : ''}
                                     ${tip.team2 || '—'}
                                     <span class="tip-badge ${badgeClass}">${badgeText}</span>
                                 </div>
@@ -958,8 +1078,8 @@
             let sc='',scc='',bt='📅',bc='',st=match.status||'Не начался';
             if(isLive){sc='live';scc='live-score';bt='LIVE';bc='live-badge';}else if(isFin){sc='finished';bt='✓';bc='finished-badge';}
             const th=match.timeDisplay&&!isLive&&!isFin?'<span class="match-time-badge"><svg style="width:10px;height:10px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> '+match.timeDisplay+'</span>':'';
-            const l1=match.logo1?'<img src="'+match.logo1+'" alt="" class="team-logo" loading="lazy" onerror="this.style.display=\'none\'">':'';
-            const l2=match.logo2?'<img src="'+match.logo2+'" alt="" class="team-logo" loading="lazy" onerror="this.style.display=\'none\'">':'';
+            const l1=match.logo1?'<img src="'+match.logo1+'" alt="Логотип '+(match.team1||'команды')+'" class="team-logo" loading="lazy" onerror="this.style.display=\'none\'">':'';
+            const l2=match.logo2?'<img src="'+match.logo2+'" alt="Логотип '+(match.team2||'команды')+'" class="team-logo" loading="lazy" onerror="this.style.display=\'none\'">':'';
             return '<div class="match-card '+sc+'" data-match-id="'+getMatchId(match)+'"><div class="match-tournament">'+match.tournament+' <span class="badge '+bc+'">'+bt+'</span></div><div class="match-teams"><span class="match-team">'+match.team1+l1+'</span><span class="match-score '+scc+'">'+s1+' : '+s2+'</span><span class="match-team">'+l2+match.team2+'</span></div><div class="match-status '+(isLive?'live':'')+'">'+(isLive?'<span class="live-dot"></span>':'')+st+th+'</div><span class="update-indicator"></span></div>';
         }
 
