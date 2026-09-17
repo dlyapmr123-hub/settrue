@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-анализ матчей | SetTrue</title>
+    <meta name="description" content="Искусственный интеллект анализирует футбольные матчи: денежные потоки, форму команд, травмы, мотивацию. Только уверенные прогнозы.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://settrue.ru/ai/">
+    
+    <!-- Yandex Metrika -->
+    <meta name="yandex-verification" content="0ac8a3221431959f" />
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=108400965','ym');ym(108400965,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute;left:-9999px" alt=""/></div></noscript>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <style>
+        :root {
+            --bg-primary: #080808;
+            --bg-secondary: #0d0d0d;
+            --bg-card: rgba(255,255,255,0.03);
+            --bg-card-hover: rgba(0, 204, 68, 0.04);
+            --text-primary: #f0f0f0;
+            --text-secondary: #999;
+            --text-muted: #555;
+            --border-color: rgba(255,255,255,0.06);
+            --border-hover: rgba(0, 204, 68, 0.2);
+            --green: #00cc44;
+            --green-glow: rgba(0, 204, 68, 0.15);
+            --header-bg: rgba(8,8,8,0.92);
+            --gold: #FFD700;
+            --font-mono: 'JetBrains Mono', monospace;
+            --header-height: 64px;
+        }
+        [data-theme="light"] {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #ffffff;
+            --bg-card: rgba(0,0,0,0.02);
+            --bg-card-hover: rgba(0, 204, 68, 0.04);
+            --text-primary: #111;
+            --text-secondary: #666;
+            --text-muted: #aaa;
+            --border-color: rgba(0,0,0,0.08);
+            --border-hover: rgba(0, 204, 68, 0.3);
+            --header-bg: rgba(245,245,245,0.92);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg-primary);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 10px; }
+
+        /* ===== HEADER ===== */
+        .main-header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: var(--header-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 24px; height: var(--header-height);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .header-left { display: flex; align-items: center; gap: 10px; z-index: 10; }
+        .header-logo { height: 32px; width: auto; object-fit: contain; }
+        .header-logo-text { font-size: 18px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; }
+        .header-logo-text span { color: var(--green); }
+        .header-nav {
+            position: absolute; left: 50%; transform: translateX(-50%);
+            display: flex; align-items: center; gap: 2px;
+        }
+        .header-nav a {
+            color: var(--text-secondary); text-decoration: none; font-size: 12px; font-weight: 500;
+            padding: 6px 12px; border-radius: 6px; transition: all 0.25s ease;
+        }
+        .header-nav a:hover { color: var(--text-primary); background: var(--bg-card); }
+        .header-nav a.active { color: var(--green); background: rgba(0, 204, 68, 0.08); }
+        .header-right { display: flex; align-items: center; gap: 12px; z-index: 10; }
+        .header-time { color: var(--text-muted); font-size: 12px; font-weight: 600; font-family: var(--font-mono); }
+        .header-time .time-val { color: var(--green); }
+        .theme-toggle {
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 30px;
+            width: 40px; height: 20px; cursor: pointer; position: relative;
+            display: flex; align-items: center; justify-content: center; padding: 0 3px;
+        }
+        .theme-toggle .toggle-dot {
+            width: 12px; height: 12px; border-radius: 50%; background: var(--green);
+            transition: transform 0.3s ease;
+        }
+        [data-theme="light"] .theme-toggle .toggle-dot { transform: translateX(17px); }
+        .theme-toggle .toggle-icon { position: absolute; font-size: 8px; transition: opacity 0.3s ease; line-height: 1; }
+        .theme-toggle .icon-sun { opacity: 0; } .theme-toggle .icon-moon { opacity: 1; }
+        [data-theme="light"] .theme-toggle .icon-sun { opacity: 1; } [data-theme="light"] .theme-toggle .icon-moon { opacity: 0; }
+        .menu-toggle { display: none; flex-direction: column; gap: 4px; cursor: pointer; background: none; border: none; padding: 6px; }
+        .menu-toggle span { display: block; width: 18px; height: 2px; background: var(--text-secondary); border-radius: 2px; transition: all 0.3s ease; }
+        .menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+        .menu-toggle.open span:nth-child(2) { opacity: 0; }
+        .menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-top: calc(var(--header-height) + 20px);
+            flex: 1;
+            width: 100%;
+        }
+
+        /* ===== PAGE TITLE ===== */
+        .page-title {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .page-title h1 {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+        }
+        .page-title h1 span { color: var(--green); }
+        .page-title p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* ===== UPDATE INFO ===== */
+        .update-info {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin: 16px 0 24px;
+            padding: 12px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+        }
+        .update-info .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .update-info .item .value {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--green);
+            font-family: var(--font-mono);
+        }
+        .update-info .item .label {
+            font-size: 10px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== CARDS ===== */
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px 20px;
+            transition: all 0.25s ease;
+        }
+        .card:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-match {
+            flex: 1;
+        }
+        .card-match h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .card-match .league {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .card-verdict {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+            flex-shrink: 0;
+        }
+        .verdict-badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(0, 204, 68, 0.1);
+            color: var(--green);
+            white-space: nowrap;
+        }
+        .verdict-badge.high {
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--gold);
+        }
+        .confidence {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--green);
+            font-family: var(--font-mono);
+        }
+
+        /* ===== BET ===== */
+        .card-bet {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0, 204, 68, 0.08);
+            border: 1px solid rgba(0, 204, 68, 0.2);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--green);
+            margin-bottom: 12px;
+        }
+
+        /* ===== REASONING ===== */
+        .reasoning {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 12px;
+            padding-left: 12px;
+            border-left: 2px solid var(--border-color);
+        }
+
+        /* ===== FACTORS ===== */
+        .factors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .factor {
+            font-size: 11px;
+            color: var(--text-secondary);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        [data-theme="light"] .factor {
+            background: rgba(0,0,0,0.03);
+        }
+
+        /* ===== LOADING / EMPTY ===== */
+        .loading, .empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+        .loading .spinner {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            border: 2px solid var(--border-color);
+            border-top-color: var(--green);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            margin-bottom: 10px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .empty .icon { font-size: 40px; margin-bottom: 12px; opacity: 0.3; }
+
+        /* ===== SEO ===== */
+        .seo-hidden { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
+        .seo-content {
+            margin: 40px 0 20px;
+            padding: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+        .seo-content h2 {
+            font-size: 15px;
+            font-weight: 800;
+            margin: 18px 0 8px;
+            letter-spacing: -0.02em;
+        }
+        .seo-content h2:first-child { margin-top: 0; }
+        .seo-content p {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+        .seo-content strong { color: var(--text-primary); }
+
+        /* ===== FOOTER ===== */
+        .main-footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 16px 24px 10px;
+            margin-top: auto;
+        }
+        .footer-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 16px; align-items: start;
+        }
+        .footer-brand h3 { font-size: 15px; font-weight: 800; margin-bottom: 2px; }
+        .footer-brand h3 span { color: var(--green); }
+        .footer-brand p { color: var(--text-secondary); font-size: 11px; line-height: 1.4; max-width: 260px; }
+        .footer-col h4 { color: var(--text-muted); font-size: 9px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 6px; }
+        .footer-col a { display: block; color: var(--text-secondary); text-decoration: none; font-size: 11px; padding: 2px 0; transition: color 0.2s; }
+        .footer-col a:hover { color: var(--green); }
+        .footer-divider { border: none; border-top: 1px solid var(--border-color); margin: 12px 0 8px; }
+        .footer-bottom {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+            font-size: 10px; color: var(--text-muted);
+        }
+        .footer-bottom .legal strong { color: var(--green); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 820px) {
+            .header-nav {
+                display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0;
+                background: var(--header-bg); padding: 12px 20px; gap: 2px; border-bottom: 1px solid var(--border-color);
+                backdrop-filter: blur(16px); transform: none;
+            }
+            .header-nav.open { display: flex; }
+            .header-nav a { padding: 10px 16px; width: 100%; text-align: center; font-size: 13px; }
+            .menu-toggle { display: flex; }
+            .header-time { display: none; }
+            .footer-inner { grid-template-columns: 1fr; gap: 18px; text-align: center; }
+            .footer-brand p { max-width: 100%; }
+            .page-title h1 { font-size: 20px; }
+        }
+        @media (max-width: 600px) {
+            .container { padding: 12px; padding-top: calc(var(--header-height) + 12px); }
+            .card { padding: 14px 16px; }
+            .card-header { flex-direction: column; align-items: flex-start; }
+            .card-verdict { flex-direction: row; align-items: center; }
+            .card-match h3 { font-size: 14px; }
+            .reasoning { font-size: 12px; }
+            .update-info { gap: 16px; padding: 10px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="main-header">
+    <div class="header-left">
+        <img src="/logo.png" alt="SetTrue" class="header-logo" onerror="this.style.display='none'">
+        <span class="header-logo-text">Set<span>True</span></span>
+    </div>
+    <nav class="header-nav" id="mainNav">
+        <a href="/">Главная</a>
+        <a href="/predict/">Прогнозы</a>
+        <a href="/scanmatch/">Теннис АИ</a>
+        <a href="/cashflows/">Денежные потоки</a>
+        <a href="/ai/" class="active">🤖 AI-анализ</a>
+        <a href="/robobet/">Робобет</a>
+    </nav>
+    <div class="header-right">
+        <div class="header-time">
+            <span class="time-val" id="headerTime">--:--</span> МСК
+        </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Сменить тему">
+            <span class="toggle-icon icon-sun">☀️</span>
+            <span class="toggle-icon icon-moon">🌙</span>
+            <span class="toggle-dot"></span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Меню">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- CONTENT -->
+<div class="container">
+
+    <h1 class="seo-hidden">AI-анализ футбольных матчей — искусственный интеллект прогнозирует ставки</h1>
+
+    <div class="page-title">
+        <h1>🤖 <span>AI-анализ</span> матчей</h1>
+        <p>Локальная нейросеть анализирует денежные потоки, форму, травмы и мотивацию. Только уверенные сигналы.</p>
+    </div>
+
+    <div class="update-info" id="updateInfo" style="display:none;">
+        <div class="item">
+            <span class="value" id="statCount">0</span>
+            <span class="label">Матчей</span>
+        </div>
+        <div class="item">
+            <span class="value" id="statAnalyzed">0</span>
+            <span class="label">Проанализировано</span>
+        </div>
+        <div class="item">
+            <span class="value" id="statThreshold">0%</span>
+            <span class="label">Порог уверенности</span>
+        </div>
+        <div class="item">
+            <span class="value" id="statUpdated">--:--</span>
+            <span class="label">Обновлено</span>
+        </div>
+    </div>
+
+    <div id="cardsContainer">
+        <div class="loading"><div class="spinner"></div><div>Загрузка AI-анализа...</div></div>
+    </div>
+
+    <!-- SEO -->
+    <section class="seo-content">
+        <h2>Как работает AI-анализ SetTrue?</h2>
+        <p>Наша система использует <strong>локальную нейросеть</strong> (Llama 3.1), которая анализирует каждый матч по трём источникам: <strong>денежные потоки</strong> с биржи Betfair, <strong>прогнозы капперов</strong> и <strong>данные из интернета</strong> (форма, травмы, мотивация).</p>
+        <p>Модель <strong>сама решает</strong>, уверена она в исходе или нет. Если уверенность ниже 85% — матч пропускается. На странице показываются только те матчи, где AI действительно видит сильный сигнал.</p>
+
+        <h2>Что учитывает AI?</h2>
+        <p><strong>Денежные потоки</strong> — куда идут реальные деньги на бирже. <strong>Форма команд</strong> — последние 5 матчей. <strong>Травмы</strong> — потери ключевых игроков. <strong>Мотивация</strong> — турнирное положение. <strong>История встреч</strong> — личные матчи.</p>
+
+        <h2>Чем AI-анализ отличается от обычных прогнозов?</h2>
+        <p>Обычные прогнозы дают все подряд — 30-50 матчей в день. AI-анализ <strong>фильтрует</strong> и оставляет только те матчи, где все сигналы совпадают и модель уверена. Это <strong>меньше матчей, но выше точность</strong>.</p>
+    </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="main-footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <h3>Set<span>True</span></h3>
+            <p>AI-анализ футбольных матчей на основе денежных потоков и данных из интернета.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Контакты</h4>
+            <a href="mailto:SetTrueForecast@yandex.ru">📧 SetTrueForecast@yandex.ru</a>
+        </div>
+        <div class="footer-col">
+            <h4>Информация</h4>
+            <a href="#">📈 Обновление: каждые 2-3 часа</a>
+            <a href="#">🤖 Модель: Llama 3.1</a>
+            <a href="#">📊 Порог: 85%</a>
+        </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+        <span>© 2026 SetTrue</span>
+        <span class="legal"><strong>18+</strong> Играйте ответственно</span>
+    </div>
+</footer>
+
+<script>
+    // Тема
+    function getTheme() { return localStorage.getItem('settrue-theme') || 'dark'; }
+    function setTheme(t) { document.documentElement.setAttribute('data-theme', t); localStorage.setItem('settrue-theme', t); }
+    setTheme(getTheme());
+    document.getElementById('themeToggle').addEventListener('click', () => setTheme(getTheme() === 'dark' ? 'light' : 'dark'));
+
+    // Время
+    function updateTime() {
+        const msk = new Date(new Date().getTime() + (new Date().getTimezoneOffset() * 60000) + 10800000);
+        document.getElementById('headerTime').textContent = String(msk.getHours()).padStart(2,'0') + ':' + String(msk.getMinutes()).padStart(2,'0');
+    }
+    setInterval(updateTime, 1000); updateTime();
+
+    // Меню
+    document.getElementById('menuToggle').addEventListener('click', function() {
+        document.getElementById('mainNav').classList.toggle('open');
+        this.classList.toggle('open');
+    });
+
+    // Экранирование
+    function esc(str) {
+        if (!str) return '';
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    // Загрузка AI-анализа
+    async function loadAIAnalysis() {
+        const container = document.getElementById('cardsContainer');
+        const info = document.getElementById('updateInfo');
+
+        try {
+            const resp = await fetch('/ai_analysis.json?t=' + Date.now());
+            if (!resp.ok) throw new Error('Файл не найден');
+            const data = await resp.json();
+
+            if (!data.success || !data.data || data.data.length === 0) {
+                container.innerHTML = '<div class="empty"><div class="icon">🤖</div><div>AI пока не нашёл уверенных матчей</div><div style="font-size:11px;margin-top:8px;opacity:0.6;">Попробуйте зайти позже — анализ обновляется каждые 2-3 часа</div></div>';
+                info.style.display = 'none';
+                return;
+            }
+
+            // Статистика
+            document.getElementById('statCount').textContent = data.count || 0;
+            document.getElementById('statAnalyzed').textContent = data.analyzed || 0;
+            document.getElementById('statThreshold').textContent = (data.threshold || 0) + '%';
+
+            if (data.timestamp) {
+                const d = new Date(data.timestamp);
+                const msk = new Date(d.getTime() + 10800000);
+                document.getElementById('statUpdated').textContent =
+                    String(msk.getHours()).padStart(2,'0') + ':' +
+                    String(msk.getMinutes()).padStart(2,'0');
+            }
+            info.style.display = 'flex';
+
+            // Карточки
+            let html = '<div class="cards">';
+            data.data.forEach(match => {
+                const isStrong = (match.verdict || '').includes('СИЛЬНЫЙ');
+                const badgeClass = isStrong ? 'verdict-badge' : 'verdict-badge high';
+
+                html += `
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-match">
+                                <h3>${esc(match.match)}</h3>
+                                <div class="league">${esc(match.league)}</div>
+                            </div>
+                            <div class="card-verdict">
+                                <span class="${badgeClass}">${esc(match.verdict)}</span>
+                                <span class="confidence">${match.confidence}%</span>
+                            </div>
+                        </div>
+                        <div class="card-bet">🎯 ${esc(match.recommended_bet)}</div>
+                        <div class="reasoning">${esc(match.reasoning)}</div>
+                        ${match.key_factors && match.key_factors.length ? `
+                            <div class="factors">
+                                ${match.key_factors.map(f => `<span class="factor">${esc(f)}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            });
+            html += '</div>';
+            container.innerHTML = html;
+
+        } catch (e) {
+            console.error('Ошибка:', e);
+            container.innerHTML = '<div class="empty"><div class="icon">⚠️</div><div>Ошибка загрузки AI-анализа</div></div>';
+            info.style.display = 'none';
+        }
+    }
+
+    loadAIAnalysis();
+    setInterval(loadAIAnalysis, 5 * 60 * 1000);
+</script>
+</body>
+</html>
