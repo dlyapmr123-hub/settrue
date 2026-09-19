@@ -122,6 +122,18 @@ body {
     font-size: 14px; font-weight: 800; color: var(--green);
     margin-bottom: 14px; letter-spacing: 0.02em;
 }
+.card-odds {
+    margin-left: 8px;
+    padding: 3px 10px;
+    background: rgba(255,215,0,0.12);
+    border: 1px solid rgba(255,215,0,0.25);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #FFD700;
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+}
 
 .reasoning {
     font-size: 13px; color: var(--text-secondary); line-height: 1.65;
@@ -227,17 +239,6 @@ body {
     .history-item { flex-wrap: wrap; }
     .history-item .hi-date { min-width: auto; text-align: left; }
 }
-    .card-odds {
-    margin-left: 8px;
-    padding: 2px 8px;
-    background: rgba(255,215,0,0.12);
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 700;
-    color: #FFD700;
-    font-family: 'JetBrains Mono', monospace;
-}
-}
 </style>
 </head>
 <body>
@@ -303,12 +304,6 @@ body {
         renderHistory(data);
     }
 
-    // Нормализация результата: "0" → null, "win"/"lose" → как есть
-    function normalizeResult(r) {
-        if (r === 'win' || r === 'lose') return r;
-        return null;
-    }
-
     function renderCards(data) {
         const container = document.getElementById('cardsContainer');
         const fresh = (data && data.data) ? data.data : [];
@@ -323,7 +318,7 @@ body {
         let html = '<div class="cards">';
 
         fresh.forEach(match => {
-            const saved = normalizeResult(match.result);
+            const saved = match.result;
             const isStrong = (match.verdict || '').includes('СИЛЬНЫЙ');
             const badgeClass = isStrong ? 'verdict-badge high' : 'verdict-badge';
 
@@ -335,6 +330,11 @@ body {
             let resultBadge = '';
             if (saved === 'win') resultBadge = '<span class="result-badge show win">✅ Выиграл</span>';
             if (saved === 'lose') resultBadge = '<span class="result-badge show lose">❌ Проиграл</span>';
+
+            // Кэф
+            const oddsHtml = (match.odds && match.odds !== '—' && match.odds !== '')
+                ? `<span class="card-odds">@ ${esc(match.odds)}</span>`
+                : '';
 
             html += `
                 <div class="${cardClass}">
@@ -350,9 +350,8 @@ body {
                         </div>
                     </div>
                     <div class="card-bet">
-    🎯 ${esc(match.recommended_bet)}
-    ${match.odds && match.odds !== '—' ? `<span class="card-odds">@ ${esc(match.odds)}</span>` : ''}
-</div>
+                        🎯 ${esc(match.recommended_bet)}${oddsHtml}
+                    </div>
                     <div class="reasoning">${esc(match.reasoning)}</div>
                     ${match.key_factors && match.key_factors.length ? `
                         <div class="factors">
@@ -372,7 +371,6 @@ body {
         const stats = document.getElementById('historyStats');
         const countTab = document.getElementById('historyCountTab');
 
-        // Берём из history + из data тех, у кого result = win/lose
         const fromHistory = (data && data.history) ? data.history : [];
         const fromData = (data && data.data) ? data.data : [];
 
@@ -415,11 +413,12 @@ body {
                            String(msk.getHours()).padStart(2,'0') + ':' +
                            String(msk.getMinutes()).padStart(2,'0');
             const label = e.result === 'win' ? '✅ Выиграл' : '❌ Проиграл';
+            const odds = (e.odds && e.odds !== '—') ? ` @ ${esc(e.odds)}` : '';
 
             return `
                 <div class="history-item">
                     <span class="hi-match">${esc(e.match)}</span>
-                    <span class="hi-bet">${esc(e.recommended_bet)}</span>
+                    <span class="hi-bet">${esc(e.recommended_bet)}${odds}</span>
                     <span class="hi-result ${e.result}">${label}</span>
                     <span class="hi-date">${dateStr}</span>
                 </div>
