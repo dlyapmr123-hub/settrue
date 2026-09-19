@@ -151,23 +151,6 @@ body {
 .factor:hover { border-color: var(--border-hover); color: var(--text-primary); }
 [data-theme="light"] .factor { background: rgba(0,0,0,0.03); }
 
-.result-badge {
-    position: absolute; top: 16px; right: 16px;
-    font-size: 10px; font-weight: 800;
-    padding: 5px 11px; border-radius: 7px;
-    text-transform: uppercase; letter-spacing: 0.5px;
-    display: none;
-}
-.result-badge.show { display: inline-block; }
-.result-badge.win {
-    background: rgba(0,204,68,0.15); color: var(--green);
-    border: 1px solid rgba(0,204,68,0.3);
-}
-.result-badge.lose {
-    background: rgba(255,68,68,0.15); color: var(--red);
-    border: 1px solid rgba(255,68,68,0.3);
-}
-
 .history-stats {
     display: flex; gap: 20px; flex-wrap: wrap;
     margin-bottom: 18px; padding: 16px 20px;
@@ -306,30 +289,26 @@ body {
 
     function renderCards(data) {
         const container = document.getElementById('cardsContainer');
-        const fresh = (data && data.data) ? data.data : [];
+        const allFresh = (data && data.data) ? data.data : [];
+
+        // Убираем те, у кого уже есть результат win/lose — они в истории
+        const fresh = allFresh.filter(m => m.result !== 'win' && m.result !== 'lose');
 
         document.getElementById('freshCount').textContent = fresh.length;
 
         if (fresh.length === 0) {
-            container.innerHTML = '<div class="empty"><div class="icon">🤖</div><div>Нет свежих прогнозов</div><div style="font-size:11px;margin-top:8px;opacity:0.6;">Запусти ai_analyzer_ddg.py чтобы добавить</div></div>';
+            container.innerHTML = '<div class="empty"><div class="icon">🤖</div><div>Нет свежих прогнозов</div><div style="font-size:11px;margin-top:8px;opacity:0.6;">Все прогнозы уже сыграны — смотри вкладку «История»</div></div>';
             return;
         }
 
         let html = '<div class="cards">';
 
         fresh.forEach(match => {
-            const saved = match.result;
             const isStrong = (match.verdict || '').includes('СИЛЬНЫЙ');
             const badgeClass = isStrong ? 'verdict-badge high' : 'verdict-badge';
 
-            let cardClass = 'card';
-            if (saved === 'win') cardClass += ' win';
-            else if (saved === 'lose') cardClass += ' lose';
-            else cardClass += ' pending';
-
-            let resultBadge = '';
-            if (saved === 'win') resultBadge = '<span class="result-badge show win">✅ Выиграл</span>';
-            if (saved === 'lose') resultBadge = '<span class="result-badge show lose">❌ Проиграл</span>';
+            // Все оставшиеся — pending
+            const cardClass = 'card pending';
 
             // Кэф
             const oddsHtml = (match.odds && match.odds !== '—' && match.odds !== '')
@@ -338,7 +317,6 @@ body {
 
             html += `
                 <div class="${cardClass}">
-                    ${resultBadge}
                     <div class="card-header">
                         <div class="card-match">
                             <h3>${esc(match.match)}</h3>
