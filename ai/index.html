@@ -260,29 +260,20 @@ body {
 </div>
 
 <script>
-    const GITHUB_OWNER = 'dlyapmr123-hub';
-const GITHUB_REPO = 'settrue';
-const GITHUB_FILE = 'ai_analysis.json';
-const GITHUB_BRANCH = 'main';
-
-const API_URL = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FILE}?ref=${GITHUB_BRANCH}`;
+    const DATA_URL = 'https://settrue.ru/ai_analysis.json';
 
     async function loadData() {
-    const container = document.getElementById('cardsContainer');
-    try {
-        const resp = await fetch(API_URL + `&t=${Date.now()}`, {
-            headers: { 'Accept': 'application/vnd.github.v3+json' }
-        });
-        if (!resp.ok) throw new Error('Не удалось загрузить файл');
-        const fileInfo = await resp.json();
-        const content = decodeURIComponent(escape(atob(fileInfo.content.replace(/\n/g, ''))));
-        const data = JSON.parse(content);
-        renderAll(data);
-    } catch (e) {
-        console.error('Ошибка загрузки:', e);
-        container.innerHTML = '<div class="empty"><div class="icon">⚠️</div><div>Ошибка загрузки AI-анализа</div><div style="font-size:11px;margin-top:8px;opacity:0.6;">' + e.message + '</div></div>';
+        const container = document.getElementById('cardsContainer');
+        try {
+            const resp = await fetch(DATA_URL + '?t=' + Date.now());
+            if (!resp.ok) throw new Error('Не удалось загрузить файл');
+            const data = await resp.json();
+            renderAll(data);
+        } catch (e) {
+            console.error('Ошибка загрузки:', e);
+            container.innerHTML = '<div class="empty"><div class="icon">⚠️</div><div>Ошибка загрузки AI-анализа</div><div style="font-size:11px;margin-top:8px;opacity:0.6;">' + e.message + '</div></div>';
+        }
     }
-}
 
     function esc(str) {
         if (!str) return '';
@@ -361,11 +352,20 @@ const API_URL = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/con
         const stats = document.getElementById('historyStats');
         const countTab = document.getElementById('historyCountTab');
 
-        const entries = (data && data.history)
-            ? data.history
-                .filter(m => m.result === 'win' || m.result === 'lose')
-                .sort((a, b) => new Date(b.result_timestamp || 0) - new Date(a.result_timestamp || 0))
-            : [];
+        // Берём из history + из data тех, у кого есть result
+        const fromHistory = (data && data.history) ? data.history : [];
+        const fromData = (data && data.data) ? data.data : [];
+
+        const seen = new Set();
+        const entries = [...fromHistory, ...fromData]
+            .filter(m => m.result === 'win' || m.result === 'lose')
+            .filter(m => {
+                const id = m.match + '|' + m.league;
+                if (seen.has(id)) return false;
+                seen.add(id);
+                return true;
+            })
+            .sort((a, b) => new Date(b.result_timestamp || 0) - new Date(a.result_timestamp || 0));
 
         countTab.textContent = entries.length;
 
@@ -388,6 +388,7 @@ const API_URL = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/con
         `;
 
         list.innerHTML = entries.map(e => {
+            // Если timestamp нет — берём текущее время
             const d = e.result_timestamp ? new Date(e.result_timestamp) : new Date();
             const msk = new Date(d.getTime() + 10800000);
             const dateStr = String(msk.getDate()).padStart(2,'0') + '.' +
