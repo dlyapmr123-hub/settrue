@@ -292,6 +292,12 @@ body {
         renderHistory(data);
     }
 
+    // Нормализация результата: "0" → null, "win"/"lose" → как есть
+    function normalizeResult(r) {
+        if (r === 'win' || r === 'lose') return r;
+        return null;
+    }
+
     function renderCards(data) {
         const container = document.getElementById('cardsContainer');
         const fresh = (data && data.data) ? data.data : [];
@@ -306,7 +312,7 @@ body {
         let html = '<div class="cards">';
 
         fresh.forEach(match => {
-            const saved = (match.result === 'win' || match.result === 'lose') ? match.result : null;
+            const saved = normalizeResult(match.result);
             const isStrong = (match.verdict || '').includes('СИЛЬНЫЙ');
             const badgeClass = isStrong ? 'verdict-badge high' : 'verdict-badge';
 
@@ -352,7 +358,7 @@ body {
         const stats = document.getElementById('historyStats');
         const countTab = document.getElementById('historyCountTab');
 
-        // Берём из history + из data тех, у кого есть result
+        // Берём из history + из data тех, у кого result = win/lose
         const fromHistory = (data && data.history) ? data.history : [];
         const fromData = (data && data.data) ? data.data : [];
 
@@ -388,7 +394,6 @@ body {
         `;
 
         list.innerHTML = entries.map(e => {
-            // Если timestamp нет — берём текущее время
             const d = e.result_timestamp ? new Date(e.result_timestamp) : new Date();
             const msk = new Date(d.getTime() + 10800000);
             const dateStr = String(msk.getDate()).padStart(2,'0') + '.' +
