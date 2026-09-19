@@ -261,24 +261,28 @@ body {
 
 <script>
     const GITHUB_OWNER = 'dlyapmr123-hub';
-    const GITHUB_REPO = 'settrue';
-    const GITHUB_FILE = 'ai_analysis.json';
-    const GITHUB_BRANCH = 'main';
+const GITHUB_REPO = 'settrue';
+const GITHUB_FILE = 'ai_analysis.json';
+const GITHUB_BRANCH = 'main';
 
-    const RAW_URL = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_FILE}`;
+const API_URL = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FILE}?ref=${GITHUB_BRANCH}`;
 
     async function loadData() {
-        const container = document.getElementById('cardsContainer');
-        try {
-            const resp = await fetch(RAW_URL + `?t=${Date.now()}`);
-            if (!resp.ok) throw new Error('Не удалось загрузить файл');
-            const data = await resp.json();
-            renderAll(data);
-        } catch (e) {
-            console.error('Ошибка загрузки:', e);
-            container.innerHTML = '<div class="empty"><div class="icon">⚠️</div><div>Ошибка загрузки AI-анализа</div><div style="font-size:11px;margin-top:8px;opacity:0.6;">' + e.message + '</div></div>';
-        }
+    const container = document.getElementById('cardsContainer');
+    try {
+        const resp = await fetch(API_URL + `&t=${Date.now()}`, {
+            headers: { 'Accept': 'application/vnd.github.v3+json' }
+        });
+        if (!resp.ok) throw new Error('Не удалось загрузить файл');
+        const fileInfo = await resp.json();
+        const content = decodeURIComponent(escape(atob(fileInfo.content.replace(/\n/g, ''))));
+        const data = JSON.parse(content);
+        renderAll(data);
+    } catch (e) {
+        console.error('Ошибка загрузки:', e);
+        container.innerHTML = '<div class="empty"><div class="icon">⚠️</div><div>Ошибка загрузки AI-анализа</div><div style="font-size:11px;margin-top:8px;opacity:0.6;">' + e.message + '</div></div>';
     }
+}
 
     function esc(str) {
         if (!str) return '';
