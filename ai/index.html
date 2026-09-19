@@ -306,7 +306,7 @@ body {
         let html = '<div class="cards">';
 
         fresh.forEach(match => {
-            const saved = match.result;
+            const saved = (match.result === 'win' || match.result === 'lose') ? match.result : null;
             const isStrong = (match.verdict || '').includes('СИЛЬНЫЙ');
             const badgeClass = isStrong ? 'verdict-badge high' : 'verdict-badge';
 
