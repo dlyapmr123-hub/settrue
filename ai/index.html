@@ -44,7 +44,6 @@ body {
 .page-title h1 span { color: var(--green); }
 .page-title p { font-size: 13px; color: var(--text-secondary); margin-top: 6px; }
 
-/* TABS */
 .tabs {
     display: flex; gap: 8px; margin-bottom: 20px;
     border-bottom: 1px solid var(--border-color);
@@ -64,7 +63,6 @@ body {
     font-family: var(--font-mono); font-weight: 700;
 }
 
-/* CARDS */
 .cards { display: grid; gap: 14px; }
 .card {
     position: relative; background: var(--bg-card);
@@ -141,7 +139,6 @@ body {
 .factor:hover { border-color: var(--border-hover); color: var(--text-primary); }
 [data-theme="light"] .factor { background: rgba(0,0,0,0.03); }
 
-/* RESULT BADGE */
 .result-badge {
     position: absolute; top: 16px; right: 16px;
     font-size: 10px; font-weight: 800;
@@ -159,7 +156,6 @@ body {
     border: 1px solid rgba(255,68,68,0.3);
 }
 
-/* HISTORY */
 .history-stats {
     display: flex; gap: 20px; flex-wrap: wrap;
     margin-bottom: 18px; padding: 16px 20px;
@@ -208,7 +204,6 @@ body {
     font-family: var(--font-mono); min-width: 80px; text-align: right;
 }
 
-/* LOADING / EMPTY */
 .loading, .empty {
     text-align: center; padding: 60px 20px;
     color: var(--text-secondary);
@@ -265,9 +260,6 @@ body {
 </div>
 
 <script>
-    /* ============================================================
-       НАСТРОЙКИ
-       ============================================================ */
     const GITHUB_OWNER = 'dlyapmr123-hub';
     const GITHUB_REPO = 'settrue';
     const GITHUB_FILE = 'ai_analysis.json';
@@ -275,9 +267,6 @@ body {
 
     const RAW_URL = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${GITHUB_FILE}`;
 
-    /* ============================================================
-       ЗАГРУЗКА
-       ============================================================ */
     async function loadData() {
         const container = document.getElementById('cardsContainer');
         try {
@@ -291,9 +280,6 @@ body {
         }
     }
 
-    /* ============================================================
-       УТИЛИТЫ
-       ============================================================ */
     function esc(str) {
         if (!str) return '';
         return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -311,9 +297,6 @@ body {
         renderHistory(data);
     }
 
-    /* ============================================================
-       СВЕЖИЕ ПРОГНОЗЫ
-       ============================================================ */
     function renderCards(data) {
         const container = document.getElementById('cardsContainer');
         const fresh = (data && data.data) ? data.data : [];
@@ -369,9 +352,6 @@ body {
         container.innerHTML = html;
     }
 
-    /* ============================================================
-       ИСТОРИЯ
-       ============================================================ */
     function renderHistory(data) {
         const list = document.getElementById('historyList');
         const stats = document.getElementById('historyStats');
@@ -423,9 +403,6 @@ body {
         }).join('');
     }
 
-    /* ============================================================
-       СТАРТ
-       ============================================================ */
     loadData();
     setInterval(loadData, 5 * 60 * 1000);
 </script>
