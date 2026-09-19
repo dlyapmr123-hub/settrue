@@ -7,25 +7,19 @@
     <meta name="description" content="Искусственный интеллект анализирует футбольные матчи: денежные потоки, форму команд, травмы, мотивацию. Только уверенные прогнозы.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://settrue.ru/ai/">
-    
-    <!-- Yandex Metrika -->
+
     <meta name="yandex-verification" content="0ac8a3221431959f" />
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=108400965','ym');ym(108400965,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute;left:-9999px" alt=""/></div></noscript>
-    
-    <!-- Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Favicon -->
+
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
     <style>
         :root {
@@ -42,6 +36,7 @@
             --green-glow: rgba(0, 204, 68, 0.15);
             --header-bg: rgba(8,8,8,0.92);
             --gold: #FFD700;
+            --red: #ff4444;
             --font-mono: 'JetBrains Mono', monospace;
             --header-height: 64px;
         }
@@ -73,7 +68,7 @@
         ::-webkit-scrollbar-track { background: var(--bg-primary); }
         ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 10px; }
 
-        /* ===== HEADER ===== */
+        /* HEADER */
         .main-header {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             background: var(--header-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
@@ -117,7 +112,6 @@
         .menu-toggle.open span:nth-child(2) { opacity: 0; }
         .menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
 
-        /* ===== CONTAINER ===== */
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -127,60 +121,58 @@
             width: 100%;
         }
 
-        /* ===== PAGE TITLE ===== */
-        .page-title {
-            text-align: center;
-            margin-bottom: 8px;
-        }
-        .page-title h1 {
-            font-size: 26px;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 6px;
-        }
+        .page-title { text-align: center; margin-bottom: 8px; }
+        .page-title h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px; }
         .page-title h1 span { color: var(--green); }
-        .page-title p {
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
+        .page-title p { font-size: 13px; color: var(--text-secondary); }
 
-        /* ===== UPDATE INFO ===== */
         .update-info {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            margin: 16px 0 24px;
+            display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+            margin: 16px 0 24px; padding: 12px 16px;
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px;
+        }
+        .update-info .item { display: flex; flex-direction: column; align-items: center; }
+        .update-info .item .value { font-size: 16px; font-weight: 700; color: var(--green); font-family: var(--font-mono); }
+        .update-info .item .label { font-size: 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* ADMIN BAR */
+        .admin-bar {
+            display: none;
+            margin-bottom: 16px;
             padding: 12px 16px;
+            background: rgba(0, 204, 68, 0.06);
+            border: 1px solid rgba(0, 204, 68, 0.25);
+            border-radius: 10px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .admin-bar.visible { display: flex; }
+        .admin-bar .admin-info { font-size: 12px; color: var(--green); font-weight: 600; }
+        .admin-bar .admin-actions { display: flex; gap: 8px; }
+        .admin-bar button {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-        }
-        .update-info .item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .update-info .item .value {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--green);
-            font-family: var(--font-mono);
-        }
-        .update-info .item .label {
-            font-size: 10px;
             color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .admin-bar button:hover {
+            border-color: var(--green);
+            color: var(--green);
+            background: rgba(0, 204, 68, 0.08);
         }
 
-        /* ===== CARDS ===== */
-        .cards {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-        }
+        /* CARDS */
+        .cards { display: grid; grid-template-columns: 1fr; gap: 12px; }
         .card {
+            position: relative;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -192,152 +184,243 @@
             background: var(--bg-card-hover);
             transform: translateY(-2px);
         }
+        .card::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 12px; bottom: 12px;
+            width: 3px;
+            border-radius: 0 3px 3px 0;
+            background: var(--border-color);
+            transition: background 0.25s ease;
+        }
+        .card.win::before { background: var(--green); }
+        .card.lose::before { background: var(--red); }
+        .card.pending::before { background: var(--gold); }
 
         .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 12px;
+            display: flex; justify-content: space-between; align-items: flex-start;
+            gap: 12px; margin-bottom: 12px;
+        }
+        .card-match { flex: 1; }
+        .card-match h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+        .card-match .league { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .card-verdict { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+        .verdict-badge {
+            font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px;
+            background: rgba(0, 204, 68, 0.1); color: var(--green); white-space: nowrap;
+        }
+        .verdict-badge.high { background: rgba(255, 215, 0, 0.1); color: var(--gold); }
+        .confidence { font-size: 12px; font-weight: 700; color: var(--green); font-family: var(--font-mono); }
+
+        .card-bet {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(0, 204, 68, 0.08);
+            border: 1px solid rgba(0, 204, 68, 0.2);
+            padding: 6px 14px; border-radius: 8px;
+            font-size: 13px; font-weight: 700; color: var(--green);
             margin-bottom: 12px;
         }
-        .card-match {
+
+        .reasoning {
+            font-size: 13px; color: var(--text-secondary); line-height: 1.6;
+            margin-bottom: 12px; padding-left: 12px;
+            border-left: 2px solid var(--border-color);
+        }
+        .factors { display: flex; flex-wrap: wrap; gap: 6px; }
+        .factor {
+            font-size: 11px; color: var(--text-secondary);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            padding: 4px 10px; border-radius: 6px;
+        }
+        [data-theme="light"] .factor { background: rgba(0,0,0,0.03); }
+
+        /* RESULT BADGE */
+        .result-badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: none;
+        }
+        .result-badge.show { display: inline-block; }
+        .result-badge.win { background: rgba(0,204,68,0.15); color: var(--green); border: 1px solid rgba(0,204,68,0.3); }
+        .result-badge.lose { background: rgba(255,68,68,0.15); color: var(--red); border: 1px solid rgba(255,68,68,0.3); }
+
+        /* ADMIN CONTROLS */
+        .admin-controls {
+            display: none;
+            gap: 8px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px dashed var(--border-color);
+        }
+        .admin-controls.show { display: flex; }
+        .admin-controls button {
             flex: 1;
-        }
-        .card-match h3 {
-            font-size: 16px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-size: 12px;
             font-weight: 700;
-            margin-bottom: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
         }
-        .card-match .league {
-            font-size: 11px;
-            color: var(--text-muted);
+        .admin-controls button:hover {
+            transform: translateY(-1px);
+        }
+        .admin-controls button.btn-win:hover {
+            background: rgba(0, 204, 68, 0.12);
+            border-color: var(--green);
+            color: var(--green);
+        }
+        .admin-controls button.btn-lose:hover {
+            background: rgba(255, 68, 68, 0.12);
+            border-color: var(--red);
+            color: var(--red);
+        }
+        .admin-controls button.btn-reset {
+            flex: 0 0 auto;
+            padding: 10px 14px;
+        }
+        .admin-controls button.btn-reset:hover {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-primary);
+        }
+        .admin-controls button.active-win {
+            background: rgba(0, 204, 68, 0.15);
+            border-color: var(--green);
+            color: var(--green);
+        }
+        .admin-controls button.active-lose {
+            background: rgba(255, 68, 68, 0.15);
+            border-color: var(--red);
+            color: var(--red);
+        }
+
+        /* HISTORY SECTION */
+        .history-section {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+        }
+        .history-section h2 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .history-section h2 .count {
+            font-size: 12px;
+            color: var(--green);
+            background: rgba(0, 204, 68, 0.1);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-family: var(--font-mono);
+        }
+        .history-stats {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+        }
+        .history-stats .hs-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .history-stats .hs-value {
+            font-size: 18px;
+            font-weight: 800;
+            font-family: var(--font-mono);
+        }
+        .history-stats .hs-value.win { color: var(--green); }
+        .history-stats .hs-value.lose { color: var(--red); }
+        .history-stats .hs-value.total { color: var(--text-primary); }
+        .history-stats .hs-label {
+            font-size: 10px;
+            color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        .card-verdict {
+        .history-item {
             display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 4px;
-            flex-shrink: 0;
-        }
-        .verdict-badge {
-            font-size: 11px;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 20px;
-            background: rgba(0, 204, 68, 0.1);
-            color: var(--green);
-            white-space: nowrap;
-        }
-        .verdict-badge.high {
-            background: rgba(255, 215, 0, 0.1);
-            color: var(--gold);
-        }
-        .confidence {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--green);
-            font-family: var(--font-mono);
-        }
-
-        /* ===== BET ===== */
-        .card-bet {
-            display: inline-flex;
             align-items: center;
-            gap: 6px;
-            background: rgba(0, 204, 68, 0.08);
-            border: 1px solid rgba(0, 204, 68, 0.2);
-            padding: 6px 14px;
+            justify-content: space-between;
+            padding: 10px 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
+            margin-bottom: 6px;
             font-size: 13px;
-            font-weight: 700;
-            color: var(--green);
-            margin-bottom: 12px;
+            gap: 12px;
         }
-
-        /* ===== REASONING ===== */
-        .reasoning {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 12px;
-            padding-left: 12px;
-            border-left: 2px solid var(--border-color);
-        }
-
-        /* ===== FACTORS ===== */
-        .factors {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        .factor {
+        .history-item .hi-match { flex: 1; font-weight: 600; }
+        .history-item .hi-bet {
             font-size: 11px;
             color: var(--text-secondary);
             background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border-color);
-            padding: 4px 10px;
-            border-radius: 6px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: var(--font-mono);
         }
-        [data-theme="light"] .factor {
-            background: rgba(0,0,0,0.03);
+        .history-item .hi-result {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
         }
+        .history-item .hi-result.win { background: rgba(0,204,68,0.12); color: var(--green); }
+        .history-item .hi-result.lose { background: rgba(255,68,68,0.12); color: var(--red); }
+        .history-item .hi-date { font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); }
 
-        /* ===== LOADING / EMPTY ===== */
+        /* LOADING / EMPTY */
         .loading, .empty {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-secondary);
+            text-align: center; padding: 60px 20px; color: var(--text-secondary);
         }
         .loading .spinner {
-            display: inline-block;
-            width: 26px;
-            height: 26px;
-            border: 2px solid var(--border-color);
-            border-top-color: var(--green);
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
-            margin-bottom: 10px;
+            display: inline-block; width: 26px; height: 26px;
+            border: 2px solid var(--border-color); border-top-color: var(--green);
+            border-radius: 50%; animation: spin 0.7s linear infinite; margin-bottom: 10px;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
         .empty .icon { font-size: 40px; margin-bottom: 12px; opacity: 0.3; }
 
-        /* ===== SEO ===== */
+        /* SEO */
         .seo-hidden { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
         .seo-content {
-            margin: 40px 0 20px;
-            padding: 24px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            margin: 40px 0 20px; padding: 24px;
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px;
         }
-        .seo-content h2 {
-            font-size: 15px;
-            font-weight: 800;
-            margin: 18px 0 8px;
-            letter-spacing: -0.02em;
-        }
+        .seo-content h2 { font-size: 15px; font-weight: 800; margin: 18px 0 8px; letter-spacing: -0.02em; }
         .seo-content h2:first-child { margin-top: 0; }
-        .seo-content p {
-            font-size: 12px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 8px;
-        }
+        .seo-content p { font-size: 12px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 8px; }
         .seo-content strong { color: var(--text-primary); }
 
-        /* ===== FOOTER ===== */
+        /* FOOTER */
         .main-footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-color);
-            padding: 16px 24px 10px;
-            margin-top: auto;
+            background: var(--bg-secondary); border-top: 1px solid var(--border-color);
+            padding: 16px 24px 10px; margin-top: auto;
         }
         .footer-inner {
             max-width: 1100px; margin: 0 auto;
-            display: grid; grid-template-columns: 1.2fr 1fr 1fr;
-            gap: 16px; align-items: start;
+            display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 16px; align-items: start;
         }
         .footer-brand h3 { font-size: 15px; font-weight: 800; margin-bottom: 2px; }
         .footer-brand h3 span { color: var(--green); }
@@ -353,7 +436,6 @@
         }
         .footer-bottom .legal strong { color: var(--green); }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 820px) {
             .header-nav {
                 display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0;
@@ -376,12 +458,12 @@
             .card-match h3 { font-size: 14px; }
             .reasoning { font-size: 12px; }
             .update-info { gap: 16px; padding: 10px 12px; }
+            .history-item { flex-wrap: wrap; }
         }
     </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="main-header">
     <div class="header-left">
         <img src="/logo.png" alt="SetTrue" class="header-logo" onerror="this.style.display='none'">
@@ -410,7 +492,6 @@
     </div>
 </header>
 
-<!-- CONTENT -->
 <div class="container">
 
     <h1 class="seo-hidden">AI-анализ футбольных матчей — искусственный интеллект прогнозирует ставки</h1>
@@ -439,11 +520,26 @@
         </div>
     </div>
 
+    <!-- ADMIN BAR -->
+    <div class="admin-bar" id="adminBar">
+        <div class="admin-info">🔓 Режим администратора</div>
+        <div class="admin-actions">
+            <button onclick="exportResults()">📥 Скачать JSON с результатами</button>
+            <button onclick="clearHistory()">🗑 Очистить историю</button>
+        </div>
+    </div>
+
     <div id="cardsContainer">
         <div class="loading"><div class="spinner"></div><div>Загрузка AI-анализа...</div></div>
     </div>
 
-    <!-- SEO -->
+    <!-- HISTORY -->
+    <section class="history-section" id="historySection" style="display:none;">
+        <h2>📊 История прогнозов <span class="count" id="historyCount">0</span></h2>
+        <div class="history-stats" id="historyStats"></div>
+        <div id="historyList"></div>
+    </section>
+
     <section class="seo-content">
         <h2>Как работает AI-анализ SetTrue?</h2>
         <p>Наша система использует <strong>локальную нейросеть</strong> (Llama 3.1), которая анализирует каждый матч по трём источникам: <strong>денежные потоки</strong> с биржи Betfair, <strong>прогнозы капперов</strong> и <strong>данные из интернета</strong> (форма, травмы, мотивация).</p>
@@ -458,7 +554,6 @@
 
 </div>
 
-<!-- FOOTER -->
 <footer class="main-footer">
     <div class="footer-inner">
         <div class="footer-brand">
@@ -484,101 +579,338 @@
 </footer>
 
 <script>
-    // Тема
+    /* ============================================================
+       НАСТРОЙКИ
+       ============================================================ */
+    const ADMIN_IP = '136.169.174.145'; // Твой IP
+    const STORAGE_KEY = 'settrue_ai_results'; // ключ для localStorage
+    const HISTORY_KEY = 'settrue_ai_history';   // ключ для истории
+
+    let isAdmin = false;
+    let currentData = null;
+
+    /* ============================================================
+       ТЕМА / ВРЕМЯ / МЕНЮ
+       ============================================================ */
     function getTheme() { return localStorage.getItem('settrue-theme') || 'dark'; }
     function setTheme(t) { document.documentElement.setAttribute('data-theme', t); localStorage.setItem('settrue-theme', t); }
     setTheme(getTheme());
     document.getElementById('themeToggle').addEventListener('click', () => setTheme(getTheme() === 'dark' ? 'light' : 'dark'));
 
-    // Время
     function updateTime() {
         const msk = new Date(new Date().getTime() + (new Date().getTimezoneOffset() * 60000) + 10800000);
         document.getElementById('headerTime').textContent = String(msk.getHours()).padStart(2,'0') + ':' + String(msk.getMinutes()).padStart(2,'0');
     }
     setInterval(updateTime, 1000); updateTime();
 
-    // Меню
     document.getElementById('menuToggle').addEventListener('click', function() {
         document.getElementById('mainNav').classList.toggle('open');
         this.classList.toggle('open');
     });
 
-    // Экранирование
     function esc(str) {
         if (!str) return '';
         return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
 
-    // Загрузка AI-анализа
-    async function loadAIAnalysis() {
+    /* ============================================================
+       ПРОВЕРКА IP
+       ============================================================ */
+    async function checkAdmin() {
+        try {
+            const resp = await fetch('https://api.ipify.org?format=json');
+            const data = await resp.json();
+            console.log('Твой IP:', data.ip);
+            return data.ip === ADMIN_IP;
+        } catch (e) {
+            console.error('Не удалось проверить IP:', e);
+            return false;
+        }
+    }
+
+    /* ============================================================
+       ХРАНИЛИЩЕ РЕЗУЛЬТАТОВ
+       ============================================================ */
+    function getResults() {
+        try {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+        } catch { return {}; }
+    }
+
+    function saveResults(results) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(results));
+    }
+
+    // Уникальный ID матча (по названию + лига, чтобы не путать)
+    function matchId(match) {
+        return (match.match + '|' + match.league).replace(/\s+/g, '_');
+    }
+
+    function setResult(id, result, matchInfo) {
+        if (!isAdmin) return;
+        const results = getResults();
+
+        if (result === null) {
+            delete results[id];
+        } else {
+            results[id] = {
+                result: result, // 'win' | 'lose'
+                timestamp: new Date().toISOString(),
+                match: matchInfo.match,
+                league: matchInfo.league,
+                bet: matchInfo.recommended_bet,
+                confidence: matchInfo.confidence
+            };
+        }
+        saveResults(results);
+        renderCards(currentData);
+        renderHistory();
+    }
+
+    /* ============================================================
+       ЭКСПОРТ / ИМПОРТ
+       ============================================================ */
+    function exportResults() {
+        if (!currentData) return;
+        const results = getResults();
+
+        // Собираем обновлённый JSON: в каждый матч добавляем поле result
+        const updated = JSON.parse(JSON.stringify(currentData));
+        updated.data.forEach(m => {
+            const id = matchId(m);
+            if (results[id]) {
+                m.result = results[id].result; // 'win' | 'lose'
+                m.result_timestamp = results[id].timestamp;
+            } else {
+                m.result = null;
+            }
+        });
+        updated.last_updated = new Date().toISOString();
+
+        const blob = new Blob([JSON.stringify(updated, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'ai_analysis.json';
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    function clearHistory() {
+        if (!confirm('Удалить всю историю результатов? Это действие необратимо.')) return;
+        localStorage.removeItem(STORAGE_KEY);
+        renderCards(currentData);
+        renderHistory();
+    }
+
+    /* ============================================================
+       РЕНДЕР КАРТОЧЕК
+       ============================================================ */
+    function renderCards(data) {
         const container = document.getElementById('cardsContainer');
         const info = document.getElementById('updateInfo');
 
+        if (!data || !data.success || !data.data || data.data.length === 0) {
+            container.innerHTML = '<div class="empty"><div class="icon">🤖</div><div>AI пока не нашёл уверенных матчей</div><div style="font-size:11px;margin-top:8px;opacity:0.6;">Попробуйте зайти позже — анализ обновляется каждые 2-3 часа</div></div>';
+            info.style.display = 'none';
+            return;
+        }
+
+        document.getElementById('statCount').textContent = data.count || 0;
+        document.getElementById('statAnalyzed').textContent = data.analyzed || 0;
+        document.getElementById('statThreshold').textContent = (data.threshold || 0) + '%';
+        if (data.timestamp) {
+            const d = new Date(data.timestamp);
+            const msk = new Date(d.getTime() + 10800000);
+            document.getElementById('statUpdated').textContent =
+                String(msk.getHours()).padStart(2,'0') + ':' +
+                String(msk.getMinutes()).padStart(2,'0');
+        }
+        info.style.display = 'flex';
+
+        const results = getResults();
+
+        let html = '<div class="cards">';
+        data.data.forEach(match => {
+            const id = matchId(match);
+            const saved = results[id];
+            const isStrong = (match.verdict || '').includes('СИЛЬНЫЙ');
+            const badgeClass = isStrong ? 'verdict-badge high' : 'verdict-badge';
+
+            // Класс карточки
+            let cardClass = 'card';
+            if (saved) cardClass += ' ' + saved.result;
+            else cardClass += ' pending';
+
+            // Бейдж результата
+            let resultBadge = '';
+            if (saved) {
+                const label = saved.result === 'win' ? '✅ Выиграл' : '❌ Проиграл';
+                resultBadge = `<span class="result-badge show ${saved.result}">${label}</span>`;
+            }
+
+            // Кнопки админа
+            let adminControls = '';
+            if (isAdmin) {
+                const winActive = saved && saved.result === 'win' ? 'active-win' : '';
+                const loseActive = saved && saved.result === 'lose' ? 'active-lose' : '';
+                adminControls = `
+                    <div class="admin-controls show">
+                        <button class="btn-win ${winActive}" onclick='setResult(${JSON.stringify(id)}, "win", ${JSON.stringify({match: match.match, league: match.league, recommended_bet: match.recommended_bet, confidence: match.confidence})})'>✅ Выиграл</button>
+                        <button class="btn-lose ${loseActive}" onclick='setResult(${JSON.stringify(id)}, "lose", ${JSON.stringify({match: match.match, league: match.league, recommended_bet: match.recommended_bet, confidence: match.confidence})})'>❌ Проиграл</button>
+                        ${saved ? `<button class="btn-reset" onclick='setResult(${JSON.stringify(id)}, null, {})'>↺</button>` : ''}
+                    </div>
+                `;
+            }
+
+            html += `
+                <div class="${cardClass}">
+                    ${resultBadge}
+                    <div class="card-header">
+                        <div class="card-match">
+                            <h3>${esc(match.match)}</h3>
+                            <div class="league">${esc(match.league)}</div>
+                        </div>
+                        <div class="card-verdict">
+                            <span class="${badgeClass}">${esc(match.verdict)}</span>
+                            <span class="confidence">${match.confidence}%</span>
+                        </div>
+                    </div>
+                    <div class="card-bet">🎯 ${esc(match.recommended_bet)}</div>
+                    <div class="reasoning">${esc(match.reasoning)}</div>
+                    ${match.key_factors && match.key_factors.length ? `
+                        <div class="factors">
+                            ${match.key_factors.map(f => `<span class="factor">${esc(f)}</span>`).join('')}
+                        </div>
+                    ` : ''}
+                    ${adminControls}
+                </div>
+            `;
+        });
+        html += '</div>';
+        container.innerHTML = html;
+    }
+
+    /* ============================================================
+       РЕНДЕР ИСТОРИИ
+       ============================================================ */
+    function renderHistory() {
+        const results = getResults();
+        const entries = Object.values(results).sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+        const section = document.getElementById('historySection');
+        const list = document.getElementById('historyList');
+        const stats = document.getElementById('historyStats');
+        const countEl = document.getElementById('historyCount');
+
+        if (entries.length === 0) {
+            section.style.display = 'none';
+            return;
+        }
+
+        section.style.display = 'block';
+        countEl.textContent = entries.length;
+
+        const wins = entries.filter(e => e.result === 'win').length;
+        const loses = entries.filter(e => e.result === 'lose').length;
+        const total = entries.length;
+        const winrate = total > 0 ? Math.round((wins / total) * 100) : 0;
+
+        stats.innerHTML = `
+            <div class="hs-item">
+                <span class="hs-value total">${total}</span>
+                <span class="hs-label">Всего</span>
+            </div>
+            <div class="hs-item">
+                <span class="hs-value win">${wins}</span>
+                <span class="hs-label">Выиграно</span>
+            </div>
+            <div class="hs-item">
+                <span class="hs-value lose">${loses}</span>
+                <span class="hs-label">Проиграно</span>
+            </div>
+            <div class="hs-item">
+                <span class="hs-value win">${winrate}%</span>
+                <span class="hs-label">Проходимость</span>
+            </div>
+        `;
+
+        list.innerHTML = entries.map(e => {
+            const d = new Date(e.timestamp);
+            const msk = new Date(d.getTime() + 10800000);
+            const dateStr = String(msk.getDate()).padStart(2,'0') + '.' +
+                           String(msk.getMonth() + 1).padStart(2,'0') + ' ' +
+                           String(msk.getHours()).padStart(2,'0') + ':' +
+                           String(msk.getMinutes()).padStart(2,'0');
+            const label = e.result === 'win' ? '✅ Выиграл' : '❌ Проиграл';
+            return `
+                <div class="history-item">
+                    <span class="hi-match">${esc(e.match)}</span>
+                    <span class="hi-bet">${esc(e.bet)}</span>
+                    <span class="hi-result ${e.result}">${label}</span>
+                    <span class="hi-date">${dateStr}</span>
+                </div>
+            `;
+        }).join('');
+    }
+
+    /* ============================================================
+       ЗАГРУЗКА ДАННЫХ
+       ============================================================ */
+    async function loadAIAnalysis() {
+        const container = document.getElementById('cardsContainer');
         try {
             const resp = await fetch('/ai_analysis.json?t=' + Date.now());
             if (!resp.ok) throw new Error('Файл не найден');
             const data = await resp.json();
+            currentData = data;
 
-            if (!data.success || !data.data || data.data.length === 0) {
-                container.innerHTML = '<div class="empty"><div class="icon">🤖</div><div>AI пока не нашёл уверенных матчей</div><div style="font-size:11px;margin-top:8px;opacity:0.6;">Попробуйте зайти позже — анализ обновляется каждые 2-3 часа</div></div>';
-                info.style.display = 'none';
-                return;
+            // Если в JSON уже есть сохранённые результаты (после скачивания и заливки),
+            // подтягиваем их в localStorage — но только те, которых ещё нет
+            if (data.data) {
+                const results = getResults();
+                let changed = false;
+                data.data.forEach(m => {
+                    if (m.result && (m.result === 'win' || m.result === 'lose')) {
+                        const id = matchId(m);
+                        if (!results[id]) {
+                            results[id] = {
+                                result: m.result,
+                                timestamp: m.result_timestamp || new Date().toISOString(),
+                                match: m.match,
+                                league: m.league,
+                                bet: m.recommended_bet,
+                                confidence: m.confidence
+                            };
+                            changed = true;
+                        }
+                    }
+                });
+                if (changed) saveResults(results);
             }
 
-            // Статистика
-            document.getElementById('statCount').textContent = data.count || 0;
-            document.getElementById('statAnalyzed').textContent = data.analyzed || 0;
-            document.getElementById('statThreshold').textContent = (data.threshold || 0) + '%';
-
-            if (data.timestamp) {
-                const d = new Date(data.timestamp);
-                const msk = new Date(d.getTime() + 10800000);
-                document.getElementById('statUpdated').textContent =
-                    String(msk.getHours()).padStart(2,'0') + ':' +
-                    String(msk.getMinutes()).padStart(2,'0');
-            }
-            info.style.display = 'flex';
-
-            // Карточки
-            let html = '<div class="cards">';
-            data.data.forEach(match => {
-                const isStrong = (match.verdict || '').includes('СИЛЬНЫЙ');
-                const badgeClass = isStrong ? 'verdict-badge' : 'verdict-badge high';
-
-                html += `
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-match">
-                                <h3>${esc(match.match)}</h3>
-                                <div class="league">${esc(match.league)}</div>
-                            </div>
-                            <div class="card-verdict">
-                                <span class="${badgeClass}">${esc(match.verdict)}</span>
-                                <span class="confidence">${match.confidence}%</span>
-                            </div>
-                        </div>
-                        <div class="card-bet">🎯 ${esc(match.recommended_bet)}</div>
-                        <div class="reasoning">${esc(match.reasoning)}</div>
-                        ${match.key_factors && match.key_factors.length ? `
-                            <div class="factors">
-                                ${match.key_factors.map(f => `<span class="factor">${esc(f)}</span>`).join('')}
-                            </div>
-                        ` : ''}
-                    </div>
-                `;
-            });
-            html += '</div>';
-            container.innerHTML = html;
-
+            renderCards(data);
+            renderHistory();
         } catch (e) {
             console.error('Ошибка:', e);
             container.innerHTML = '<div class="empty"><div class="icon">⚠️</div><div>Ошибка загрузки AI-анализа</div></div>';
-            info.style.display = 'none';
         }
     }
 
-    loadAIAnalysis();
-    setInterval(loadAIAnalysis, 5 * 60 * 1000);
+    /* ============================================================
+       СТАРТ
+       ============================================================ */
+    (async function init() {
+        isAdmin = await checkAdmin();
+        if (isAdmin) {
+            document.getElementById('adminBar').classList.add('visible');
+            console.log('%c🔓 Режим администратора активен', 'color:#00cc44;font-weight:bold;');
+        } else {
+            console.log('%c👤 Обычный пользователь', 'color:#999;');
+        }
+        loadAIAnalysis();
+        setInterval(loadAIAnalysis, 5 * 60 * 1000); // автообновление раз в 5 минут
+    })();
 </script>
 </body>
 </html>
