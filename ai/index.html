@@ -338,7 +338,10 @@ body {
                             <span class="confidence">${match.confidence}%</span>
                         </div>
                     </div>
-                    <div class="card-bet">🎯 ${esc(match.recommended_bet)}</div>
+                    <div class="card-bet">
+    🎯 ${esc(match.recommended_bet)}
+    ${match.odds && match.odds !== '—' ? `<span class="card-odds">@ ${esc(match.odds)}</span>` : ''}
+</div>
                     <div class="reasoning">${esc(match.reasoning)}</div>
                     ${match.key_factors && match.key_factors.length ? `
                         <div class="factors">
