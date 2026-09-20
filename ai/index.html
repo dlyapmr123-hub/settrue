@@ -11,6 +11,7 @@
     --bg-primary: #080808;
     --bg-card: rgba(255,255,255,0.03);
     --bg-card-hover: rgba(0, 204, 68, 0.04);
+    --bg-subtle: rgba(255,255,255,0.02);
     --text-primary: #f0f0f0;
     --text-secondary: #999;
     --text-muted: #555;
@@ -24,6 +25,7 @@
 [data-theme="light"] {
     --bg-primary: #f5f5f5;
     --bg-card: rgba(0,0,0,0.02);
+    --bg-subtle: rgba(0,0,0,0.015);
     --text-primary: #111;
     --text-secondary: #666;
     --text-muted: #aaa;
@@ -40,12 +42,12 @@ body {
 .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
 
 .page-title { text-align: center; margin-bottom: 24px; }
-.page-title h1 { font-size: 26px; font-weight: 800; }
+.page-title h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
 .page-title h1 span { color: var(--green); }
 .page-title p { font-size: 13px; color: var(--text-secondary); margin-top: 6px; }
 
 .tabs {
-    display: flex; gap: 8px; margin-bottom: 20px;
+    display: flex; gap: 4px; margin-bottom: 20px;
     border-bottom: 1px solid var(--border-color);
 }
 .tab {
@@ -63,130 +65,219 @@ body {
     font-family: var(--font-mono); font-weight: 700;
 }
 
-.cards { display: grid; gap: 14px; }
+/* ===== CARDS ===== */
+.cards { display: grid; gap: 16px; }
 .card {
-    position: relative; background: var(--bg-card);
-    border: 1px solid var(--border-color); border-radius: 14px;
-    padding: 20px 22px; transition: all 0.25s ease;
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 0;
+    transition: all 0.25s ease;
     overflow: hidden;
 }
 .card:hover {
     border-color: var(--border-hover);
-    background: var(--bg-card-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(0, 204, 68, 0.06);
+    box-shadow: 0 12px 32px rgba(0, 204, 68, 0.08);
+    transform: translateY(-2px);
 }
 .card::before {
     content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-    width: 4px; background: var(--border-color);
-    transition: background 0.25s ease;
+    width: 3px; background: var(--gold);
 }
-.card.win::before { background: var(--green); }
-.card.lose::before { background: var(--red); }
-.card.pending::before { background: var(--gold); }
 
-.card-header {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    gap: 12px; margin-bottom: 14px;
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 24px 16px;
 }
-.card-match { flex: 1; }
+.card-match { flex: 1; min-width: 0; }
 .card-match h3 {
-    font-size: 17px; font-weight: 700; letter-spacing: -0.01em;
-    margin-bottom: 4px; line-height: 1.3;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin-bottom: 6px;
+    line-height: 1.25;
 }
-.card-match .league {
-    font-size: 11px; color: var(--text-muted);
-    text-transform: uppercase; letter-spacing: 0.5px;
-    display: inline-flex; align-items: center; gap: 4px;
+.card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
-.card-verdict {
-    display: flex; flex-direction: column; align-items: flex-end;
-    gap: 6px; flex-shrink: 0;
+.card-league {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 500;
+}
+.card-verdict-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
 }
 .verdict-badge {
-    font-size: 11px; font-weight: 700; padding: 5px 12px;
-    border-radius: 20px; background: rgba(0, 204, 68, 0.1);
-    color: var(--green); white-space: nowrap;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 5px 11px;
+    border-radius: 20px;
+    background: rgba(0, 204, 68, 0.1);
+    color: var(--green);
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
 }
-.verdict-badge.high { background: rgba(255, 215, 0, 0.1); color: var(--gold); }
+.verdict-badge.high {
+    background: rgba(255, 215, 0, 0.1);
+    color: var(--gold);
+}
 .confidence {
-    font-size: 13px; font-weight: 800; color: var(--green);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--green);
     font-family: var(--font-mono);
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+.confidence .pct {
+    font-size: 12px;
+    opacity: 0.5;
+    font-weight: 600;
+    margin-left: 2px;
 }
 
-.card-bet {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(0, 204, 68, 0.08);
-    border: 1px solid rgba(0, 204, 68, 0.2);
-    padding: 8px 16px; border-radius: 10px;
-    font-size: 14px; font-weight: 800; color: var(--green);
-    margin-bottom: 14px; letter-spacing: 0.02em;
+.card-bet-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 24px;
+    background: rgba(0, 204, 68, 0.05);
+    border-top: 1px solid rgba(0, 204, 68, 0.12);
+    border-bottom: 1px solid rgba(0, 204, 68, 0.12);
+}
+.card-bet-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.bet-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+}
+.bet-value {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--green);
+    letter-spacing: -0.01em;
 }
 .card-odds {
-    margin-left: 8px;
-    padding: 3px 10px;
-    background: rgba(255,215,0,0.12);
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 12px;
+    background: rgba(255,215,0,0.1);
     border: 1px solid rgba(255,215,0,0.25);
-    border-radius: 6px;
-    font-size: 12px;
+    border-radius: 8px;
+    font-size: 13px;
     font-weight: 700;
-    color: #FFD700;
+    color: var(--gold);
     font-family: var(--font-mono);
     letter-spacing: 0.02em;
 }
 
-.reasoning {
-    font-size: 13px; color: var(--text-secondary); line-height: 1.65;
-    margin-bottom: 14px; padding-left: 14px;
-    border-left: 2px solid var(--border-color);
+.card-reasoning {
+    padding: 18px 24px 8px;
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
 }
-.factors { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.card-factors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 24px 20px;
+}
 .factor {
-    font-size: 11px; color: var(--text-secondary);
-    background: rgba(255,255,255,0.03);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    color: var(--text-secondary);
+    background: var(--bg-subtle);
     border: 1px solid var(--border-color);
-    padding: 5px 11px; border-radius: 7px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    line-height: 1.4;
     transition: all 0.2s;
 }
-.factor:hover { border-color: var(--border-hover); color: var(--text-primary); }
-[data-theme="light"] .factor { background: rgba(0,0,0,0.03); }
-
-.history-stats {
-    display: flex; gap: 20px; flex-wrap: wrap;
-    margin-bottom: 18px; padding: 16px 20px;
-    background: var(--bg-card); border: 1px solid var(--border-color);
-    border-radius: 12px;
+.factor::before {
+    content: '›';
+    color: var(--green);
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1;
 }
-.history-stats .hs-item { display: flex; flex-direction: column; gap: 2px; }
+.factor:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+}
+
+/* ===== HISTORY ===== */
+.history-stats {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    margin-bottom: 20px; padding: 18px 22px;
+    background: var(--bg-card); border: 1px solid var(--border-color);
+    border-radius: 14px;
+}
+.history-stats .hs-item { display: flex; flex-direction: column; gap: 4px; }
 .history-stats .hs-value {
-    font-size: 22px; font-weight: 800;
-    font-family: var(--font-mono); letter-spacing: -0.02em;
+    font-size: 24px; font-weight: 800;
+    font-family: var(--font-mono); letter-spacing: -0.03em;
+    line-height: 1;
 }
 .history-stats .hs-value.win { color: var(--green); }
 .history-stats .hs-value.lose { color: var(--red); }
 .history-stats .hs-label {
     font-size: 10px; color: var(--text-secondary);
-    text-transform: uppercase; letter-spacing: 0.5px;
+    text-transform: uppercase; letter-spacing: 0.6px;
+    font-weight: 600;
 }
 .history-item {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 12px 16px; background: var(--bg-card);
+    padding: 14px 18px; background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 10px; margin-bottom: 8px;
+    border-radius: 12px; margin-bottom: 8px;
     font-size: 13px; gap: 12px; transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
 }
+.history-item::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; background: var(--border-color);
+}
+.history-item.win::before { background: var(--green); }
+.history-item.lose::before { background: var(--red); }
 .history-item:hover { border-color: var(--border-hover); }
 .history-item .hi-match { flex: 1; font-weight: 600; }
 .history-item .hi-bet {
     font-size: 11px; color: var(--text-secondary);
     background: rgba(255,255,255,0.03);
-    padding: 3px 9px; border-radius: 5px;
+    padding: 4px 10px; border-radius: 6px;
     font-family: var(--font-mono); font-weight: 600;
 }
 .history-item .hi-result {
     font-size: 11px; font-weight: 700;
-    padding: 4px 11px; border-radius: 5px;
-    text-transform: uppercase;
+    padding: 4px 12px; border-radius: 6px;
+    text-transform: uppercase; letter-spacing: 0.3px;
 }
 .history-item .hi-result.win {
     background: rgba(0,204,68,0.12); color: var(--green);
@@ -215,10 +306,12 @@ body {
 
 @media (max-width: 600px) {
     .container { padding: 16px; }
-    .card { padding: 16px 18px; }
-    .card-header { flex-direction: column; align-items: flex-start; }
-    .card-verdict { flex-direction: row; align-items: center; }
-    .card-match h3 { font-size: 15px; }
+    .card-top { padding: 16px 18px 14px; flex-direction: column; align-items: flex-start; }
+    .card-verdict-wrap { flex-direction: row; align-items: center; gap: 12px; }
+    .card-bet-bar { padding: 12px 18px; }
+    .card-reasoning { padding: 14px 18px 6px; font-size: 13px; }
+    .card-factors { padding: 10px 18px 16px; }
+    .card-match h3 { font-size: 16px; }
     .history-item { flex-wrap: wrap; }
     .history-item .hi-date { min-width: auto; text-align: left; }
 }
@@ -256,6 +349,7 @@ body {
 
 <script>
     const DATA_URL = 'https://settrue.ru/ai_analysis.json';
+    const MIN_ODDS = 1.5;
 
     async function loadData() {
         const container = document.getElementById('cardsContainer');
@@ -287,12 +381,21 @@ body {
         renderHistory(data);
     }
 
+    function isOddsValid(odds) {
+        if (!odds || odds === '—' || odds === '') return false;
+        const n = parseFloat(odds);
+        return !isNaN(n) && n >= MIN_ODDS;
+    }
+
     function renderCards(data) {
         const container = document.getElementById('cardsContainer');
         const allFresh = (data && data.data) ? data.data : [];
 
-        // Убираем те, у кого уже есть результат win/lose — они в истории
-        const fresh = allFresh.filter(m => m.result !== 'win' && m.result !== 'lose');
+        const fresh = allFresh.filter(m =>
+            m.result !== 'win' && m.result !== 'lose'
+        ).filter(m =>
+            !m.odds || m.odds === '—' || m.odds === '' || parseFloat(m.odds) >= MIN_ODDS
+        );
 
         document.getElementById('freshCount').textContent = fresh.length;
 
@@ -307,32 +410,37 @@ body {
             const isStrong = (match.verdict || '').includes('СИЛЬНЫЙ');
             const badgeClass = isStrong ? 'verdict-badge high' : 'verdict-badge';
 
-            // Все оставшиеся — pending
-            const cardClass = 'card pending';
-
-            // Кэф
-            const oddsHtml = (match.odds && match.odds !== '—' && match.odds !== '')
+            const oddsHtml = isOddsValid(match.odds)
                 ? `<span class="card-odds">@ ${esc(match.odds)}</span>`
                 : '';
 
             html += `
-                <div class="${cardClass}">
-                    <div class="card-header">
+                <div class="card">
+                    <div class="card-top">
                         <div class="card-match">
                             <h3>${esc(match.match)}</h3>
-                            <div class="league">🏆 ${esc(match.league)}</div>
+                            <div class="card-meta">
+                                <span class="card-league">🏆 ${esc(match.league)}</span>
+                            </div>
                         </div>
-                        <div class="card-verdict">
+                        <div class="card-verdict-wrap">
                             <span class="${badgeClass}">${esc(match.verdict)}</span>
-                            <span class="confidence">${match.confidence}%</span>
+                            <span class="confidence">${match.confidence}<span class="pct">%</span></span>
                         </div>
                     </div>
-                    <div class="card-bet">
-                        🎯 ${esc(match.recommended_bet)}${oddsHtml}
+
+                    <div class="card-bet-bar">
+                        <div class="card-bet-left">
+                            <span class="bet-label">Прогноз</span>
+                            <span class="bet-value">${esc(match.recommended_bet)}</span>
+                        </div>
+                        ${oddsHtml}
                     </div>
-                    <div class="reasoning">${esc(match.reasoning)}</div>
+
+                    <div class="card-reasoning">${esc(match.reasoning)}</div>
+
                     ${match.key_factors && match.key_factors.length ? `
-                        <div class="factors">
+                        <div class="card-factors">
                             ${match.key_factors.map(f => `<span class="factor">${esc(f)}</span>`).join('')}
                         </div>
                     ` : ''}
@@ -394,7 +502,7 @@ body {
             const odds = (e.odds && e.odds !== '—') ? ` @ ${esc(e.odds)}` : '';
 
             return `
-                <div class="history-item">
+                <div class="history-item ${e.result}">
                     <span class="hi-match">${esc(e.match)}</span>
                     <span class="hi-bet">${esc(e.recommended_bet)}${odds}</span>
                     <span class="hi-result ${e.result}">${label}</span>
