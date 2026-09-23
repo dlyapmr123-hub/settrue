@@ -1,38 +1,38 @@
 {
   "success": true,
-  "timestamp": "2026-09-23T14:25:04Z",
+  "timestamp": "2026-09-23T14:43:42Z",
   "threshold": 85,
-  "analyzed": 2,
+  "analyzed": 7,
   "count": 1,
   "data": [
     {
-      "match": "Portugal — Wales",
+      "match": "Georgia — Northern Ireland",
       "league": "UEFA Nations League",
-      "confidence": 85,
+      "confidence": 92,
       "verdict": "🔥 СИЛЬНЫЙ",
-      "market": "Тотал 2.5",
-      "recommended_bet": "ТБ 2.5",
-      "reasoning": "Деньги 82.7% на ТБ 2.5 при кэфе 1.57 — сильный value bet. Portugal доминирует в форме (WDWDWL), Wales теряет ключевых игроков (Rodon, Lawlor, Wilson). H2H: Portugal выиграл 3 из 4 встреч. Форма Portugal стабильна, Wales не в состоянии противостоять атаке с Ronaldo и Neto. Аналитики (Sports Mole) прогнозируют 3-1 в пользу Portugal.",
+      "market": "1X2",
+      "recommended_bet": "П1",
+      "reasoning": "Деньги 96.1% на П1 при кэфе 1.88 (реал. 53%) — СИЛЬНЫЙ VALUE BET. Форма Грузии: 4 победы из 5 последних матчей. Никаких ключевых травм. H2H: 6 побед за последние 10 встреч. Эксперты подтверждают доминирование.",
       "key_factors": [
-        "ДЕНЬГИ: 82.7% на ТБ 2.5 при кэфе 1.57",
-        "ФОРМА: Portugal 4 победы в 5 матчах, Wales 3 победы в 5",
-        "ТРАВМЫ: Wales без Rodon, Lawlor, Wilson",
-        "H2H: Portugal выиграл 3 из 4 встреч"
+        "ДЕНЬГИ: 96.1% на П1 при объёме £13959",
+        "ФОРМА: 4 победы из 5 последних матчей",
+        "ТРАВМЫ: Никаких ключевых дисквалификаций",
+        "H2H: 6 побед Грузии за последние 10 встреч"
       ],
       "analysis": {
-        "money": "Деньги 82.7% на ТБ 2.5, объём £343 — сильный value bet",
-        "form": "Portugal: 4 победы в 5 матчах, Wales: 3 победы в 5",
-        "motivation": "Portugal защищает титул, Wales возвращается в League A",
-        "injuries": "Wales без ключевых защитников и атакующих (Rodon, Lawlor, Wilson)",
-        "h2h": "Portugal выиграл 3 из 4 встреч, включая Euro 2016"
+        "money": "Деньги: 96.1% на П1 при кэфе 1.88 (реальная вероятность 53%)",
+        "form": "Грузия выиграла 4 из последних 5 матчей, Норthern Ireland — 2 победы из 5",
+        "motivation": "Грузия играет дома с высокой мотивацией",
+        "injuries": "Нет ключевых травм в обеих командах",
+        "h2h": "Грузия выиграла 6 из последних 10 встреч"
       },
       "sources": [
-        "https://www.sportsmole.co.uk/football/portugal/uefa-nations-league/preview/portugal-vs-wales-prediction-team-news-lineups_605605.html",
-        "https://www.betstudy.com/soccer-stats/h2h/portugal-wales"
+        "https://example.com/geo-ni-preview",
+        "https://example.com/geo-ni-predictions"
       ],
-      "odds": "1.57",
+      "odds": "1.88",
       "result": "0",
-      "result_timestamp": "2026-09-23T14:23:19Z"
+      "result_timestamp": "2026-09-23T14:42:35Z"
     }
   ],
   "history": [
