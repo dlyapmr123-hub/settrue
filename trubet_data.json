@@ -1,7 +1,7 @@
 {
   "success": true,
-  "timestamp": "2026-10-03T16:43:19.098Z",
-  "count": 66,
+  "timestamp": "2026-10-03T19:29:50.087Z",
+  "count": 67,
   "data": [
     {
       "date": "03-10",
@@ -162,8 +162,8 @@
       "coef1": "4.36",
       "coefX": "3.51",
       "coef2": "1.70",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:2",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -180,8 +180,8 @@
       "coef1": "1.22",
       "coefX": "5.65",
       "coef2": "8.89",
-      "result": "",
-      "betResult": "lose"
+      "result": "3:1",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -198,8 +198,8 @@
       "coef1": "3.22",
       "coefX": "3.29",
       "coef2": "1.96",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:2",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -216,8 +216,8 @@
       "coef1": "1.21",
       "coefX": "6.25",
       "coef2": "9.03",
-      "result": "",
-      "betResult": "lose"
+      "result": "3:0",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -234,7 +234,7 @@
       "coef1": "2.30",
       "coefX": "3.97",
       "coef2": "2.31",
-      "result": "",
+      "result": "1:1",
       "betResult": "lose"
     },
     {
@@ -252,8 +252,8 @@
       "coef1": "12.00",
       "coefX": "7.34",
       "coef2": "1.21",
-      "result": "",
-      "betResult": "lose"
+      "result": "0:1",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -270,8 +270,8 @@
       "coef1": "2.01",
       "coefX": "3.27",
       "coef2": "3.42",
-      "result": "",
-      "betResult": "lose"
+      "result": "2:1",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -288,8 +288,8 @@
       "coef1": "2.30",
       "coefX": "3.11",
       "coef2": "3.00",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:0",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -306,8 +306,8 @@
       "coef1": "1.29",
       "coefX": "4.99",
       "coef2": "7.55",
-      "result": "",
-      "betResult": "lose"
+      "result": "0:2",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -324,8 +324,8 @@
       "coef1": "2.28",
       "coefX": "4.10",
       "coef2": "2.39",
-      "result": "",
-      "betResult": "lose"
+      "result": "0:3",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -342,8 +342,8 @@
       "coef1": "1.07",
       "coefX": "8.33",
       "coef2": "18.42",
-      "result": "",
-      "betResult": "lose"
+      "result": "4:1",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -360,7 +360,7 @@
       "coef1": "1.77",
       "coefX": "3.78",
       "coef2": "3.62",
-      "result": "",
+      "result": "2:2",
       "betResult": "lose"
     },
     {
@@ -378,7 +378,7 @@
       "coef1": "1.70",
       "coefX": "3.39",
       "coef2": "4.64",
-      "result": "",
+      "result": "0:0",
       "betResult": "lose"
     },
     {
@@ -396,8 +396,8 @@
       "coef1": "2.57",
       "coefX": "3.33",
       "coef2": "2.37",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:1",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -414,8 +414,8 @@
       "coef1": "1.69",
       "coefX": "4.39",
       "coef2": "4.36",
-      "result": "",
-      "betResult": "lose"
+      "result": "2:0",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -432,8 +432,8 @@
       "coef1": "1.70",
       "coefX": "3.67",
       "coef2": "4.15",
-      "result": "",
-      "betResult": "lose"
+      "result": "2:0",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -450,7 +450,7 @@
       "coef1": "2.07",
       "coefX": "3.42",
       "coef2": "3.04",
-      "result": "",
+      "result": "1:1",
       "betResult": "lose"
     },
     {
@@ -468,8 +468,8 @@
       "coef1": "3.18",
       "coefX": "3.33",
       "coef2": "1.98",
-      "result": "",
-      "betResult": "lose"
+      "result": "3:1",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -486,8 +486,8 @@
       "coef1": "2.15",
       "coefX": "2.92",
       "coef2": "3.32",
-      "result": "",
-      "betResult": "lose"
+      "result": "2:2",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -504,8 +504,8 @@
       "coef1": "1.96",
       "coefX": "3.57",
       "coef2": "3.37",
-      "result": "",
-      "betResult": "lose"
+      "result": "2:1",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -522,8 +522,8 @@
       "coef1": "8.06",
       "coefX": "5.74",
       "coef2": "1.25",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:2",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -540,8 +540,8 @@
       "coef1": "2.84",
       "coefX": "4.33",
       "coef2": "1.99",
-      "result": "",
-      "betResult": "lose"
+      "result": "0:1",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -576,7 +576,7 @@
       "coef1": "2.78",
       "coefX": "3.33",
       "coef2": "2.42",
-      "result": "",
+      "result": "1:3",
       "betResult": "lose"
     },
     {
@@ -594,8 +594,8 @@
       "coef1": "1.68",
       "coefX": "3.60",
       "coef2": "4.18",
-      "result": "",
-      "betResult": "lose"
+      "result": "0:2",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -612,8 +612,8 @@
       "coef1": "3.00",
       "coefX": "3.25",
       "coef2": "2.15",
-      "result": "",
-      "betResult": "lose"
+      "result": "0:1",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -630,8 +630,8 @@
       "coef1": "1.82",
       "coefX": "3.50",
       "coef2": "3.78",
-      "result": "",
-      "betResult": "lose"
+      "result": "2:0",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -648,8 +648,8 @@
       "coef1": "2.39",
       "coefX": "3.14",
       "coef2": "3.05",
-      "result": "",
-      "betResult": "lose"
+      "result": "2:1",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -666,7 +666,7 @@
       "coef1": "2.23",
       "coefX": "2.74",
       "coef2": "3.44",
-      "result": "",
+      "result": "1:4",
       "betResult": "lose"
     },
     {
@@ -684,8 +684,8 @@
       "coef1": "2.30",
       "coefX": "2.74",
       "coef2": "3.25",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:1",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -702,8 +702,8 @@
       "coef1": "1.06",
       "coefX": "9.58",
       "coef2": "18.09",
-      "result": "",
-      "betResult": "lose"
+      "result": "9:0",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -720,7 +720,7 @@
       "coef1": "1.48",
       "coefX": "4.32",
       "coef2": "4.97",
-      "result": "",
+      "result": "0:1",
       "betResult": "lose"
     },
     {
@@ -738,8 +738,8 @@
       "coef1": "2.41",
       "coefX": "2.95",
       "coef2": "2.75",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:1",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -756,8 +756,8 @@
       "coef1": "1.69",
       "coefX": "3.71",
       "coef2": "4.18",
-      "result": "",
-      "betResult": "lose"
+      "result": "3:0",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -774,8 +774,8 @@
       "coef1": "1.91",
       "coefX": "3.10",
       "coef2": "3.85",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:0",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -792,8 +792,8 @@
       "coef1": "45.58",
       "coefX": "18.94",
       "coef2": "1.02",
-      "result": "",
-      "betResult": "lose"
+      "result": "0:4",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -810,8 +810,8 @@
       "coef1": "1.54",
       "coefX": "4.18",
       "coef2": "4.62",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:0",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -828,8 +828,8 @@
       "coef1": "1.53",
       "coefX": "4.12",
       "coef2": "5.10",
-      "result": "",
-      "betResult": "lose"
+      "result": "3:0",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -846,7 +846,7 @@
       "coef1": "2.16",
       "coefX": "3.34",
       "coef2": "3.22",
-      "result": "",
+      "result": "1:1",
       "betResult": "lose"
     },
     {
@@ -864,8 +864,8 @@
       "coef1": "3.77",
       "coefX": "3.67",
       "coef2": "1.86",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:3",
+      "betResult": ""
     },
     {
       "date": "03-10",
@@ -882,7 +882,7 @@
       "coef1": "2.98",
       "coefX": "3.37",
       "coef2": "2.25",
-      "result": "",
+      "result": "3:1",
       "betResult": "lose"
     },
     {
@@ -900,231 +900,213 @@
       "coef1": "1.13",
       "coefX": "8.38",
       "coef2": "12.98",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:0",
+      "betResult": ""
     },
     {
       "date": "03-10",
-      "time": "21:45",
+      "time": "19:00",
       "match": "Russia - Namibia",
       "home": "Russia",
       "away": "Namibia",
       "countryCode": "world",
       "leagueTitle": "World Friendlies",
-      "p1": "63%",
-      "px": "21%",
-      "p2": "16%",
-      "bet": "",
-      "coef1": "2.09",
-      "coefX": "2.95",
-      "coef2": "3.97",
-      "result": "",
-      "betResult": "lose"
+      "p1": "56%",
+      "px": "8%",
+      "p2": "36%",
+      "bet": "1",
+      "coef1": "1.12",
+      "coefX": "8.22",
+      "coef2": "23.06",
+      "result": "6:0",
+      "betResult": ""
     },
     {
       "date": "03-10",
-      "time": "22:00",
+      "time": "19:55",
       "match": "Saudi Arabia - Qatar",
       "home": "Saudi Arabia",
       "away": "Qatar",
       "countryCode": "world",
       "leagueTitle": "World Gulf Cup of Nations",
-      "p1": "36%",
-      "px": "45%",
-      "p2": "19%",
-      "bet": "",
-      "coef1": "2.42",
-      "coefX": "2.67",
-      "coef2": "3.10",
-      "result": "",
+      "p1": "68%",
+      "px": "18%",
+      "p2": "14%",
+      "bet": "1",
+      "coef1": "1.75",
+      "coefX": "3.40",
+      "coef2": "4.25",
+      "result": "0:0",
       "betResult": "lose"
     },
     {
       "date": "03-10",
-      "time": "22:00",
+      "time": "20:00",
       "match": "Espanyol II - Náxara",
       "home": "Espanyol II",
       "away": "Náxara",
       "countryCode": "es",
       "leagueTitle": "Spain Segunda División RFEF - Group 2",
-      "p1": "22%",
-      "px": "37%",
-      "p2": "41%",
-      "bet": "",
-      "coef1": "2.76",
-      "coefX": "2.96",
-      "coef2": "2.43",
+      "p1": "53%",
+      "px": "10%",
+      "p2": "37%",
+      "bet": "12",
+      "coef1": "1.14",
+      "coefX": "6.18",
+      "coef2": "14.04",
       "result": "",
-      "betResult": "lose"
+      "betResult": ""
     },
     {
       "date": "03-10",
-      "time": "22:00",
+      "time": "20:00",
       "match": "Estonia - Luxembourg",
       "home": "Estonia",
       "away": "Luxembourg",
       "countryCode": "world",
       "leagueTitle": "World UEFA Nations League",
-      "p1": "27%",
-      "px": "21%",
-      "p2": "51%",
-      "bet": "",
-      "coef1": "2.18",
-      "coefX": "2.82",
-      "coef2": "3.42",
-      "result": "",
+      "p1": "21%",
+      "px": "43%",
+      "p2": "36%",
+      "bet": "X2",
+      "coef1": "2.98",
+      "coefX": "3.01",
+      "coef2": "2.52",
+      "result": "1:0",
       "betResult": "lose"
     },
     {
       "date": "03-10",
-      "time": "22:00",
+      "time": "20:00",
       "match": "Iceland - Bulgaria",
       "home": "Iceland",
       "away": "Bulgaria",
       "countryCode": "world",
       "leagueTitle": "World UEFA Nations League",
-      "p1": "33%",
+      "p1": "64%",
       "px": "21%",
-      "p2": "45%",
-      "bet": "",
-      "coef1": "3.56",
-      "coefX": "2.79",
-      "coef2": "2.12",
-      "result": "",
-      "betResult": "lose"
+      "p2": "15%",
+      "bet": "1",
+      "coef1": "1.42",
+      "coefX": "4.45",
+      "coef2": "7.60",
+      "result": "3:0",
+      "betResult": ""
     },
     {
       "date": "03-10",
-      "time": "22:00",
+      "time": "20:00",
       "match": "Croatia - England",
       "home": "Croatia",
       "away": "England",
       "countryCode": "world",
       "leagueTitle": "World UEFA Nations League",
-      "p1": "43%",
-      "px": "21%",
-      "p2": "37%",
-      "bet": "",
-      "coef1": "2.34",
-      "coefX": "2.87",
-      "coef2": "3.01",
-      "result": "",
-      "betResult": "lose"
+      "p1": "21%",
+      "px": "29%",
+      "p2": "49%",
+      "bet": "X2",
+      "coef1": "4.30",
+      "coefX": "3.93",
+      "coef2": "1.77",
+      "result": "0:7",
+      "betResult": ""
     },
     {
       "date": "03-10",
-      "time": "22:00",
+      "time": "20:00",
       "match": "Belarus - San Marino",
       "home": "Belarus",
       "away": "San Marino",
       "countryCode": "world",
       "leagueTitle": "World UEFA Nations League",
-      "p1": "43%",
-      "px": "39%",
-      "p2": "19%",
-      "bet": "",
-      "coef1": "2.32",
-      "coefX": "2.71",
-      "coef2": "3.18",
-      "result": "",
-      "betResult": "lose"
+      "p1": "59%",
+      "px": "6%",
+      "p2": "35%",
+      "bet": "1",
+      "coef1": "1.07",
+      "coefX": "11.00",
+      "coef2": "28.50",
+      "result": "4:0",
+      "betResult": ""
     },
     {
       "date": "03-10",
-      "time": "22:45",
+      "time": "20:00",
       "match": "Rudar Prijedor - Omarska",
       "home": "Rudar Prijedor",
       "away": "Omarska",
       "countryCode": "ba",
       "leagueTitle": "Bosnia 1st League - RS",
-      "p1": "59%",
-      "px": "31%",
-      "p2": "9%",
-      "bet": "",
-      "coef1": "1.43",
-      "coefX": "4.02",
-      "coef2": "6.33",
+      "p1": "71%",
+      "px": "17%",
+      "p2": "11%",
+      "bet": "1",
+      "coef1": "1.60",
+      "coefX": "3.60",
+      "coef2": "5.34",
       "result": "",
       "betResult": "lose"
     },
     {
       "date": "03-10",
-      "time": "22:45",
+      "time": "20:15",
       "match": "Lidingö - Bollstanäs",
       "home": "Lidingö",
       "away": "Bollstanäs",
       "countryCode": "se",
       "leagueTitle": "Sweden Division 2 - Norra Svealand",
-      "p1": "53%",
-      "px": "34%",
-      "p2": "14%",
-      "bet": "",
-      "coef1": "1.69",
-      "coefX": "3.52",
-      "coef2": "4.39",
-      "result": "",
+      "p1": "57%",
+      "px": "17%",
+      "p2": "26%",
+      "bet": "1",
+      "coef1": "2.50",
+      "coefX": "3.60",
+      "coef2": "2.30",
+      "result": "0:4",
       "betResult": "lose"
     },
     {
-      "date": "03-10",
-      "time": "22:45",
+      "date": "04-10",
+      "time": "00:30",
       "match": "Defensa Y Justicia - San Lorenzo",
       "home": "Defensa Y Justicia",
       "away": "San Lorenzo",
       "countryCode": "ar",
       "leagueTitle": "Argentina Liga Profesional Argentina",
-      "p1": "13%",
-      "px": "35%",
-      "p2": "52%",
+      "p1": "62%",
+      "px": "19%",
+      "p2": "19%",
       "bet": "",
-      "coef1": "4.79",
-      "coefX": "3.45",
-      "coef2": "1.76",
+      "coef1": "2.11",
+      "coefX": "3.28",
+      "coef2": "3.19",
       "result": "",
       "betResult": "lose"
     },
     {
-      "date": "03-10",
-      "time": "22:45",
+      "date": "04-10",
+      "time": "01:30",
       "match": "Real Pilar - Villa Dalmine",
       "home": "Real Pilar",
       "away": "Villa Dalmine",
       "countryCode": "ar",
       "leagueTitle": "Argentina Primera B Metropolitana",
-      "p1": "81%",
-      "px": "13%",
-      "p2": "6%",
+      "p1": "58%",
+      "px": "17%",
+      "p2": "25%",
       "bet": "",
-      "coef1": "1.31",
-      "coefX": "5.05",
-      "coef2": "10.20",
-      "result": "",
-      "betResult": "lose"
-    },
-    {
-      "date": "03-10",
-      "time": "22:45",
-      "match": "Dock Sud - Deportivo Armenio",
-      "home": "Dock Sud",
-      "away": "Deportivo Armenio",
-      "countryCode": "ar",
-      "leagueTitle": "Argentina Primera B Metropolitana",
-      "p1": "59%",
-      "px": "14%",
-      "p2": "27%",
-      "bet": "",
-      "coef1": "1.07",
-      "coefX": "11.68",
-      "coef2": "30.33",
+      "coef1": "2.45",
+      "coefX": "3.60",
+      "coef2": "2.40",
       "result": "",
       "betResult": "lose"
     },
     {
       "date": "04-10",
       "time": "02:00",
-      "match": "San Martín Burzaco - Argentino de Merlo",
-      "home": "San Martín Burzaco",
-      "away": "Argentino de Merlo",
+      "match": "Dock Sud - Deportivo Armenio",
+      "home": "Dock Sud",
+      "away": "Deportivo Armenio",
       "countryCode": "ar",
       "leagueTitle": "Argentina Primera B Metropolitana",
       "p1": "57%",
@@ -1140,9 +1122,9 @@
     {
       "date": "04-10",
       "time": "03:00",
-      "match": "Villa San Carlos - Arsenal Sarandi",
-      "home": "Villa San Carlos",
-      "away": "Arsenal Sarandi",
+      "match": "San Martín Burzaco - Argentino de Merlo",
+      "home": "San Martín Burzaco",
+      "away": "Argentino de Merlo",
       "countryCode": "ar",
       "leagueTitle": "Argentina Primera B Metropolitana",
       "p1": "21%",
@@ -1157,19 +1139,37 @@
     },
     {
       "date": "04-10",
+      "time": "04:00",
+      "match": "Villa San Carlos - Arsenal Sarandi",
+      "home": "Villa San Carlos",
+      "away": "Arsenal Sarandi",
+      "countryCode": "ar",
+      "leagueTitle": "Argentina Primera B Metropolitana",
+      "p1": "60%",
+      "px": "5%",
+      "p2": "35%",
+      "bet": "",
+      "coef1": "1.04",
+      "coefX": "13.35",
+      "coef2": "32.67",
+      "result": "",
+      "betResult": "lose"
+    },
+    {
+      "date": "04-10",
       "time": "17:30",
       "match": "Deportivo Camioneros - Deportivo Laferrere",
       "home": "Deportivo Camioneros",
       "away": "Deportivo Laferrere",
       "countryCode": "ar",
       "leagueTitle": "Argentina Primera B Metropolitana",
-      "p1": "31%",
-      "px": "18%",
-      "p2": "51%",
+      "p1": "23%",
+      "px": "19%",
+      "p2": "58%",
       "bet": "",
-      "coef1": "2.04",
-      "coefX": "3.39",
-      "coef2": "3.44",
+      "coef1": "2.62",
+      "coefX": "3.15",
+      "coef2": "2.40",
       "result": "",
       "betResult": "lose"
     },
@@ -1186,8 +1186,26 @@
       "p2": "4%",
       "bet": "",
       "coef1": "1.16",
-      "coefX": "7.31",
-      "coef2": "14.85",
+      "coefX": "7.36",
+      "coef2": "15.38",
+      "result": "",
+      "betResult": "lose"
+    },
+    {
+      "date": "05-10",
+      "time": "00:00",
+      "match": "Rouen - Bourg-en-bresse 01",
+      "home": "Rouen",
+      "away": "Bourg-en-bresse 01",
+      "countryCode": "fr",
+      "leagueTitle": "France Ligue 3",
+      "p1": "63%",
+      "px": "22%",
+      "p2": "15%",
+      "bet": "",
+      "coef1": "1.98",
+      "coefX": "2.75",
+      "coef2": "4.14",
       "result": "",
       "betResult": "lose"
     }
