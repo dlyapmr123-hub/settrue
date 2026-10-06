@@ -928,11 +928,56 @@
         // ============================================================
         // 13. ЗАПУСК
         // ============================================================
-        document.addEventListener('DOMContentLoaded', function() {
+                document.addEventListener('DOMContentLoaded', function() {
             loadTrubet();
         });
 
         setInterval(loadTrubet, 5 * 60 * 1000);
+    </script>
+
+    <!-- ============================================================ -->
+    <!-- АВТОМАТИЧЕСКАЯ МИКРОРАЗМЕТКА SCHEMA.ORG -->
+    <!-- ============================================================ -->
+    <script>
+    (function() {
+        'use strict';
+
+        function injectJsonLd(data) {
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.textContent = JSON.stringify(data);
+            document.head.appendChild(script);
+        }
+
+        function injectWebSite() {
+            injectJsonLd({
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "SetTrue — Робобет",
+                "url": "https://settrue.ru/robobet/",
+                "description": "Математические прогнозы на футбол и робобет"
+            });
+            console.log('[Schema.org] WebSite добавлен');
+        }
+
+        function injectOrganization() {
+            injectJsonLd({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "SetTrue",
+                "url": "https://settrue.ru/",
+                "logo": "https://settrue.ru/logo.png"
+            });
+            console.log('[Schema.org] Organization добавлен');
+        }
+
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                injectWebSite();
+                injectOrganization();
+            }, 1500);
+        });
+    })();
     </script>
 </body>
 </html>
