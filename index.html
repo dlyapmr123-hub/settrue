@@ -7,7 +7,7 @@
     
     <!-- YANDEX METRIKA -->
     <meta name="yandex-verification" content="0ac8a3221431959f">
-   <script>
+    <script>
         (function(m,e,t,r,i,k,a){
             m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
             m[i].l=1*new Date();
@@ -16,7 +16,6 @@
         })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108400965', 'ym');
         ym(108400965, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
     </script>
-    
 
     <!-- SEO -->
     <title>Нейросеть для анализа футбольных матчей, робобет и денежные потоки | SetTrue</title>
@@ -704,7 +703,7 @@
                 <div class="ticker-card"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg></span>Тренд: Следите за формой команд последние 5-10 матчей</div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- PARTNER STRIP -->
     <div class="partner-strip">
@@ -943,17 +942,6 @@
             if (track) track.innerHTML += track.innerHTML;
         });
 
-        // ЗАЩИТА
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('keydown', e => {
-            const c = e.ctrlKey, s = e.shiftKey, k = e.key.toLowerCase(), cd = e.code;
-            if (e.keyCode === 123) { e.preventDefault(); return false; }
-            if (c && (cd === 'KeyC' || k === 'c')) { return true; }
-            if (c && !s && (cd === 'KeyU' || k === 'u')) { e.preventDefault(); return false; }
-            if (c && s && (cd === 'KeyI' || k === 'i' || cd === 'KeyJ' || k === 'j')) { e.preventDefault(); return false; }
-            if (c && (cd === 'KeyS' || k === 's' || cd === 'KeyP' || k === 'p')) { e.preventDefault(); return false; }
-        }, true);
-
         // ТЕМА
         function getTheme() { return localStorage.getItem('settrue-theme') || 'dark'; }
         function setTheme(t) { document.documentElement.setAttribute('data-theme', t); localStorage.setItem('settrue-theme', t); }
@@ -1121,7 +1109,7 @@
         // ============================================================
         // 3. ЗАПУСК
         // ============================================================
-               document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
             loadTopTips();
             loadMatches();
             setInterval(loadTopTips, 120000);
