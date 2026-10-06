@@ -845,10 +845,87 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
+                document.addEventListener('DOMContentLoaded', function() {
             loadTips();
             setInterval(loadTips, 60000);
         });
+    </script>
+
+    <!-- ============================================================ -->
+    <!-- АВТОМАТИЧЕСКАЯ МИКРОРАЗМЕТКА SCHEMA.ORG -->
+    <!-- ============================================================ -->
+    <script>
+    (function() {
+        'use strict';
+
+        function injectJsonLd(data) {
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.textContent = JSON.stringify(data);
+            document.head.appendChild(script);
+        }
+
+        // SportsEvent для прогнозов из feed_data.json
+        async function injectSportsEvents() {
+            try {
+                const response = await fetch('/feed_data.json?t=' + Date.now());
+                const data = await response.json();
+
+                if (data.success && data.data && data.data.length > 0) {
+                    const events = [];
+                    data.data.slice(0, 15).forEach(tip => {
+                        if (!tip.team1 || !tip.team2) return;
+                        events.push({
+                            "@context": "https://schema.org",
+                            "@type": "SportsEvent",
+                            "name": tip.team1 + " — " + tip.team2,
+                            "startDate": new Date().toISOString(),
+                            "eventStatus": "https://schema.org/EventScheduled",
+                            "competitor": [
+                                { "@type": "SportsTeam", "name": tip.team1 },
+                                { "@type": "SportsTeam", "name": tip.team2 }
+                            ]
+                        });
+                    });
+
+                    if (events.length > 0) {
+                        injectJsonLd({ "@context": "https://schema.org", "@graph": events });
+                        console.log('[Schema.org] SportsEvent: ' + events.length + ' прогнозов');
+                    }
+                }
+            } catch (e) {
+                console.warn('[Schema.org] Ошибка SportsEvent:', e);
+            }
+        }
+
+        function injectWebSite() {
+            injectJsonLd({
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "SetTrue — Прогнозы",
+                "url": "https://settrue.ru/predict/",
+                "description": "Бесплатные прогнозы на футбол на сегодня"
+            });
+        }
+
+        function injectOrganization() {
+            injectJsonLd({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "SetTrue",
+                "url": "https://settrue.ru/",
+                "logo": "https://settrue.ru/logo.png"
+            });
+        }
+
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                injectWebSite();
+                injectOrganization();
+                injectSportsEvents();
+            }, 1500);
+        });
+    })();
     </script>
 </body>
 </html>
