@@ -1118,11 +1118,133 @@
         // ============================================================
         // 3. ЗАПУСК
         // ============================================================
-        document.addEventListener('DOMContentLoaded', function() {
+               document.addEventListener('DOMContentLoaded', function() {
             loadTopTips();
             loadMatches();
             setInterval(loadTopTips, 120000);
         });
+    </script>
+
+    <!-- ============================================================ -->
+    <!-- АВТОМАТИЧЕСКАЯ МИКРОРАЗМЕТКА SCHEMA.ORG -->
+    <!-- ============================================================ -->
+    <script>
+    (function() {
+        'use strict';
+
+        function injectJsonLd(data) {
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.textContent = JSON.stringify(data);
+            document.head.appendChild(script);
+        }
+
+        // 1. SportsEvent — разметка матчей
+        async function injectSportsEvents() {
+            try {
+                const API_URL = 'https://script.google.com/macros/s/AKfycbxL0MmOjg_gew24qRo-x7bhj-cb0PZwsH_LslT5ya71U7FH73Gs2XKQdfuKvU734WFH/exec';
+                const response = await fetch(API_URL);
+                const data = await response.json();
+
+                if (data.status === 'success' && data.matches && data.matches.length > 0) {
+                    const matches = data.matches.slice(0, 10);
+                    const events = [];
+
+                    matches.forEach(match => {
+                        if (!match.team1 || !match.team2) return;
+                        events.push({
+                            "@context": "https://schema.org",
+                            "@type": "SportsEvent",
+                            "name": match.team1 + " — " + match.team2,
+                            "startDate": match.timeDisplay || new Date().toISOString(),
+                            "eventStatus": "https://schema.org/EventScheduled",
+                            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+                            "location": {
+                                "@type": "Place",
+                                "name": match.tournament || "Стадион"
+                            },
+                            "competitor": [
+                                { "@type": "SportsTeam", "name": match.team1 },
+                                { "@type": "SportsTeam", "name": match.team2 }
+                            ]
+                        });
+                    });
+
+                    if (events.length > 0) {
+                        injectJsonLd({ "@context": "https://schema.org", "@graph": events });
+                        console.log('[Schema.org] SportsEvent: ' + events.length + ' матчей');
+                    }
+                }
+            } catch (e) {
+                console.warn('[Schema.org] Ошибка SportsEvent:', e);
+            }
+        }
+
+        // 2. FAQPage — разметка FAQ
+        function injectFaqPage() {
+            const faqItems = document.querySelectorAll('.seo-content .faq-item');
+            if (faqItems.length === 0) return;
+
+            const questions = [];
+            faqItems.forEach(item => {
+                const q = item.querySelector('h3');
+                const a = item.querySelector('p');
+                if (q && a) {
+                    questions.push({
+                        "@type": "Question",
+                        "name": q.textContent.trim(),
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": a.textContent.trim()
+                        }
+                    });
+                }
+            });
+
+            if (questions.length > 0) {
+                injectJsonLd({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": questions
+                });
+                console.log('[Schema.org] FAQPage: ' + questions.length + ' вопросов');
+            }
+        }
+
+        // 3. WebSite — общая разметка сайта
+        function injectWebSite() {
+            injectJsonLd({
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "SetTrue",
+                "url": "https://settrue.ru/",
+                "description": "Нейросеть для анализа футбольных матчей, робобет и денежные потоки в ставках на спорт"
+            });
+            console.log('[Schema.org] WebSite добавлен');
+        }
+
+        // 4. Organization — разметка организации
+        function injectOrganization() {
+            injectJsonLd({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "SetTrue",
+                "url": "https://settrue.ru/",
+                "logo": "https://settrue.ru/logo.png",
+                "email": "SetTrueForecast@yandex.ru"
+            });
+            console.log('[Schema.org] Organization добавлен');
+        }
+
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                injectWebSite();
+                injectOrganization();
+                injectFaqPage();
+                injectSportsEvents();
+            }, 1500);
+        });
+    })();
     </script>
 </body>
 </html>
