@@ -31,4 +31,3 @@ Allow: /cashflows/
 Allow: /scanmatch/
 Allow: /robobot/
 Disallow: /private/
-Host: settrue.ru
