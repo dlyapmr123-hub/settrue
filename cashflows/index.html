@@ -317,7 +317,96 @@ function renderSignalsTable(events){const c=document.getElementById('signalsCont
 let autoUpdateInterval=null;
 function startAutoUpdate(){if(autoUpdateInterval)clearInterval(autoUpdateInterval);autoUpdateInterval=setInterval(()=>{if(!document.hidden){const a=document.querySelector('.tab-content.active');if(a){const id=a.id;if(id==='tabSignals')loadSignalsData();else if(id==='tabFootball'){const as=document.querySelector('.sub-tab-content.active');if(as){const sid=as.id;if(sid==='subtab1x2')loadFootballData();else if(sid==='subtabTotal25')loadTotal25Data();else if(sid==='subtabBtts')loadBttsData()}}else if(id==='tabTennis')loadTennisData();else if(id==='tabBasketball')loadBasketballData();else if(id==='tabBaseball')loadBaseballData()}}},5*60*1000)}
 async function updateAllBadges(){try{let d=await loadAllData();if(!d)d=await loadFromAPI();if(!d)return;if(d.football&&d.football.success&&d.football.data){const n=d.football.data.length;const bf=document.getElementById('badgeFootball');const sb=document.getElementById('subBadge1x2');if(bf)bf.textContent=n;if(sb)sb.textContent=n}if(d.total25&&d.total25.success&&d.total25.data){const n=d.total25.data.length;const sb=document.getElementById('subBadgeTotal25');if(sb)sb.textContent=n}if(d.btts&&d.btts.success&&d.btts.data){const n=d.btts.data.length;const sb=document.getElementById('subBadgeBtts');if(sb)sb.textContent=n}if(d.tennis&&d.tennis.success&&d.tennis.data){const b=document.getElementById('badgeTennis');if(b)b.textContent=d.tennis.data.length}if(d.basketball&&d.basketball.success&&d.basketball.data){const b=document.getElementById('badgeBasketball');if(b)b.textContent=d.basketball.data.length}if(d.baseball&&d.baseball.success&&d.baseball.data){const b=document.getElementById('badgeBaseball');if(b)b.textContent=d.baseball.data.length}const sev=[];const sp={football:d.football,total25:d.total25,btts:d.btts,tennis:d.tennis,basketball:d.basketball,baseball:d.baseball};Object.keys(sp).forEach(s=>{const r=sp[s];if(r&&r.success&&r.data){r.data.forEach(e=>{const ch=checkSignal(e,s);if(ch)sev.push(ch)})}});const bs=document.getElementById('badgeSignals');if(bs)bs.textContent=sev.length}catch(e){console.error('Ошибка обновления бейджей:',e)}}
-document.addEventListener('DOMContentLoaded',function(){loadAllData().then(()=>{updateAllBadges();loadSignalsData();loadFootballData()});startAutoUpdate()});
-</script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllData().then(() => {
+                loadSignalsData();
+                loadFootballData();
+                loadTotal25Data();
+            });
+            startAutoUpdate();
+        });
+    </script>
+
+    <!-- ============================================================ -->
+    <!-- АВТОМАТИЧЕСКАЯ МИКРОРАЗМЕТКА SCHEMA.ORG -->
+    <!-- ============================================================ -->
+    <script>
+    (function() {
+        'use strict';
+
+        function injectJsonLd(data) {
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.textContent = JSON.stringify(data);
+            document.head.appendChild(script);
+        }
+
+        async function injectSportsEvents() {
+            try {
+                const response = await fetch('/cashflows_data.json?t=' + Date.now());
+                const data = await response.json();
+
+                const events = [];
+
+                // Футбол 1X2
+                if (data.football && data.football.success && data.football.data) {
+                    data.football.data.slice(0, 10).forEach(match => {
+                        if (!match.home || !match.away) return;
+                        events.push({
+                            "@context": "https://schema.org",
+                            "@type": "SportsEvent",
+                            "name": match.home + " — " + match.away,
+                            "startDate": match.date || new Date().toISOString(),
+                            "eventStatus": "https://schema.org/EventScheduled",
+                            "location": {
+                                "@type": "Place",
+                                "name": match.league || "Стадион"
+                            },
+                            "competitor": [
+                                { "@type": "SportsTeam", "name": match.home },
+                                { "@type": "SportsTeam", "name": match.away }
+                            ]
+                        });
+                    });
+                }
+
+                if (events.length > 0) {
+                    injectJsonLd({ "@context": "https://schema.org", "@graph": events });
+                    console.log('[Schema.org] SportsEvent: ' + events.length + ' матчей');
+                }
+            } catch (e) {
+                console.warn('[Schema.org] Ошибка SportsEvent:', e);
+            }
+        }
+
+        function injectWebSite() {
+            injectJsonLd({
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "SetTrue — Денежные потоки",
+                "url": "https://settrue.ru/cashflows/",
+                "description": "Денежные потоки в ставках на спорт в реальном времени"
+            });
+        }
+
+        function injectOrganization() {
+            injectJsonLd({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "SetTrue",
+                "url": "https://settrue.ru/",
+                "logo": "https://settrue.ru/logo.png"
+            });
+        }
+
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                injectWebSite();
+                injectOrganization();
+                injectSportsEvents();
+            }, 2000);
+        });
+    })();
+    </script>
 </body>
 </html>
