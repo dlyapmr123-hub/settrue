@@ -26,9 +26,6 @@
     <meta property="og:url" content="https://settrue.ru/robobet">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="SetTrue">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Робобет — математические прогнозы на футбол">
-    <meta name="twitter:description" content="Точные математические прогнозы на футбол на сегодня. ИИ анализирует статистику команд.">
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -104,8 +101,8 @@
         [data-theme="dark"] .rail-link.active{background:var(--lime);color:var(--lime-ink)}
         .rail-link.active::before{content:'';position:absolute;left:-22px;top:14px;bottom:14px;width:4px;background:var(--brand);border-radius:0 4px 4px 0}
         .rail-sep{width:32px;height:1px;background:var(--line);margin:8px 0}
-        .shell{margin-top:72px;margin-left:var(--rail);padding:26px 28px 60px;flex:1;display:flex;flex-direction:column;min-height:0}
-        .layout{max-width:1500px;margin:0 auto;display:flex;flex-direction:column;gap:22px;width:100%;flex:1;min-height:0}
+        .shell{margin-top:72px;margin-left:var(--rail);padding:26px 28px 60px;flex:1;display:flex;flex-direction:column}
+        .layout{max-width:1500px;margin:0 auto;display:flex;flex-direction:column;gap:22px;width:100%;flex:1}
         .hero{border-radius:var(--radius-xl);background:var(--ink);color:var(--bg);padding:30px 36px;position:relative;overflow:hidden;box-shadow:var(--shadow-lg);display:grid;grid-template-columns:1.5fr 1fr;gap:32px;align-items:center}
         [data-theme="dark"] .hero{background:var(--card);color:var(--ink)}
         .hero::after{content:'';position:absolute;right:-80px;top:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle, rgba(196,242,74,.35), transparent 65%);pointer-events:none}
@@ -138,24 +135,24 @@
         .tab.active .cnt{background:rgba(255,255,255,.2)}
         [data-theme="dark"] .tab.active .cnt{background:rgba(0,0,0,.15)}
 
-        .panel{display:none;flex:1;min-height:0;flex-direction:column}
-        .panel.active{display:flex}
-        @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+        /* Панели: без opacity:0 в анимации, чтобы iframe сразу был виден */
+        .panel{display:none}
+        .panel.active{display:block}
+        @keyframes rise{from{transform:translateY(10px)}to{transform:none}}
         .panel.active{animation:rise .35s cubic-bezier(.2,.7,.3,1) both}
 
-        /* ROBOBET */
-        .widget{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;flex:1;min-height:0}
+        .widget{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
         .widget-head{padding:16px 22px;background:var(--card-soft);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
         .widget-head .wt{font-family:var(--font-display);font-weight:700;font-size:16px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
         .widget-head .wt .chip{font-family:var(--font-mono);font-size:10px;font-weight:700;background:var(--brand-soft);color:var(--brand-ink);padding:3px 9px;border-radius:999px}
         [data-theme="dark"] .widget-head .wt .chip{color:var(--brand)}
         .widget-head .meta{font-size:11.5px;color:var(--ink-mute);font-weight:600;font-family:var(--font-mono)}
-        .widget-body{flex:1;min-height:0;position:relative;background:var(--bg-alt)}
-        .widget-body iframe{position:absolute;inset:0;width:100%;height:100%;border:none;background:transparent;display:block}
+        .widget-body{position:relative;width:100%;background:var(--bg-alt)}
+        .widget-body iframe{display:block;width:100%;height:1400px;border:none;background:var(--bg-alt)}
         .nav-blocker{position:absolute;bottom:0;left:0;right:0;height:35px;background:var(--bg-alt);z-index:5;pointer-events:auto}
 
         /* TRUBET TABLE */
-        .tbl-wrap{flex:1;min-height:0;overflow:auto;padding:0;background:var(--card)}
+        .tbl-wrap{width:100%;overflow:auto;background:var(--card)}
         .tbl{width:100%;border-collapse:collapse;font-size:12.5px}
         .tbl thead{background:var(--card-soft);position:sticky;top:0;z-index:2}
         .tbl thead th{color:var(--ink-mute);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;padding:11px 10px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap}
@@ -174,30 +171,37 @@
         [data-theme="dark"] .bet-cell{color:var(--brand)}
         .coef-cell{font-family:var(--font-mono);font-size:11.5px;font-weight:600}
         .coef-cell .sep{color:var(--line);margin:0 4px}
+
+        /* Результат: всегда белый/нейтральный цвет, независимо от исхода */
         .result-cell{font-family:var(--font-mono);font-weight:700;font-size:12px;color:var(--ink)}
-        .result-cell.live{color:var(--coral)}
-        .result-cell.done{color:var(--ink-soft)}
+
         .ind{display:inline-block;width:12px;height:12px;border-radius:50%}
         .ind.win{background:var(--brand);box-shadow:0 0 10px rgba(27,127,76,.4)}
-        .ind.lose{background:var(--coral);box-shadow:0 0 10px rgba(255,107,82,.4)}
+        .ind.lose{background:var(--ink-mute)}
         .ind.pending{border:2px dashed var(--ink-mute);background:transparent}
 
         .loading,.empty{padding:56px 20px;text-align:center;color:var(--ink-mute);font-weight:600}
         .loading .spinner{display:inline-block;width:26px;height:26px;border:3px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:spin .7s linear infinite;margin-bottom:12px}
         @keyframes spin{to{transform:rotate(360deg)}}
 
-        .partner{border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--brand),var(--brand-ink));color:#fff;padding:24px 30px;display:flex;align-items:center;justify-content:space-between;gap:24px;box-shadow:var(--shadow-lg);flex-wrap:wrap;position:relative;overflow:hidden}
-        .partner::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(196,242,74,.4), transparent 65%)}
+        .partner{border-radius:var(--radius-xl);background:var(--ink);color:var(--bg);padding:24px 30px;display:flex;align-items:center;justify-content:space-between;gap:24px;box-shadow:var(--shadow-lg);flex-wrap:wrap;position:relative;overflow:hidden}
+        [data-theme="dark"] .partner{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+        .partner::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(196,242,74,.35), transparent 65%)}
         .partner .left{display:flex;align-items:center;gap:16px;position:relative}
-        .partner .left .lab{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;background:rgba(255,255,255,.18);padding:5px 12px;border-radius:999px}
-        .partner .left .bk{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:20px}
+        .partner .left .lab{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;background:rgba(255,255,255,.12);padding:5px 12px;border-radius:999px;color:#fff}
+        [data-theme="dark"] .partner .left .lab{background:var(--card-soft);color:var(--ink-soft)}
+        .partner .left .bk{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:20px;color:#fff}
+        [data-theme="dark"] .partner .left .bk{color:var(--ink)}
         .partner .left .bk img{height:26px;filter:brightness(0) invert(1)}
+        [data-theme="dark"] .partner .left .bk img{filter:none}
         .partner .cta{display:flex;gap:10px;flex-wrap:wrap;position:relative}
         .partner .cta a{text-decoration:none;font-weight:700;font-size:13px;padding:11px 20px;border-radius:12px;transition:all .2s}
         .partner .cta a.primary{background:var(--lime);color:var(--lime-ink)}
         .partner .cta a.primary:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(196,242,74,.6)}
         .partner .cta a.ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.24)}
         .partner .cta a.ghost:hover{background:rgba(255,255,255,.22)}
+        [data-theme="dark"] .partner .cta a.ghost{background:var(--card-soft);color:var(--ink);border-color:var(--line)}
+        [data-theme="dark"] .partner .cta a.ghost:hover{background:var(--bg-alt)}
 
         .foot{margin-left:var(--rail);border-top:1px solid var(--line);background:var(--card-soft);padding:36px 28px 20px}
         .foot-inner{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px}
@@ -217,8 +221,8 @@
         .drawer a.active{background:var(--brand);color:#fff}
 
         @media (max-width:1280px){.hero{grid-template-columns:1fr}.foot-inner{grid-template-columns:1fr 1fr}}
-        @media (max-width:860px){:root{--rail:0px}.rail{display:none}.topbar{padding:0 18px}.menu-btn{display:grid}.shell{padding:20px 16px 40px}.foot{padding:28px 18px 16px}.partner{padding:22px}.partner .left .bk{font-size:17px}.tbl{font-size:11px}.tbl thead th,.tbl tbody td{padding:7px 5px}.tbl thead th:first-child,.tbl tbody td:first-child{padding-left:10px}.match-cell{font-size:11.5px;min-width:110px}.nav-blocker{height:30px}}
-        @media (max-width:600px){.topbar{padding:0 14px;height:64px}.brand-logo{height:30px}.brand-name{font-size:17px}.clock{font-size:11px;padding:7px 10px}.icon-btn{width:40px;height:40px}.hero{padding:20px;border-radius:22px}.hero-stats{grid-template-columns:1fr 1fr;gap:10px;padding:14px}.hero-stat .num{font-size:18px}.foot-inner{grid-template-columns:1fr;gap:24px}.tabs{gap:4px;padding:4px}.tab{font-size:11.5px;padding:10px 8px;min-width:auto}.widget-head{padding:12px 14px}.widget-head .wt{font-size:14px}.tbl{font-size:10px}.tbl thead th,.tbl tbody td{padding:5px 4px}.match-cell{font-size:10.5px;min-width:90px}.bet-cell{font-size:10.5px;padding:2px 7px}}
+        @media (max-width:860px){:root{--rail:0px}.rail{display:none}.topbar{padding:0 18px}.menu-btn{display:grid}.shell{padding:20px 16px 40px}.foot{padding:28px 18px 16px}.partner{padding:22px}.partner .left .bk{font-size:17px}.tbl{font-size:11px}.tbl thead th,.tbl tbody td{padding:7px 5px}.tbl thead th:first-child,.tbl tbody td:first-child{padding-left:10px}.match-cell{font-size:11.5px;min-width:110px}.nav-blocker{height:30px}.widget-body iframe{height:1600px}}
+        @media (max-width:600px){.topbar{padding:0 14px;height:64px}.brand-logo{height:30px}.brand-name{font-size:17px}.clock{font-size:11px;padding:7px 10px}.icon-btn{width:40px;height:40px}.hero{padding:20px;border-radius:22px}.hero-stats{grid-template-columns:1fr 1fr;gap:10px;padding:14px}.hero-stat .num{font-size:18px}.foot-inner{grid-template-columns:1fr;gap:24px}.tabs{gap:4px;padding:4px}.tab{font-size:11.5px;padding:10px 8px;min-width:auto}.widget-head{padding:12px 14px}.widget-head .wt{font-size:14px}.tbl{font-size:10px}.tbl thead th,.tbl tbody td{padding:5px 4px}.match-cell{font-size:10.5px;min-width:90px}.bet-cell{font-size:10.5px;padding:2px 7px}.widget-body iframe{height:1800px}}
     </style>
 </head>
 <body>
@@ -264,7 +268,7 @@
                 <p>Робобет формирует прогнозы на основе математических моделей. Трубет показывает вероятности исходов 1X2 от ИИ и результаты матчей. Всё бесплатно, без регистрации.</p>
             </div>
             <div class="hero-stats">
-                <div class="hero-stat"><span class="num lime" id="heroRobobet">LIVE</span><span class="lbl">Робобет</span></div>
+                <div class="hero-stat"><span class="num lime">LIVE</span><span class="lbl">Робобет</span></div>
                 <div class="hero-stat"><span class="num coral" id="heroTrubet">0</span><span class="lbl">Матчей Трубет</span></div>
                 <div class="hero-stat"><span class="num sky" id="heroUpdated">—</span><span class="lbl">Обновлено</span></div>
             </div>
@@ -282,7 +286,7 @@
                     <div class="meta">📅 <span id="dateDisplay">--.--.----</span></div>
                 </div>
                 <div class="widget-body">
-                    <iframe id="robobetFrame" loading="lazy" title="Робобет — математические прогнозы на футбол" allowtransparency="true" style="background:var(--bg-alt);"></iframe>
+                    <iframe id="robobetFrame" loading="lazy" title="Робобет — математические прогнозы на футбол" allowtransparency="true" src="about:blank"></iframe>
                     <div class="nav-blocker"></div>
                 </div>
             </div>
@@ -505,7 +509,6 @@
         html += '</tr></thead><tbody>';
 
         matches.forEach(m => {
-            const isLive = m.result && m.result !== '' && m.result !== '- : -' && m.result !== ' ';
             const betRes = getBetResult(m.bet, m.result);
 
             const coefParts = [];
@@ -526,7 +529,7 @@
             html += '<td class="' + getProbClass(m.p2) + '">' + (m.p2 || '—') + '</td>';
             html += '<td><span class="bet-cell">' + (m.bet || '—') + '</span></td>';
             html += '<td class="coef-cell">' + coefHtml + '</td>';
-            html += '<td class="result-cell ' + (isLive ? 'live' : 'done') + '">' + (m.result || '—') + '</td>';
+            html += '<td class="result-cell">' + (m.result || '—') + '</td>';
             html += '<td>' + ind + '</td>';
             html += '</tr>';
         });
