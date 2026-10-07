@@ -151,10 +151,13 @@
         .tip.premium{border-color:rgba(255,184,0,.35)}
         .tip-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
         .tip-num{font-family:var(--font-mono);font-size:11px;font-weight:700;color:var(--ink-mute);background:var(--card-soft);padding:3px 9px;border-radius:8px;border:1px solid var(--line)}
-        .tip-badge{font-size:9.5px;font-weight:800;padding:4px 10px;border-radius:999px;letter-spacing:.06em;text-transform:uppercase;margin-left:auto}
+        .tip-badges{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+        .tip-badge{font-size:9.5px;font-weight:800;padding:4px 10px;border-radius:999px;letter-spacing:.06em;text-transform:uppercase}
         .tip-badge.premium{background:var(--sun);color:#3a2c07}
-        .tip-badge.high{background:var(--brand-soft);color:var(--brand-ink)}
-        [data-theme="dark"] .tip-badge.high{color:var(--brand)}
+        .tip-badge.profit{background:var(--brand-soft);color:var(--brand-ink)}
+        [data-theme="dark"] .tip-badge.profit{color:var(--brand)}
+        .tip-badge.trends{background:var(--sky-soft);color:#1d6cb0}
+        [data-theme="dark"] .tip-badge.trends{color:var(--sky)}
         .tip-teams{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:10px;font-family:var(--font-display);font-weight:600;font-size:15px;letter-spacing:-.01em}
         .tip-teams img{width:22px;height:22px;border-radius:50%;object-fit:contain;background:var(--card-soft);flex-shrink:0}
         .tip-teams .vs{color:var(--ink-mute);font-weight:500;font-size:13px}
@@ -173,18 +176,24 @@
         .loading .spinner{display:inline-block;width:26px;height:26px;border:3px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:spin .7s linear infinite;margin-bottom:12px}
         @keyframes spin{to{transform:rotate(360deg)}}
 
-        .partner{grid-column:1 / -1;border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--brand),var(--brand-ink));color:#fff;padding:26px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;box-shadow:var(--shadow-lg);flex-wrap:wrap;position:relative;overflow:hidden}
-        .partner::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(196,242,74,.4), transparent 65%)}
+        .partner{grid-column:1 / -1;border-radius:var(--radius-xl);background:var(--ink);color:var(--bg);padding:26px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;box-shadow:var(--shadow-lg);flex-wrap:wrap;position:relative;overflow:hidden}
+        [data-theme="dark"] .partner{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+        .partner::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(196,242,74,.35), transparent 65%)}
         .partner .left{display:flex;align-items:center;gap:16px;position:relative}
-        .partner .left .lab{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;background:rgba(255,255,255,.18);padding:5px 12px;border-radius:999px}
-        .partner .left .bk{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:20px}
+        .partner .left .lab{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;background:rgba(255,255,255,.12);padding:5px 12px;border-radius:999px;color:#fff}
+        [data-theme="dark"] .partner .left .lab{background:var(--card-soft);color:var(--ink-soft)}
+        .partner .left .bk{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:20px;color:#fff}
+        [data-theme="dark"] .partner .left .bk{color:var(--ink)}
         .partner .left .bk img{height:26px;filter:brightness(0) invert(1)}
+        [data-theme="dark"] .partner .left .bk img{filter:none}
         .partner .cta{display:flex;gap:10px;flex-wrap:wrap;position:relative}
         .partner .cta a{text-decoration:none;font-weight:700;font-size:13px;padding:11px 20px;border-radius:12px;transition:all .2s}
         .partner .cta a.primary{background:var(--lime);color:var(--lime-ink)}
         .partner .cta a.primary:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(196,242,74,.6)}
         .partner .cta a.ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.24)}
         .partner .cta a.ghost:hover{background:rgba(255,255,255,.22)}
+        [data-theme="dark"] .partner .cta a.ghost{background:var(--card-soft);color:var(--ink);border-color:var(--line)}
+        [data-theme="dark"] .partner .cta a.ghost:hover{background:var(--bg-alt)}
 
         .foot{margin-left:var(--rail);border-top:1px solid var(--line);background:var(--card-soft);padding:36px 28px 20px}
         .foot-inner{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px}
@@ -253,7 +262,7 @@
             <div class="hero-stats">
                 <div class="hero-stat"><span class="num lime" id="heroTotal">0</span><span class="lbl">Прогнозов</span></div>
                 <div class="hero-stat"><span class="num coral" id="heroPremium">0</span><span class="lbl">Premium</span></div>
-                <div class="hero-stat"><span class="num sky">72%</span><span class="lbl">Точность</span></div>
+                <div class="hero-stat"><span class="num sky" id="heroProfit">0</span><span class="lbl">Сверхприбыль</span></div>
             </div>
         </section>
 
@@ -265,12 +274,6 @@
                 <div class="side-stat"><span class="k">Сверхприбыль</span><span class="v brand" id="sideTop">0</span></div>
                 <div class="side-stat"><span class="k">С трендами</span><span class="v sky" id="sideTrends">0</span></div>
                 <div class="side-stat"><span class="k">Обновлено</span><span class="v" id="sideUpdated" style="font-size:12px;font-family:var(--font-mono)">—</span></div>
-            </div>
-            <div class="side-card">
-                <h3>Популярное</h3>
-                <div class="side-stat"><span class="k">Победа фаворита</span><span class="v brand">68%</span></div>
-                <div class="side-stat"><span class="k">Тотал больше 2.5</span><span class="v brand">54%</span></div>
-                <div class="side-stat"><span class="k">Обе забьют</span><span class="v brand">42%</span></div>
             </div>
         </aside>
 
@@ -332,7 +335,7 @@
         const c = document.getElementById('particles-bg'); if(!c) return;
         const n = window.innerWidth<768?18:45; c.innerHTML='';
         for(let i=0;i<n;i++){
-            const p=document.createElement('p'); p.className='particle';
+            const p=document.createElement('div'); p.className='particle';
             const s=Math.random()*60+15;
             p.style.width=s+'px'; p.style.height=s+'px';
             p.style.left=Math.random()*100+'%';
@@ -368,6 +371,8 @@
         document.getElementById('sideTrends').textContent = trends;
         document.getElementById('heroTotal').textContent = total;
         document.getElementById('heroPremium').textContent = premium;
+        const hp = document.getElementById('heroProfit');
+        if(hp) hp.textContent = top;
     }
 
     function renderTips(data){
@@ -381,17 +386,25 @@
 
         let html = '';
         sorted.forEach((tip, index) => {
-            const isPrem = tip.isPremium || false;
-            const cls = isPrem ? 'premium' : '';
-            const badgeCls = isPrem ? 'premium' : 'high';
-            const badgeTxt = isPrem ? 'PREMIUM' : 'ТОП';
+            const isPrem = tip.isPremium === true;
+            const isTopProfit = (tip.profit || 0) > 500;
+            const hasTrends = tip.hasTrends === true && tip.trends && tip.trends.length > 0;
+
             let pred = tip.prediction || '';
             if(!pred && tip.link){
                 const m = tip.link.match(/-([a-zA-Z0-9\-]+)-prognoz/);
                 if(m && m[1]) pred = m[1].replace(/-/g,' ');
             }
+
+            let badges = '';
+            if(isPrem) badges += '<span class="tip-badge premium">PREMIUM</span>';
+            if(isTopProfit) badges += '<span class="tip-badge profit">СВЕРХПРИБЫЛЬ</span>';
+            if(hasTrends) badges += '<span class="tip-badge trends">ТРЕНДЫ</span>';
+
+            const cls = isPrem ? 'premium' : '';
+
             html += '<div class="tip ' + cls + '">';
-            html += '<div class="tip-head"><span class="tip-num">#' + (index+1) + '</span><span class="tip-badge ' + badgeCls + '">' + badgeTxt + '</span></div>';
+            html += '<div class="tip-head"><span class="tip-num">#' + (index+1) + '</span><div class="tip-badges">' + badges + '</div></div>';
             html += '<div class="tip-teams">';
             if(tip.logo1) html += '<img src="' + tip.logo1 + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">';
             html += '<span>' + (tip.team1 || '—') + '</span><span class="vs">—</span>';
@@ -400,10 +413,9 @@
             if(pred) html += '<div class="tip-pred">🎯 ' + pred + '</div>';
             html += '<div class="tip-details">';
             if(tip.odds) html += '<span class="d"><span class="lb">Коэф:</span><span class="vl">' + tip.odds + '</span></span>';
-            if(isPrem) html += '<span class="d"><span class="lb">⭐</span><span class="vl sun">Premium</span></span>';
             if(tip.profit) html += '<span class="d"><span class="lb">Профит:</span><span class="vl">+' + tip.profit + '%</span></span>';
             html += '</div>';
-            if(tip.hasTrends && tip.trends && tip.trends.length > 0){
+            if(hasTrends){
                 html += '<div class="tip-trends"><div class="tl">📊 Тренды (' + tip.trends.length + ')</div>';
                 tip.trends.forEach(t => {
                     const clean = String(t).replace(/<strong>/g,'').replace(/<\/strong>/g,'');
