@@ -181,6 +181,21 @@ a{color:inherit}
 .stats-row .v{font-family:var(--font-display);font-weight:700;font-size:18px;letter-spacing:-.02em}
 .stats-row .v.brand{color:var(--brand)}
 .stats-row .v.coral{color:var(--coral)}
+.flowrow{display:flex;flex-direction:column;gap:6px;padding:11px 12px;border-radius:12px;background:var(--card-soft);border:1px solid var(--line);margin-bottom:8px;transition:border-color .2s,transform .2s}
+.flowrow:hover{border-color:var(--brand);transform:translateX(3px)}
+.flowrow:last-child{margin-bottom:0}
+.flowrow .flow-top{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--ink-mute);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.flowrow .flow-sport{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;background:var(--brand-soft);color:var(--brand-ink);font-size:11px;flex-shrink:0}
+[data-theme="dark"] .flowrow .flow-sport{color:var(--brand)}
+.flowrow .flow-league{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.flowrow .flow-match{font-family:var(--font-display);font-weight:600;font-size:12.5px;letter-spacing:-.01em;line-height:1.3;color:var(--ink)}
+.flowrow .flow-bet{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:2px}
+.flowrow .flow-outcome{font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;background:var(--brand-soft);color:var(--brand-ink);letter-spacing:.02em}
+[data-theme="dark"] .flowrow .flow-outcome{color:var(--brand)}
+.flowrow .flow-outcome.low{background:var(--coral-soft);color:#c9301a}
+[data-theme="dark"] .flowrow .flow-outcome.low{color:var(--coral)}
+.flowrow .flow-volume{font-family:var(--font-mono);font-size:11.5px;font-weight:700;color:var(--brand)}
+.flowrow .flow-signal{font-family:var(--font-mono);font-size:11px;font-weight:700;color:var(--ink-soft)}
 .partner{grid-column:1 / -1;border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--brand),var(--brand-ink));color:#fff;padding:26px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;box-shadow:var(--shadow-lg);flex-wrap:wrap;position:relative;overflow:hidden}
 .partner::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(196,242,74,.4), transparent 65%)}
 .partner .left{display:flex;align-items:center;gap:16px;position:relative}
@@ -328,10 +343,8 @@ a{color:inherit}
         <div id="topTipsContainer"><div class="tiprow" style="text-align:center;color:var(--ink-mute);font-size:12px;padding:18px 10px;">Загрузка…</div></div>
       </div>
       <div class="side-card">
-        <h3>Статистика дня</h3>
-        <div class="stats-row"><span class="k">Матчей сегодня</span><span class="v" id="sideMatches">—</span></div>
-        <div class="stats-row"><span class="k">LIVE сейчас</span><span class="v coral" id="sideLive">—</span></div>
-        <div class="stats-row"><span class="k">Точность прогнозов</span><span class="v brand">72%</span></div>
+        <h3>Топ 5 денежных потоков <span class="chip">FLOW</span></h3>
+        <div id="topFlowsContainer"><div class="tiprow" style="text-align:center;color:var(--ink-mute);font-size:12px;padding:18px 10px;">Загрузка…</div></div>
       </div>
     </aside>
 
@@ -408,16 +421,95 @@ let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(crea
 document.getElementById('menuToggle').addEventListener('click',function(){document.getElementById('drawer').classList.toggle('open');this.classList.toggle('on')});
 function openPartnerLink(type){const u={reg:'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate',bonus:'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate',freebets:'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate'};if(u[type]){if(typeof ym!=='undefined')ym(108400965,'reachGoal','pari_'+type);window.open(u[type],'_blank')}}
 async function loadTopTips(){const c=document.getElementById('topTipsContainer');try{const r=await fetch('/feed_data.json?t='+Date.now());if(!r.ok)throw new Error('not found');const result=await r.json();if(result.success&&result.data&&result.data.length>0){const tips=result.data.filter(t=>t.isPremium===true||(t.profit||0)>500);const unique=[];const seen=new Set();tips.forEach(t=>{const k=(t.team1||'')+'|'+(t.team2||'');if(!seen.has(k)){seen.add(k);unique.push(t)}});const top=unique.slice(0,10);if(!top.length){c.innerHTML='<div class="tiprow" style="text-align:center;color:var(--ink-mute);font-size:12px;padding:18px 10px;">Нет премиум-прогнозов</div>';return}let html='';top.forEach(tip=>{const isPrem=tip.isPremium||false;const bc=isPrem?'premium':'';const bt=isPrem?'PREMIUM':'ТОП';let pred=tip.prediction||'';if(!pred&&tip.link){const m=tip.link.match(/-([a-zA-Z0-9\-]+)-prognoz/);if(m&&m[1])pred=m[1].replace(/-/g,' ')}html+=`<div class="tiprow"><div class="row">${tip.logo1?`<img src="${tip.logo1}" alt="" loading="lazy" onerror="this.style.display='none'">`:''}<span class="tn">${tip.team1||'—'} — ${tip.team2||'—'}</span><span class="badge ${bc}">${bt}</span></div>${pred?`<div class="pred">${pred}</div>`:''}</div>`});c.innerHTML=html}else{c.innerHTML='<div class="tiprow" style="text-align:center;color:var(--ink-mute);font-size:12px;padding:18px 10px;">Нет доступных прогнозов</div>'}}catch(e){c.innerHTML='<div class="tiprow" style="text-align:center;color:var(--ink-mute);font-size:12px;padding:18px 10px;">Ошибка загрузки</div>'}}
+async function loadTopFlows(){
+  const c=document.getElementById('topFlowsContainer');
+  if(!c)return;
+  try{
+    const r=await fetch('/cashflows_data.json?t='+Date.now());
+    if(!r.ok)throw new Error('not found');
+    const data=await r.json();
+
+    const items=[];
+    const outcomeLabels={home:'П1',draw:'X',away:'П2',under:'ТМ 2.5',over:'ТБ 2.5',yes:'ОЗ Да',no:'ОЗ Нет'};
+
+    function pickBest(ev){
+      const keys=Object.keys(ev.odds||{});
+      let best=null;
+      keys.forEach(k=>{
+        const o=ev.odds[k]||{};
+        const m=parseFloat(o.money)||0;
+        const s=parseFloat(o.signal)||0;
+        if(!best||m>best.money)best={key:k,money:m,signal:s,value:o.value};
+      });
+      return best;
+    }
+
+    if(data.football&&data.football.data){
+      data.football.data
+        .map(ev=>({ev,volume:parseFloat(ev.volume)||0,best:pickBest(ev)}))
+        .filter(x=>x.best)
+        .sort((a,b)=>b.volume-a.volume)
+        .slice(0,3)
+        .forEach(x=>items.push({
+          sport:'⚽',
+          league:x.ev.league||'',
+          match:(x.ev.home||'')+' — '+(x.ev.away||''),
+          outcome:outcomeLabels[x.best.key]||x.best.key,
+          signal:x.best.signal,
+          volume:x.volume,
+          low:x.best.signal<80
+        }));
+    }
+
+    if(data.tennis&&data.tennis.data){
+      data.tennis.data
+        .map(ev=>({ev,volume:parseFloat(ev.volume)||0,best:pickBest(ev)}))
+        .filter(x=>x.best)
+        .sort((a,b)=>b.volume-a.volume)
+        .slice(0,2)
+        .forEach(x=>items.push({
+          sport:'🎾',
+          league:x.ev.league||'',
+          match:(x.ev.home||'')+' — '+(x.ev.away||''),
+          outcome:outcomeLabels[x.best.key]||x.best.key,
+          signal:x.best.signal,
+          volume:x.volume,
+          low:x.best.signal<80
+        }));
+    }
+
+    if(!items.length){
+      c.innerHTML='<div class="tiprow" style="text-align:center;color:var(--ink-mute);font-size:12px;padding:18px 10px;">Нет данных</div>';
+      return;
+    }
+
+    c.innerHTML=items.map(it=>`
+      <div class="flowrow">
+        <div class="flow-top">
+          <span class="flow-sport">${it.sport}</span>
+          <span class="flow-league">${it.league}</span>
+        </div>
+        <div class="flow-match">${it.match}</div>
+        <div class="flow-bet">
+          <span class="flow-outcome ${it.low?'low':''}">${it.outcome} · ${it.signal}%</span>
+          <span class="flow-volume">£${Number(it.volume).toLocaleString('ru-RU')}</span>
+        </div>
+      </div>
+    `).join('');
+  }catch(e){
+    c.innerHTML='<div class="tiprow" style="text-align:center;color:var(--ink-mute);font-size:12px;padding:18px 10px;">Нет данных</div>';
+  }
+}
 const API_URL='https://script.google.com/macros/s/AKfycbxL0MmOjg_gew24qRo-x7bhj-cb0PZwsH_LslT5ya71U7FH73Gs2XKQdfuKvU734WFH/exec';
 let cachedMatches=[];const matchElements={};
 function getMatchId(m){return m.team1+'|'+m.team2+'|'+m.tournament}
 function matchesEqual(a,b){return a.team1===b.team1&&a.team2===b.team2&&a.score1===b.score1&&a.score2===b.score2&&a.status===b.status&&a.isLive===b.isLive&&a.isFinished===b.isFinished&&a.tournament===b.tournament}
 function createMatchHTML(match){const isLive=match.isLive;const isFin=match.isFinished||(match.status&&match.status.toLowerCase().includes('завершён'))||false;const s1=match.score1!==null?match.score1:'–';const s2=match.score2!==null?match.score2:'–';let cls='',st=match.status||'Не начался',chipCls='',chipTxt='Скоро';if(isLive){cls='live';chipCls='live';chipTxt='LIVE'}else if(isFin){cls='finished';chipCls='done';chipTxt='Завершён'}const th=match.timeDisplay&&!isLive&&!isFin?'<span class="time">🕐 '+match.timeDisplay+'</span>':'';const l1=match.logo1?'<img src="'+match.logo1+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">':'<span style="font-size:20px">⚽</span>';const l2=match.logo2?'<img src="'+match.logo2+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">':'<span style="font-size:20px">⚽</span>';const blink=isLive?'<span class="blink"></span>':'';return '<div class="match '+cls+'" data-match-id="'+getMatchId(match)+'">'+'<div class="match-head"><span class="match-league">'+match.tournament+'</span>'+'<span class="status-chip '+chipCls+'">'+blink+chipTxt+'</span></div>'+'<div class="match-body">'+'<div class="club"><div class="logo">'+l1+'</div><div class="name">'+match.team1+'</div></div>'+'<div class="scoreboard"><span class="val">'+s1+'</span><span class="sep">:</span><span class="val">'+s2+'</span></div>'+'<div class="club"><div class="logo">'+l2+'</div><div class="name">'+match.team2+'</div></div>'+'</div>'+'<div class="match-foot"><span>'+st+'</span>'+th+'<span class="dot-refresh"></span></div>'+'</div>'}
-async function loadMatches(){const c=document.getElementById('matchesContainer');if(!c)return;try{const r=await fetch(API_URL);const d=await r.json();if(d.status==='success'&&d.matches&&d.matches.length>0){cachedMatches=d.matches;document.getElementById('skeleton-loader').style.display='none';renderMatches(c,d.matches);document.getElementById('totalMatches').textContent=d.matches.length;document.getElementById('liveMatches').textContent=d.matches.filter(m=>m.isLive).length;document.getElementById('matchCount').textContent=d.matches.length;const sm=document.getElementById('sideMatches');if(sm)sm.textContent=d.matches.length;const sl=document.getElementById('sideLive');if(sl)sl.textContent=d.matches.filter(m=>m.isLive).length;startUpdate()}else{document.getElementById('skeleton-loader').style.display='none';c.innerHTML='<div style="grid-column:1/-1;text-align:center;color:var(--ink-mute);padding:40px 0;font-weight:600;">Нет доступных матчей</div>'}}catch(e){document.getElementById('skeleton-loader').style.display='none';c.innerHTML='<div style="grid-column:1/-1;text-align:center;color:var(--ink-mute);padding:40px 0;font-weight:600;">Ошибка загрузки</div>'}}
+async function loadMatches(){const c=document.getElementById('matchesContainer');if(!c)return;try{const r=await fetch(API_URL);const d=await r.json();if(d.status==='success'&&d.matches&&d.matches.length>0){cachedMatches=d.matches;document.getElementById('skeleton-loader').style.display='none';renderMatches(c,d.matches);document.getElementById('totalMatches').textContent=d.matches.length;document.getElementById('liveMatches').textContent=d.matches.filter(m=>m.isLive).length;document.getElementById('matchCount').textContent=d.matches.length;startUpdate()}else{document.getElementById('skeleton-loader').style.display='none';c.innerHTML='<div style="grid-column:1/-1;text-align:center;color:var(--ink-mute);padding:40px 0;font-weight:600;">Нет доступных матчей</div>'}}catch(e){document.getElementById('skeleton-loader').style.display='none';c.innerHTML='<div style="grid-column:1/-1;text-align:center;color:var(--ink-mute);padding:40px 0;font-weight:600;">Ошибка загрузки</div>'}}
 function renderMatches(c,matches){let h='';matches.slice(0,20).forEach((m,i)=>{h+=createMatchHTML(m).replace('<div class="match','<div class="match" style="animation-delay:'+(i*0.04)+'s"')});c.innerHTML=h;c.querySelectorAll('.match').forEach(el=>{const id=el.dataset.matchId;if(id)matchElements[id]=el})}
-function startUpdate(){if(window.updateInterval)clearInterval(window.updateInterval);window.updateInterval=setInterval(async()=>{try{const r=await fetch(API_URL),d=await r.json();if(d.status==='success'&&d.matches&&d.matches.length>0){updateMatches(d.matches);const lm=document.getElementById('liveMatches');if(lm)lm.textContent=d.matches.filter(m=>m.isLive).length;const sl=document.getElementById('sideLive');if(sl)sl.textContent=d.matches.filter(m=>m.isLive).length}}catch(e){}},60000)}
+function startUpdate(){if(window.updateInterval)clearInterval(window.updateInterval);window.updateInterval=setInterval(async()=>{try{const r=await fetch(API_URL),d=await r.json();if(d.status==='success'&&d.matches&&d.matches.length>0){updateMatches(d.matches);const lm=document.getElementById('liveMatches');if(lm)lm.textContent=d.matches.filter(m=>m.isLive).length}}catch(e){}},60000)}
 function updateMatches(nm){const c=document.getElementById('matchesContainer');if(!c)return;const om={},nnm={};cachedMatches.forEach(m=>{om[getMatchId(m)]=m});nm.forEach(m=>{nnm[getMatchId(m)]=m});const tu=[];nm.forEach(m=>{const id=getMatchId(m);if(om[id]&&!matchesEqual(om[id],m))tu.push(m)});const tr=[];cachedMatches.forEach(m=>{const id=getMatchId(m);if(!nnm[id])tr.push(id)});tr.forEach(id=>{const el=matchElements[id];if(el&&el.parentNode){el.parentNode.removeChild(el);delete matchElements[id]}});tu.forEach(m=>{const id=getMatchId(m),el=matchElements[id];if(el){el.classList.add('updating');const t=document.createElement('div');t.innerHTML=createMatchHTML(m);const ne=t.firstElementChild;el.innerHTML=ne.innerHTML;el.className=ne.className;el.dataset.matchId=ne.dataset.matchId;setTimeout(()=>el.classList.remove('updating'),600)}});nm.forEach(m=>{const id=getMatchId(m);if(nnm[id]&&!matchElements[id]){const t=document.createElement('div');t.innerHTML=createMatchHTML(m);const ne=t.firstElementChild;c.appendChild(ne);const nid=ne.dataset.matchId;if(nid)matchElements[nid]=ne}});cachedMatches=nm}
-document.addEventListener('DOMContentLoaded',function(){loadTopTips();loadMatches();setInterval(loadTopTips,120000)});
+document.addEventListener('DOMContentLoaded',function(){loadTopTips();loadMatches();loadTopFlows();setInterval(loadTopTips,120000);setInterval(loadTopFlows,300000)});
 (function(){'use strict';function inject(d){const s=document.createElement('script');s.type='application/ld+json';s.textContent=JSON.stringify(d);document.head.appendChild(s)}async function sports(){try{const r=await fetch(API_URL);const d=await r.json();if(d.status==='success'&&d.matches&&d.matches.length>0){const ev=[];d.matches.slice(0,10).forEach(m=>{if(!m.team1||!m.team2)return;ev.push({"@context":"https://schema.org","@type":"SportsEvent","name":m.team1+" — "+m.team2,"startDate":m.timeDisplay||new Date().toISOString(),"eventStatus":"https://schema.org/EventScheduled","location":{"@type":"Place","name":m.tournament||"Стадион"},"competitor":[{"@type":"SportsTeam","name":m.team1},{"@type":"SportsTeam","name":m.team2}]})});if(ev.length)inject({"@context":"https://schema.org","@graph":ev})}}catch(e){}}function faq(){const items=document.querySelectorAll('.faq .faq-item');if(!items.length)return;const qs=[];items.forEach(i=>{const q=i.querySelector('h3'),a=i.querySelector('p');if(q&&a)qs.push({"@type":"Question","name":q.textContent.replace('?','').trim(),"acceptedAnswer":{"@type":"Answer","text":a.textContent.trim()}})});if(qs.length)inject({"@context":"https://schema.org","@type":"FAQPage","mainEntity":qs})}function site(){inject({"@context":"https://schema.org","@type":"WebSite","name":"SetTrue","url":"https://settrue.ru/","description":"Нейросеть для анализа футбольных матчей, робобет и денежные потоки в ставках на спорт"})}function org(){inject({"@context":"https://schema.org","@type":"Organization","name":"SetTrue","url":"https://settrue.ru/","logo":"https://settrue.ru/logo.png","email":"SetTrueForecast@yandex.ru"})}window.addEventListener('load',function(){setTimeout(function(){site();org();faq();sports()},1500)})})();
 </script>
 </body>
