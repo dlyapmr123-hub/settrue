@@ -4,8 +4,6 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7841660916895595" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- === YANDEX METRIKA === -->
     <meta name="yandex-verification" content="0ac8a3221431959f" />
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){
@@ -18,966 +16,541 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
-    <!-- === SEO META TAGS === -->
     <title>Робобет — математические прогнозы на футбол сегодня | SetTrue</title>
     <meta name="description" content="Робобет — точные математические прогнозы на футбол на сегодня. Искусственный интеллект анализирует статистику команд и выдает вероятности исходов матчей. Бесплатные прогнозы на спорт.">
     <meta name="keywords" content="робобет, математические прогнозы на футбол, прогнозы на сегодня, искусственный интеллект, статистика футбола, вероятности исходов, бесплатные прогнозы, ставки на спорт">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://settrue.ru/robobet">
-    
-    <!-- === Open Graph === -->
     <meta property="og:title" content="Робобет — математические прогнозы на футбол">
     <meta property="og:description" content="Точные математические прогнозы на футбол на сегодня. ИИ анализирует статистику и выдает вероятности исходов матчей.">
     <meta property="og:url" content="https://settrue.ru/robobet">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="SetTrue">
-    
-    <!-- === Twitter Card === -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Робобет — математические прогнозы на футбол">
     <meta name="twitter:description" content="Точные математические прогнозы на футбол на сегодня. ИИ анализирует статистику команд.">
-    
-    <!-- === FAVICON === -->
+
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
-    <meta name="theme-color" content="#050507">
+    <meta name="theme-color" content="#f4f1ea">
 
-    <!-- === FONTS === -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
-        /* ===== ТЕМЫ ===== */
-        :root {
-            --bg-primary: #080808;
-            --bg-secondary: #0d0d0d;
-            --bg-card: rgba(255,255,255,0.03);
-            --bg-card-hover: rgba(0, 204, 68, 0.04);
-            --border-color: rgba(255,255,255,0.06);
-            --border-hover: rgba(0, 204, 68, 0.3);
-            --text-primary: #f0f0f0;
-            --text-secondary: #999;
-            --text-muted: #555;
-            --green: #00cc44;
-            --green-glow: rgba(0, 204, 68, 0.15);
-            --header-bg: rgba(8,8,8,0.85);
-            --badge-bg: rgba(0, 204, 68, 0.10);
-            --tab-hover: rgba(255,255,255,0.05);
-            --tab-active: rgba(0, 204, 68, 0.10);
-            --prob-high: #4CAF50;
-            --prob-mid: #FFC107;
-            --prob-low: #f44336;
-            --result-win: #4CAF50;
-            --result-lose: #f44336;
-            --result-pending: #555;
-            --header-height: 64px;
-            --font-mono: 'JetBrains Mono', monospace;
-            --skeleton-base: rgba(255,255,255,0.05);
-            --skeleton-highlight: rgba(255,255,255,0.1);
-            --premium-color: #FFD700;
-            --live-bg: rgba(0, 204, 68, 0.08);
-            --live-border: rgba(0, 204, 68, 0.25);
-            --finished-bg: rgba(255,255,255,0.02);
-            --finished-border: rgba(255,255,255,0.04);
+        :root{
+            --bg:#f2efe8;--bg-alt:#eae6dc;--ink:#131a16;--ink-soft:#4a544c;--ink-mute:#8b948c;
+            --line:#d6d1c5;--card:#ffffff;--card-soft:#faf8f3;
+            --brand:#1b7f4c;--brand-ink:#0e5231;--brand-soft:#d9f0e2;
+            --lime:#c4f24a;--lime-ink:#2c3d09;--coral:#ff6b52;--coral-soft:#ffe2dc;
+            --sky:#3aa8f0;--sky-soft:#dcefff;--violet:#8b5cf6;--violet-soft:#eee6ff;
+            --sun:#ffb800;--sun-soft:#fff0cc;
+            --shadow:0 1px 0 rgba(19,26,22,.06), 0 12px 32px -16px rgba(19,26,22,.22);
+            --shadow-lg:0 2px 0 rgba(19,26,22,.06), 0 28px 60px -28px rgba(19,26,22,.35);
+            --radius-xl:28px;--radius-lg:20px;--radius-md:14px;--radius-sm:10px;
+            --font-display:'Space Grotesk',sans-serif;--font-body:'Manrope',sans-serif;--font-mono:'JetBrains Mono',monospace;
+            --rail:84px;
         }
+        [data-theme="dark"]{
+            --bg:#0c1210;--bg-alt:#111a16;--ink:#eef3ee;--ink-soft:#a8b3aa;--ink-mute:#5c6760;
+            --line:#1f2a24;--card:#141d18;--card-soft:#101814;
+            --brand:#5fe89a;--brand-ink:#bfffd8;--brand-soft:#163323;
+            --lime:#d6ff5c;--lime-ink:#1a2404;--coral:#ff8168;--coral-soft:#3a1c15;
+            --sky:#6cc0ff;--sky-soft:#0f2534;--violet:#b394ff;--violet-soft:#221941;
+            --sun:#ffc93c;--sun-soft:#3a2c07;
+            --shadow:0 1px 0 rgba(255,255,255,.03), 0 14px 36px -18px rgba(0,0,0,.7);
+            --shadow-lg:0 2px 0 rgba(255,255,255,.03), 0 32px 64px -28px rgba(0,0,0,.85);
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{background:var(--bg);color:var(--ink);font-family:var(--font-body);min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.55;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased;
+            background-image:radial-gradient(circle at 12% 8%, rgba(27,127,76,.06), transparent 40%),radial-gradient(circle at 88% 92%, rgba(255,107,82,.05), transparent 42%);}
+        [data-theme="dark"] body{background-image:radial-gradient(circle at 12% 8%, rgba(95,232,154,.08), transparent 40%),radial-gradient(circle at 88% 92%, rgba(255,129,104,.06), transparent 42%);}
+        ::-webkit-scrollbar{width:10px;height:10px}
+        ::-webkit-scrollbar-track{background:transparent}
+        ::-webkit-scrollbar-thumb{background:var(--ink-mute);border-radius:10px;border:3px solid var(--bg)}
+        ::selection{background:var(--lime);color:var(--lime-ink)}
+        a{color:inherit}
+        #particles-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+        .particle{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(27,127,76,.09),transparent 70%);animation:floatParticle linear infinite}
+        [data-theme="dark"] .particle{background:radial-gradient(circle,rgba(95,232,154,.09),transparent 70%)}
+        @keyframes floatParticle{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:.5}90%{opacity:.25}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+        .topbar{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 28px 0 calc(var(--rail) + 28px);display:flex;align-items:center;justify-content:space-between;background:color-mix(in srgb, var(--bg) 82%, transparent);backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);border-bottom:1px solid var(--line)}
+        .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+        .brand-logo{height:36px;width:auto;object-fit:contain}
+        .brand-name{font-family:var(--font-display);font-weight:700;font-size:20px;letter-spacing:-.02em;color:var(--ink)}
+        .brand-name em{font-style:normal;color:var(--brand)}
+        .topbar-right{display:flex;align-items:center;gap:12px}
+        .clock{font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--ink);background:var(--card);border:1px solid var(--line);padding:9px 14px;border-radius:12px;letter-spacing:.02em}
+        .clock b{color:var(--brand);font-weight:700}
+        .icon-btn{width:44px;height:44px;border-radius:12px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;cursor:pointer;color:var(--ink);font-size:16px;transition:transform .15s,border-color .2s}
+        .icon-btn:hover{transform:translateY(-2px);border-color:var(--brand)}
+        .menu-btn{display:none}
+        .menu-btn .bars{display:flex;flex-direction:column;gap:4px}
+        .menu-btn .bars i{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;transition:.25s}
+        .menu-btn.on .bars i:nth-child(1){transform:translateY(6px) rotate(45deg)}
+        .menu-btn.on .bars i:nth-child(2){opacity:0}
+        .menu-btn.on .bars i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+        .rail{position:fixed;top:72px;bottom:0;left:0;width:var(--rail);border-right:1px solid var(--line);background:var(--card-soft);display:flex;flex-direction:column;align-items:center;padding:22px 0;gap:8px;z-index:90}
+        .rail-link{width:56px;height:56px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:var(--ink-soft);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;transition:all .2s;position:relative}
+        .rail-link svg{width:22px;height:22px}
+        .rail-link:hover{background:var(--card);color:var(--ink)}
+        .rail-link.active{background:var(--ink);color:var(--bg)}
+        [data-theme="dark"] .rail-link.active{background:var(--lime);color:var(--lime-ink)}
+        .rail-link.active::before{content:'';position:absolute;left:-22px;top:14px;bottom:14px;width:4px;background:var(--brand);border-radius:0 4px 4px 0}
+        .rail-sep{width:32px;height:1px;background:var(--line);margin:8px 0}
+        .shell{margin-top:72px;margin-left:var(--rail);padding:26px 28px 60px;flex:1;display:flex;flex-direction:column;min-height:0}
+        .layout{max-width:1500px;margin:0 auto;display:flex;flex-direction:column;gap:22px;width:100%;flex:1;min-height:0}
+        .hero{border-radius:var(--radius-xl);background:var(--ink);color:var(--bg);padding:30px 36px;position:relative;overflow:hidden;box-shadow:var(--shadow-lg);display:grid;grid-template-columns:1.5fr 1fr;gap:32px;align-items:center}
+        [data-theme="dark"] .hero{background:var(--card);color:var(--ink)}
+        .hero::after{content:'';position:absolute;right:-80px;top:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle, rgba(196,242,74,.35), transparent 65%);pointer-events:none}
+        .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);color:#fff;padding:7px 14px;border-radius:999px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
+        [data-theme="dark"] .hero-eyebrow{background:var(--brand-soft);color:var(--brand-ink)}
+        .hero-eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--lime);animation:pulse 1.4s infinite}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+        .hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,3vw,38px);line-height:1.1;letter-spacing:-.03em;margin-bottom:12px}
+        .hero h1 em{font-style:normal;color:var(--lime)}
+        [data-theme="dark"] .hero h1 em{color:var(--brand)}
+        .hero p{font-size:14.5px;color:rgba(255,255,255,.72);max-width:56ch;line-height:1.6}
+        [data-theme="dark"] .hero p{color:var(--ink-soft)}
+        .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius-lg);padding:18px}
+        [data-theme="dark"] .hero-stats{background:var(--card-soft);border-color:var(--line)}
+        .hero-stat{display:flex;flex-direction:column;gap:3px}
+        .hero-stat .num{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.02em}
+        .hero-stat .num.lime{color:var(--lime)}
+        .hero-stat .num.coral{color:var(--coral)}
+        .hero-stat .num.sky{color:var(--sky)}
+        [data-theme="dark"] .hero-stat .num.lime{color:var(--brand)}
+        .hero-stat .lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.6)}
+        [data-theme="dark"] .hero-stat .lbl{color:var(--ink-mute)}
 
-        [data-theme="light"] {
-            --bg-primary: #f5f5f5;
-            --bg-secondary: #ffffff;
-            --bg-card: rgba(0,0,0,0.02);
-            --bg-card-hover: rgba(0, 204, 68, 0.04);
-            --text-primary: #111;
-            --text-secondary: #666;
-            --text-muted: #aaa;
-            --border-color: rgba(0,0,0,0.08);
-            --border-hover: rgba(0, 204, 68, 0.3);
-            --header-bg: rgba(245,245,245,0.85);
-            --badge-bg: rgba(0, 204, 68, 0.08);
-            --tab-hover: rgba(0,0,0,0.04);
-            --tab-active: rgba(0, 204, 68, 0.08);
-            --prob-high: #2E7D32;
-            --prob-mid: #F9A825;
-            --prob-low: #C62828;
-            --result-win: #2E7D32;
-            --result-lose: #C62828;
-            --result-pending: #999;
-            --skeleton-base: rgba(0,0,0,0.06);
-            --skeleton-highlight: rgba(0,0,0,0.1);
-            --live-bg: rgba(0, 204, 68, 0.06);
-            --live-border: rgba(0, 204, 68, 0.3);
-            --finished-bg: rgba(0,0,0,0.02);
-            --finished-border: rgba(0,0,0,0.06);
-        }
+        .tabs{display:flex;gap:6px;flex-wrap:wrap;padding:6px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow)}
+        .tab{flex:1;min-width:140px;background:transparent;border:none;color:var(--ink-soft);font-family:var(--font-display);font-size:13.5px;font-weight:700;padding:13px 16px;border-radius:12px;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+        .tab:hover{color:var(--ink);background:var(--card-soft)}
+        .tab.active{background:var(--ink);color:var(--bg)}
+        [data-theme="dark"] .tab.active{background:var(--lime);color:var(--lime-ink)}
+        .tab .cnt{font-family:var(--font-mono);font-size:10.5px;font-weight:700;background:rgba(0,0,0,.12);padding:2px 8px;border-radius:999px}
+        .tab.active .cnt{background:rgba(255,255,255,.2)}
+        [data-theme="dark"] .tab.active .cnt{background:rgba(0,0,0,.15)}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        html, body { height: 100%; overflow: hidden; }
-        body {
-            background: var(--bg-primary);
-            font-family: 'Inter', sans-serif;
-            color: var(--text-primary);
-            display: flex;
-            flex-direction: column;
-            transition: background 0.3s ease, color 0.3s ease;
-            overflow-x: hidden;
-        }
+        .panel{display:none;flex:1;min-height:0;flex-direction:column}
+        .panel.active{display:flex}
+        @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+        .panel.active{animation:rise .35s cubic-bezier(.2,.7,.3,1) both}
 
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: var(--bg-primary); }
-        ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 10px; }
+        /* ROBOBET */
+        .widget{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;flex:1;min-height:0}
+        .widget-head{padding:16px 22px;background:var(--card-soft);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+        .widget-head .wt{font-family:var(--font-display);font-weight:700;font-size:16px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+        .widget-head .wt .chip{font-family:var(--font-mono);font-size:10px;font-weight:700;background:var(--brand-soft);color:var(--brand-ink);padding:3px 9px;border-radius:999px}
+        [data-theme="dark"] .widget-head .wt .chip{color:var(--brand)}
+        .widget-head .meta{font-size:11.5px;color:var(--ink-mute);font-weight:600;font-family:var(--font-mono)}
+        .widget-body{flex:1;min-height:0;position:relative;background:var(--bg-alt)}
+        .widget-body iframe{position:absolute;inset:0;width:100%;height:100%;border:none;background:transparent;display:block}
+        .nav-blocker{position:absolute;bottom:0;left:0;right:0;height:35px;background:var(--bg-alt);z-index:5;pointer-events:auto}
 
-        /* ===== PARTICLES ===== */
-        #particles-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 204, 68, 0.08), transparent 70%);
-            animation: floatParticle linear infinite;
-        }
-        [data-theme="light"] .particle {
-            background: radial-gradient(circle, rgba(0, 204, 68, 0.04), transparent 70%);
-        }
-        @keyframes floatParticle {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.3; }
-            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
-        }
+        /* TRUBET TABLE */
+        .tbl-wrap{flex:1;min-height:0;overflow:auto;padding:0;background:var(--card)}
+        .tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+        .tbl thead{background:var(--card-soft);position:sticky;top:0;z-index:2}
+        .tbl thead th{color:var(--ink-mute);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;padding:11px 10px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap}
+        .tbl thead th:first-child{text-align:left;padding-left:18px}
+        .tbl tbody tr{border-bottom:1px solid var(--line);transition:background .15s}
+        .tbl tbody tr:hover{background:var(--card-soft)}
+        .tbl tbody tr:last-child{border-bottom:none}
+        .tbl tbody td{padding:9px 10px;text-align:center;vertical-align:middle;color:var(--ink-soft)}
+        .tbl tbody td:first-child{text-align:left;padding-left:18px;color:var(--ink);font-family:var(--font-mono);font-weight:600}
+        .tbl .match-cell{text-align:left;font-family:var(--font-display);font-weight:600;font-size:13px;color:var(--ink);letter-spacing:-.01em;min-width:170px}
+        .prob-h{color:var(--brand);font-family:var(--font-display);font-weight:700}
+        .prob-m{color:var(--sun);font-family:var(--font-display);font-weight:700}
+        .prob-l{color:var(--coral);font-family:var(--font-display);font-weight:700}
+        .prob-0{color:var(--ink-mute);font-family:var(--font-display);font-weight:600}
+        .bet-cell{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;color:var(--brand-ink);background:var(--brand-soft);padding:3px 10px;border-radius:8px;font-size:12px;letter-spacing:.02em}
+        [data-theme="dark"] .bet-cell{color:var(--brand)}
+        .coef-cell{font-family:var(--font-mono);font-size:11.5px;font-weight:600}
+        .coef-cell .sep{color:var(--line);margin:0 4px}
+        .result-cell{font-family:var(--font-mono);font-weight:700;font-size:12px;color:var(--ink)}
+        .result-cell.live{color:var(--coral)}
+        .result-cell.done{color:var(--ink-soft)}
+        .ind{display:inline-block;width:12px;height:12px;border-radius:50%}
+        .ind.win{background:var(--brand);box-shadow:0 0 10px rgba(27,127,76,.4)}
+        .ind.lose{background:var(--coral);box-shadow:0 0 10px rgba(255,107,82,.4)}
+        .ind.pending{border:2px dashed var(--ink-mute);background:transparent}
 
-        /* ===== HEADER (как на главной) ===== */
-        .main-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: var(--header-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-color);
-            padding: 0 24px;
-            height: var(--header-height);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: background 0.3s ease, border-color 0.3s ease;
-        }
+        .loading,.empty{padding:56px 20px;text-align:center;color:var(--ink-mute);font-weight:600}
+        .loading .spinner{display:inline-block;width:26px;height:26px;border:3px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:spin .7s linear infinite;margin-bottom:12px}
+        @keyframes spin{to{transform:rotate(360deg)}}
 
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 10;
-        }
-        .header-logo {
-            height: 32px;
-            width: auto;
-            object-fit: contain;
-        }
-        .header-logo-text {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-        }
-        .header-logo-text span {
-            color: var(--green);
-        }
+        .partner{border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--brand),var(--brand-ink));color:#fff;padding:24px 30px;display:flex;align-items:center;justify-content:space-between;gap:24px;box-shadow:var(--shadow-lg);flex-wrap:wrap;position:relative;overflow:hidden}
+        .partner::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(196,242,74,.4), transparent 65%)}
+        .partner .left{display:flex;align-items:center;gap:16px;position:relative}
+        .partner .left .lab{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;background:rgba(255,255,255,.18);padding:5px 12px;border-radius:999px}
+        .partner .left .bk{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:20px}
+        .partner .left .bk img{height:26px;filter:brightness(0) invert(1)}
+        .partner .cta{display:flex;gap:10px;flex-wrap:wrap;position:relative}
+        .partner .cta a{text-decoration:none;font-weight:700;font-size:13px;padding:11px 20px;border-radius:12px;transition:all .2s}
+        .partner .cta a.primary{background:var(--lime);color:var(--lime-ink)}
+        .partner .cta a.primary:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(196,242,74,.6)}
+        .partner .cta a.ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.24)}
+        .partner .cta a.ghost:hover{background:rgba(255,255,255,.22)}
 
-        .header-nav {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            gap: 2px;
-        }
-        .header-nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 500;
-            padding: 6px 12px;
-            border-radius: 6px;
-            transition: all 0.25s ease;
-        }
-        .header-nav a:hover {
-            color: var(--text-primary);
-            background: var(--bg-card);
-        }
-        .header-nav a.active {
-            color: var(--green);
-            background: rgba(0, 204, 68, 0.08);
-        }
+        .foot{margin-left:var(--rail);border-top:1px solid var(--line);background:var(--card-soft);padding:36px 28px 20px}
+        .foot-inner{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px}
+        .foot-brand h3{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.02em;margin-bottom:10px}
+        .foot-brand h3 em{font-style:normal;color:var(--brand)}
+        .foot-brand p{font-size:13px;color:var(--ink-soft);line-height:1.6;max-width:32ch}
+        .foot-col h4{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-mute);margin-bottom:12px}
+        .foot-col a{display:block;text-decoration:none;color:var(--ink-soft);font-size:13px;font-weight:600;padding:5px 0;transition:color .2s}
+        .foot-col a:hover{color:var(--brand)}
+        .foot-bar{max-width:1500px;margin:26px auto 0;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--ink-mute);font-weight:600}
+        .foot-bar .age{display:inline-flex;align-items:center;gap:8px}
+        .foot-bar .age b{background:var(--coral);color:#fff;padding:3px 9px;border-radius:7px;font-family:var(--font-mono);font-size:11px;font-weight:800}
+        .drawer{display:none;position:fixed;top:64px;left:0;right:0;z-index:95;background:var(--card);border-bottom:1px solid var(--line);padding:12px;flex-direction:column;gap:4px;box-shadow:var(--shadow-lg)}
+        .drawer.open{display:flex}
+        .drawer a{text-decoration:none;color:var(--ink-soft);font-weight:600;padding:13px 16px;border-radius:12px;font-size:14px;transition:background .2s,color .2s}
+        .drawer a:hover{background:var(--card-soft);color:var(--ink)}
+        .drawer a.active{background:var(--brand);color:#fff}
 
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 10;
-        }
-        .header-time {
-            color: var(--text-muted);
-            font-size: 12px;
-            font-weight: 600;
-            font-family: var(--font-mono);
-        }
-        .header-time .time-val {
-            color: var(--green);
-        }
-
-        .theme-toggle {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 30px;
-            width: 40px;
-            height: 20px;
-            cursor: pointer;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 3px;
-        }
-        .theme-toggle .toggle-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--green);
-            transition: transform 0.3s ease;
-        }
-        [data-theme="light"] .theme-toggle .toggle-dot {
-            transform: translateX(17px);
-        }
-        .theme-toggle .toggle-icon {
-            position: absolute;
-            font-size: 8px;
-            transition: opacity 0.3s ease;
-            line-height: 1;
-        }
-        .theme-toggle .icon-sun { opacity: 0; }
-        .theme-toggle .icon-moon { opacity: 1; }
-        [data-theme="light"] .theme-toggle .icon-sun { opacity: 1; }
-        [data-theme="light"] .theme-toggle .icon-moon { opacity: 0; }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 6px;
-        }
-        .menu-toggle span {
-            display: block;
-            width: 18px;
-            height: 2px;
-            background: var(--text-secondary);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-        .menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
-        .menu-toggle.open span:nth-child(2) { opacity: 0; }
-        .menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
-
-        /* ===== TABS ===== */
-        .tabs-container {
-            flex-shrink: 0;
-            display: flex;
-            justify-content: center;
-            background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border-color);
-            padding: 0 20px;
-            gap: 4px;
-            margin-top: var(--header-height);
-            position: relative;
-            z-index: 2;
-        }
-        .tab-btn {
-            padding: 10px 24px;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-        .tab-btn:hover { color: var(--text-primary); background: var(--tab-hover); }
-        .tab-btn.active { color: var(--green); border-bottom-color: var(--green); background: var(--tab-active); }
-
-        /* ===== CONTENT ===== */
-        #page-content {
-            flex: 1;
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            min-height: 0;
-            margin-top: 0;
-        }
-        .tab-content {
-            display: none;
-            flex: 1;
-            flex-direction: column;
-            min-height: 0;
-        }
-        .tab-content.active { display: flex; }
-
-        /* ===== ROBOBET WIDGET ===== */
-        .robobet-widget {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            background: var(--bg-card);
-            overflow: hidden;
-            min-height: 0;
-        }
-        .robobet-header-bar {
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 8px 20px 6px;
-            background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border-color);
-            gap: 2px;
-        }
-        .robobet-title {
-            font-size: 18px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #00cc44, #00ff55);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .robobet-date { font-size: 11px; color: var(--text-secondary); }
-        .robobet-date span { color: var(--green); font-weight: 600; }
-
-        .robobet-iframe-wrapper {
-            flex: 1;
-            position: relative;
-            width: 100%;
-            background: var(--bg-primary);
-            min-height: 0;
-            overflow: hidden;
-        }
-        .robobet-iframe-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            background: transparent;
-            display: block;
-        }
-        .nav-blocker {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 35px;
-            background: var(--bg-primary);
-            z-index: 10;
-        }
-
-        /* ===== TRUBET WIDGET ===== */
-        .trubet-widget {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            background: var(--bg-card);
-            overflow: hidden;
-            min-height: 0;
-        }
-        .trubet-table-wrap {
-            flex: 1;
-            overflow: auto;
-            padding: 12px 16px;
-            background: var(--bg-primary);
-        }
-        .trubet-table-wrap table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 12px;
-            color: var(--text-primary);
-        }
-        .trubet-table-wrap th {
-            background: var(--bg-secondary);
-            padding: 8px 10px;
-            text-align: left;
-            font-weight: 600;
-            color: var(--text-secondary);
-            border-bottom: 2px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 2;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-        .trubet-table-wrap td {
-            padding: 6px 10px;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 12px;
-            color: var(--text-primary);
-        }
-        .trubet-table-wrap tr:hover td { background: var(--tab-hover); }
-        .trubet-table-wrap .match-cell { font-weight: 500; min-width: 150px; }
-        .trubet-table-wrap .prob-cell { text-align: center; font-weight: 600; }
-        .trubet-table-wrap .prob-high { color: var(--prob-high); }
-        .trubet-table-wrap .prob-mid { color: var(--prob-mid); }
-        .trubet-table-wrap .prob-low { color: var(--prob-low); }
-        .trubet-table-wrap .prob-default { color: var(--text-secondary); }
-
-        .trubet-table-wrap .bet-cell {
-            text-align: center;
-            font-weight: 700;
-            color: var(--green);
-            background: var(--tab-active);
-            padding: 2px 8px;
-            border-radius: 4px;
-            display: inline-block;
-            font-size: 11px;
-        }
-        .trubet-table-wrap .coef-cell {
-            text-align: center;
-            font-family: monospace;
-            font-size: 12px;
-        }
-        .trubet-table-wrap .coef-divider {
-            color: var(--text-secondary);
-            opacity: 0.3;
-            margin: 0 2px;
-        }
-        .trubet-table-wrap .result-cell {
-            text-align: center;
-            font-weight: 600;
-        }
-        .trubet-table-wrap .result-cell.finished { color: var(--text-secondary); }
-        .trubet-table-wrap .result-cell.live { color: var(--green); }
-
-        .result-indicator {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-        .result-indicator.win {
-            background: var(--result-win);
-            box-shadow: 0 0 10px rgba(76, 175, 80, 0.4);
-        }
-        .result-indicator.lose {
-            background: var(--result-lose);
-            box-shadow: 0 0 10px rgba(244, 67, 54, 0.4);
-        }
-        .result-indicator.pending {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border: 1.5px dashed var(--result-pending);
-            border-radius: 50%;
-            opacity: 0.5;
-        }
-
-        .trubet-table-wrap .loading-state {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-secondary);
-        }
-        .trubet-table-wrap .loading-state .spinner {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            border: 2px solid var(--border-color);
-            border-top-color: var(--green);
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
-            margin-bottom: 10px;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 820px) {
-            .header-nav {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: var(--header-height);
-                left: 0;
-                right: 0;
-                background: var(--header-bg);
-                padding: 12px 20px;
-                gap: 2px;
-                border-bottom: 1px solid var(--border-color);
-                backdrop-filter: blur(16px);
-                transform: none;
-            }
-            .header-nav.open { display: flex; }
-            .header-nav a { padding: 10px 16px; width: 100%; text-align: center; font-size: 13px; }
-            .menu-toggle { display: flex; }
-            .header-time { display: none; }
-            .tabs-container { padding: 0 12px; overflow-x: auto; }
-            .tab-btn { padding: 8px 14px; font-size: 12px; white-space: nowrap; }
-            .trubet-table-wrap { padding: 8px 10px; }
-            .trubet-table-wrap table { font-size: 11px; }
-            .trubet-table-wrap th, .trubet-table-wrap td { padding: 5px 6px; }
-            .nav-blocker { height: 30px; }
-            .main-header { padding: 0 14px; }
-        }
-
-        @media (max-width: 480px) {
-            .main-header { padding: 0 14px; height: 56px; }
-            .header-logo { height: 28px; }
-            .header-logo-text { font-size: 16px; }
-            .header-nav a { font-size: 12px; padding: 8px 14px; }
-            .theme-toggle { width: 36px; height: 20px; }
-            .theme-toggle .toggle-dot { width: 12px; height: 12px; }
-            [data-theme="light"] .theme-toggle .toggle-dot { transform: translateX(15px); }
-            .tab-btn { padding: 6px 10px; font-size: 11px; }
-            .trubet-table-wrap { padding: 4px 6px; }
-            .trubet-table-wrap table { font-size: 10px; }
-            .trubet-table-wrap th, .trubet-table-wrap td { padding: 4px 4px; }
-            .trubet-table-wrap .match-cell { min-width: 100px; }
-            .nav-blocker { height: 25px; }
-        }
-
-        @media (max-width: 380px) {
-            .trubet-table-wrap table { font-size: 9px; }
-            .trubet-table-wrap th, .trubet-table-wrap td { padding: 3px 3px; }
-            .trubet-table-wrap .match-cell { min-width: 80px; }
-        }
+        @media (max-width:1280px){.hero{grid-template-columns:1fr}.foot-inner{grid-template-columns:1fr 1fr}}
+        @media (max-width:860px){:root{--rail:0px}.rail{display:none}.topbar{padding:0 18px}.menu-btn{display:grid}.shell{padding:20px 16px 40px}.foot{padding:28px 18px 16px}.partner{padding:22px}.partner .left .bk{font-size:17px}.tbl{font-size:11px}.tbl thead th,.tbl tbody td{padding:7px 5px}.tbl thead th:first-child,.tbl tbody td:first-child{padding-left:10px}.match-cell{font-size:11.5px;min-width:110px}.nav-blocker{height:30px}}
+        @media (max-width:600px){.topbar{padding:0 14px;height:64px}.brand-logo{height:30px}.brand-name{font-size:17px}.clock{font-size:11px;padding:7px 10px}.icon-btn{width:40px;height:40px}.hero{padding:20px;border-radius:22px}.hero-stats{grid-template-columns:1fr 1fr;gap:10px;padding:14px}.hero-stat .num{font-size:18px}.foot-inner{grid-template-columns:1fr;gap:24px}.tabs{gap:4px;padding:4px}.tab{font-size:11.5px;padding:10px 8px;min-width:auto}.widget-head{padding:12px 14px}.widget-head .wt{font-size:14px}.tbl{font-size:10px}.tbl thead th,.tbl tbody td{padding:5px 4px}.match-cell{font-size:10.5px;min-width:90px}.bet-cell{font-size:10.5px;padding:2px 7px}}
     </style>
 </head>
 <body>
 
-    <!-- ===== PARTICLES ===== -->
-    <div id="particles-bg"></div>
+<div id="particles-bg"></div>
 
-    <!-- ===== HEADER (как на главной) ===== -->
-    <header class="main-header">
-        <div class="header-left">
-            <img src="logo.png" alt="SetTrue Logo" class="header-logo" onerror="this.style.display='none'">
-            <span class="header-logo-text">Set<span>True</span></span>
-        </div>
-        <nav class="header-nav" id="mainNav">
-            <a href="/">Главная</a>
-            <a href="/predict/">Прогнозы</a>
-            <a href="/scanmatch/">Теннис АИ</a>
-            <a href="/cashflows/">Денежные потоки</a>
-            <a href="#" class="active">Робобет</a>
-        </nav>
-        <div class="header-right">
-            <div class="header-time">
-                <span class="time-val" id="headerTime">--:--</span> МСК
-            </div>
-            <button class="theme-toggle" id="themeToggle" aria-label="Сменить тему">
-                <span class="toggle-icon icon-sun">☀️</span>
-                <span class="toggle-icon icon-moon">🌙</span>
-                <span class="toggle-dot"></span>
-            </button>
-            <button class="menu-toggle" id="menuToggle" aria-label="Меню">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </header>
-
-    <!-- ===== TABS ===== -->
-    <div class="tabs-container">
-        <button class="tab-btn" data-tab="robobet">🤖 Робобет</button>
-        <button class="tab-btn active" data-tab="trubet">⚡ Трубет</button>
+<header class="topbar">
+    <a href="/" class="brand">
+        <img src="logo.png" alt="SetTrue" class="brand-logo" onerror="this.style.display='none'">
+        <span class="brand-name">Set<em>True</em></span>
+    </a>
+    <div class="topbar-right">
+        <div class="clock"><b id="headerTime">--:--</b> МСК</div>
+        <button class="icon-btn" id="themeToggle" aria-label="Тема">◐</button>
+        <button class="icon-btn menu-btn" id="menuToggle" aria-label="Меню"><span class="bars"><i></i><i></i><i></i></span></button>
     </div>
+</header>
 
-    <!-- ===== CONTENT ===== -->
-    <div id="page-content">
+<nav class="rail" aria-label="Меню">
+    <a href="/" class="rail-link" title="Главная"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10h14V10"/></svg><span>Главная</span></a>
+    <a href="/predict/" class="rail-link" title="Прогнозы"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg><span>Прогнозы</span></a>
+    <a href="/scanmatch/" class="rail-link" title="Теннис АИ"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg><span>Теннис</span></a>
+    <div class="rail-sep"></div>
+    <a href="/cashflows/" class="rail-link" title="Денежные потоки"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.7 0-3 .9-3 2s1.3 2 3 2 3 .9 3 2-1.3 2-3 2m0-8V7m0 1v8m0 0v1m0-1c-1.1 0-2.1-.4-2.6-1"/></svg><span>Потоки</span></a>
+    <a href="/robobet/" class="rail-link active" title="Робобет"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="3"/><path stroke-linecap="round" d="M9 10h.01M15 10h.01M8 15h8"/></svg><span>Робот</span></a>
+</nav>
 
-        <!-- ===== ROBOBET (IFRAME) ===== -->
-        <div class="tab-content" id="tab-robobet">
-            <div class="robobet-widget">
-                <div class="robobet-header-bar">
-                    <div class="robobet-title">Робобет</div>
-                    <div class="robobet-date">📅 <span id="dateDisplay">--.--</span></div>
+<div class="drawer" id="drawer">
+    <a href="/">Главная</a>
+    <a href="/predict/">Прогнозы</a>
+    <a href="/scanmatch/">Теннис АИ</a>
+    <a href="/cashflows/">Денежные потоки</a>
+    <a href="/robobet/" class="active">Робобет</a>
+</div>
+
+<main class="shell">
+    <div class="layout">
+
+        <section class="hero">
+            <div>
+                <span class="hero-eyebrow"><span class="pulse"></span>Математические прогнозы</span>
+                <h1>Робобет и Трубет — <em>точные модели без эмоций</em></h1>
+                <p>Робобет формирует прогнозы на основе математических моделей. Трубет показывает вероятности исходов 1X2 от ИИ и результаты матчей. Всё бесплатно, без регистрации.</p>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat"><span class="num lime" id="heroRobobet">LIVE</span><span class="lbl">Робобет</span></div>
+                <div class="hero-stat"><span class="num coral" id="heroTrubet">0</span><span class="lbl">Матчей Трубет</span></div>
+                <div class="hero-stat"><span class="num sky" id="heroUpdated">—</span><span class="lbl">Обновлено</span></div>
+            </div>
+        </section>
+
+        <div class="tabs">
+            <button class="tab" data-tab="robobet" onclick="switchMainTab('robobet')">🤖 Робобет</button>
+            <button class="tab active" data-tab="trubet" onclick="switchMainTab('trubet')">⚡ Трубет <span class="cnt" id="trubetCount">0</span></button>
+        </div>
+
+        <div class="panel" id="tab-robobet">
+            <div class="widget">
+                <div class="widget-head">
+                    <div class="wt">Робобет <span class="chip">MATH</span></div>
+                    <div class="meta">📅 <span id="dateDisplay">--.--.----</span></div>
                 </div>
-                <div class="robobet-iframe-wrapper">
-                    <iframe id="robobetFrame" loading="lazy" title="Робобет — математические прогнозы на футбол" allowtransparency="true" style="background:var(--bg-primary);"></iframe>
+                <div class="widget-body">
+                    <iframe id="robobetFrame" loading="lazy" title="Робобет — математические прогнозы на футбол" allowtransparency="true" style="background:var(--bg-alt);"></iframe>
                     <div class="nav-blocker"></div>
                 </div>
             </div>
         </div>
 
-        <!-- ===== TRUBET ===== -->
-        <div class="tab-content active" id="tab-trubet">
-            <div class="trubet-widget">
-                <div class="robobet-header-bar">
-                    <div class="robobet-title" style="background:linear-gradient(135deg,#ff6b35,#ff2d55);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Трубет</div>
-                    <div class="robobet-date">📊 <span id="trubetCount">0</span> матчей <span id="updateStatus" style="font-size:10px;color:var(--text-secondary);margin-left:10px;"></span></div>
+        <div class="panel active" id="tab-trubet">
+            <div class="widget">
+                <div class="widget-head">
+                    <div class="wt">Трубет <span class="chip">AI PROBS</span></div>
+                    <div class="meta">📊 <span id="trubetMetaCount">0</span> матчей <span id="updateStatus" style="opacity:.7;margin-left:8px;"></span></div>
                 </div>
-                <div class="trubet-table-wrap" id="trubetContainer">
-                    <div class="loading-state"><div class="spinner"></div><div>Загрузка прогнозов...</div></div>
+                <div class="tbl-wrap" id="trubetContainer">
+                    <div class="loading"><div class="spinner"></div><div>Загрузка прогнозов…</div></div>
                 </div>
             </div>
         </div>
 
+        <section class="partner">
+            <div class="left"><span class="lab">Партнёр</span><span class="bk"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari">Pari</span></div>
+            <div class="cta">
+                <a href="#" class="primary" onclick="openPartnerLink('reg')">Регистрация</a>
+                <a href="#" class="ghost" onclick="openPartnerLink('bonus')">Бонус 5 000 ₽</a>
+                <a href="#" class="ghost" onclick="openPartnerLink('freebets')">5 фрибетов</a>
+            </div>
+        </section>
+
     </div>
+</main>
 
-    <script>
-        // ============================================================
-        // 1. ЗАЩИТА
-        // ============================================================
-        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-        document.addEventListener('keydown', function(e) {
-            const c = e.ctrlKey, s = e.shiftKey, k = e.key.toLowerCase(), cd = e.code;
-            if (e.keyCode === 123) { e.preventDefault(); return false; }
-            if (c && (cd === 'KeyC' || k === 'c')) { return true; }
-            if (c && !s && (cd === 'KeyU' || k === 'u')) { e.preventDefault(); return false; }
-            if (c && s && (cd === 'KeyI' || k === 'i' || cd === 'KeyJ' || k === 'j')) { e.preventDefault(); return false; }
-            if (c && (cd === 'KeyS' || k === 's' || cd === 'KeyP' || k === 'p')) { e.preventDefault(); return false; }
-        }, true);
+<footer class="foot">
+    <div class="foot-inner">
+        <div class="foot-brand"><h3>Set<em>True</em></h3><p>Математические прогнозы, робобет и денежные потоки. Информационный партнёр БК Pari.</p></div>
+        <div class="foot-col"><h4>Разделы</h4><a href="/predict/">Прогнозы</a><a href="/scanmatch/">Теннис АИ</a><a href="/cashflows/">Денежные потоки</a><a href="/robobet/">Робобет</a></div>
+        <div class="foot-col"><h4>Информация</h4><a href="#">Обновление: ежедневно</a><a href="#">Спорт: 5+</a><a href="#">Прогнозы: бесплатно</a></div>
+        <div class="foot-col"><h4>Контакты</h4><a href="mailto:SetTrueForecast@yandex.ru">SetTrueForecast@yandex.ru</a></div>
+    </div>
+    <div class="foot-bar"><span>© 2026 SetTrue</span><span class="age"><b>18+</b> Играйте ответственно</span></div>
+</footer>
 
-        // ============================================================
-        // 2. ТЕМА
-        // ============================================================
-        function getTheme() {
-            return localStorage.getItem('settrue-theme') || 'dark';
+<script>
+    /* ===== ЗАЩИТА ===== */
+    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+    document.addEventListener('keydown', function(e) {
+        const c = e.ctrlKey, s = e.shiftKey, k = e.key.toLowerCase(), cd = e.code;
+        if (e.keyCode === 123) { e.preventDefault(); return false; }
+        if (c && (cd === 'KeyC' || k === 'c')) { return true; }
+        if (c && !s && (cd === 'KeyU' || k === 'u')) { e.preventDefault(); return false; }
+        if (c && s && (cd === 'KeyI' || k === 'i' || cd === 'KeyJ' || k === 'j')) { e.preventDefault(); return false; }
+        if (c && (cd === 'KeyS' || k === 's' || cd === 'KeyP' || k === 'p')) { e.preventDefault(); return false; }
+    }, true);
+
+    /* ===== ТЕМА ===== */
+    function getTheme() { return localStorage.getItem('settrue-theme') || 'light'; }
+    function setTheme(theme) { document.documentElement.setAttribute('data-theme', theme); localStorage.setItem('settrue-theme', theme); }
+    setTheme(getTheme());
+    document.getElementById('themeToggle').addEventListener('click', () => setTheme(getTheme() === 'dark' ? 'light' : 'dark'));
+
+    /* ===== ВРЕМЯ ===== */
+    function updateTime() {
+        const now = new Date();
+        const msk = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + 10800000);
+        const el = document.getElementById('headerTime');
+        if (el) el.textContent = String(msk.getHours()).padStart(2,'0') + ':' + String(msk.getMinutes()).padStart(2,'0');
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+
+    /* ===== ЧАСТИЦЫ ===== */
+    function createParticles() {
+        const c = document.getElementById('particles-bg');
+        if (!c) return;
+        const n = window.innerWidth < 768 ? 18 : 45;
+        c.innerHTML = '';
+        for (let i = 0; i < n; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const s = Math.random() * 60 + 15;
+            p.style.width = s + 'px';
+            p.style.height = s + 'px';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.animationDuration = (Math.random() * 18 + 10) + 's';
+            p.style.animationDelay = (Math.random() * 12) + 's';
+            c.appendChild(p);
         }
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('settrue-theme', theme);
-        }
-        function toggleTheme() {
-            const current = getTheme();
-            setTheme(current === 'dark' ? 'light' : 'dark');
-        }
-        setTheme(getTheme());
-        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+    }
+    createParticles();
+    let rtz; window.addEventListener('resize', () => { clearTimeout(rtz); rtz = setTimeout(createParticles, 300); });
 
-        // ============================================================
-        // 3. ВРЕМЯ
-        // ============================================================
-        function updateTime() {
-            const now = new Date();
-            const msk = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + 10800000);
-            document.getElementById('headerTime').textContent = 
-                String(msk.getHours()).padStart(2,'0') + ':' + String(msk.getMinutes()).padStart(2,'0');
-        }
-        setInterval(updateTime, 1000);
-        updateTime();
+    /* ===== МЕНЮ ===== */
+    document.getElementById('menuToggle').addEventListener('click', function() {
+        document.getElementById('drawer').classList.toggle('open');
+        this.classList.toggle('on');
+    });
 
-        // ============================================================
-        // 4. ЧАСТИЦЫ
-        // ============================================================
-        function createParticles() {
-            const container = document.getElementById('particles-bg');
-            if (!container) return;
-            const count = window.innerWidth < 768 ? 20 : 50;
-            container.innerHTML = '';
-            for (let i = 0; i < count; i++) {
-                const p = document.createElement('div');
-                p.className = 'particle';
-                const size = Math.random() * 60 + 15;
-                p.style.width = size + 'px';
-                p.style.height = size + 'px';
-                p.style.left = Math.random() * 100 + '%';
-                p.style.animationDuration = (Math.random() * 18 + 10) + 's';
-                p.style.animationDelay = (Math.random() * 12) + 's';
-                container.appendChild(p);
-            }
-        }
-        createParticles();
-        let resizeTimer;
-        window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(createParticles, 300); });
-
-        // ============================================================
-        // 5. МЕНЮ
-        // ============================================================
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('mainNav').classList.toggle('open');
-            this.classList.toggle('open');
-        });
-
-        // ============================================================
-        // 6. НАВИГАЦИЯ
-        // ============================================================
-        document.querySelectorAll('.header-nav a').forEach(a => {
-            a.addEventListener('click', function(e) {
-                const link = this.getAttribute('href');
-                if (link && link !== '#') {
-                    return;
-                }
-                e.preventDefault();
-                document.querySelectorAll('.header-nav a').forEach(n => n.classList.remove('active'));
-                this.classList.add('active');
-                document.getElementById('mainNav').classList.remove('open');
-                document.getElementById('menuToggle').classList.remove('open');
-            });
-        });
-
-        // ============================================================
-        // 7. ВКЛАДКИ
-        // ============================================================
-        const tabs = document.querySelectorAll('.tab-btn');
-        const contents = {
-            robobet: document.getElementById('tab-robobet'),
-            trubet: document.getElementById('tab-trubet')
+    /* ===== ПАРТНЁРСКИЕ ССЫЛКИ ===== */
+    function openPartnerLink(type) {
+        const urls = {
+            reg: 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate',
+            bonus: 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate',
+            freebets: 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate'
         };
-
-        tabs.forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                tabs.forEach(function(b) { b.classList.remove('active'); });
-                this.classList.add('active');
-                const tabName = this.dataset.tab;
-                Object.keys(contents).forEach(function(key) {
-                    contents[key].classList.toggle('active', key === tabName);
-                });
-            });
-        });
-
-        // ============================================================
-        // 8. ДАТА ДЛЯ РОБОБЕТ
-        // ============================================================
-        function formatDate(date) {
-            const day = String(date.getDate()).padStart(2, '0');
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const year = date.getFullYear();
-            return day + '.' + month + '.' + year;
+        if (urls[type]) {
+            if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'pari_' + type);
+            window.open(urls[type], '_blank');
         }
-        function updateDateDisplay() {
-            const now = new Date();
-            const el = document.getElementById('dateDisplay');
-            if (el) el.textContent = formatDate(now);
-        }
-        updateDateDisplay();
+    }
 
-        // ============================================================
-        // 9. ЗАГРУЗКА РОБОБЕТ (iframe)
-        // ============================================================
-        function getTodayDate() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            return year + '-' + month + '-' + day;
-        }
-        function updateIframeDate() {
-            const iframe = document.getElementById('robobetFrame');
-            const today = getTodayDate();
-            const baseUrl = 'https://vprognoze.ru/webmaster_moduls/webmasters_robobet.php?head_bgc=C7D6E9&row_bgc=&head_fontsize=12&row_fontsize=12&text_color=000000&row_bgc_cursor=FBFFCD&ref=&utc=&g=key';
-            iframe.src = baseUrl + '&offset=' + today;
-        }
-        updateIframeDate();
-        setInterval(function() {
-            const iframe = document.getElementById('robobetFrame');
-            const today = getTodayDate();
-            const currentOffset = iframe.src.match(/offset=(\d{4}-\d{2}-\d{2})/);
-            if (currentOffset && currentOffset[1] !== today) {
-                updateIframeDate();
-                updateDateDisplay();
-            }
-        }, 300000);
+    /* ===== ВКЛАДКИ ===== */
+    function switchMainTab(name) {
+        document.querySelectorAll('.panel').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+        document.getElementById('tab-' + name).classList.add('active');
+        document.querySelector(`.tab[data-tab="${name}"]`).classList.add('active');
+        if (name === 'robobet') updateIframeDate();
+    }
 
-        // ============================================================
-        // 10. ТРУБЕТ — ЗАГРУЗКА ИЗ ФАЙЛА
-        // ============================================================
-        async function loadTrubet() {
-            const container = document.getElementById('trubetContainer');
-            const statusEl = document.getElementById('updateStatus');
-            
-            container.innerHTML = '<div class="loading-state"><div class="spinner"></div><div>Загрузка...</div></div>';
-            
-            try {
-                const response = await fetch('/trubet_data.json?t=' + Date.now());
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data.success && data.data && data.data.length > 0) {
-                        renderTable(container, data.data);
-                        document.getElementById('trubetCount').textContent = data.data.length;
-                        statusEl.textContent = '✅ ' + new Date().toLocaleTimeString('ru-RU');
-                        return;
-                    }
-                }
-                console.log('Файл пуст, загружаем через API...');
-            } catch (e) {
-                console.log('Файл не найден, загружаем через API...');
-            }
-            
-            await loadFromAPI(container);
-        }
+    /* ===== ДАТА ===== */
+    function formatDate(d) {
+        return String(d.getDate()).padStart(2,'0') + '.' + String(d.getMonth() + 1).padStart(2,'0') + '.' + d.getFullYear();
+    }
+    function updateDateDisplay() {
+        const el = document.getElementById('dateDisplay');
+        if (el) el.textContent = formatDate(new Date());
+    }
+    updateDateDisplay();
 
-        // ============================================================
-        // 11. ТРУБЕТ — ЗАГРУЗКА ЧЕРЕЗ API
-        // ============================================================
-        async function loadFromAPI(container) {
-            const statusEl = document.getElementById('updateStatus');
-            statusEl.textContent = '🔄 загрузка...';
-            
-            const API_URL = 'https://script.google.com/macros/s/AKfycbzPwhxFHjpaVNsMtDwWwD1EEj8Ft8n5plE1ADh0WSL5-clpgDrmFb-nmd6KIQ4UKL4/exec';
-            
-            try {
-                const response = await fetch(API_URL);
-                const data = await response.json();
+    /* ===== РОБОБЕТ (iframe) ===== */
+    function getTodayDate() {
+        const now = new Date();
+        return now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+    }
+    function updateIframeDate() {
+        const iframe = document.getElementById('robobetFrame');
+        const today = getTodayDate();
+        const baseUrl = 'https://vprognoze.ru/webmaster_moduls/webmasters_robobet.php?head_bgc=C7D6E9&row_bgc=&head_fontsize=12&row_fontsize=12&text_color=000000&row_bgc_cursor=FBFFCD&ref=&utc=&g=key';
+        iframe.src = baseUrl + '&offset=' + today;
+    }
+    updateIframeDate();
+    setInterval(function() {
+        const iframe = document.getElementById('robobetFrame');
+        const today = getTodayDate();
+        const cur = iframe.src.match(/offset=(\d{4}-\d{2}-\d{2})/);
+        if (cur && cur[1] !== today) { updateIframeDate(); updateDateDisplay(); }
+    }, 300000);
+
+    /* ===== ТРУБЕТ ===== */
+    async function loadTrubet() {
+        const container = document.getElementById('trubetContainer');
+        const statusEl = document.getElementById('updateStatus');
+        container.innerHTML = '<div class="loading"><div class="spinner"></div><div>Загрузка…</div></div>';
+        try {
+            const r = await fetch('/trubet_data.json?t=' + Date.now());
+            if (r.ok) {
+                const data = await r.json();
                 if (data.success && data.data && data.data.length > 0) {
                     renderTable(container, data.data);
                     document.getElementById('trubetCount').textContent = data.data.length;
-                    statusEl.textContent = '✅ ' + new Date().toLocaleTimeString('ru-RU');
-                } else {
-                    container.innerHTML = '<div class="loading-state" style="color:#f44336;">⚠️ Данные временно недоступны</div>';
+                    document.getElementById('trubetMetaCount').textContent = data.data.length;
+                    document.getElementById('heroTrubet').textContent = data.data.length;
+                    if (statusEl) statusEl.textContent = '✅ ' + new Date().toLocaleTimeString('ru-RU');
+                    const hu = document.getElementById('heroUpdated');
+                    if (hu) hu.textContent = new Date().toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+                    return;
                 }
-            } catch(error) {
-                container.innerHTML = '<div class="loading-state" style="color:#f44336;">❌ Ошибка загрузки данных</div>';
-                console.error('Trubet load error:', error);
             }
+        } catch (e) {}
+        await loadFromAPI(container);
+    }
+
+    async function loadFromAPI(container) {
+        const statusEl = document.getElementById('updateStatus');
+        if (statusEl) statusEl.textContent = '🔄 загрузка…';
+        const API_URL = 'https://script.google.com/macros/s/AKfycbzPwhxFHjpaVNsMtDwWwD1EEj8Ft8n5plE1ADh0WSL5-clpgDrmFb-nmd6KIQ4UKL4/exec';
+        try {
+            const r = await fetch(API_URL);
+            const data = await r.json();
+            if (data.success && data.data && data.data.length > 0) {
+                renderTable(container, data.data);
+                document.getElementById('trubetCount').textContent = data.data.length;
+                document.getElementById('trubetMetaCount').textContent = data.data.length;
+                document.getElementById('heroTrubet').textContent = data.data.length;
+                if (statusEl) statusEl.textContent = '✅ ' + new Date().toLocaleTimeString('ru-RU');
+            } else {
+                container.innerHTML = '<div class="empty">⚠️ Данные временно недоступны</div>';
+            }
+        } catch (err) {
+            container.innerHTML = '<div class="empty">❌ Ошибка загрузки данных</div>';
         }
+    }
 
-        // ============================================================
-        // 12. ОТРИСОВКА ТАБЛИЦЫ
-        // ============================================================
-        function renderTable(container, matches) {
-            function getProbClass(value) {
-                if (!value) return 'prob-default';
-                const num = parseInt(value, 10);
-                if (isNaN(num)) return 'prob-default';
-                if (num >= 60) return 'prob-high';
-                if (num >= 40) return 'prob-mid';
-                return 'prob-low';
-            }
+    function getProbClass(v) {
+        if (!v) return 'prob-0';
+        const n = parseInt(v, 10);
+        if (isNaN(n)) return 'prob-0';
+        if (n >= 60) return 'prob-h';
+        if (n >= 40) return 'prob-m';
+        if (n > 0) return 'prob-l';
+        return 'prob-0';
+    }
 
-            function getBetResult(bet, result) {
-                if (!result || result === '' || result === '- : -' || result === ' ' || !bet) return 'pending';
-                const scoreMatch = result.match(/(\d+):(\d+)/);
-                if (!scoreMatch) return 'pending';
-                const homeScore = parseInt(scoreMatch[1]);
-                const awayScore = parseInt(scoreMatch[2]);
-                let matchResult = '';
-                if (homeScore > awayScore) matchResult = '1';
-                else if (homeScore < awayScore) matchResult = '2';
-                else matchResult = 'X';
-                
-                if (bet === matchResult) return 'win';
-                if (bet === '1X' && (matchResult === '1' || matchResult === 'X')) return 'win';
-                if (bet === 'X2' && (matchResult === 'X' || matchResult === '2')) return 'win';
-                if (bet === '12' && (matchResult === '1' || matchResult === '2')) return 'win';
-                return 'lose';
-            }
+    function getBetResult(bet, result) {
+        if (!result || result === '' || result === '- : -' || result === ' ' || !bet) return 'pending';
+        const m = result.match(/(\d+):(\d+)/);
+        if (!m) return 'pending';
+        const h = parseInt(m[1]), a = parseInt(m[2]);
+        let mr = '';
+        if (h > a) mr = '1'; else if (h < a) mr = '2'; else mr = 'X';
+        if (bet === mr) return 'win';
+        if (bet === '1X' && (mr === '1' || mr === 'X')) return 'win';
+        if (bet === 'X2' && (mr === 'X' || mr === '2')) return 'win';
+        if (bet === '12' && (mr === '1' || mr === '2')) return 'win';
+        return 'lose';
+    }
 
-            let html = '<table>';
-            html += '<thead><tr>';
-            html += '<th>Время</th><th>Матч</th>';
-            html += '<th style="text-align:center;">1</th>';
-            html += '<th style="text-align:center;">X</th>';
-            html += '<th style="text-align:center;">2</th>';
-            html += '<th style="text-align:center;">Ставка</th>';
-            html += '<th style="text-align:center;">Коэф</th>';
-            html += '<th style="text-align:center;">Результат</th>';
-            html += '<th style="text-align:center; width:30px;">Исход</th>';
-            html += '</tr></thead><tbody>';
+    function renderTable(container, matches) {
+        let html = '<table class="tbl"><thead><tr>';
+        html += '<th>Время</th><th>Матч</th>';
+        html += '<th>1</th><th>X</th><th>2</th>';
+        html += '<th>Ставка</th><th>Коэф</th><th>Результат</th><th>Итог</th>';
+        html += '</tr></thead><tbody>';
 
-            matches.forEach(function(m) {
-                const isLive = m.result && m.result !== '' && m.result !== '- : -' && m.result !== ' ';
-                const betResult = getBetResult(m.bet, m.result);
-                
-                html += '<tr>';
-                html += '<td>' + (m.time || '') + '</td>';
-                html += '<td class="match-cell">' + (m.match || '') + '</td>';
-                html += '<td class="prob-cell ' + getProbClass(m.p1) + '">' + (m.p1 || '—') + '</td>';
-                html += '<td class="prob-cell ' + getProbClass(m.px) + '">' + (m.px || '—') + '</td>';
-                html += '<td class="prob-cell ' + getProbClass(m.p2) + '">' + (m.p2 || '—') + '</td>';
-                html += '<td style="text-align:center;"><span class="bet-cell">' + (m.bet || '—') + '</span></td>';
-                
-                const coefParts = [];
-                if (m.coef1) coefParts.push(m.coef1);
-                if (m.coefX) coefParts.push(m.coefX);
-                if (m.coef2) coefParts.push(m.coef2);
-                const coefHtml = coefParts.join(' <span class="coef-divider">|</span> ');
-                
-                html += '<td class="coef-cell">' + coefHtml + '</td>';
-                html += '<td class="result-cell' + (isLive ? ' live' : ' finished') + '">' + (m.result || '—') + '</td>';
-                
-                html += '<td style="text-align:center;">';
-                if (betResult === 'win') {
-                    html += '<span class="result-indicator win" title="Ставка выиграна"></span>';
-                } else if (betResult === 'lose') {
-                    html += '<span class="result-indicator lose" title="Ставка проиграна"></span>';
-                } else {
-                    html += '<span class="result-indicator pending" title="Матч не завершен"></span>';
-                }
-                html += '</td>';
-                html += '</tr>';
-            });
+        matches.forEach(m => {
+            const isLive = m.result && m.result !== '' && m.result !== '- : -' && m.result !== ' ';
+            const betRes = getBetResult(m.bet, m.result);
 
-            html += '</tbody></table>';
-            container.innerHTML = html;
-        }
+            const coefParts = [];
+            if (m.coef1) coefParts.push(m.coef1);
+            if (m.coefX) coefParts.push(m.coefX);
+            if (m.coef2) coefParts.push(m.coef2);
+            const coefHtml = coefParts.join('<span class="sep">|</span>');
 
-        // ============================================================
-        // 13. ЗАПУСК
-        // ============================================================
-                document.addEventListener('DOMContentLoaded', function() {
-            loadTrubet();
+            let ind = '<span class="ind pending" title="Матч не завершён"></span>';
+            if (betRes === 'win') ind = '<span class="ind win" title="Ставка выиграна"></span>';
+            else if (betRes === 'lose') ind = '<span class="ind lose" title="Ставка проиграна"></span>';
+
+            html += '<tr>';
+            html += '<td>' + (m.time || '') + '</td>';
+            html += '<td class="match-cell">' + (m.match || '') + '</td>';
+            html += '<td class="' + getProbClass(m.p1) + '">' + (m.p1 || '—') + '</td>';
+            html += '<td class="' + getProbClass(m.px) + '">' + (m.px || '—') + '</td>';
+            html += '<td class="' + getProbClass(m.p2) + '">' + (m.p2 || '—') + '</td>';
+            html += '<td><span class="bet-cell">' + (m.bet || '—') + '</span></td>';
+            html += '<td class="coef-cell">' + coefHtml + '</td>';
+            html += '<td class="result-cell ' + (isLive ? 'live' : 'done') + '">' + (m.result || '—') + '</td>';
+            html += '<td>' + ind + '</td>';
+            html += '</tr>';
         });
 
-        setInterval(loadTrubet, 5 * 60 * 1000);
-    </script>
+        html += '</tbody></table>';
+        container.innerHTML = html;
+    }
 
-    <!-- ============================================================ -->
-    <!-- АВТОМАТИЧЕСКАЯ МИКРОРАЗМЕТКА SCHEMA.ORG -->
-    <!-- ============================================================ -->
-    <script>
+    document.addEventListener('DOMContentLoaded', function() { loadTrubet(); });
+    setInterval(loadTrubet, 5 * 60 * 1000);
+
+    /* ===== SCHEMA.ORG ===== */
     (function() {
         'use strict';
-
-        function injectJsonLd(data) {
-            const script = document.createElement('script');
-            script.type = 'application/ld+json';
-            script.textContent = JSON.stringify(data);
-            document.head.appendChild(script);
+        function inject(d) {
+            const s = document.createElement('script');
+            s.type = 'application/ld+json';
+            s.textContent = JSON.stringify(d);
+            document.head.appendChild(s);
         }
-
-        function injectWebSite() {
-            injectJsonLd({
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                "name": "SetTrue — Робобет",
-                "url": "https://settrue.ru/robobet/",
-                "description": "Математические прогнозы на футбол и робобет"
-            });
-            console.log('[Schema.org] WebSite добавлен');
-        }
-
-        function injectOrganization() {
-            injectJsonLd({
-                "@context": "https://schema.org",
-                "@type": "Organization",
-                "name": "SetTrue",
-                "url": "https://settrue.ru/",
-                "logo": "https://settrue.ru/logo.png"
-            });
-            console.log('[Schema.org] Organization добавлен');
-        }
-
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                injectWebSite();
-                injectOrganization();
-            }, 1500);
-        });
+        function site() { inject({"@context":"https://schema.org","@type":"WebSite","name":"SetTrue — Робобет","url":"https://settrue.ru/robobet/","description":"Математические прогнозы на футбол и робобет"}); }
+        function org() { inject({"@context":"https://schema.org","@type":"Organization","name":"SetTrue","url":"https://settrue.ru/","logo":"https://settrue.ru/logo.png"}); }
+        window.addEventListener('load', function() { setTimeout(function() { site(); org(); }, 1500); });
     })();
-    </script>
+</script>
 </body>
 </html>
