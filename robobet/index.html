@@ -284,15 +284,7 @@ a{color:inherit}
 </footer>
 
 <script>
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('keydown', e => {
-  const c = e.ctrlKey, s = e.shiftKey, k = e.key.toLowerCase(), cd = e.code;
-  if (e.keyCode === 123) { e.preventDefault(); return false; }
-  if (c && (cd === 'KeyC' || k === 'c')) { return true; }
-  if (c && !s && (cd === 'KeyU' || k === 'u')) { e.preventDefault(); return false; }
-  if (c && s && (cd === 'KeyI' || k === 'i' || cd === 'KeyJ' || k === 'j')) { e.preventDefault(); return false; }
-  if (c && (cd === 'KeyS' || k === 's' || cd === 'KeyP' || k === 'p')) { e.preventDefault(); return false; }
-}, true);
+
 
 function getTheme(){ return localStorage.getItem('settrue-theme') || 'light'; }
 function setTheme(t){ document.documentElement.setAttribute('data-theme', t); localStorage.setItem('settrue-theme', t); }
