@@ -1,9 +1,28 @@
 {
   "success": true,
-  "timestamp": "2026-10-08T16:43:22Z",
+  "timestamp": "2026-10-08T22:18:04Z",
   "threshold": 85,
-  "analyzed": 3,
-  "count": 0,
-  "data": [],
+  "analyzed": 8,
+  "count": 1,
+  "data": [
+    {
+      "match": "Cerundolo — Safiullin",
+      "league": "ATP Shanghai 2026",
+      "confidence": 88,
+      "verdict": "🔥 СИЛЬНЫЙ",
+      "market": "1X2",
+      "recommended_bet": "П1",
+      "reasoning": "Данные о матче не были сохранены в логе — модель дала ответ, но reasoning не выведен в консоль. Смотри debug-файл 2026-10-08_22-18-04_Cerundolo_vs_Safiullin.txt.",
+      "key_factors": [
+        "ДЕНЬГИ: 77.1% на П1",
+        "ФОРМА: см. debug-файл",
+        "ПОКРЫТИЕ: см. debug-файл",
+        "H2H: см. debug-файл"
+      ],
+      "odds": "1.97",
+      "result": "0",
+      "result_timestamp": "2026-10-08T22:18:04Z"
+    }
+  ],
   "history": []
 }
