@@ -89,13 +89,12 @@
         [data-theme="dark"] .hero h1 em{color:var(--brand)}
         .hero p{font-size:14.5px;color:rgba(255,255,255,.72);max-width:56ch;line-height:1.6}
         [data-theme="dark"] .hero p{color:var(--ink-soft)}
-        .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius-lg);padding:18px}
+        .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius-lg);padding:18px}
         [data-theme="dark"] .hero-stats{background:var(--card-soft);border-color:var(--line)}
         .hero-stat{display:flex;flex-direction:column;gap:3px}
         .hero-stat .num{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.02em}
         .hero-stat .num.lime{color:var(--lime)}
         .hero-stat .num.coral{color:var(--coral)}
-        .hero-stat .num.sky{color:var(--sky)}
         [data-theme="dark"] .hero-stat .num.lime{color:var(--brand)}
         .hero-stat .lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.6)}
         [data-theme="dark"] .hero-stat .lbl{color:var(--ink-mute)}
@@ -108,8 +107,8 @@
         .block-head .badge.live{background:var(--coral-soft);color:#c9301a}
         [data-theme="dark"] .block-head .badge.live{color:var(--coral)}
 
-        /* ===== CARDS (как на /ai/) ===== */
-        .cards{padding:18px 22px;display:grid;gap:16px}
+        /* ===== CARDS ===== */
+        .cards{padding:18px 22px;display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
 
         @keyframes cardIn{
             0%{opacity:0;transform:translateY(20px) scale(.98)}
@@ -122,158 +121,43 @@
             border:1px solid var(--line);
             border-radius:var(--radius-lg);
             overflow:hidden;
-            transition:all .4s cubic-bezier(.16,1,.3,1);
+            transition:all .35s cubic-bezier(.16,1,.3,1);
             animation:cardIn .5s cubic-bezier(.16,1,.3,1) backwards;
+            display:flex;
+            align-items:center;
+            gap:20px;
+            padding:22px 24px;
         }
-        .t-card:nth-child(1){animation-delay:.05s}
-        .t-card:nth-child(2){animation-delay:.1s}
-        .t-card:nth-child(3){animation-delay:.15s}
-        .t-card:nth-child(4){animation-delay:.2s}
-        .t-card:nth-child(5){animation-delay:.25s}
-        .t-card:nth-child(6){animation-delay:.3s}
-        .t-card:nth-child(7){animation-delay:.35s}
-        .t-card:nth-child(8){animation-delay:.4s}
+        .t-card:nth-child(1){animation-delay:.03s}
+        .t-card:nth-child(2){animation-delay:.06s}
+        .t-card:nth-child(3){animation-delay:.09s}
+        .t-card:nth-child(4){animation-delay:.12s}
+        .t-card:nth-child(5){animation-delay:.15s}
+        .t-card:nth-child(6){animation-delay:.18s}
+        .t-card:nth-child(7){animation-delay:.21s}
+        .t-card:nth-child(8){animation-delay:.24s}
 
         .t-card::before{
-            content:'';position:absolute;left:0;top:20px;bottom:20px;
+            content:'';position:absolute;left:0;top:16px;bottom:16px;
             width:3px;border-radius:0 3px 3px 0;
-            background:var(--brand);
+            background:var(--sun);
             transition:top .3s, bottom .3s, opacity .3s;
-            opacity:.6;
+            opacity:.7;
         }
         .t-card.win::before{background:var(--brand);opacity:1}
         .t-card.lose::before{background:var(--coral);opacity:1}
-        .t-card.pending::before{background:var(--sun);opacity:.7}
 
         .t-card:hover{
             border-color:var(--brand);
             transform:translateY(-3px);
             box-shadow:0 12px 32px -12px rgba(27,127,76,.3);
         }
-        .t-card:hover::before{top:14px;bottom:14px;opacity:1}
-
-        .t-card-top{
-            display:flex;justify-content:space-between;align-items:flex-start;
-            gap:20px;padding:22px 26px 18px 30px;
-        }
-        .t-card-match{flex:1;min-width:0}
-        .t-card-match h3{
-            font-family:var(--font-display);font-weight:700;font-size:18px;
-            letter-spacing:-.015em;color:var(--ink);margin-bottom:6px;line-height:1.25;
-        }
-        .t-card-tour{
-            font-size:11px;color:var(--ink-mute);font-weight:700;
-            text-transform:uppercase;letter-spacing:.08em;
-        }
-        .t-card-verdict-wrap{
-            display:flex;align-items:center;gap:14px;flex-shrink:0;
-        }
-        .t-verdict-badge{
-            font-size:10px;font-weight:800;padding:6px 12px;border-radius:20px;
-            background:var(--brand-soft);color:var(--brand-ink);
-            letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;
-            border:1px solid rgba(27,127,76,.2);
-        }
-        [data-theme="dark"] .t-verdict-badge{color:var(--brand)}
-        .t-verdict-badge.high{
-            background:var(--sun-soft);color:#8a5b00;
-            border-color:rgba(255,184,0,.3);
-        }
-        [data-theme="dark"] .t-verdict-badge.high{color:var(--sun)}
-
-        .t-confidence-circle{
-            position:relative;width:56px;height:56px;flex-shrink:0;
-            transition:transform .4s cubic-bezier(.34,1.56,.64,1);
-        }
-        .t-card:hover .t-confidence-circle{transform:scale(1.06)}
-        .t-confidence-circle svg{transform:rotate(-90deg);width:100%;height:100%}
-        .t-circle-bg{fill:none;stroke:var(--line);stroke-width:3}
-        .t-circle-fill{
-            fill:none;stroke:var(--brand);stroke-width:3;stroke-linecap:round;
-            transition:stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1);
-        }
-        .t-confidence-value{
-            position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-            font-family:var(--font-mono);font-size:13px;font-weight:700;
-            color:var(--ink);letter-spacing:-.02em;
-        }
-
-        .t-card-bet-bar{
-            display:flex;align-items:center;justify-content:space-between;gap:16px;
-            padding:16px 26px 16px 30px;
-            background:linear-gradient(90deg, var(--brand-soft) 0%, transparent 100%);
-            border-top:1px solid var(--line);
-            border-bottom:1px solid var(--line);
-        }
-        .t-card-bet-left{display:flex;align-items:center;gap:14px;min-width:0}
-        .t-bet-icon{
-            display:flex;align-items:center;justify-content:center;
-            width:40px;height:40px;
-            background:var(--card);border:1px solid var(--line);
-            border-radius:10px;font-size:18px;flex-shrink:0;
-            transition:all .3s cubic-bezier(.34,1.56,.64,1);
-        }
-        .t-card:hover .t-bet-icon{
-            border-color:var(--brand);background:var(--brand-soft);
-            transform:rotate(-8deg) scale(1.08);
-        }
-        .t-bet-label{
-            font-size:9px;color:var(--ink-mute);font-weight:800;
-            text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px;
-        }
-        .t-bet-value{
-            font-family:var(--font-display);font-weight:800;font-size:22px;
-            color:var(--ink);letter-spacing:-.02em;line-height:1;
-            transition:color .3s;
-        }
-        .t-card:hover .t-bet-value{color:var(--brand)}
-
-        .t-card-odds{
-            display:inline-flex;align-items:baseline;gap:4px;
-            padding:10px 16px;
-            background:var(--sun-soft);
-            border:1px solid rgba(255,184,0,.4);
-            border-radius:12px;
-            font-family:var(--font-mono);font-size:17px;font-weight:700;
-            color:#8a5b00;letter-spacing:-.01em;flex-shrink:0;
-            transition:all .3s cubic-bezier(.16,1,.3,1);
-        }
-        [data-theme="dark"] .t-card-odds{color:var(--sun)}
-        .t-card:hover .t-card-odds{
-            background:var(--sun);color:#1a1200;
-            transform:scale(1.04);
-            box-shadow:0 8px 20px -8px rgba(255,184,0,.6);
-        }
-        .t-card-odds .odds-arrow{font-size:12px;opacity:.5;font-weight:400}
-
-        .t-card-reasoning{
-            padding:18px 26px 8px 30px;
-            font-size:13.5px;color:var(--ink-soft);line-height:1.7;font-weight:500;
-            transition:color .3s;
-        }
-        .t-card:hover .t-card-reasoning{color:var(--ink)}
-
-        .t-card-factors{
-            display:flex;flex-wrap:wrap;gap:6px;
-            padding:12px 26px 20px 30px;
-        }
-        .t-factor{
-            display:inline-flex;align-items:center;
-            font-size:11.5px;color:var(--ink-soft);font-weight:600;
-            background:var(--card-soft);border:1px solid var(--line);
-            padding:6px 11px;border-radius:8px;line-height:1.4;
-            transition:all .3s cubic-bezier(.16,1,.3,1);
-        }
-        .t-factor:hover{
-            border-color:var(--brand);color:var(--ink);
-            background:var(--brand-soft);
-            transform:translateY(-1px);
-        }
+        .t-card:hover::before{top:10px;bottom:10px;opacity:1}
 
         .t-card-result{
-            position:absolute;top:14px;right:14px;
-            font-family:var(--font-mono);font-size:11px;font-weight:700;
-            padding:4px 10px;border-radius:6px;
+            position:absolute;top:12px;right:12px;
+            font-family:var(--font-mono);font-size:10px;font-weight:700;
+            padding:3px 9px;border-radius:6px;
             letter-spacing:.04em;text-transform:uppercase;
             display:none;
         }
@@ -283,23 +167,126 @@
         .t-card-result.lose{background:var(--coral-soft);color:#c9301a;border:1px solid rgba(255,107,82,.3)}
         [data-theme="dark"] .t-card-result.lose{color:var(--coral)}
 
+        /* Матч */
+        .t-card-match{flex:1;min-width:0}
+        .t-card-match h3{
+            font-family:var(--font-display);font-weight:700;font-size:16px;
+            letter-spacing:-.015em;color:var(--ink);margin-bottom:5px;
+            line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+        }
+        .t-card-tour{
+            font-size:10px;color:var(--ink-mute);font-weight:700;
+            text-transform:uppercase;letter-spacing:.08em;
+            white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+        }
+
+        /* Прогноз — крупная зелёная плашка */
+        .t-card-bet{
+            display:flex;flex-direction:column;align-items:center;justify-content:center;
+            gap:2px;padding:10px 16px;min-width:86px;
+            background:linear-gradient(135deg, var(--brand-soft) 0%, color-mix(in srgb, var(--brand-soft) 60%, transparent) 100%);
+            border:1px solid rgba(27,127,76,.3);
+            border-radius:12px;flex-shrink:0;
+            transition:all .3s cubic-bezier(.16,1,.3,1);
+        }
+        .t-card:hover .t-card-bet{
+            background:linear-gradient(135deg, var(--brand) 0%, var(--brand-ink) 100%);
+            transform:scale(1.05);
+        }
+        .t-card-bet .bet-label{
+            font-size:9px;color:var(--brand-ink);font-weight:800;
+            text-transform:uppercase;letter-spacing:.1em;opacity:.7;
+            transition:color .3s;
+        }
+        [data-theme="dark"] .t-card-bet .bet-label{color:var(--brand)}
+        .t-card-bet .bet-value{
+            font-family:var(--font-display);font-weight:800;font-size:22px;
+            color:var(--brand-ink);letter-spacing:-.02em;line-height:1;
+            transition:color .3s;
+        }
+        [data-theme="dark"] .t-card-bet .bet-value{color:var(--brand)}
+        .t-card:hover .t-card-bet .bet-label,
+        .t-card:hover .t-card-bet .bet-value{color:#fff}
+
+        /* Кэф — золотая плашка */
+        .t-card-odds{
+            display:inline-flex;align-items:baseline;gap:4px;
+            padding:11px 14px;
+            background:var(--sun-soft);
+            border:1px solid rgba(255,184,0,.4);
+            border-radius:12px;
+            font-family:var(--font-mono);font-size:16px;font-weight:700;
+            color:#8a5b00;letter-spacing:-.01em;flex-shrink:0;
+            transition:all .3s cubic-bezier(.16,1,.3,1);
+        }
+        [data-theme="dark"] .t-card-odds{color:var(--sun)}
+        .t-card:hover .t-card-odds{
+            background:var(--sun);color:#1a1200;
+            transform:scale(1.04);
+            box-shadow:0 8px 20px -8px rgba(255,184,0,.6);
+        }
+        .t-card-odds .odds-arrow{font-size:11px;opacity:.5;font-weight:400}
+
         .loading,.empty{padding:56px 20px;text-align:center;color:var(--ink-mute);font-weight:600}
         .loading .spinner{display:inline-block;width:26px;height:26px;border:3px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:spin .7s linear infinite;margin-bottom:12px}
         @keyframes spin{to{transform:rotate(360deg)}}
         .err{color:var(--coral);font-weight:700;padding:40px 20px;text-align:center}
 
-        .partner{border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--brand),var(--brand-ink));color:#fff;padding:26px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;box-shadow:var(--shadow-lg);flex-wrap:wrap;position:relative;overflow:hidden}
-        .partner::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(196,242,74,.4), transparent 65%)}
+        /* ===== ПАРТНЁР — ТЁМНАЯ ПЛАШКА ===== */
+        .partner{
+            border-radius:var(--radius-xl);
+            background:linear-gradient(135deg, #0d2a1c 0%, #061510 100%);
+            color:#fff;
+            padding:26px 32px;
+            display:flex;align-items:center;justify-content:space-between;
+            gap:24px;box-shadow:var(--shadow-lg);flex-wrap:wrap;
+            position:relative;overflow:hidden;
+            border:1px solid rgba(196,242,74,.15);
+        }
+        [data-theme="dark"] .partner{
+            background:linear-gradient(135deg, #0a2014 0%, #04100a 100%);
+        }
+        .partner::before{
+            content:'';position:absolute;right:-40px;top:-40px;
+            width:200px;height:200px;border-radius:50%;
+            background:radial-gradient(circle, rgba(196,242,74,.25), transparent 65%);
+            pointer-events:none;
+        }
         .partner .left{display:flex;align-items:center;gap:16px;position:relative}
-        .partner .left .lab{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;background:rgba(255,255,255,.18);padding:5px 12px;border-radius:999px}
-        .partner .left .bk{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:20px}
+        .partner .left .lab{
+            font-size:10px;font-weight:800;text-transform:uppercase;
+            letter-spacing:.14em;background:rgba(196,242,74,.18);
+            color:#c4f24a;padding:5px 12px;border-radius:999px;
+            border:1px solid rgba(196,242,74,.25);
+        }
+        .partner .left .bk{
+            display:flex;align-items:center;gap:10px;
+            font-family:var(--font-display);font-weight:700;font-size:20px;
+            color:#ffffff;
+        }
         .partner .left .bk img{height:26px;filter:brightness(0) invert(1)}
         .partner .cta{display:flex;gap:10px;flex-wrap:wrap;position:relative}
-        .partner .cta a{text-decoration:none;font-weight:700;font-size:13px;padding:11px 20px;border-radius:12px;transition:all .2s}
-        .partner .cta a.primary{background:var(--lime);color:var(--lime-ink)}
-        .partner .cta a.primary:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(196,242,74,.6)}
-        .partner .cta a.ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.24)}
-        .partner .cta a.ghost:hover{background:rgba(255,255,255,.22)}
+        .partner .cta a{
+            text-decoration:none;font-weight:700;font-size:13px;
+            padding:11px 20px;border-radius:12px;
+            transition:all .2s;
+        }
+        .partner .cta a.primary{
+            background:var(--lime);color:var(--lime-ink);
+        }
+        .partner .cta a.primary:hover{
+            transform:translateY(-2px);
+            box-shadow:0 12px 24px -10px rgba(196,242,74,.6);
+        }
+        .partner .cta a.ghost{
+            background:rgba(255,255,255,.08);
+            color:#fff;
+            border:1px solid rgba(255,255,255,.2);
+        }
+        .partner .cta a.ghost:hover{
+            background:rgba(255,255,255,.16);
+            border-color:rgba(196,242,74,.4);
+        }
 
         .foot{margin-left:var(--rail);border-top:1px solid var(--line);background:var(--card-soft);padding:36px 28px 20px}
         .foot-inner{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px}
@@ -318,9 +305,9 @@
         .drawer a:hover{background:var(--card-soft);color:var(--ink)}
         .drawer a.active{background:var(--brand);color:#fff}
 
-        @media (max-width:1280px){.hero{grid-template-columns:1fr}.foot-inner{grid-template-columns:1fr 1fr}}
-        @media (max-width:860px){:root{--rail:0px}.rail{display:none}.topbar{padding:0 18px}.menu-btn{display:grid}.shell{padding:20px 16px 40px}.foot{padding:28px 18px 16px}.hero{padding:22px}.partner{padding:22px}.cards{padding:14px}.t-card-top{padding:18px 18px 14px}.t-card-bet-bar{padding:14px 18px}.t-card-reasoning{padding:16px 18px 6px}.t-card-factors{padding:10px 18px 16px}}
-        @media (max-width:600px){.topbar{padding:0 14px;height:64px}.brand-logo{height:30px}.brand-name{font-size:17px}.clock{font-size:11px;padding:7px 10px}.icon-btn{width:40px;height:40px}.hero{padding:20px;border-radius:22px}.hero-stats{grid-template-columns:1fr 1fr;gap:10px;padding:14px}.hero-stat .num{font-size:18px}.foot-inner{grid-template-columns:1fr;gap:24px}.block-head{padding:12px 14px}.block-head h2{font-size:14px}.cards{padding:12px}.t-card-match h3{font-size:16px}.t-bet-value{font-size:18px}.t-card-odds{font-size:15px;padding:8px 12px}.t-card-reasoning{font-size:12.5px}}
+        @media (max-width:1280px){.hero{grid-template-columns:1fr}.foot-inner{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}}
+        @media (max-width:860px){:root{--rail:0px}.rail{display:none}.topbar{padding:0 18px}.menu-btn{display:grid}.shell{padding:20px 16px 40px}.foot{padding:28px 18px 16px}.hero{padding:22px}.partner{padding:22px}.cards{padding:14px}}
+        @media (max-width:600px){.topbar{padding:0 14px;height:64px}.brand-logo{height:30px}.brand-name{font-size:17px}.clock{font-size:11px;padding:7px 10px}.icon-btn{width:40px;height:40px}.hero{padding:20px;border-radius:22px}.hero-stats{grid-template-columns:1fr 1fr;gap:10px;padding:14px}.hero-stat .num{font-size:18px}.foot-inner{grid-template-columns:1fr;gap:24px}.block-head{padding:12px 14px}.block-head h2{font-size:14px}.cards{padding:12px;grid-template-columns:1fr}.t-card{padding:16px 18px;gap:14px}.t-card-match h3{font-size:14px}.t-card-bet{padding:8px 12px;min-width:70px}.t-card-bet .bet-value{font-size:18px}.t-card-odds{font-size:14px;padding:9px 11px}}
     </style>
 </head>
 <body>
@@ -366,7 +353,6 @@
             <div class="hero-stats">
                 <div class="hero-stat"><span class="num lime" id="heroCurrent">0</span><span class="lbl">Текущих</span></div>
                 <div class="hero-stat"><span class="num coral" id="heroLast">0</span><span class="lbl">Прошедших</span></div>
-                <div class="hero-stat"><span class="num sky">72%</span><span class="lbl">Точность</span></div>
             </div>
         </section>
 
@@ -436,30 +422,12 @@
         if(u[type]){ if(typeof ym!=='undefined')ym(108400965,'reachGoal','pari_'+type); window.open(u[type],'_blank'); }
     }
 
-    /* ===== АБСОЛЮТНЫЙ URL К JSON ===== */
+    /* ===== АБСОЛЮТНЫЙ URL ===== */
     const DATA_URL = 'https://settrue.ru/ai_analysis_tennis.json';
 
     function esc(str){
         if (!str) return '';
         return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    }
-
-    function renderConfidenceCircle(confidence){
-        const radius = 24;
-        const circumference = 2 * Math.PI * radius;
-        const offset = circumference - (confidence / 100) * circumference;
-        return `
-            <div class="t-confidence-circle">
-                <svg viewBox="0 0 56 56">
-                    <circle class="t-circle-bg" cx="28" cy="28" r="${radius}"></circle>
-                    <circle class="t-circle-fill" cx="28" cy="28" r="${radius}"
-                        stroke-dasharray="${circumference}"
-                        stroke-dashoffset="${circumference}"
-                        data-offset="${offset}"></circle>
-                </svg>
-                <div class="t-confidence-value">${confidence}%</div>
-            </div>
-        `;
     }
 
     function renderTennisCards(data, containerId){
@@ -472,72 +440,35 @@
         let html = '<div class="cards">';
 
         data.forEach(d => {
-            const isStrong = (d.verdict || '').includes('СИЛЬНЫЙ');
-            const badgeClass = isStrong ? 't-verdict-badge high' : 't-verdict-badge';
-            const confidence = d.confidence || 0;
-
             let cardClass = 't-card';
             if(d.result === 'win') cardClass += ' win';
             else if(d.result === 'lose') cardClass += ' lose';
-            else cardClass += ' pending';
 
             let resultBadge = '';
-            if(d.result === 'win') resultBadge = '<span class="t-card-result show win">✅ Выиграл</span>';
-            if(d.result === 'lose') resultBadge = '<span class="t-card-result show lose">❌ Проиграл</span>';
+            if(d.result === 'win') resultBadge = '<span class="t-card-result show win">✅</span>';
+            if(d.result === 'lose') resultBadge = '<span class="t-card-result show lose">❌</span>';
 
-            const bet = d.recommended_bet || '';
-            let betIcon = '🎾';
-            if(bet === 'П1' || bet === 'П2') betIcon = '🎾';
-
-            const odds = (d.odds && d.odds !== '—') ? `<span class="t-card-odds"><span class="odds-arrow">@</span> ${esc(d.odds)}</span>` : '';
+            const bet = d.recommended_bet || '—';
+            const odds = (d.odds && d.odds !== '—') ? d.odds : '—';
 
             html += `
                 <div class="${cardClass}">
                     ${resultBadge}
-                    <div class="t-card-top">
-                        <div class="t-card-match">
-                            <h3>${esc(d.match)}</h3>
-                            <div class="t-card-tour">${esc(d.league)}</div>
-                        </div>
-                        <div class="t-card-verdict-wrap">
-                            <span class="${badgeClass}">${esc(d.verdict)}</span>
-                            ${renderConfidenceCircle(confidence)}
-                        </div>
+                    <div class="t-card-match">
+                        <h3>${esc(d.match)}</h3>
+                        <div class="t-card-tour">${esc(d.league)}</div>
                     </div>
-
-                    <div class="t-card-bet-bar">
-                        <div class="t-card-bet-left">
-                            <div class="t-bet-icon">${betIcon}</div>
-                            <div>
-                                <div class="t-bet-label">Прогноз</div>
-                                <div class="t-bet-value">${esc(bet)}</div>
-                            </div>
-                        </div>
-                        ${odds}
+                    <div class="t-card-bet">
+                        <span class="bet-label">Прогноз</span>
+                        <span class="bet-value">${esc(bet)}</span>
                     </div>
-
-                    <div class="t-card-reasoning">${esc(d.reasoning)}</div>
-
-                    ${d.key_factors && d.key_factors.length ? `
-                        <div class="t-card-factors">
-                            ${d.key_factors.map(f => `<span class="t-factor">${esc(f)}</span>`).join('')}
-                        </div>
-                    ` : ''}
+                    <div class="t-card-odds"><span class="odds-arrow">@</span> ${esc(odds)}</div>
                 </div>
             `;
         });
 
         html += '</div>';
         c.innerHTML = html;
-
-        requestAnimationFrame(() => {
-            setTimeout(() => {
-                document.querySelectorAll('.t-circle-fill').forEach(circle => {
-                    const offset = circle.getAttribute('data-offset');
-                    circle.style.strokeDashoffset = offset;
-                });
-            }, 200);
-        });
     }
 
     async function loadTennisData(){
