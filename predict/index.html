@@ -266,14 +266,12 @@
             </div>
         </section>
 
-        <aside class="side">
+                <aside class="side">
             <div class="side-card">
                 <h3>Статистика <span class="chip">LIVE</span></h3>
                 <div class="side-stat"><span class="k">Всего прогнозов</span><span class="v" id="sideTotal">0</span></div>
                 <div class="side-stat"><span class="k">Premium</span><span class="v sun" id="sidePremium">0</span></div>
-                <div class="side-stat"><span class="k">Сверхприбыль</span><span class="v brand" id="sideTop">0</span></div>
                 <div class="side-stat"><span class="k">С трендами</span><span class="v sky" id="sideTrends">0</span></div>
-                <div class="side-stat"><span class="k">Обновлено</span><span class="v" id="sideUpdated" style="font-size:12px;font-family:var(--font-mono)">—</span></div>
             </div>
         </aside>
 
@@ -360,19 +358,17 @@
     }
 
     /* ===== ЗАГРУЗКА ПРОГНОЗОВ ===== */
-    function updateSidebarStats(data){
+        function updateSidebarStats(data){
         const total = data.length;
         const premium = data.filter(t => t.isPremium === true).length;
         const top = data.filter(t => (t.profit || 0) > 500).length;
         const trends = data.filter(t => t.hasTrends === true).length;
-        document.getElementById('sideTotal').textContent = total;
-        document.getElementById('sidePremium').textContent = premium;
-        document.getElementById('sideTop').textContent = top;
-        document.getElementById('sideTrends').textContent = trends;
-        document.getElementById('heroTotal').textContent = total;
-        document.getElementById('heroPremium').textContent = premium;
-        const hp = document.getElementById('heroProfit');
-        if(hp) hp.textContent = top;
+        const st = document.getElementById('sideTotal'); if(st) st.textContent = total;
+        const sp = document.getElementById('sidePremium'); if(sp) sp.textContent = premium;
+        const str = document.getElementById('sideTrends'); if(str) str.textContent = trends;
+        const ht = document.getElementById('heroTotal'); if(ht) ht.textContent = total;
+        const hp = document.getElementById('heroPremium'); if(hp) hp.textContent = premium;
+        const hpr = document.getElementById('heroProfit'); if(hpr) hpr.textContent = top;
     }
 
     function renderTips(data){
@@ -436,7 +432,6 @@
             if(!r.ok) throw new Error('Файл не найден');
             const result = await r.json();
             if(result.success && result.data && result.data.length > 0){
-                renderTips(result.data);
                 const upd = document.getElementById('sideUpdated');
                 if(upd) upd.textContent = new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});
             }else{
