@@ -388,7 +388,8 @@
         sorted.forEach((tip, index) => {
             const isPrem = tip.isPremium === true;
             const isTopProfit = (tip.profit || 0) > 500;
-            const hasTrends = tip.hasTrends === true && tip.trends && tip.trends.length > 0;
+            const hasTrends = tip.hasTrends === true;
+            const hasTrendsText = hasTrends && tip.trends && tip.trends.length > 0;
 
             let pred = tip.prediction || '';
             if(!pred && tip.link){
@@ -414,16 +415,14 @@
             html += '<div class="tip-details">';
             if(tip.odds) html += '<span class="d"><span class="lb">Коэф:</span><span class="vl">' + tip.odds + '</span></span>';
             html += '</div>';
-            if(hasTrends){
-                html += '<div class="tip-trends"><div class="tl">📊 Тренды (' + tip.trends.length + ')</div>';
-                tip.trends.forEach(t => {
-                    const clean = String(t).replace(/<strong>/g,'').replace(/<\/strong>/g,'');
-                    html += '<div class="ti">• ' + clean + '</div>';
-                });
-                html += '</div>';
-            }
-            html += '</div>';
-        });
+            if(hasTrendsText){
+    html += '<div class="tip-trends"><div class="tl">📊 Тренды (' + tip.trends.length + ')</div>';
+    tip.trends.forEach(t => {
+        const clean = String(t).replace(/<strong>/g,'').replace(/<\/strong>/g,'');
+        html += '<div class="ti">• ' + clean + '</div>';
+    });
+    html += '</div>';
+});
         container.innerHTML = html;
     }
 
