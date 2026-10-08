@@ -388,7 +388,7 @@ async function loadTips(){
   const container = document.getElementById('tipsContainer');
   container.innerHTML = '<div class="loading"><div class="spinner"></div><div>Загрузка прогнозов…</div></div>';
   try{
-    const r = await fetch('feed_data.json?t=' + Date.now(), {cache:'no-store'});
+    const r = await fetch('/feed_data.json?t=' + Date.now(), {cache:'no-store'});
     if(!r.ok) throw new Error('Файл не найден');
     const result = await r.json();
     if(result.success && result.data && result.data.length > 0){
