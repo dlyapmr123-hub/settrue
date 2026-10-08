@@ -415,14 +415,16 @@
             html += '<div class="tip-details">';
             if(tip.odds) html += '<span class="d"><span class="lb">Коэф:</span><span class="vl">' + tip.odds + '</span></span>';
             html += '</div>';
-            if(hasTrendsText){
-    html += '<div class="tip-trends"><div class="tl">📊 Тренды (' + tip.trends.length + ')</div>';
-    tip.trends.forEach(t => {
-        const clean = String(t).replace(/<strong>/g,'').replace(/<\/strong>/g,'');
-        html += '<div class="ti">• ' + clean + '</div>';
-    });
-    html += '</div>';
-});
+                        if(hasTrends){
+                html += '<div class="tip-trends"><div class="tl">📊 Тренды (' + tip.trends.length + ')</div>';
+                tip.trends.forEach(t => {
+                    const clean = String(t).replace(/<strong>/g,'').replace(/<\/strong>/g,'');
+                    html += '<div class="ti">• ' + clean + '</div>';
+                });
+                html += '</div>';
+            }
+            html += '</div>';
+        });
         container.innerHTML = html;
     }
 
