@@ -2,7 +2,7 @@ name: Обновление ленты прогнозов
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # каждые 10 минут
+    - cron: '*/20 * * * *'  # каждые 10 минут
   workflow_dispatch:
 
 permissions:
