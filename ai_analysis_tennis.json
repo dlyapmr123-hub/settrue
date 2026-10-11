@@ -1,10 +1,11 @@
 {
   "success": true,
-  "timestamp": "2026-10-08T22:18:04Z",
+  "timestamp": "2026-10-11T16:09:57Z",
   "threshold": 85,
   "analyzed": 8,
-  "count": 1,
-  "data": [
+  "count": 0,
+  "data": [],
+  "history": [
     {
       "match": "Cerundolo — Safiullin",
       "league": "ATP Shanghai 2026",
@@ -23,6 +24,5 @@
       "result": "win",
       "result_timestamp": "2026-10-08T22:18:04Z"
     }
-  ],
-  "history": []
+  ]
 }
