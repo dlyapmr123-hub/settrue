@@ -1,7 +1,7 @@
 {
   "success": true,
-  "timestamp": "2026-10-15T18:50:36.529Z",
-  "count": 80,
+  "timestamp": "2026-10-15T21:54:06.732Z",
+  "count": 86,
   "data": [
     {
       "date": "15-10",
@@ -306,8 +306,8 @@
       "coef1": "1.80",
       "coefX": "3.39",
       "coef2": "3.81",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:1",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -324,7 +324,7 @@
       "coef1": "4.58",
       "coefX": "3.81",
       "coef2": "1.58",
-      "result": "",
+      "result": "0:0",
       "betResult": "lose"
     },
     {
@@ -342,8 +342,8 @@
       "coef1": "2.08",
       "coefX": "3.46",
       "coef2": "2.95",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:2",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -360,7 +360,7 @@
       "coef1": "1.68",
       "coefX": "3.65",
       "coef2": "4.18",
-      "result": "",
+      "result": "1:1",
       "betResult": "lose"
     },
     {
@@ -378,7 +378,7 @@
       "coef1": "1.84",
       "coefX": "3.00",
       "coef2": "4.39",
-      "result": "",
+      "result": "0:0",
       "betResult": "lose"
     },
     {
@@ -396,7 +396,7 @@
       "coef1": "5.04",
       "coefX": "2.93",
       "coef2": "1.77",
-      "result": "",
+      "result": "0:0",
       "betResult": "lose"
     },
     {
@@ -414,8 +414,8 @@
       "coef1": "4.12",
       "coefX": "3.50",
       "coef2": "1.72",
-      "result": "",
-      "betResult": "lose"
+      "result": "0:5",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -432,8 +432,8 @@
       "coef1": "1.80",
       "coefX": "3.03",
       "coef2": "4.45",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:2",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -450,8 +450,8 @@
       "coef1": "1.12",
       "coefX": "5.60",
       "coef2": "26.00",
-      "result": "",
-      "betResult": "lose"
+      "result": "3:1",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -468,8 +468,8 @@
       "coef1": "1.10",
       "coefX": "8.08",
       "coef2": "15.27",
-      "result": "",
-      "betResult": "lose"
+      "result": "4:0",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -486,8 +486,8 @@
       "coef1": "1.96",
       "coefX": "3.33",
       "coef2": "3.51",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:0",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -504,8 +504,8 @@
       "coef1": "2.75",
       "coefX": "3.80",
       "coef2": "2.10",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:4",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -522,8 +522,8 @@
       "coef1": "2.05",
       "coefX": "3.36",
       "coef2": "3.30",
-      "result": "",
-      "betResult": "lose"
+      "result": "2:0",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -540,7 +540,7 @@
       "coef1": "2.45",
       "coefX": "3.52",
       "coef2": "2.52",
-      "result": "",
+      "result": "2:3",
       "betResult": "lose"
     },
     {
@@ -558,8 +558,8 @@
       "coef1": "1.43",
       "coefX": "4.15",
       "coef2": "6.80",
-      "result": "",
-      "betResult": "lose"
+      "result": "3:1",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -576,8 +576,8 @@
       "coef1": "2.89",
       "coefX": "2.81",
       "coef2": "2.45",
-      "result": "",
-      "betResult": "lose"
+      "result": "0:0",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -594,8 +594,8 @@
       "coef1": "5.31",
       "coefX": "4.49",
       "coef2": "1.43",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:3",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -612,8 +612,8 @@
       "coef1": "5.40",
       "coefX": "4.70",
       "coef2": "1.43",
-      "result": "",
-      "betResult": "lose"
+      "result": "0:7",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -630,7 +630,7 @@
       "coef1": "2.59",
       "coefX": "3.24",
       "coef2": "2.45",
-      "result": "",
+      "result": "1:3",
       "betResult": "lose"
     },
     {
@@ -648,8 +648,8 @@
       "coef1": "1.30",
       "coefX": "5.64",
       "coef2": "9.13",
-      "result": "",
-      "betResult": "lose"
+      "result": "2:1",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -666,8 +666,8 @@
       "coef1": "2.65",
       "coefX": "3.36",
       "coef2": "2.64",
-      "result": "",
-      "betResult": "lose"
+      "result": "0:3",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -684,8 +684,8 @@
       "coef1": "4.69",
       "coefX": "4.40",
       "coef2": "1.64",
-      "result": "",
-      "betResult": "lose"
+      "result": "0:4",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -702,8 +702,8 @@
       "coef1": "2.29",
       "coefX": "3.65",
       "coef2": "2.95",
-      "result": "",
-      "betResult": "lose"
+      "result": "3:2",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -720,8 +720,8 @@
       "coef1": "2.49",
       "coefX": "3.60",
       "coef2": "2.67",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:1",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -738,8 +738,8 @@
       "coef1": "3.40",
       "coefX": "3.67",
       "coef2": "2.06",
-      "result": "",
-      "betResult": "lose"
+      "result": "0:4",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -756,7 +756,7 @@
       "coef1": "1.34",
       "coefX": "5.34",
       "coef2": "8.31",
-      "result": "",
+      "result": "1:1",
       "betResult": "lose"
     },
     {
@@ -774,8 +774,8 @@
       "coef1": "7.85",
       "coefX": "5.17",
       "coef2": "1.36",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:2",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -792,8 +792,8 @@
       "coef1": "5.79",
       "coefX": "4.52",
       "coef2": "1.52",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:2",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -810,7 +810,7 @@
       "coef1": "5.91",
       "coefX": "4.15",
       "coef2": "1.54",
-      "result": "",
+      "result": "1:1",
       "betResult": "lose"
     },
     {
@@ -828,8 +828,8 @@
       "coef1": "1.62",
       "coefX": "4.08",
       "coef2": "5.02",
-      "result": "",
-      "betResult": "lose"
+      "result": "1:0",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -846,7 +846,7 @@
       "coef1": "4.86",
       "coefX": "4.24",
       "coef2": "1.62",
-      "result": "",
+      "result": "2:1",
       "betResult": "lose"
     },
     {
@@ -864,8 +864,8 @@
       "coef1": "6.33",
       "coefX": "4.45",
       "coef2": "1.47",
-      "result": "",
-      "betResult": "lose"
+      "result": "2:4",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -882,8 +882,8 @@
       "coef1": "2.64",
       "coefX": "3.53",
       "coef2": "2.51",
-      "result": "",
-      "betResult": "lose"
+      "result": "3:2",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -900,8 +900,8 @@
       "coef1": "1.32",
       "coefX": "5.24",
       "coef2": "9.04",
-      "result": "",
-      "betResult": "lose"
+      "result": "2:0",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -918,8 +918,8 @@
       "coef1": "1.21",
       "coefX": "6.54",
       "coef2": "12.95",
-      "result": "",
-      "betResult": "lose"
+      "result": "2:1",
+      "betResult": ""
     },
     {
       "date": "15-10",
@@ -936,7 +936,7 @@
       "coef1": "1.91",
       "coefX": "3.43",
       "coef2": "4.00",
-      "result": "",
+      "result": "1:1",
       "betResult": "lose"
     },
     {
@@ -954,17 +954,89 @@
       "coef1": "3.21",
       "coefX": "3.17",
       "coef2": "2.30",
+      "result": "1:1",
+      "betResult": ""
+    },
+    {
+      "date": "15-10",
+      "time": "21:00",
+      "match": "Muğlaspor - Bursaspor",
+      "home": "Muğlaspor",
+      "away": "Bursaspor",
+      "countryCode": "tr",
+      "leagueTitle": "Turkey 1. Lig",
+      "p1": "29%",
+      "px": "33%",
+      "p2": "38%",
+      "bet": "",
+      "coef1": "4.86",
+      "coefX": "3.72",
+      "coef2": "1.60",
+      "result": "0:3",
+      "betResult": ""
+    },
+    {
+      "date": "15-10",
+      "time": "22:00",
+      "match": "Vélez Sársfield Res. - Racing Club Res.",
+      "home": "Vélez Sársfield Res.",
+      "away": "Racing Club Res.",
+      "countryCode": "ar",
+      "leagueTitle": "Argentina Reserve League",
+      "p1": "39%",
+      "px": "49%",
+      "p2": "12%",
+      "bet": "1X",
+      "coef1": "1.51",
+      "coefX": "3.80",
+      "coef2": "5.08",
+      "result": "4:0",
+      "betResult": ""
+    },
+    {
+      "date": "15-10",
+      "time": "22:00",
+      "match": "Barracas Central Res. - Atlético Tucumán Res.",
+      "home": "Barracas Central Res.",
+      "away": "Atlético Tucumán Res.",
+      "countryCode": "ar",
+      "leagueTitle": "Argentina Reserve League",
+      "p1": "47%",
+      "px": "30%",
+      "p2": "22%",
+      "bet": "1X",
+      "coef1": "2.40",
+      "coefX": "3.05",
+      "coef2": "2.69",
+      "result": "1:1",
+      "betResult": ""
+    },
+    {
+      "date": "15-10",
+      "time": "22:45",
+      "match": "Caen - La Roche VF",
+      "home": "Caen",
+      "away": "La Roche VF",
+      "countryCode": "fr",
+      "leagueTitle": "France Ligue 3",
+      "p1": "63%",
+      "px": "18%",
+      "p2": "19%",
+      "bet": "1",
+      "coef1": "2.06",
+      "coefX": "3.38",
+      "coef2": "3.15",
       "result": "",
       "betResult": "lose"
     },
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "Muğlaspor - Bursaspor",
-      "home": "Muğlaspor",
-      "away": "Bursaspor",
-      "countryCode": "tr",
-      "leagueTitle": "Turkey 1. Lig",
+      "match": "Central Espanol - Danubio",
+      "home": "Central Espanol",
+      "away": "Danubio",
+      "countryCode": "uy",
+      "leagueTitle": "Uruguay Copa Uruguay",
       "p1": "23%",
       "px": "53%",
       "p2": "24%",
@@ -978,11 +1050,11 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "Vélez Sársfield Res. - Racing Club Res.",
-      "home": "Vélez Sársfield Res.",
-      "away": "Racing Club Res.",
-      "countryCode": "ar",
-      "leagueTitle": "Argentina Reserve League",
+      "match": "FC Copenhagen - SC Braga",
+      "home": "FC Copenhagen",
+      "away": "SC Braga",
+      "countryCode": "europeanunion",
+      "leagueTitle": "World UEFA Europa Conference League",
       "p1": "31%",
       "px": "42%",
       "p2": "27%",
@@ -996,11 +1068,11 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "Barracas Central Res. - Atlético Tucumán Res.",
-      "home": "Barracas Central Res.",
-      "away": "Atlético Tucumán Res.",
-      "countryCode": "ar",
-      "leagueTitle": "Argentina Reserve League",
+      "match": "Liberia U20 - Gambia U20",
+      "home": "Liberia U20",
+      "away": "Gambia U20",
+      "countryCode": "world",
+      "leagueTitle": "World Africa Cup of Nations U20",
       "p1": "21%",
       "px": "52%",
       "p2": "27%",
@@ -1014,11 +1086,11 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "Caen - La Roche VF",
-      "home": "Caen",
-      "away": "La Roche VF",
-      "countryCode": "fr",
-      "leagueTitle": "France Ligue 3",
+      "match": "Benfica - Celtic",
+      "home": "Benfica",
+      "away": "Celtic",
+      "countryCode": "europeanunion",
+      "leagueTitle": "World UEFA Europa League",
       "p1": "71%",
       "px": "10%",
       "p2": "19%",
@@ -1032,11 +1104,11 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "Central Espanol - Danubio",
-      "home": "Central Espanol",
-      "away": "Danubio",
-      "countryCode": "uy",
-      "leagueTitle": "Uruguay Copa Uruguay",
+      "match": "Bournemouth - Sturm Graz",
+      "home": "Bournemouth",
+      "away": "Sturm Graz",
+      "countryCode": "europeanunion",
+      "leagueTitle": "World UEFA Europa League",
       "p1": "76%",
       "px": "9%",
       "p2": "16%",
@@ -1050,11 +1122,11 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "FC Copenhagen - SC Braga",
-      "home": "FC Copenhagen",
-      "away": "SC Braga",
+      "match": "Celta Vigo - Juventus",
+      "home": "Celta Vigo",
+      "away": "Juventus",
       "countryCode": "europeanunion",
-      "leagueTitle": "World UEFA Europa Conference League",
+      "leagueTitle": "World UEFA Europa League",
       "p1": "18%",
       "px": "39%",
       "p2": "43%",
@@ -1068,11 +1140,11 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "Liberia U20 - Gambia U20",
-      "home": "Liberia U20",
-      "away": "Gambia U20",
-      "countryCode": "world",
-      "leagueTitle": "World Africa Cup of Nations U20",
+      "match": "Dinamo Zagreb - Anderlecht",
+      "home": "Dinamo Zagreb",
+      "away": "Anderlecht",
+      "countryCode": "europeanunion",
+      "leagueTitle": "World UEFA Europa League",
       "p1": "45%",
       "px": "24%",
       "p2": "31%",
@@ -1086,9 +1158,9 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "Benfica - Celtic",
-      "home": "Benfica",
-      "away": "Celtic",
+      "match": "Ferencvarosi TC - Plzen",
+      "home": "Ferencvarosi TC",
+      "away": "Plzen",
       "countryCode": "europeanunion",
       "leagueTitle": "World UEFA Europa League",
       "p1": "49%",
@@ -1104,9 +1176,9 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "Bournemouth - Sturm Graz",
-      "home": "Bournemouth",
-      "away": "Sturm Graz",
+      "match": "1899 Hoffenheim - Beşiktaş",
+      "home": "1899 Hoffenheim",
+      "away": "Beşiktaş",
       "countryCode": "europeanunion",
       "leagueTitle": "World UEFA Europa League",
       "p1": "41%",
@@ -1122,9 +1194,9 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "Celta Vigo - Juventus",
-      "home": "Celta Vigo",
-      "away": "Juventus",
+      "match": "Marseille - Olympiakos Piraeus",
+      "home": "Marseille",
+      "away": "Olympiakos Piraeus",
       "countryCode": "europeanunion",
       "leagueTitle": "World UEFA Europa League",
       "p1": "44%",
@@ -1140,9 +1212,9 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "Dinamo Zagreb - Anderlecht",
-      "home": "Dinamo Zagreb",
-      "away": "Anderlecht",
+      "match": "NEC Nijmegen - Levski Sofia",
+      "home": "NEC Nijmegen",
+      "away": "Levski Sofia",
       "countryCode": "europeanunion",
       "leagueTitle": "World UEFA Europa League",
       "p1": "52%",
@@ -1158,9 +1230,9 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "Ferencvarosi TC - Plzen",
-      "home": "Ferencvarosi TC",
-      "away": "Plzen",
+      "match": "Rennes - OFI",
+      "home": "Rennes",
+      "away": "OFI",
       "countryCode": "europeanunion",
       "leagueTitle": "World UEFA Europa League",
       "p1": "85%",
@@ -1176,11 +1248,11 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "1899 Hoffenheim - Beşiktaş",
-      "home": "1899 Hoffenheim",
-      "away": "Beşiktaş",
+      "match": "Atalanta - Pafos",
+      "home": "Atalanta",
+      "away": "Pafos",
       "countryCode": "europeanunion",
-      "leagueTitle": "World UEFA Europa League",
+      "leagueTitle": "World UEFA Europa Conference League",
       "p1": "81%",
       "px": "12%",
       "p2": "7%",
@@ -1194,11 +1266,11 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "Marseille - Olympiakos Piraeus",
-      "home": "Marseille",
-      "away": "Olympiakos Piraeus",
+      "match": "Brann - Lincoln Red Imps FC",
+      "home": "Brann",
+      "away": "Lincoln Red Imps FC",
       "countryCode": "europeanunion",
-      "leagueTitle": "World UEFA Europa League",
+      "leagueTitle": "World UEFA Europa Conference League",
       "p1": "66%",
       "px": "8%",
       "p2": "26%",
@@ -1212,11 +1284,11 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "NEC Nijmegen - Levski Sofia",
-      "home": "NEC Nijmegen",
-      "away": "Levski Sofia",
+      "match": "Brighton - Kauno Žalgiris",
+      "home": "Brighton",
+      "away": "Kauno Žalgiris",
       "countryCode": "europeanunion",
-      "leagueTitle": "World UEFA Europa League",
+      "leagueTitle": "World UEFA Europa Conference League",
       "p1": "62%",
       "px": "12%",
       "p2": "26%",
@@ -1230,11 +1302,11 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "Rennes - OFI",
-      "home": "Rennes",
-      "away": "OFI",
+      "match": "SC Freiburg - FK Jablonec",
+      "home": "SC Freiburg",
+      "away": "FK Jablonec",
       "countryCode": "europeanunion",
-      "leagueTitle": "World UEFA Europa League",
+      "leagueTitle": "World UEFA Europa Conference League",
       "p1": "67%",
       "px": "11%",
       "p2": "22%",
@@ -1248,9 +1320,9 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "Atalanta - Pafos",
-      "home": "Atalanta",
-      "away": "Pafos",
+      "match": "Heart Of Midlothian - FC Nordsjaelland",
+      "home": "Heart Of Midlothian",
+      "away": "FC Nordsjaelland",
       "countryCode": "europeanunion",
       "leagueTitle": "World UEFA Europa Conference League",
       "p1": "44%",
@@ -1266,9 +1338,9 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "Brann - Lincoln Red Imps FC",
-      "home": "Brann",
-      "away": "Lincoln Red Imps FC",
+      "match": "St. Truiden - FC Iberia 1999",
+      "home": "St. Truiden",
+      "away": "FC Iberia 1999",
       "countryCode": "europeanunion",
       "leagueTitle": "World UEFA Europa Conference League",
       "p1": "72%",
@@ -1284,9 +1356,9 @@
     {
       "date": "15-10",
       "time": "23:00",
-      "match": "Brighton - Kauno Žalgiris",
-      "home": "Brighton",
-      "away": "Kauno Žalgiris",
+      "match": "Twente - FC Thun",
+      "home": "Twente",
+      "away": "FC Thun",
       "countryCode": "europeanunion",
       "leagueTitle": "World UEFA Europa Conference League",
       "p1": "52%",
@@ -1302,15 +1374,15 @@
     {
       "date": "16-10",
       "time": "02:00",
-      "match": "SC Freiburg - FK Jablonec",
-      "home": "SC Freiburg",
-      "away": "FK Jablonec",
-      "countryCode": "europeanunion",
-      "leagueTitle": "World UEFA Europa Conference League",
+      "match": "Boca Juniors Res. - Ferro 2",
+      "home": "Boca Juniors Res.",
+      "away": "Ferro 2",
+      "countryCode": "ar",
+      "leagueTitle": "Argentina Reserve League",
       "p1": "51%",
       "px": "10%",
       "p2": "38%",
-      "bet": "",
+      "bet": "12",
       "coef1": "1.16",
       "coefX": "5.83",
       "coef2": "12.55",
@@ -1319,14 +1391,32 @@
     },
     {
       "date": "16-10",
+      "time": "02:00",
+      "match": "Union Magdalena - Ind. Yumbo",
+      "home": "Union Magdalena",
+      "away": "Ind. Yumbo",
+      "countryCode": "co",
+      "leagueTitle": "Colombia Primera B",
+      "p1": "28%",
+      "px": "53%",
+      "p2": "19%",
+      "bet": "1X",
+      "coef1": "2.15",
+      "coefX": "3.05",
+      "coef2": "3.30",
+      "result": "",
+      "betResult": "lose"
+    },
+    {
+      "date": "16-10",
       "time": "03:00",
-      "match": "Heart Of Midlothian - FC Nordsjaelland",
-      "home": "Heart Of Midlothian",
-      "away": "FC Nordsjaelland",
-      "countryCode": "europeanunion",
-      "leagueTitle": "World UEFA Europa Conference League",
+      "match": "Internacional de Bogota - Llaneros",
+      "home": "Internacional de Bogota",
+      "away": "Llaneros",
+      "countryCode": "co",
+      "leagueTitle": "Colombia Copa Colombia",
       "p1": "31%",
-      "px": "20%",
+      "px": "53%",
       "p2": "15%",
       "bet": "",
       "coef1": "1.94",
@@ -1338,13 +1428,13 @@
     {
       "date": "16-10",
       "time": "03:00",
-      "match": "St. Truiden - FC Iberia 1999",
-      "home": "St. Truiden",
-      "away": "FC Iberia 1999",
-      "countryCode": "europeanunion",
-      "leagueTitle": "World UEFA Europa Conference League",
-      "p1": "25%",
-      "px": "21%",
+      "match": "Huracan - Gimnasia L.P.",
+      "home": "Huracan",
+      "away": "Gimnasia L.P.",
+      "countryCode": "ar",
+      "leagueTitle": "Argentina Liga Profesional Argentina",
+      "p1": "47%",
+      "px": "32%",
       "p2": "21%",
       "bet": "",
       "coef1": "2.54",
@@ -1356,11 +1446,11 @@
     {
       "date": "16-10",
       "time": "03:00",
-      "match": "Twente - FC Thun",
-      "home": "Twente",
-      "away": "FC Thun",
-      "countryCode": "europeanunion",
-      "leagueTitle": "World UEFA Europa Conference League",
+      "match": "Internacional Palmira - Orsomarso",
+      "home": "Internacional Palmira",
+      "away": "Orsomarso",
+      "countryCode": "co",
+      "leagueTitle": "Colombia Primera B",
       "p1": "35%",
       "px": "19%",
       "p2": "47%",
@@ -1374,72 +1464,90 @@
     {
       "date": "16-10",
       "time": "04:30",
-      "match": "Boca Juniors Res. - Ferro 2",
-      "home": "Boca Juniors Res.",
-      "away": "Ferro 2",
-      "countryCode": "ar",
-      "leagueTitle": "Argentina Reserve League",
-      "p1": "17%",
+      "match": "Estudiantes L.P. - Flamengo",
+      "home": "Estudiantes L.P.",
+      "away": "Flamengo",
+      "countryCode": "world",
+      "leagueTitle": "World CONMEBOL Libertadores",
+      "p1": "15%",
       "px": "55%",
-      "p2": "29%",
+      "p2": "30%",
       "bet": "",
-      "coef1": "3.78",
-      "coefX": "2.99",
-      "coef2": "2.17",
+      "coef1": "4.04",
+      "coefX": "2.97",
+      "coef2": "2.11",
       "result": "",
       "betResult": "lose"
     },
     {
       "date": "16-10",
       "time": "05:00",
-      "match": "Internacional de Bogota - Llaneros",
-      "home": "Internacional de Bogota",
-      "away": "Llaneros",
+      "match": "Quindio - Real Cartagena",
+      "home": "Quindio",
+      "away": "Real Cartagena",
       "countryCode": "co",
-      "leagueTitle": "Colombia Copa Colombia",
-      "p1": "84%",
+      "leagueTitle": "Colombia Primera B",
+      "p1": "25%",
+      "px": "53%",
+      "p2": "22%",
+      "bet": "",
+      "coef1": "2.40",
+      "coefX": "3.10",
+      "coef2": "2.79",
+      "result": "",
+      "betResult": "lose"
+    },
+    {
+      "date": "16-10",
+      "time": "05:00",
+      "match": "Real Estelí - Jalapa",
+      "home": "Real Estelí",
+      "away": "Jalapa",
+      "countryCode": "ni",
+      "leagueTitle": "Nicaragua Primera Division",
+      "p1": "85%",
       "px": "10%",
       "p2": "5%",
       "bet": "",
-      "coef1": "1.19",
-      "coefX": "5.86",
-      "coef2": "10.85",
+      "coef1": "1.18",
+      "coefX": "6.06",
+      "coef2": "11.22",
       "result": "",
       "betResult": "lose"
     },
     {
       "date": "16-10",
       "time": "21:00",
-      "match": "Huracan - Gimnasia L.P.",
-      "home": "Huracan",
-      "away": "Gimnasia L.P.",
-      "countryCode": "ar",
-      "leagueTitle": "Argentina Liga Profesional Argentina",
+      "match": "Fremad Amager - Nykobing FC",
+      "home": "Fremad Amager",
+      "away": "Nykobing FC",
+      "countryCode": "dk",
+      "leagueTitle": "Denmark 2. Division",
       "p1": "17%",
-      "px": "17%",
-      "p2": "66%",
+      "px": "16%",
+      "p2": "67%",
       "bet": "",
-      "coef1": "3.70",
-      "coefX": "3.50",
-      "coef2": "1.85",
+      "coef1": "3.65",
+      "coefX": "3.71",
+      "coef2": "1.78",
       "result": "",
       "betResult": "lose"
     },
     {
       "date": "16-10",
       "time": "21:00",
-      "match": "Internacional Palmira - Orsomarso",
-      "home": "Internacional Palmira",
-      "away": "Orsomarso",
-      "countryCode": "co",
-      "leagueTitle": "Colombia Primera B",
-      "p1": "32%",
+      "match": "Naestved - B 93",
+      "home": "Naestved",
+      "away": "B 93",
+      "countryCode": "dk",
+      "leagueTitle": "Denmark 2. Division",
+      "p1": "24%",
       "px": "17%",
-      "p2": "51%",
+      "p2": "59%",
       "bet": "",
-      "coef1": "1.91",
-      "coefX": "3.60",
-      "coef2": "3.35",
+      "coef1": "2.49",
+      "coefX": "3.54",
+      "coef2": "2.40",
       "result": "",
       "betResult": "lose"
     }
