@@ -443,7 +443,65 @@ const API_URL='https://script.google.com/macros/s/AKfycbxL0MmOjg_gew24qRo-x7bhj-
 let cachedMatches=[];const matchElements={};
 function getMatchId(m){return m.team1+'|'+m.team2+'|'+m.tournament}
 function matchesEqual(a,b){return a.team1===b.team1&&a.team2===b.team2&&a.score1===b.score1&&a.score2===b.score2&&a.status===b.status&&a.isLive===b.isLive&&a.isFinished===b.isFinished&&a.tournament===b.tournament}
-function createMatchHTML(match){const isLive=match.isLive;const isFin=match.isFinished||(match.status&&match.status.toLowerCase().includes(''))||false;const s1=match.score1!==null?match.score1:'–';const s2=match.score2!==null?match.score2:'–';let cls='',st=match.status||'',chipCls='',chipTxt='';if(isLive){cls='live';chipCls='live';chipTxt='LIVE'}else if(isFin){cls='finished';chipCls='done';chipTxt=''}const shifted=match.timeDisplay?shiftTime8(match.timeDisplay):'';const th=(shifted&&!isLive&&!isFin)?'<span class="time">🕐 '+shifted+' МСК</span>':'';const l1=match.logo1?'<img src="'+match.logo1+'" alt="'+match.team1+'" loading="lazy" onerror="this.style.display=\'none\'">':'<span style="font-size:20px">⚽</span>';const l2=match.logo2?'<img src="'+match.logo2+'" alt="'+match.team2+'" loading="lazy" onerror="this.style.display=\'none\'">':'<span style="font-size:20px">⚽</span>';const blink=isLive?'<span class="blink"></span>':'';return '<div class="match '+cls+'" data-match-id="'+getMatchId(match)+'">'+'<div class="match-head"><span class="match-league">'+match.tournament+'</span>'+'<span class="status-chip '+chipCls+'">'+blink+chipTxt+'</span></div>'+'<div class="match-body">'+'<div class="club"><div class="logo">'+l1+'</div><div class="name">'+match.team1+'</div></div>'+'<div class="scoreboard"><span class="val">'+s1+'</span><span class="sep">:</span><span class="val">'+s2+'</span></div>'+'<div class="club"><div class="logo">'+l2+'</div><div class="name">'+match.team2+'</div></div>'+'</div>'+'<div class="match-foot"><span>'+st+'</span>'+th+'<span class="dot-refresh"></span></div>'+'</div>'}
+function createMatchHTML(match){
+  const isLive = match.isLive;
+  const isFin = match.isFinished || (match.status && match.status.toLowerCase().includes('заверш'));
+  const s1 = match.score1 !== null ? match.score1 : '–';
+  const s2 = match.score2 !== null ? match.score2 : '–';
+
+  let cls = '';
+  let chipCls = '';
+  let chipTxt = '';
+  let statusText = '';
+
+  if (isLive) {
+    cls = 'live';
+    chipCls = 'live';
+    chipTxt = 'LIVE';
+    statusText = 'LIVE';
+  } else if (isFin) {
+    cls = 'finished';
+    chipCls = 'done';
+    chipTxt = 'ЗАВЕРШЁН';
+    statusText = 'Матч закончился';
+  } else {
+    statusText = 'Матч не начался';
+  }
+
+  const shifted = match.timeDisplay ? shiftTime8(match.timeDisplay) : '';
+  const timeHtml = '<span class="time">🕐 ' + (shifted || '--:--') + ' МСК</span>';
+
+  const l1 = match.logo1
+    ? '<img src="' + match.logo1 + '" alt="' + match.team1 + '" loading="lazy" onerror="this.style.display=\'none\'">'
+    : '<span style="font-size:20px">⚽</span>';
+
+  const l2 = match.logo2
+    ? '<img src="' + match.logo2 + '" alt="' + match.team2 + '" loading="lazy" onerror="this.style.display=\'none\'">'
+    : '<span style="font-size:20px">⚽</span>';
+
+  const blink = isLive ? '<span class="blink"></span>' : '';
+
+  return '<div class="match ' + cls + '" data-match-id="' + getMatchId(match) + '">' +
+    '<div class="match-head">' +
+      '<span class="match-league">' + match.tournament + '</span>' +
+      '<span class="status-chip ' + chipCls + '">' + blink + chipTxt + '</span>' +
+    '</div>' +
+    '<div class="match-body">' +
+      '<div class="club"><div class="logo">' + l1 + '</div><div class="name">' + match.team1 + '</div></div>' +
+      '<div class="scoreboard">' +
+        '<span class="val">' + s1 + '</span>' +
+        '<span class="sep">:</span>' +
+        '<span class="val">' + s2 + '</span>' +
+      '</div>' +
+      '<div class="club"><div class="logo">' + l2 + '</div><div class="name">' + match.team2 + '</div></div>' +
+    '</div>' +
+    '<div class="match-foot">' +
+      '<span>' + statusText + '</span>' +
+      timeHtml +
+      '<span class="dot-refresh"></span>' +
+    '</div>' +
+  '</div>';
+}
 async function loadMatches(){const c=document.getElementById('matchesContainer');if(!c)return;try{const r=await fetch(API_URL);const d=await r.json();if(d.status==='success'&&d.matches&&d.matches.length>0){cachedMatches=d.matches;document.getElementById('skeleton-loader').style.display='none';renderMatches(c,d.matches);document.getElementById('totalMatches').textContent=d.matches.length;document.getElementById('liveMatches').textContent=d.matches.filter(m=>m.isLive).length;document.getElementById('matchCount').textContent=d.matches.length;startUpdate()}else{document.getElementById('skeleton-loader').style.display='none';c.innerHTML='<div style="grid-column:1/-1;text-align:center;color:var(--ink-mute);padding:40px 0;font-weight:600;">Нет доступных матчей</div>'}}catch(e){document.getElementById('skeleton-loader').style.display='none';c.innerHTML='<div style="grid-column:1/-1;text-align:center;color:var(--ink-mute);padding:40px 0;font-weight:600;">Ошибка загрузки</div>'}}
 function renderMatches(c,matches){let h='';matches.slice(0,20).forEach((m,i)=>{h+=createMatchHTML(m).replace('<div class="match','<div class="match" style="animation-delay:'+(i*0.04)+'s"')});c.innerHTML=h;c.querySelectorAll('.match').forEach(el=>{const id=el.dataset.matchId;if(id)matchElements[id]=el})}
 function startUpdate(){if(window.updateInterval)clearInterval(window.updateInterval);window.updateInterval=setInterval(async()=>{try{const r=await fetch(API_URL),d=await r.json();if(d.status==='success'&&d.matches&&d.matches.length>0){updateMatches(d.matches);const lm=document.getElementById('liveMatches');if(lm)lm.textContent=d.matches.filter(m=>m.isLive).length}}catch(e){}},60000)}
