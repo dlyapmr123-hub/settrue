@@ -1,37 +1,10 @@
 {
   "success": true,
-  "timestamp": "2026-10-17T07:55:45Z",
+  "timestamp": "2026-10-17T10:25:06Z",
   "threshold": 85,
   "analyzed": 8,
-  "count": 1,
-  "data": [
-    {
-      "match": "Atletico MG — Coritiba",
-      "league": "Brazilian Serie A",
-      "confidence": 92,
-      "verdict": "🔥 СИЛЬНЫЙ",
-      "market": "1X2",
-      "recommended_bet": "П1",
-      "reasoning": "Деньги: 93.8% на П1 при кэфе 1.65 (объём £6580) — сильный VALUE-BET. Форма: Atletico MG выиграл 4 из 5 последних матчей (включая 5-0 против VALE), Coritiba — 2 победы, 2 ничьи, 1 поражение. Травмы: Atletico потерял Gustavo Scarpa, Mateo Casierra, Ruan и Everson, но имеет резервы. Coritiba без Alan Franco (всё же 2 ключевые травмы). H2H: 2 победы каждая, но последняя встреча (апрель 2026) выиграла Coritiba 2:0, однако текущая форма Atletico сильнее. Мотивация: домашний арена и стремление к победе. Тотал 2.5 недоступен (объём < £7000), BTTS — нет данных. Риск минимален, а вероятность П1 высока.",
-      "key_factors": [
-        "ДЕНЬГИ: 93.8% на П1 при объёме £6580",
-        "ФОРМА: Atletico MG 4 победы в 5, Coritiba 2 победы в 5",
-        "ТРАВМЫ: Atletico без Scarpa, Casierra, Ruan, Everson; Coritiba без Franco",
-        "H2H: 2 победы каждая, но последняя встреча в пользу Coritiba"
-      ],
-      "analysis": {
-        "money": "Деньги: 93.8% на П1, объём £6580 — сильный VALUE-BET",
-        "form_home": "Atletico MG: 4 победы, 1 поражение в последних 5 матчах (включая 5-0 против VALE)",
-        "form_away": "Coritiba: 2 победы, 2 ничьи, 1 поражение в последних 5 матчах",
-        "injuries": "Atletico: Gustavo Scarpa, Mateo Casierra, Ruan, Everson (все травмы). Coritiba: Alan Franco (все же 2 ключевые травмы).",
-        "motivation": "Домашний арена, стремление к победе и улучшению позиций в турнире",
-        "h2h": "Личные встречи: 2 победы каждая, 1 ничья. Последняя встреча (апрель 2026) — 2:0 в пользу Coritiba, но текущая форма Atletico сильнее."
-      },
-      "odds": "1.65",
-      "result": "0",
-      "result_timestamp": "2026-10-17T07:51:56Z"
-    }
-  ],
+  "count": 0,
+  "data": [],
   "history": [
     {
       "match": "Лyon — Rennes",
