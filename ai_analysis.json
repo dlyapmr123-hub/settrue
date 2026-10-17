@@ -1,10 +1,37 @@
 {
   "success": true,
-  "timestamp": "2026-10-17T10:25:50Z",
+  "timestamp": "2026-10-17T16:37:00Z",
   "threshold": 85,
   "analyzed": 8,
-  "count": 0,
-  "data": [],
+  "count": 1,
+  "data": [
+    {
+      "match": "Lyon — Nice",
+      "league": "French Ligue 1",
+      "confidence": 88,
+      "verdict": "🔥 СИЛЬНЫЙ",
+      "market": "1X2",
+      "recommended_bet": "П1",
+      "reasoning": "Деньги: 93.8% на П1 при кэф 1.88 (объём £24848), что указывает на недооценённость. Форма: Lyon 3 победы в 5 матчах, Nice 2 победы в 5. Травмы: Lyon (Openda), Nice (Mendy, Abergel, Sanson). H2H: Lyon выиграл 4, Nice 3, 2 ничьи (последний матч 2:1 для Lyon). Уверенность в победе Лиона выше из-за доминирования в личных встречах и стабильной формы.",
+      "key_factors": [
+        "ДЕНЬГИ: 93.8% на П1 при объёме £24848",
+        "ФОРМА: Lyon 3 победы в 5, Nice 2 победы в 5",
+        "ТРАВМЫ: Lyon (Openda), Nice (Mendy, Abergel, Sanson)",
+        "H2H: Lyon 4 победы, Nice 3, 2 ничьи (последний матч 2:1)"
+      ],
+      "analysis": {
+        "money": "Деньги: 93.8% на П1, объём £24848",
+        "form_home": "Форма Lyon: 3 победы, 1 поражение, 1 ничья в последних 5 матчах",
+        "form_away": "Форма Nice: 2 победы, 2 поражения, 1 ничья в последних 5 матчах",
+        "injuries": "Травмы: Lyon (Openda), Nice (Mendy, Abergel, Sanson)",
+        "motivation": "Lyon имеет преимущество в личных встречах и стабильную форму",
+        "h2h": "H2H: Lyon выиграл 4, Nice 3, 2 ничьи (последний матч 2:1)"
+      },
+      "odds": "1.88",
+      "result": "0",
+      "result_timestamp": "2026-10-17T16:29:07Z"
+    }
+  ],
   "history": [
     {
       "match": "Лyon — Rennes",
