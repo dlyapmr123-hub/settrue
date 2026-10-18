@@ -1,10 +1,37 @@
 {
   "success": true,
-  "timestamp": "2026-10-18T16:35:10Z",
+  "timestamp": "2026-10-18T17:03:03Z",
   "threshold": 78,
   "analyzed": 8,
-  "count": 0,
-  "data": [],
+  "count": 1,
+  "data": [
+    {
+      "match": "Tromso — Kfum Oslo",
+      "league": "Norwegian Eliteserien",
+      "confidence": 85,
+      "verdict": "🔥 СИЛЬНЫЙ",
+      "market": "1X2",
+      "recommended_bet": "П1",
+      "reasoning": "Деньги: 94.9% на П1 при кэф 1.49 (объём £2636) — явная value bet. Форма: Tromso выиграл 4 из 11 встреч с Kfum (H2H), но точных данных о последних 5 матчах нет. Травмы: Skjærvik вернулся, но нет конкретных имен. H2H: Tromso имеет преимущество в 4 победы к 1 ничьей и 6 поражениям. Мотивация: домашний матч усиливает амбиции. Объём на П1 ниже среднего, что указывает на недооценку.",
+      "key_factors": [
+        "ДЕНЬГИ: 94.9% на П1 при объёме £2636",
+        "ФОРМА: Tromso 4 победы в 11 матчах против Kfum, Kfum Oslo — нет данных",
+        "ТРАВМЫ: Skjærvik вернулся, но нет конкретных имен",
+        "H2H: Tromso 4-1-6 (счёт 4:1)"
+      ],
+      "analysis": {
+        "money": "Деньги: 94.9% на П1, объём £2636 (value bet)",
+        "form_home": "Форма Tromso: 4 победы в 11 матчах против Kfum (H2H)",
+        "form_away": "Форма Kfum Oslo: нет данных",
+        "injuries": "Травмы: Skjærvik вернулся, но нет конкретных имен",
+        "motivation": "Мотивация: домашний матч усиливает амбиции",
+        "h2h": "H2H: Tromso 4-1-6 (счёт 4:1)"
+      },
+      "odds": "1.49",
+      "result": "0",
+      "result_timestamp": "2026-10-18T17:00:46Z"
+    }
+  ],
   "history": [
     {
       "match": "Лyon — Rennes",
