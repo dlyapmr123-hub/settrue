@@ -53,8 +53,12 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--font-body);min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.55;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased;
-  background-image:radial-gradient(circle at 12% 8%, rgba(27,127,76,.06), transparent 40%),radial-gradient(circle at 88% 92%, rgba(255,107,82,.05), transparent 42%);}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--font-body);min-height:100vh;display:flex;flex-direction:column;
+  overflow-x:clip;
+  line-height:1.55;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(circle at 12% 8%, rgba(27,127,76,.06), transparent 40%),radial-gradient(circle at 88% 92%, rgba(255,107,82,.05), transparent 42%);
+}
 [data-theme="dark"] body{background-image:radial-gradient(circle at 12% 8%, rgba(95,232,154,.08), transparent 40%),radial-gradient(circle at 88% 92%, rgba(255,129,104,.06), transparent 42%);}
 ::-webkit-scrollbar{width:10px;height:10px}
 ::-webkit-scrollbar-track{background:transparent}
@@ -162,7 +166,16 @@ a{color:inherit}
 .skel-line.s{width:40%}.skel-line.m{width:70%}
 .skel-line::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent, rgba(255,255,255,.35), transparent);animation:sh 1.4s infinite}
 @keyframes sh{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
-.side{display:flex;flex-direction:column;gap:16px;position:sticky;top:98px;align-self:start;height:max-content}
+
+/* === СТАТИЧНЫЙ БЛОК .side (без прилипания) === */
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-self: start; /* Просто прижат к верху своей ячейки грида */
+}
+/* ============================================== */
+
 .side-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow)}
 .side-card h3{font-family:var(--font-display);font-weight:700;font-size:14px;display:flex;align-items:center;gap:9px;margin-bottom:14px;letter-spacing:-.01em}
 .side-card h3 .chip{margin-left:auto;font-family:var(--font-mono);font-size:10px;font-weight:700;background:var(--brand-soft);color:var(--brand-ink);padding:3px 8px;border-radius:999px}
@@ -246,7 +259,7 @@ a{color:inherit}
 .drawer a{text-decoration:none;color:var(--ink-soft);font-weight:600;padding:13px 16px;border-radius:12px;font-size:14px;transition:background .2s,color .2s}
 .drawer a:hover{background:var(--card-soft);color:var(--ink)}
 .drawer a.active{background:var(--brand);color:#fff}
-@media (max-width:1280px){.layout{grid-template-columns:1fr}.side{position:static;display:grid;grid-template-columns:repeat(2,1fr)}}
+@media (max-width:1280px){.layout{grid-template-columns:1fr}.side{display:grid;grid-template-columns:repeat(2,1fr)}}
 @media (max-width:1024px){.feats{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr;padding:28px}.matches{grid-template-columns:1fr}.foot-inner{grid-template-columns:1fr 1fr}}
 @media (max-width:860px){:root{--rail:0px}.rail{display:none}.topbar{padding:0 18px}.menu-btn{display:grid}.shell{padding:20px 16px 40px}.foot{padding:28px 18px 16px}.side{grid-template-columns:1fr}.seo{padding:24px 20px}.seo h3{font-size:17px}.partner{padding:22px}.partner .left .bk{font-size:17px}}
 @media (max-width:600px){.topbar{padding:0 14px;height:64px}.brand-logo{height:30px}.brand-name{font-size:17px}.clock{font-size:11px;padding:7px 10px}.icon-btn{width:40px;height:40px}.hero{padding:22px;border-radius:22px}.hero-stats{grid-template-columns:1fr 1fr;gap:12px;padding:16px}.hero-stat .num{font-size:22px}.feats{grid-template-columns:1fr}.foot-inner{grid-template-columns:1fr;gap:24px}.match{padding:16px}.club .logo{width:44px;height:44px}.club .logo img{width:32px;height:32px}.club .name{font-size:12.5px}.scoreboard{padding:10px 12px}.scoreboard .val{font-size:22px;min-width:26px}.section-head h2{font-size:20px}.seo{padding:20px 16px;border-radius:22px}.seo h2{font-size:19px}.faq-item p{padding-left:0;margin-top:6px}}
