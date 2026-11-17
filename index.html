@@ -185,6 +185,8 @@ a{color:inherit}
 .tiprow .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .tiprow img{width:20px;height:20px;border-radius:50%;object-fit:contain;background:var(--card)}
 .tiprow .tn{font-family:var(--font-display);font-weight:600;font-size:12.5px;letter-spacing:-.01em}
+  .tiprow .tn.vs{color:var(--ink-mute);font-weight:500;margin:0 2px}
+.tiprow .row img{flex-shrink:0}
 .tiprow .badge{margin-left:auto;font-size:9px;font-weight:800;padding:3px 8px;border-radius:999px;letter-spacing:.05em;background:var(--lime);color:var(--lime-ink)}
 .tiprow .badge.premium{background:var(--sun);color:#3a2c07}
 .tiprow .pred{font-size:11.5px;font-weight:700;color:var(--brand-ink);background:var(--brand-soft);padding:4px 10px;border-radius:999px;width:fit-content}
@@ -427,7 +429,75 @@ createParticles();
 let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(createParticles,300)});
 document.getElementById('menuToggle').addEventListener('click',function(){document.getElementById('drawer').classList.toggle('open');this.classList.toggle('on')});
 function openPartnerLink(type){const u={reg:'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate',bonus:'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate',freebets:'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate'};if(u[type]){if(typeof ym!=='undefined')ym(108400965,'reachGoal','pari_'+type);window.open(u[type],'_blank')}}
-async function loadTopTips(){const c=document.getElementById('topTipsContainer');try{const r=await fetch('/feed_data.json?t='+Date.now());if(!r.ok)throw new Error('not found');const result=await r.json();if(result.success&&result.data&&result.data.length>0){const tips=result.data.filter(t=>t.isPremium===true||(t.profit||0)>500);const unique=[];const seen=new Set();tips.forEach(t=>{const k=(t.team1||'')+'|'+(t.team2||'');if(!seen.has(k)){seen.add(k);unique.push(t)}});const top=unique.slice(0,10);if(!top.length){c.innerHTML='<div class="tiprow" style="text-align:center;color:var(--ink-mute);font-size:12px;padding:18px 10px;">Нет премиум-прогнозов</div>';return}let html='';top.forEach(tip=>{const isPrem=tip.isPremium||false;const bc=isPrem?'premium':'';const bt=isPrem?'PREMIUM':'ТОП';let pred=tip.prediction||'';if(!pred&&tip.link){const m=tip.link.match(/-([a-zA-Z0-9\-]+)-prognoz/);if(m&&m[1])pred=m[1].replace(/-/g,' ')}html+=`<div class="tiprow"><div class="row">${tip.logo1?`<img src="${tip.logo1}" alt="${tip.team1||''}" loading="lazy" onerror="this.style.display='none'">`:''}<span class="tn">${tip.team1||'—'} — ${tip.team2||'—'}</span><span class="badge ${bc}">${bt}</span></div>${pred?`<div class="pred">${pred}</div>`:''}</div>`});c.innerHTML=html}else{c.innerHTML='<div class="tiprow" style="text-align:center;color:var(--ink-mute);font-size:12px;padding:18px 10px;">Нет доступных прогнозов</div>'}}catch(e){c.innerHTML='<div class="tiprow" style="text-align:center;color:var(--ink-mute);font-size:12px;padding:18px 10px;">Ошибка загрузки</div>'}}
+async function loadTopTips(){
+  const c = document.getElementById('topTipsContainer');
+  if(!c) return;
+  try{
+    const r = await fetch('/feed_data.json?t=' + Date.now());
+    if(!r.ok) throw new Error('not found');
+    const result = await r.json();
+
+    if(result.success && result.data && result.data.length > 0){
+      const tips = result.data.filter(t => t.isPremium === true || (t.profit || 0) > 500);
+
+      const unique = [];
+      const seen = new Set();
+      tips.forEach(t => {
+        const k = (t.team1 || '') + '|' + (t.team2 || '');
+        if(!seen.has(k)){ seen.add(k); unique.push(t); }
+      });
+
+      const top = unique.slice(0, 10);
+      if(!top.length){
+        c.innerHTML = '<div class="tiprow" style="text-align:center;color:var(--ink-mute);font-size:12px;padding:18px 10px;">Нет премиум-прогнозов</div>';
+        return;
+      }
+
+      let html = '';
+      top.forEach(tip => {
+        const isPrem = tip.isPremium || false;
+        const bc = isPrem ? 'premium' : '';
+        const bt = isPrem ? 'PREMIUM' : 'ТОП';
+
+        let pred = tip.prediction || '';
+        if(!pred && tip.link){
+          const m = tip.link.match(/-([a-zA-Z0-9\-]+)-prognoz/);
+          if(m && m[1]) pred = m[1].replace(/-/g, ' ');
+        }
+
+        // Флаг первой команды
+        const l1 = tip.logo1
+          ? `<img src="${tip.logo1}" alt="${tip.team1||''}" loading="lazy" onerror="this.style.display='none'">`
+          : '';
+
+        // Флаг второй команды (с фолбэком на logo1, если logo2 нет)
+        const l2 = tip.logo2
+          ? `<img src="${tip.logo2}" alt="${tip.team2||''}" loading="lazy" onerror="this.style.display='none'">`
+          : (tip.logo1
+              ? `<img src="${tip.logo1}" alt="${tip.team2||''}" loading="lazy" style="opacity:.35" onerror="this.style.display='none'">`
+              : '');
+
+        html += `<div class="tiprow">
+          <div class="row">
+            ${l1}
+            <span class="tn">${tip.team1||'—'}</span>
+            <span class="tn vs">—</span>
+            ${l2}
+            <span class="tn">${tip.team2||'—'}</span>
+            <span class="badge ${bc}">${bt}</span>
+          </div>
+          ${pred ? `<div class="pred">${pred}</div>` : ''}
+        </div>`;
+      });
+      c.innerHTML = html;
+
+    } else {
+      c.innerHTML = '<div class="tiprow" style="text-align:center;color:var(--ink-mute);font-size:12px;padding:18px 10px;">Нет доступных прогнозов</div>';
+    }
+  } catch(e){
+    c.innerHTML = '<div class="tiprow" style="text-align:center;color:var(--ink-mute);font-size:12px;padding:18px 10px;">Ошибка загрузки</div>';
+  }
+}
 async function loadTopFlows(){
   const c=document.getElementById('topFlowsContainer');if(!c)return;
   try{
