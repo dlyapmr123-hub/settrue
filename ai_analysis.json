@@ -1,63 +1,10 @@
 {
   "success": true,
-  "timestamp": "2026-11-08T12:15:35Z",
+  "timestamp": "2026-11-17T14:53:24Z",
   "threshold": 78,
   "analyzed": 8,
-  "count": 2,
-  "data": [
-    {
-      "match": "FK Riga — Rigas Futbola Skola",
-      "league": "Latvian Virsliga",
-      "confidence": 85,
-      "verdict": "🔥 СИЛЬНЫЙ",
-      "market": "1X2",
-      "recommended_bet": "X",
-      "reasoning": "Деньги: 89.4% на ничью при объёме £8760 (value bet). Форма: FK Riga 1 победа, 2 ничьи, 2 поражения в 5 матчах; Rigas Futbola Skola 1 победа, 2 ничьи, 2 поражения. Травмы: нет данных. H2H: 16 побед у FK Riga, 16 у Rigas Futbola Skola в 50 матчах. Баланс сил и value на ничью делает это сильным сигналом.",
-      "key_factors": [
-        "ДЕНЬГИ: 89.4% на исход при объёме £8760",
-        "ФОРМА: FK Riga 1 победа в 5, Rigas Futbola Skola 1 победа в 5",
-        "ТРАВМЫ: нет данных",
-        "H2H: 16 побед у FK Riga, 16 у Rigas Futbola Skola"
-      ],
-      "analysis": {
-        "money": "Деньги: 89.4% на ничью, объём £8760 (value bet)",
-        "form_home": "Форма FK Riga: 1 победа, 2 ничьи, 2 поражения в последних 5 матчах",
-        "form_away": "Форма Rigas Futbola Skola: 1 победа, 2 ничьи, 2 поражения в последних 5 матчах",
-        "injuries": "Травмы: нет данных",
-        "motivation": "Мотивация: обе команды стремятся к победе, но H2H показывает равные шансы",
-        "h2h": "H2H: 16 побед у FK Riga, 16 у Rigas Futbola Skola в 50 матчах, 18 ничьих"
-      },
-      "odds": "1.99",
-      "result": "0",
-      "result_timestamp": "2026-11-08T12:08:46Z"
-    },
-    {
-      "match": "Shakhtar — Dynamo Kiev",
-      "league": "Ukrainian Premier League",
-      "confidence": 85,
-      "verdict": "🔥 СИЛЬНЫЙ",
-      "market": "1X2",
-      "recommended_bet": "П1",
-      "reasoning": "Деньги: 93.2% на П1 при объёме £1374 (значительный дисбаланс, value bet). Форма: Shakhtar 3 победы в 5 матчах (последний матч победа), Dynamo Kiev 2 победы в 5 матчах (последний матч победа). Травмы: Marlon Santos (Shakhtar) травмирован, заменён на Vinicius. H2H: Shakhtar 26 побед, Dynamo 11 побед, 13 ничьих (последний H2H: Shakhtar выиграл 1-0). Мотивация: Шахтар стремится контролировать игру, высокий процент владения мячом. Ключевой фактор — дисбаланс в денежных потоках и преимущество H2H.",
-      "key_factors": [
-        "ДЕНЬГИ: 93.2% на П1 при объёме £1374 (value bet)",
-        "ФОРМА: Shakhtar 3 победы в 5, Dynamo Kiev 2 победы в 5",
-        "ТРАВМЫ: Marlon Santos (Shakhtar) травмирован",
-        "H2H: Shakhtar 26 побед, Dynamo 11 побед, 13 ничьих"
-      ],
-      "analysis": {
-        "money": "Деньги: 93.2% на П1, объём £1374 (значительный дисбаланс, value bet)",
-        "form_home": "Форма Shakhtar: 3 победы в 5 последних матчах, последний матч победа",
-        "form_away": "Форма Dynamo Kiev: 2 победы в 5 последних матчах, последний матч победа",
-        "injuries": "Травмы: Marlon Santos (Shakhtar) травмирован, заменён на Vinicius",
-        "motivation": "Шахтар стремится контролировать игру, высокий процент владения мячом",
-        "h2h": "H2H: Shakhtar 26 побед, Dynamo 11 побед, 13 ничьих (последний H2H: Shakhtar выиграл 1-0)"
-      },
-      "odds": "1.69",
-      "result": "0",
-      "result_timestamp": "2026-11-08T12:14:04Z"
-    }
-  ],
+  "count": 0,
+  "data": [],
   "history": [
     {
       "match": "Лyon — Rennes",
