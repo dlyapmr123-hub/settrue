@@ -107,120 +107,93 @@
         .block-head .badge.live{background:var(--coral-soft);color:#c9301a}
         [data-theme="dark"] .block-head .badge.live{color:var(--coral)}
 
-        /* ===== CARDS ===== */
-        .cards{padding:18px 22px;display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
-
-        @keyframes cardIn{
-            0%{opacity:0;transform:translateY(20px) scale(.98)}
-            100%{opacity:1;transform:translateY(0) scale(1)}
-        }
+        /* ===== НОВЫЕ МИНИМАЛИСТИЧНЫЕ КАРТОЧКИ ===== */
+        .cards{padding:18px 22px;display:flex;flex-direction:column;gap:10px}
 
         .t-card{
             position:relative;
             background:var(--card);
             border:1px solid var(--line);
-            border-radius:var(--radius-lg);
-            overflow:hidden;
-            transition:all .35s cubic-bezier(.16,1,.3,1);
-            animation:cardIn .5s cubic-bezier(.16,1,.3,1) backwards;
-            display:flex;
-            align-items:center;
-            gap:20px;
-            padding:22px 24px;
+            border-left:2px solid var(--line);
+            border-radius:12px;
+            padding:16px 20px;
+            transition:border-color .2s, background .2s;
         }
-        .t-card:nth-child(1){animation-delay:.03s}
-        .t-card:nth-child(2){animation-delay:.06s}
-        .t-card:nth-child(3){animation-delay:.09s}
-        .t-card:nth-child(4){animation-delay:.12s}
-        .t-card:nth-child(5){animation-delay:.15s}
-        .t-card:nth-child(6){animation-delay:.18s}
+        .t-card:hover{border-color:var(--ink-mute);background:var(--card-soft)}
+        .t-card.win{border-left-color:var(--brand)}
+        .t-card.lose{border-left-color:var(--coral)}
 
-        .t-card::before{
-            content:'';position:absolute;left:0;top:16px;bottom:16px;
-            width:3px;border-radius:0 3px 3px 0;
-            background:var(--sun);
-            transition:top .3s, bottom .3s, opacity .3s;
-            opacity:.7;
+        .t-card-top{
+            display:flex;align-items:flex-start;justify-content:space-between;
+            gap:16px;margin-bottom:10px;
         }
-        .t-card.win::before{background:var(--brand);opacity:1}
-        .t-card.lose::before{background:var(--coral);opacity:1}
-
-        .t-card:hover{
-            border-color:var(--brand);
-            transform:translateY(-3px);
-            box-shadow:0 12px 32px -12px rgba(27,127,76,.3);
-        }
-        .t-card:hover::before{top:10px;bottom:10px;opacity:1}
-
-        .t-card-result{
-            position:absolute;top:12px;right:12px;
-            font-family:var(--font-mono);font-size:10px;font-weight:700;
-            padding:3px 9px;border-radius:6px;
-            letter-spacing:.04em;text-transform:uppercase;
-            display:none;
-        }
-        .t-card-result.show{display:inline-block}
-        .t-card-result.win{background:var(--brand-soft);color:var(--brand-ink);border:1px solid rgba(27,127,76,.3)}
-        [data-theme="dark"] .t-card-result.win{color:var(--brand)}
-        .t-card-result.lose{background:var(--coral-soft);color:#c9301a;border:1px solid rgba(255,107,82,.3)}
-        [data-theme="dark"] .t-card-result.lose{color:var(--coral)}
-
         .t-card-match{flex:1;min-width:0}
         .t-card-match h3{
-            font-family:var(--font-display);font-weight:700;font-size:16px;
-            letter-spacing:-.015em;color:var(--ink);margin-bottom:5px;
-            line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+            font-family:var(--font-display);font-weight:700;font-size:17.5px; /* Крупнее */
+            letter-spacing:-.01em;color:var(--ink);margin-bottom:3px;line-height:1.3;
         }
         .t-card-tour{
-            font-size:10px;color:var(--ink-mute);font-weight:700;
-            text-transform:uppercase;letter-spacing:.08em;
-            white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+            font-size:10.5px;color:var(--ink-mute);font-weight:600;
+            text-transform:uppercase;letter-spacing:.07em;
         }
 
-        .t-card-bet{
-            display:flex;flex-direction:column;align-items:center;justify-content:center;
-            gap:2px;padding:10px 16px;min-width:86px;
-            background:linear-gradient(135deg, var(--brand-soft) 0%, color-mix(in srgb, var(--brand-soft) 60%, transparent) 100%);
-            border:1px solid rgba(27,127,76,.3);
-            border-radius:12px;flex-shrink:0;
-            transition:all .3s cubic-bezier(.16,1,.3,1);
+        .t-card-right{
+            display:flex;align-items:center;gap:14px;flex-shrink:0;
         }
-        .t-card:hover .t-card-bet{
-            background:linear-gradient(135deg, var(--brand) 0%, var(--brand-ink) 100%);
-            transform:scale(1.05);
+        .t-card-bet{
+            display:flex;flex-direction:column;align-items:flex-end;gap:1px;
         }
         .t-card-bet .bet-label{
-            font-size:9px;color:var(--brand-ink);font-weight:800;
-            text-transform:uppercase;letter-spacing:.1em;opacity:.7;
-            transition:color .3s;
+            font-size:9px;color:var(--ink-mute);font-weight:700;
+            text-transform:uppercase;letter-spacing:.1em;
         }
-        [data-theme="dark"] .t-card-bet .bet-label{color:var(--brand)}
         .t-card-bet .bet-value{
-            font-family:var(--font-display);font-weight:800;font-size:22px;
-            color:var(--brand-ink);letter-spacing:-.02em;line-height:1;
-            transition:color .3s;
+            font-family:var(--font-display);font-weight:800;font-size:17px;
+            color:var(--ink);letter-spacing:-.01em;line-height:1;
         }
-        [data-theme="dark"] .t-card-bet .bet-value{color:var(--brand)}
-        .t-card:hover .t-card-bet .bet-label,
-        .t-card:hover .t-card-bet .bet-value{color:#fff}
-
+        /* Оранжевый кэф */
         .t-card-odds{
-            display:inline-flex;align-items:baseline;gap:4px;
-            padding:11px 14px;
-            background:var(--sun-soft);
-            border:1px solid rgba(255,184,0,.4);
-            border-radius:12px;
-            font-family:var(--font-mono);font-size:16px;font-weight:700;
-            color:#8a5b00;letter-spacing:-.01em;flex-shrink:0;
-            transition:all .3s cubic-bezier(.16,1,.3,1);
+            font-family:var(--font-mono);font-size:15px;font-weight:800;
+            color:#b45309;
+            letter-spacing:-.01em;
+            padding:6px 10px;border-radius:7px;
+            background:rgba(245, 158, 11, .12);
+            border:1px solid rgba(245, 158, 11, .35);
+            min-width:56px;text-align:center;
         }
-        [data-theme="dark"] .t-card-odds{color:var(--sun)}
-        .t-card:hover .t-card-odds{
-            background:var(--sun);color:#1a1200;
-            transform:scale(1.04);
-            box-shadow:0 8px 20px -8px rgba(255,184,0,.6);
+        [data-theme="dark"] .t-card-odds{
+            color:#fbbf24;
+            background:rgba(251, 191, 36, .12);
+            border-color:rgba(251, 191, 36, .35);
         }
-        .t-card-odds .odds-arrow{font-size:11px;opacity:.5;font-weight:400}
+
+        .t-card-result{
+            display:none;font-size:14px;line-height:1;
+        }
+        .t-card-result.show{display:inline-block}
+
+        .t-card-reasoning{
+            font-size:13px;color:var(--ink-soft);line-height:1.65;
+            margin-bottom:10px;
+            display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;
+            overflow:hidden;
+        }
+        .t-card-factors{
+            display:flex;flex-wrap:wrap;gap:6px;
+        }
+        .factor{
+            font-size:11px;color:var(--ink-soft);
+            background:var(--bg-alt);
+            border:1px solid var(--line);
+            padding:3px 9px;border-radius:6px;
+            line-height:1.5;
+            display:inline-flex;align-items:center;gap:6px;
+        }
+        .factor::before{
+            content:'';width:4px;height:4px;border-radius:50%;
+            background:var(--ink-mute);flex-shrink:0;
+        }
+        [data-theme="dark"] .factor{background:var(--card-soft)}
 
         .loading,.empty{padding:56px 20px;text-align:center;color:var(--ink-mute);font-weight:600}
         .loading .spinner{display:inline-block;width:26px;height:26px;border:3px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:spin .7s linear infinite;margin-bottom:12px}
@@ -268,14 +241,10 @@
         .drawer a:hover{background:var(--card-soft);color:var(--ink)}
         .drawer a.active{background:var(--brand);color:#fff}
 
-        /* ===== ПЛАНШЕТ ===== */
         @media (max-width:1280px){
             .hero{grid-template-columns:1fr}
             .foot-inner{grid-template-columns:1fr 1fr}
-            .cards{grid-template-columns:1fr}
         }
-
-        /* ===== ПЛАНШЕТ / БОЛЬШОЙ ТЕЛЕФОН ===== */
         @media (max-width:860px){
             :root{--rail:0px}
             .rail{display:none}
@@ -285,15 +254,9 @@
             .foot{padding:28px 18px 16px}
             .hero{padding:22px}
             .partner{padding:22px}
-            .cards{padding:14px;gap:10px}
-            .t-card{padding:16px 18px;gap:14px}
-            .t-card-match h3{font-size:14.5px}
-            .t-card-bet{padding:9px 14px;min-width:78px}
-            .t-card-bet .bet-value{font-size:19px}
-            .t-card-odds{font-size:14px;padding:9px 12px}
+            .cards{padding:14px;gap:8px}
+            .t-card{padding:14px 16px}
         }
-
-        /* ===== ТЕЛЕФОН ===== */
         @media (max-width:600px){
             .topbar{padding:0 14px;height:64px}
             .brand-logo{height:30px}
@@ -316,47 +279,24 @@
             .block-head h2{font-size:14px;gap:8px}
             .block-head .badge{font-size:9px;padding:2px 8px}
 
-            /* КАРТОЧКА — компактная строка в одну линию */
-            .cards{padding:10px;gap:8px}
-            .t-card{
-                padding:12px 12px 12px 14px;
-                gap:8px;
-                border-radius:14px;
-                align-items:center;
-            }
-            .t-card::before{top:10px;bottom:10px;width:3px}
-            .t-card:hover{transform:none;box-shadow:none}
+            .cards{padding:10px;gap:6px}
+            .t-card{padding:12px 14px;border-radius:10px}
 
-            .t-card-match{flex:1;min-width:0;padding-right:4px}
-            .t-card-match h3{
-                font-size:12.5px;
-                margin-bottom:2px;
-                line-height:1.2;
-            }
-            .t-card-tour{font-size:9px;letter-spacing:.05em}
+            .t-card-top{gap:10px;margin-bottom:8px}
+            .t-card-match h3{font-size:15px}
+            .t-card-tour{font-size:9.5px}
 
-            .t-card-bet{
-                padding:7px 8px;
-                min-width:56px;
-                border-radius:10px;
-                gap:0;
-            }
-            .t-card-bet .bet-label{font-size:8px;letter-spacing:.06em}
+            .t-card-right{gap:10px}
+            .t-card-bet .bet-label{font-size:8px}
             .t-card-bet .bet-value{font-size:15px}
+            .t-card-odds{font-size:13px;padding:5px 8px;min-width:48px}
+            .t-card-result{font-size:12px}
 
-            .t-card-odds{
-                padding:8px 8px;
-                font-size:12px;
-                border-radius:10px;
-                gap:2px;
+            .t-card-reasoning{
+                font-size:12px;line-height:1.55;margin-bottom:8px;
+                -webkit-line-clamp:2;
             }
-            .t-card-odds .odds-arrow{font-size:9px}
-
-            .t-card-result{
-                top:6px;right:6px;
-                font-size:9px;
-                padding:2px 6px;
-            }
+            .t-card-factors{display:none}
 
             .loading,.empty{padding:36px 12px;font-size:12px}
             .err{padding:28px 12px;font-size:12px}
@@ -373,15 +313,6 @@
             .foot-col h4{font-size:10px;margin-bottom:8px}
             .foot-col a{font-size:12.5px;padding:4px 0}
             .foot-bar{font-size:11px;margin-top:20px;padding-top:14px}
-        }
-
-        /* Очень маленькие экраны */
-        @media (max-width:380px){
-            .t-card-match h3{font-size:11.5px}
-            .t-card-bet{min-width:48px;padding:6px 6px}
-            .t-card-bet .bet-value{font-size:13px}
-            .t-card-odds{font-size:11px;padding:7px 6px}
-            .t-card{gap:6px;padding:10px}
         }
     </style>
 </head>
@@ -525,24 +456,41 @@
             else if(d.result === 'lose') cardClass += ' lose';
 
             let resultBadge = '';
-            if(d.result === 'win') resultBadge = '<span class="t-card-result show win">✅</span>';
-            if(d.result === 'lose') resultBadge = '<span class="t-card-result show lose">❌</span>';
+            if(d.result === 'win') resultBadge = '<span class="t-card-result show">✅</span>';
+            if(d.result === 'lose') resultBadge = '<span class="t-card-result show">❌</span>';
 
             const bet = d.recommended_bet || '—';
             const odds = (d.odds && d.odds !== '—') ? d.odds : '—';
+            const reasoning = d.reasoning || '';
+            const factors = Array.isArray(d.key_factors) ? d.key_factors.slice(0, 4) : [];
+
+            let factorsHtml = '';
+            if (factors.length) {
+                factorsHtml = '<div class="t-card-factors">';
+                factors.forEach(f => {
+                    factorsHtml += '<span class="factor">' + esc(f) + '</span>';
+                });
+                factorsHtml += '</div>';
+            }
 
             html += `
                 <div class="${cardClass}">
-                    ${resultBadge}
-                    <div class="t-card-match">
-                        <h3>${esc(d.match)}</h3>
-                        <div class="t-card-tour">${esc(d.league)}</div>
+                    <div class="t-card-top">
+                        <div class="t-card-match">
+                            <h3>${esc(d.match)}</h3>
+                            <div class="t-card-tour">${esc(d.league)}</div>
+                        </div>
+                        <div class="t-card-right">
+                            ${resultBadge}
+                            <div class="t-card-bet">
+                                <span class="bet-label">Прогноз</span>
+                                <span class="bet-value">${esc(bet)}</span>
+                            </div>
+                            <div class="t-card-odds">@ ${esc(odds)}</div>
+                        </div>
                     </div>
-                    <div class="t-card-bet">
-                        <span class="bet-label">Прогноз</span>
-                        <span class="bet-value">${esc(bet)}</span>
-                    </div>
-                    <div class="t-card-odds"><span class="odds-arrow">@</span> ${esc(odds)}</div>
+                    ${reasoning ? '<div class="t-card-reasoning">' + esc(reasoning) + '</div>' : ''}
+                    ${factorsHtml}
                 </div>
             `;
         });
