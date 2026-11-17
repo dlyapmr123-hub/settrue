@@ -1,10 +1,89 @@
 {
   "success": true,
-  "timestamp": "2026-11-17T14:53:24Z",
+  "timestamp": "2026-11-17T15:12:13Z",
   "threshold": 78,
   "analyzed": 8,
-  "count": 0,
-  "data": [],
+  "count": 3,
+  "data": [
+    {
+      "match": "Israel — Austria",
+      "league": "UEFA Nations League B",
+      "confidence": 78,
+      "verdict": "🔥 СИЛЬНЫЙ",
+      "market": "1X2",
+      "recommended_bet": "П2",
+      "reasoning": "Деньги: 88.6% на П2 при кэф 1.93 (объём £51779) — явный value bet. Форма: Israel 1W 2D 2L (3-7), Austria 2W 2D 1L (9-8). Травмы: Austria потеряла ключевых игроков (Grull, Chukwuemeka, Schlager, Prass) и использует ротацию. H2H: Austria выиграла 3 из 5 встреч (14-13 голов), включая последний матч 3-1. Мотивация: обе команды стремятся к победе в Лиге наций. Ключевой фактор — высокий объём на П2 с недооценённым кэфом.",
+      "key_factors": [
+        "ДЕНЬГИ: 88.6% на П2 при объёме £51779",
+        "ФОРМА: Israel 1W 2D 2L, Austria 2W 2D 1L",
+        "ТРАВМЫ: Austria потеряла 5 игроков (Grull, Chukwuemeka, Schlager, Prass, Paul)",
+        "H2H: Austria 3-2 Israel (14-13 голов)"
+      ],
+      "analysis": {
+        "money": "Деньги: 88.6% на П2 при объёме £51779",
+        "form_home": "Форма Israel: 1 победа, 2 ничьи, 2 поражения (3-7)",
+        "form_away": "Форма Austria: 2 победы, 2 ничьи, 1 поражение (9-8)",
+        "injuries": "Травмы: Marco Grull (голенбус), Carney Chukwuemeka (мышцы), Xaver Schlager, Alexander Prass, Paul (вызваны на матч)",
+        "motivation": "Мотивация: обе команды стремятся к победе в Лиге наций",
+        "h2h": "H2H: Austria выиграла 3 из 5 встреч (14-13 голов), включая последний матч 3-1"
+      },
+      "odds": "1.93",
+      "result": "0",
+      "result_timestamp": "2026-11-17T15:03:46Z"
+    },
+    {
+      "match": "Republic of Ireland — Kosovo",
+      "league": "UEFA Nations League B",
+      "confidence": 85,
+      "verdict": "🔥 СИЛЬНЫЙ",
+      "market": "1X2",
+      "recommended_bet": "П1",
+      "reasoning": "Деньги: 83.3% на П1 при кэфе 2.1 (value bet). Форма Republic of Ireland: 1W 3D 1L (7 забитых, 5 пропущенных), Kosovo: 2W 2D 1L (6 забитых, 4 пропущенных). Травмы: Nathan Collins (Republic of Ireland) вышел из-за травмы, Kosovo потеряли Edon Zhegrova (травма) и Veldin Hodza (предупреждение). H2H: Kosovo выиграли 1-0 в предыдущей встрече. Мотивация: Republic of Ireland нуждаются в победе для продвижения в Лигу А.",
+      "key_factors": [
+        "ДЕНЬГИ: 83.3% на П1 при объёме £10851",
+        "ФОРМА: Republic of Ireland 1W 3D 1L, Kosovo 2W 2D 1L",
+        "ТРАВМЫ: Nathan Collins (Republic of Ireland), Edon Zhegrova и Veldin Hodza (Kosovo)",
+        "H2H: Kosovo 1-0 Republic of Ireland"
+      ],
+      "analysis": {
+        "money": "Деньги: 83.3% на П1, объём £10851",
+        "form_home": "Republic of Ireland: 1W 3D 1L (7-5)",
+        "form_away": "Kosovo: 2W 2D 1L (6-4)",
+        "injuries": "Nathan Collins (Republic of Ireland), Edon Zhegrova и Veldin Hodza (Kosovo)",
+        "motivation": "Republic of Ireland нуждаются в победе для продвижения в Лигу А",
+        "h2h": "Kosovo 1-0 Republic of Ireland"
+      },
+      "odds": "2.1",
+      "result": "0",
+      "result_timestamp": "2026-11-17T15:04:53Z"
+    },
+    {
+      "match": "Qatar — South Korea",
+      "league": "Friendlies International",
+      "confidence": 88,
+      "verdict": "🔥 СИЛЬНЫЙ",
+      "market": "1X2",
+      "recommended_bet": "П2",
+      "reasoning": "Деньги: 97.6% на исход 'П2' при кэфе 1.44 (объём £11218). Форма: Qatar 2 победы в 5 матчах, South Korea 2 победы, 1 поражение и 2 ничьи. Травмы: нет данных. H2H: South Korea выиграла 3 из 5 встреч, Qatar — 2. South Korea демонстрирует стабильность в атаке и преимущество в личных встречах, что усиливает вероятность победы. Кэф 1.44 соответствует высокой уверенности, несмотря на домашнее преимущество Qatar.",
+      "key_factors": [
+        "ДЕНЬГИ: 97.6% на П2 при объёме £11218",
+        "ФОРМА: Qatar 2 победы в 5, South Korea 2 победы, 1 поражение и 2 ничьи",
+        "ТРАВМЫ: нет данных",
+        "H2H: South Korea 3-2 Qatar"
+      ],
+      "analysis": {
+        "money": "Деньги: 97.6% на П2, объём £11218",
+        "form_home": "Форма Qatar: 2 победы, 1 поражение, 2 ничьи в последних 5 матчах",
+        "form_away": "Форма South Korea: 2 победы, 1 поражение, 2 ничьи в последних 5 матчах",
+        "injuries": "Травмы: нет данных",
+        "motivation": "South Korea стремится к победе для подтверждения своей формы, Qatar — для улучшения статистики домашних матчей",
+        "h2h": "H2H: South Korea выиграла 3 из 5 встреч, забив 11 голов, Qatar — 8"
+      },
+      "odds": "1.44",
+      "result": "0",
+      "result_timestamp": "2026-11-17T15:06:07Z"
+    }
+  ],
   "history": [
     {
       "match": "Лyon — Rennes",
