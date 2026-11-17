@@ -6,15 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="yandex-verification" content="0ac8a3221431959f" />
     <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108400965', 'ym');
-        ym(108400965, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=108400965','ym');ym(108400965,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute;left:-9999px" alt=""/></div></noscript>
 
     <title>AI-анализ матчей | SetTrue</title>
     <meta name="description" content="Локальная нейросеть анализирует матчи. Только уверенные сигналы, математические модели и статистика.">
@@ -104,6 +98,7 @@
         .shell{margin-top:72px;margin-left:var(--rail);padding:26px 28px 60px;flex:1}
         .layout{max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
 
+        /* Hero — как на главной */
         .hero{border-radius:var(--radius-xl);background:var(--ink);color:var(--bg);padding:32px 36px;position:relative;overflow:hidden;box-shadow:var(--shadow-lg);display:grid;grid-template-columns:1.5fr 1fr;gap:32px;align-items:center}
         [data-theme="dark"] .hero{background:var(--card);color:var(--ink)}
         .hero::after{content:'';position:absolute;right:-80px;top:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle, rgba(196,242,74,.35), transparent 65%);pointer-events:none}
@@ -116,17 +111,17 @@
         [data-theme="dark"] .hero h1 em{color:var(--brand)}
         .hero p{font-size:14.5px;color:rgba(255,255,255,.72);max-width:56ch;line-height:1.6}
         [data-theme="dark"] .hero p{color:var(--ink-soft)}
-        .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius-lg);padding:18px}
+        .hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius-lg);padding:18px}
         [data-theme="dark"] .hero-stats{background:var(--card-soft);border-color:var(--line)}
         .hero-stat{display:flex;flex-direction:column;gap:3px}
         .hero-stat .num{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.02em}
         .hero-stat .num.lime{color:var(--lime)}
         .hero-stat .num.coral{color:var(--coral)}
-        .hero-stat .num.sky{color:var(--sky)}
         [data-theme="dark"] .hero-stat .num.lime{color:var(--brand)}
         .hero-stat .lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.6)}
         [data-theme="dark"] .hero-stat .lbl{color:var(--ink-mute)}
 
+        /* Вкладки — как на главной */
         .tabs{display:flex;gap:6px;padding:6px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);flex-wrap:wrap}
         .tab{flex:1;min-width:160px;background:transparent;border:none;color:var(--ink-soft);font-family:var(--font-display);font-size:13.5px;font-weight:700;padding:12px 16px;border-radius:12px;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
         .tab:hover{color:var(--ink);background:var(--card-soft)}
@@ -136,6 +131,7 @@
         .tab.active .cnt{background:rgba(255,255,255,.2)}
         [data-theme="dark"] .tab.active .cnt{background:rgba(0,0,0,.15)}
 
+        /* Sub-tabs */
         .subtabs{display:flex;gap:6px;flex-wrap:wrap}
         .subtab{background:var(--card);border:1px solid var(--line);color:var(--ink-soft);font-family:var(--font-display);font-size:12.5px;font-weight:600;padding:9px 16px;border-radius:999px;cursor:pointer;transition:all .2s}
         .subtab:hover{color:var(--ink);border-color:var(--brand)}
@@ -146,34 +142,44 @@
         .panel.active{display:flex;animation:rise .35s cubic-bezier(.2,.7,.3,1) both}
         @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-        .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);transition:transform .2s,box-shadow .25s,border-color .25s;position:relative}
-        .card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--sun)}
+        /* Карточка — как на главной (.match) */
+        .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);transition:transform .2s,box-shadow .25s,border-color .25s;position:relative;padding:20px 22px}
+        .card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--sky)}
         .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--brand)}
+        .card.win::before{background:var(--brand)}
+        .card.lose::before{background:var(--coral)}
 
-        .card-top{padding:20px 24px 14px;display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}
+        .card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:16px;flex-wrap:wrap}
         .card-match{flex:1;min-width:0}
-        .card-match h3{font-family:var(--font-display);font-weight:700;font-size:18px;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
-        .card-league{font-size:11px;color:var(--ink-mute);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
-        .verdict{font-size:10px;font-weight:800;padding:5px 11px;border-radius:999px;background:var(--brand-soft);color:var(--brand-ink);letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
-        [data-theme="dark"] .verdict{color:var(--brand)}
-        .verdict.strong{background:var(--sun);color:#3a2c07}
+        .card-match h3{font-family:var(--font-display);font-weight:700;font-size:18px;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px;color:var(--ink)}
+        .card-league{font-size:10.5px;color:var(--ink-mute);text-transform:uppercase;letter-spacing:.1em;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .status-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;background:var(--sky-soft);color:var(--sky);flex-shrink:0}
+        .status-chip.strong{background:var(--sun-soft);color:#8a5b00}
+        [data-theme="dark"] .status-chip.strong{color:var(--sun)}
+        .status-chip.win{background:var(--brand-soft);color:var(--brand-ink)}
+        [data-theme="dark"] .status-chip.win{color:var(--brand)}
+        .status-chip.lose{background:var(--coral-soft);color:#c9301a}
+        [data-theme="dark"] .status-chip.lose{color:var(--coral)}
 
-        .bet-bar{padding:16px 24px;background:linear-gradient(90deg,var(--brand-soft),transparent);border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-        .bet-left{display:flex;align-items:center;gap:14px;min-width:0}
-        .bet-ico{width:40px;height:40px;border-radius:12px;background:var(--card);border:1px solid rgba(27,127,76,.2);display:grid;place-items:center;font-size:18px;flex-shrink:0}
-        .bet-label{font-size:9.5px;color:var(--ink-mute);text-transform:uppercase;letter-spacing:.1em;font-weight:800;margin-bottom:2px}
-        .bet-value{font-family:var(--font-display);font-weight:800;font-size:20px;color:var(--brand);letter-spacing:-.02em;line-height:1}
-        [data-theme="dark"] .bet-value{color:var(--brand)}
-        .odds{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:var(--sun-soft);border:1px solid rgba(255,184,0,.35);border-radius:10px;font-family:var(--font-mono);font-size:12.5px;font-weight:700;color:#8a6300}
-        [data-theme="dark"] .odds{color:var(--sun)}
+        /* Блок прогноза — как scoreboard */
+        .card-bet{display:flex;align-items:center;gap:14px;background:var(--card-soft);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:14px;flex-wrap:wrap}
+        [data-theme="dark"] .card-bet{background:var(--card)}
+        .card-bet .ico{width:38px;height:38px;border-radius:10px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;font-size:18px;flex-shrink:0}
+        [data-theme="dark"] .card-bet .ico{background:var(--card-soft)}
+        .card-bet .label{font-size:9.5px;color:var(--ink-mute);text-transform:uppercase;letter-spacing:.1em;font-weight:800;margin-bottom:2px}
+        .card-bet .value{font-family:var(--font-display);font-weight:800;font-size:20px;color:var(--ink);letter-spacing:-.02em;line-height:1}
+        .card-odds{margin-left:auto;font-family:var(--font-mono);font-size:13px;font-weight:700;padding:6px 12px;border-radius:10px;background:var(--sun-soft);border:1px solid rgba(255,184,0,.35);color:#8a6300;white-space:nowrap}
+        [data-theme="dark"] .card-odds{color:var(--sun)}
 
-        .reasoning{padding:16px 24px;font-size:13.5px;color:var(--ink-soft);line-height:1.7}
-        .factors{display:flex;flex-wrap:wrap;gap:8px;padding:0 24px 20px}
+        /* Reasoning + factors — как tiprow/flowrow */
+        .card-reasoning{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin-bottom:14px;padding-top:14px;border-top:1px dashed var(--line)}
+        .card-factors{display:flex;flex-wrap:wrap;gap:8px}
         .factor{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ink-soft);background:var(--card-soft);border:1px solid var(--line);padding:6px 12px;border-radius:8px;line-height:1.4;transition:border-color .2s}
+        [data-theme="dark"] .factor{background:var(--card)}
         .factor::before{content:'›';color:var(--brand);font-weight:800;font-size:14px;line-height:1}
         .factor:hover{border-color:var(--brand)}
 
-        /* HISTORY */
+        /* История */
         .months{display:flex;gap:8px;flex-wrap:wrap}
         .month-tab{padding:8px 16px;font-size:12px;font-weight:600;color:var(--ink-soft);background:var(--card);border:1px solid var(--line);border-radius:10px;cursor:pointer;transition:all .2s;font-family:inherit}
         .month-tab:hover{border-color:var(--brand);color:var(--ink)}
@@ -210,6 +216,7 @@
         .loading .spinner{display:inline-block;width:26px;height:26px;border:3px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:spin .7s linear infinite;margin-bottom:12px}
         @keyframes spin{to{transform:rotate(360deg)}}
 
+        /* Партнёр — как на главной */
         .partner{border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--brand),var(--brand-ink));color:#fff;padding:26px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;box-shadow:var(--shadow-lg);flex-wrap:wrap;position:relative;overflow:hidden}
         .partner::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(196,242,74,.4), transparent 65%)}
         .partner .left{display:flex;align-items:center;gap:16px;position:relative}
@@ -223,6 +230,7 @@
         .partner .cta a.ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.24)}
         .partner .cta a.ghost:hover{background:rgba(255,255,255,.22)}
 
+        /* Футер — как на главной */
         .foot{margin-left:var(--rail);border-top:1px solid var(--line);background:var(--card-soft);padding:36px 28px 20px}
         .foot-inner{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px}
         .foot-brand h3{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.02em;margin-bottom:10px}
@@ -240,8 +248,36 @@
         .drawer a:hover{background:var(--card-soft);color:var(--ink)}
         .drawer a.active{background:var(--brand);color:#fff}
 
-        @media (max-width:860px){:root{--rail:0px}.rail{display:none}.topbar{padding:0 18px}.menu-btn{display:grid}.shell{padding:20px 16px 40px}.foot{padding:28px 18px 16px}.hero{grid-template-columns:1fr;padding:22px}.partner{padding:22px}.partner .left .bk{font-size:17px}.foot-inner{grid-template-columns:1fr 1fr}.card-top{padding:16px 18px 12px}.bet-bar{padding:12px 18px}.reasoning{padding:14px 18px;font-size:13px}.factors{padding:0 18px 16px}.hist-item{padding:12px 14px}}
-        @media (max-width:600px){.topbar{padding:0 14px;height:64px}.brand-logo{height:30px}.brand-name{font-size:17px}.clock{font-size:11px;padding:7px 10px}.icon-btn{width:40px;height:40px}.hero{padding:18px;border-radius:22px}.hero-stats{grid-template-columns:1fr 1fr;gap:10px;padding:14px}.hero-stat .num{font-size:18px}.foot-inner{grid-template-columns:1fr;gap:24px}.card-match h3{font-size:16px}.bet-value{font-size:18px}.hist-item .hi-date,.hist-item .hi-profit{min-width:auto;text-align:left}.hist-item{gap:8px}.tab{min-width:auto;font-size:11.5px;padding:10px 8px}}
+        @media (max-width:860px){
+            :root{--rail:0px}
+            .rail{display:none}
+            .topbar{padding:0 18px}
+            .menu-btn{display:grid}
+            .shell{padding:20px 16px 40px}
+            .foot{padding:28px 18px 16px}
+            .hero{grid-template-columns:1fr;padding:22px}
+            .partner{padding:22px}
+            .partner .left .bk{font-size:17px}
+            .foot-inner{grid-template-columns:1fr 1fr}
+            .card-head{padding:0;margin-bottom:12px}
+            .card-reasoning{padding-top:12px}
+        }
+        @media (max-width:600px){
+            .topbar{padding:0 14px;height:64px}
+            .brand-logo{height:30px}
+            .brand-name{font-size:17px}
+            .clock{font-size:11px;padding:7px 10px}
+            .icon-btn{width:40px;height:40px}
+            .hero{padding:18px;border-radius:22px}
+            .hero-stats{grid-template-columns:1fr 1fr;gap:10px;padding:14px}
+            .hero-stat .num{font-size:18px}
+            .foot-inner{grid-template-columns:1fr;gap:24px}
+            .card-match h3{font-size:16px}
+            .card-bet .value{font-size:18px}
+            .hist-item .hi-date,.hist-item .hi-profit{min-width:auto;text-align:left}
+            .hist-item{gap:8px}
+            .tab{min-width:auto;font-size:11.5px;padding:10px 8px}
+        }
     </style>
 </head>
 <body>
@@ -284,7 +320,7 @@
             <div>
                 <span class="hero-eyebrow"><span class="pulse"></span>Локальная нейросеть</span>
                 <h1>AI-анализ матчей — <em>только уверенные сигналы</em></h1>
-                <p>Нейросеть анализирует матчи по десяткам критериев: деньги, форму, травмы, H2H и контекст. Отдаём только сигналы с высокой уверенностью, с полной расшифровкой анализа.</p>
+                <p>Нейросеть анализирует матчи по десяткам критериев: форма, травмы, H2H, мотивация и тактика. Отдаём только сигналы с высокой уверенностью, с полной расшифровкой анализа.</p>
             </div>
             <div class="hero-stats">
                 <div class="hero-stat"><span class="num lime" id="heroFresh">0</span><span class="lbl">Свежих</span></div>
@@ -469,29 +505,35 @@
         let html = '';
         fresh.forEach(match => {
             const isStrong = (match.verdict || '').includes('СИЛЬНЫЙ');
-            const badgeCls = isStrong ? 'verdict strong' : 'verdict';
-            const oddsHtml = isOddsValid(match.odds) ? '<span class="odds">@ ' + esc(match.odds) + '</span>' : '';
+            const chipCls = isStrong ? 'status-chip strong' : 'status-chip';
+            const oddsHtml = isOddsValid(match.odds) ? '<span class="card-odds">@ ' + esc(match.odds) + '</span>' : '';
             const bet = match.recommended_bet || '';
             let betIcon = '🎯';
             if (bet.includes('П1') || bet.includes('П2') || bet.includes('X')) betIcon = '⚽';
             else if (bet.includes('ТБ') || bet.includes('ТМ')) betIcon = '🥅';
             else if (bet.includes('ОЗ')) betIcon = '🔄';
 
+            let factorsHtml = '';
+            if (match.key_factors && match.key_factors.length) {
+                factorsHtml = '<div class="card-factors">';
+                match.key_factors.forEach(f => { factorsHtml += '<span class="factor">' + esc(f) + '</span>'; });
+                factorsHtml += '</div>';
+            }
+
             html += '<div class="card">';
-            html += '<div class="card-top">';
+            html += '<div class="card-head">';
             html += '<div class="card-match"><h3>' + esc(match.match) + '</h3><div class="card-league">🏆 ' + esc(match.league) + '</div></div>';
-            html += '<span class="' + badgeCls + '">' + esc(match.verdict) + '</span>';
+            html += '<span class="' + chipCls + '">' + esc(match.verdict || 'ХОРОШИЙ') + '</span>';
             html += '</div>';
-            html += '<div class="bet-bar">';
-            html += '<div class="bet-left"><div class="bet-ico">' + betIcon + '</div><div><div class="bet-label">Прогноз</div><div class="bet-value">' + esc(match.recommended_bet) + '</div></div></div>';
+            html += '<div class="card-bet">';
+            html += '<div class="ico">' + betIcon + '</div>';
+            html += '<div><div class="label">Прогноз</div><div class="value">' + esc(match.recommended_bet) + '</div></div>';
             html += oddsHtml;
             html += '</div>';
-            html += '<div class="reasoning">' + esc(match.reasoning) + '</div>';
-            if (match.key_factors && match.key_factors.length) {
-                html += '<div class="factors">';
-                match.key_factors.forEach(f => { html += '<span class="factor">' + esc(f) + '</span>'; });
-                html += '</div>';
+            if (match.reasoning) {
+                html += '<div class="card-reasoning">' + esc(match.reasoning) + '</div>';
             }
+            html += factorsHtml;
             html += '</div>';
         });
         container.innerHTML = html;
