@@ -28,7 +28,7 @@
         "h2h": "H2H: Austria выиграла 3 из 5 встреч (14-13 голов), включая последний матч 3-1"
       },
       "odds": "1.93",
-      "result": "0",
+      "result": "lose",
       "result_timestamp": "2026-11-17T15:03:46Z"
     },
     {
@@ -54,7 +54,7 @@
         "h2h": "Kosovo 1-0 Republic of Ireland"
       },
       "odds": "2.1",
-      "result": "0",
+      "result": "win",
       "result_timestamp": "2026-11-17T15:04:53Z"
     },
     {
