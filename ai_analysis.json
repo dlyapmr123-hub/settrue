@@ -1,36 +1,4 @@
-{
-  "success": true,
-  "timestamp": "2026-11-18T14:36:09Z",
-  "threshold": 78,
-  "analyzed": 9,
-  "count": 1,
-  "data": [
-    {
-      "match": "Hiroshima Regina (W) — Noj Stel Kanagawa (W)",
-      "league": "Japanese Ladies WE League",
-      "confidence": 80,
-      "verdict": "🔥 СИЛЬНЫЙ",
-      "market": "1X2",
-      "recommended_bet": "П1",
-      "reasoning": "Форма Hiroshima Regina (W): выиграла 3 из последних 5 матчей (60% побед), забила 9 голов, пропустила 2. Форма Nojima Stella Kanagawa (W): 2 победы в 5 матчах. H2H: Hiroshima Regina выиграла 3 из 5 встреч, проиграла 1, сыграла вничью 1. Мотивация: отсутствуют данные о турнирном положении. Травмы: нет данных. Тактика: Hiroshima Regina демонстрирует доминирование в владении мячом (53% по данным AIScore) и больше шансов на удары в створ (7 против 4 у Nojima).",
-      "key_factors": [
-        "ФОРМА: Hiroshima Regina (W) 3 победы в 5, Nojima Stella Kanagawa (W) 2 победы в 5",
-        "ТРАВМЫ: нет данных",
-        "H2H: 3 победы Hiroshima, 1 поражение, 1 ничья",
-        "МОТИВАЦИЯ: турнирное положение не указано"
-      ],
-      "analysis": {
-        "form_home": "Hiroshima Regina (W) показывает стабильную форму с 60% победной процентной статистикой, забивая много и concede мало",
-        "form_away": "Nojima Stella Kanagawa (W) имеет менее устойчивую форму с 40% победной статистикой",
-        "injuries": "Травмы: нет данных",
-        "motivation": "Мотивация: отсутствуют данные о турнирном положении",
-        "h2h": "H2H: Hiroshima Regina выиграла 3 из 5 встреч, демонстрируя доминирование в ключевых статистиках"
-      },
-      "odds": "2.04",
-      "result": "0",
-      "result_timestamp": "2026-11-18T14:33:48Z"
-    }
-  ],
+
   "history": [
     {
       "match": "Лyon — Rennes",
