@@ -40,7 +40,7 @@
       "verdict": "🔥 СИЛЬНЫЙ",
       "market": "1X2",
       "recommended_bet": "П1",
-      "reasoning": "Данные о матче не были сохранены в логе — модель дала ответ, но reasoning не выведен в консоль. Смотри debug-файл 2026-10-08_22-18-04_Cerundolo_vs_Safiullin.txt.",
+      "reasoning": "",
       "key_factors": [
         "ДЕНЬГИ: 77.1% на П1",
         "ФОРМА: см. debug-файл",
