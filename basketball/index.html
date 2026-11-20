@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7841660916895595" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="yandex-verification" content="0ac8a3221431959f" />
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108400965', 'ym');ym(108400965, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108400965" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+    <title>SetTrue — Баскетбол АИ | Математический анализ и прогнозы</title>
+    <meta name="description" content="Математический анализ баскетбольных матчей. Прогнозы на основе ИИ и статистики. SetTrue.">
+    <link rel="canonical" href="https://settrue.ru/scanmatch/">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root{
+            --bg:#f2efe8;--bg-alt:#eae6dc;--ink:#131a16;--ink-soft:#4a544c;--ink-mute:#8b948c;
+            --line:#d6d1c5;--card:#ffffff;--card-soft:#faf8f3;
+            --brand:#1b7f4c;--brand-ink:#0e5231;--brand-soft:#d9f0e2;
+            --lime:#c4f24a;--lime-ink:#2c3d09;--coral:#ff6b52;--coral-soft:#ffe2dc;
+            --sky:#3aa8f0;--sky-soft:#dcefff;
+            --sun:#ffb800;--sun-soft:#fff0cc;
+            --shadow:0 1px 0 rgba(19,26,22,.06), 0 12px 32px -16px rgba(19,26,22,.22);
+            --shadow-lg:0 2px 0 rgba(19,26,22,.06), 0 28px 60px -28px rgba(19,26,22,.35);
+            --radius-xl:28px;--radius-lg:20px;--radius-md:14px;--radius-sm:10px;
+            --font-display:'Space Grotesk',sans-serif;--font-body:'Manrope',sans-serif;--font-mono:'JetBrains Mono',monospace;
+            --rail:84px;
+        }
+        [data-theme="dark"]{
+            --bg:#0c1210;--bg-alt:#111a16;--ink:#eef3ee;--ink-soft:#a8b3aa;--ink-mute:#5c6760;
+            --line:#1f2a24;--card:#141d18;--card-soft:#101814;
+            --brand:#5fe89a;--brand-ink:#bfffd8;--brand-soft:#163323;
+            --lime:#d6ff5c;--lime-ink:#1a2404;--coral:#ff8168;--coral-soft:#3a1c15;
+            --sky:#6cc0ff;--sky-soft:#0f2534;--sun:#ffc93c;--sun-soft:#3a2c07;
+            --shadow:0 1px 0 rgba(255,255,255,.03), 0 14px 36px -18px rgba(0,0,0,.7);
+            --shadow-lg:0 2px 0 rgba(255,255,255,.03), 0 32px 64px -28px rgba(0,0,0,.85);
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{background:var(--bg);color:var(--ink);font-family:var(--font-body);min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.55;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased;
+            background-image:radial-gradient(circle at 12% 8%, rgba(27,127,76,.06), transparent 40%),radial-gradient(circle at 88% 92%, rgba(255,107,82,.05), transparent 42%);}
+        [data-theme="dark"] body{background-image:radial-gradient(circle at 12% 8%, rgba(95,232,154,.08), transparent 40%),radial-gradient(circle at 88% 92%, rgba(255,129,104,.06), transparent 42%);}
+        ::-webkit-scrollbar{width:10px;height:10px}
+        ::-webkit-scrollbar-track{background:transparent}
+        ::-webkit-scrollbar-thumb{background:var(--ink-mute);border-radius:10px;border:3px solid var(--bg)}
+        a{color:inherit}
+        .topbar{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 28px 0 calc(var(--rail) + 28px);display:flex;align-items:center;justify-content:space-between;background:color-mix(in srgb, var(--bg) 82%, transparent);backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);border-bottom:1px solid var(--line)}
+        .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+        .brand-logo{height:36px;width:auto;object-fit:contain}
+        .brand-name{font-family:var(--font-display);font-weight:700;font-size:20px;letter-spacing:-.02em;color:var(--ink)}
+        .brand-name em{font-style:normal;color:var(--brand)}
+        .topbar-right{display:flex;align-items:center;gap:12px}
+        .clock{font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--ink);background:var(--card);border:1px solid var(--line);padding:9px 14px;border-radius:12px;letter-spacing:.02em}
+        .clock b{color:var(--brand);font-weight:700}
+        .icon-btn{width:44px;height:44px;border-radius:12px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;cursor:pointer;color:var(--ink);font-size:16px;transition:transform .15s,border-color .2s}
+        .icon-btn:hover{transform:translateY(-2px);border-color:var(--brand)}
+        .menu-btn{display:none}
+        .menu-btn .bars{display:flex;flex-direction:column;gap:4px}
+        .menu-btn .bars i{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;transition:.25s}
+        .menu-btn.on .bars i:nth-child(1){transform:translateY(6px) rotate(45deg)}
+        .menu-btn.on .bars i:nth-child(2){opacity:0}
+        .menu-btn.on .bars i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+        .rail{position:fixed;top:72px;bottom:0;left:0;width:var(--rail);border-right:1px solid var(--line);background:var(--card-soft);display:flex;flex-direction:column;align-items:center;padding:22px 0;gap:8px;z-index:90}
+        .rail-link{width:56px;height:56px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:var(--ink-soft);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;transition:all .2s;position:relative}
+        .rail-link svg{width:22px;height:22px}
+        .rail-link:hover{background:var(--card);color:var(--ink)}
+        .rail-link.active{background:var(--ink);color:var(--bg)}
+        [data-theme="dark"] .rail-link.active{background:var(--lime);color:var(--lime-ink)}
+        .rail-sep{width:32px;height:1px;background:var(--line);margin:8px 0}
+        .shell{margin-top:72px;margin-left:var(--rail);padding:26px 28px 60px;flex:1}
+        .layout{max-width:1500px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+
+        .hero{border-radius:var(--radius-xl);background:var(--ink);color:var(--bg);padding:32px 36px;position:relative;overflow:hidden;box-shadow:var(--shadow-lg);display:grid;grid-template-columns:1.5fr 1fr;gap:32px;align-items:center}
+        [data-theme="dark"] .hero{background:var(--card);color:var(--ink)}
+        .hero::after{content:'';position:absolute;right:-80px;top:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle, rgba(196,242,74,.35), transparent 65%);pointer-events:none}
+        .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);color:#fff;padding:7px 14px;border-radius:999px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
+        [data-theme="dark"] .hero-eyebrow{background:var(--brand-soft);color:var(--brand-ink)}
+        .hero-eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--lime);animation:pulse 1.4s infinite}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+        .hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,3vw,38px);line-height:1.1;letter-spacing:-.03em;margin-bottom:12px}
+        .hero h1 em{font-style:normal;color:var(--lime)}
+        [data-theme="dark"] .hero h1 em{color:var(--brand)}
+        .hero p{font-size:14.5px;color:rgba(255,255,255,.72);max-width:56ch;line-height:1.6}
+        [data-theme="dark"] .hero p{color:var(--ink-soft)}
+        .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius-lg);padding:18px}
+        [data-theme="dark"] .hero-stats{background:var(--card-soft);border-color:var(--line)}
+        .hero-stat{display:flex;flex-direction:column;gap:3px}
+        .hero-stat .num{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.02em}
+        .hero-stat .num.lime{color:var(--lime)}
+        .hero-stat .num.coral{color:var(--coral)}
+        [data-theme="dark"] .hero-stat .num.lime{color:var(--brand)}
+        .hero-stat .lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.6)}
+        [data-theme="dark"] .hero-stat .lbl{color:var(--ink-mute)}
+
+        .card-block{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden}
+        .block-head{padding:16px 22px;background:var(--card-soft);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+        .block-head h2{font-family:var(--font-display);font-weight:700;font-size:16px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+        .block-head .badge{font-family:var(--font-mono);font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--brand-soft);color:var(--brand-ink);letter-spacing:.05em}
+        [data-theme="dark"] .block-head .badge{color:var(--brand)}
+        .block-head .badge.live{background:var(--coral-soft);color:#c9301a}
+        [data-theme="dark"] .block-head .badge.live{color:var(--coral)}
+
+        .cards{padding:18px 22px;display:flex;flex-direction:column;gap:10px}
+
+        .t-card{
+            position:relative;
+            background:var(--card);
+            border:1px solid var(--line);
+            border-left:2px solid var(--line);
+            border-radius:12px;
+            padding:16px 20px;
+            transition:border-color .2s, background .2s;
+        }
+        .t-card:hover{border-color:var(--ink-mute);background:var(--card-soft)}
+        .t-card.win{border-left-color:var(--brand)}
+        .t-card.lose{border-left-color:var(--coral)}
+
+        .t-card-top{
+            display:flex;align-items:flex-start;justify-content:space-between;
+            gap:16px;margin-bottom:10px;
+        }
+        .t-card-match{flex:1;min-width:0}
+        .t-card-match h3{
+            font-family:var(--font-display);font-weight:700;font-size:18px;
+            letter-spacing:-.01em;color:var(--ink);margin-bottom:3px;line-height:1.3;
+        }
+        .t-card-tour{
+            font-size:11px;color:var(--ink-mute);font-weight:600;
+            text-transform:uppercase;letter-spacing:.07em;
+        }
+
+        .t-card-right{
+            display:flex;align-items:center;gap:14px;flex-shrink:0;
+        }
+        .t-card-bet{
+            display:flex;flex-direction:column;align-items:flex-end;gap:1px;
+        }
+        .t-card-bet .bet-label{
+            font-size:9px;color:var(--ink-mute);font-weight:700;
+            text-transform:uppercase;letter-spacing:.1em;
+        }
+        .t-card-bet .bet-value{
+            font-family:var(--font-display);font-weight:800;font-size:18px;
+            color:var(--ink);letter-spacing:-.01em;line-height:1;
+        }
+        .t-card-odds{
+            font-family:var(--font-mono);font-size:16px;font-weight:800;
+            color:#d97706;
+            letter-spacing:-.01em;
+            padding:6px 10px;border-radius:7px;
+            background:rgba(245, 158, 11, .12);
+            border:1px solid rgba(245, 158, 11, .35);
+            min-width:56px;text-align:center;
+        }
+        [data-theme="dark"] .t-card-odds{
+            color:#fbbf24;
+            background:rgba(251, 191, 36, .12);
+            border-color:rgba(251, 191, 36, .35);
+        }
+
+        .t-card-result{
+            display:none;font-size:14px;line-height:1;
+        }
+        .t-card-result.show{display:inline-block}
+
+        .t-card-reasoning{
+            font-size:13px;color:var(--ink-soft);line-height:1.65;
+            margin-bottom:10px;
+            display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;
+            overflow:hidden;
+        }
+        .t-card-factors{
+            display:flex;flex-wrap:wrap;gap:6px;
+        }
+        .factor{
+            font-size:11px;color:var(--ink-soft);
+            background:var(--bg-alt);
+            border:1px solid var(--line);
+            padding:3px 9px;border-radius:6px;
+            line-height:1.5;
+            display:inline-flex;align-items:center;gap:6px;
+        }
+        .factor::before{
+            content:'';width:4px;height:4px;border-radius:50%;
+            background:var(--ink-mute);flex-shrink:0;
+        }
+        [data-theme="dark"] .factor{background:var(--card-soft)}
+
+        .loading,.empty{padding:56px 20px;text-align:center;color:var(--ink-mute);font-weight:600}
+        .loading .spinner{display:inline-block;width:26px;height:26px;border:3px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:spin .7s linear infinite;margin-bottom:12px}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .err{color:var(--coral);font-weight:700;padding:40px 20px;text-align:center}
+
+        .partner{
+            border-radius:var(--radius-xl);
+            background:linear-gradient(135deg, #0d2a1c 0%, #061510 100%);
+            color:#fff;
+            padding:26px 32px;
+            display:flex;align-items:center;justify-content:space-between;
+            gap:24px;box-shadow:var(--shadow-lg);flex-wrap:wrap;
+            position:relative;overflow:hidden;
+            border:1px solid rgba(196,242,74,.15);
+        }
+        [data-theme="dark"] .partner{background:linear-gradient(135deg, #0a2014 0%, #04100a 100%);}
+        .partner::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(196,242,74,.25), transparent 65%);pointer-events:none;}
+        .partner .left{display:flex;align-items:center;gap:16px;position:relative}
+        .partner .left .lab{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;background:rgba(196,242,74,.18);color:#c4f24a;padding:5px 12px;border-radius:999px;border:1px solid rgba(196,242,74,.25);}
+        .partner .left .bk{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:20px;color:#ffffff;}
+        .partner .left .bk img{height:26px;filter:brightness(0) invert(1)}
+        .partner .cta{display:flex;gap:10px;flex-wrap:wrap;position:relative}
+        .partner .cta a{text-decoration:none;font-weight:700;font-size:13px;padding:11px 20px;border-radius:12px;transition:all .2s;}
+        .partner .cta a.primary{background:var(--lime);color:var(--lime-ink);}
+        .partner .cta a.primary:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(196,242,74,.6);}
+        .partner .cta a.ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2);}
+        .partner .cta a.ghost:hover{background:rgba(255,255,255,.16);border-color:rgba(196,242,74,.4);}
+
+        .foot{margin-left:var(--rail);border-top:1px solid var(--line);background:var(--card-soft);padding:36px 28px 20px}
+        .foot-inner{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px}
+        .foot-brand h3{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.02em;margin-bottom:10px}
+        .foot-brand h3 em{font-style:normal;color:var(--brand)}
+        .foot-brand p{font-size:13px;color:var(--ink-soft);line-height:1.6;max-width:32ch}
+        .foot-col h4{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-mute);margin-bottom:12px}
+        .foot-col a{display:block;text-decoration:none;color:var(--ink-soft);font-size:13px;font-weight:600;padding:5px 0;transition:color .2s}
+        .foot-col a:hover{color:var(--brand)}
+        .foot-bar{max-width:1500px;margin:26px auto 0;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--ink-mute);font-weight:600}
+        .foot-bar .age{display:inline-flex;align-items:center;gap:8px}
+        .foot-bar .age b{background:var(--coral);color:#fff;padding:3px 9px;border-radius:7px;font-family:var(--font-mono);font-size:11px;font-weight:800}
+        .drawer{display:none;position:fixed;top:64px;left:0;right:0;z-index:95;background:var(--card);border-bottom:1px solid var(--line);padding:12px;flex-direction:column;gap:4px;box-shadow:var(--shadow-lg)}
+        .drawer.open{display:flex}
+        .drawer a{text-decoration:none;color:var(--ink-soft);font-weight:600;padding:13px 16px;border-radius:12px;font-size:14px;transition:background .2s,color .2s}
+        .drawer a:hover{background:var(--card-soft);color:var(--ink)}
+        .drawer a.active{background:var(--brand);color:#fff}
+
+        @media (max-width:1280px){
+            .hero{grid-template-columns:1fr}
+            .foot-inner{grid-template-columns:1fr 1fr}
+        }
+        @media (max-width:860px){
+            :root{--rail:0px}
+            .rail{display:none}
+            .topbar{padding:0 18px}
+            .menu-btn{display:grid}
+            .shell{padding:20px 16px 40px}
+            .foot{padding:28px 18px 16px}
+            .hero{padding:22px}
+            .partner{padding:22px}
+            .cards{padding:14px;gap:8px}
+            .t-card{padding:14px 16px}
+        }
+        @media (max-width:600px){
+            .topbar{padding:0 14px;height:64px}
+            .brand-logo{height:30px}
+            .brand-name{font-size:17px}
+            .clock{font-size:11px;padding:7px 10px}
+            .icon-btn{width:40px;height:40px}
+            .shell{margin-top:64px;padding:16px 10px 32px}
+            .layout{gap:14px}
+
+            .hero{padding:18px;border-radius:20px;gap:16px}
+            .hero h1{font-size:20px;line-height:1.15}
+            .hero p{font-size:12.5px}
+            .hero-eyebrow{font-size:10px;padding:5px 11px;margin-bottom:10px}
+            .hero-stats{grid-template-columns:1fr 1fr;gap:8px;padding:12px}
+            .hero-stat .num{font-size:20px}
+            .hero-stat .lbl{font-size:9px}
+
+            .card-block{border-radius:16px}
+            .block-head{padding:12px 14px}
+            .block-head h2{font-size:14px;gap:8px}
+            .block-head .badge{font-size:9px;padding:2px 8px}
+
+            .cards{padding:10px;gap:6px}
+            .t-card{padding:12px 14px;border-radius:10px}
+
+            .t-card-top{gap:10px;margin-bottom:8px}
+            .t-card-match h3{font-size:15.5px}
+            .t-card-tour{font-size:9.5px}
+
+            .t-card-right{gap:10px}
+            .t-card-bet .bet-label{font-size:8px}
+            .t-card-bet .bet-value{font-size:15px}
+            .t-card-odds{font-size:14px;padding:5px 8px;min-width:48px}
+            .t-card-result{font-size:12px}
+
+            .t-card-reasoning{
+                font-size:12px;line-height:1.55;margin-bottom:8px;
+                -webkit-line-clamp:2;
+            }
+            .t-card-factors{display:none}
+
+            .loading,.empty{padding:36px 12px;font-size:12px}
+            .err{padding:28px 12px;font-size:12px}
+
+            .partner{padding:18px;border-radius:20px;gap:14px;flex-direction:column;align-items:flex-start}
+            .partner .left .bk{font-size:17px}
+            .partner .cta{width:100%}
+            .partner .cta a{flex:1;text-align:center;padding:10px 14px;font-size:12px}
+
+            .foot{padding:24px 14px 14px}
+            .foot-inner{grid-template-columns:1fr;gap:20px}
+            .foot-brand h3{font-size:19px}
+            .foot-brand p{font-size:12.5px}
+            .foot-col h4{font-size:10px;margin-bottom:8px}
+            .foot-col a{font-size:12.5px;padding:4px 0}
+            .foot-bar{font-size:11px;margin-top:20px;padding-top:14px}
+        }
+    </style>
+</head>
+<body>
+
+<header class="topbar">
+    <a href="/" class="brand">
+        <img src="/logo.png" alt="SetTrue" class="brand-logo" onerror="this.style.display='none'">
+        <span class="brand-name">Set<em>True</em></span>
+    </a>
+    <div class="topbar-right">
+        <div class="clock"><b id="headerTime">--:--</b> МСК</div>
+        <button class="icon-btn" id="themeToggle" aria-label="Тема">◐</button>
+        <button class="icon-btn menu-btn" id="menuToggle" aria-label="Меню"><span class="bars"><i></i><i></i><i></i></span></button>
+    </div>
+</header>
+
+<nav class="rail" aria-label="Основная навигация">
+  <a href="/" class="rail-link active" title="Главная"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10h14V10"/></svg><span>Главная</span></a>
+  <a href="/predict/" class="rail-link" title="Прогнозы"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg><span>Прогнозы</span></a>
+  <a href="/scanmatch/" class="rail-link" title="Баскетбол АИ"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg><span>Баскетбол</span></a>
+  <div class="rail-sep"></div>
+  <a href="/cashflows/" class="rail-link" title="Денежные потоки"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.7 0-3 .9-3 2s1.3 2 3 2 3 .9 3 2-1.3 2-3 2m0-8V7m0 1v8m0 0v1m0-1c-1.1 0-2.1-.4-2.6-1"/></svg><span>Потоки</span></a>
+  <a href="/ai/" class="rail-link" title="AI-анализ"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 4.5a3 3 0 00-3 3v.5a2.5 2.5 0 00-1.5 4.5 2.5 2.5 0 001.5 4.5v.5a3 3 0 003 3h.5V4.5h-.5z"/><path d="M14.5 4.5a3 3 0 013 3v.5a2.5 2.5 0 011.5 4.5 2.5 2.5 0 01-1.5 4.5v.5a3 3 0 01-3 3h-.5V4.5h.5z"/><path d="M8 9h2M8 13h2M8 17h2M14 9h2M14 13h2M14 17h2"/></svg><span>AI</span></a>
+  <a href="/robobet/" class="rail-link" title="Робобет"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="3"/><path stroke-linecap="round" d="M9 10h.01M15 10h.01M8 15h8"/></svg><span>Робот</span></a>
+</nav>
+
+<div class="drawer" id="drawer">
+  <a href="/" class="active">Главная</a>
+  <a href="/predict/">Прогнозы</a>
+  <a href="/scanmatch/">Баскетбол АИ</a>
+  <a href="/cashflows/">Денежные потоки</a>
+  <a href="/ai/">AI-анализ</a>
+  <a href="/robobet/">Робобет</a>
+</div>
+
+<main class="shell">
+    <div class="layout">
+
+        <section class="hero">
+            <div>
+                <span class="hero-eyebrow"><span class="pulse"></span>Нейросеть для баскетбола</span>
+                <h1>Баскетбол АИ — <em>математический анализ матчей</em></h1>
+                <p>Алгоритм оценивает форму, статистику, H2H и усталость команд. Только уверенные сигналы от локальной нейросети.</p>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat"><span class="num lime" id="heroCurrent">0</span><span class="lbl">Текущих</span></div>
+                <div class="hero-stat"><span class="num coral" id="heroLast">0</span><span class="lbl">Прошедших</span></div>
+            </div>
+        </section>
+
+        <div class="card-block">
+            <div class="block-head">
+                <h2>🏀 Текущие прогнозы</h2>
+                <span class="badge live">LIVE</span>
+            </div>
+            <div id="app-current">
+                <div class="loading"><div class="spinner"></div><div>Загрузка текущих прогнозов…</div></div>
+            </div>
+        </div>
+
+        <div class="card-block">
+            <div class="block-head">
+                <h2>📊 Результаты</h2>
+                <span class="badge">ПРОШЕДШИЕ</span>
+            </div>
+            <div id="app-last">
+                <div class="loading"><div class="spinner"></div><div>Загрузка результатов…</div></div>
+            </div>
+        </div>
+
+        <section class="partner">
+            <div class="left"><span class="lab">Партнёр</span><span class="bk"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/BC_Pari-logo.png" alt="Pari">Pari</span></div>
+            <div class="cta">
+                <a href="#" class="primary" onclick="openPartnerLink('reg')">Регистрация</a>
+                <a href="#" class="ghost" onclick="openPartnerLink('bonus')">Бонус 5 000 ₽</a>
+                <a href="#" class="ghost" onclick="openPartnerLink('freebets')">5 фрибетов</a>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<footer class="foot">
+    <div class="foot-inner">
+        <div class="foot-brand"><h3>Set<em>True</em></h3><p>Математический анализ баскетбольных матчей. Прогнозы на основе ИИ и статистики. Информационный партнёр БК Pari.</p></div>
+        <div class="foot-col"><h4>Разделы</h4><a href="/predict/">Прогнозы</a><a href="/scanmatch/">Баскетбол АИ</a><a href="/cashflows/">Денежные потоки</a><a href="/robobet/">Робобет</a></div>
+        <div class="foot-col"><h4>Информация</h4><a href="#">Обновление: ежедневно</a><a href="#">Баскетбол: анализ</a></div>
+        <div class="foot-col"><h4>Контакты</h4><a href="mailto:SetTrueForecast@yandex.ru">SetTrueForecast@yandex.ru</a></div>
+    </div>
+    <div class="foot-bar"><span>© 2026 SetTrue</span><span class="age"><b>18+</b> Играйте ответственно</span></div>
+</footer>
+
+<script>
+    // ===== НАСТРОЙКИ =====
+    // ⚠️ ВАЖНО: Вставьте сюда вашу RAW-ссылку с GitHub!
+    // Пример: 'https://raw.githubusercontent.com/ВАШ_НИКНЕЙМ/ВАШ_РЕПОЗИТОРИЙ/main/ai_analysis_basketball.json'
+    const DATA_URL = 'https://settrue.ru/ai_analysis_basketball.json';
+
+    // ===== ТЕМЫ И ЧАСЫ =====
+    function getTheme() {
+        try { return localStorage.getItem('settrue-theme') || 'light'; }
+        catch(e) { return 'light'; }
+    }
+    function setTheme(t) {
+        try { localStorage.setItem('settrue-theme', t); } catch(e) {}
+        document.documentElement.setAttribute('data-theme', t);
+    }
+    setTheme(getTheme());
+    document.getElementById('themeToggle').addEventListener('click', () => setTheme(getTheme() === 'dark' ? 'light' : 'dark'));
+
+    function updateTime() {
+        const n = new Date();
+        const m = new Date(n.getTime() + (n.getTimezoneOffset() * 60000) + 10800000); // МСК
+        const el = document.getElementById('headerTime');
+        if (el) el.textContent = String(m.getHours()).padStart(2, '0') + ':' + String(m.getMinutes()).padStart(2, '0');
+    }
+    setInterval(updateTime, 1000); 
+    updateTime();
+
+    document.getElementById('menuToggle').addEventListener('click', function() {
+        document.getElementById('drawer').classList.toggle('open');
+        this.classList.toggle('on');
+    });
+
+    function openPartnerLink(type) {
+        const u = {
+            reg: 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=88&utm_medium=affiliate',
+            bonus: 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=497&utm_medium=affiliate',
+            freebets: 'https://clicks.af-pb06e2.com/click?offer_id=812&partner_id=31125&landing_id=2709&utm_medium=affiliate'
+        };
+        if (u[type]) { 
+            if (typeof ym !== 'undefined') ym(108400965, 'reachGoal', 'pari_' + type); 
+            window.open(u[type], '_blank'); 
+        }
+    }
+
+    // ===== УТИЛИТЫ =====
+    function esc(str) {
+        if (!str) return '';
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    // ===== РЕНДЕР КАРТОЧЕК =====
+    function renderCards(data, containerId) {
+        const c = document.getElementById(containerId);
+        if (!data || data.length === 0) {
+            c.innerHTML = '<div class="empty">📭 Нет данных для отображения</div>';
+            return;
+        }
+
+        let html = '<div class="cards">';
+
+        data.forEach(d => {
+            let cardClass = 't-card';
+            if (d.result === 'win' || d.result === '1' || d.result === '2') cardClass += ' win';
+            else if (d.result === 'lose') cardClass += ' lose';
+
+            let resultBadge = '';
+            if (d.result === 'win' || d.result === '1' || d.result === '2') resultBadge = '<span class="t-card-result show">✅</span>';
+            if (d.result === 'lose') resultBadge = '<span class="t-card-result show">❌</span>';
+
+            const bet = d.recommended_bet || '—';
+            const odds = (d.odds && d.odds !== '—' && d.odds !== '0') ? d.odds : '—';
+            const reasoning = d.reasoning || '';
+            const factors = Array.isArray(d.key_factors) ? d.key_factors.slice(0, 4) : [];
+
+            let factorsHtml = '';
+            if (factors.length) {
+                factorsHtml = '<div class="t-card-factors">';
+                factors.forEach(f => {
+                    factorsHtml += '<span class="factor">' + esc(f) + '</span>';
+                });
+                factorsHtml += '</div>';
+            }
+
+            html += `
+                <div class="${cardClass}">
+                    <div class="t-card-top">
+                        <div class="t-card-match">
+                            <h3>${esc(d.match)}</h3>
+                            <div class="t-card-tour">${esc(d.league)} ${d.verdict ? '• ' + esc(d.verdict) : ''}</div>
+                        </div>
+                        <div class="t-card-right">
+                            ${resultBadge}
+                            <div class="t-card-bet">
+                                <span class="bet-label">Прогноз</span>
+                                <span class="bet-value">${esc(bet)}</span>
+                            </div>
+                            <div class="t-card-odds">@ ${esc(odds)}</div>
+                        </div>
+                    </div>
+                    ${reasoning ? '<div class="t-card-reasoning">' + esc(reasoning) + '</div>' : ''}
+                    ${factorsHtml}
+                </div>
+            `;
+        });
+
+        html += '</div>';
+        c.innerHTML = html;
+    }
+
+    // ===== ЗАГРУЗКА ДАННЫХ =====
+    async function loadData() {
+        const c1 = document.getElementById('app-current');
+        const c2 = document.getElementById('app-last');
+
+        try {
+            // Добавляем timestamp, чтобы браузер не кешировал старый JSON с GitHub
+            const res = await fetch(DATA_URL + '?t=' + Date.now(), { cache: 'no-store' });
+            if (!res.ok) throw new Error('Ошибка сети (' + res.status + '). Проверьте Raw-ссылку GitHub.');
+            
+            const json = await res.json();
+
+            if (!json.success) throw new Error('JSON помечен как неуспешный (success: false)');
+
+            // Фильтруем текущие (result === "0" или отсутствует) и прошедшие
+            const allData = json.data || [];
+            const current = allData.filter(m => !m.result || m.result === '0' || m.result === 0);
+            
+            const fromHistory = json.history || [];
+            const fromDataPast = allData.filter(m => m.result === 'win' || m.result === 'lose' || m.result === '1' || m.result === '2');
+            
+            // Убираем дубликаты в истории
+            const seen = new Set();
+            const last = [...fromHistory, ...fromDataPast].filter(m => {
+                const id = m.match + '|' + m.league;
+                if (seen.has(id)) return false;
+                seen.add(id);
+                return true;
+            });
+
+            renderCards(current, 'app-current');
+            renderCards(last, 'app-last');
+
+            // Обновляем цифры в шапке
+            document.getElementById('heroCurrent').textContent = current.length;
+            document.getElementById('heroLast').textContent = last.length;
+
+        } catch (e) {
+            console.error("Ошибка загрузки:", e);
+            c1.innerHTML = '<div class="err">⚠️ ' + esc(e.message) + '</div>';
+            c2.innerHTML = '<div class="err">⚠️ ' + esc(e.message) + '</div>';
+        }
+    }
+
+    // Запуск при загрузке и автообновление каждые 5 минут
+    document.addEventListener('DOMContentLoaded', loadData);
+    setInterval(loadData, 300000);
+</script>
+</body>
+</html>
