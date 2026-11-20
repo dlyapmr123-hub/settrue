@@ -1,10 +1,29 @@
 {
   "success": true,
-  "timestamp": "2026-11-18T14:27:28Z",
+  "timestamp": "2026-11-20T16:25:33Z",
   "threshold": 80,
-  "analyzed": 2,
-  "count": 1,
-  "data": [
+  "analyzed": 3,
+  "count": 0,
+  "data": [],
+  "history": [
+    {
+      "match": "Cerundolo — Safiullin",
+      "league": "ATP Shanghai 2026",
+      "confidence": 88,
+      "verdict": "🔥 СИЛЬНЫЙ",
+      "market": "1X2",
+      "recommended_bet": "П1",
+      "reasoning": "",
+      "key_factors": [
+        "ДЕНЬГИ: 77.1% на П1",
+        "ФОРМА: см. debug-файл",
+        "ПОКРЫТИЕ: см. debug-файл",
+        "H2H: см. debug-файл"
+      ],
+      "odds": "1.97",
+      "result": "win",
+      "result_timestamp": "2026-10-08T22:18:04Z"
+    },
     {
       "match": "A Zverev — Fils",
       "league": "ATP Finals Turin 2026",
@@ -30,26 +49,6 @@
       "odds": "1.37",
       "result": "win",
       "result_timestamp": "2026-11-18T14:27:28Z"
-    }
-  ],
-  "history": [
-    {
-      "match": "Cerundolo — Safiullin",
-      "league": "ATP Shanghai 2026",
-      "confidence": 88,
-      "verdict": "🔥 СИЛЬНЫЙ",
-      "market": "1X2",
-      "recommended_bet": "П1",
-      "reasoning": "",
-      "key_factors": [
-        "ДЕНЬГИ: 77.1% на П1",
-        "ФОРМА: см. debug-файл",
-        "ПОКРЫТИЕ: см. debug-файл",
-        "H2H: см. debug-файл"
-      ],
-      "odds": "1.97",
-      "result": "win",
-      "result_timestamp": "2026-10-08T22:18:04Z"
     }
   ]
 }
