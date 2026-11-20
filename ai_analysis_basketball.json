@@ -1,65 +1,35 @@
 {
   "success": true,
-  "timestamp": "2026-11-20T16:50:27Z",
+  "timestamp": "2026-11-20T18:21:53Z",
   "threshold": 80,
   "analyzed": 6,
-  "count": 2,
+  "count": 1,
   "data": [
     {
       "match": "Anadolu Efes SK — ASVEL Lyon-Villeurbanne",
       "league": "Euroleague Men",
-      "confidence": 85,
-      "verdict": "🔥 СИЛЬНЫЙ",
+      "confidence": 90,
+      "verdict": "🔥 СИЛЬНЫЙ (единогласно)",
       "market": "1X2",
       "recommended_bet": "П2",
-      "reasoning": "Деньги: 44.9% на П2 при кэф 3.7 (значимый value-сигнал). Форма: Anadolu Efes имеет преимущество в подборах (32.7 vs 27.1), но нет данных о последних 5 матчах. Травмы: нет информации. H2H: нет данных. Усталость: обе команды отдыхали 2 дня. Домашнее преимущество: играет на своей площадке, но нет статистики по домашним играм.",
+      "reasoning": "Деньги распределены в пользу П2 (44.9% от £2521) при кэфе 3.7, что указывает на недооценку ASVEL. Форма Efes подтверждена победой 89-84 в предыдущей встрече с 19 очками Clyburn, но ASVEL страдает от травм: Bentil и Lauvergne отсутствуют, что ослабляет их состав. H2H показывает преимущество Efes (89-84), но текущие проблемы ASVEL могут изменить баланс. Усталость Efes не упомянута, но их последняя победа указывает на стабильность.",
       "key_factors": [
         "ДЕНЬГИ: 44.9% на П2 при объёме £2521",
-        "ФОРМА: Anadolu Efes имеет преимущество в подборах (32.7 vs 27.1)",
-        "ТРАВМЫ: нет данных",
-        "H2H: нет данных",
-        "УСТАЛОСТЬ: обе команды отдыхали 2 дня"
+        "ФОРМА: Efes выиграл 89-84 в предыдущей встрече",
+        "ТРАВМЫ: ASVEL без Bentil (несколько недель) и Lauvergne",
+        "H2H: 89-84 в пользу Efes"
       ],
       "analysis": {
-        "money": "Деньги: 44.9% на П2 при объёме £2521",
-        "form_home": "Anadolu Efes SK: преимущество в подборах (32.7 vs 27.1)",
-        "form_away": "ASVEL Lyon-Villeurbanne: нет данных",
-        "injuries": "Травмы: нет данных",
-        "h2h": "H2H: нет данных",
-        "fatigue": "Усталость: обе команды отдыхали 2 дня",
-        "home_advantage": "Домашнее преимущество: играет на своей площадке, но нет статистики по домашним играм"
+        "money": "Деньги: 44.9% на П2, объём £2521",
+        "form_home": "Форма Anadolu Efes SK: победа 89-84 в последней встрече с 19 очками Clyburn",
+        "form_away": "Форма ASVEL Lyon-Villeurbanne: нет данных",
+        "injuries": "Травмы: ASVEL без Ben Bentil (несколько недель) и Joffrey Lauvergne",
+        "h2h": "H2H: 89-84 в пользу Anadolu Efes SK",
+        "fatigue": "Усталость: нет данных"
       },
       "odds": "3.7",
       "result": "0",
-      "result_timestamp": "2026-11-20T16:40:25Z"
-    },
-    {
-      "match": "Washington Wizards — Chicago Bulls",
-      "league": "NBA",
-      "confidence": 85,
-      "verdict": "🔥 СИЛЬНЫЙ",
-      "market": "1X2",
-      "recommended_bet": "П2",
-      "reasoning": "Деньги: 52.1% на П2 при объёме £1906, коэффициент 1.78 (выше 1.5). Форма: Wizards проиграли 4 из последних 5 игр (1-4), Bulls имеют худшую общую форму (4-10), но в последних 5 играх против Bucks показали 2 победы. Травмы: Bulls без Caleb Wilson (руковая травма), Wizards потеряют Beekman (справа, AC-сустав) и Reece (правая нога). H2H: Bulls выиграли 59 из 99 игр против Wizards (PPG 102.2 vs OPP PPG 99.5). Усталость: нет данных. Домашнее преимущество: нет данных.",
-      "key_factors": [
-        "ДЕНЬГИ: 52.1% на П2 при объёме £1906",
-        "ФОРМА: Wizards 1-4, Bulls 4-10 (последние 5 игр против Bucks: 2-3)",
-        "ТРАВМЫ: Bulls без Caleb Wilson, Wizards потеряют Beekman и Reece",
-        "H2H: Bulls 59-40 против Wizards",
-        "УСТАЛОСТЬ: нет данных"
-      ],
-      "analysis": {
-        "money": "Деньги: 52.1% на П2, объём £1906",
-        "form_home": "Форма Washington Wizards: 1-4 в последних 5 игр",
-        "form_away": "Форма Chicago Bulls: 4-10 общая, 2-3 в последних 5 играх против Bucks",
-        "injuries": "Травмы: Chicago Bulls — Caleb Wilson (руковая травма), Washington Wizards — Beekman (справа, AC-сустав), Reece (правая нога)",
-        "h2h": "H2H: Chicago Bulls 59-40 против Washington Wizards",
-        "fatigue": "Усталость: нет данных",
-        "home_advantage": "Домашнее преимущество: нет данных"
-      },
-      "odds": "1.78",
-      "result": "0",
-      "result_timestamp": "2026-11-20T16:48:22Z"
+      "result_timestamp": "2026-11-20T18:12:19Z"
     }
   ],
   "history": []
