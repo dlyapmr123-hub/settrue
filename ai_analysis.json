@@ -1,61 +1,10 @@
 {
   "success": true,
-  "timestamp": "2026-11-20T16:18:15Z",
+  "timestamp": "2026-11-22T17:47:30Z",
   "threshold": 78,
   "analyzed": 10,
-  "count": 2,
-  "data": [
-    {
-      "match": "Genk — RAAL La Louviere",
-      "league": "Belgian Pro League",
-      "confidence": 85,
-      "verdict": "🔥 СИЛЬНЫЙ",
-      "market": "1X2",
-      "recommended_bet": "П1",
-      "reasoning": "Форма Genk: за последние 5 матчей 2 победы, 3 поражения, забито 5, пропущено 6. RAAL La Louvière: 3 победы, 2 поражения, но данные о забитых/пропущенных голах отсутствуют. Травмы: у Genk нет новых травм за 30 дней, у RAAL La Louvière — информация не указана. H2H: за последние 8 встреч 3 победы Genk, 2 RAAL La Louvière, 3 ничьи. Мотивация: Genk на 10-й позиции (9 очков), RAAL La Louvière на 14-й (4 очка). Тактика: Genk играет 4-2-3-1, RAAL La Louvière — 5-3-2. Статистика H2H слабая для обеих команд, но преимущество у Genk.",
-      "key_factors": [
-        "ФОРМА: Genk 2 победы в 5, RAAL La Louviere 3 победы в 5",
-        "ТРАВМЫ: у Genk нет новых травм, у RAAL La Louviere — данные отсутствуют",
-        "H2H: 3 победы Genk, 2 RAAL La Louvière, 3 ничьи",
-        "МОТИВАЦИЯ: Genk на 10-й позиции, RAAL La Louviere на 14-й"
-      ],
-      "analysis": {
-        "form_home": "Genk показывает умеренную форму с 2 победами в последних 5 матчах, но пропускает много голов. RAAL La Louvière более стабильны в победах, но данные о голах отсутствуют.",
-        "form_away": "RAAL La Louvière не указана форма, но их статистика H2H показывает равные шансы.",
-        "injuries": "Genk: нет новых травм. RAAL La Louvière: данные о травмах отсутствуют.",
-        "motivation": "Genk имеет лучшее турнирное положение, что может повысить мотивацию. RAAL La Louvière стремятся к выручке, но форма нестабильна.",
-        "h2h": "История встреч показывает равные шансы, но Genk имеет больше побед в последних встречах."
-      },
-      "odds": "1.43",
-      "result": "win",
-      "result_timestamp": "2026-11-20T16:10:11Z"
-    },
-    {
-      "match": "Sigma Olomouc — Slavia Prague",
-      "league": "Czech 1 Liga",
-      "confidence": 78,
-      "verdict": "🔥 СИЛЬНЫЙ",
-      "market": "1X2",
-      "recommended_bet": "П2",
-      "reasoning": "Slavia Prague демонстрирует выдающуюся форму: 4 победы в последних 5 матчах (80% win rate), забив 18 голов и пропустив 5. Sigma Olomouc менее стабилен: 2 победы в 5 матчах. H2H-статистика склоняется в пользу Slavia (17 побед из 46 встреч). Травмы обеих команд снижают игровую эффективность, но у Slavia меньше критических потерь. Мотивация команды связана с турнирным положением: Slavia лидирует, что повышает их амбиции. Тактическая подготовка и домашнее преимущество (для Slavia) усиливают вероятность победы.",
-      "key_factors": [
-        "ФОРМА: Sigma Olomouc 2 победы в 5, Slavia Prague 4 победы в 5",
-        "ТРАВМЫ: Sigma Olomouc — 2 игрока (кnee, calf), Slavia Prague — 1 игрок (injury)",
-        "H2H: Slavia Prague выиграл 17 из 46 встреч",
-        "МОТИВАЦИЯ: Slavia лидирует в турнире"
-      ],
-      "analysis": {
-        "form_home": "Sigma Olomouc: 2 победы, 3 поражения в последних 5 матчах. Средний результат: 1.2 гола за матч, 1.4 пропущенных.",
-        "form_away": "Slavia Prague: 4 победы, 1 ничья и 0 поражений в последних 5 матчах. Средний результат: 2.6 гола за матч, 0.8 пропущенных.",
-        "injuries": "Sigma Olomouc: Václav Sejk (suspension), Daniel Barát (injury), Jan Král (injury). Slavia Prague: Eliás Piták (injury).",
-        "motivation": "Slavia Prague занимает 1-е место в турнирной таблице, что повышает мотивацию к победе. Sigma Olomouc ищет стабильность после серии поражений.",
-        "h2h": "H2H: Slavia Prague выиграл 17 из 46 встреч, 9 ничьих. Средний тотал голов: 2.3 за матч."
-      },
-      "odds": "1.72",
-      "result": "win",
-      "result_timestamp": "2026-11-20T16:18:15Z"
-    }
-  ],
+  "count": 0,
+  "data": [],
   "history": [
     {
       "match": "Лyon — Rennes",
@@ -485,6 +434,56 @@
       "odds": "1.44",
       "result": "win",
       "result_timestamp": "2026-11-17T15:06:07Z"
+    },
+    {
+      "match": "Genk — RAAL La Louviere",
+      "league": "Belgian Pro League",
+      "confidence": 85,
+      "verdict": "🔥 СИЛЬНЫЙ",
+      "market": "1X2",
+      "recommended_bet": "П1",
+      "reasoning": "Форма Genk: за последние 5 матчей 2 победы, 3 поражения, забито 5, пропущено 6. RAAL La Louvière: 3 победы, 2 поражения, но данные о забитых/пропущенных голах отсутствуют. Травмы: у Genk нет новых травм за 30 дней, у RAAL La Louvière — информация не указана. H2H: за последние 8 встреч 3 победы Genk, 2 RAAL La Louvière, 3 ничьи. Мотивация: Genk на 10-й позиции (9 очков), RAAL La Louvière на 14-й (4 очка). Тактика: Genk играет 4-2-3-1, RAAL La Louvière — 5-3-2. Статистика H2H слабая для обеих команд, но преимущество у Genk.",
+      "key_factors": [
+        "ФОРМА: Genk 2 победы в 5, RAAL La Louviere 3 победы в 5",
+        "ТРАВМЫ: у Genk нет новых травм, у RAAL La Louviere — данные отсутствуют",
+        "H2H: 3 победы Genk, 2 RAAL La Louvière, 3 ничьи",
+        "МОТИВАЦИЯ: Genk на 10-й позиции, RAAL La Louviere на 14-й"
+      ],
+      "analysis": {
+        "form_home": "Genk показывает умеренную форму с 2 победами в последних 5 матчах, но пропускает много голов. RAAL La Louvière более стабильны в победах, но данные о голах отсутствуют.",
+        "form_away": "RAAL La Louvière не указана форма, но их статистика H2H показывает равные шансы.",
+        "injuries": "Genk: нет новых травм. RAAL La Louvière: данные о травмах отсутствуют.",
+        "motivation": "Genk имеет лучшее турнирное положение, что может повысить мотивацию. RAAL La Louvière стремятся к выручке, но форма нестабильна.",
+        "h2h": "История встреч показывает равные шансы, но Genk имеет больше побед в последних встречах."
+      },
+      "odds": "1.43",
+      "result": "win",
+      "result_timestamp": "2026-11-20T16:10:11Z"
+    },
+    {
+      "match": "Sigma Olomouc — Slavia Prague",
+      "league": "Czech 1 Liga",
+      "confidence": 78,
+      "verdict": "🔥 СИЛЬНЫЙ",
+      "market": "1X2",
+      "recommended_bet": "П2",
+      "reasoning": "Slavia Prague демонстрирует выдающуюся форму: 4 победы в последних 5 матчах (80% win rate), забив 18 голов и пропустив 5. Sigma Olomouc менее стабилен: 2 победы в 5 матчах. H2H-статистика склоняется в пользу Slavia (17 побед из 46 встреч). Травмы обеих команд снижают игровую эффективность, но у Slavia меньше критических потерь. Мотивация команды связана с турнирным положением: Slavia лидирует, что повышает их амбиции. Тактическая подготовка и домашнее преимущество (для Slavia) усиливают вероятность победы.",
+      "key_factors": [
+        "ФОРМА: Sigma Olomouc 2 победы в 5, Slavia Prague 4 победы в 5",
+        "ТРАВМЫ: Sigma Olomouc — 2 игрока (кnee, calf), Slavia Prague — 1 игрок (injury)",
+        "H2H: Slavia Prague выиграл 17 из 46 встреч",
+        "МОТИВАЦИЯ: Slavia лидирует в турнире"
+      ],
+      "analysis": {
+        "form_home": "Sigma Olomouc: 2 победы, 3 поражения в последних 5 матчах. Средний результат: 1.2 гола за матч, 1.4 пропущенных.",
+        "form_away": "Slavia Prague: 4 победы, 1 ничья и 0 поражений в последних 5 матчах. Средний результат: 2.6 гола за матч, 0.8 пропущенных.",
+        "injuries": "Sigma Olomouc: Václav Sejk (suspension), Daniel Barát (injury), Jan Král (injury). Slavia Prague: Eliás Piták (injury).",
+        "motivation": "Slavia Prague занимает 1-е место в турнирной таблице, что повышает мотивацию к победе. Sigma Olomouc ищет стабильность после серии поражений.",
+        "h2h": "H2H: Slavia Prague выиграл 17 из 46 встреч, 9 ничьих. Средний тотал голов: 2.3 за матч."
+      },
+      "odds": "1.72",
+      "result": "win",
+      "result_timestamp": "2026-11-20T16:18:15Z"
     }
   ]
 }
