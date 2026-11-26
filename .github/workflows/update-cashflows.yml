@@ -2,7 +2,7 @@ name: Обновление данных Денежных потоков
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/25 * * * *'
   workflow_dispatch:
 
 permissions:
