@@ -11,6 +11,7 @@ permissions:
 jobs:
   update-cashflows:
     runs-on: ubuntu-latest
+
     
     steps:
       - name: 📥 Клонирование репозитория
