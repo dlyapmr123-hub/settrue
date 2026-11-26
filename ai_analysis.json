@@ -1,10 +1,61 @@
 {
   "success": true,
-  "timestamp": "2026-11-26T15:02:41Z",
+  "timestamp": "2026-11-26T15:47:05Z",
   "threshold": 78,
-  "analyzed": 7,
-  "count": 0,
-  "data": [],
+  "analyzed": 8,
+  "count": 2,
+  "data": [
+    {
+      "match": "Sportivo Luqueno — Olimpia",
+      "league": "Paraguayan Primera Division",
+      "confidence": 85,
+      "verdict": "🔥 Сильный",
+      "market": "1X2",
+      "recommended_bet": "П2",
+      "reasoning": "Olimpia демонстрирует выдающуюся форму: 5 побед подряд, забито 14 голов, пропущено 5. Sportivo Luqueno проиграл 3 из последних 5 матчей, пропустил 10 голов. H2H показывает явное преимущество Olimpia (32 побед против 6 у Luqueno). Травма ключевого игрока Lucas Morales у Luqueno снижает их конкурентоспособность. Мотивация Olimpia как лидера турнира усиливает их игру.",
+      "key_factors": [
+        "ФОРМА: Sportivo Luqueno 1W-1D-3L, Olimpia 5W-0D-0L",
+        "ТРАВМЫ: Lucas Morales (Sportivo Luqueno) вышел из-за травмы",
+        "H2H: Olimpia выиграла 32 из 47 встреч, Luqueno — 6",
+        "МОТИВАЦИЯ: Olimpia лидирует в турнире, Luqueno борется за выживание"
+      ],
+      "analysis": {
+        "form_home": "Sportivo Luqueno: 1 победа, 1 ничья, 3 поражения в последних 5 матчах. Забито 6, пропущено 10",
+        "form_away": "Olimpia: 5 побед, 0 ничьих, 0 поражений. Забито 14, пропущено 5",
+        "injuries": "Sportivo Luqueno: Lucas Morales (травма). Olimpia: нет данных",
+        "motivation": "Olimpia стремится сохранить лидерство, Sportivo Luqueno — избежать вылета",
+        "h2h": "Olimpia выиграла 32 из 47 встреч, Luqueno — 6. 9 ничьих"
+      },
+      "odds": "1.71",
+      "result": "0",
+      "result_timestamp": "2026-11-26T15:41:47Z"
+    },
+    {
+      "match": "Al-Kholood Club — Al-Khaleej Saihat",
+      "league": "Saudi Professional League",
+      "confidence": 85,
+      "verdict": "🔥 Сильный",
+      "market": "1X2",
+      "recommended_bet": "П1",
+      "reasoning": "Форма команд: Al-Kholood Club имеет 2 победы, 2 ничьи и 1 поражение в последних 5 матчах. Al-Khaleej Saihat показывает 3 победы, 1 ничью и 1 поражение. H2H-история демонстрирует преимущество Al-Kholood Club: 3 победы против 2 побед Al-Khaleej Saihat и 2 ничьи. Мотивация: Al-Khaleej Saihat занимает 9-е место в турнирной таблице, что указывает на среднюю стабильность. Травмы: нет данных. Тактика: нет данных.",
+      "key_factors": [
+        "ФОРМА: Al-Kholood Club 2 победы в 5 матчах, Al-Khaleej Saihat 3 победы в 5 матчах",
+        "ТРАВМЫ: нет данных",
+        "H2H: Al-Kholood Club выиграл 3 из 5 последних встреч, Al-Khaleej Saihat — 2",
+        "МОТИВАЦИЯ: Al-Khaleej Saihat находится в средней части турнирной таблицы"
+      ],
+      "analysis": {
+        "form_home": "Al-Kholood Club показывает устойчивую форму дома с 2 победами, 2 ничьими и 1 поражением в последних 5 матчах",
+        "form_away": "Al-Khaleej Saihat имеет 3 победы, 1 ничью и 1 поражение в последних 5 матчах",
+        "injuries": "Травмы: нет данных",
+        "motivation": "Al-Khaleej Saihat занимает 9-е место в турнирной таблице, что указывает на среднюю мотивацию",
+        "h2h": "H2H: Al-Kholood Club выиграл 3 из 5 последних встреч, Al-Khaleej Saihat — 2, с 2 ничьими"
+      },
+      "odds": "2.16",
+      "result": "0",
+      "result_timestamp": "2026-11-26T15:47:05Z"
+    }
+  ],
   "history": [
     {
       "match": "Лyon — Rennes",
