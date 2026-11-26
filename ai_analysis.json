@@ -1,59 +1,59 @@
 {
   "success": true,
-  "timestamp": "2026-11-26T15:47:05Z",
+  "timestamp": "2026-11-26T16:10:20Z",
   "threshold": 78,
   "analyzed": 8,
   "count": 2,
   "data": [
     {
-      "match": "Sportivo Luqueno — Olimpia",
-      "league": "Paraguayan Primera Division",
-      "confidence": 85,
-      "verdict": "🔥 Сильный",
+      "match": "Grazer AK — SCR Altach",
+      "league": "Austrian Bundesliga",
+      "confidence": 93,
+      "verdict": "🔥 СИЛЬНЫЙ",
       "market": "1X2",
       "recommended_bet": "П2",
-      "reasoning": "Olimpia демонстрирует выдающуюся форму: 5 побед подряд, забито 14 голов, пропущено 5. Sportivo Luqueno проиграл 3 из последних 5 матчей, пропустил 10 голов. H2H показывает явное преимущество Olimpia (32 побед против 6 у Luqueno). Травма ключевого игрока Lucas Morales у Luqueno снижает их конкурентоспособность. Мотивация Olimpia как лидера турнира усиливает их игру.",
+      "reasoning": "Форма команд четко различается: SCR Altach выиграл 3 из последних 5 матчей (включая 5-1 над Bregenz и 3-0 против Hartberg), а Grazer AK потерпел 4 поражения в последних 5 играх (включая 4-0 от SCR Altach). H2H показывает равновесие (по 1 победе у каждой команды), но последняя встреча закончилась уверенной победой SCR Altach. Grazer AK демонстрирует слабую оборону (в 5 последних матчах пропустил 10 голов), в то время как SCR Altach показывает стабильную атакующую игру. Мотивация у SCR Altach выше из-за лучшего турнирного положения (8-е место против 11-го).",
       "key_factors": [
-        "ФОРМА: Sportivo Luqueno 1W-1D-3L, Olimpia 5W-0D-0L",
-        "ТРАВМЫ: Lucas Morales (Sportivo Luqueno) вышел из-за травмы",
-        "H2H: Olimpia выиграла 32 из 47 встреч, Luqueno — 6",
-        "МОТИВАЦИЯ: Olimpia лидирует в турнире, Luqueno борется за выживание"
+        "ФОРМА: Grazer AK 0 побед в 5, SCR Altach 3 победы в 5",
+        "ТРАВМЫ: нет данных",
+        "H2H: 1-1 (последняя встреча - 4-0 в пользу SCR Altach)",
+        "МОТИВАЦИЯ: SCR Altach имеет лучшее турнирное положение"
       ],
       "analysis": {
-        "form_home": "Sportivo Luqueno: 1 победа, 1 ничья, 3 поражения в последних 5 матчах. Забито 6, пропущено 10",
-        "form_away": "Olimpia: 5 побед, 0 ничьих, 0 поражений. Забито 14, пропущено 5",
-        "injuries": "Sportivo Luqueno: Lucas Morales (травма). Olimpia: нет данных",
-        "motivation": "Olimpia стремится сохранить лидерство, Sportivo Luqueno — избежать вылета",
-        "h2h": "Olimpia выиграла 32 из 47 встреч, Luqueno — 6. 9 ничьих"
+        "form_home": "Grazer AK: 0W-1D-4L за последние 5 матчей, пропустил 10 голов",
+        "form_away": "SCR Altach: 3W-1D-1L за последние 5 матчей, забил 12 голов",
+        "injuries": "травмы: нет данных",
+        "motivation": "SCR Altach демонстрирует лучшую стабильность и мотивацию на основе турнирного положения",
+        "h2h": "Последняя встреча: SCR Altach 4-0 Grazer AK (октябрь 2026)"
       },
-      "odds": "1.71",
+      "odds": "2.3",
       "result": "0",
-      "result_timestamp": "2026-11-26T15:41:47Z"
+      "result_timestamp": "2026-11-26T16:02:21Z"
     },
     {
-      "match": "Al-Kholood Club — Al-Khaleej Saihat",
-      "league": "Saudi Professional League",
+      "match": "Lusail — Al Arabi (QAT)",
+      "league": "Qatari Stars League",
       "confidence": 85,
-      "verdict": "🔥 Сильный",
+      "verdict": "✅ ХОРОШИЙ",
       "market": "1X2",
-      "recommended_bet": "П1",
-      "reasoning": "Форма команд: Al-Kholood Club имеет 2 победы, 2 ничьи и 1 поражение в последних 5 матчах. Al-Khaleej Saihat показывает 3 победы, 1 ничью и 1 поражение. H2H-история демонстрирует преимущество Al-Kholood Club: 3 победы против 2 побед Al-Khaleej Saihat и 2 ничьи. Мотивация: Al-Khaleej Saihat занимает 9-е место в турнирной таблице, что указывает на среднюю стабильность. Травмы: нет данных. Тактика: нет данных.",
+      "recommended_bet": "П2",
+      "reasoning": "Форма Lusail: 2 победы в 5 матчах (40% выигрышных). Форма Al Arabi: 1 победа в 5 матчах (20% выигрышных). H2H: Al Arabi выиграл 100% встреч. Мотивация: Al Arabi борется за высокие позиции, Lusail — за стабильность. Травмы: нет данных. Тактика: Al Arabi демонстрирует преимущество в личных встречах.",
       "key_factors": [
-        "ФОРМА: Al-Kholood Club 2 победы в 5 матчах, Al-Khaleej Saihat 3 победы в 5 матчах",
+        "ФОРМА: Lusail 2 побед в 5, Al Arabi (QAT) 1 победа в 5",
         "ТРАВМЫ: нет данных",
-        "H2H: Al-Kholood Club выиграл 3 из 5 последних встреч, Al-Khaleej Saihat — 2",
-        "МОТИВАЦИЯ: Al-Khaleej Saihat находится в средней части турнирной таблицы"
+        "H2H: Al Arabi выиграл 1 из 1 встречи",
+        "МОТИВАЦИЯ: Al Arabi стремится улучшить позиции"
       ],
       "analysis": {
-        "form_home": "Al-Kholood Club показывает устойчивую форму дома с 2 победами, 2 ничьими и 1 поражением в последних 5 матчах",
-        "form_away": "Al-Khaleej Saihat имеет 3 победы, 1 ничью и 1 поражение в последних 5 матчах",
+        "form_home": "Lusail показывает стабильную форму с 2 победами в последних 5 матчах, но часто пропускает.",
+        "form_away": "Al Arabi демонстрирует слабую форму с 1 победой, но имеет преимущество в личных встречах.",
         "injuries": "Травмы: нет данных",
-        "motivation": "Al-Khaleej Saihat занимает 9-е место в турнирной таблице, что указывает на среднюю мотивацию",
-        "h2h": "H2H: Al-Kholood Club выиграл 3 из 5 последних встреч, Al-Khaleej Saihat — 2, с 2 ничьими"
+        "motivation": "Al Arabi мотивирован улучшить позиции, Lusail — сохранить стабильность.",
+        "h2h": "H2H: Al Arabi выиграл 100% встреч, что указывает на психологическое преимущество."
       },
-      "odds": "2.16",
+      "odds": "1.79",
       "result": "0",
-      "result_timestamp": "2026-11-26T15:47:05Z"
+      "result_timestamp": "2026-11-26T16:03:22Z"
     }
   ],
   "history": [
