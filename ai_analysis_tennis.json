@@ -1,113 +1,35 @@
 {
   "success": true,
-  "timestamp": "2026-11-27T16:59:12Z",
-  "threshold": 80,
+  "timestamp": "2026-11-27T17:25:30Z",
+  "threshold": 88,
   "analyzed": 10,
-  "count": 4,
+  "count": 1,
   "data": [
-    {
-      "match": "Car Monnet — Erjavec",
-      "league": "WTA Buenos Aires 2026",
-      "confidence": 85,
-      "verdict": "🔥 СИЛЬНЫЙ",
-      "market": "1X2",
-      "recommended_bet": "П2",
-      "reasoning": "Форма Car Monnet: 22 победы из 19 матчей на грунте. Форма Erjavec: 21 победа из 15 матчей на грунте. Покрытие: Clay. H2H: 2-3 в пользу Erjavec. Травмы: нет данных.",
-      "key_factors": [
-        "ФОРМА: Car Monnet 22/19 на грунте, Erjavec 21/15 на грунте",
-        "ПОКРЫТИЕ: Clay",
-        "H2H: 2-3 в пользу Erjavec",
-        "ТРАВМЫ: нет данных"
-      ],
-      "analysis": {
-        "form_home": "Car Monnet: 22 победы из 19 матчей на грунте",
-        "form_away": "Erjavec: 21 победа из 15 матчей на грунте",
-        "surface": "Clay",
-        "h2h": "2-3 в пользу Erjavec",
-        "injuries": "нет данных",
-        "fatigue": "нет данных"
-      },
-      "odds": "2.02",
-      "result": "0",
-      "result_timestamp": "2026-11-27T16:45:06Z"
-    },
     {
       "match": "E Ribeiro — Roncadelli",
       "league": "Florianopolis Challenger 2026",
-      "confidence": 95,
+      "confidence": 88,
       "verdict": "🔥 СИЛЬНЫЙ",
       "market": "1X2",
       "recommended_bet": "П1",
-      "reasoning": "E Ribeiro выиграл 2-0 в последней встрече. За последний месяц он выиграл 5 из 10 матчей, включая победы над Andrey Chepelev и Max Alcala Gurri на этом покрытии. Roncadelli проиграл 2 из 3 последних матчей на грунте, хотя выиграл 7 из 10 игр. Покрытие: Clay.",
+      "reasoning": "Форма Ribeiro: 5 побед в 10 матчах. Форма Roncadelli: 7 побед в 10 матчах. Покрытие: Clay. H2H: 2-0 в пользу Ribeiro. Травмы: нет данных. Рибейро демонстрирует стабильность на глиняном покрытии, выигрывает ключевые сервисные игры. Ронкаделли проиграл последний матч, но имеет высокий процент выигранных сетов (71%).",
       "key_factors": [
-        "ФОРМА: E Ribeiro выиграл 5 из 10 матчей, Roncadelli проиграл 2 из 3 последних на грунте",
-        "ПОКРЫТИЕ: Hard / Clay / Grass / Carpet (Clay)",
-        "H2H: 2-0 в пользу E Ribeiro",
-        "ТРАВМЫ: Нет данных"
+        "ФОРМА: конкретные цифры обоих (5/10 и 7/10)",
+        "ПОКРЫТИЕ: Clay",
+        "H2H: 2-0 в пользу Ribeiro",
+        "ТРАВМЫ: нет данных"
       ],
       "analysis": {
-        "form_home": "E Ribeiro выиграл 5 из 10 последних матчей, включая 2 победы на этом турнире. В 5 последних игр он сохранял положительный дифференциал геймов",
-        "form_away": "Roncadelli проиграл 2 из 3 последних матчей на грунте, но выиграл 7 из 10 игр. В последнем турнире дошел до четвертьфинала",
+        "form_home": "Форма E Ribeiro: 5 побед в 10 матчах",
+        "form_away": "Форма Roncadelli: 7 побед в 10 матчах",
         "surface": "Clay",
         "h2h": "2-0 в пользу E Ribeiro",
-        "injuries": "Нет данных",
-        "fatigue": "Нет данных"
-      },
-      "odds": "2.1",
-      "result": "0",
-      "result_timestamp": "2026-11-27T16:47:15Z"
-    },
-    {
-      "match": "G Maristany Zuleta De R — Mar Carle",
-      "league": "WTA Buenos Aires 2026",
-      "confidence": 85,
-      "verdict": "🔥 СИЛЬНЫЙ",
-      "market": "1X2",
-      "recommended_bet": "П2",
-      "reasoning": "Mar Carle выиграла 2 последних матча на hard (Podoroska 6-4, 7-6 и Larraya Guidi 6-3, 6-1). Форма G Maristany Zuleta De R mixed: победа над Masarova, поражение от Grabher. Покрытие: hard. H2H: нет данных. Травмы: нет информации.",
-      "key_factors": [
-        "ФОРМА: Mar Carle выиграла 2 последних матча на hard (6-4, 7-6 и 6-3, 6-1). G Maristany Zuleta De R: 1 победа, 1 поражение в последних 2 матчах.",
-        "ПОКРЫТИЕ: Hard (турнир WTA Buenos Aires 2026, результаты Carle на hard).",
-        "H2H: нет данных.",
-        "ТРАВМЫ: Нет информации о травмах у обоих игроков."
-      ],
-      "analysis": {
-        "form_home": "Mar Carle: 2 победы в последних 2 матчах на hard. G Maristany Zuleta De R: 1 победа, 1 поражение в последних 2 матчах.",
-        "form_away": "Mar Carle: 2 победы в последних 2 матчах на hard. G Maristany Zuleta De R: 1 победа, 1 поражение в последних 2 матчах.",
-        "surface": "Hard",
-        "h2h": "H2H: нет данных",
         "injuries": "Травмы: нет данных",
         "fatigue": "Усталость: нет данных"
       },
-      "odds": "3.0",
+      "odds": "2.1",
       "result": "0",
-      "result_timestamp": "2026-11-27T16:55:28Z"
-    },
-    {
-      "match": "Andres Martin — Ol Ovcharenko",
-      "league": "Hersonissos Challenger 2026",
-      "confidence": 80,
-      "verdict": "🔥 СИЛЬНЫЙ",
-      "market": "1X2",
-      "recommended_bet": "П2",
-      "reasoning": "Форма Andres Martin: проиграл 2 из последних 3 матчей, включая финал Challenger. Форма Ol Ovcharenko: выиграл 15 из 21 матча на твёрдом покрытии. Покрытие: Hard (указано в турнире и прошлых матчах Ovcharenko). H2H: нет данных. Травмы: нет информации.",
-      "key_factors": [
-        "ФОРМА: Martin проиграл 2 из 3 последних, Ovcharenko выиграл 15 из 21 на Hard",
-        "ПОКРЫТИЕ: Hard (турнир и прошлые матчи Ovcharenko)",
-        "H2H: нет данных",
-        "ТРАВМЫ: нет информации"
-      ],
-      "analysis": {
-        "form_home": "Andres Martin: 3-5 в последних 8 матчах, 2 поражения на Hard",
-        "form_away": "Ol Ovcharenko: 28-18 в последних 46 матчах, 15 побед на Hard",
-        "surface": "Hard",
-        "h2h": "нет данных",
-        "injuries": "нет данных",
-        "fatigue": "нет данных"
-      },
-      "odds": "2.18",
-      "result": "0",
-      "result_timestamp": "2026-11-27T16:59:12Z"
+      "result_timestamp": "2026-11-27T17:17:06Z"
     }
   ],
   "history": [
